@@ -34,11 +34,12 @@ latex:
 latexpdf:
 	@printf "${C_BLUE}Updating documentation resources${C_NORMAL}\n"
 	if [[ ! -d ./docs/source/resources ]]; then mkdir -p ./docs/source/resources; fi
-	cd $(MODEL_DIR)/src; find . -name "resources" -exec pax -rw -s '/.*\//g' {} ../../gmt_docs/docs/source/resources \;
+	cd $(MODEL_DIR)/src; find . -name "resources" -exec pax -rw -s '/.*\///g' {} ../../gmt_docs/docs/source/resources \;
 	@printf "${C_BLUE}Generating RST files${C_NORMAL}\n"
-	#$(shell gds exec swc_sys.gen_documents $<)
+	pwd
+	gds exec swc_sys.gen_documents
 	@printf "${C_BLUE}Generating LATEX and PDF files${C_NORMAL}\n"
-	#make -C src latexpdf
+	make -C src latexpdf
 	@printf "${C_BLUE}Success!${C_NORMAL}\n"
 
 clean:
