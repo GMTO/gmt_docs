@@ -318,7 +318,7 @@ analysis, aggregation, sorting, and validation. In the context of Observatory
 Operations, the categories of processing more specifically mean the following:</p>
 <blockquote>
 <div><ul class="simple">
-<li><em>Conversion</em> &#8211; Data conversion mostly repackages, renormalizes, or
+<li><em>Conversion</em> – Data conversion mostly repackages, renormalizes, or
 reformats the input information in a different way required by software or
 users, but otherwise preserves the context (i.e., a data table converts to
 another data table) of the original input data. Data conversion is sometimes
@@ -329,7 +329,7 @@ to binary, lossless data compression), astrometric coordinates (celestial
 coordinates to pixel coordinates), spectrum wavelength scale (e.g., pixel to
 wavelength), equinox coordinates (e.g., equinox B1950 to J2000), flux scale
 (pixel counts to magnitude) etc.</li>
-<li><em>Transformation</em> &#8211; Data transformation alters the input data in some
+<li><em>Transformation</em> – Data transformation alters the input data in some
 significant way, the goal of which is not to change the format or structure,
 but rather to prune, improve (in some sense), or make corrections to the
 data.  Examples of data transformation involve: bad pixel interpolation or
@@ -344,7 +344,7 @@ in FITS data format, but the output is in data cube form instead of the
 original 2-D image of spectra. The output is a much more useful format for
 quick-look assessment of the data quality compared with the data in its
 native, recorded, state.</li>
-<li><em>Analysis</em> &#8211; Data analysis involves interpretation, inference, synthesis,
+<li><em>Analysis</em> – Data analysis involves interpretation, inference, synthesis,
 summary, and/or numerical computation, of input information that on output
 produces entirely new information. This category includes both statistical
 and numerical analysis. Statistical analysis involves summary of, as well as
@@ -357,16 +357,16 @@ source or feature extraction, matrix inversions (e.g., wavefront sensing
 applications), equation solving, model generation (e.g., AO PSF simulations,
 image or spectra creation), noise generation, and optimization of telescope
 scheduling.</li>
-<li><em>Aggregation</em> &#8211; Aggregation takes multiple data sets of similar context,
+<li><em>Aggregation</em> – Aggregation takes multiple data sets of similar context,
 and either combines them in some way, or extends/appends the data set.
 Examples include science image and spectra combination (e.g., mosaic
 creation), data reduction and calibration (bias frame combinations, darks,
 flats, etc.), merging telemetry data tables (e.g., for use in TPoint), etc.</li>
-<li><em>Sorting</em> &#8211; Sorting involves reorganizing an ordered sequence of data into
+<li><em>Sorting</em> – Sorting involves reorganizing an ordered sequence of data into
 another ordered sequence, following some numerical weights or rules.
 Examples include schedule ranking based on parameter values, sorting by
 proximity to coordinate, etc.</li>
-<li><em>Validation</em> &#8211; This process validates that the data taken are useful and
+<li><em>Validation</em> – This process validates that the data taken are useful and
 may involve testing the integrity (data can be read correctly), completeness
 (e.g., having all supporting data), correctness (e.g., data format, pointing
 to correct object/field, proper filter), quality (e.g., high S/N, adequate
@@ -413,7 +413,7 @@ distributed computing. The DPS therefore comprises a Server and Processing
 Pipelines, their roles being:</p>
 <blockquote>
 <div><ul class="simple">
-<li><em>The Pipeline Server</em> &#8211; The pipeline server is the access point into the
+<li><em>The Pipeline Server</em> – The pipeline server is the access point into the
 DPS by clients, which make job requests to initiate job processes. The
 server manages and orchestrates all computation workflows. As discussed
 earlier, the purpose of the server-client model is to relieve clients from
@@ -430,7 +430,7 @@ on-the-fly, by rearranging processing elements, via a pipeline (workflow)
 editor (analogous to Sequence editors).  This enables users to adapt to
 changing runtime situations trivially without having to learn the
 programming environment.</li>
-<li><em>Pipelines and Filters / Processing Elements</em> &#8211; In the DPS, there are
+<li><em>Pipelines and Filters / Processing Elements</em> – In the DPS, there are
 several categories of data processing pipelines that are natural to
 Observatory Operations, as elaborated in <a class="reference internal" href="#pipeline-applications"><span class="std std-ref">Pipeline Applications</span></a>.  Each
 pipeline produces a specific form of data product, such as reduced FITS
@@ -460,7 +460,7 @@ image matching, data reduction and calibration, and model synthesis. Each of
 those pipeline categories is summarized here briefly:</p>
 <blockquote>
 <div><ul class="simple">
-<li><em>Signal Processing</em> &#8211; The signal processing pipeline handles recording,
+<li><em>Signal Processing</em> – The signal processing pipeline handles recording,
 measurements, shaping, or analysis of signals, including time varying or
 spatially varying signals. Some of the most common signals include:
 temperature, pressure, encoder positions, images, and spectra. Examples of
@@ -469,28 +469,28 @@ generation, automated telescope pointing analysis and pointing model
 creation, filtering of data stream (e.g., encoder readouts), image
 enhancement, noise reduction, feature detection or extraction from images or
 spectra for creating data cubes, etc.</li>
-<li><em>Statistics</em> &#8211; In addition to performing basic statistics, statistical
+<li><em>Statistics</em> – In addition to performing basic statistics, statistical
 pipelines perform all the pre- processing and data extraction necessary. For
 instance, computing the background sky and noise level of an image or a
 spectrum may require source detection and masking.</li>
-<li><em>Astrometry</em> &#8211; Given an asterism of stars and galaxies in an image, and a
+<li><em>Astrometry</em> – Given an asterism of stars and galaxies in an image, and a
 large database of astronomical catalog of objects, this pipeline performs
 astrometric matching to attach a coordinate system to the image, accounting
 for geometric distortions. In addition to positions, asterism matching can
 also involve relative brightness of stars and galaxies as well as their
 colors.</li>
-<li><em>Coordinate Transform</em> &#8211; Solves for and evaluates transformations between
+<li><em>Coordinate Transform</em> – Solves for and evaluates transformations between
 two different coordinate systems, whether in images or in spectra. This is
 often used to facilitate accurate alignment of images or spectra, or to
 solve for wavelength solutions.</li>
-<li><em>Image Matching</em> &#8211; The Image Matching pipeline automatically figures out
+<li><em>Image Matching</em> – The Image Matching pipeline automatically figures out
 the alignment between two images and matches them, either via PSF matching
 or flux scaling. While image matching may use the coordinate transformation
 pipeline to register the images as part of the process, additional uses of
 the image-matching pipeline may involve image co-addition or subtraction,
 where it is also necessary to match the PSF and intensity scaling, or some
 other criteria.</li>
-<li><em>Data Reduction and Calibration</em> &#8211; This pipeline removes instrumental
+<li><em>Data Reduction and Calibration</em> – This pipeline removes instrumental
 signatures from engineering and science detectors and sensors. Data
 reduction and calibration pipelines include image reduction (bias, dark,
 flat fielding), and spectroscopy reduction (sky line subtraction, wavelength
@@ -498,13 +498,13 @@ calibration, spectral response correction). It is the first step toward many
 applications, including quick look and S/N calculation purposes, for queue
 observing to validate the quality of data, and for creating image cubes for
 IFU data.</li>
-<li><em>Model Synthesis</em> &#8211; A model synthesis pipeline facilitates the creation of
+<li><em>Model Synthesis</em> – A model synthesis pipeline facilitates the creation of
 artificial models for exposure time calculations. The pipeline helps to
 generate AO PSFs based on the locations of guide stars in a detector field
 of view relative to the science targets, and applies the PSFs to galaxy and
 spectral models to generate realistic images. Details of this application
 are discussed in <a class="reference internal" href="observing_tools.html#observing-tools"><span class="std std-ref">Observing Tools</span></a>.</li>
-<li><em>Data Trending</em> &#8211; The data trending pipeline facilitates discovery of
+<li><em>Data Trending</em> – The data trending pipeline facilitates discovery of
 correlations in the data with time, telescope pointing position, or between
 parameters. This may involve automated or supervised extraction and analysis
 of telemetry, quality monitoring, telescope flexure and pointing model data.</li>
@@ -558,7 +558,6 @@ of telemetry, quality monitoring, telescope flexure and pointing model data.</li
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
             VERSION:'1.2-6',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -568,6 +567,7 @@ of telemetry, quality monitoring, telescope flexure and pointing model data.</li
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
