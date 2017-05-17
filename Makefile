@@ -37,7 +37,7 @@ latexpdf:
 	if [[ ! -d ./docs/source/resources ]]; then mkdir -p ./docs/source/resources; fi
 	cd $(MODEL_DIR)/src; find . -type f -path "*resources*" -exec cp {} ../../gmt_docs/docs/source/resources/ \;
 	@printf "${C_BLUE}Generating RST files${C_NORMAL}\n"
-	gdsd exec swc_sys.gen_documents
+	gds exec swc_sys.gen_documents
 	@printf "${C_BLUE}Generating LATEX and PDF files${C_NORMAL}\n"
 	make -C src latexpdf
 	@printf "${C_BLUE}Success!${C_NORMAL}\n"
