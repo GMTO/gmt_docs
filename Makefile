@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 # ANSI COLOR codes
 C_BLUE=\\033[36m
 C_GREEN=\\033[32m
@@ -34,10 +35,9 @@ latex:
 latexpdf:
 	@printf "${C_BLUE}Updating documentation resources${C_NORMAL}\n"
 	if [[ ! -d ./docs/source/resources ]]; then mkdir -p ./docs/source/resources; fi
-	cd $(MODEL_DIR)/src; find . -name "resources" -exec pax -rw -s '/.*\///g' {} ../../gmt_docs/docs/source/resources \;
+	cd $(MODEL_DIR)/src; find . -type f -path "*resources*" -exec cp {} ../../gmt_docs/docs/source/resources/ \;
 	@printf "${C_BLUE}Generating RST files${C_NORMAL}\n"
-	pwd
-	gds exec swc_sys.gen_documents
+	gdsd exec swc_sys.gen_documents
 	@printf "${C_BLUE}Generating LATEX and PDF files${C_NORMAL}\n"
 	make -C src latexpdf
 	@printf "${C_BLUE}Success!${C_NORMAL}\n"
