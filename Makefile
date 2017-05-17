@@ -18,7 +18,6 @@ BIN_DIR				 = $(MODEL_DIR)/bin
 COFFEE_FILES   = $(shell find $(MODEL_DIR)/src -name "*.coffee")
 DOC_FILES      = $(shell find $(MODEL_DIR)/src -name "*.md" -o -name "*.hbs" -o -name "*.rst")
 
-
 all: clean latexpdf html
 	@printf "${C_BLUE_NICE}Success!${C_NORMAL}\n	"
 

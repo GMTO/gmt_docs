@@ -9,6 +9,7 @@ SOURCEDIR     = ../docs/source
 BUILDDIR      = ../docs/build
 HTMLSOURCEDIR = .
 HTMLBUILDDIR  = ../html
+PDFBUILDDIR   = ../pdf
 TOP           = .
 
 # User-friendly check for sphinx-build
@@ -54,6 +55,7 @@ help:
 
 clean:
 	rm -fr $(HTMLBUILDDIR)/*.html $(HTMLBUILDDIR)/_* $(HTMLBUILDDIR)/objects.inv  $(HTMLBUILDDIR)/searchindex.js  $(HTMLBUILDDIR)/.buildinfo
+	rm -fr $(PDFBUILDDIR)/*.pdf
 	rm -rf $(BUILDDIR)/*
 
 html:
@@ -126,7 +128,9 @@ latexpdf:
 	$(SPHINXBUILD) -b latex $(LATEXSPHINXOPTS) $(SOURCEDIR) $(BUILDDIR)/latex
 	@echo "Running LaTeX files through pdflatex..."
 	$(MAKE) -C $(BUILDDIR)/latex all-pdf
-	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
+	if [[ ! -d $(PDFBUILDDIR) ]]; then mkdir -p $(PDFBUILDDIR); fi
+	cp $(BUILDDIR)/latex/*.pdf $(PDFBUILDDIR)
+	@echo "pdflatex finished; the PDF files are in $(PDFBUILDDIR)."
 
 latexpdfja:
 	$(SPHINXBUILD) -b latex $(LATEXSPHINXOPTS) $(BUILDDIR)/latex
