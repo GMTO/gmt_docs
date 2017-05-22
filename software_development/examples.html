@@ -216,7 +216,7 @@ Commands in the sense of “remote calls” from other components do not exist. 
 </div>
 <p>This component does not have any input or output ports but has a <em>step()</em> function that runs at the default rate of 1 second.
 This step only creates a log message at every step but could be used for any other purpose.</p>
-<p>Let&#8217;s see an example with input and output ports. The following diagram show a component called Sum with two inputs ports and one output port.
+<p>Let’s see an example with input and output ports. The following diagram show a component called Sum with two inputs ports and one output port.
 The output port is the sum of the inputs ports:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>      Sum
    +--------+
@@ -267,7 +267,7 @@ The component does not need to do update the ports because, for any component, t
 <h2>8.2. Connecting Components<a class="headerlink" href="#connecting-components" title="Permalink to this headline">¶</a></h2>
 <p>The great thing about components is that they can be easily connected with other components to perform a much more complex function.
 A connector is a link that enables communication between components. A connector simply means that runtime component instances can communicate using their ports.</p>
-<p>Let&#8217;s create a component type called Inc with just one output port. This component has an initial value that is incremented at every step.
+<p>Let’s create a component type called Inc with just one output port. This component has an initial value that is incremented at every step.
 If the internal counter is reset every 1000 steps.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>       Inc
    ----------
@@ -319,7 +319,7 @@ If the internal counter is reset every 1000 steps.</p>
 </div>
 <p>Note that this diagram includes five <strong>connectors</strong> between components. These connectors allow to move data between components.
 At each step, if the connector is setup, the output of each component instance is sent to the next component in the connector.
-It&#8217;s important to know that <strong>each component does not know if connectors exist</strong>: they do not have references to other components.
+It’s important to know that <strong>each component does not know if connectors exist</strong>: they do not have references to other components.
 Each component reads its inputs and proceeds according these values to run the step and write the corresponding outputs.
 Components will run even when their ports are not connected to other components.</p>
 </div>
@@ -358,8 +358,8 @@ subscription topic: gmt
 <span class="o">[</span>INF<span class="o">]</span> <span class="m">2016</span>-09-06T16:24:39.732Z <span class="o">[</span>gmt://examples/simple_component:8000<span class="o">]</span> hello, component world
 </pre></div>
 </div>
-<p>At the startup the components are not setup and ports can&#8217;t be connected so each component is running alone.
-For example, let&#8217;s see what the component sum2 is doing:</p>
+<p>At the startup the components are not setup and ports can’t be connected so each component is running alone.
+For example, let’s see what the component sum2 is doing:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds log_service client sum2
 log client subscribed at port tcp://127.0.0.1:9995
 subscription topic: sum2
@@ -371,7 +371,7 @@ subscription topic: sum2
 <span class="o">[</span>INF<span class="o">]</span> <span class="m">2016</span>-09-06T16:35:01.301Z <span class="o">[</span>gmt://examples/component_sum2:8005<span class="o">]</span> <span class="nv">sum</span> <span class="o">=</span> <span class="m">3</span>
 </pre></div>
 </div>
-<p>In this case the component sum2 is still not receiving values from other components so it&#8217;s only processing the default inputs.
+<p>In this case the component sum2 is still not receiving values from other components so it’s only processing the default inputs.
 As the ports x2 and x3 are always:</p>
 <dl class="docutils">
 <dt>::</dt>
@@ -467,7 +467,7 @@ Many different kinds of controllers will be created for the telescope depending 
 In order to know or maintain the state of the system under control the controllers will use State Variables.</p>
 <p>A simple controller with a temperature state variable (simulated, with no real hardware) is provided.
 Note that the controller implementation c++ code is split in three different files: general, setup and step.
-This is for code generation purposes and because it&#8217;s easy to focus development only on the step() loop.</p>
+This is for code generation purposes and because it’s easy to focus development only on the step() loop.</p>
 <p>The configuration for this controller is:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>Controller <span class="s2">&quot;simple_controller&quot;</span>,
     default:
@@ -513,7 +513,7 @@ The telemetry service will:</p>
 </ul>
 </div></blockquote>
 <p>Note that monitors are the values of the output ports.</p>
-<p>For example, the following command will start sending &#8216;temperature&#8217; data points to the telemetry service.</p>
+<p>For example, the following command will start sending ‘temperature’ data points to the telemetry service.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds monitor start -m runtime -e simple_controller
 </pre></div>
 </div>

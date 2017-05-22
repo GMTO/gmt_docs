@@ -206,7 +206,7 @@ $ tar xvfz isample_dcs.tgz
 $ <span class="nb">cd</span> isample_dcs
 </pre></div>
 </div>
-<p>For relative and absolute paths, it will be assumed that the tar file was downloaded to the current user&#8217;s home directory (~/).</p>
+<p>For relative and absolute paths, it will be assumed that the tar file was downloaded to the current user’s home directory (~/).</p>
 <div class="section" id="model-files">
 <h2>4.1. Model Files<a class="headerlink" href="#model-files" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
@@ -343,7 +343,7 @@ $ ls -la
 </tbody>
 </table>
 </div></blockquote>
-<p><em>OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the &#8220;Range&#8221; column above.</em></p>
+<p><em>OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the “Range” column above.</em></p>
 </div>
 <div class="section" id="input-ports">
 <h3>4.3.2. Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h3>
@@ -479,7 +479,7 @@ but any other text editor can be used.</p>
 <h3>4.4.1. C++ Executables<a class="headerlink" href="#c-executables" title="Permalink to this headline">¶</a></h3>
 <p>For each component, ensure that the setup ports specified in the C++ files that instantiates components are unique, and matches the setup port specified in the corresponding <em>*_config.coffee</em> files.</p>
 <p>For example, the file <em>isample_filter_wheel_ctrl_run.cpp</em> instantiates the two filter wheel controllers, each on its own setup port.
-These setup ports need to be unique within the executable and match the setup port numbers defined in the <em>*_config.coffee</em> files, which we&#8217;ll edit next.</p>
+These setup ports need to be unique within the executable and match the setup port numbers defined in the <em>*_config.coffee</em> files, which we’ll edit next.</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> isample_ctrl_pkg/isample_filter_wheel_ctrl/cpp/
 $ vim isample_filter_wheel_ctrl_run.cpp
@@ -489,7 +489,7 @@ $ vim isample_filter_wheel_ctrl_run.cpp
 <p>When executed, this file will create the two Filter Wheel controller instances.
 Ensure that they listen for configuration parameters on the correct setup ports
 by creating <em>isample_fw1_ctrl</em> on port 8000 and <em>isample_fw2_ctrl</em> on port 8001.</p>
-<p>At first, we&#8217;ll use the <em>run_isample_filter_wheel_ctrl</em> executable (created
+<p>At first, we’ll use the <em>run_isample_filter_wheel_ctrl</em> executable (created
 using the isample_filter_wheel_ctrl_run.cpp file) to test the Filter Wheel controllers
 in isolation. To run all components at the same time, the same concept applies
 to the <em>run_isample_ctrl_pkg_main</em> executable using <em>isample_ctrl_pkg_main_run.cpp</em>.</p>
@@ -685,7 +685,7 @@ and data processing packages.</p>
 <div class="section" id="sending-a-value-to-the-input-port">
 <h2>4.8. Sending a Value to the Input Port<a class="headerlink" href="#sending-a-value-to-the-input-port" title="Permalink to this headline">¶</a></h2>
 <p>In order to see the step function in action, we can write a value to an input port and see the component react to it.
-While using the step function defined above, run &#8216;gds send_value&#8217; with a port name and new value.</p>
+While using the step function defined above, run ‘gds send_value’ with a port name and new value.</p>
 <p>For example:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds send_value position_goal <span class="m">23</span> -m runtime -e isample_fw1_ctrl
 </pre></div>
