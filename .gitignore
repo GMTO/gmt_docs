@@ -1,5 +1,6 @@
-/html/.doctrees/
-/docs/*
+/html/
+/docs/
+/pdf/
 *.swp
 /js/
 /node_modules/

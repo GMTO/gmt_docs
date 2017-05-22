@@ -11,6 +11,8 @@ HTMLSOURCEDIR = .
 HTMLBUILDDIR  = ../html
 PDFBUILDDIR   = ../pdf
 TOP           = .
+RELEASEDIR    = ../../gmt_docs_build/html
+DOCTREESDIR   = ../../gmt_docs_build/doctrees
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -21,8 +23,9 @@ endif
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
 LATEXSPHINXOPTS	=	-c . -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS)
-# ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) ${TOP}
 ALLSPHINXOPTS   = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS)
+JENKINSLATEXSPHINXOPTS	=	-c . -d $(RELEASEDIR)/../doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS)
+JENKINSSPHINXOPTS   = -d $(RELEASEDIR)/../doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS)
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) ${TOP}
 
@@ -191,3 +194,15 @@ pseudoxml:
 	$(SPHINXBUILD) -b pseudoxml $(ALLSPHINXOPTS) $(BUILDDIR)/pseudoxml
 	@echo
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
+
+jenkins:
+	@echo "Generating HTML pages."
+	$(SPHINXBUILD) -b html $(JENKINSSPHINXOPTS) $(HTMLSOURCEDIR) $(RELEASEDIR)
+	@echo "Build finished. The HTML pages are in $(RELEASEDIR)."
+	@echo "Generating PDF documents."
+	$(SPHINXBUILD) -b latex $(JENKINSLATEXSPHINXOPTS) $(SOURCEDIR) $(RELEASEDIR)/latex
+	@echo "Running LaTeX files through pdflatex..."
+	$(MAKE) -C $(RELEASEDIR)/latex all-pdf
+	if [[ ! -d $(RELEASEDIR)/pdf ]]; then mkdir -p $(RELEASEDIR)/pdf; fi
+	cp $(RELEASEDIR)/latex/*.pdf $(RELEASEDIR)/pdf/
+	@echo "pdflatex finished; the PDF files are in $(RELEASEDIR)/pdf."

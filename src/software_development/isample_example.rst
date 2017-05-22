@@ -461,7 +461,7 @@ Switch to the session running the logging service client (`tty2`), and confirm t
   and data processing packages.
 
 Sending a Value to the Input Port
---------------------------------
+---------------------------------
 In order to see the step function in action, we can write a value to an input port and see the component react to it.
 While using the step function defined above, run 'gds send_value' with a port name and new value.
 

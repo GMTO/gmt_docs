@@ -41,6 +41,12 @@ latexpdf:
 	make -C src latexpdf
 	@printf "${C_BLUE}Success!${C_NORMAL}\n"
 
+.PHONY: jenkins
+jenkins:
+	@printf "${C_BLUE}Generating HTML and PDF files${C_NORMAL}\n"
+	make -C src jenkins
+	@printf "${C_BLUE}Success!${C_NORMAL}\n"
+
 clean:
 	rm -fr build html
 	make -C src clean
