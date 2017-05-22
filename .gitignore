@@ -1,4 +1,5 @@
 /build/
+/latex/
 *.swp
 /js/
 /node_modules/
