@@ -43,6 +43,11 @@ latexpdf:
 
 .PHONY: jenkins
 jenkins:
+	@printf "${C_BLUE}Updating documentation resources${C_NORMAL}\n"
+	if [[ ! -d ./docs/source/resources ]]; then mkdir -p ./docs/source/resources; fi
+	cd $(MODEL_DIR)/src; find . -type f -path "*resources*" -exec cp {} ../../gmt_docs/docs/source/resources/ \;
+	@printf "${C_BLUE}Generating RST files${C_NORMAL}\n"
+	gds exec swc_sys.gen_documents
 	@printf "${C_BLUE}Generating HTML and PDF files${C_NORMAL}\n"
 	make -C src jenkins
 	@printf "${C_BLUE}Success!${C_NORMAL}\n"
