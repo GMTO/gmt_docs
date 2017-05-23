@@ -1,7 +1,0 @@
-require '../isample_ctrl_super/coffee/isample_ctrl_super_config'
-require '../isample_temp_ctrl/coffee/isample_cryo_internal_temp_ctrl_config'
-require '../isample_temp_ctrl/coffee/isample_cryo_external_temp_ctrl_config'
-require '../isample_focus_ctrl/coffee/isample_focus_ctrl_config'
-require '../isample_filter_wheel_ctrl/coffee/isample_fw1_ctrl_config'
-require '../isample_filter_wheel_ctrl/coffee/isample_fw2_ctrl_config'
-require '../isample_hw_adapter/coffee/isample_hw_adapter_config'
