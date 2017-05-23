@@ -107,7 +107,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#download-virtual-box">3.1. Download Virtual Box</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-virtualbox">3.2. Install VirtualBox</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-a-virtual-machine">3.3. Create a Virtual Machine</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configure-network-settings">3.4. Configure Network Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-network-settings">3.4. Configure Network Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#network-address-translation-nat">3.4.1. Network Address Translation (NAT)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bridged-adapter">3.4.2. Bridged Adapter</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#download-the-iso-image">3.5. Download the iso image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#run-the-virtual-machine">3.6. Run the Virtual Machine</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#upgrade-the-packages">3.7. Upgrade the Packages</a></li>
@@ -264,8 +268,26 @@ by selecting the VM and clicking on Settings.</p>
 </div>
 <div class="section" id="configure-network-settings">
 <h2>3.4. Configure Network Settings<a class="headerlink" href="#configure-network-settings" title="Permalink to this headline">¶</a></h2>
-<p>To allow the virtual machine to access the internet, we need to bridge the
-VM’s network adapter to the host machine’s network adapter.</p>
+<p>To allow the virtual machine to access the internet, we need to enable access
+to the network interface of the host machine. The exact settings will depend
+on the network topology, so some experimentation may be required to make it
+work.</p>
+<p>For more detailed information on Virtual Networking, consult the official
+<a class="reference external" href="https://www.virtualbox.org/manual/ch06.html">documentation</a></p>
+<div class="section" id="network-address-translation-nat">
+<h3>3.4.1. Network Address Translation (NAT)<a class="headerlink" href="#network-address-translation-nat" title="Permalink to this headline">¶</a></h3>
+<p>This is the default networking mode in VirtualBox and should work in most cases.
+The Virtual machine will be placed on a private internal network that is not
+directly accessible from the outside. Instead, the networking engine will map
+traffic through the host interface, making it appear as though the packets
+originated from the VirtualBox application on the host IP address.</p>
+</div>
+<div class="section" id="bridged-adapter">
+<h3>3.4.2. Bridged Adapter<a class="headerlink" href="#bridged-adapter" title="Permalink to this headline">¶</a></h3>
+<p>Bridged networking allows VirtualBox to intercept data from the physical
+network and create a new virtualized network interface. The Virtual Machine
+will have its own IP Address and will be accessible from the outside.</p>
+<p>When connected to the GMTO network, use this configuration.</p>
 <p>Select the VM and click on <em>Settings</em>, then select the <em>Network</em> icon on
 the top row.</p>
 <a class="reference internal image-reference" href="../../_images/ss12_network_settings.png"><img alt="Network Adapter Settings" class="align-center" src="../../_images/ss12_network_settings.png" style="width: 1073.8px; height: 827.4px;" /></a>
@@ -274,6 +296,7 @@ with <strong>Name</strong> the same as the network adapter used by the host mach
 connect to the internet. In this case, it’s the wireless adapter <em>en0</em>.
 The settings under <strong>Advanced</strong> can remain on defaults.</p>
 <p>Select <em>OK</em> to save settings and close the dialog.</p>
+</div>
 </div>
 <div class="section" id="download-the-iso-image">
 <h2>3.5. Download the iso image<a class="headerlink" href="#download-the-iso-image" title="Permalink to this headline">¶</a></h2>

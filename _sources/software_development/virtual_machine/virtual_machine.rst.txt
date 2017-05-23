@@ -136,8 +136,29 @@ by selecting the VM and clicking on Settings.
 Configure Network Settings
 --------------------------
 
-To allow the virtual machine to access the internet, we need to bridge the
-VM's network adapter to the host machine's network adapter.
+To allow the virtual machine to access the internet, we need to enable access
+to the network interface of the host machine. The exact settings will depend
+on the network topology, so some experimentation may be required to make it
+work.
+
+For more detailed information on Virtual Networking, consult the official
+`documentation <https://www.virtualbox.org/manual/ch06.html>`_
+
+Network Address Translation (NAT)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This is the default networking mode in VirtualBox and should work in most cases.
+The Virtual machine will be placed on a private internal network that is not
+directly accessible from the outside. Instead, the networking engine will map
+traffic through the host interface, making it appear as though the packets
+originated from the VirtualBox application on the host IP address.
+
+Bridged Adapter
+~~~~~~~~~~~~~~~
+Bridged networking allows VirtualBox to intercept data from the physical
+network and create a new virtualized network interface. The Virtual Machine
+will have its own IP Address and will be accessible from the outside.
+
+When connected to the GMTO network, use this configuration.
 
 Select the VM and click on *Settings*, then select the *Network* icon on
 the top row.
