@@ -66,11 +66,15 @@ This variable is only required for the C++ components.
 Databases and Logs
 ------------------
 
-The Data Archive uses *mongoDB* as backend data base. Each service keeps and
+The Data Archive uses *mongoDB* as backend data base. Each service keeps an
 independent database.
 
-Each service daemon stores output and error messages on `${GMT_ROOT}/var/log`.  Please
-check these files if services failed to start or an error is shown while
+Each service daemon stores output and error messages on `${GMT_ROOT}/var/log`,
+where `GMT_ROOT` is an environment variable indicating the path to the GMT root
+directory. This variable is typically an empty string when installed in a linux
+test environment, placing the log files in `/var/log`.
+
+Please check these files if services failed to start or an error is shown while
 checking their status
 
 
