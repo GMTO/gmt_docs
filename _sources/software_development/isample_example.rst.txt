@@ -6,23 +6,99 @@ ISample Example
 :ref:`ISample DCS <dcs_spec_example>` is an instrument control system example that provides
 a template that instrument developers can use as a model.
 
-Retrieve the sample model files from `here <../_static/isample_dcs.tgz>`_ or execute:
+**Short Reference**
+The following sequence of commands can be used on the Virtual Machine to
+initialize the environment, checkout the repository,
+generate the source code from the model and compile the code:
 
 .. code-block:: bash
 
-   $ curl -O http://52.52.46.32/_static/isample_dcs.tgz
-   $ tar xvfz isample_dcs.tgz
-   $ cd isample_dcs
+  $ mkdir /home/gmto/gmt_dev
+  $ vi .bashrc
+  $ export GMT_LOCAL=/home/gmto/gmt_dev
+  $ source /opt/gmt/etc/gmt_env.sh
+  $ cd /home/gmto/gmt_dev
+  $ gds init_env
+  $ git clone https://github.com/GMTO/isample_dcs.git
+  $ cp isample_dcs/model/local.coffee install/etc
+  $ cd isample_dcs
+  $ gds codegen -e isample_dcs
+  $ cd src
+  $ make -j`nproc` install
 
-For relative and absolute paths, it will be assumed that the tar file was downloaded to the current user's home directory (~/).
+Below, each step is explained in more detail.
+
+Configure your Development Environment
+--------------------------------------
+1. Create a folder for GMT development
+
+.. code-block:: bash
+
+  $ mkdir ~/gmt_dev
+
+All GMT modules being developed should be checked out underneath this folder.
+
+2. Add the following two lines to your .profile (or .kshrc .bashrc depending on the shell)
+
+.. code-block:: bash
+
+  export GMT_LOCAL=/home/gmto/gmt_dev
+  source /opt/gmt/etc/gmt_env.sh
+
+This will ensure that the environment variables are correctly configured when
+opening a new terminal. To configure the environment variables for the current shell,
+run the commands manually.
+
+Check the values of the environment variables with the command:
+
+.. code-block:: bash
+
+  $ gmt_env
+
+3. Initialize the development environment with the following command:
+
+.. code-block:: bash
+
+  $ cd $GMT_LOCAL
+  $ gds init_env
+
+The correct folders will be created in the $GMT_LOCAL directory for use when
+compiling and running modules.
+
+Clone the isample_dcs repository
+--------------------------------
+1. On the development machine, clone the repository in the development folder:
+
+.. code-block:: bash
+
+  $ cd $GMT_LOCAL
+  $ git clone https://github.com/GMTO/isample_dcs.git
+
+2. Copy Module Configuration file to the development folder. The Module
+Configuration file will list the modules to load when running gmt and gds.
+
+.. code-block:: bash
+
+  $ cp isample_dcs/model/local.coffee install/etc
 
 Model Files
 -----------
-isample_def.coffee
-  High-level definition file, representing the WBS for the submodule. It lists the components and how many instances of each are required.
+The model files can be found in the **model/** folder.
+
+isample_core_if.coffee
+  Lists the connectors between the isample and GMT core systems
 
 isample_dcs.coffee
   Lists the connectors between the supervisor layer and the component layer. For this example, these are limited to monitoring the heartbeat of each component.
+
+isample_def.coffee
+  High-level definition file, representing the WBS for the submodule. It lists the components and how many instances of each are required.
+
+isample_types.coffee
+  Definitions of structs and data types used by the isample components.
+
+isample_ctrl_pkg/isample_ctrl_fb.coffee
+  Fieldbus definitions for the isample control package.
 
 isample_ctrl_pkg/isample_ctrl_pkg.coffee
   Lists the connectors between components.
@@ -103,6 +179,7 @@ To generate the code skeleton from the model files, execute:
 
 .. code-block:: bash
 
+   $ cd $GMT_LOCAL/isample_dcs
    $ gds codegen -e isample_dcs
 
 This will generate the basic framework of source code and configuration files for each component. The files will be located in the `src/` folder.
@@ -110,7 +187,7 @@ To see the generated folders and files, navigate to:
 
 .. code-block:: bash
 
-  $ cd src/runtime/src/idcs/isample_dcs/
+  $ cd $GMT_LOCAL/isample_dcs/src/
   $ ls -la
 
 Component Attributes
@@ -209,181 +286,52 @@ and the struct `HeartBeatEvent` is defined as:
           MSGPACK_DEFINE_MAP(timestamp)
       };
 
-Configuration
--------------
-All component instances require a unique setup port, used to send configuration parameters to the running instance.
-The port on which the component instance listens for configuration parameters is defined in the corresponding *\*_run.cpp* file.
-The port to which configuration parameters will be sent (using gds) for each component is defined in the corresponding *\*_config.coffee* configuration file.
-
-.. note::
-
-  The examples use the text editor *vim*, which is included in almost all Linux distributions,
-  but any other text editor can be used.
-
-  To edit a file while viewing it in vim, type ``i``. To save and exit, hit ``esc``, then type ``:wq``.
-
-C++ Executables
-~~~~~~~~~~~~~~~
-
-For each component, ensure that the setup ports specified in the C++ files that instantiates components are unique, and matches the setup port specified in the corresponding *\*_config.coffee* files.
-
-For example, the file *isample_filter_wheel_ctrl_run.cpp* instantiates the two filter wheel controllers, each on its own setup port.
-These setup ports need to be unique within the executable and match the setup port numbers defined in the *\*_config.coffee* files, which we'll edit next.
-
-  .. code-block:: bash
-
-    $ cd isample_ctrl_pkg/isample_filter_wheel_ctrl/cpp/
-    $ vim isample_filter_wheel_ctrl_run.cpp
-
-When executed, this file will create the two Filter Wheel controller instances.
-Ensure that they listen for configuration parameters on the correct setup ports
-by creating *isample_fw1_ctrl* on port 8000 and *isample_fw2_ctrl* on port 8001.
-
-At first, we'll use the *run_isample_filter_wheel_ctrl* executable (created
-using the isample_filter_wheel_ctrl_run.cpp file) to test the Filter Wheel controllers
-in isolation. To run all components at the same time, the same concept applies
-to the *run_isample_ctrl_pkg_main* executable using *isample_ctrl_pkg_main_run.cpp*.
-
-Coffee Config Files
-~~~~~~~~~~~~~~~~~~~
-
-Edit the coffee file containing the configuration for each component instance
-
-For example, for the two Filter Wheel Controller instances:
-
-  .. code-block:: bash
-
-    $ cd ../coffee/
-    $ vim isample_fw1_ctrl_config.coffee
-    $ vim isample_fw2_ctrl_config.coffee
-
-Instance duplicates
-```````````````````
-For components with multiple instances, such as the filter wheel controller and
-the temperature controller, the *\*_config.coffee* files contain all instances
-in all files. Remove the duplicate instance configurations from each file.
-
-This is a known issue caused by the code generator.
-
-To clean up the files, the configuration for the *isample_fw2_ctrl* component
-should be removed from *isample_fw1_ctrl_config.coffee* and the configuration
-for the *isample_fw1_ctrl* component should be removed from
-*isample_fw2_ctrl_config.coffee*.
-
-Setup Ports
-```````````
-Under the **Properties** sections, set **Port** to 8000 for *isample_fw1_ctrl*
-and 8001 for *isample_fw2_ctrl*. This will ensure that when the component is
-configured during runtime, the parameters will be sent to the correct ports,
-as configured above.
-
-Max Rate Value
-``````````````
-Ensure that all input and output ports have their **max_rate** value set to 1.
-In some cases the max_rate value is set to *undefined*, which will cause an
-error when running and using the component.
-
-This is a known issue caused by the code generator and will be fixed in
-subsequent versions.
-
-Input and Output Port Assignments
-`````````````````````````````````
-Assign a unique port number for all input and output ports, with the exception
-of connections where the port number for an output port on one component needs
-to correspond to the port number for the corresponding input port on another
-component.
-
-For example, the *motor_control* output port on *isample_fw1_ctrl* should have
-the same port number as the *fw1_motor_control* input port on *isample_hw_adapter*.
-
-Here is an example of the port assignments for the filter wheel components (not all ports are listed):
-
-.. code-block:: bash
-
-                 Filter Wheel                              Hardware
-               Control 1 (8000)                           Adapter (8030)
-           +---------------------+                   +---------------------+
-      9011 |                     |                   |                     |
-  <--------| heartbeat_out       |                   |                     |
-           |                     |       8007        |                     |
-           |       motor_control |------------------>| fw1_motor_control   |
-           |                     |       8002        |                     |
-           |         motor_state |<------------------| fw1_motor_status    |
-           |                     |                   |                     |
-           |                     | 8003              |                     |
-           |       position_goal |<--------          |                     |
-      8009 |                     |                   |                     |
-  <--------| position_value      |                   |                     |
-           +---------------------+                   |                     |
-                                                9011 |                     |
-                                            <--------| heartbeat_out       |
-                 Filter Wheel                        |                     |
-               Control 2 (8001)                      |                     |
-           +---------------------+                   |                     |
-      9011 |                     |                   |                     |
-  <--------| heartbeat_out       |                   |                     |
-           |                     |       8018        |                     |
-           |       motor_control |------------------>| fw2_motor_control   |
-           |                     |       8013        |                     |
-           |         motor_state |<------------------| fw2_motor_status    |
-           |                     |                   |                     |
-           |                     | 8014              |                     |
-           |       position_goal |<--------          |                     |
-      8020 |                     |                   |                     |
-  <--------| position_value      |                   |                     |
-           +---------------------+                   +---------------------+
-
-Defining component behavior
-----------------------------
-The core component behavior is specified in the \*_step.cpp file. The component has a periodic thread that reads input from the input ports, runs the step function and then writes output to the output ports. Initially, the generated step function will check whether the component is correctly configured and if so, will log the current step counter value.
+(Optional) Defining component behavior
+--------------------------------------
+The core component behavior is specified in the \*_step.cpp file. The component
+has a periodic thread that reads input from the input ports, runs the step
+function and then writes output to the output ports. Initially, the generated
+step function will check whether the component is correctly configured and if
+so, will log the current step counter value.
 
 For more information, and in relation to a simpler example, see :ref:`Running Examples <running_examples>`
 
-In the following examples we will replace the basic step functionality with common controller commands.
+In the following examples we will replace the basic step functionality with
+simulated controller behavior.
 
 To edit the *Filter Wheel Controller* step file:
 
 .. code-block:: bash
 
-   $ cd ~/isample_dcs/src/runtime/src/idcs/isample_dcs/
-   $ cd isample_ctrl_pkg/isample_filter_wheel_ctrl/cpp/
+   $ cd $GMT_LOCAL/isample_dcs/src
+   $ cd isample_ctrl_pkg/isample_filter_wheel_ctrl/cpp
    $ vim isample_filter_wheel_ctrl_step.cpp
 
-The following example step function for the filter wheel controller validates positional input and increments or decrements the position value.
+The following example step function for the filter wheel controller validates
+positional input and immediately sets the position value to the new goal, if possible.
 
    .. code-block:: cpp
 
     void IsampleFilterWheelCtrl::step(bool setup_ok) {
         if(setup_ok) {                     // this will be executed only if port setup has been received
             if (is_step_rate(1000)) {
-
-                if (position_sv.value < position_sv.goal) {
+                if (position_sv.goal != position_sv.value) {
                     // check range
-                    if (position_sv.value >= position_sv.max) {
+                    if (position_sv.goal >= position_sv.max) {
                         log_warning("Position is at or exceeding maximum value: " + std::to_string(position_sv.max));
                         // prevent further movement
-                        position_sv.goal = position_sv.max;
-                    } else {
-                        // move in positive direction
-                        position_sv.value += 0.1;
-                    }
-                }
-
-                if (position_sv.value > position_sv.goal) {
-                    // check range
-                    if (position_sv.value <= position_sv.min) {
+                        position_sv.value = position_sv.max;
+                    } if (position_sv.goal <= position_sv.min) {
                         log_warning("Position is at or exceeding minimum value: " + std::to_string(position_sv.min));
                         // prevent further movement
-                        position_sv.goal = position_sv.min;
+                        position_sv.value = position_sv.min;
                     } else {
-                        // move in negative direction
-                        position_sv.value -= 0.1;
+                        // achieve target position immediately
+                        position_sv.value = position_sv.goal;
                     }
+                    // report value
+                    log_info(position_sv.name + " = " + std::to_string(position_sv.value));
                 }
-
-                // report value
-                log_info(position_sv.name + " = " + std::to_string(position_sv.value)
-                         + " -> " + std::to_string(position_sv.goal));
             }
         }
     }
@@ -391,35 +339,17 @@ The following example step function for the filter wheel controller validates po
 Compilation
 -----------
 
-To compile the code, run gmake:
+To compile the code, run make:
 
 .. code-block:: bash
 
-   $ cd ~/isample_dcs/src/runtime/src/idcs/isample_dcs/
-   $ gmake -j`nproc` install
-   $ ls install/bin
+   $ cd $GMT_LOCAL/isample_dcs/src
+   $ make -j`nproc` install
 
-The executables will be located in `src/runtime/src/idcs/isample_dcs/install/bin`.
+The executables will be located in `src/install/bin/`.
 
 Running the Example
 -------------------
-First, ensure that the GMT_LOG_POLICY and GMT_LOG_URL environment variables have been set. For quick testing, the following commands can be used to set the variables for the current session:
-
-.. code-block:: bash
-
-   $ export GMT_LOG_POLICY=1
-   $ export GMT_LOG_URL=tcp://127.0.0.1:9998
-
-This may need to be done in all open sessions, if multiple sessions are used, for example to monitor logging.
-
-To permanently set the environment variables, edit the ~/.bash_profile file:
-
-.. code-block:: bash
-
-   $ vim ~/.bash_profile
-
-Add the two variables at the bottom of the file, save and exit. Log out and back in to load the new environment variables.
-
 Start the logging and telemetry services:
 
 .. code-block:: bash
@@ -427,38 +357,86 @@ Start the logging and telemetry services:
    $ gds log_service start &
    $ gds telemetry_service start &
 
-In a separate terminal (for example `tty2`), start the logging service client from within the isample_dcs folder.
+Start the ISample Control Package application in the background
 
 .. code-block:: bash
 
-   $ cd ~/isample_dcs/src/runtime/src/idcs/isample_dcs/isample_ctrl_pkg/coffee
+   $ install/bin/run_isample_ctrl_pkg_main &
+
+The application is running in the background and will not provide any console output.
+All output will be directed to the logging service after the components have been successfully set up.
+
+Log Service
+~~~~~~~~~~~
+
+In a separate terminal (for example `tty2`), **start the logging service client**.
+
+.. code-block:: bash
+
    $ gds log_service client gmt
 
-In the first terminal (`tty1`), run the Filter Wheel Controller application
+In this example, we use the topic ``gmt`` to show logs for all components.
+The output can be filtered on substrings of the component URI by specifying
+topics such as ``fw``, ``hw1``, ``super`` or ``temp``.
+
+In the first terminal (`tty1`), **initialize all components** by running ``gds setup``.
 
 .. code-block:: bash
 
-   $ ./install/bin/run_isample_filter_wheel_ctrl &
-
-The application is running in the background and will not provide any console output. All output will be directed to the logging service after the components have been successfully set up.
-
-To initialize the Filter Wheel Controllers, run `gds setup` from within the isample_dcs folder.
-
-.. code-block:: bash
-
-   $ cd isample_ctrl_pkg/coffee
+   $ gds setup -m runtime -e isample_ctrl_super
    $ gds setup -m runtime -e isample_fw1_ctrl
    $ gds setup -m runtime -e isample_fw2_ctrl
+   $ gds setup -m runtime -e isample_focus1_ctrl
+   $ gds setup -m runtime -e isample_cryo_external_temp_ctrl
+   $ gds setup -m runtime -e isample_cryo_internal_temp_ctrl
+   $ gds setup -m runtime -e isample_hw1_adapter
 
-Switch to the session running the logging service client (`tty2`), and confirm that the component is logging step info.
+Switch to the session running the logging service client (`tty2`), and confirm
+that the expected components are logging step info.
 
-.. note::
+Telemetry Service
+~~~~~~~~~~~~~~~~~
 
-  In this version isample includes the specification of a control package.
-  All :ref:`DCS Packages <table-control_packages>` follow the same development principles with the difference
-  that the Component base classes add specialized interfaces (e.g. Controller vs Pipeline). The next
-  incremental release of the GMT software will include examples of user interface
-  and data processing packages.
+In a separate terminal (for example `tty3`), **start the telemetry service client**.
+
+.. code-block:: bash
+
+   $ gds telemetry_service client gmt
+
+In this example, we use the topic ``gmt`` to show data for all monitors.
+The output can be filtered on substrings of the monitor name by specifying the
+topic to be a specific component type (``filter_wheel_ctrl``) or an output port
+name, such as ``position`` or ``heartbeat``.
+
+In the first terminal (`tty1`), **start the monitors** on all components by
+running ``gds telemetry_service monitor``.
+
+.. code-block:: bash
+
+   $ gds telemetry_service monitor -m runtime -e isample_ctrl_super
+   $ gds telemetry_service monitor -m runtime -e isample_fw1_ctrl
+   $ gds telemetry_service monitor -m runtime -e isample_fw2_ctrl
+   $ gds telemetry_service monitor -m runtime -e isample_focus1_ctrl
+   $ gds telemetry_service monitor -m runtime -e isample_cryo_external_temp_ctrl
+   $ gds telemetry_service monitor -m runtime -e isample_cryo_internal_temp_ctrl
+   $ gds telemetry_service monitor -m runtime -e isample_hw1_adapter
+
+Switch to the session running the logging service client (`tty3`), and confirm
+that the expected telemetry output is shown.
+
+A query can also be sent to the telemetry service:
+
+  *Usage:*  ``gds telemetry_service query monitor_name num``
+
+For example, the following will list the last 12 positional values
+(from newest to oldest) for the ``isample_fw1_ctrl`` and ``isample_fw2_ctrl`` components:
+
+.. code-block:: bash
+
+  $ gds telemetry_service query gmt://isample_dcs/isample_filter_wheel_ctrl//position_value 12
+
+All telemetry queries have to be done using the full URI of the monitor,
+which can be seen when running a telemetry_service client, as described above.
 
 Sending a Value to the Input Port
 ---------------------------------
@@ -469,10 +447,18 @@ For example:
 
 .. code-block:: bash
 
-   $ gds send_value position_goal 23 -m runtime -e isample_fw1_ctrl
+   $ gds push_value position_goal 23 -m runtime -e isample_fw1_ctrl
 
 where **position_goal** is the name of the input port, **23** is the new value to send and **isample_fw1_ctrl** is the component instance to send it to.
 
-The log client should show messages indicating that the component is stepping from its current position to the new goal value.
+The log client should show messages indicating that the component moved from its current position to the new goal value.
+
+.. note::
+
+  In this version, ISample includes the specification of a control package.
+  All :ref:`DCS Packages <table-control_packages>` follow the same development principles with the difference
+  that the Component base classes add specialized interfaces (e.g. Controller vs Pipeline). The next
+  incremental release of the GMT software will include examples of user interface
+  and data processing packages.
 
 :ref:`[back to top] <isample_example>`

@@ -359,7 +359,7 @@ Check Monitored Values
 
 Telemetry is a distributed service than can be started independently on each component as:
 
-  *Usage:*  ``gds monitor start -m model -e element``
+  *Usage:*  ``gds telemetry_service monitor -m model -e element``
 
 This command will start the telemetry adapters for this component and they will send monitored values to the server.
 The telemetry service will:
@@ -374,7 +374,7 @@ For example, the following command will start sending 'temperature' data points 
 
 .. code-block:: bash
 
-  $ gds monitor start -m runtime -e simple_controller
+  $ gds telemetry_service monitor -m runtime -e simple_controller
 
 To check the monitored values a telemetry client can be started in another unix terminal:
 
@@ -403,14 +403,14 @@ Send a Command to a Controller
 
 Some numeric values can be sent directly to ports of any controller like this:
 
-  *Usage:*  ``gds send_value port_name value -m model -e element``
+  *Usage:*  ``gds push_value port_name value -m model -e element``
 
 
 For example:
 
 .. code-block:: bash
 
-  $ gds send_value temperature_setpoint 23.2 -m runtime -e simple_controller
+  $ gds push_value temperature_setpoint 23.2 -m runtime -e simple_controller
 
 This will send a temperature setpoint of 23.2 to the controller which should react to this change.
 Monitored values should change on the telemetry client.

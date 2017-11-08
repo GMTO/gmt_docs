@@ -5,7 +5,7 @@ Installation
 
 The release is provided as a custom Linux distribution that includes:
 
-  * Core operating system (based on Fedora 23)
+  * Core operating system (based on Fedora 26)
   * GMT software packages
   * Third-party and development packages required for runtime and development
 
@@ -38,7 +38,7 @@ Procedure
 
   .. code-block:: bash
 
-    $ shasum -a 512 -c standalone.sha512 
+    $ shasum -a 512 -c standalone.sha512
     standalone.iso: OK
 
     $ diskutil list
@@ -50,13 +50,13 @@ Procedure
 
   .. code-block:: bash
 
-    $ sha512sum -c standalone.sha512 
+    $ sha512sum -c standalone.sha512
     standalone.iso: OK
 
     $ sudo umount /dev/sdb*
     $ sudo dd bs=4M if=standalone.iso of=/dev/sdb
 
-2. Configure your BIOS to boot from USB 
+2. Configure your BIOS to boot from USB
 
   This step is vendor specific. On the Beckhoff Industrial PC (IPC) provided
   with the Hardware Development Kit (HDK):
@@ -82,7 +82,7 @@ Procedure
 
   .. warning::
     * Your system drive will be reformated and erased!
-  
+
   .. warning::
     * For HDK, **do not** use the Beckhoff CFast card with TwinCAT3!
 
@@ -96,7 +96,7 @@ Procedure
   3.3 Wait until the installation completes.  The system will eventually reboot itself.
 
   3.4 Remove the USB drive or select the 'local' option
-  
+
   3.5 Boot the (default) real-time kernel
 
   Your system is ready.
@@ -121,4 +121,3 @@ Sanity Check
 
 
 :ref:`[back to top] <installation>`
-

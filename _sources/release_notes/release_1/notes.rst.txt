@@ -3,6 +3,23 @@
 Release 1
 =========
 
+Contents of release 1.3
+-----------------------
+
+- Upgraded OS to Fedora 26
+- Improvements to port communication mechanism using msgpack and nanomsg
+- Added support for float and double data objects in the Ethercat Adapter
+- Fully implemented testing port push/pull using gds
+- Fixed known issues with code generation
+- Defined the development environment file structure and added commands and scripts for easy configuration
+- Added Module Configuration Management
+- Added dynamic loading of submodules into gds/gmt
+- Made significant improvements to the code generator, including automatic port assignments based on the model
+- Moved ISample Example DCS to a new GitHub repository
+- Updated :ref:`ISample Example <Isample_example>` documentation to reflect the new development workflow
+
+Follow the :ref:`upgrade procedure <upgrade>`.
+
 Contents of release 1.2
 -----------------------
 
@@ -10,8 +27,6 @@ Contents of release 1.2
 - The code generation tools now support c++14.
 - Improved :ref:`ISample Example <Isample_example>` documentation.
 - New guide on setting up a :ref:`Virtual Machine <virtual_machine>` development environment.
-
-Follow the :ref:`upgrade procedure <upgrade>`.
 
 Contents of release 1.1
 -----------------------
