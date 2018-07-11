@@ -72,7 +72,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -101,13 +101,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../SWC_architecture/index.html">Architecture and Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SWC_standards/index.html">Software and Controls Standards</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Software Development</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">1. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">1. Installing the SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">4. ISample Example</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#configure-your-development-environment">4.1. Configure your Development Environment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#clone-the-isample-dcs-repository">4.2. Clone the isample_dcs repository</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#model-files">4.3. Model Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clone-the-isample-dcs-repository">4.1. Clone the isample_dcs repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-files">4.2. Model Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-local-node-modules">4.3. Install local Node Modules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#code-generation">4.4. Code Generation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#component-attributes">4.5. Component Attributes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#state-variables">4.5.1. State Variables</a></li>
@@ -119,7 +119,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#compilation">4.7. Compilation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#running-the-example">4.8. Running the Example</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#log-service">4.8.1. Log Service</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#telemetry-service">4.8.2. Telemetry Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-setup">4.8.2. Component setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#telemetry-service">4.8.3. Telemetry Service</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sending-a-value-to-the-input-port">4.9. Sending a Value to the Input Port</a></li>
@@ -201,84 +202,30 @@
 <span id="id1"></span><h1>4. ISample Example<a class="headerlink" href="#isample-example" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="development/specification/specification.html#dcs-spec-example"><span class="std std-ref">ISample DCS</span></a> is an instrument control system example that provides
 a template that instrument developers can use as a model.</p>
-<p><strong>Short Reference</strong>
-The following sequence of commands can be used on the Virtual Machine to
-initialize the environment, checkout the repository,
-generate the source code from the model and compile the code:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir /home/gmto/gmt_dev
-$ vi .bashrc
-$ <span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>/home/gmto/gmt_dev
-$ <span class="nb">source</span> /opt/gmt/etc/gmt_env.sh
-$ <span class="nb">cd</span> /home/gmto/gmt_dev
-$ gds init_env
-$ git clone https://github.com/GMTO/isample_dcs.git
-$ cp isample_dcs/model/local.coffee install/etc
-$ <span class="nb">cd</span> isample_dcs
-$ gds codegen -e isample_dcs
-$ <span class="nb">cd</span> src
-$ make -j<span class="sb">`</span>nproc<span class="sb">`</span> install
-</pre></div>
-</div>
-<p>Below, each step is explained in more detail.</p>
-<div class="section" id="configure-your-development-environment">
-<h2>4.1. Configure your Development Environment<a class="headerlink" href="#configure-your-development-environment" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Create a folder for GMT development</li>
-</ol>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir ~/gmt_dev
-</pre></div>
-</div>
-<p>All GMT modules being developed should be checked out underneath this folder.</p>
-<ol class="arabic simple" start="2">
-<li>Add the following two lines to your .profile (or .kshrc .bashrc depending on the shell)</li>
-</ol>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>/home/gmto/gmt_dev
-<span class="nb">source</span> /opt/gmt/etc/gmt_env.sh
-</pre></div>
-</div>
-<p>This will ensure that the environment variables are correctly configured when
-opening a new terminal. To configure the environment variables for the current shell,
-run the commands manually.</p>
-<p>Check the values of the environment variables with the command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gmt_env
-</pre></div>
-</div>
-<ol class="arabic simple" start="3">
-<li>Initialize the development environment with the following command:</li>
-</ol>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
-$ gds init_env
-</pre></div>
-</div>
-<p>The correct folders will be created in the $GMT_LOCAL directory for use when
-compiling and running modules.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The following instructions assume that the SDK has been installed and the Development Environment configured correctly according to the instructions in <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installing the SDK</span></a> or <a class="reference internal" href="upgrade.html#upgrade"><span class="std std-ref">Upgrade</span></a>.</p>
 </div>
 <div class="section" id="clone-the-isample-dcs-repository">
-<h2>4.2. Clone the isample_dcs repository<a class="headerlink" href="#clone-the-isample-dcs-repository" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>On the development machine, clone the repository in the development folder:</li>
-</ol>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
-$ git clone https://github.com/GMTO/isample_dcs.git
+<h2>4.1. Clone the isample_dcs repository<a class="headerlink" href="#clone-the-isample-dcs-repository" title="Permalink to this headline">¶</a></h2>
+<p>On the development machine, clone the repository in the development folder:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules
+$ gds clone isample_dcs -d gmto
 </pre></div>
 </div>
-<p>2. Copy Module Configuration file to the development folder. The Module
-Configuration file will list the modules to load when running gmt and gds.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cp isample_dcs/model/local.coffee install/etc
-</pre></div>
-</div>
+<p>where the <code class="docutils literal"><span class="pre">-d</span> <span class="pre">option</span></code> defines the git repository owner.</p>
 </div>
 <div class="section" id="model-files">
-<h2>4.3. Model Files<a class="headerlink" href="#model-files" title="Permalink to this headline">¶</a></h2>
-<p>The model files can be found in the <strong>model/</strong> folder.</p>
+<h2>4.2. Model Files<a class="headerlink" href="#model-files" title="Permalink to this headline">¶</a></h2>
+<p>The model files can be found in the <strong>$GMT_LOCAL/modules/ocs_isample_dcs/model/</strong> folder.</p>
 <dl class="docutils">
 <dt>isample_core_if.coffee</dt>
 <dd>Lists the connectors between the isample and GMT core systems</dd>
 <dt>isample_dcs.coffee</dt>
 <dd>Lists the connectors between the supervisor layer and the component layer. For this example, these are limited to monitoring the heartbeat of each component.</dd>
-<dt>isample_def.coffee</dt>
+<dt>isample_dcs_def.coffee</dt>
 <dd>High-level definition file, representing the WBS for the submodule. It lists the components and how many instances of each are required.</dd>
-<dt>isample_types.coffee</dt>
+<dt>isample_dcs_types.coffee</dt>
 <dd>Definitions of structs and data types used by the isample components.</dd>
 <dt>isample_ctrl_pkg/isample_ctrl_fb.coffee</dt>
 <dd>Fieldbus definitions for the isample control package.</dd>
@@ -348,16 +295,26 @@ Configuration file will list the modules to load when running gmt and gds.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="install-local-node-modules">
+<h2>4.3. Install local Node Modules<a class="headerlink" href="#install-local-node-modules" title="Permalink to this headline">¶</a></h2>
+<p>This is a temporary work-around for a known issue with Webpack. It only needs to be run once to install the node modules under $GMT_LOCAL.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+$ cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
+$ npm install
+</pre></div>
+</div>
+</div>
 <div class="section" id="code-generation">
 <h2>4.4. Code Generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h2>
 <p>To generate the code skeleton from the model files, execute:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/isample_dcs
-$ gds codegen -e isample_dcs
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/model
+$ webpack
+$ gds gen isample_dcs
 </pre></div>
 </div>
 <p>This will generate the basic framework of source code and configuration files for each component. The files will be located in the <cite>src/</cite> folder.
 To see the generated folders and files, navigate to:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/isample_dcs/src/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/
 $ ls -la
 </pre></div>
 </div>
@@ -412,7 +369,7 @@ $ ls -la
 </tbody>
 </table>
 </div></blockquote>
-<p><em>OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the “Range” column above.</em></p>
+<p><em>OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the &#8220;Range&#8221; column above.</em></p>
 </div>
 <div class="section" id="input-ports">
 <h3>4.5.2. Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h3>
@@ -544,9 +501,9 @@ so, will log the current step counter value.</p>
 <p>In the following examples we will replace the basic step functionality with
 simulated controller behavior.</p>
 <p>To edit the <em>Filter Wheel Controller</em> step file:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/isample_dcs/src
-$ <span class="nb">cd</span> isample_ctrl_pkg/isample_filter_wheel_ctrl/cpp
-$ vim isample_filter_wheel_ctrl_step.cpp
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/cpp/
+$ <span class="nb">cd</span> isample_ctrl_pkg/isample_filter_wheel_ctrl
+$ vi isample_filter_wheel_ctrl_step.cpp
 </pre></div>
 </div>
 <p>The following example step function for the filter wheel controller validates
@@ -581,52 +538,56 @@ positional input and immediately sets the position value to the new goal, if pos
 </div>
 <div class="section" id="compilation">
 <h2>4.7. Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
-<p>To compile the code, run make:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/isample_dcs/src
-$ make -j<span class="sb">`</span>nproc<span class="sb">`</span> install
+<p>To compile the C++ Control Package code, edit the module.mk file to contain the correct library definitions:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ vi <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/cpp/isample_ctrl_pkg/module.mk
 </pre></div>
 </div>
-<p>The executables will be located in <cite>src/install/bin/</cite>.</p>
+<p>Ensure that the following lines are defined:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Add in this file the compile flags for the package, eg:</span>
+<span class="nv">MOD_BUILD_LDFLAGS</span> <span class="o">+=</span> -lcore_core_pkg -lio_core_pkg -lctrl_core_pkg -lio_ethercat_pkg
+<span class="nv">MOD_BUILD_LDFLAGS</span> <span class="o">+=</span> -lethercat -lopcuacore -lopcuaclient
+</pre></div>
+</div>
+<p>Run <strong>make</strong> to compile the code:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/cpp
+$ make
+</pre></div>
+</div>
 </div>
 <div class="section" id="running-the-example">
 <h2>4.8. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h2>
 <p>Start the logging and telemetry services:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds log_service start <span class="p">&amp;</span>
-$ gds telemetry_service start <span class="p">&amp;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_server <span class="p">&amp;</span>
+$ tele_server <span class="p">&amp;</span>
 </pre></div>
 </div>
 <p>Start the ISample Control Package application in the background</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ install/bin/run_isample_ctrl_pkg_main <span class="p">&amp;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ isample_ctrl_app <span class="p">&amp;</span>
 </pre></div>
 </div>
 <p>The application is running in the background and will not provide any console output.
 All output will be directed to the logging service after the components have been successfully set up.</p>
 <div class="section" id="log-service">
 <h3>4.8.1. Log Service<a class="headerlink" href="#log-service" title="Permalink to this headline">¶</a></h3>
-<p>In a separate terminal (for example <cite>tty2</cite>), <strong>start the logging service client</strong>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds log_service client gmt
+<p>In a separate terminal (for example, <cite>tty2</cite>), <strong>start the logging service client</strong>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_client
 </pre></div>
 </div>
-<p>In this example, we use the topic <code class="docutils literal"><span class="pre">gmt</span></code> to show logs for all components.
-The output can be filtered on substrings of the component URI by specifying
-topics such as <code class="docutils literal"><span class="pre">fw</span></code>, <code class="docutils literal"><span class="pre">hw1</span></code>, <code class="docutils literal"><span class="pre">super</span></code> or <code class="docutils literal"><span class="pre">temp</span></code>.</p>
-<p>In the first terminal (<cite>tty1</cite>), <strong>initialize all components</strong> by running <code class="docutils literal"><span class="pre">gds</span> <span class="pre">setup</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds setup -m runtime -e isample_ctrl_super
-$ gds setup -m runtime -e isample_fw1_ctrl
-$ gds setup -m runtime -e isample_fw2_ctrl
-$ gds setup -m runtime -e isample_focus1_ctrl
-$ gds setup -m runtime -e isample_cryo_external_temp_ctrl
-$ gds setup -m runtime -e isample_cryo_internal_temp_ctrl
-$ gds setup -m runtime -e isample_hw1_adapter
+</div>
+<div class="section" id="component-setup">
+<h3>4.8.2. Component setup<a class="headerlink" href="#component-setup" title="Permalink to this headline">¶</a></h3>
+<p>In the first terminal (<cite>tty1</cite>), <strong>initialize all components</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/etc
+$ ./send_config.coffee
 </pre></div>
 </div>
 <p>Switch to the session running the logging service client (<cite>tty2</cite>), and confirm
 that the expected components are logging step info.</p>
 </div>
 <div class="section" id="telemetry-service">
-<h3>4.8.2. Telemetry Service<a class="headerlink" href="#telemetry-service" title="Permalink to this headline">¶</a></h3>
+<h3>4.8.3. Telemetry Service<a class="headerlink" href="#telemetry-service" title="Permalink to this headline">¶</a></h3>
 <p>In a separate terminal (for example <cite>tty3</cite>), <strong>start the telemetry service client</strong>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds telemetry_service client gmt
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ tele_client
 </pre></div>
 </div>
 <p>In this example, we use the topic <code class="docutils literal"><span class="pre">gmt</span></code> to show data for all monitors.
@@ -654,14 +615,16 @@ that the expected telemetry output is shown.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds telemetry_service query gmt://isample_dcs/isample_filter_wheel_ctrl//position_value <span class="m">12</span>
 </pre></div>
 </div>
-<p>All telemetry queries have to be done using the full URI of the monitor,
-which can be seen when running a telemetry_service client, as described above.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All telemetry queries have to be done using the full URI of the monitor, which can be seen when running a telemetry_service client, as described above. Note the two consecutive forward-slashes in the middle of the URI, indicating a missing instance ID. This is a known issue.</p>
+</div>
 </div>
 </div>
 <div class="section" id="sending-a-value-to-the-input-port">
 <h2>4.9. Sending a Value to the Input Port<a class="headerlink" href="#sending-a-value-to-the-input-port" title="Permalink to this headline">¶</a></h2>
 <p>In order to see the step function in action, we can write a value to an input port and see the component react to it.
-While using the step function defined above, run ‘gds send_value’ with a port name and new value.</p>
+While using the step function defined above, run &#8216;gds send_value&#8217; with a port name and new value.</p>
 <p>For example:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds push_value position_goal <span class="m">23</span> -m runtime -e isample_fw1_ctrl
 </pre></div>
@@ -724,7 +687,7 @@ and data processing packages.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.3-9',
+            VERSION:'1.4-1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

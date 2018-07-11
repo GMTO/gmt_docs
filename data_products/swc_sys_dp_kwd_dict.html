@@ -72,7 +72,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -190,7 +190,7 @@
 <h2>2.3. Standard FITS Keywords<a class="headerlink" href="#standard-fits-keywords" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>Description:</dt>
-<dd>Keywords for a basic FITS standard header.  In many cases, the keywords and descriptions are taken verbatim from ‘Definition of the Flexible Image Transport System (FITS), Version 3.0’.</dd>
+<dd>Keywords for a basic FITS standard header.  In many cases, the keywords and descriptions are taken verbatim from &#8216;Definition of the Flexible Image Transport System (FITS), Version 3.0&#8217;.</dd>
 </dl>
 <table border="1" class="docutils" id="id1">
 <caption><span class="caption-number">Table 2.3 </span><span class="caption-text">Standard FITS Keywords Dictionary</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
@@ -249,7 +249,7 @@ provide a break between groups of related keywords in the header.</td>
 <td>primary</td>
 <td>This keyword shall be used only in primary array headers or IMAGE
 extension headers with positive values of BITPIX (i.e., in arrays with
-integer data).  Columns 1-8 contain the string, ‘BLANK   ‘ (ASCII
+integer data).  Columns 1-8 contain the string, &#8216;BLANK   &#8216; (ASCII
 blanks in columns 6-8).  The value field shall contain an integer that
 specifies the representation of array values whose physical values are
 undefined.</td>
@@ -280,7 +280,7 @@ keyword values, with the exception of measurements of angles, should
 conform with the recommendations in the IAU Style Manual. For angular
 measurements given as floating point values and specified with
 reserved keywords, degrees are the recommended units (with the units,
-if specified, given as ‘deg’</td>
+if specified, given as &#8216;deg&#8217;</td>
 </tr>
 <tr class="row-even"><td><em>bzero</em></td>
 <td>BZERO</td>
@@ -310,9 +310,9 @@ header.</td>
 <td>String</td>
 <td>any</td>
 <td>The date on which the HDU was created, in the format specified in the
-FITS Standard.  The old date format was ‘yy/mm/dd’ and may be used
+FITS Standard.  The old date format was &#8216;yy/mm/dd&#8217; and may be used
 only for dates from 1900 through 1999.  The new Y2K compliant date
-format is ‘yyyy-mm-dd’ or ‘yyyy-mm-ddTHH:MM:SS[.sss]’.</td>
+format is &#8216;yyyy-mm-dd&#8217; or &#8216;yyyy-mm-ddTHH:MM:SS[.sss]&#8217;.</td>
 </tr>
 <tr class="row-odd"><td><em>datamax</em></td>
 <td>DATAMAX</td>
@@ -340,9 +340,9 @@ special values.</td>
 <td>String</td>
 <td>any</td>
 <td>The date of the observation, in the format specified in the FITS
-Standard.  The old date format was ‘yy/mm/dd’ and may be used only for
+Standard.  The old date format was &#8216;yy/mm/dd&#8217; and may be used only for
 dates from 1900 through 1999.  The new Y2K compliant date format is
-‘yyyy-mm-dd’ or ‘yyyy-mm-ddTHH:MM:SS[.sss]’.</td>
+&#8216;yyyy-mm-dd&#8217; or &#8216;yyyy-mm-ddTHH:MM:SS[.sss]&#8217;.</td>
 </tr>
 <tr class="row-even"><td><em>dobs</em></td>
 <td>DOBSn</td>
@@ -472,7 +472,7 @@ instrument used to acquire the data associated with the header.</td>
 <td>The value field shall contain a non-negative integer no greater than
 999, representing the number of axes in the associated data array. A
 value of zero signifies that no data follow the header in the HDU.  In
-the context of FITS ‘TABLE’ or ‘BINTABLE’ extensions, the value of
+the context of FITS &#8216;TABLE&#8217; or &#8216;BINTABLE&#8217; extensions, the value of
 NAXIS is always 2.</td>
 </tr>
 <tr class="row-even"><td><em>naxisn</em></td>
@@ -482,7 +482,7 @@ NAXIS is always 2.</td>
 <td>any</td>
 <td>The value field of this indexed keyword shall contain a non-negative
 integer, representing the number of elements along axis n of a data
-array.  The NAXISn must be present for all values n = 1,…,NAXIS, and
+array.  The NAXISn must be present for all values n = 1,...,NAXIS, and
 for no other values of n. A value of zero for any of the NAXISn
 signifies that no data follow the header in the HDU. If NAXIS is equal
 to 0, there should not be any NAXISn keywords.</td>
@@ -507,8 +507,8 @@ to 0, there should not be any NAXISn keywords.</td>
 <td>String</td>
 <td>any</td>
 <td>The value field shall contain a character string giving a name or type
-of the object observed.  Often ‘TARGNAME’ is used for target name, in
-which case ‘OBJECT’ can be used to specify the object category.</td>
+of the object observed.  Often &#8216;TARGNAME&#8217; is used for target name, in
+which case &#8216;OBJECT&#8217; can be used to specify the object category.</td>
 </tr>
 <tr class="row-even"><td><em>observer</em></td>
 <td>OBSERVER</td>
@@ -535,7 +535,7 @@ organization or institution responsible for creating the FITS file.</td>
 appropriate to define the data structure, consistent with Eq. 5.2 in
 the FITS Standard.   This keyword was originated for use with FITS
 Random Groups and represented the number of parameters preceding each
-group. It has since been used in ‘BINTABLE’ extensions to represent
+group. It has since been used in &#8216;BINTABLE&#8217; extensions to represent
 the size of the data heap following the main data table.  In most
 other cases its value will be zero.  Must have value of 0 for IMAGE
 and TABLE extensions.  In BINTABLE, the value specifies the number of
@@ -617,7 +617,7 @@ conform to this standard.</td>
 <td>The value field of this indexed keyword shall contain an integer
 specifying the column in which field n starts in an ASCII TABLE
 extension.  For tables, The TBCOLn keywords must be present for all
-values n=1 … TFIELDS, and for no other values of n.  The value
+values n=1 ... TFIELDS, and for no other values of n.  The value
 contains an integer specifying the column in which field n starts.
 The first column of a row is numbered 1.</td>
 </tr>
@@ -632,7 +632,7 @@ multidimensional array, providing the number of dimensions and the
 length along each axis.  The form of the value is not further
 specified by the Standard.  A proposed convention is described in
 Appendix B.2 of the FITS Standard in which the value string has the
-format ‘(l,m,n…)’ where l, m, n,… are the dimensions of the array.</p>
+format &#8216;(l,m,n...)&#8217; where l, m, n,... are the dimensions of the array.</p>
 <p class="last">The data are ordered such that the array index of the first dimension
 given (l) is the most rapidly varying and that of the last dimension
 given is the least rapidly varying.</p>
@@ -673,7 +673,7 @@ telescope used to acquire the data associated with the header.</td>
 <td>Integer</td>
 <td>extension</td>
 <td>The value field shall contain a non-negative integer representing the
-number of fields in each row of a ‘TABLE’ or ‘BINTABLE’ extension.
+number of fields in each row of a &#8216;TABLE&#8217; or &#8216;BINTABLE&#8217; extension.
 The maximum permissible value is 999.</td>
 </tr>
 <tr class="row-odd"><td><em>tformn</em></td>
@@ -682,9 +682,9 @@ The maximum permissible value is 999.</td>
 <td>String</td>
 <td>extension</td>
 <td>The value field of this indexed keyword shall contain a character
-string describing the format in which field n is encoded in a ‘TABLE’
-or ‘BINTABLE’ extension.  The TFORMn keywords must be present for all
-values n=1…TFIELDS, and for no other values of n.</td>
+string describing the format in which field n is encoded in a &#8216;TABLE&#8217;
+or &#8216;BINTABLE&#8217; extension.  The TFORMn keywords must be present for all
+values n=1...TFIELDS, and for no other values of n.</td>
 </tr>
 <tr class="row-even"><td><em>theap</em></td>
 <td>THEAP</td>
@@ -704,13 +704,13 @@ presented in Appendix B.1 of the FITS Standard.</td>
 <td>Value used to indicate undefined table element</td>
 <td>String</td>
 <td>extension</td>
-<td>In ASCII ‘TABLE’ extensions, the value field for this indexed keyword
+<td>In ASCII &#8216;TABLE&#8217; extensions, the value field for this indexed keyword
 shall contain the character string that represents an undefined value
 for field n.  The string is implicitly blank filled to the width of
-the field. In binary ‘BINTABLE’ table extensions, the value field for
+the field. In binary &#8216;BINTABLE&#8217; table extensions, the value field for
 this indexed keyword shall contain the integer that represents an
 undefined value for field n of data type B, I, or J.  The keyword may
-not be used in ‘BINTABLE’ extensions if field n is of any other data
+not be used in &#8216;BINTABLE&#8217; extensions if field n is of any other data
 type.</td>
 </tr>
 <tr class="row-even"><td><em>tscaln</em></td>
@@ -736,7 +736,7 @@ of field n is A, L, or X.</td>
 <td>extension</td>
 <td>The value field for this indexed keyword shall contain a character
 String, giving the name of field n.  It is recommended that only
-letters, digits, and underscore (hexadecimal code 5F, (‘_’) be used in
+letters, digits, and underscore (hexadecimal code 5F, (&#8216;_&#8217;) be used in
 the name. String comparisons with the values of TTYPEn keywords should
 not be case sensitive.  The use of identical names for different
 fields should be avoided.</td>
@@ -753,7 +753,7 @@ keyword values, with the exception of measurements of angles, should
 conform with the recommendations in the IAU Style Manual. For angular
 measurements given as floating point values and specified with
 reserved keywords, degrees are the recommended units (with the units,
-if specified, given as ‘deg’).</td>
+if specified, given as &#8216;deg&#8217;).</td>
 </tr>
 <tr class="row-odd"><td><em>tzeron</em></td>
 <td>TZEROn</td>
@@ -777,8 +777,8 @@ physical_value = TZEROn + TSCALn * field_value.</td>
 <td>Marks beginning of new HDU</td>
 <td>String</td>
 <td>extension</td>
-<td><p class="first">Required to be the first keyword of all image (XTENSION= ‘IMAGE
-‘)and table (XTENSION= ‘BINTABLE’ or XTENSION= ‘TABLE   ‘) extensions.</p>
+<td><p class="first">Required to be the first keyword of all image (XTENSION= &#8216;IMAGE
+&#8216;)and table (XTENSION= &#8216;BINTABLE&#8217; or XTENSION= &#8216;TABLE   &#8216;) extensions.</p>
 <p class="last">The value field shall contain a character string giving the name of
 the extension type.  This keyword is mandatory for an extension header
 and must not appear in the primary header.  For an extension that is
@@ -1338,7 +1338,7 @@ specify a particular WCS if multiple versions are defined in the HDU.</td>
 <td>any</td>
 <td>[character; default: FK4, FK5, or ICRS: see below].  Name of the
 reference frame of equatorial or ecliptic coordinates, whose value
-must be one of those specified in Table 24 of ‘FITS Standard’
+must be one of those specified in Table 24 of &#8216;FITS Standard&#8217;
 document. The default value is FK4 if the value of EQUINOXa &lt; 1984.0,
 FK5 if EQUINOXa &gt;= 1984.0, or ICRS if EQUINOXa is not given.</td>
 </tr>
@@ -1538,7 +1538,7 @@ pixel list alike.</td>
 <td>any</td>
 <td>[character; default: none]. The reference frame in use for the
 spectral axis coordinate(s). Valid values are given F2W in Table 27 of
-the ‘FITS Standard’ document.</td>
+the &#8216;FITS Standard&#8217; document.</td>
 </tr>
 <tr class="row-odd"><td><em>specn</em></td>
 <td>SPECna</td>
@@ -1555,7 +1555,7 @@ list alike.</td>
 <td>any</td>
 <td>[character; default: TOPOCENT]. The spectral reference frame that is
 constant over the range of the non-spectral world coordinates. Valid
-values are given in Table 27 of the ‘FITS Standard’ document.</td>
+values are given in Table 27 of the &#8216;FITS Standard&#8217; document.</td>
 </tr>
 <tr class="row-odd"><td><em>sobsn</em></td>
 <td>SOBSna</td>
@@ -1629,8 +1629,8 @@ pixel list alike.</td>
 <td>any</td>
 <td>[character; default: none]. Reference frame for the value expressed in
 the ZSOURCEa keyword to document the systemic velocity of the observed
-source. Value must be one of those given in Table 27 in the ‘FITS
-Standard’ document except for SOURCE.</td>
+source. Value must be one of those given in Table 27 in the &#8216;FITS
+Standard&#8217; document except for SOURCE.</td>
 </tr>
 <tr class="row-odd"><td><em>ssrcn</em></td>
 <td>SSRCna</td>
@@ -1704,7 +1704,7 @@ pixel list alike.</td>
 <h2>2.4. Supplemental FITS Keywords<a class="headerlink" href="#supplemental-fits-keywords" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>Description:</dt>
-<dd>Supplemental keywords for FITS headers.  These keywords are not found the FITS Standard.  The keywords and descriptions in some cases are derived, sometimes inherited verbatim, from the ‘Introduction to the HST Data Handbooks’, Data Handbooks from WFC3, STIS, etc., ‘ESO Data Interface Control Document (GEN-SPE-ESO-19400-0794)’, and Chandra’s ‘ASC FITS Designers’ Guide ASC-FITS-2.1.0’</dd>
+<dd>Supplemental keywords for FITS headers.  These keywords are not found the FITS Standard.  The keywords and descriptions in some cases are derived, sometimes inherited verbatim, from the &#8216;Introduction to the HST Data Handbooks&#8217;, Data Handbooks from WFC3, STIS, etc., &#8216;ESO Data Interface Control Document (GEN-SPE-ESO-19400-0794)&#8217;, and Chandra&#8217;s &#8216;ASC FITS Designers&#8217; Guide ASC-FITS-2.1.0&#8217;</dd>
 </dl>
 <table border="1" class="docutils" id="id2">
 <caption><span class="caption-number">Table 2.4 </span><span class="caption-text">Supplemental FITS Keywords Dictionary</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
@@ -1745,7 +1745,7 @@ pixel list alike.</td>
 <td>Names of PI and CO-Is (Initials and Surname)</td>
 <td>String</td>
 <td>any</td>
-<td>(PI-COI) The PI or Co-I’s initials followed by his/her surname</td>
+<td>(PI-COI) The PI or Co-I&#8217;s initials followed by his/her surname</td>
 </tr>
 <tr class="row-odd"><td><em>pr_inv_l</em></td>
 <td>PR_INV_L</td>
@@ -2363,7 +2363,7 @@ workstation.  This is an alternative file name.</td>
 <td>String</td>
 <td>any</td>
 <td>Provides a Cyclic Redundant Check (CRC) calculation for each HDU.  It
-uses the ASCII encoded 1’s complement algorithm.</td>
+uses the ASCII encoded 1&#8217;s complement algorithm.</td>
 </tr>
 <tr class="row-even"><td><em>datasum</em></td>
 <td>DATASUM</td>
@@ -2371,7 +2371,7 @@ uses the ASCII encoded 1’s complement algorithm.</td>
 <td>String</td>
 <td>any</td>
 <td>Gives the checksum calculated for the data sections only. For dataless
-records, this keyword should be set to ‘0’.</td>
+records, this keyword should be set to &#8216;0&#8217;.</td>
 </tr>
 <tr class="row-odd"><td><em>inherit</em></td>
 <td>INHERIT</td>
@@ -4312,7 +4312,7 @@ reference tables.</td>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.3-9',
+            VERSION:'1.4-1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

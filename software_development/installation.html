@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1. Installation &mdash; GMT Software And Controls documentation</title>
+  <title>1. Installing the SDK &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="2. Upgrade" href="upgrade.html"/>
+        <link rel="next" title="1.2.1.1. Preparing for Installation" href="dev_environment/prep_installation.html"/>
         <link rel="prev" title="Software Development" href="index.html"/> 
 
   
@@ -72,7 +72,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -101,9 +101,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../SWC_architecture/index.html">Architecture and Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SWC_standards/index.html">Software and Controls Standards</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Software Development</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#procedure">1.1. Procedure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sanity-check">1.2. Sanity Check</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Installing the SDK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-hardware">1.1. Required Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#development-platform">1.2. Development Platform</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#operating-system">1.2.1. Operating System</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#repository-configuration">1.2.2. Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-system-configuration">1.2.3. Advanced System Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#package-list">1.2.4. Package List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#node-installation">1.2.5. Node Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mongodb-configuration">1.2.6. MongoDB Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#infiniband-configuration-optional">1.2.7. Infiniband Configuration (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ethercat-configuration-optional">1.2.8. Ethercat Configuration (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#real-time-configuration-optional">1.2.9. Real-time Configuration (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#network-time-protocol-configuration">1.2.10. Network Time Protocol Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#precision-time-protocol-configuration-optional">1.2.11. Precision Time Protocol Configuration (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#software-development-kit-sdk">1.3. Software Development Kit (SDK)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
@@ -164,7 +178,7 @@
         
           <li><a href="index.html">Software Development</a> &raquo;</li>
         
-      <li>1. Installation</li>
+      <li>1. Installing the SDK</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -181,121 +195,494 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="installation">
-<span id="id1"></span><h1>1. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>The release is provided as a custom Linux distribution that includes:</p>
+  <div class="section" id="installing-the-sdk">
+<span id="installation"></span><h1>1. Installing the SDK<a class="headerlink" href="#installing-the-sdk" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="required-hardware">
+<h2>1.1. Required Hardware<a class="headerlink" href="#required-hardware" title="Permalink to this headline">¶</a></h2>
+<p>Minimum hardware requirements for development machines:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Core operating system (based on Fedora 26)</li>
-<li>GMT software packages</li>
-<li>Third-party and development packages required for runtime and development</li>
+<li>Intel Pentium 4 or higher, 2 GHz CPU</li>
+<li>1 GB Memory</li>
+<li>20 GB Hard drive</li>
 </ul>
 </div></blockquote>
-<p>The kickstart installation automates the process of adapting the release to your
-system, effectively providing a turn-key brand new system.</p>
-<div class="section" id="procedure">
-<h2>1.1. Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Create a bootable USB stick</li>
+<p>Typical GMT OCS development machine specs:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Intel Xeon E3 or higher, 3.2 GHz CPU</li>
+<li>4 - 8 GB Memory</li>
+<li>120 - 250 GB Hard drive</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="development-platform">
+<h2>1.2. Development Platform<a class="headerlink" href="#development-platform" title="Permalink to this headline">¶</a></h2>
+<p>The development platform is no longer distributed as a standalone ISO file. Instead, the following guide is provided to assist with hardware, operating system and third-party software configuration required for running the OCS SDK. Some key areas, such as disk partitioning, user authentication and NFS mounting of home directories, depend on individual factors at each partner institution and should therefore be considered examples only.</p>
+<p>Benefits of this approach versus distributing the complete ISO include the ability to support different network, hardware and software platforms used for software development by different partner institutions, as well as allowing for separate upgrade schedules for the Development Platform and Software Development Kit without affecting ongoing subsystem software development.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At GMTO, these instructions are formalized using Kickstart files and installed via the network using tools such as Cobbler. The GMTO DevOps team can provide assistance in setting up a similar system for development at partner institutions, if required.</p>
+</div>
+<div class="section" id="operating-system">
+<h3>1.2.1. Operating System<a class="headerlink" href="#operating-system" title="Permalink to this headline">¶</a></h3>
+<p>The SDK is currently configured to run on the <strong>Fedora 26 Server</strong> Linux Operating System.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>The ISO file can be downloaded from the Fedora website: <a class="reference external" href="https://dl.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/">https://dl.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/</a>.</li>
 </ol>
 <blockquote>
-<div><p>1.1 Download the iso image and checksum</p>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -O http://52.52.46.32/srv/gmt/iso/standalone.iso
-$ curl -O http://52.52.46.32/srv/gmt/iso/standalone.sha512
-</pre></div>
-</div>
-</div></blockquote>
-<p>1.2 Verify and burn the iso image</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<ul class="last simple">
-<li>The drive needs a minimum 3GB capacity</li>
-<li>Properly identify your drive’s <code class="docutils literal"><span class="pre">device</span></code></li>
-<li>The entire drive will be erased!</li>
-</ul>
-</div>
-<p>OSX - with a drive on <code class="docutils literal"><span class="pre">/dev/disk2</span></code></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ shasum -a <span class="m">512</span> -c standalone.sha512
-standalone.iso: OK
-
-$ diskutil list
-$ sudo diskutil unmountDisk /dev/disk2
-$ sudo dd <span class="nv">bs</span><span class="o">=</span>4m <span class="k">if</span><span class="o">=</span>standalone.iso <span class="nv">of</span><span class="o">=</span>/dev/rdisk2
-</pre></div>
-</div>
-<p>Linux - with a drive on <code class="docutils literal"><span class="pre">/dev/sdb</span></code></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sha512sum -c standalone.sha512
-standalone.iso: OK
-
-$ sudo umount /dev/sdb*
-$ sudo dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">if</span><span class="o">=</span>standalone.iso <span class="nv">of</span><span class="o">=</span>/dev/sdb
+<div><p>Alternatively, download the file directly from the terminal:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -O https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/Fedora-Server-dvd-x86_64-26-1.5.iso
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Configure your BIOS to boot from USB</li>
+<li>Install the operating system on the development machine by either creating a bootable USB drive or via network installation using tools such as Cobbler and Kickstart. Other options include running Fedora 26 in a Virtual Machine or Docker Containers, however, the use of virtualization and its impact on connecting to actual hardware has not been fully tested.</li>
 </ol>
 <blockquote>
-<div><p>This step is vendor specific. On the Beckhoff Industrial PC (IPC) provided
-with the Hardware Development Kit (HDK):</p>
-<p>2.1  Insert the USB drive into the IPC and power up the system</p>
-<p>2.1  Enter the BIOS settings by pressing the &lt;Del&gt; key.</p>
-<p>2.2  In the Boot panel, set Option #1 to [USB Stick].</p>
-<blockquote>
-<div><a class="reference internal image-reference" href="../_images/hdk-bios-usb.png"><img alt="BIOS boot configuration" class="align-center" src="../_images/hdk-bios-usb.png" style="width: 560.0px; height: 352.1px;" /></a>
+<div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev_environment/prep_installation.html">1.2.1.1. Preparing for Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_environment/boot_installation.html">1.2.1.2. Booting the Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_environment/anaconda_install.html">1.2.1.3. Installing Using Anaconda</a></li>
+</ul>
+</div>
 </div></blockquote>
-<p>2.3 Select ‘Save &amp; Exit’; the system will reboot</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Future versions of the SDK could include support for CentOS, RHEL, Scientific Linux and/or MacOS. Fedora has a very short release and support cycle (6 months and 18 months respectively), which is not ideal for a platform that requires significant stability over long periods of time.</p>
+</div>
+</div>
+<div class="section" id="repository-configuration">
+<h3>1.2.2. Repository Configuration<a class="headerlink" href="#repository-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Some required RPMs are built by GMTO and need to be downloaded from the GMTO Yum Repository, currently hosted on Amazon Web Services.</p>
+<p>To add the GMT repositories:</p>
+<ol class="arabic simple">
+<li>Add the file <code class="docutils literal"><span class="pre">/etc/yum.repos.d/gmt.repo</span></code> with the following content:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>gmt<span class="o">]</span>
+<span class="nv">name</span><span class="o">=</span>GMT <span class="nv">$releasever</span> - <span class="nv">$basearch</span>
+<span class="nv">baseurl</span><span class="o">=</span>http://52.52.46.32/srv/gmt/yum/stable/<span class="nv">$releasever</span>/
+<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Add the file <code class="docutils literal"><span class="pre">/etc/yum.repos.d/gmt-updates.repo</span></code> with the following content:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>gmt-updates<span class="o">]</span>
+<span class="nv">name</span><span class="o">=</span>GMT <span class="nv">$releasever</span> - <span class="nv">$basearch</span> - Updates
+<span class="nv">baseurl</span><span class="o">=</span>http://52.52.46.32/srv/gmt/yum/updates/<span class="nv">$releasever</span>/
+<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="advanced-system-configuration">
+<h3>1.2.3. Advanced System Configuration<a class="headerlink" href="#advanced-system-configuration" title="Permalink to this headline">¶</a></h3>
+<p>In a distributed computing environment, used by multiple developers, it is very convenient to use a centralized LDAP server for User Authentication and automatically mount /home directories from a network drive. The LDAP and NFS server configuration is network-dependent. The following instructions can be used as guidelines when configuring individual development machines to make use these services, if available.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This configuration is currently optional. The alternative is to add users manually and manage permissions locally on each development machine.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev_environment/ldap_configuration.html">1.2.3.1. User Authentication using LDAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_environment/nfs_configuration.html">1.2.3.2. Mounting Home Directories using NFS</a></li>
+</ul>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="package-list">
+<h3>1.2.4. Package List<a class="headerlink" href="#package-list" title="Permalink to this headline">¶</a></h3>
+<p>The following RPM packages should be installed by an Administrative user for use in the development environment:</p>
+<ol class="arabic simple">
+<li>Install Common OS Utilities</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y xorg-x11-xauth urw-fonts wget net-tools pciutils
+$ sudo dnf install -y strace rpl bash-completion sed
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Install Development Tools</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y autoconf automake cmake elfutils gcc gdb libtool
+$ sudo dnf install -y cpp cscope ctags gc gcc-c++ gcc-gdb-plugin glibc-devel
+$ sudo dnf install -y glibc-headers kernel-headers libstdc++-devel
+$ sudo dnf install -y flex git libcurl-devel
+$ sudo dnf install -y python3-sphinx python3-sphinx_rtd_theme
+</pre></div>
+</div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Factory Reset Installation</li>
+<li>Install OCS Dependencies</li>
 </ol>
 <blockquote>
-<div><p>3.1 Once the system is back up, select the ‘install’ option</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<ul class="last simple">
-<li>Your system drive will be reformated and erased!</li>
-</ul>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y rdma librdmacm-devel
+$ sudo dnf install -y boost-devel freeopcua freeopcua-devel
+</pre></div>
 </div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<ul class="last simple">
-<li>For HDK, <strong>do not</strong> use the Beckhoff CFast card with TwinCAT3!</li>
-</ul>
+</div></blockquote>
 </div>
-<p>3.2 Press the &lt;Tab&gt; key. The following options are available:</p>
+<div class="section" id="node-installation">
+<h3>1.2.5. Node Installation<a class="headerlink" href="#node-installation" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Download and install <strong>Node version 8</strong></li>
+</ol>
 <blockquote>
-<div><ul class="simple">
-<li><strong>gmt.tz</strong> sets the system timezone (provided by /usr/share/zoneinfo)</li>
-<li><strong>gmt.ecat</strong> sets the interface used by EtherCAT, keep the provided default for HDK</li>
-</ul>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sL https://rpm.nodesource.com/setup_8.x <span class="p">|</span> sudo bash -
+$ dnf install -y nodejs
+</pre></div>
+</div>
 </div></blockquote>
-<p>3.3 Wait until the installation completes.  The system will eventually reboot itself.</p>
-<p>3.4 Remove the USB drive or select the ‘local’ option</p>
-<p>3.5 Boot the (default) real-time kernel</p>
-<p>Your system is ready.</p>
+<ol class="arabic simple" start="2">
+<li>Install necessary node packages:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install -g coffeescript webpack webpack-cli raw-loader
+</pre></div>
+</div>
 </div></blockquote>
 </div>
-<div class="section" id="sanity-check">
-<h2>1.2. Sanity Check<a class="headerlink" href="#sanity-check" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Basic Ethercat check</li>
-</ul>
+<div class="section" id="mongodb-configuration">
+<h3>1.2.6. MongoDB Configuration<a class="headerlink" href="#mongodb-configuration" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Install the necessary packages:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y mongodb mongodb-server
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Configure the firewall</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ firewall-offline-cmd --direct --add-rule ipv4 filter INPUT <span class="m">0</span> -p tcp --dport <span class="m">27017</span> -j ACCEPT
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Enable the MongoDB service</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> mongod
+$ systemctl start mongod
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Check that the MongoDB service is up</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl status -l mongod
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="infiniband-configuration-optional">
+<h3>1.2.7. Infiniband Configuration (optional)<a class="headerlink" href="#infiniband-configuration-optional" title="Permalink to this headline">¶</a></h3>
+<p>Infiniband is a low-latency networking communications protocol that requires specialized hardware. The following configuration steps should be used as a guide when configuring Infiniband communications.</p>
+<ol class="arabic simple">
+<li>Install the neccessary packages</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y infiniband-diags opensm libmlx4
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Edit <code class="docutils literal"><span class="pre">/etc/rdma/mlx4.conf</span></code> and add the following line:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">01</span>:00.0 auto auto
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Find the interface used for Infiniband and edit the corresponding configuration file (for example <code class="docutils literal"><span class="pre">/etc/sysconfig/network-scripts/ifcfg-ib0</span></code>) to set the following options:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">DEVICE</span><span class="o">=</span>ib0
+<span class="nv">ONBOOT</span><span class="o">=</span>yes
+<span class="nv">TYPE</span><span class="o">=</span>Infiniband
+<span class="nv">BOOTPROTO</span><span class="o">=</span>none
+<span class="nv">IPADDR</span><span class="o">=</span>&lt;ib_ip_address&gt;
+<span class="nv">NETMASK</span><span class="o">=</span>&lt;ib_netmask&gt;
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">&lt;ib_ip_address&gt;</span></code> is the static IP Address associated with the Infiniband network interface and <code class="docutils literal"><span class="pre">&lt;ib_netmask&gt;</span></code> is the netmask used for the infiniband subnet.</p>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Enable Infiniband Services</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> opensm
+$ systemctl <span class="nb">enable</span> rdma
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="ethercat-configuration-optional">
+<h3>1.2.8. Ethercat Configuration (optional)<a class="headerlink" href="#ethercat-configuration-optional" title="Permalink to this headline">¶</a></h3>
+<p>EtherCAT is a high-speed fieldbus communication system used for real-time control. The following configuration steps should be used as a guide when configuring EtherCAT communications.</p>
+<ol class="arabic simple">
+<li>Install the real-time kernel and relevant packages</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Select the Ethernet interface to be used for EtherCAT communication (e.g. enp4s0) and edit the corresponding configuration file (e.g. <code class="docutils literal"><span class="pre">/etc/sysconfig/network-scripts/ifcfg-enp4s0</span></code>) to set the following options:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">BOOTPROTO</span><span class="o">=</span>none
+<span class="nv">ONBOOT</span><span class="o">=</span>no
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Check the Hardware Address of the selected EtherCAT network interface</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ ifconfig
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Edit <code class="docutils literal"><span class="pre">/etc/ethercat.conf</span></code> and set the following configuration option:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">MASTER0_DEVICE</span><span class="o">=</span><span class="s2">&quot;&lt;mac_address&gt;&quot;</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">&lt;mac_address&gt;</span></code> is the hardware address associated with the Ethercat network interface.</p>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Edit <code class="docutils literal"><span class="pre">/usr/lib/systemd/system/ethercat.service</span></code> and uncomment the following line:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">Before</span><span class="o">=</span>network.service
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="6">
+<li>Enable the Ethercat service</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> ethercat
+$ systemctl start ethercat
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="7">
+<li>Reboot into the RT Kernel if you&#8217;re not in it already.</li>
+<li>Test the Ethercat configuration</li>
+</ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ ethercat master
 $ ethercat slaves
 </pre></div>
 </div>
 </div></blockquote>
-<ul class="simple">
-<li>Basic MongoDB check</li>
-</ul>
+<p>If the &#8220;ethercat master&#8221; command does not produce the correct output, ensure that you&#8217;re currently running the real-time kernel. If the &#8220;ethercat slaves&#8221; command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
+</div>
+<div class="section" id="real-time-configuration-optional">
+<h3>1.2.9. Real-time Configuration (optional)<a class="headerlink" href="#real-time-configuration-optional" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Edit <code class="docutils literal"><span class="pre">/etc/security/limits.d/99-realtime.conf</span></code> and add the following options:</li>
+</ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl status -l mongod
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>@realtime - rtprio <span class="m">99</span>
+@realtime - memlock unlimited
 </pre></div>
 </div>
 </div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Add a new group and add the &#8220;gmto&#8221; user to it.</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ groupadd -f -g <span class="m">2001</span> realtime
+$ usermod --groups realtime gmto
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="network-time-protocol-configuration">
+<h3>1.2.10. Network Time Protocol Configuration<a class="headerlink" href="#network-time-protocol-configuration" title="Permalink to this headline">¶</a></h3>
+<p>For general network timekeeping, use NTP, unless Precision Time Protocol is required.</p>
+<ol class="arabic simple">
+<li>Install the necessary packages:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y chrony
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Enable the NTP Service</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> chronyd
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="precision-time-protocol-configuration-optional">
+<h3>1.2.11. Precision Time Protocol Configuration (optional)<a class="headerlink" href="#precision-time-protocol-configuration-optional" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Install the necessary packages:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y linuxptp
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Edit <code class="docutils literal"><span class="pre">/etc/ptp4l.conf</span></code> and add the following options:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>global<span class="o">]</span>
+slaveOnly       <span class="m">1</span>
+verbose         <span class="m">1</span>
+time_stamping   software
+summary_interval <span class="m">6</span>
+<span class="o">[</span>enp3s0<span class="o">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>where <code class="docutils literal"><span class="pre">[enp3s0]</span></code> should be set to the interface to use for PTP.</p>
+<ol class="arabic simple" start="3">
+<li>Edit <code class="docutils literal"><span class="pre">/etc/sysconfig/phc2sys</span></code> and add the following options:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">OPTIONS</span><span class="o">=</span><span class="s2">&quot;-a -r -u 60&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Edit <code class="docutils literal"><span class="pre">/etc/sysconfig/ptp4l</span></code> and add the following options:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">OPTIONS</span><span class="o">=</span><span class="s2">&quot;-f /etc/ptp4l.conf -i enp3s0&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Configure access through the firewall</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ firewall-offline-cmd --direct --add-rule ipv4 filter INPUT <span class="m">0</span> -p udp --dport <span class="m">319</span>:320 -j ACCEPT
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="6">
+<li>Enable the ptp service</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> ptp4l
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="software-development-kit-sdk">
+<h2>1.3. Software Development Kit (SDK)<a class="headerlink" href="#software-development-kit-sdk" title="Permalink to this headline">¶</a></h2>
+<p>The Software Development Kit is distributed as a TAR file and can be downloaded from the GMTO release server.</p>
+<p>The SDK should be installed in a <strong>Global GMT Software Location</strong>, defined by the GMT_GLOBAL environment variable (default value: /opt/gmt). A <strong>Local Working Directory</strong>, unique for each individual developer (GMT_LOCAL). The local working directory typically resides underneath the /home/&lt;username&gt; directory.</p>
+<ol class="arabic simple">
+<li>Create the <strong>Global GMT Software Location</strong>:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Download the latest SDK distribution and install in the <strong>Global GMT Software Location</strong>:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo wget -P /opt/gmt http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.4.0.tar.gz
+$ <span class="nb">cd</span> /opt/gmt
+$ sudo tar -xvzf gmt-sdk-1.4.0.tar.gz
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Create a <strong>Local Working Directory</strong></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir &lt;local_working_dir&gt;
+</pre></div>
+</div>
+</div></blockquote>
+<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users&#8217; home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
+<ol class="arabic simple" start="4">
+<li>Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">GMT_GLOBAL</span><span class="o">=</span>/opt/gmt
+$ <span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>&lt;local_working_dir&gt;
+$ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env.sh
+</pre></div>
+</div>
+</div></blockquote>
+<p>This will ensure that the environment variables are correctly configured when opening a new terminal. Please log out and back in for the changes to take effect. To configure the environment for the current shell, run the commands manually.</p>
+<ol class="arabic simple" start="5">
+<li>Check the values of the environment variables:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ gmt_env
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="6">
+<li>Initialize the Development Environment:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+$ gds init
+</pre></div>
+</div>
+</div></blockquote>
+<p>The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.</p>
+<p>Ensure that the <strong>bundles.coffee</strong> and <strong>ocs_local_bundle.coffee</strong> files exist, copying them from $GMT_GLOBAL if need be.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir <span class="nv">$GMT_LOCAL</span>/etc/bundles
+$ cp <span class="nv">$GMT_GLOBAL</span>/etc/bundles/bundles.coffee <span class="nv">$GMT_LOCAL</span>/etc/bundles/
+$ cp <span class="nv">$GMT_GLOBAL</span>/etc/bundles/ocs_local_bundle.coffee <span class="nv">$GMT_LOCAL</span>/etc/bundles/
+</pre></div>
+</div>
+<p>Edit bundles.coffee to point to the ocs_local_bundle.coffee file</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>module.exports <span class="o">=</span>
+  ocs_local_bundle:   <span class="o">{</span>scope: <span class="s2">&quot;local&quot;</span>,  desc: <span class="s2">&quot;GMT iSample and HDK bundle&quot;</span><span class="o">}</span>
+</pre></div>
+</div>
+<p>Edit ocs_local_bundle.coffee to include the isample and HDK modules</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>module.exports <span class="o">=</span>
+name:      <span class="s2">&quot;local&quot;</span>
+desc:      <span class="s2">&quot;List of local development modules&quot;</span>
+elements:
+    isample_dcs: <span class="o">{</span> active: true, test: false, developer: <span class="s1">&#39;gmto&#39;</span>, domain: <span class="s1">&#39;idcs&#39;</span> <span class="o">}</span>
+    hdk_dcs:     <span class="o">{</span> active: true, test: false, developer: <span class="s1">&#39;gmto&#39;</span>, domain: <span class="s1">&#39;idcs&#39;</span> <span class="o">}</span>
+</pre></div>
+</div>
+<p>Finally, create the <strong>modules</strong> directory</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+$ mkdir modules
+</pre></div>
+</div>
 <p><a class="reference internal" href="#installation"><span class="std std-ref">[back to top]</span></a></p>
 </div>
 </div>
@@ -310,7 +697,7 @@ $ ethercat slaves
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="upgrade.html" class="btn btn-neutral float-right" title="2. Upgrade" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dev_environment/prep_installation.html" class="btn btn-neutral float-right" title="1.2.1.1. Preparing for Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Software Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -344,7 +731,7 @@ $ ethercat slaves
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.3-9',
+            VERSION:'1.4-1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

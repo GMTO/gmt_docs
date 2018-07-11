@@ -6,84 +6,24 @@ ISample Example
 :ref:`ISample DCS <dcs_spec_example>` is an instrument control system example that provides
 a template that instrument developers can use as a model.
 
-**Short Reference**
-The following sequence of commands can be used on the Virtual Machine to
-initialize the environment, checkout the repository,
-generate the source code from the model and compile the code:
-
-.. code-block:: bash
-
-  $ mkdir /home/gmto/gmt_dev
-  $ vi .bashrc
-  $ export GMT_LOCAL=/home/gmto/gmt_dev
-  $ source /opt/gmt/etc/gmt_env.sh
-  $ cd /home/gmto/gmt_dev
-  $ gds init_env
-  $ git clone https://github.com/GMTO/isample_dcs.git
-  $ cp isample_dcs/model/local.coffee install/etc
-  $ cd isample_dcs
-  $ gds codegen -e isample_dcs
-  $ cd src
-  $ make -j`nproc` install
-
-Below, each step is explained in more detail.
-
-Configure your Development Environment
---------------------------------------
-1. Create a folder for GMT development
-
-.. code-block:: bash
-
-  $ mkdir ~/gmt_dev
-
-All GMT modules being developed should be checked out underneath this folder.
-
-2. Add the following two lines to your .profile (or .kshrc .bashrc depending on the shell)
-
-.. code-block:: bash
-
-  export GMT_LOCAL=/home/gmto/gmt_dev
-  source /opt/gmt/etc/gmt_env.sh
-
-This will ensure that the environment variables are correctly configured when
-opening a new terminal. To configure the environment variables for the current shell,
-run the commands manually.
-
-Check the values of the environment variables with the command:
-
-.. code-block:: bash
-
-  $ gmt_env
-
-3. Initialize the development environment with the following command:
-
-.. code-block:: bash
-
-  $ cd $GMT_LOCAL
-  $ gds init_env
-
-The correct folders will be created in the $GMT_LOCAL directory for use when
-compiling and running modules.
+.. note::
+  The following instructions assume that the SDK has been installed and the Development Environment configured correctly according to the instructions in :ref:`installation` or :ref:`upgrade`.
 
 Clone the isample_dcs repository
 --------------------------------
-1. On the development machine, clone the repository in the development folder:
+
+On the development machine, clone the repository in the development folder:
 
 .. code-block:: bash
 
-  $ cd $GMT_LOCAL
-  $ git clone https://github.com/GMTO/isample_dcs.git
+  $ cd $GMT_LOCAL/modules
+  $ gds clone isample_dcs -d gmto
 
-2. Copy Module Configuration file to the development folder. The Module
-Configuration file will list the modules to load when running gmt and gds.
-
-.. code-block:: bash
-
-  $ cp isample_dcs/model/local.coffee install/etc
+where the ``-d option`` defines the git repository owner.
 
 Model Files
 -----------
-The model files can be found in the **model/** folder.
+The model files can be found in the **$GMT_LOCAL/modules/ocs_isample_dcs/model/** folder.
 
 isample_core_if.coffee
   Lists the connectors between the isample and GMT core systems
@@ -91,10 +31,10 @@ isample_core_if.coffee
 isample_dcs.coffee
   Lists the connectors between the supervisor layer and the component layer. For this example, these are limited to monitoring the heartbeat of each component.
 
-isample_def.coffee
+isample_dcs_def.coffee
   High-level definition file, representing the WBS for the submodule. It lists the components and how many instances of each are required.
 
-isample_types.coffee
+isample_dcs_types.coffee
   Definitions of structs and data types used by the isample components.
 
 isample_ctrl_pkg/isample_ctrl_fb.coffee
@@ -172,6 +112,17 @@ isample_ctrl_pkg/isample_temp_ctrl.coffee
       +--------------+                                     +---------------+
 
 
+Install local Node Modules
+--------------------------
+
+This is a temporary work-around for a known issue with Webpack. It only needs to be run once to install the node modules under $GMT_LOCAL.
+
+.. code-block:: bash
+
+   $ cd $GMT_LOCAL
+   $ cp $GMT_GLOBAL/package.json ./
+   $ npm install
+
 Code Generation
 ---------------
 
@@ -179,15 +130,16 @@ To generate the code skeleton from the model files, execute:
 
 .. code-block:: bash
 
-   $ cd $GMT_LOCAL/isample_dcs
-   $ gds codegen -e isample_dcs
+   $ cd $GMT_LOCAL/modules/ocs_isample_dcs/model
+   $ webpack
+   $ gds gen isample_dcs
 
 This will generate the basic framework of source code and configuration files for each component. The files will be located in the `src/` folder.
 To see the generated folders and files, navigate to:
 
 .. code-block:: bash
 
-  $ cd $GMT_LOCAL/isample_dcs/src/
+  $ cd $GMT_LOCAL/modules/ocs_isample_dcs/src/
   $ ls -la
 
 Component Attributes
@@ -303,9 +255,9 @@ To edit the *Filter Wheel Controller* step file:
 
 .. code-block:: bash
 
-   $ cd $GMT_LOCAL/isample_dcs/src
-   $ cd isample_ctrl_pkg/isample_filter_wheel_ctrl/cpp
-   $ vim isample_filter_wheel_ctrl_step.cpp
+   $ cd $GMT_LOCAL/modules/ocs_isample_dcs/src/cpp/
+   $ cd isample_ctrl_pkg/isample_filter_wheel_ctrl
+   $ vi isample_filter_wheel_ctrl_step.cpp
 
 The following example step function for the filter wheel controller validates
 positional input and immediately sets the position value to the new goal, if possible.
@@ -339,14 +291,26 @@ positional input and immediately sets the position value to the new goal, if pos
 Compilation
 -----------
 
-To compile the code, run make:
+To compile the C++ Control Package code, edit the module.mk file to contain the correct library definitions:
 
 .. code-block:: bash
 
-   $ cd $GMT_LOCAL/isample_dcs/src
-   $ make -j`nproc` install
+   $ vi $GMT_LOCAL/modules/ocs_isample_dcs/src/cpp/isample_ctrl_pkg/module.mk
 
-The executables will be located in `src/install/bin/`.
+Ensure that the following lines are defined:
+
+.. code-block:: bash
+
+   # Add in this file the compile flags for the package, eg:
+   MOD_BUILD_LDFLAGS += -lcore_core_pkg -lio_core_pkg -lctrl_core_pkg -lio_ethercat_pkg
+   MOD_BUILD_LDFLAGS += -lethercat -lopcuacore -lopcuaclient
+
+Run **make** to compile the code:
+
+.. code-block:: bash
+
+   $ cd $GMT_LOCAL/modules/ocs_isample_dcs/src/cpp
+   $ make
 
 Running the Example
 -------------------
@@ -354,14 +318,14 @@ Start the logging and telemetry services:
 
 .. code-block:: bash
 
-   $ gds log_service start &
-   $ gds telemetry_service start &
+   $ log_server &
+   $ tele_server &
 
 Start the ISample Control Package application in the background
 
 .. code-block:: bash
 
-   $ install/bin/run_isample_ctrl_pkg_main &
+   $ isample_ctrl_app &
 
 The application is running in the background and will not provide any console output.
 All output will be directed to the logging service after the components have been successfully set up.
@@ -369,27 +333,22 @@ All output will be directed to the logging service after the components have bee
 Log Service
 ~~~~~~~~~~~
 
-In a separate terminal (for example `tty2`), **start the logging service client**.
+In a separate terminal (for example, `tty2`), **start the logging service client**.
 
 .. code-block:: bash
 
-   $ gds log_service client gmt
+   $ log_client
 
-In this example, we use the topic ``gmt`` to show logs for all components.
-The output can be filtered on substrings of the component URI by specifying
-topics such as ``fw``, ``hw1``, ``super`` or ``temp``.
 
-In the first terminal (`tty1`), **initialize all components** by running ``gds setup``.
+Component setup
+~~~~~~~~~~~~~~~
+
+In the first terminal (`tty1`), **initialize all components**
 
 .. code-block:: bash
 
-   $ gds setup -m runtime -e isample_ctrl_super
-   $ gds setup -m runtime -e isample_fw1_ctrl
-   $ gds setup -m runtime -e isample_fw2_ctrl
-   $ gds setup -m runtime -e isample_focus1_ctrl
-   $ gds setup -m runtime -e isample_cryo_external_temp_ctrl
-   $ gds setup -m runtime -e isample_cryo_internal_temp_ctrl
-   $ gds setup -m runtime -e isample_hw1_adapter
+   $ cd $GMT_LOCAL/modules/ocs_isample_dcs/src/etc
+   $ ./send_config.coffee
 
 Switch to the session running the logging service client (`tty2`), and confirm
 that the expected components are logging step info.
@@ -401,28 +360,19 @@ In a separate terminal (for example `tty3`), **start the telemetry service clien
 
 .. code-block:: bash
 
-   $ gds telemetry_service client gmt
+   $ tele_client
 
-In this example, we use the topic ``gmt`` to show data for all monitors.
+In this example, we don't filter, to show data for all monitors.
 The output can be filtered on substrings of the monitor name by specifying the
 topic to be a specific component type (``filter_wheel_ctrl``) or an output port
-name, such as ``position`` or ``heartbeat``.
-
-In the first terminal (`tty1`), **start the monitors** on all components by
-running ``gds telemetry_service monitor``.
+name, such as ``position`` or ``heartbeat``. For example,
 
 .. code-block:: bash
 
-   $ gds telemetry_service monitor -m runtime -e isample_ctrl_super
-   $ gds telemetry_service monitor -m runtime -e isample_fw1_ctrl
-   $ gds telemetry_service monitor -m runtime -e isample_fw2_ctrl
-   $ gds telemetry_service monitor -m runtime -e isample_focus1_ctrl
-   $ gds telemetry_service monitor -m runtime -e isample_cryo_external_temp_ctrl
-   $ gds telemetry_service monitor -m runtime -e isample_cryo_internal_temp_ctrl
-   $ gds telemetry_service monitor -m runtime -e isample_hw1_adapter
+    tele_client --topic=gmt://isample_dcs/isample_focus_ctrl/isample_focus1_ctrl/hmi_outputs
 
-Switch to the session running the logging service client (`tty3`), and confirm
-that the expected telemetry output is shown.
+will show only the values of the ``hmi_outputs`` monitor from ``isample_focus1_ctrl``.
+
 
 A query can also be sent to the telemetry service:
 
@@ -435,8 +385,8 @@ For example, the following will list the last 12 positional values
 
   $ gds telemetry_service query gmt://isample_dcs/isample_filter_wheel_ctrl//position_value 12
 
-All telemetry queries have to be done using the full URI of the monitor,
-which can be seen when running a telemetry_service client, as described above.
+.. note::
+  All telemetry queries have to be done using the full URI of the monitor, which can be seen when running a telemetry_service client, as described above. Note the two consecutive forward-slashes in the middle of the URI, indicating a missing instance ID. This is a known issue.
 
 Sending a Value to the Input Port
 ---------------------------------

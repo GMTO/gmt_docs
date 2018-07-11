@@ -66,7 +66,7 @@ Select *New*
   :alt: Name and Operating System
 
 Choose a descriptive **Name** for the Virtual Machine and select the **Type**
-as *Linux* and the **Version** as *Red Hat (64-bit)*.
+as *Linux* and the **Version** as *Fedora (64-bit)*.
 
 Select *Continue* to proceed.
 
@@ -178,15 +178,10 @@ Select *OK* to save settings and close the dialog.
 Download the iso image
 ----------------------
 
-Before running the virtual machine for the first time, download the iso image
-that will be used to install the operating system and other critical packages.
-
-The iso file can be found here:
-`standalone.iso <http://52.52.46.32/srv/gmt/iso/standalone.iso>`_
-Download this file to the host machine.
-
-For alternative instructions on how to download and verify this file,
-go to :ref:`installation`
+Before running the virtual machine for the first time, use the instructions in 
+:ref:`installation` to download the iso image that will be used to install the 
+Fedora operating system. Instead of creating a bootable USB drive, the iso image 
+will be directly loaded into the Virtual Optical Drive for installation.
 
 Run the Virtual Machine
 -----------------------
@@ -198,7 +193,7 @@ Double-click the VM in the left pane or select the VM and click "Start".
   :scale: 70 %
   :alt: First Run
 
-Browse to the *standalone.iso* file downloaded before and click *Start*.
+Browse to the *Fedora-Server-dvd-x86_64-26-1.5.iso* file downloaded before and click *Start*.
 This will mount the iso into a Virtual Optical Drive and select it as the boot
 device.
 
@@ -207,7 +202,14 @@ device.
   :scale: 70 %
   :alt: First Run Install Menu
 
-Press down and select *install* to install the GMTO operating system.
+Select *Install Fedora 26* and follow the instructions in :ref:`anaconda_install` to install 
+the operating system. Ensure that the boot partition is set to File System *ext4* for the RT kernel
+to work.
+
+.. image:: images/ss26_partition_ext4.png
+  :align: center
+  :scale: 70 %
+  :alt: Custom Partitioning
 
 .. note::
   At this point it is useful to note that when you click on the Virtual Machine
@@ -226,68 +228,41 @@ Press down and select *install* to install the GMTO operating system.
     :scale: 70 %
     :alt: Host Key Configuration
 
-Wait for the installation to complete.
+Wait for the installation to complete and selet *Reboot* when done.
 
 .. image:: images/ss16_os_install_inprogress.png
   :align: center
   :scale: 70 %
   :alt: OS Installation
 
-The system will perform all the necessary installation steps without any
-user input.
+Close the window to power off the Virtual Machine.
 
-When the installation completes and the system has rebooted,
-the following will be shown:
-
-.. image:: images/ss17_os_install_complete.png
+.. image:: images/ss27_reboot_after_install.png
   :align: center
   :scale: 70 %
-  :alt: OS Installation Complete
+  :alt: Reboot after installation is complete
 
-On the application control bar, select
-**Devices -> Optical Drives -> Remove disk from virtual drive**
+In the Storage settings panel, click on **[Optical drive]** and select
+**Remove disk from virtual drive**
 
-Reboot the virtual machine by closing the window and starting it again.
-The system will now boot off its own hard drive instead of the installation disk.
+Start the Virtual Machine back up. The system will now boot off its own hard drive instead of the 
+installation disk.
 
 .. image:: images/ss18_boot_select_kernel.png
   :align: center
   :scale: 70 %
   :alt: Select kernel
 
-Select the appropriate kernel to boot from. For normal use or administration,
-the most recent kernel can be selected (Fedora 4.2.3-300.fc23.x86_64).
-For the real-time kernel, ensure that the rt kernel is selected.
-
-Log in with the default user name and password.
-
-.. image:: images/ss19_login_terminal.png
-  :align: center
-  :scale: 70 %
-  :alt: User login
-
-Upgrade the Packages
---------------------
-
-Type
-
-  .. code-block:: bash
-
-    $ sudo dnf upgrade -x kernel* -y gmt*
-
-to upgrade all gmt packages.
-
-.. image:: images/ss20_update_gmt_before.png
-  :align: center
-  :scale: 70 %
-  :alt: Upgrade GMT Packages - before
-
-.. image:: images/ss21_update_gmt_after.png
-  :align: center
-  :scale: 70 %
-  :alt: Upgrade GMT Packages - after
+Finish the operating system configuration and SDK installation process outlined 
+in :ref:`installation`.
 
 The system is now ready to use for development.
+
+.. image:: images/ss28_localhost_login.png
+  :align: center
+  :scale: 70 %
+  :alt: Localhost Login
+
 
 Helpful Tips using VirtualBox
 -----------------------------
