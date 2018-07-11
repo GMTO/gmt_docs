@@ -3,6 +3,57 @@
 Release 1
 =========
 
+Contents of release 1.4
+-----------------------
+
+- Release distribution and installation
+
+  - The OCS Software Release is no longer distributed as a fully configured ISO file with multiple RPM packages to be installed. The Software Development Kit (SDK) is now distributed as a single TAR file. The Operating System must be installed independently.
+  - Instructions are provided to install the Operating System, set up the development platform, configure applicable system services, install external dependencies, install the SDK and use the Development Tools for software development.
+  - Dependency management is built into the SDK platform instead of being managed by external tools in order to maintain control of specific versions used.
+
+- Development Framework
+
+  - The single repository containing model files and development tools has been reorganized into individual modules according to the new Work Breakdown Structure (WBS). The SDK supports the full life-cycle of each module independently.
+  - Folder organization and tools and processes for working within the development environment have been standardized across all modules.
+  - Development tools have been added to configure the development environment, integrate modules and build/deploy software in a standardized way.
+  - The build system is improved and simplified.
+  - The code generator supports c++ and coffee targets, with python planned on subsequent releases.
+  - The code generator includes now support for scalar, structured and multidimensional array types.
+  - A preliminary test automation framework is included with this release.
+
+- Core Frameworks
+
+  - An improved version of the c++ implementation of the core frameworks is included. The major improvements are the correct handling of the configuration properties, the possibility to define default values for the input and output ports and the standardization of the telemetry generation.
+  - A new nodejs implementation of the core frameworks is included and provides the foundation for the Core Services.
+
+- Core Services
+
+  - A new improved implementation of the core services is included —currently, logging, telemetry, alarm and supervisory services are included.
+  - All the services provide event consumer filtering.
+  - The server and test client applications support new command line options and help.
+
+- Implementation examples
+
+  - Two reference Device Control System implementations are included: hdk_dcs and isample_dcs.
+  - The model specifications of both subsystem have been updated
+  - The code generated from the specification can be compiled and executed.
+  - Both examples are distributed directly from git
+
+- Documentation: Software Development
+
+  - ``Installation`` page rewritten to reflect new OCS Software Release procedure:
+
+    - Install the Operating System and configure system functions
+    - Configure the Development Platform
+
+  - Install the Software Development Kit (SDK)
+  - ``Upgrade`` page rewritten to provide instructions for upgrading from version 1.3 to 1.4.
+  - ``Installing a Virtual Machine`` page changed with instructions and images for installing a standard Fedora server instead of a distributed GMT iso file.
+  - ``ISample Example`` page updated to reflect new Development Procedure using the SDK.
+
+Follow the :ref:`upgrade procedure <upgrade>`.
+
 Contents of release 1.3
 -----------------------
 
@@ -18,7 +69,6 @@ Contents of release 1.3
 - Moved ISample Example DCS to a new GitHub repository
 - Updated :ref:`ISample Example <Isample_example>` documentation to reflect the new development workflow
 
-Follow the :ref:`upgrade procedure <upgrade>`.
 
 Contents of release 1.2
 -----------------------

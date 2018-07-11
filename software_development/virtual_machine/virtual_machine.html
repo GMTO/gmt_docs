@@ -72,7 +72,7 @@
             
             
               <div class="version">
-                1.3
+                1.4
               </div>
             
           
@@ -101,7 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../SWC_architecture/index.html">Architecture and Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../SWC_standards/index.html">Software and Controls Standards</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Software Development</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../installation.html">1. Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">1. Installing the SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">3. Installing a Virtual Machine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#download-virtual-box">3.1. Download Virtual Box</a></li>
@@ -114,11 +114,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#download-the-iso-image">3.5. Download the iso image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#run-the-virtual-machine">3.6. Run the Virtual Machine</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#upgrade-the-packages">3.7. Upgrade the Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#helpful-tips-using-virtualbox">3.8. Helpful Tips using VirtualBox</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#virtualbox-guest-additions-optional">3.9. VirtualBox Guest Additions (Optional)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">3.10. Troubleshooting</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#logging-service">3.10.1. Logging Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#helpful-tips-using-virtualbox">3.7. Helpful Tips using VirtualBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#virtualbox-guest-additions-optional">3.8. VirtualBox Guest Additions (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">3.9. Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#logging-service">3.9.1. Logging Service</a></li>
 </ul>
 </li>
 </ul>
@@ -229,30 +228,30 @@ version 5.1.20, for use on OS X.</p>
 <div class="section" id="create-a-virtual-machine">
 <h2>3.3. Create a Virtual Machine<a class="headerlink" href="#create-a-virtual-machine" title="Permalink to this headline">¶</a></h2>
 <p>Run the application</p>
-<a class="reference internal image-reference" href="../../_images/ss04_virtualbox_welcome.png"><img alt="VirtualBox Application Window" class="align-center" src="../../_images/ss04_virtualbox_welcome.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss04_virtualbox_welcome.png"><img alt="VirtualBox Application Window" class="align-center" src="../../_images/ss04_virtualbox_welcome.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>Select <em>New</em></p>
-<a class="reference internal image-reference" href="../../_images/ss05_new_name_type.png"><img alt="Name and Operating System" class="align-center" src="../../_images/ss05_new_name_type.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss05_new_name_type.png"><img alt="Name and Operating System" class="align-center" src="../../_images/ss05_new_name_type.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>Choose a descriptive <strong>Name</strong> for the Virtual Machine and select the <strong>Type</strong>
-as <em>Linux</em> and the <strong>Version</strong> as <em>Red Hat (64-bit)</em>.</p>
+as <em>Linux</em> and the <strong>Version</strong> as <em>Fedora (64-bit)</em>.</p>
 <p>Select <em>Continue</em> to proceed.</p>
-<a class="reference internal image-reference" href="../../_images/ss06_new_memory_size.png"><img alt="Memory Size" class="align-center" src="../../_images/ss06_new_memory_size.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss06_new_memory_size.png"><img alt="Memory Size" class="align-center" src="../../_images/ss06_new_memory_size.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>The amount of memory allocated to the Virtual Machine can be varied depending
 on how much memory is available to the host machine and how heavily the
 Virtual Machine will be utilized. At this stage, <em>2 GB</em> is more than sufficient.
 It can be changed after the Virtual Machine has been set up, if necessary.</p>
 <p>Select <em>Continue</em> to proceed.</p>
-<a class="reference internal image-reference" href="../../_images/ss07_new_hard_disk.png"><img alt="Hard Disk" class="align-center" src="../../_images/ss07_new_hard_disk.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss07_new_hard_disk.png"><img alt="Hard Disk" class="align-center" src="../../_images/ss07_new_hard_disk.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>Select <strong>Create a virtual hard disk now</strong>, to set up a hard drive.
 This will be a file on the host machine that can dynamically resize based
 on demand, up to a specified maximum value.</p>
 <p>Select <em>Create</em> to proceed.</p>
-<a class="reference internal image-reference" href="../../_images/ss08_new_hard_disk_type.png"><img alt="Hard Disk File Type" class="align-center" src="../../_images/ss08_new_hard_disk_type.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss08_new_hard_disk_type.png"><img alt="Hard Disk File Type" class="align-center" src="../../_images/ss08_new_hard_disk_type.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>Select the default, <strong>VDI (VirtualBox Disk Image)</strong>, and then click
 <em>Continue</em> to proceed.</p>
-<a class="reference internal image-reference" href="../../_images/ss09_new_hard_disk_storage.png"><img alt="Storage on Physical Hard Disk" class="align-center" src="../../_images/ss09_new_hard_disk_storage.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss09_new_hard_disk_storage.png"><img alt="Storage on Physical Hard Disk" class="align-center" src="../../_images/ss09_new_hard_disk_storage.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>Select the default, <strong>Dynamically allocated</strong>, and then click
 <em>Continue</em> to proceed.</p>
-<a class="reference internal image-reference" href="../../_images/ss10_new_hard_disk_location_size.png"><img alt="File Location and Size" class="align-center" src="../../_images/ss10_new_hard_disk_location_size.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss10_new_hard_disk_location_size.png"><img alt="File Location and Size" class="align-center" src="../../_images/ss10_new_hard_disk_location_size.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>The amount of disk space allocated to the Virtual Machine can be varied
 depending on how much disk space is available to the host machine and the
 hardware requirements of the Virtual Machine.
@@ -261,7 +260,7 @@ machine file system because the virtual drive space is allocated dynamically.
 At this stage 20 GB is sufficient.
 The minimum capacity for the SWC development machine is 5 GB.</p>
 <p>Select <em>Create</em> to proceed.</p>
-<a class="reference internal image-reference" href="../../_images/ss11_virtualbox_main_window.png"><img alt="VirtualBox Main Window" class="align-center" src="../../_images/ss11_virtualbox_main_window.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss11_virtualbox_main_window.png"><img alt="VirtualBox Main Window" class="align-center" src="../../_images/ss11_virtualbox_main_window.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>The Virtual Machine is now set up and ready to use.
 The system properties of the VM can be changed whenever it is turned off
 by selecting the VM and clicking on Settings.</p>
@@ -293,30 +292,30 @@ the top row.</p>
 <a class="reference internal image-reference" href="../../_images/ss12_network_settings.png"><img alt="Network Adapter Settings" class="align-center" src="../../_images/ss12_network_settings.png" style="width: 1073.8px; height: 827.4px;" /></a>
 <p>Enable Network Adapter 1 and set it to be <strong>attached to</strong> <em>Bridged Adapter</em>
 with <strong>Name</strong> the same as the network adapter used by the host machine to
-connect to the internet. In this case, it’s the wireless adapter <em>en0</em>.
+connect to the internet. In this case, it&#8217;s the wireless adapter <em>en0</em>.
 The settings under <strong>Advanced</strong> can remain on defaults.</p>
 <p>Select <em>OK</em> to save settings and close the dialog.</p>
 </div>
 </div>
 <div class="section" id="download-the-iso-image">
 <h2>3.5. Download the iso image<a class="headerlink" href="#download-the-iso-image" title="Permalink to this headline">¶</a></h2>
-<p>Before running the virtual machine for the first time, download the iso image
-that will be used to install the operating system and other critical packages.</p>
-<p>The iso file can be found here:
-<a class="reference external" href="http://52.52.46.32/srv/gmt/iso/standalone.iso">standalone.iso</a>
-Download this file to the host machine.</p>
-<p>For alternative instructions on how to download and verify this file,
-go to <a class="reference internal" href="../installation.html#installation"><span class="std std-ref">Installation</span></a></p>
+<p>Before running the virtual machine for the first time, use the instructions in
+<a class="reference internal" href="../installation.html#installation"><span class="std std-ref">Installing the SDK</span></a> to download the iso image that will be used to install the
+Fedora operating system. Instead of creating a bootable USB drive, the iso image
+will be directly loaded into the Virtual Optical Drive for installation.</p>
 </div>
 <div class="section" id="run-the-virtual-machine">
 <h2>3.6. Run the Virtual Machine<a class="headerlink" href="#run-the-virtual-machine" title="Permalink to this headline">¶</a></h2>
-<p>Double-click the VM in the left pane or select the VM and click “Start”.</p>
+<p>Double-click the VM in the left pane or select the VM and click &#8220;Start&#8221;.</p>
 <a class="reference internal image-reference" href="../../_images/ss13_first_run_iso.png"><img alt="First Run" class="align-center" src="../../_images/ss13_first_run_iso.png" style="width: 1052.8px; height: 889.0px;" /></a>
-<p>Browse to the <em>standalone.iso</em> file downloaded before and click <em>Start</em>.
+<p>Browse to the <em>Fedora-Server-dvd-x86_64-26-1.5.iso</em> file downloaded before and click <em>Start</em>.
 This will mount the iso into a Virtual Optical Drive and select it as the boot
 device.</p>
-<a class="reference internal image-reference" href="../../_images/ss14_first_run_menu.png"><img alt="First Run Install Menu" class="align-center" src="../../_images/ss14_first_run_menu.png" style="width: 1164.8px; height: 777.0px;" /></a>
-<p>Press down and select <em>install</em> to install the GMTO operating system.</p>
+<a class="reference internal image-reference" href="../../_images/ss14_first_run_menu.png"><img alt="First Run Install Menu" class="align-center" src="../../_images/ss14_first_run_menu.png" style="width: 1052.8px; height: 889.0px;" /></a>
+<p>Select <em>Install Fedora 26</em> and follow the instructions in <a class="reference internal" href="../dev_environment/anaconda_install.html#anaconda-install"><span class="std std-ref">Installing Using Anaconda</span></a> to install
+the operating system. Ensure that the boot partition is set to File System <em>ext4</em> for the RT kernel
+to work.</p>
+<a class="reference internal image-reference" href="../../_images/ss26_partition_ext4.png"><img alt="Custom Partitioning" class="align-center" src="../../_images/ss26_partition_ext4.png" style="width: 1590.3999999999999px; height: 1292.1999999999998px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>At this point it is useful to note that when you click on the Virtual Machine
@@ -328,41 +327,24 @@ configured as the host key.</p>
 <p>To change to host key, select <strong>VirtualBox VM -&gt; Preferences</strong> from the
 application control bar. Select the <strong>Input</strong> tab and edit the value next
 to the <em>Host Key Combination field</em>.</p>
-<a class="last reference internal image-reference" href="../../_images/ss15_host_key_configuration.png"><img alt="Host Key Configuration" class="align-center" src="../../_images/ss15_host_key_configuration.png" style="width: 926.8px; height: 747.6px;" /></a>
+<a class="last reference internal image-reference" href="../../_images/ss15_host_key_configuration.png"><img alt="Host Key Configuration" class="align-center" src="../../_images/ss15_host_key_configuration.png" style="width: 926.8px; height: 747.5999999999999px;" /></a>
 </div>
-<p>Wait for the installation to complete.</p>
-<a class="reference internal image-reference" href="../../_images/ss16_os_install_inprogress.png"><img alt="OS Installation" class="align-center" src="../../_images/ss16_os_install_inprogress.png" style="width: 1164.8px; height: 777.0px;" /></a>
-<p>The system will perform all the necessary installation steps without any
-user input.</p>
-<p>When the installation completes and the system has rebooted,
-the following will be shown:</p>
-<a class="reference internal image-reference" href="../../_images/ss17_os_install_complete.png"><img alt="OS Installation Complete" class="align-center" src="../../_images/ss17_os_install_complete.png" style="width: 1164.8px; height: 777.0px;" /></a>
-<p>On the application control bar, select
-<strong>Devices -&gt; Optical Drives -&gt; Remove disk from virtual drive</strong></p>
-<p>Reboot the virtual machine by closing the window and starting it again.
-The system will now boot off its own hard drive instead of the installation disk.</p>
+<p>Wait for the installation to complete and selet <em>Reboot</em> when done.</p>
+<a class="reference internal image-reference" href="../../_images/ss16_os_install_inprogress.png"><img alt="OS Installation" class="align-center" src="../../_images/ss16_os_install_inprogress.png" style="width: 1590.3999999999999px; height: 1292.1999999999998px;" /></a>
+<p>Close the window to power off the Virtual Machine.</p>
+<a class="reference internal image-reference" href="../../_images/ss27_reboot_after_install.png"><img alt="Reboot after installation is complete" class="align-center" src="../../_images/ss27_reboot_after_install.png" style="width: 1052.8px; height: 889.0px;" /></a>
+<p>In the Storage settings panel, click on <strong>[Optical drive]</strong> and select
+<strong>Remove disk from virtual drive</strong></p>
+<p>Start the Virtual Machine back up. The system will now boot off its own hard drive instead of the
+installation disk.</p>
 <a class="reference internal image-reference" href="../../_images/ss18_boot_select_kernel.png"><img alt="Select kernel" class="align-center" src="../../_images/ss18_boot_select_kernel.png" style="width: 1164.8px; height: 777.0px;" /></a>
-<p>Select the appropriate kernel to boot from. For normal use or administration,
-the most recent kernel can be selected (Fedora 4.2.3-300.fc23.x86_64).
-For the real-time kernel, ensure that the rt kernel is selected.</p>
-<p>Log in with the default user name and password.</p>
-<a class="reference internal image-reference" href="../../_images/ss19_login_terminal.png"><img alt="User login" class="align-center" src="../../_images/ss19_login_terminal.png" style="width: 1164.8px; height: 777.0px;" /></a>
-</div>
-<div class="section" id="upgrade-the-packages">
-<h2>3.7. Upgrade the Packages<a class="headerlink" href="#upgrade-the-packages" title="Permalink to this headline">¶</a></h2>
-<p>Type</p>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf upgrade -x kernel* -y gmt*
-</pre></div>
-</div>
-</div></blockquote>
-<p>to upgrade all gmt packages.</p>
-<a class="reference internal image-reference" href="../../_images/ss20_update_gmt_before.png"><img alt="Upgrade GMT Packages - before" class="align-center" src="../../_images/ss20_update_gmt_before.png" style="width: 1164.8px; height: 777.0px;" /></a>
-<a class="reference internal image-reference" href="../../_images/ss21_update_gmt_after.png"><img alt="Upgrade GMT Packages - after" class="align-center" src="../../_images/ss21_update_gmt_after.png" style="width: 1164.8px; height: 777.0px;" /></a>
+<p>Finish the operating system configuration and SDK installation process outlined
+in <a class="reference internal" href="../installation.html#installation"><span class="std std-ref">Installing the SDK</span></a>.</p>
 <p>The system is now ready to use for development.</p>
+<a class="reference internal image-reference" href="../../_images/ss28_localhost_login.png"><img alt="Localhost Login" class="align-center" src="../../_images/ss28_localhost_login.png" style="width: 1164.8px; height: 777.0px;" /></a>
 </div>
 <div class="section" id="helpful-tips-using-virtualbox">
-<h2>3.8. Helpful Tips using VirtualBox<a class="headerlink" href="#helpful-tips-using-virtualbox" title="Permalink to this headline">¶</a></h2>
+<h2>3.7. Helpful Tips using VirtualBox<a class="headerlink" href="#helpful-tips-using-virtualbox" title="Permalink to this headline">¶</a></h2>
 <p><strong>Multiple Terminals</strong></p>
 <p>By default, the virtual machine will start the terminal in tty1.
 To switch to other terminals use <code class="docutils literal"><span class="pre">fn-alt-&lt;Fkey&gt;</span></code>.</p>
@@ -399,8 +381,8 @@ environment variables in the appropriate bash configuration files.</p>
 <code class="docutils literal"><span class="pre">fn-shift-&lt;down</span> <span class="pre">arrow&gt;</span></code>.</p>
 </div>
 <div class="section" id="virtualbox-guest-additions-optional">
-<h2>3.9. VirtualBox Guest Additions (Optional)<a class="headerlink" href="#virtualbox-guest-additions-optional" title="Permalink to this headline">¶</a></h2>
-<p>It’s often useful to be able to share files and folders between the host
+<h2>3.8. VirtualBox Guest Additions (Optional)<a class="headerlink" href="#virtualbox-guest-additions-optional" title="Permalink to this headline">¶</a></h2>
+<p>It&#8217;s often useful to be able to share files and folders between the host
 machine and the virtual machine. To enable this functionality, VirtualBox
 requires <strong>Guest Additions</strong> to be installed. This process is optional.</p>
 <p>First, we need to update the kernel and existing packages</p>
@@ -421,7 +403,7 @@ $ sudo yum install kernel-devel
 </div>
 </div></blockquote>
 <p>With the Virtual Machine running, select
-<strong>Devices -&gt; Insert Guest Additions CD Image…</strong> on the application control bar.</p>
+<strong>Devices -&gt; Insert Guest Additions CD Image...</strong> on the application control bar.</p>
 <p>Now, find the device ID assigned to the optical drive containing the
 Guest Additions CD image.</p>
 <blockquote>
@@ -447,12 +429,12 @@ $ sudo ./VBoxLinuxAdditions.run install
 </div></blockquote>
 <a class="reference internal image-reference" href="../../_images/ss24_vbox_install_guestadditions.png"><img alt="Install VirtualBox Guest Additions" class="align-center" src="../../_images/ss24_vbox_install_guestadditions.png" style="width: 1164.8px; height: 777.0px;" /></a>
 <p>Create a shared folder on the host.</p>
-<p>Select <strong>Devices -&gt; Shared Folders -&gt; Shared Folder Settings…</strong></p>
+<p>Select <strong>Devices -&gt; Shared Folders -&gt; Shared Folder Settings...</strong></p>
 <p>Click the <em>Add</em> icon on the right-hand side, select the <em>Folder</em> to use on the
 host machine and give it a name.</p>
-<p>Select “Auto-mount” to automatically link the folders at start-up and
-“Make Permanent” to create a machine folder and not a temporary folder.</p>
-<a class="reference internal image-reference" href="../../_images/ss25_shared_folder.png"><img alt="Configuring a Shared Folder" class="align-center" src="../../_images/ss25_shared_folder.png" style="width: 1073.8px; height: 677.6px;" /></a>
+<p>Select &#8220;Auto-mount&#8221; to automatically link the folders at start-up and
+&#8220;Make Permanent&#8221; to create a machine folder and not a temporary folder.</p>
+<a class="reference internal image-reference" href="../../_images/ss25_shared_folder.png"><img alt="Configuring a Shared Folder" class="align-center" src="../../_images/ss25_shared_folder.png" style="width: 1073.8px; height: 677.5999999999999px;" /></a>
 <p>Click <em>OK</em> to save the settings.</p>
 <p>Restart the Virtual Machine. The shared folder will be mounted at <code class="docutils literal"><span class="pre">/media/sf_share</span></code>.</p>
 <p>For easy folder access, add the current user to the vboxsf group:</p>
@@ -462,7 +444,7 @@ host machine and give it a name.</p>
 </div>
 </div></blockquote>
 <p>You may need to log out and in again for the changes to take effect.</p>
-<p>If you’d like to mount the folder manually, ensure that the “Auto-mount”
+<p>If you&#8217;d like to mount the folder manually, ensure that the &#8220;Auto-mount&#8221;
 setting is not selected. Then, create a folder in the virtual machine to use,
 for example <code class="docutils literal"><span class="pre">~/share</span></code>.</p>
 <blockquote>
@@ -472,16 +454,16 @@ $ sudo mount -t vboxsf share ~/share
 </pre></div>
 </div>
 </div></blockquote>
-<p>Where “share” is the name given to the folder during configuration,
-potentially matching the folder name on the host and “~/share” is the
+<p>Where &#8220;share&#8221; is the name given to the folder during configuration,
+potentially matching the folder name on the host and &#8220;~/share&#8221; is the
 location of the folder on the virtual machine.</p>
 <p>In this case, the gmto user does not need to be added to the vboxsf group to
 allow full access to the folder.</p>
 </div>
 <div class="section" id="troubleshooting">
-<h2>3.10. Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<h2>3.9. Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="logging-service">
-<h3>3.10.1. Logging Service<a class="headerlink" href="#logging-service" title="Permalink to this headline">¶</a></h3>
+<h3>3.9.1. Logging Service<a class="headerlink" href="#logging-service" title="Permalink to this headline">¶</a></h3>
 <p>If there is an issue starting the logging service, check that the mongo DB
 process is running and try to restart it.</p>
 <blockquote>
@@ -560,7 +542,7 @@ $ systemctl status -l mongod
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.3-9',
+            VERSION:'1.4-1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
