@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5.3.3.3. isample_ctrl_super.cpp &mdash; GMT Software And Controls documentation</title>
+  <title>isample_ctrl_super.cpp &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -26,28 +26,17 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../../../../../../_static/css/additional_style.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../../../../search.html"/>
-    <link rel="top" title="GMT Software And Controls documentation" href="../../../../../../../index.html"/>
-        <link rel="up" title="5.3.3. DCS Control Supervisor Files" href="../index.html"/>
-        <link rel="next" title="5.3.3.4. isample_ctrl_super_setup.cpp" href="isample_ctrl_super_setup.html"/>
-        <link rel="prev" title="5.3.3.2. isample_ctrl_super_msgpack.h" href="isample_ctrl_super_msgpack.html"/> 
+  <link rel="stylesheet" href="../../../../../../../_static/css/additional_style.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" /> 
 
   
   <script src="../../../../../../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -64,7 +53,7 @@
 
           
             
-            <img src="../../../../../../../_static/logowhite.png" class="logo" />
+            <img src="../../../../../../../_static/logowhite.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -96,34 +85,11 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../../release_notes/index.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../../SWC_architecture/index.html">Architecture and Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../../SWC_standards/index.html">Software and Controls Standards</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../../../../../index.html">Software Development</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../../../../installation.html">1. Installing the SDK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../../../upgrade.html">2. Upgrade</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../../../virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../../../isample_example.html">4. ISample Example</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../../../../../development.html">5. DCS Development</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../../../../../introduction/introduction.html">5.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../../specification/specification.html">5.2. DCS specification example: <em>isample_dcs</em></a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../../../../codegen.html">5.3. DCS code generation example: <em>isample_dcs</em></a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="../../../index.html">5.3.1. DCS Subsystem files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../index.html">5.3.2. DCS Control Package Files</a></li>
-<li class="toctree-l4 current"><a class="reference internal" href="../index.html">5.3.3. DCS Control Supervisor Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../isample_filter_wheel_ctrl/index.html">5.3.4. DCS Filter Wheel Controller Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../isample_hw_adapter/index.html">5.3.5. DCS Hardware Adapter Files</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../../../configuration.html">6. Developer Info and Release Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../../../services.html">7. Using the Services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../../../examples.html">8. Running Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../../../contribute.html">9. Contribute</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../index.html">Software Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../../data_products/index.html">Data Products</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../../glossary/swc_sys_glossary.html">Software and Controls Acronyms and Definitions</a></li>
 </ul>
@@ -137,7 +103,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../../../../index.html">GMT Software And Controls</a>
@@ -145,9 +111,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -170,15 +137,7 @@
     
       <li><a href="../../../../../../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../../../../../../index.html">Software Development</a> &raquo;</li>
-        
-          <li><a href="../../../../../../development.html">5. DCS Development</a> &raquo;</li>
-        
-          <li><a href="../../../../codegen.html">5.3. DCS code generation example: <em>isample_dcs</em></a> &raquo;</li>
-        
-          <li><a href="../index.html">5.3.3. DCS Control Supervisor Files</a> &raquo;</li>
-        
-      <li>5.3.3.3. <em>isample_ctrl_super.cpp</em></li>
+      <li><em>isample_ctrl_super.cpp</em></li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -196,11 +155,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="isample-ctrl-super-cpp">
-<span id="id1"></span><h1>5.3.3.3. <em>isample_ctrl_super.cpp</em><a class="headerlink" href="#isample-ctrl-super-cpp" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1><em>isample_ctrl_super.cpp</em><a class="headerlink" href="#isample-ctrl-super-cpp" title="Permalink to this headline">¶</a></h1>
 <p>This is the definition of the constructor and destructor methods.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 5.25 </span><span class="caption-text">Code: <em>isample_ctrl_super.cpp</em></span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;isample_ctrl_super.h&quot;</span><span class="cp"></span>
+<div class="code-block-caption"><span class="caption-text">Code: <em>isample_ctrl_super.cpp</em></span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;isample_ctrl_super.h&quot;</span><span class="cp"></span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">gmt</span><span class="p">;</span>
 
@@ -223,20 +182,9 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="isample_ctrl_super_setup.html" class="btn btn-neutral float-right" title="5.3.3.4. isample_ctrl_super_setup.cpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="isample_ctrl_super_msgpack.html" class="btn btn-neutral" title="5.3.3.2. isample_ctrl_super_msgpack.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -247,7 +195,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -266,6 +214,7 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../../../../',
             VERSION:'1.4-1',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -275,23 +224,17 @@
       <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../../../../../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../../../../../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

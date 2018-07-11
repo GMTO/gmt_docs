@@ -26,28 +26,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
-        <link rel="up" title="Data Products" href="index.html"/>
-        <link rel="next" title="2. Software and Controls FITS Keyword Dictionary" href="swc_sys_dp_kwd_dict.html"/>
-        <link rel="prev" title="Data Products" href="index.html"/> 
+  <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Software and Controls FITS Keyword Dictionary" href="swc_sys_dp_kwd_dict.html" />
+    <link rel="prev" title="Data Products" href="index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -64,7 +55,7 @@
 
           
             
-            <img src="../_static/logowhite.png" class="logo" />
+            <img src="../_static/logowhite.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -167,7 +158,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">GMT Software And Controls</a>
@@ -175,9 +166,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -238,9 +230,9 @@
 PHDU, of a FITS container.  This model creates an empty storage
 container.</dd>
 <dt>Format:</dt>
-<dd>Position attribute &#8216;pos&#8217; defines the order in the FITS header, where
+<dd>Position attribute ‘pos’ defines the order in the FITS header, where
 -1 is the last position, while 0 specifies no particular location.
-The last keyword in the header must be END, i.e. &#8216;pos: -1&#8217;.</dd>
+The last keyword in the header must be END, i.e. ‘pos: -1’.</dd>
 <dt>File:</dt>
 <dd>&lt;inst&gt;_phdu.fits</dd>
 </dl>
@@ -298,13 +290,13 @@ The last keyword in the header must be END, i.e. &#8216;pos: -1&#8217;.</dd>
 <dl class="docutils">
 <dt>Description:</dt>
 <dd>This is a basic model that defines an empty FITS storage container for
-an image extension.  This base &#8216;image&#8217; defines an area of 1024 columns
-and 1024 rows Position attribute &#8216;pos&#8217; defines the order in the FITS
+an image extension.  This base ‘image’ defines an area of 1024 columns
+and 1024 rows Position attribute ‘pos’ defines the order in the FITS
 header, where -1 is the last position, while 0 specifies no particular
 location.</dd>
 <dt>Format:</dt>
 <dd>The header keywords must follow the order shown, i.e. the first
-keyword must be XTENSION = &#8216;IMAGE   &#8216;, the second BITPIX = 16, and so
+keyword must be XTENSION = ‘IMAGE   ‘, the second BITPIX = 16, and so
 on.  The last keyword in the header must be END.</dd>
 <dt>File:</dt>
 <dd>&lt;inst&gt;_bimg.fits</dd>
@@ -390,14 +382,14 @@ on.  The last keyword in the header must be END.</dd>
 <dd>This is a basic model that defines an empty FITS storage container for
 an ASCII table extension.  An ASCII table can store catalogues and
 tables of data.  Each row of the table has a fixed length of ASCII
-characters, divided into columns by TBCOLn.  This base &#8216;table&#8217; defines
+characters, divided into columns by TBCOLn.  This base ‘table’ defines
 an area of ASCII text that has one column which is 80 characters wide
-and 100 rows deep. Position attribute &#8216;pos&#8217; defines the order in the
+and 100 rows deep. Position attribute ‘pos’ defines the order in the
 FITS header, where -1 is the last position, while 0 specifies no
 particular location.</dd>
 <dt>Format:</dt>
 <dd>The header keywords must follow the order shown, i.e. the first
-keyword must be XTENSION = &#8216;TABLE   &#8216;, the second BITPIX = 16, and so
+keyword must be XTENSION = ‘TABLE   ‘, the second BITPIX = 16, and so
 on.  The last keyword in the header must be END.</dd>
 <dt>File:</dt>
 <dd>&lt;inst&gt;_atbl.fits</dd>
@@ -496,14 +488,14 @@ on.  The last keyword in the header must be END.</dd>
 <dl class="docutils">
 <dt>Description:</dt>
 <dd>This is a basic model that defines an empty FITS storage container for
-an binary table extension.  This base &#8216;table&#8217; defines storage for 1
+an binary table extension.  This base ‘table’ defines storage for 1
 column and 100 rows of integers, where each row has 1024 bytes in
-width.  Position attribute &#8216;pos&#8217; defines the order in the FITS header,
+width.  Position attribute ‘pos’ defines the order in the FITS header,
 where -1 is the last position, while 0 specifies no particular
 location.</dd>
 <dt>Format:</dt>
 <dd>The header keywords must follow the order shown, i.e. the first
-keyword must be XTENSION = &#8216;BINTABLE&#8217;, the second BITPIX = 16, and so
+keyword must be XTENSION = ‘BINTABLE’, the second BITPIX = 16, and so
 on.  The last keyword in the header must be END.</dd>
 <dt>File:</dt>
 <dd>&lt;inst&gt;_btbl.fits</dd>
@@ -1761,8 +1753,8 @@ obtained with all light sources turned off, the detector shutter
 closed, and zero-second (or shortest possible) integration time.
 Usually, multiple (&gt;10) bias images are taken at the beginning and/or
 end of the night and combined into one image. The file for the
-combined bias frame has the &#8216;bia&#8217; suffix; pre-combined bias frames
-have a &#8216;raw&#8217; suffix.  The combined bias image is removed from the
+combined bias frame has the ‘bia’ suffix; pre-combined bias frames
+have a ‘raw’ suffix.  The combined bias image is removed from the
 science images, usually as the first step in the data reduction.</dd>
 <dt>Format:</dt>
 <dd>For both a single and multi-chip detector, the combined bias image is
@@ -2305,7 +2297,7 @@ combined flat; individual raw flatfield images have the “RAW” suffix.</p>
 <h3>1.5.5. Twilight Flat Field (TFL)<a class="headerlink" href="#twilight-flat-field-tfl" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>Description:</dt>
-<dd>A twilight sky-flat (or &#8216;twiflats&#8217;) is an image that records the
+<dd>A twilight sky-flat (or ‘twiflats’) is an image that records the
 pixel-to-pixel response of a detector using sky observations. Twiflats
 contain wavelength-dependent information about the uniformity of the
 detector response, and by definition are taken close to sunset or
@@ -2316,8 +2308,8 @@ flat is divided into the science images for calibration.</dd>
 <dt>Format:</dt>
 <dd>A combined twiflat image is stored as a multi-extension file for all
 optical/UV and NIR detectors, with only a single set of extension
-HDUs.  The suffix &#8216;TFL&#8217; is used only for combined flat; individual raw
-flatfield images have the &#8216;RAW&#8217; suffix.</dd>
+HDUs.  The suffix ‘TFL’ is used only for combined flat; individual raw
+flatfield images have the ‘RAW’ suffix.</dd>
 <dt>File:</dt>
 <dd>&lt;inst&gt;_tfl.fits</dd>
 </dl>
@@ -4592,7 +4584,7 @@ each aperture with respect to a nominated reference aperture.</dd>
 <dd>The columns consist of: Aperture ID, number of elements in the
 throughput array, wavelength array, array of system throughput at
 corresponding wavelength, pedigree (datestamp) of reference data, and
-description.  The suffix &#8216;APT&#8217; is used to denote the file type.</dd>
+description.  The suffix ‘APT’ is used to denote the file type.</dd>
 <dt>File:</dt>
 <dd>&lt;inst&gt;_apt.fits</dd>
 </dl>
@@ -4975,7 +4967,7 @@ dispersion directions might not necessarily be perfectly orthogonal,
 nor aligned with the detector pixel directions.</dd>
 <dt>Format:</dt>
 <dd>The 2-D lamp spectral image is stored as a multi-extension file. The
-suffix &#8216;WAV&#8217; is used to denote the file type.</dd>
+suffix ‘WAV’ is used to denote the file type.</dd>
 <dt>File:</dt>
 <dd>&lt;inst&gt;_wav.fits</dd>
 </dl>
@@ -5083,7 +5075,7 @@ are used to create template spectra or images, from which wavelength
 corrections can be determined, and wavelength solution determined.</dd>
 <dt>Format:</dt>
 <dd>The lamp spectral calibration table is stored as a multi-extension
-file.  The suffix &#8216;LMP&#8217; is used to denote the file type.</dd>
+file.  The suffix ‘LMP’ is used to denote the file type.</dd>
 <dt>File:</dt>
 <dd>&lt;inst&gt;_lmp.fits</dd>
 </dl>
@@ -5394,7 +5386,7 @@ reference position.</dd>
 <dd>Each row of the table contains the aperture name, size (length and
 width) of the aperture, offset from the center of aperture to the
 center of a reference (which is named in the header), and the
-orientation of the aperture&#8217;s y-axis relative to a coordinate system
+orientation of the aperture’s y-axis relative to a coordinate system
 that is fixed to the, ground, the telescope, or the instrument
 rotator, depending on the mounting location [TBD].</dd>
 <dt>File:</dt>
@@ -7297,9 +7289,7 @@ BKTCOEFF).</dd>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -7321,7 +7311,7 @@ BKTCOEFF).</dd>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -7340,6 +7330,7 @@ BKTCOEFF).</dd>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'1.4-1',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -7349,23 +7340,17 @@ BKTCOEFF).</dd>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

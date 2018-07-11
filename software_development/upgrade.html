@@ -26,28 +26,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
-        <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="3. Installing a Virtual Machine" href="virtual_machine/virtual_machine.html"/>
-        <link rel="prev" title="1.2.3.2. Mounting Home Directories using NFS" href="dev_environment/nfs_configuration.html"/> 
+  <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Installing a Virtual Machine" href="virtual_machine/virtual_machine.html" />
+    <link rel="prev" title="1.2.3.2. Mounting Home Directories using NFS" href="dev_environment/nfs_configuration.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -64,7 +55,7 @@
 
           
             
-            <img src="../_static/logowhite.png" class="logo" />
+            <img src="../_static/logowhite.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -115,11 +106,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="isample_example.html">4. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development.html">5. DCS Development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html">6. Developer Info and Release Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="services.html">7. Using the Services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html">8. Running Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contribute.html">9. Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html">5. Contribute</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -135,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">GMT Software And Controls</a>
@@ -143,9 +130,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -198,7 +186,7 @@
 <li>Uninstall existing GMT packages and all their dependencies</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf remove -y gmt* gmtx*
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dnf remove -y gmt* gmtx*
 </pre></div>
 </div>
 </div></blockquote>
@@ -208,10 +196,10 @@
 <p>Some required RPMs are built by GMTO and need to be downloaded from the GMTO Yum Repository, currently hosted on Amazon Web Services.</p>
 <p>Ensure that the GMT repositories are correctly configured:</p>
 <ol class="arabic simple">
-<li>Add the file <code class="docutils literal"><span class="pre">/etc/yum.repos.d/gmt.repo</span></code> with the following content:</li>
+<li>Add the file <code class="docutils literal notranslate"><span class="pre">/etc/yum.repos.d/gmt.repo</span></code> with the following content:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>gmt<span class="o">]</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>gmt<span class="o">]</span>
 <span class="nv">name</span><span class="o">=</span>GMT <span class="nv">$releasever</span> - <span class="nv">$basearch</span>
 <span class="nv">baseurl</span><span class="o">=</span>http://52.52.46.32/srv/gmt/yum/stable/<span class="nv">$releasever</span>/
 <span class="nv">gpgcheck</span><span class="o">=</span><span class="m">0</span>
@@ -220,10 +208,10 @@
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Add the file <code class="docutils literal"><span class="pre">/etc/yum.repos.d/gmt-updates.repo</span></code> with the following content:</li>
+<li>Add the file <code class="docutils literal notranslate"><span class="pre">/etc/yum.repos.d/gmt-updates.repo</span></code> with the following content:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>gmt-updates<span class="o">]</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>gmt-updates<span class="o">]</span>
 <span class="nv">name</span><span class="o">=</span>GMT <span class="nv">$releasever</span> - <span class="nv">$basearch</span> - Updates
 <span class="nv">baseurl</span><span class="o">=</span>http://52.52.46.32/srv/gmt/yum/updates/<span class="nv">$releasever</span>/
 <span class="nv">gpgcheck</span><span class="o">=</span><span class="m">0</span>
@@ -239,7 +227,7 @@
 <li>Install Common OS Utilities</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y xorg-x11-xauth urw-fonts wget net-tools pciutils
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install -y xorg-x11-xauth urw-fonts wget net-tools pciutils
 $ sudo dnf install -y strace rpl bash-completion sed
 </pre></div>
 </div>
@@ -248,7 +236,7 @@ $ sudo dnf install -y strace rpl bash-completion sed
 <li>Install Development Tools</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y autoconf automake cmake elfutils gcc gdb libtool
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install -y autoconf automake cmake elfutils gcc gdb libtool
 $ sudo dnf install -y cpp cscope ctags gc gcc-c++ gcc-gdb-plugin glibc-devel
 $ sudo dnf install -y glibc-headers kernel-headers libstdc++-devel
 $ sudo dnf install -y flex git libcurl-devel
@@ -260,7 +248,7 @@ $ sudo dnf install -y python3-sphinx python3-sphinx_rtd_theme
 <li>Install OCS Dependencies</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y rdma librdmacm-devel
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install -y rdma librdmacm-devel
 $ sudo dnf install -y boost-devel freeopcua freeopcua-devel
 </pre></div>
 </div>
@@ -272,7 +260,7 @@ $ sudo dnf install -y boost-devel freeopcua freeopcua-devel
 <li>Download and install <strong>Node version 8</strong></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sL https://rpm.nodesource.com/setup_8.x <span class="p">|</span> sudo bash -
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -sL https://rpm.nodesource.com/setup_8.x <span class="p">|</span> sudo bash -
 $ dnf install -y nodejs
 </pre></div>
 </div>
@@ -281,7 +269,7 @@ $ dnf install -y nodejs
 <li>Install necessary node packages:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install -g coffeescript webpack webpack-cli raw-loader
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ npm install -g coffeescript webpack webpack-cli raw-loader
 </pre></div>
 </div>
 </div></blockquote>
@@ -295,7 +283,7 @@ $ dnf install -y nodejs
 <li>Create the <strong>Global GMT Software Location</strong></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir /opt/gmt
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir /opt/gmt
 </pre></div>
 </div>
 </div></blockquote>
@@ -303,7 +291,7 @@ $ dnf install -y nodejs
 <li>Download the latest SDK distribution and install in the <strong>Global GMT Software Location</strong>:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget -P /opt/gmt http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.4-0.tar.gz
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget -P /opt/gmt http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.4-0.tar.gz
 $ <span class="nb">cd</span> /opt/gmt
 $ sudo tar -xvzf gmt-sdk-1.4.0.tar.gz
 </pre></div>
@@ -313,16 +301,16 @@ $ sudo tar -xvzf gmt-sdk-1.4.0.tar.gz
 <li>Create a <strong>Local Working Directory</strong></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir &lt;local_working_dir&gt;
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir &lt;local_working_dir&gt;
 </pre></div>
 </div>
 </div></blockquote>
-<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users&#8217; home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
 <ol class="arabic simple" start="4">
 <li>Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">GMT_GLOBAL</span><span class="o">=</span>/opt/gmt
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">GMT_GLOBAL</span><span class="o">=</span>/opt/gmt
 $ <span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>&lt;local_working_dir&gt;
 $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env.sh
 </pre></div>
@@ -333,7 +321,7 @@ $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env
 <li>Check the values of the environment variables:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ gmt_env
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt_env
 </pre></div>
 </div>
 </div></blockquote>
@@ -341,7 +329,7 @@ $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env
 <li>Initialize the Development Environment:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
 $ gds init
 </pre></div>
 </div>
@@ -353,9 +341,7 @@ $ gds init
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -377,7 +363,7 @@ $ gds init
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -396,6 +382,7 @@ $ gds init
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'1.4-1',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -405,23 +392,17 @@ $ gds init
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

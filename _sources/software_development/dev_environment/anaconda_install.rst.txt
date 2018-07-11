@@ -22,7 +22,7 @@ Ensure that all items listed are configured appropriately, ready for installatio
 5. **Installation Destination** - Select the appropriate drive for installation and whether to use the entire drive. Custom partitioning can be configured here as well. The default Partition Scheme to use is LVM. Ensure that the file system is set to ``ext4`` for the RT kernel to work.
 6. **Network Configuration** - At least one interface with internet access should be configured
 7. **Root Password** - Set a secure root password
-8. **User Creation** - Create the default user. The default user for a typical GMT development environment is ``gmto``. This user should have Administrator access. 
+8. **User Creation** - Create the default user. The default user for a typical GMT development environment is ``gmto``. This user should have Administrator access.
 
 .. warning::
   The real-time Linux kernel requires the root partition to be an **ext4** file system. Please ensure that this is configured correctly in the disk partitioning settings.

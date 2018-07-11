@@ -26,28 +26,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
-        <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="5. DCS Development" href="development.html"/>
-        <link rel="prev" title="3. Installing a Virtual Machine" href="virtual_machine/virtual_machine.html"/> 
+  <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Contribute" href="contribute.html" />
+    <link rel="prev" title="3. Installing a Virtual Machine" href="virtual_machine/virtual_machine.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -64,7 +55,7 @@
 
           
             
-            <img src="../_static/logowhite.png" class="logo" />
+            <img src="../_static/logowhite.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -123,14 +114,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#telemetry-service">4.8.3. Telemetry Service</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#sending-a-value-to-the-input-port">4.9. Sending a Value to the Input Port</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="development.html">5. DCS Development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html">6. Developer Info and Release Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="services.html">7. Using the Services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html">8. Running Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contribute.html">9. Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html">5. Contribute</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -146,7 +132,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">GMT Software And Controls</a>
@@ -154,9 +140,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -209,11 +196,11 @@ a template that instrument developers can use as a model.</p>
 <div class="section" id="clone-the-isample-dcs-repository">
 <h2>4.1. Clone the isample_dcs repository<a class="headerlink" href="#clone-the-isample-dcs-repository" title="Permalink to this headline">¶</a></h2>
 <p>On the development machine, clone the repository in the development folder:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules
 $ gds clone isample_dcs -d gmto
 </pre></div>
 </div>
-<p>where the <code class="docutils literal"><span class="pre">-d</span> <span class="pre">option</span></code> defines the git repository owner.</p>
+<p>where the <code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">option</span></code> defines the git repository owner.</p>
 </div>
 <div class="section" id="model-files">
 <h2>4.2. Model Files<a class="headerlink" href="#model-files" title="Permalink to this headline">¶</a></h2>
@@ -242,7 +229,7 @@ $ gds clone isample_dcs -d gmto
 <dt>isample_ctrl_pkg/isample_temp_ctrl.coffee</dt>
 <dd>Definition of the <em>Temperature Controller</em> component. State variables, input and output ports are specified here. Two instances, called <strong>isample_cryo_internal_temp_ctrl</strong> and <strong>isample_cryo_external_temp_ctrl</strong> will be created.</dd>
 </dl>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>  Control                   Internal                     Hardware
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  Control                   Internal                     Hardware
  Supervisor               Temp Control                    Adapter
 +--------------+         +-------------+             +---------------+
 <span class="p">|</span>              <span class="p">|</span>&lt;--------<span class="p">|</span>heartbeat    <span class="p">|</span>             <span class="p">|</span>               <span class="p">|</span>
@@ -298,7 +285,7 @@ $ gds clone isample_dcs -d gmto
 <div class="section" id="install-local-node-modules">
 <h2>4.3. Install local Node Modules<a class="headerlink" href="#install-local-node-modules" title="Permalink to this headline">¶</a></h2>
 <p>This is a temporary work-around for a known issue with Webpack. It only needs to be run once to install the node modules under $GMT_LOCAL.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
 $ cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
 $ npm install
 </pre></div>
@@ -307,14 +294,14 @@ $ npm install
 <div class="section" id="code-generation">
 <h2>4.4. Code Generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h2>
 <p>To generate the code skeleton from the model files, execute:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/model
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/model
 $ webpack
 $ gds gen isample_dcs
 </pre></div>
 </div>
 <p>This will generate the basic framework of source code and configuration files for each component. The files will be located in the <cite>src/</cite> folder.
 To see the generated folders and files, navigate to:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/
 $ ls -la
 </pre></div>
 </div>
@@ -369,7 +356,7 @@ $ ls -la
 </tbody>
 </table>
 </div></blockquote>
-<p><em>OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the &#8220;Range&#8221; column above.</em></p>
+<p><em>OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the “Range” column above.</em></p>
 </div>
 <div class="section" id="input-ports">
 <h3>4.5.2. Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h3>
@@ -412,7 +399,7 @@ $ ls -la
 </div></blockquote>
 <p>where the struct <cite>isample_motor_status</cite> is defined as:</p>
 <blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">isample_motor_status</span> <span class="p">{</span>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">isample_motor_status</span> <span class="p">{</span>
     <span class="kt">bool</span>             <span class="n">ready</span><span class="p">;</span>                   <span class="c1">// Axis Ready</span>
     <span class="kt">bool</span>             <span class="n">enabled</span><span class="p">;</span>                 <span class="c1">// Axis Enabled</span>
     <span class="kt">bool</span>             <span class="n">warning</span><span class="p">;</span>                 <span class="c1">// Axis Warning</span>
@@ -470,7 +457,7 @@ $ ls -la
 </div></blockquote>
 <p>where the struct <cite>isample_motor_control</cite> is defined as:</p>
 <blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">isample_motor_control</span> <span class="p">{</span>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">isample_motor_control</span> <span class="p">{</span>
     <span class="kt">bool</span>             <span class="n">enable</span><span class="p">;</span>                  <span class="c1">// Axis Enable</span>
     <span class="kt">bool</span>             <span class="n">reset</span><span class="p">;</span>                   <span class="c1">// Axis Reset</span>
     <span class="kt">int16_t</span>          <span class="n">velocity</span><span class="p">;</span>                <span class="c1">// Velocity</span>
@@ -481,7 +468,7 @@ $ ls -la
 </div></blockquote>
 <p>and the struct <cite>HeartBeatEvent</cite> is defined as:</p>
 <blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">HeartBeatEvent</span> <span class="p">{</span>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">HeartBeatEvent</span> <span class="p">{</span>
     <span class="k">struct</span> <span class="n">timeval</span>   <span class="n">timestamp</span><span class="p">;</span>               <span class="c1">// Time stamp</span>
     <span class="n">MSGPACK_DEFINE_MAP</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
 <span class="p">};</span>
@@ -497,11 +484,10 @@ has a periodic thread that reads input from the input ports, runs the step
 function and then writes output to the output ports. Initially, the generated
 step function will check whether the component is correctly configured and if
 so, will log the current step counter value.</p>
-<p>For more information, and in relation to a simpler example, see <a class="reference internal" href="examples.html#running-examples"><span class="std std-ref">Running Examples</span></a></p>
 <p>In the following examples we will replace the basic step functionality with
 simulated controller behavior.</p>
 <p>To edit the <em>Filter Wheel Controller</em> step file:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/cpp/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/cpp/
 $ <span class="nb">cd</span> isample_ctrl_pkg/isample_filter_wheel_ctrl
 $ vi isample_filter_wheel_ctrl_step.cpp
 </pre></div>
@@ -509,7 +495,7 @@ $ vi isample_filter_wheel_ctrl_step.cpp
 <p>The following example step function for the filter wheel controller validates
 positional input and immediately sets the position value to the new goal, if possible.</p>
 <blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">IsampleFilterWheelCtrl</span><span class="o">::</span><span class="n">step</span><span class="p">(</span><span class="kt">bool</span> <span class="n">setup_ok</span><span class="p">)</span> <span class="p">{</span>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">IsampleFilterWheelCtrl</span><span class="o">::</span><span class="n">step</span><span class="p">(</span><span class="kt">bool</span> <span class="n">setup_ok</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">setup_ok</span><span class="p">)</span> <span class="p">{</span>                     <span class="c1">// this will be executed only if port setup has been received</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">position_sv</span><span class="p">.</span><span class="n">goal</span> <span class="o">!=</span> <span class="n">position_sv</span><span class="p">.</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
@@ -539,17 +525,17 @@ positional input and immediately sets the position value to the new goal, if pos
 <div class="section" id="compilation">
 <h2>4.7. Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
 <p>To compile the C++ Control Package code, edit the module.mk file to contain the correct library definitions:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ vi <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/cpp/isample_ctrl_pkg/module.mk
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/cpp/isample_ctrl_pkg/module.mk
 </pre></div>
 </div>
 <p>Ensure that the following lines are defined:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Add in this file the compile flags for the package, eg:</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add in this file the compile flags for the package, eg:</span>
 <span class="nv">MOD_BUILD_LDFLAGS</span> <span class="o">+=</span> -lcore_core_pkg -lio_core_pkg -lctrl_core_pkg -lio_ethercat_pkg
 <span class="nv">MOD_BUILD_LDFLAGS</span> <span class="o">+=</span> -lethercat -lopcuacore -lopcuaclient
 </pre></div>
 </div>
 <p>Run <strong>make</strong> to compile the code:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/cpp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/cpp
 $ make
 </pre></div>
 </div>
@@ -557,12 +543,12 @@ $ make
 <div class="section" id="running-the-example">
 <h2>4.8. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h2>
 <p>Start the logging and telemetry services:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_server <span class="p">&amp;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ log_server <span class="p">&amp;</span>
 $ tele_server <span class="p">&amp;</span>
 </pre></div>
 </div>
 <p>Start the ISample Control Package application in the background</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ isample_ctrl_app <span class="p">&amp;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ isample_ctrl_app <span class="p">&amp;</span>
 </pre></div>
 </div>
 <p>The application is running in the background and will not provide any console output.
@@ -570,14 +556,14 @@ All output will be directed to the logging service after the components have bee
 <div class="section" id="log-service">
 <h3>4.8.1. Log Service<a class="headerlink" href="#log-service" title="Permalink to this headline">¶</a></h3>
 <p>In a separate terminal (for example, <cite>tty2</cite>), <strong>start the logging service client</strong>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_client
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ log_client
 </pre></div>
 </div>
 </div>
 <div class="section" id="component-setup">
 <h3>4.8.2. Component setup<a class="headerlink" href="#component-setup" title="Permalink to this headline">¶</a></h3>
 <p>In the first terminal (<cite>tty1</cite>), <strong>initialize all components</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/etc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/etc
 $ ./send_config.coffee
 </pre></div>
 </div>
@@ -587,73 +573,31 @@ that the expected components are logging step info.</p>
 <div class="section" id="telemetry-service">
 <h3>4.8.3. Telemetry Service<a class="headerlink" href="#telemetry-service" title="Permalink to this headline">¶</a></h3>
 <p>In a separate terminal (for example <cite>tty3</cite>), <strong>start the telemetry service client</strong>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ tele_client
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tele_client
 </pre></div>
 </div>
-<p>In this example, we use the topic <code class="docutils literal"><span class="pre">gmt</span></code> to show data for all monitors.
+<p>In this example, we don’t filter, to show data for all monitors.
 The output can be filtered on substrings of the monitor name by specifying the
-topic to be a specific component type (<code class="docutils literal"><span class="pre">filter_wheel_ctrl</span></code>) or an output port
-name, such as <code class="docutils literal"><span class="pre">position</span></code> or <code class="docutils literal"><span class="pre">heartbeat</span></code>.</p>
-<p>In the first terminal (<cite>tty1</cite>), <strong>start the monitors</strong> on all components by
-running <code class="docutils literal"><span class="pre">gds</span> <span class="pre">telemetry_service</span> <span class="pre">monitor</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds telemetry_service monitor -m runtime -e isample_ctrl_super
-$ gds telemetry_service monitor -m runtime -e isample_fw1_ctrl
-$ gds telemetry_service monitor -m runtime -e isample_fw2_ctrl
-$ gds telemetry_service monitor -m runtime -e isample_focus1_ctrl
-$ gds telemetry_service monitor -m runtime -e isample_cryo_external_temp_ctrl
-$ gds telemetry_service monitor -m runtime -e isample_cryo_internal_temp_ctrl
-$ gds telemetry_service monitor -m runtime -e isample_hw1_adapter
+topic to be a specific component type (<code class="docutils literal notranslate"><span class="pre">filter_wheel_ctrl</span></code>) or an output port
+name, such as <code class="docutils literal notranslate"><span class="pre">position</span></code> or <code class="docutils literal notranslate"><span class="pre">heartbeat</span></code>. For example,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tele_client --topic<span class="o">=</span>gmt://isample_dcs/isample_focus_ctrl/isample_focus1_ctrl/hmi_outputs
 </pre></div>
 </div>
-<p>Switch to the session running the logging service client (<cite>tty3</cite>), and confirm
-that the expected telemetry output is shown.</p>
-<p>A query can also be sent to the telemetry service:</p>
-<blockquote>
-<div><em>Usage:</em>  <code class="docutils literal"><span class="pre">gds</span> <span class="pre">telemetry_service</span> <span class="pre">query</span> <span class="pre">monitor_name</span> <span class="pre">num</span></code></div></blockquote>
-<p>For example, the following will list the last 12 positional values
-(from newest to oldest) for the <code class="docutils literal"><span class="pre">isample_fw1_ctrl</span></code> and <code class="docutils literal"><span class="pre">isample_fw2_ctrl</span></code> components:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds telemetry_service query gmt://isample_dcs/isample_filter_wheel_ctrl//position_value <span class="m">12</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">All telemetry queries have to be done using the full URI of the monitor, which can be seen when running a telemetry_service client, as described above. Note the two consecutive forward-slashes in the middle of the URI, indicating a missing instance ID. This is a known issue.</p>
-</div>
-</div>
-</div>
-<div class="section" id="sending-a-value-to-the-input-port">
-<h2>4.9. Sending a Value to the Input Port<a class="headerlink" href="#sending-a-value-to-the-input-port" title="Permalink to this headline">¶</a></h2>
-<p>In order to see the step function in action, we can write a value to an input port and see the component react to it.
-While using the step function defined above, run &#8216;gds send_value&#8217; with a port name and new value.</p>
-<p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds push_value position_goal <span class="m">23</span> -m runtime -e isample_fw1_ctrl
-</pre></div>
-</div>
-<p>where <strong>position_goal</strong> is the name of the input port, <strong>23</strong> is the new value to send and <strong>isample_fw1_ctrl</strong> is the component instance to send it to.</p>
-<p>The log client should show messages indicating that the component moved from its current position to the new goal value.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In this version, ISample includes the specification of a control package.
-All <a class="reference internal" href="../SWC_architecture/architecture/modules.html#table-control-packages"><span class="std std-ref">DCS Packages</span></a> follow the same development principles with the difference
-that the Component base classes add specialized interfaces (e.g. Controller vs Pipeline). The next
-incremental release of the GMT software will include examples of user interface
-and data processing packages.</p>
-</div>
+<p>will show only the values of the <code class="docutils literal notranslate"><span class="pre">hmi_outputs</span></code> monitor from <code class="docutils literal notranslate"><span class="pre">isample_focus1_ctrl</span></code>.</p>
 <p><a class="reference internal" href="#isample-example"><span class="std std-ref">[back to top]</span></a></p>
 </div>
 </div>
+</div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="development.html" class="btn btn-neutral float-right" title="5. DCS Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="contribute.html" class="btn btn-neutral float-right" title="5. Contribute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="virtual_machine/virtual_machine.html" class="btn btn-neutral" title="3. Installing a Virtual Machine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -669,7 +613,7 @@ and data processing packages.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -688,6 +632,7 @@ and data processing packages.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'1.4-1',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -697,23 +642,17 @@ and data processing packages.</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

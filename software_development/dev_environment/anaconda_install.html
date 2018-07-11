@@ -26,28 +26,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
-        <link rel="up" title="1. Installing the SDK" href="../installation.html"/>
-        <link rel="next" title="1.2.3.1. User Authentication using LDAP" href="ldap_configuration.html"/>
-        <link rel="prev" title="1.2.1.2. Booting the Installation" href="boot_installation.html"/> 
+  <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2.3.1. User Authentication using LDAP" href="ldap_configuration.html" />
+    <link rel="prev" title="1.2.1.2. Booting the Installation" href="boot_installation.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -64,7 +55,7 @@
 
           
             
-            <img src="../../_static/logowhite.png" class="logo" />
+            <img src="../../_static/logowhite.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -123,11 +114,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../isample_example.html">4. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development.html">5. DCS Development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../configuration.html">6. Developer Info and Release Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services.html">7. Using the Services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples.html">8. Running Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contribute.html">9. Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contribute.html">5. Contribute</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../data_products/index.html">Data Products</a></li>
@@ -143,7 +130,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">GMT Software And Controls</a>
@@ -151,9 +138,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -202,7 +190,7 @@
 <p>The installation for the Server version of Fedora may be completed using the Anaconda Installer in either Graphical or Text Mode. Full instructions can be found here: <a class="reference external" href="https://docs.fedoraproject.org/f26/install-guide/install/Installing_Using_Anaconda.html">https://docs.fedoraproject.org/f26/install-guide/install/Installing_Using_Anaconda.html</a></p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">To boot the installer in text mode, add the boot option <code class="docutils literal"><span class="pre">inst.text</span></code> to the command line boot menu and select option 2 (Use text mode) from the subsequent menu. Text mode has some limitations, such as not being able to select a custom partitioning scheme.</p>
+<p class="last">To boot the installer in text mode, add the boot option <code class="docutils literal notranslate"><span class="pre">inst.text</span></code> to the command line boot menu and select option 2 (Use text mode) from the subsequent menu. Text mode has some limitations, such as not being able to select a custom partitioning scheme.</p>
 </div>
 <p>Ensure that all items listed are configured appropriately, ready for installation.</p>
 <blockquote>
@@ -213,10 +201,10 @@
 <li><strong>Time settings</strong> - Select the appropriate Time Zone (for example America/Los_Angeles)</li>
 <li><strong>Installation source</strong> - Local media (CD/DVD)</li>
 <li><strong>Software Selection</strong> - Default packages are sufficient for now</li>
-<li><strong>Installation Destination</strong> - Select the appropriate drive for installation and whether to use the entire drive. Custom partitioning can be configured here as well. The default Partition Scheme to use is LVM. Ensure that the file system is set to <code class="docutils literal"><span class="pre">ext4</span></code> for the RT kernel to work.</li>
+<li><strong>Installation Destination</strong> - Select the appropriate drive for installation and whether to use the entire drive. Custom partitioning can be configured here as well. The default Partition Scheme to use is LVM. Ensure that the file system is set to <code class="docutils literal notranslate"><span class="pre">ext4</span></code> for the RT kernel to work.</li>
 <li><strong>Network Configuration</strong> - At least one interface with internet access should be configured</li>
 <li><strong>Root Password</strong> - Set a secure root password</li>
-<li><strong>User Creation</strong> - Create the default user. The default user for a typical GMT development environment is <code class="docutils literal"><span class="pre">gmto</span></code>. This user should have Administrator access.</li>
+<li><strong>User Creation</strong> - Create the default user. The default user for a typical GMT development environment is <code class="docutils literal notranslate"><span class="pre">gmto</span></code>. This user should have Administrator access.</li>
 </ol>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -224,7 +212,7 @@
 </div>
 <p>The following extract from the GMTO kickstart file shows settings used for automated PXE installs:</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># -- Installation Parameters ------------------------------------------------------</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- Installation Parameters ------------------------------------------------------</span>
 install                                       <span class="c1"># Install, instead of Upgrade</span>
 reboot                                        <span class="c1"># Reboot after installation</span>
 text                                          <span class="c1"># Use text mode install</span>
@@ -259,9 +247,7 @@ part / --label<span class="o">=</span>/ --fstype<span class="o">=</span>ext4 --g
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -283,7 +269,7 @@ part / --label<span class="o">=</span>/ --fstype<span class="o">=</span>ext4 --g
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -302,6 +288,7 @@ part / --label<span class="o">=</span>/ --fstype<span class="o">=</span>ext4 --g
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
             VERSION:'1.4-1',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -311,23 +298,17 @@ part / --label<span class="o">=</span>/ --fstype<span class="o">=</span>ext4 --g
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

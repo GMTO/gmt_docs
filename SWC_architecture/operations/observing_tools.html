@@ -26,28 +26,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
-        <link rel="up" title="4. Observatory Operation System" href="observatory_operations.html"/>
-        <link rel="next" title="4.6. Scheduling System" href="scheduling_system.html"/>
-        <link rel="prev" title="4.4. Operations User Interface" href="user_interface.html"/> 
+  <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.6. Scheduling System" href="scheduling_system.html" />
+    <link rel="prev" title="4.4. Operations User Interface" href="user_interface.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -64,7 +55,7 @@
 
           
             
-            <img src="../../_static/logowhite.png" class="logo" />
+            <img src="../../_static/logowhite.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -144,7 +135,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">GMT Software And Controls</a>
@@ -152,9 +143,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -372,14 +364,14 @@ context during the observation life cycle. The OT components provide the
 following capabilities:</p>
 <blockquote>
 <div><ul class="simple">
-<li><em>Model Synthesis</em> &#8211; Model synthesis consists of tools needed to generate
+<li><em>Model Synthesis</em> – Model synthesis consists of tools needed to generate
 models that feed into exposure time calculations for designing science
 observations, in all observing modes (GLAO, LTAO, and natural seeing), and
 with available instrument capabilities (direct imaging, long slit
 spectroscopy, IFU, multi-fiber / slit mask). Examples of existing tools
 include GALFIT <a class="reference internal" href="../bibliography/bibliography.html#peng10" id="id2">[Peng10]</a>, Synphot (STScI), Pysynphot, GALAXEV <a class="reference internal" href="../bibliography/bibliography.html#brch03" id="id3">[BrCh03]</a>,
 among many other packages and stellar libraries.</li>
-<li><em>Astronomy Source Catalog Database</em> &#8211; The GMT astronomical sources catalog
+<li><em>Astronomy Source Catalog Database</em> – The GMT astronomical sources catalog
 contains information (e.g., names, positions, and proper motions, radial
 velocities, redshifts, photometry) of stars, galaxies, asteroids, star
 clusters, gamma ray bursts, etc. The catalogs are merged from multiple
@@ -400,7 +392,7 @@ where the galaxy names are assigned by the surveys, hence are not recognized
 by the IAU, or do not exist in any formal catalogs. Those objects may be
 stored for posterity, or temporarily within an user’s work area, or
 incorporated into the main system.</li>
-<li><em>Sky Calculator</em> &#8211; The sky calculator computes the location of celestial
+<li><em>Sky Calculator</em> – The sky calculator computes the location of celestial
 objects at any given moment in time. The purpose of the sky calculator is to
 know how to register different coordinate systems (celestial, instrumental)
 into a common reference frame, allowing it to also compute the location and
@@ -415,24 +407,24 @@ tcspk <a class="reference internal" href="../bibliography/bibliography.html#wall
 source and Python-based tools are available for computing ephemerides, sky
 coordinate transformations, the World Coordinate System (WCS), including
 PyEphem, EphemPy, pywcs, etc.</li>
-<li><em>Overhead Time Calculator</em> &#8211; The overhead time calculator estimates the
+<li><em>Overhead Time Calculator</em> – The overhead time calculator estimates the
 overhead of certain observing component or sequences, such as telescope
 move, target acquisition, AO guide star selection and lock, detector
 readouts, etc.  This calculator will be a custom tool built for GMT
 operations.</li>
-<li><em>Airmass Calculator</em> &#8211; Given the RA and DEC of a list of objects, their
+<li><em>Airmass Calculator</em> – Given the RA and DEC of a list of objects, their
 proper motion, the time of the day and year, the location and altitude at
 the location of an observer, the airmass calculator computes the airmass of
 the object at a specified moment in time. Many existing airmass calculators
 are available on-line, including Skycalc (John Thorstensen), as well as
 subroutines in SLALIB.</li>
-<li><em>Asterism Facility</em> &#8211; Given an image the asterism finder automatically
+<li><em>Asterism Facility</em> – Given an image the asterism finder automatically
 determines asterisms from stars and galaxies, and then correlates them with
 positions of objects in the database to determine the celestial coordinate
 at the center of the image, as well as the coordinates of all the sources
 detected in the image. An example of an open-source astrometry tool is
 <a class="reference external" href="http://astrometry.net/">Astrometry.net</a> <a class="reference internal" href="../bibliography/bibliography.html#lang10" id="id6">[Lang10]</a>.</li>
-<li><em>Guide Star Finder</em> &#8211; Given the position and color of a science target or
+<li><em>Guide Star Finder</em> – Given the position and color of a science target or
 telescope pointing, the guide star finder searches through GMTO star
 catalogs for bright stars that are suitable to be used as telescope and AO
 guide stars.  A desirable feature is to allow users to update discoveries of
@@ -442,7 +434,7 @@ well as LTAO guide stars to achieve an appropriate Strehl requirement. The
 guide star finder takes into account restrictions due to vignetting by
 telescope optics, and for non-sidereal targets when the guide stars move
 into and out of the patrol range of the AGWS and NGS WFS.</li>
-<li><em>Object Observability</em> &#8211; Object observability window calculator estimates
+<li><em>Object Observability</em> – Object observability window calculator estimates
 when and for how long an object can be observed, restricted by criteria from
 the user, such as airmass, proximity to the moon, sky brightness (due to
 sunrise, sunset, and moon conditions), as well as proximity to AO guide
@@ -450,34 +442,34 @@ stars for non-sidereal targets due to target motion, and other instrument
 restrictions, e.g., guide star vignetting. An example of a publicly
 available ephemeris tool for calculating sun, moon, and planet, positions is
 a Python tool called PyEphem.</li>
-<li><em>Positional Astronomy Facility</em> &#8211; The positional astronomy facility is
+<li><em>Positional Astronomy Facility</em> – The positional astronomy facility is
 designed around SLALIB35, which performs spherical trigonometry, coordinate
 and time transformations that account for Earth axis precession, nutation,
 etc.</li>
-<li><em>Mosaic Creation</em> &#8211; Given a set of images, the mosaic creation tool places
+<li><em>Mosaic Creation</em> – Given a set of images, the mosaic creation tool places
 those images into a common coordinate system using either WCS, asterisms in
 overlap regions, coordinate list of stars in images, etc. There are many
 generic software libraries, tools, and analysis environments, available for
 creating image mosaics, including those in IRAF, Pyraf, alipy, and
 Montage-Wrapper, which is a wrapper to the open source mosaic engine called
 Montage (<a class="reference external" href="http://montage.ipac.caltech.edu/">http://montage.ipac.caltech.edu/</a>).</li>
-<li><em>Model Database</em> &#8211; To aid in exposure time calculations, the SWCS maintains
+<li><em>Model Database</em> – To aid in exposure time calculations, the SWCS maintains
 a database of image and spectroscopy models that may be commonly used by
 observers. Image models include galaxies of different types, gravitational
 lenses, proto-stellar or proto-planetary discs, stars of different Strehl,
 etc. Spectroscopy models include galaxy, quasars, supernovae, stars, quasar
 absorption lines, etc. The model database can grow and be searched as users
 input their own models into the system.</li>
-<li><em>AO PSF Simulator</em> &#8211; The AO PSF generator creates PSFs based on inputs
+<li><em>AO PSF Simulator</em> – The AO PSF generator creates PSFs based on inputs
 specifying atmospheric seeing conditions, the brightness of an AO guide
 star, and the AO mode in use (natural seeing, LTAO, GLAO), at the location
 of the science target(s).</li>
-<li><em>Spectroscopy Mask Facility</em> &#8211; The spectroscopy mask algorithm computes
+<li><em>Spectroscopy Mask Facility</em> – The spectroscopy mask algorithm computes
 geometric transforms needed to map 2-D spectra onto detector focal planes
 from on-sky coordinates, accounting for parallactic angle. This is used help
 users visualize the placement of the spectrum / spectra on the detectors
 during observational planning phases.</li>
-<li><em>Observing Data Management</em> &#8211; The observing data management tool is a
+<li><em>Observing Data Management</em> – The observing data management tool is a
 database storing telescope proposals, observing programs, observing
 configurations, instrument definitions, observing blocks, observing
 sequences, etc., which are necessary to define observations and to
@@ -786,9 +778,7 @@ periphery indicates incoming direction.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -810,7 +800,7 @@ periphery indicates incoming direction.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -829,6 +819,7 @@ periphery indicates incoming direction.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
             VERSION:'1.4-1',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -838,23 +829,17 @@ periphery indicates incoming direction.</p>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
