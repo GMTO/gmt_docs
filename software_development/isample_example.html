@@ -39,7 +39,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="5. DCS Development" href="development.html"/>
+        <link rel="next" title="5. Contribute" href="contribute.html"/>
         <link rel="prev" title="3. Installing a Virtual Machine" href="virtual_machine/virtual_machine.html"/> 
 
   
@@ -123,14 +123,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#telemetry-service">4.8.3. Telemetry Service</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#sending-a-value-to-the-input-port">4.9. Sending a Value to the Input Port</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="development.html">5. DCS Development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html">6. Developer Info and Release Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="services.html">7. Using the Services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html">8. Running Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contribute.html">9. Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html">5. Contribute</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -369,7 +364,7 @@ $ ls -la
 </tbody>
 </table>
 </div></blockquote>
-<p><em>OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the &#8220;Range&#8221; column above.</em></p>
+<p><em>OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the “Range” column above.</em></p>
 </div>
 <div class="section" id="input-ports">
 <h3>4.5.2. Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h3>
@@ -497,7 +492,6 @@ has a periodic thread that reads input from the input ports, runs the step
 function and then writes output to the output ports. Initially, the generated
 step function will check whether the component is correctly configured and if
 so, will log the current step counter value.</p>
-<p>For more information, and in relation to a simpler example, see <a class="reference internal" href="examples.html#running-examples"><span class="std std-ref">Running Examples</span></a></p>
 <p>In the following examples we will replace the basic step functionality with
 simulated controller behavior.</p>
 <p>To edit the <em>Filter Wheel Controller</em> step file:</p>
@@ -590,56 +584,16 @@ that the expected components are logging step info.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ tele_client
 </pre></div>
 </div>
-<p>In this example, we use the topic <code class="docutils literal"><span class="pre">gmt</span></code> to show data for all monitors.
+<p>In this example, we don’t filter, to show data for all monitors.
 The output can be filtered on substrings of the monitor name by specifying the
 topic to be a specific component type (<code class="docutils literal"><span class="pre">filter_wheel_ctrl</span></code>) or an output port
-name, such as <code class="docutils literal"><span class="pre">position</span></code> or <code class="docutils literal"><span class="pre">heartbeat</span></code>.</p>
-<p>In the first terminal (<cite>tty1</cite>), <strong>start the monitors</strong> on all components by
-running <code class="docutils literal"><span class="pre">gds</span> <span class="pre">telemetry_service</span> <span class="pre">monitor</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds telemetry_service monitor -m runtime -e isample_ctrl_super
-$ gds telemetry_service monitor -m runtime -e isample_fw1_ctrl
-$ gds telemetry_service monitor -m runtime -e isample_fw2_ctrl
-$ gds telemetry_service monitor -m runtime -e isample_focus1_ctrl
-$ gds telemetry_service monitor -m runtime -e isample_cryo_external_temp_ctrl
-$ gds telemetry_service monitor -m runtime -e isample_cryo_internal_temp_ctrl
-$ gds telemetry_service monitor -m runtime -e isample_hw1_adapter
+name, such as <code class="docutils literal"><span class="pre">position</span></code> or <code class="docutils literal"><span class="pre">heartbeat</span></code>. For example,</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>tele_client --topic<span class="o">=</span>gmt://isample_dcs/isample_focus_ctrl/isample_focus1_ctrl/hmi_outputs
 </pre></div>
 </div>
-<p>Switch to the session running the logging service client (<cite>tty3</cite>), and confirm
-that the expected telemetry output is shown.</p>
-<p>A query can also be sent to the telemetry service:</p>
-<blockquote>
-<div><em>Usage:</em>  <code class="docutils literal"><span class="pre">gds</span> <span class="pre">telemetry_service</span> <span class="pre">query</span> <span class="pre">monitor_name</span> <span class="pre">num</span></code></div></blockquote>
-<p>For example, the following will list the last 12 positional values
-(from newest to oldest) for the <code class="docutils literal"><span class="pre">isample_fw1_ctrl</span></code> and <code class="docutils literal"><span class="pre">isample_fw2_ctrl</span></code> components:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds telemetry_service query gmt://isample_dcs/isample_filter_wheel_ctrl//position_value <span class="m">12</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">All telemetry queries have to be done using the full URI of the monitor, which can be seen when running a telemetry_service client, as described above. Note the two consecutive forward-slashes in the middle of the URI, indicating a missing instance ID. This is a known issue.</p>
-</div>
-</div>
-</div>
-<div class="section" id="sending-a-value-to-the-input-port">
-<h2>4.9. Sending a Value to the Input Port<a class="headerlink" href="#sending-a-value-to-the-input-port" title="Permalink to this headline">¶</a></h2>
-<p>In order to see the step function in action, we can write a value to an input port and see the component react to it.
-While using the step function defined above, run &#8216;gds send_value&#8217; with a port name and new value.</p>
-<p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds push_value position_goal <span class="m">23</span> -m runtime -e isample_fw1_ctrl
-</pre></div>
-</div>
-<p>where <strong>position_goal</strong> is the name of the input port, <strong>23</strong> is the new value to send and <strong>isample_fw1_ctrl</strong> is the component instance to send it to.</p>
-<p>The log client should show messages indicating that the component moved from its current position to the new goal value.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In this version, ISample includes the specification of a control package.
-All <a class="reference internal" href="../SWC_architecture/architecture/modules.html#table-control-packages"><span class="std std-ref">DCS Packages</span></a> follow the same development principles with the difference
-that the Component base classes add specialized interfaces (e.g. Controller vs Pipeline). The next
-incremental release of the GMT software will include examples of user interface
-and data processing packages.</p>
-</div>
+<p>will show only the values of the <code class="docutils literal"><span class="pre">hmi_outputs</span></code> monitor from <code class="docutils literal"><span class="pre">isample_focus1_ctrl</span></code>.</p>
 <p><a class="reference internal" href="#isample-example"><span class="std std-ref">[back to top]</span></a></p>
+</div>
 </div>
 </div>
 
@@ -653,7 +607,7 @@ and data processing packages.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="development.html" class="btn btn-neutral float-right" title="5. DCS Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="contribute.html" class="btn btn-neutral float-right" title="5. Contribute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="virtual_machine/virtual_machine.html" class="btn btn-neutral" title="3. Installing a Virtual Machine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -246,8 +246,6 @@ function and then writes output to the output ports. Initially, the generated
 step function will check whether the component is correctly configured and if
 so, will log the current step counter value.
 
-For more information, and in relation to a simpler example, see :ref:`Running Examples <running_examples>`
-
 In the following examples we will replace the basic step functionality with
 simulated controller behavior.
 
@@ -374,41 +372,5 @@ name, such as ``position`` or ``heartbeat``. For example,
 will show only the values of the ``hmi_outputs`` monitor from ``isample_focus1_ctrl``.
 
 
-A query can also be sent to the telemetry service:
-
-  *Usage:*  ``gds telemetry_service query monitor_name num``
-
-For example, the following will list the last 12 positional values
-(from newest to oldest) for the ``isample_fw1_ctrl`` and ``isample_fw2_ctrl`` components:
-
-.. code-block:: bash
-
-  $ gds telemetry_service query gmt://isample_dcs/isample_filter_wheel_ctrl//position_value 12
-
-.. note::
-  All telemetry queries have to be done using the full URI of the monitor, which can be seen when running a telemetry_service client, as described above. Note the two consecutive forward-slashes in the middle of the URI, indicating a missing instance ID. This is a known issue.
-
-Sending a Value to the Input Port
----------------------------------
-In order to see the step function in action, we can write a value to an input port and see the component react to it.
-While using the step function defined above, run 'gds send_value' with a port name and new value.
-
-For example:
-
-.. code-block:: bash
-
-   $ gds push_value position_goal 23 -m runtime -e isample_fw1_ctrl
-
-where **position_goal** is the name of the input port, **23** is the new value to send and **isample_fw1_ctrl** is the component instance to send it to.
-
-The log client should show messages indicating that the component moved from its current position to the new goal value.
-
-.. note::
-
-  In this version, ISample includes the specification of a control package.
-  All :ref:`DCS Packages <table-control_packages>` follow the same development principles with the difference
-  that the Component base classes add specialized interfaces (e.g. Controller vs Pipeline). The next
-  incremental release of the GMT software will include examples of user interface
-  and data processing packages.
 
 :ref:`[back to top] <isample_example>`

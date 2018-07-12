@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6. Developer Info and Release Configuration &mdash; GMT Software And Controls documentation</title>
+  <title>Developer Info and Release Configuration &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -37,10 +37,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
-        <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="7. Using the Services" href="services.html"/>
-        <link rel="prev" title="5.3.5.8. module.mk" href="development/codegen/isample_dcs/isample_ctrl_pkg/isample_hw_adapter/docs/module.html"/> 
+    <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -96,29 +93,11 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SWC_architecture/index.html">Architecture and Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SWC_standards/index.html">Software and Controls Standards</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software Development</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">1. Installing the SDK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="isample_example.html">4. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development.html">5. DCS Development</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">6. Developer Info and Release Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#services-configuration">6.1. Services Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#databases-and-logs">6.2. Databases and Logs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#firewall-and-network-ports">6.3. Firewall and Network Ports</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#uris-and-urls">6.4. URIs and URLs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#environment-vars">6.5. Environment vars</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="services.html">7. Using the Services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html">8. Running Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contribute.html">9. Contribute</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Software Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary/swc_sys_glossary.html">Software and Controls Acronyms and Definitions</a></li>
 </ul>
@@ -165,9 +144,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Software Development</a> &raquo;</li>
-        
-      <li>6. Developer Info and Release Configuration</li>
+      <li>Developer Info and Release Configuration</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -185,7 +162,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="developer-info-and-release-configuration">
-<h1>6. Developer Info and Release Configuration<a class="headerlink" href="#developer-info-and-release-configuration" title="Permalink to this headline">¶</a></h1>
+<h1>Developer Info and Release Configuration<a class="headerlink" href="#developer-info-and-release-configuration" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If the installation is done via the USB drive, one can bypass the manual setup
@@ -207,7 +184,7 @@ and telemetry, are essential for controlling hardware and software.  The logging
 service uses <em>mongoDB</em> as the backend database, with each service having its
 own, independent, database.</p>
 <div class="section" id="services-configuration">
-<h2>6.1. Services Configuration<a class="headerlink" href="#services-configuration" title="Permalink to this headline">¶</a></h2>
+<h2>Services Configuration<a class="headerlink" href="#services-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Currently we use only one unique server per service. Each server is a distributed component with the following ports:</p>
 <ul class="simple">
 <li>one port to receive data (logs, monitored values, etc) from external distributed components</li>
@@ -239,7 +216,7 @@ This variable is only required for the C++ components.</p>
 </div>
 </div>
 <div class="section" id="databases-and-logs">
-<h2>6.2. Databases and Logs<a class="headerlink" href="#databases-and-logs" title="Permalink to this headline">¶</a></h2>
+<h2>Databases and Logs<a class="headerlink" href="#databases-and-logs" title="Permalink to this headline">¶</a></h2>
 <p>The Data Archive uses <em>mongoDB</em> as backend data base. Each service keeps an
 independent database.</p>
 <p>Each service daemon stores output and error messages on <cite>${GMT_ROOT}/var/log</cite>,
@@ -250,10 +227,10 @@ test environment, placing the log files in <cite>/var/log</cite>.</p>
 checking their status</p>
 </div>
 <div class="section" id="firewall-and-network-ports">
-<h2>6.3. Firewall and Network Ports<a class="headerlink" href="#firewall-and-network-ports" title="Permalink to this headline">¶</a></h2>
+<h2>Firewall and Network Ports<a class="headerlink" href="#firewall-and-network-ports" title="Permalink to this headline">¶</a></h2>
 <p>The GMT software is networked system. The following instructions assume that the
 used ports are open for tcp/udp communications.  With root/admin permissions
-it&#8217;s possible to disable the whole firewall or specific ports can be open like
+it’s possible to disable the whole firewall or specific ports can be open like
 this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo firewall-cmd --add-port=$PORT/tcp --permanent --zone=public
 $ sudo firewall-cmd --add-port=$PORT/udp --permanent --zone=public
@@ -261,7 +238,7 @@ $ sudo firewall-cmd --add-port=$PORT/udp --permanent --zone=public
 </div>
 </div>
 <div class="section" id="uris-and-urls">
-<h2>6.4. URIs and URLs<a class="headerlink" href="#uris-and-urls" title="Permalink to this headline">¶</a></h2>
+<h2>URIs and URLs<a class="headerlink" href="#uris-and-urls" title="Permalink to this headline">¶</a></h2>
 <p>GMT Components use an unique URI in the following scheme</p>
 <blockquote>
 <div><em>Usage:</em> <code class="docutils literal"><span class="pre">gmt://subsystem/component:port</span></code></div></blockquote>
@@ -279,7 +256,7 @@ Example:</p>
 </div>
 </div>
 <div class="section" id="environment-vars">
-<h2>6.5. Environment vars<a class="headerlink" href="#environment-vars" title="Permalink to this headline">¶</a></h2>
+<h2>Environment vars<a class="headerlink" href="#environment-vars" title="Permalink to this headline">¶</a></h2>
 <p>Some UNIX environment variables are required and they should be automatically applied. See this file:</p>
 <blockquote>
 <div><cite>${GMT_ROOT}/etc/gmt_env_vars</cite></div></blockquote>
@@ -293,15 +270,6 @@ Example:</p>
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="services.html" class="btn btn-neutral float-right" title="7. Using the Services" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="development/codegen/isample_dcs/isample_ctrl_pkg/isample_hw_adapter/docs/module.html" class="btn btn-neutral" title="5.3.5.8. module.mk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

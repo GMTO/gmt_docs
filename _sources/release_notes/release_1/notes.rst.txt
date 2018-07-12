@@ -52,6 +52,12 @@ Contents of release 1.4
   - ``Installing a Virtual Machine`` page changed with instructions and images for installing a standard Fedora server instead of a distributed GMT iso file.
   - ``ISample Example`` page updated to reflect new Development Procedure using the SDK.
 
+- Known Issues
+
+  - A new implementation of the EtherCAT IO framework is included and has some stability problems while loading the fieldbus configuration.
+  - The persistent functionality of the core services has been revised and it is disabled in this release.
+  - The project is working in the known issues and the release will be updated once a patch is available.
+
 Follow the :ref:`upgrade procedure <upgrade>`.
 
 Contents of release 1.3

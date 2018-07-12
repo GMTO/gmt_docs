@@ -52,10 +52,6 @@ The SDK is currently configured to run on the **Fedora 26 Server** Linux Operati
        dev_environment/boot_installation
        dev_environment/anaconda_install
 
-.. note::
-
-  Future versions of the SDK could include support for CentOS, RHEL, Scientific Linux and/or MacOS. Fedora has a very short release and support cycle (6 months and 18 months respectively), which is not ideal for a platform that requires significant stability over long periods of time.
-
 Repository Configuration
 ........................
 

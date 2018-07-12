@@ -123,11 +123,7 @@
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="isample_example.html">4. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="development.html">5. DCS Development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html">6. Developer Info and Release Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="services.html">7. Using the Services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html">8. Running Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contribute.html">9. Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html">5. Contribute</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -250,10 +246,6 @@
 </div>
 </div></blockquote>
 </div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Future versions of the SDK could include support for CentOS, RHEL, Scientific Linux and/or MacOS. Fedora has a very short release and support cycle (6 months and 18 months respectively), which is not ideal for a platform that requires significant stability over long periods of time.</p>
-</div>
 </div>
 <div class="section" id="repository-configuration">
 <h3>1.2.2. Repository Configuration<a class="headerlink" href="#repository-configuration" title="Permalink to this headline">¶</a></h3>
@@ -488,7 +480,7 @@ $ systemctl start ethercat
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="7">
-<li>Reboot into the RT Kernel if you&#8217;re not in it already.</li>
+<li>Reboot into the RT Kernel if you’re not in it already.</li>
 <li>Test the Ethercat configuration</li>
 </ol>
 <blockquote>
@@ -497,7 +489,7 @@ $ ethercat slaves
 </pre></div>
 </div>
 </div></blockquote>
-<p>If the &#8220;ethercat master&#8221; command does not produce the correct output, ensure that you&#8217;re currently running the real-time kernel. If the &#8220;ethercat slaves&#8221; command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
+<p>If the “ethercat master” command does not produce the correct output, ensure that you’re currently running the real-time kernel. If the “ethercat slaves” command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
 </div>
 <div class="section" id="real-time-configuration-optional">
 <h3>1.2.9. Real-time Configuration (optional)<a class="headerlink" href="#real-time-configuration-optional" title="Permalink to this headline">¶</a></h3>
@@ -511,7 +503,7 @@ $ ethercat slaves
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Add a new group and add the &#8220;gmto&#8221; user to it.</li>
+<li>Add a new group and add the “gmto” user to it.</li>
 </ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ groupadd -f -g <span class="m">2001</span> realtime
@@ -628,7 +620,7 @@ $ sudo tar -xvzf gmt-sdk-1.4.0.tar.gz
 </pre></div>
 </div>
 </div></blockquote>
-<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users&#8217; home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
+<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
 <ol class="arabic simple" start="4">
 <li>Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)</li>
 </ol>
