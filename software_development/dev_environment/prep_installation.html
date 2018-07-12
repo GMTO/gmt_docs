@@ -26,19 +26,28 @@
 
   
 
-  <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.2.1.2. Booting the Installation" href="boot_installation.html" />
-    <link rel="prev" title="1. Installing the SDK" href="../installation.html" /> 
+  
+  
+    <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
+        <link rel="up" title="1. Installing the SDK" href="../installation.html"/>
+        <link rel="next" title="1.2.1.2. Booting the Installation" href="boot_installation.html"/>
+        <link rel="prev" title="1. Installing the SDK" href="../installation.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -55,7 +64,7 @@
 
           
             
-            <img src="../../_static/logowhite.png" class="logo" alt="Logo"/>
+            <img src="../../_static/logowhite.png" class="logo" />
           
           </a>
 
@@ -130,7 +139,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">GMT Software And Controls</a>
@@ -138,10 +147,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -194,18 +202,18 @@
 <p class="first admonition-title">Warning</p>
 <ul class="last simple">
 <li>The USB drive needs a minimum capacity of 3GB</li>
-<li>Ensure that you properly identify the <code class="docutils literal notranslate"><span class="pre">device</span></code> assigned to the USB drive</li>
+<li>Ensure that you properly identify the <code class="docutils literal"><span class="pre">device</span></code> assigned to the USB drive</li>
 <li>The entire USB drive will be erased!</li>
 </ul>
 </div>
-<p>OSX - with a drive on <code class="docutils literal notranslate"><span class="pre">/dev/disk2</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ diskutil list
+<p>OSX - with a drive on <code class="docutils literal"><span class="pre">/dev/disk2</span></code></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ diskutil list
 $ sudo diskutil unmountDisk /dev/disk2
 $ sudo dd <span class="nv">bs</span><span class="o">=</span>4m <span class="k">if</span><span class="o">=</span>Fedora-Server-dvd-x86_64-26-1.5.iso <span class="nv">of</span><span class="o">=</span>/dev/rdisk2
 </pre></div>
 </div>
-<p>Linux - with a drive on <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo umount /dev/sdb*
+<p>Linux - with a drive on <code class="docutils literal"><span class="pre">/dev/sdb</span></code></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo umount /dev/sdb*
 $ sudo dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">if</span><span class="o">=</span>Fedora-Server-dvd-x86_64-26-1.5.iso <span class="nv">of</span><span class="o">=</span>/dev/sdb
 </pre></div>
 </div>
@@ -215,7 +223,9 @@ $ sudo dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">i
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -237,7 +247,7 @@ $ sudo dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">i
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -256,7 +266,6 @@ $ sudo dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">i
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
             VERSION:'1.4-1',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -266,17 +275,23 @@ $ sudo dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">i
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

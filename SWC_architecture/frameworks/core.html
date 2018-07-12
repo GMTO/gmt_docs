@@ -26,19 +26,28 @@
 
   
 
-  <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.4. Device Control Framework" href="device_control.html" />
-    <link rel="prev" title="7.2. Framework Usage / Code Generation" href="code_generation.html" /> 
+  
+  
+    <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
+        <link rel="up" title="7. Frameworks" href="component_frameworks.html"/>
+        <link rel="next" title="7.4. Device Control Framework" href="device_control.html"/>
+        <link rel="prev" title="7.2. Framework Usage / Code Generation" href="code_generation.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -55,7 +64,7 @@
 
           
             
-            <img src="../../_static/logowhite.png" class="logo" alt="Logo"/>
+            <img src="../../_static/logowhite.png" class="logo" />
           
           </a>
 
@@ -133,7 +142,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">GMT Software And Controls</a>
@@ -141,10 +150,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -330,7 +338,7 @@ addresses cross-cutting concerns by providing features to interface
 <a class="reference internal" href="../services/architecture.html#section-service-adapters"><span class="std std-ref">Service Adapters</span></a>.  When a new component extends
 the <em>BaseComponent</em> class it gains access to all the observatory services
 through a small set of inherited methods.</p>
-<div class="highlight-coffeescript notranslate" id="code-property"><div class="highlight"><pre><span></span><span class="nx">MKlass</span> <span class="s">&quot;Property&quot;</span><span class="p">,</span>
+<div class="highlight-coffeescript" id="code-property"><div class="highlight"><pre><span></span><span class="nx">MKlass</span> <span class="s">&quot;Property&quot;</span><span class="p">,</span>
     <span class="k">extends</span><span class="o">:</span>    <span class="p">[</span><span class="s">&quot;Port&quot;</span><span class="p">]</span>
     <span class="nv">abstract: </span>  <span class="kc">false</span>
     <span class="nv">desc: </span>      <span class="s">&quot;Properties are the basic unit for component configuration&quot;</span>
@@ -672,7 +680,7 @@ several socket types, based on ZeroMQ Socket Types.</p>
 </td>
 <td><div class="first last line-block">
 <div class="line">Used for extending request/reply sockets. Each message sent is</div>
-<div class="line">“round-robin”-ed among all connected peers, and each message</div>
+<div class="line">&#8220;round-robin&#8221;-ed among all connected peers, and each message</div>
 <div class="line">received is fair- queued from all connected peers.</div>
 </div>
 </td>
@@ -746,7 +754,7 @@ several socket types, based on ZeroMQ Socket Types.</p>
 </td>
 <td><div class="first last line-block">
 <div class="line">Used by a pipeline node to send messages to downstream pipeline</div>
-<div class="line">nodes. Messages are “round-robin”-ed to all connected downstream</div>
+<div class="line">nodes. Messages are &#8220;round-robin&#8221;-ed to all connected downstream</div>
 <div class="line">nodes.</div>
 </div>
 </td>
@@ -812,7 +820,9 @@ used as a concurrency framework.</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -834,7 +844,7 @@ used as a concurrency framework.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -853,7 +863,6 @@ used as a concurrency framework.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
             VERSION:'1.4-1',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -863,17 +872,23 @@ used as a concurrency framework.</p>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

@@ -26,19 +26,28 @@
 
   
 
-  <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="10. Software and Control Risks" href="../risks/risks.html" />
-    <link rel="prev" title="9.1. Systems and Software Engineering" href="systems_engineering.html" /> 
+  
+  
+    <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
+        <link rel="up" title="9. Process" href="process_introduction.html"/>
+        <link rel="next" title="10. Software and Control Risks" href="../risks/risks.html"/>
+        <link rel="prev" title="9.1. Systems and Software Engineering" href="systems_engineering.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -55,7 +64,7 @@
 
           
             
-            <img src="../../_static/logowhite.png" class="logo" alt="Logo"/>
+            <img src="../../_static/logowhite.png" class="logo" />
           
           </a>
 
@@ -132,7 +141,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">GMT Software And Controls</a>
@@ -140,10 +149,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -415,10 +423,10 @@ Sequence Base Specification <a class="reference internal" href="../bibliography/
 </div></blockquote>
 <p><strong>Issue Management</strong></p>
 <blockquote>
-<div><p>GMTO is currently using Github’s built-in issue tracker. Issue tracking is
+<div><p>GMTO is currently using Github&#8217;s built-in issue tracker. Issue tracking is
 used to identify errors and non- conformities in the implementations of
 software components. Issues on github contain the following fields:</p>
-<div class="highlight-coffeescript notranslate"><div class="highlight"><pre><span></span><span class="nx">Issue</span> <span class="s">&quot;issue_id&quot;</span><span class="p">,</span>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nx">Issue</span> <span class="s">&quot;issue_id&quot;</span><span class="p">,</span>
      <span class="nv">Title: </span>    <span class="s">&quot;foo compilation error&quot;</span> <span class="s">&quot;Jane&quot;</span>
      <span class="nv">Assignee: </span> <span class="s">&quot;Jane&quot;</span>
      <span class="nv">Label: </span>    <span class="s">&quot;bug&quot;</span>
@@ -467,7 +475,7 @@ store for enhanced safety.</p>
 <p><strong>Release Management</strong></p>
 <blockquote>
 <div><p>Release management of the individual modules is handled by tags. A simple
-“semantic versioning” is established using the following tag convention:
+&#8220;semantic versioning&#8221; is established using the following tag convention:
 major.minor[.build[.revision]], where:</p>
 <blockquote>
 <div><ul class="simple">
@@ -483,7 +491,7 @@ semantics possible: odd-even system, etc.</li>
 <p>Release management of the entire system (i.e., all the collection of software
 and configuration), is provided by the GMT model. Each individual subsystem
 defines release information and keywords to allow the creation and re-creation
-of well-identified, repeatable, release “snapshot”.</p>
+of well-identified, repeatable, release &#8220;snapshot&#8221;.</p>
 <p>Tools will allow querying and updating of the model. In its simplest form a
 text editor is enough, but more advanced capabilities will allow one to
 generate dependency trees and deployment information, to identify and resolve
@@ -550,8 +558,8 @@ The documentation is extracted from the specification files and rendered into
 reader-friendly formats using the Sphinx76 package. LaTeX, PDF, html and RST
 formats are available. The table below provides a documentation overview of the
 available templates.</p>
-<span id="documentation-overview"></span><table border="1" class="docutils" id="id14">
-<caption><span class="caption-number">Table 9.1 </span><span class="caption-text">SWCS Documentation Templates Overview</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id14">
+<span id="documentation-overview"></span><caption><span class="caption-number">Table 9.1 </span><span class="caption-text">SWCS Documentation Templates Overview</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="15%" />
 <col width="34%" />
@@ -921,7 +929,9 @@ provides an overview of the main SWCS Development Workflows:</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -943,7 +953,7 @@ provides an overview of the main SWCS Development Workflows:</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -962,7 +972,6 @@ provides an overview of the main SWCS Development Workflows:</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
             VERSION:'1.4-1',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -972,17 +981,23 @@ provides an overview of the main SWCS Development Workflows:</p>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

@@ -26,17 +26,25 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -53,7 +61,7 @@
 
           
             
-            <img src="../_static/logowhite.png" class="logo" alt="Logo"/>
+            <img src="../_static/logowhite.png" class="logo" />
           
           </a>
 
@@ -103,7 +111,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">GMT Software And Controls</a>
@@ -111,10 +119,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -187,7 +194,7 @@ own, independent, database.</p>
 </ul>
 <p>Also, each service has an internal schedule to perform periodic checks or other tasks at certain rates.
 This is the configuration:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_server_1</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">log_server_1</span><span class="p">:</span>
     <span class="n">name</span>      <span class="p">:</span> <span class="s1">&#39;log_server_1&#39;</span>
     <span class="n">rate</span>      <span class="p">:</span> <span class="mi">600000</span>                                   <span class="c1"># periodic loop rate to perform checks, stats, etc.</span>
     <span class="n">url</span>       <span class="p">:</span> <span class="s1">&#39;tcp://127.0.0.1:9998&#39;</span>                   <span class="c1"># to receive log messages from components</span>
@@ -198,7 +205,7 @@ This is the configuration:</p>
 </div>
 <p>Note: The <em>pub_url</em> value shall be the same used in the GMT_LOG_URL environment var.
 This variable is only required for the C++ components.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">telemetry_server_1</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">telemetry_server_1</span><span class="p">:</span>
     <span class="n">name</span>      <span class="p">:</span> <span class="s1">&#39;telemetry_server_1&#39;</span>
     <span class="n">rate</span>      <span class="p">:</span> <span class="mi">600000</span>                                   <span class="c1"># periodic loop rate to perform checks, stats, etc.</span>
     <span class="n">url</span>       <span class="p">:</span> <span class="s1">&#39;tcp://127.0.0.1:9997&#39;</span>                   <span class="c1"># to receive monitored values from components</span>
@@ -223,9 +230,9 @@ checking their status</p>
 <h2>Firewall and Network Ports<a class="headerlink" href="#firewall-and-network-ports" title="Permalink to this headline">¶</a></h2>
 <p>The GMT software is networked system. The following instructions assume that the
 used ports are open for tcp/udp communications.  With root/admin permissions
-it’s possible to disable the whole firewall or specific ports can be open like
+it&#8217;s possible to disable the whole firewall or specific ports can be open like
 this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo firewall-cmd --add-port=$PORT/tcp --permanent --zone=public
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo firewall-cmd --add-port=$PORT/tcp --permanent --zone=public
 $ sudo firewall-cmd --add-port=$PORT/udp --permanent --zone=public
 </pre></div>
 </div>
@@ -234,17 +241,17 @@ $ sudo firewall-cmd --add-port=$PORT/udp --permanent --zone=public
 <h2>URIs and URLs<a class="headerlink" href="#uris-and-urls" title="Permalink to this headline">¶</a></h2>
 <p>GMT Components use an unique URI in the following scheme</p>
 <blockquote>
-<div><em>Usage:</em> <code class="docutils literal notranslate"><span class="pre">gmt://subsystem/component:port</span></code></div></blockquote>
+<div><em>Usage:</em> <code class="docutils literal"><span class="pre">gmt://subsystem/component:port</span></code></div></blockquote>
 <p>The port number is used to send the component setup (rates, ports, etc).
 Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gmt</span><span class="p">:</span><span class="o">//</span><span class="n">examples</span><span class="o">/</span><span class="n">basic_controller</span><span class="p">:</span><span class="mi">8001</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gmt</span><span class="p">:</span><span class="o">//</span><span class="n">examples</span><span class="o">/</span><span class="n">basic_controller</span><span class="p">:</span><span class="mi">8001</span>
 </pre></div>
 </div>
 <p>GMT Ports have an url using the <em>nanomsg</em> scheme:</p>
 <blockquote>
-<div><em>Usage:</em> <code class="docutils literal notranslate"><span class="pre">transport://host:net_port</span></code></div></blockquote>
+<div><em>Usage:</em> <code class="docutils literal"><span class="pre">transport://host:net_port</span></code></div></blockquote>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tcp</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">9001</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tcp</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">9001</span>
 </pre></div>
 </div>
 </div>
@@ -258,7 +265,9 @@ Example:</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -271,7 +280,7 @@ Example:</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -290,7 +299,6 @@ Example:</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'1.4-1',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -300,17 +308,23 @@ Example:</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

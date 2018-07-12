@@ -26,19 +26,28 @@
 
   
 
-  <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6. Non-Conformances" href="../non_conformances/non_conformances.html" />
-    <link rel="prev" title="4. DCS Life Cycle" href="../lifecycle/dcs_lifecycle.html" /> 
+  
+  
+    <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
+        <link rel="up" title="Software and Controls Standards" href="../index.html"/>
+        <link rel="next" title="6. Non-Conformances" href="../non_conformances/non_conformances.html"/>
+        <link rel="prev" title="4. DCS Life Cycle" href="../lifecycle/dcs_lifecycle.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -55,7 +64,7 @@
 
           
             
-            <img src="../../_static/logowhite.png" class="logo" alt="Logo"/>
+            <img src="../../_static/logowhite.png" class="logo" />
           
           </a>
 
@@ -153,7 +162,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">GMT Software And Controls</a>
@@ -161,10 +170,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -344,8 +352,8 @@ actions, transitions and activities are omitted in this diagram.</p>
 Controller state machine.  The specification defines what actions to implement
 in every state or transition, however in some of the states each Controller
 implements its own specific logic.</p>
-<span id="op-state-specification"></span><table border="1" class="docutils" id="id7">
-<caption><span class="caption-number">Table 5.22 </span><span class="caption-text">Component ops_state Specification</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id7">
+<span id="op-state-specification"></span><caption><span class="caption-number">Table 5.22 </span><span class="caption-text">Component ops_state Specification</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="21%" />
 <col width="79%" />
@@ -1012,7 +1020,7 @@ glossary <a class="reference internal" href="../../glossary/swc_sys_glossary.htm
 <p><strong>SWC-DCS-0151: DCS naming</strong></p>
 <blockquote>
 <div><p>Each <a class="reference internal" href="../reference_architecture/dcs_reference_architecture.html#dcs-reference-architecture"><span class="std std-ref">DCS</span></a> shall be named according to the following format:</p>
-<div class="highlight-coffeescript notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">SUBS</span><span class="o">&gt;</span><span class="nx">_dcs</span>    <span class="c1"># where</span>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">SUBS</span><span class="o">&gt;</span><span class="nx">_dcs</span>    <span class="c1"># where</span>
 
 <span class="o">&lt;</span><span class="nx">SUB</span><span class="o">&gt;:</span> <span class="nx">Abbreviation</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">Subsystem</span>
 
@@ -1023,7 +1031,7 @@ glossary <a class="reference internal" href="../../glossary/swc_sys_glossary.htm
 <p><strong>SWC-DCS-0152: Package naming</strong></p>
 <blockquote>
 <div><p>Each DCS <a class="reference internal" href="../reference_architecture/dcs_reference_architecture.html#dcs-product-structure-modeling"><span class="std std-ref">Package</span></a> shall be named according to the following format</p>
-<div class="highlight-coffeescript notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">SUBS</span><span class="o">&gt;</span><span class="nx">_</span><span class="o">&lt;</span><span class="nx">CAT</span><span class="o">&gt;</span><span class="nx">_</span><span class="o">&lt;</span><span class="nx">MCLASS</span><span class="o">&gt;</span>    <span class="c1"># where</span>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">SUBS</span><span class="o">&gt;</span><span class="nx">_</span><span class="o">&lt;</span><span class="nx">CAT</span><span class="o">&gt;</span><span class="nx">_</span><span class="o">&lt;</span><span class="nx">MCLASS</span><span class="o">&gt;</span>    <span class="c1"># where</span>
 
 <span class="o">&lt;</span><span class="nx">SUB</span><span class="o">&gt;:</span>     <span class="nx">Abbreviation</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">Subsystem</span>
 <span class="o">&lt;</span><span class="nx">CAT</span><span class="o">&gt;:</span>     <span class="nx">Abbreviation</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">functional</span> <span class="nx">category</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">package</span> <span class="nx">as</span> <span class="nx">defined</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">glossary</span> <span class="nx">n</span><span class="o">-</span><span class="nx">grams</span>
@@ -1036,7 +1044,7 @@ glossary <a class="reference internal" href="../../glossary/swc_sys_glossary.htm
 <p><strong>SWC-DCS-0153: Component naming</strong></p>
 <blockquote>
 <div><p>Each DCS <a class="reference internal" href="../reference_architecture/dcs_reference_architecture.html#dcs-component-architecture"><span class="std std-ref">Component</span></a> shall be named according to the following format:</p>
-<div class="highlight-coffeescript notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">SUBS</span><span class="o">&gt;</span><span class="nx">_</span><span class="o">&lt;</span><span class="nx">CMP</span><span class="o">&gt;</span><span class="nx">_</span><span class="o">&lt;</span><span class="nx">CAT</span><span class="o">&gt;</span>    <span class="c1"># where</span>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">SUBS</span><span class="o">&gt;</span><span class="nx">_</span><span class="o">&lt;</span><span class="nx">CMP</span><span class="o">&gt;</span><span class="nx">_</span><span class="o">&lt;</span><span class="nx">CAT</span><span class="o">&gt;</span>    <span class="c1"># where</span>
 
 <span class="o">&lt;</span><span class="nx">SUB</span><span class="o">&gt;:</span>     <span class="nx">Abbreviation</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">Subsystem</span>
 <span class="o">&lt;</span><span class="nx">CMP</span><span class="o">&gt;:</span>     <span class="nx">Component</span> <span class="nx">abbreviation</span>
@@ -1717,7 +1725,9 @@ the DCC.</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -1739,7 +1749,7 @@ the DCC.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1758,7 +1768,6 @@ the DCC.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
             VERSION:'1.4-1',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -1768,17 +1777,23 @@ the DCC.</p>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

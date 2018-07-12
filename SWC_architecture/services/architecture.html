@@ -26,19 +26,28 @@
 
   
 
-  <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.2. Common Services" href="common.html" />
-    <link rel="prev" title="6. Observatory Services" href="observatory_services.html" /> 
+  
+  
+    <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
+        <link rel="up" title="6. Observatory Services" href="observatory_services.html"/>
+        <link rel="next" title="6.2. Common Services" href="common.html"/>
+        <link rel="prev" title="6. Observatory Services" href="observatory_services.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -55,7 +64,7 @@
 
           
             
-            <img src="../../_static/logowhite.png" class="logo" alt="Logo"/>
+            <img src="../../_static/logowhite.png" class="logo" />
           
           </a>
 
@@ -127,7 +136,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">GMT Software And Controls</a>
@@ -135,10 +144,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -196,7 +204,7 @@ that are available.</p>
 <span id="section-service-adapters"></span><img alt="../../_images/common-services-architecture.png" src="../../_images/common-services-architecture.png" />
 <p class="caption"><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Common Services Architecture.  (1) Components access the service through the
 adapter API when an event is generated (e.g., alarm detected). (2) The
-“payload” (e.g. alarm event, telemetry sample) is transported from adapter to
+&#8220;payload&#8221; (e.g. alarm event, telemetry sample) is transported from adapter to
 supervisor through the <a class="reference internal" href="#service-bus"><span class="std std-ref">Service Bus</span></a>.  (3) <a class="reference internal" href="#service-supervisors"><span class="std std-ref">Service Supervisors</span></a>
 coordinate services, and process the service payload when received.  (4) The
 service payload is stored and/or forwarded to components that subscribe to the
@@ -357,7 +365,9 @@ of the GMT networking infrastructure.</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -379,7 +389,7 @@ of the GMT networking infrastructure.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -398,7 +408,6 @@ of the GMT networking infrastructure.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
             VERSION:'1.4-1',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -408,17 +417,23 @@ of the GMT networking infrastructure.</p>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

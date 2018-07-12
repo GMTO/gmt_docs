@@ -26,17 +26,25 @@
 
   
 
-  <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+  
+  
+    <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -53,7 +61,7 @@
 
           
             
-            <img src="../../_static/logowhite.png" class="logo" alt="Logo"/>
+            <img src="../../_static/logowhite.png" class="logo" />
           
           </a>
 
@@ -103,7 +111,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">GMT Software And Controls</a>
@@ -111,10 +119,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -159,34 +166,34 @@
 <p><strong>GMT Development System (version1.3)</strong></p>
 <p>A command line tool, used to interact with models, components and services
 within the GMT framework.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds <span class="o">[</span>options<span class="o">]</span> <span class="nb">command</span> <span class="o">[</span>args...<span class="o">]</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>gds <span class="o">[</span>options<span class="o">]</span> <span class="nb">command</span> <span class="o">[</span>args...<span class="o">]</span>
 </pre></div>
 </div>
 <div class="section" id="options">
 <h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
-<dt><strong>-m</strong>, <strong>–model</strong></dt>
-<dd>The <strong>model</strong> to use. This defaults to “model”. Valid options include
+<dt><strong>-m</strong>, <strong>&#8211;model</strong></dt>
+<dd>The <strong>model</strong> to use. This defaults to &#8220;model&#8221;. Valid options include
 <strong>metametamodel</strong>, <strong>metamodel</strong>, <strong>model</strong> and <strong>runtime</strong>.</dd>
-<dt><strong>-e</strong>, <strong>–element</strong></dt>
-<dd>The model <strong>element</strong> to use. This defaults to “swc_sys”.
-<code class="docutils literal notranslate"><span class="pre">How</span> <span class="pre">do</span> <span class="pre">we</span> <span class="pre">list</span> <span class="pre">valid</span> <span class="pre">options?</span></code></dd>
+<dt><strong>-e</strong>, <strong>&#8211;element</strong></dt>
+<dd>The model <strong>element</strong> to use. This defaults to &#8220;swc_sys&#8221;.
+<code class="docutils literal"><span class="pre">How</span> <span class="pre">do</span> <span class="pre">we</span> <span class="pre">list</span> <span class="pre">valid</span> <span class="pre">options?</span></code></dd>
 </dl>
 </div>
 <div class="section" id="help">
 <h2>help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds -h
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds -h
 </pre></div>
 </div>
 <p>Print the list of gds options and commands.</p>
 <blockquote>
 <div><dl class="docutils">
-<dt><strong>-h</strong>, <strong>–help</strong></dt>
+<dt><strong>-h</strong>, <strong>&#8211;help</strong></dt>
 <dd>Print gds usage information.</dd>
 </dl>
 </div></blockquote>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="nb">help</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="nb">help</span>
 </pre></div>
 </div>
 <p>Print the list of all available plugins, commands and renderers for the
@@ -197,12 +204,12 @@ specified layer.</p>
 <div class="section" id="log-service">
 <h2>log_service<a class="headerlink" href="#log-service" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds log_service start
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds log_service start
 </pre></div>
 </div>
 <p>Start the log_service server, using configuration
 properties from <cite>gmt.runtime.log_server_1_config</cite>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds log_service client &lt;topic&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>gds log_service client &lt;topic&gt;
 </pre></div>
 </div>
 <p>Start the log_service client, using configuration properties
@@ -213,10 +220,10 @@ from <cite>gmt.runtime.log_server_1_config</cite>.</p>
 <dd>The topic to subscribe to. This will filter the content of the messages and
 only the messages containing the topic will be shown.
 To listen for events from a specific component, use the component name.
-Using topic “gmt” will show all log messages.</dd>
+Using topic &#8220;gmt&#8221; will show all log messages.</dd>
 </dl>
 </div></blockquote>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds log_service query &lt;key&gt; &lt;number&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>gds log_service query &lt;key&gt; &lt;number&gt;
 </pre></div>
 </div>
 <p>Query the log database for messages for a specific component.</p>
@@ -229,7 +236,7 @@ Using topic “gmt” will show all log messages.</dd>
 oldest.</dd>
 </dl>
 </div></blockquote>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds log_service <span class="nb">test</span> &lt;message&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>gds log_service <span class="nb">test</span> &lt;message&gt;
 </pre></div>
 </div>
 <p>Send a test message to the log service DEBUG, INFO, WARNING and ERROR channels.</p>
@@ -240,7 +247,7 @@ oldest.</dd>
 </dl>
 </div></blockquote>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="n">log_service</span> <span class="n">start</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="n">log_service</span> <span class="n">start</span>
 <span class="n">gds</span> <span class="n">log_service</span> <span class="n">client</span> <span class="n">gmt</span>
 <span class="n">gds</span> <span class="n">log_service</span> <span class="n">query</span> <span class="n">gmt</span><span class="p">:</span><span class="o">//</span><span class="n">log_sys</span><span class="o">/</span><span class="n">test_log</span> <span class="mi">10</span>
 <span class="n">gds</span> <span class="n">log_service</span> <span class="n">test</span> <span class="s2">&quot;This is a test message&quot;</span>
@@ -252,12 +259,12 @@ oldest.</dd>
 <div class="section" id="telemetry-service">
 <h2>telemetry_service<a class="headerlink" href="#telemetry-service" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds telemetry_service start
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds telemetry_service start
 </pre></div>
 </div>
 <p>Start the telemetry_service server, using configuration
 properties from <cite>gmt.runtime.telemetry_server_1_config</cite>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds telemetry_service client &lt;topic&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>gds telemetry_service client &lt;topic&gt;
 </pre></div>
 </div>
 <p>Start the telemetry_service client, using configuration properties
@@ -268,10 +275,10 @@ from <cite>gmt.runtime.telemetry_server_1_config</cite>.</p>
 <dd>The topic to subscribe to. This will filter the content of the messages and
 only the messages containing the topic will be shown.
 To listen for events from a specific component, use the component name.
-Using topic “gmt” will show all telemetry messages.</dd>
+Using topic &#8220;gmt&#8221; will show all telemetry messages.</dd>
 </dl>
 </div></blockquote>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds telemetry_service query &lt;key&gt; &lt;number&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>gds telemetry_service query &lt;key&gt; &lt;number&gt;
 </pre></div>
 </div>
 <p>Query the telemetry database for data from a specific component.</p>
@@ -284,12 +291,12 @@ Using topic “gmt” will show all telemetry messages.</dd>
 oldest.</dd>
 </dl>
 </div></blockquote>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-e element<span class="o">]</span> telemetry_service monitor
+<div class="highlight-bash"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-e element<span class="o">]</span> telemetry_service monitor
 </pre></div>
 </div>
 <p>Set up an adapter to monitor all output ports of a specified component.</p>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="n">telemetry_service</span> <span class="n">start</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="n">telemetry_service</span> <span class="n">start</span>
 <span class="n">gds</span> <span class="n">telemetry_service</span> <span class="n">client</span> <span class="n">gmt</span>
 <span class="n">gds</span> <span class="n">telemetry_service</span> <span class="n">query</span> <span class="n">gmt</span><span class="p">:</span><span class="o">//</span><span class="n">examples</span><span class="o">/</span><span class="n">simple_controller</span><span class="o">/</span><span class="n">temperature_monitor</span> <span class="mi">10</span>
 <span class="n">gds</span> <span class="o">-</span><span class="n">m</span> <span class="n">runtime</span> <span class="o">-</span><span class="n">e</span> <span class="n">isample_fw1_ctrl</span> <span class="n">monitor</span>
@@ -301,19 +308,19 @@ oldest.</dd>
 <div class="section" id="skeleton">
 <h2>skeleton<a class="headerlink" href="#skeleton" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-e element<span class="o">]</span> skeleton <span class="o">[</span>-t template<span class="o">]</span> <span class="o">[</span>-f FORMAT<span class="o">]</span> <span class="o">[</span>-l LEVEL<span class="o">]</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-e element<span class="o">]</span> skeleton <span class="o">[</span>-t template<span class="o">]</span> <span class="o">[</span>-f FORMAT<span class="o">]</span> <span class="o">[</span>-l LEVEL<span class="o">]</span>
 </pre></div>
 </div>
-<p>Generates a skeleton for an instance of the given model element, by default “swc_sys”.</p>
+<p>Generates a skeleton for an instance of the given model element, by default &#8220;swc_sys&#8221;.</p>
 <blockquote>
 <div><dl class="docutils">
-<dt><strong>-t</strong>, <strong>–template</strong></dt>
-<dd>The template to use. This defaults to “Undefined”.
-<code class="docutils literal notranslate"><span class="pre">How</span> <span class="pre">do</span> <span class="pre">we</span> <span class="pre">list</span> <span class="pre">valid</span> <span class="pre">options?</span></code></dd>
-<dt><strong>-f</strong>, <strong>–format</strong></dt>
-<dd>The format to use. This defaults to “txt”. Valid options include <em>json</em>,
+<dt><strong>-t</strong>, <strong>&#8211;template</strong></dt>
+<dd>The template to use. This defaults to &#8220;Undefined&#8221;.
+<code class="docutils literal"><span class="pre">How</span> <span class="pre">do</span> <span class="pre">we</span> <span class="pre">list</span> <span class="pre">valid</span> <span class="pre">options?</span></code></dd>
+<dt><strong>-f</strong>, <strong>&#8211;format</strong></dt>
+<dd>The format to use. This defaults to &#8220;txt&#8221;. Valid options include <em>json</em>,
 <em>txt</em>, <em>csv</em> and <em>html</em>.</dd>
-<dt><strong>-l</strong>, <strong>–level</strong></dt>
+<dt><strong>-l</strong>, <strong>&#8211;level</strong></dt>
 <dd>Numeric value. Defaults to 1.</dd>
 </dl>
 </div></blockquote>
@@ -327,12 +334,12 @@ oldest.</dd>
 <div class="section" id="codegen">
 <h2>codegen<a class="headerlink" href="#codegen" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-e element<span class="o">]</span> codegen
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-e element<span class="o">]</span> codegen
 </pre></div>
 </div>
 <p>Generates runtime skeletons for sub-systems, components or packages in the model.</p>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="o">-</span><span class="n">e</span> <span class="n">isample_dcs</span> <span class="n">codegen</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="o">-</span><span class="n">e</span> <span class="n">isample_dcs</span> <span class="n">codegen</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -341,13 +348,13 @@ oldest.</dd>
 <div class="section" id="setup">
 <h2>setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-e element<span class="o">]</span> setup
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-e element<span class="o">]</span> setup
 </pre></div>
 </div>
 <p>Set up component instance properties, input ports and output ports using its
 configuration.</p>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="o">-</span><span class="n">m</span> <span class="n">runtime</span> <span class="o">-</span><span class="n">e</span> <span class="n">isample_fw1_ctrl</span> <span class="n">setup</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="o">-</span><span class="n">m</span> <span class="n">runtime</span> <span class="o">-</span><span class="n">e</span> <span class="n">isample_fw1_ctrl</span> <span class="n">setup</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -356,11 +363,11 @@ configuration.</p>
 <div class="section" id="send-value">
 <h2>send_value<a class="headerlink" href="#send-value" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-e element<span class="o">]</span> send_value &lt;port_name&gt; &lt;value&gt;
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-e element<span class="o">]</span> send_value &lt;port_name&gt; &lt;value&gt;
 </pre></div>
 </div>
 <p>Send a value to an input port on the specified component instance. The model
-should always be “runtime”, as values can only be sent to runtime instances of
+should always be &#8220;runtime&#8221;, as values can only be sent to runtime instances of
 components.</p>
 <blockquote>
 <div><dl class="docutils">
@@ -372,7 +379,7 @@ a valid port defined in the component.</dd>
 </dl>
 </div></blockquote>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="o">-</span><span class="n">m</span> <span class="n">runtime</span> <span class="o">-</span><span class="n">e</span> <span class="n">isample_fw1_ctrl</span> <span class="n">send_value</span> <span class="n">position_goal</span> <span class="mi">23</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="o">-</span><span class="n">m</span> <span class="n">runtime</span> <span class="o">-</span><span class="n">e</span> <span class="n">isample_fw1_ctrl</span> <span class="n">send_value</span> <span class="n">position_goal</span> <span class="mi">23</span>
 <span class="n">gds</span> <span class="o">-</span><span class="n">m</span> <span class="n">runtime</span> <span class="o">-</span><span class="n">e</span> <span class="n">isample_cryo_internal_temp_ctrl</span> <span class="n">send_value</span> <span class="n">cryo_temp_goal</span> <span class="mf">25.63</span>
 </pre></div>
 </div>
@@ -382,38 +389,38 @@ a valid port defined in the component.</dd>
 <div class="section" id="process">
 <h2>process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-e element<span class="o">]</span> process -c &lt;cmd&gt; <span class="o">[</span>-i input<span class="o">]</span> <span class="o">[</span>-o output<span class="o">]</span> <span class="o">[</span>args...<span class="o">]</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-e element<span class="o">]</span> process -c &lt;cmd&gt; <span class="o">[</span>-i input<span class="o">]</span> <span class="o">[</span>-o output<span class="o">]</span> <span class="o">[</span>args...<span class="o">]</span>
 </pre></div>
 </div>
 <p>Run a command on the given model element.</p>
 <blockquote>
 <div><dl class="docutils">
-<dt><strong>-c</strong>, <strong>–cmd</strong></dt>
+<dt><strong>-c</strong>, <strong>&#8211;cmd</strong></dt>
 <dd>The <strong>command</strong> to use for the specified element. The command is mandatory.
 Available commands depend on the model element on which it will be run.</dd>
-<dt><strong>-i</strong>, <strong>–input</strong></dt>
+<dt><strong>-i</strong>, <strong>&#8211;input</strong></dt>
 <dd>The <strong>input</strong> file name to use as input to the process command. This file
 can be used in addition to command line arguments.</dd>
-<dt><strong>-o</strong>, <strong>–output</strong></dt>
+<dt><strong>-o</strong>, <strong>&#8211;output</strong></dt>
 <dd>The <strong>output</strong> file name to use for output generated by the process command.
 If not specified, output will be written to the console.</dd>
 </dl>
 </div></blockquote>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="n">process</span> <span class="o">-</span><span class="n">c</span> <span class="n">list_docs</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="n">process</span> <span class="o">-</span><span class="n">c</span> <span class="n">list_docs</span>
 </pre></div>
 </div>
 </div></blockquote>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">What is the difference between “process” and “exec”? Do we need both?</p>
+<p class="last">What is the difference between &#8220;process&#8221; and &#8220;exec&#8221;? Do we need both?</p>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="exec">
 <h2>exec<a class="headerlink" href="#exec" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-o output<span class="o">]</span> <span class="nb">exec</span> &lt;target.cmd&gt; <span class="o">[</span>args...<span class="o">]</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-o output<span class="o">]</span> <span class="nb">exec</span> &lt;target.cmd&gt; <span class="o">[</span>args...<span class="o">]</span>
 </pre></div>
 </div>
 <p>Execute the given command on the target model element.</p>
@@ -423,27 +430,27 @@ If not specified, output will be written to the console.</dd>
 <dd>The <strong>target element</strong> to use and the <strong>command</strong> to use with it.
 This value is mandatory. Available commands depend on the model element on
 which it will be run.</dd>
-<dt><strong>-o</strong>, <strong>–output</strong></dt>
+<dt><strong>-o</strong>, <strong>&#8211;output</strong></dt>
 <dd>The <strong>output file name</strong> to use for output generated by the process command.
 If not specified, output will be written to the console.</dd>
 </dl>
 </div></blockquote>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="n">exec</span> <span class="n">swc_sys</span><span class="o">.</span><span class="n">gen_documents</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="n">exec</span> <span class="n">swc_sys</span><span class="o">.</span><span class="n">gen_documents</span>
 <span class="n">gds</span> <span class="o">-</span><span class="n">m</span> <span class="n">runtime</span> <span class="n">exec</span> <span class="n">isample_fw1_ctrl</span><span class="o">.</span><span class="n">default</span>
 </pre></div>
 </div>
 </div></blockquote>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">What is the difference between “process” and “exec”? Do we need both?</p>
+<p class="last">What is the difference between &#8220;process&#8221; and &#8220;exec&#8221;? Do we need both?</p>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="xml2js">
 <h2>xml2js<a class="headerlink" href="#xml2js" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds xml2js -i &lt;input_file&gt; -o &lt;output_file&gt;
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds xml2js -i &lt;input_file&gt; -o &lt;output_file&gt;
 </pre></div>
 </div>
 <p>Converts an xml file to JavaScript.</p>
@@ -453,7 +460,7 @@ If not specified, output will be written to the console.</dd>
 <div class="section" id="xml2json">
 <h2>xml2json<a class="headerlink" href="#xml2json" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds xml2json -i &lt;input_file&gt; -o &lt;output_file&gt;
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds xml2json -i &lt;input_file&gt; -o &lt;output_file&gt;
 </pre></div>
 </div>
 <p>Converts an xml file to JavaScript Object Notation (JSON) format.</p>
@@ -463,7 +470,7 @@ If not specified, output will be written to the console.</dd>
 <div class="section" id="ecat">
 <h2>ecat<a class="headerlink" href="#ecat" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds ecat -c download <span class="o">[</span>vendor...<span class="o">]</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds ecat -c download <span class="o">[</span>vendor...<span class="o">]</span>
 </pre></div>
 </div>
 <p>Runs the EtherCAT command line utility to download and extract EtherCAT modules
@@ -471,10 +478,10 @@ from specified vendors.</p>
 <blockquote>
 <div><dl class="docutils">
 <dt><strong>vendor</strong></dt>
-<dd>The name of the vendor to use. Currently, the only valid option is “beckhoff”.</dd>
+<dd>The name of the vendor to use. Currently, the only valid option is &#8220;beckhoff&#8221;.</dd>
 </dl>
 </div></blockquote>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds ecat -c extract <span class="o">[</span>vendor...<span class="o">]</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>gds ecat -c extract <span class="o">[</span>vendor...<span class="o">]</span>
 </pre></div>
 </div>
 <p>Runs the EtherCAT command line utility to extract EtherCAT modules from
@@ -482,11 +489,11 @@ specified vendors. The modules need to be already downloaded.</p>
 <blockquote>
 <div><dl class="docutils">
 <dt><strong>vendor</strong></dt>
-<dd>The name of the vendor to use. Currently, the only valid option is “beckhoff”.</dd>
+<dd>The name of the vendor to use. Currently, the only valid option is &#8220;beckhoff&#8221;.</dd>
 </dl>
 </div></blockquote>
 <p>Examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="n">ecat</span> <span class="o">-</span><span class="n">c</span> <span class="n">download</span> <span class="n">beckhoff</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gds</span> <span class="n">ecat</span> <span class="o">-</span><span class="n">c</span> <span class="n">download</span> <span class="n">beckhoff</span>
 <span class="n">gds</span> <span class="n">ecat</span> <span class="o">-</span><span class="n">c</span> <span class="n">extract</span> <span class="n">beckhoff</span>
 </pre></div>
 </div>
@@ -500,7 +507,7 @@ specified vendors. The modules need to be already downloaded.</p>
 <div class="section" id="ecat-config">
 <h2>ecat_config<a class="headerlink" href="#ecat-config" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-e element<span class="o">]</span> ecat_config
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-e element<span class="o">]</span> ecat_config
 </pre></div>
 </div>
 <p>Send ethercat configuration to an adapter.</p>
@@ -514,7 +521,9 @@ specified vendors. The modules need to be already downloaded.</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -527,7 +536,7 @@ specified vendors. The modules need to be already downloaded.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -546,7 +555,6 @@ specified vendors. The modules need to be already downloaded.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
             VERSION:'1.4-1',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -556,17 +564,23 @@ specified vendors. The modules need to be already downloaded.</p>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

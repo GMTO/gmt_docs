@@ -26,19 +26,28 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data Products" href="../data_products/index.html" />
-    <link rel="prev" title="4. ISample Example" href="isample_example.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
+        <link rel="up" title="Software Development" href="index.html"/>
+        <link rel="next" title="Data Products" href="../data_products/index.html"/>
+        <link rel="prev" title="4. ISample Example" href="isample_example.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -55,7 +64,7 @@
 
           
             
-            <img src="../_static/logowhite.png" class="logo" alt="Logo"/>
+            <img src="../_static/logowhite.png" class="logo" />
           
           </a>
 
@@ -116,7 +125,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">GMT Software And Controls</a>
@@ -124,10 +133,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -179,7 +187,7 @@
 <li>Fork on github</li>
 <li>Clone a local copy for development</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ man git
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ man git
 </pre></div>
 </div>
 </div>
@@ -189,12 +197,12 @@
 <a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html">reStructuredText</a> files.
 Github uses the branch <cite>gh-pages</cite> to serve the documentation.
 Install the dependencies needed to build the documentation and checkout the branch:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install -y python3-sphinx python3-sphinx_rtd_theme
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y python3-sphinx python3-sphinx_rtd_theme
 $ git checkout -b gh-pages origin/gh-pages
 </pre></div>
 </div>
 <p>You can review your changes after running <cite>make</cite> on your local copy and iterate:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi src/*.rst
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ vi src/*.rst
 $ make
 $ xdg-open html/index.html
 </pre></div>
@@ -207,7 +215,7 @@ $ xdg-open html/index.html
 <li>Then, commit the generated files in <cite>html</cite></li>
 </ul>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit src
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git commit src
 $ git commit html -m <span class="s1">&#39;Generated content&#39;</span>
 
 $ git push origin gh-pages
@@ -219,7 +227,9 @@ $ git push origin gh-pages
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -241,7 +251,7 @@ $ git push origin gh-pages
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -260,7 +270,6 @@ $ git push origin gh-pages
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'1.4-1',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -270,17 +279,23 @@ $ git push origin gh-pages
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

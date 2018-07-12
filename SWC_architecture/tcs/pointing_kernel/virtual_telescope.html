@@ -26,19 +26,28 @@
 
   
 
-  <link rel="stylesheet" href="../../../_static/css/additional_style.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="5.5. Wavefront Control System" href="../wavefront_control.html" />
-    <link rel="prev" title="5.4.3. Coordinate Systems and Transformation Flow" href="coordinate_transformation.html" /> 
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../../../index.html"/>
+        <link rel="up" title="5.4. Pointing Kernel" href="../pointing_kernel.html"/>
+        <link rel="next" title="5.5. Wavefront Control System" href="../wavefront_control.html"/>
+        <link rel="prev" title="5.4.3. Coordinate Systems and Transformation Flow" href="coordinate_transformation.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -55,7 +64,7 @@
 
           
             
-            <img src="../../../_static/logowhite.png" class="logo" alt="Logo"/>
+            <img src="../../../_static/logowhite.png" class="logo" />
           
           </a>
 
@@ -131,7 +140,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">GMT Software And Controls</a>
@@ -139,10 +148,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -197,7 +205,7 @@ Kernel</span></a>.  To review, the purpose of the virtual
 telescope is to make all the necessary coordinate transformations and
 mechanical correction so the telescope can point accurately to a command
 position in a manner transparent to users by hiding the complexities.  In
-reality, what happens “behind-the-scene” when an observer commands the
+reality, what happens &#8220;behind-the-scene&#8221; when an observer commands the
 telescope to to a position in the sky is given by <a class="reference internal" href="coordinate_transformation.html#figure-pointing-flow"><span class="std std-ref">the Pointing Flow
 Figure (above)</span></a> and the <a class="reference internal" href="#figure-virtual-telescope"><span class="std std-ref">the Virtual Telescope
 Figure (below)</span></a>.  Inside the Virtual Telescope is a
@@ -238,7 +246,7 @@ the coordinate transformation flow in natural seeing observing mode</p>
 coordinate transformation (the first 4 items in the figure) are given in
 the upper half of the <a class="reference internal" href="coordinate_transformation.html#figure-pointing-flow"><span class="std std-ref">TCS/MCS Pointing Flow</span></a>.</span></p>
 </div>
-<p>The above Figure shows the “Virtual Telescope” and transformation terms that
+<p>The above Figure shows the &#8220;Virtual Telescope&#8221; and transformation terms that
 make up the pointing model; figure taken from Wallace <a class="reference internal" href="../../bibliography/bibliography.html#wall12a" id="id4">[Wall12a]</a>. The
 telescope pointing model (blue box) typically consists of 10-20 correction
 terms, here summarized into 7-terms: IA (roll), IB (pitch), VD (vertical
@@ -250,7 +258,9 @@ and GB are guiding corrections to the steady telescope tracking rate.</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -272,7 +282,7 @@ and GB are guiding corrections to the steady telescope tracking rate.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -291,7 +301,6 @@ and GB are guiding corrections to the steady telescope tracking rate.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
             VERSION:'1.4-1',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -301,17 +310,23 @@ and GB are guiding corrections to the steady telescope tracking rate.</p>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

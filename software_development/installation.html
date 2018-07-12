@@ -26,19 +26,28 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.2.1.1. Preparing for Installation" href="dev_environment/prep_installation.html" />
-    <link rel="prev" title="Software Development" href="index.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
+        <link rel="up" title="Software Development" href="index.html"/>
+        <link rel="next" title="1.2.1.1. Preparing for Installation" href="dev_environment/prep_installation.html"/>
+        <link rel="prev" title="Software Development" href="index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -55,7 +64,7 @@
 
           
             
-            <img src="../_static/logowhite.png" class="logo" alt="Logo"/>
+            <img src="../_static/logowhite.png" class="logo" />
           
           </a>
 
@@ -130,7 +139,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">GMT Software And Controls</a>
@@ -138,10 +147,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -221,7 +229,7 @@
 </ol>
 <blockquote>
 <div><p>Alternatively, download the file directly from the terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -O https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/Fedora-Server-dvd-x86_64-26-1.5.iso
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -O https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/Fedora-Server-dvd-x86_64-26-1.5.iso
 </pre></div>
 </div>
 </div></blockquote>
@@ -238,20 +246,16 @@
 </div>
 </div></blockquote>
 </div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Future versions of the SDK could include support for CentOS, RHEL, Scientific Linux and/or MacOS. Fedora has a very short release and support cycle (6 months and 18 months respectively), which is not ideal for a platform that requires significant stability over long periods of time.</p>
-</div>
 </div>
 <div class="section" id="repository-configuration">
 <h3>1.2.2. Repository Configuration<a class="headerlink" href="#repository-configuration" title="Permalink to this headline">¶</a></h3>
 <p>Some required RPMs are built by GMTO and need to be downloaded from the GMTO Yum Repository, currently hosted on Amazon Web Services.</p>
 <p>To add the GMT repositories:</p>
 <ol class="arabic simple">
-<li>Add the file <code class="docutils literal notranslate"><span class="pre">/etc/yum.repos.d/gmt.repo</span></code> with the following content:</li>
+<li>Add the file <code class="docutils literal"><span class="pre">/etc/yum.repos.d/gmt.repo</span></code> with the following content:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>gmt<span class="o">]</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>gmt<span class="o">]</span>
 <span class="nv">name</span><span class="o">=</span>GMT <span class="nv">$releasever</span> - <span class="nv">$basearch</span>
 <span class="nv">baseurl</span><span class="o">=</span>http://52.52.46.32/srv/gmt/yum/stable/<span class="nv">$releasever</span>/
 <span class="nv">gpgcheck</span><span class="o">=</span><span class="m">0</span>
@@ -260,10 +264,10 @@
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Add the file <code class="docutils literal notranslate"><span class="pre">/etc/yum.repos.d/gmt-updates.repo</span></code> with the following content:</li>
+<li>Add the file <code class="docutils literal"><span class="pre">/etc/yum.repos.d/gmt-updates.repo</span></code> with the following content:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>gmt-updates<span class="o">]</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>gmt-updates<span class="o">]</span>
 <span class="nv">name</span><span class="o">=</span>GMT <span class="nv">$releasever</span> - <span class="nv">$basearch</span> - Updates
 <span class="nv">baseurl</span><span class="o">=</span>http://52.52.46.32/srv/gmt/yum/updates/<span class="nv">$releasever</span>/
 <span class="nv">gpgcheck</span><span class="o">=</span><span class="m">0</span>
@@ -295,7 +299,7 @@
 <li>Install Common OS Utilities</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install -y xorg-x11-xauth urw-fonts wget net-tools pciutils
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y xorg-x11-xauth urw-fonts wget net-tools pciutils
 $ sudo dnf install -y strace rpl bash-completion sed
 </pre></div>
 </div>
@@ -304,7 +308,7 @@ $ sudo dnf install -y strace rpl bash-completion sed
 <li>Install Development Tools</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install -y autoconf automake cmake elfutils gcc gdb libtool
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y autoconf automake cmake elfutils gcc gdb libtool
 $ sudo dnf install -y cpp cscope ctags gc gcc-c++ gcc-gdb-plugin glibc-devel
 $ sudo dnf install -y glibc-headers kernel-headers libstdc++-devel
 $ sudo dnf install -y flex git libcurl-devel
@@ -316,7 +320,7 @@ $ sudo dnf install -y python3-sphinx python3-sphinx_rtd_theme
 <li>Install OCS Dependencies</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install -y rdma librdmacm-devel
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y rdma librdmacm-devel
 $ sudo dnf install -y boost-devel freeopcua freeopcua-devel
 </pre></div>
 </div>
@@ -328,7 +332,7 @@ $ sudo dnf install -y boost-devel freeopcua freeopcua-devel
 <li>Download and install <strong>Node version 8</strong></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -sL https://rpm.nodesource.com/setup_8.x <span class="p">|</span> sudo bash -
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sL https://rpm.nodesource.com/setup_8.x <span class="p">|</span> sudo bash -
 $ dnf install -y nodejs
 </pre></div>
 </div>
@@ -337,7 +341,7 @@ $ dnf install -y nodejs
 <li>Install necessary node packages:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ npm install -g coffeescript webpack webpack-cli raw-loader
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install -g coffeescript webpack webpack-cli raw-loader
 </pre></div>
 </div>
 </div></blockquote>
@@ -348,7 +352,7 @@ $ dnf install -y nodejs
 <li>Install the necessary packages:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install -y mongodb mongodb-server
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y mongodb mongodb-server
 </pre></div>
 </div>
 </div></blockquote>
@@ -356,7 +360,7 @@ $ dnf install -y nodejs
 <li>Configure the firewall</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ firewall-offline-cmd --direct --add-rule ipv4 filter INPUT <span class="m">0</span> -p tcp --dport <span class="m">27017</span> -j ACCEPT
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ firewall-offline-cmd --direct --add-rule ipv4 filter INPUT <span class="m">0</span> -p tcp --dport <span class="m">27017</span> -j ACCEPT
 </pre></div>
 </div>
 </div></blockquote>
@@ -364,7 +368,7 @@ $ dnf install -y nodejs
 <li>Enable the MongoDB service</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> mongod
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> mongod
 $ systemctl start mongod
 </pre></div>
 </div>
@@ -373,7 +377,7 @@ $ systemctl start mongod
 <li>Check that the MongoDB service is up</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl status -l mongod
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl status -l mongod
 </pre></div>
 </div>
 </div></blockquote>
@@ -385,23 +389,23 @@ $ systemctl start mongod
 <li>Install the neccessary packages</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install -y infiniband-diags opensm libmlx4
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y infiniband-diags opensm libmlx4
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Edit <code class="docutils literal notranslate"><span class="pre">/etc/rdma/mlx4.conf</span></code> and add the following line:</li>
+<li>Edit <code class="docutils literal"><span class="pre">/etc/rdma/mlx4.conf</span></code> and add the following line:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">01</span>:00.0 auto auto
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">01</span>:00.0 auto auto
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Find the interface used for Infiniband and edit the corresponding configuration file (for example <code class="docutils literal notranslate"><span class="pre">/etc/sysconfig/network-scripts/ifcfg-ib0</span></code>) to set the following options:</li>
+<li>Find the interface used for Infiniband and edit the corresponding configuration file (for example <code class="docutils literal"><span class="pre">/etc/sysconfig/network-scripts/ifcfg-ib0</span></code>) to set the following options:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">DEVICE</span><span class="o">=</span>ib0
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">DEVICE</span><span class="o">=</span>ib0
 <span class="nv">ONBOOT</span><span class="o">=</span>yes
 <span class="nv">TYPE</span><span class="o">=</span>Infiniband
 <span class="nv">BOOTPROTO</span><span class="o">=</span>none
@@ -409,13 +413,13 @@ $ systemctl start mongod
 <span class="nv">NETMASK</span><span class="o">=</span>&lt;ib_netmask&gt;
 </pre></div>
 </div>
-<p>where <code class="docutils literal notranslate"><span class="pre">&lt;ib_ip_address&gt;</span></code> is the static IP Address associated with the Infiniband network interface and <code class="docutils literal notranslate"><span class="pre">&lt;ib_netmask&gt;</span></code> is the netmask used for the infiniband subnet.</p>
+<p>where <code class="docutils literal"><span class="pre">&lt;ib_ip_address&gt;</span></code> is the static IP Address associated with the Infiniband network interface and <code class="docutils literal"><span class="pre">&lt;ib_netmask&gt;</span></code> is the netmask used for the infiniband subnet.</p>
 </div></blockquote>
 <ol class="arabic simple" start="4">
 <li>Enable Infiniband Services</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> opensm
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> opensm
 $ systemctl <span class="nb">enable</span> rdma
 </pre></div>
 </div>
@@ -428,15 +432,15 @@ $ systemctl <span class="nb">enable</span> rdma
 <li>Install the real-time kernel and relevant packages</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Select the Ethernet interface to be used for EtherCAT communication (e.g. enp4s0) and edit the corresponding configuration file (e.g. <code class="docutils literal notranslate"><span class="pre">/etc/sysconfig/network-scripts/ifcfg-enp4s0</span></code>) to set the following options:</li>
+<li>Select the Ethernet interface to be used for EtherCAT communication (e.g. enp4s0) and edit the corresponding configuration file (e.g. <code class="docutils literal"><span class="pre">/etc/sysconfig/network-scripts/ifcfg-enp4s0</span></code>) to set the following options:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">BOOTPROTO</span><span class="o">=</span>none
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">BOOTPROTO</span><span class="o">=</span>none
 <span class="nv">ONBOOT</span><span class="o">=</span>no
 </pre></div>
 </div>
@@ -445,24 +449,24 @@ $ systemctl <span class="nb">enable</span> rdma
 <li>Check the Hardware Address of the selected EtherCAT network interface</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ifconfig
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ ifconfig
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>Edit <code class="docutils literal notranslate"><span class="pre">/etc/ethercat.conf</span></code> and set the following configuration option:</li>
+<li>Edit <code class="docutils literal"><span class="pre">/etc/ethercat.conf</span></code> and set the following configuration option:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">MASTER0_DEVICE</span><span class="o">=</span><span class="s2">&quot;&lt;mac_address&gt;&quot;</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">MASTER0_DEVICE</span><span class="o">=</span><span class="s2">&quot;&lt;mac_address&gt;&quot;</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal notranslate"><span class="pre">&lt;mac_address&gt;</span></code> is the hardware address associated with the Ethercat network interface.</p>
+<p>where <code class="docutils literal"><span class="pre">&lt;mac_address&gt;</span></code> is the hardware address associated with the Ethercat network interface.</p>
 </div></blockquote>
 <ol class="arabic simple" start="5">
-<li>Edit <code class="docutils literal notranslate"><span class="pre">/usr/lib/systemd/system/ethercat.service</span></code> and uncomment the following line:</li>
+<li>Edit <code class="docutils literal"><span class="pre">/usr/lib/systemd/system/ethercat.service</span></code> and uncomment the following line:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">Before</span><span class="o">=</span>network.service
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">Before</span><span class="o">=</span>network.service
 </pre></div>
 </div>
 </div></blockquote>
@@ -470,39 +474,39 @@ $ systemctl <span class="nb">enable</span> rdma
 <li>Enable the Ethercat service</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> ethercat
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> ethercat
 $ systemctl start ethercat
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="7">
-<li>Reboot into the RT Kernel if you’re not in it already.</li>
+<li>Reboot into the RT Kernel if you&#8217;re not in it already.</li>
 <li>Test the Ethercat configuration</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ethercat master
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ ethercat master
 $ ethercat slaves
 </pre></div>
 </div>
 </div></blockquote>
-<p>If the “ethercat master” command does not produce the correct output, ensure that you’re currently running the real-time kernel. If the “ethercat slaves” command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
+<p>If the &#8220;ethercat master&#8221; command does not produce the correct output, ensure that you&#8217;re currently running the real-time kernel. If the &#8220;ethercat slaves&#8221; command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
 </div>
 <div class="section" id="real-time-configuration-optional">
 <h3>1.2.9. Real-time Configuration (optional)<a class="headerlink" href="#real-time-configuration-optional" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Edit <code class="docutils literal notranslate"><span class="pre">/etc/security/limits.d/99-realtime.conf</span></code> and add the following options:</li>
+<li>Edit <code class="docutils literal"><span class="pre">/etc/security/limits.d/99-realtime.conf</span></code> and add the following options:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>@realtime - rtprio <span class="m">99</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>@realtime - rtprio <span class="m">99</span>
 @realtime - memlock unlimited
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Add a new group and add the “gmto” user to it.</li>
+<li>Add a new group and add the &#8220;gmto&#8221; user to it.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ groupadd -f -g <span class="m">2001</span> realtime
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ groupadd -f -g <span class="m">2001</span> realtime
 $ usermod --groups realtime gmto
 </pre></div>
 </div>
@@ -515,7 +519,7 @@ $ usermod --groups realtime gmto
 <li>Install the necessary packages:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install -y chrony
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y chrony
 </pre></div>
 </div>
 </div></blockquote>
@@ -523,7 +527,7 @@ $ usermod --groups realtime gmto
 <li>Enable the NTP Service</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> chronyd
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> chronyd
 </pre></div>
 </div>
 </div></blockquote>
@@ -534,15 +538,15 @@ $ usermod --groups realtime gmto
 <li>Install the necessary packages:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dnf install -y linuxptp
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y linuxptp
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Edit <code class="docutils literal notranslate"><span class="pre">/etc/ptp4l.conf</span></code> and add the following options:</li>
+<li>Edit <code class="docutils literal"><span class="pre">/etc/ptp4l.conf</span></code> and add the following options:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>global<span class="o">]</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>global<span class="o">]</span>
 slaveOnly       <span class="m">1</span>
 verbose         <span class="m">1</span>
 time_stamping   software
@@ -551,20 +555,20 @@ summary_interval <span class="m">6</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>where <code class="docutils literal notranslate"><span class="pre">[enp3s0]</span></code> should be set to the interface to use for PTP.</p>
+<p>where <code class="docutils literal"><span class="pre">[enp3s0]</span></code> should be set to the interface to use for PTP.</p>
 <ol class="arabic simple" start="3">
-<li>Edit <code class="docutils literal notranslate"><span class="pre">/etc/sysconfig/phc2sys</span></code> and add the following options:</li>
+<li>Edit <code class="docutils literal"><span class="pre">/etc/sysconfig/phc2sys</span></code> and add the following options:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">OPTIONS</span><span class="o">=</span><span class="s2">&quot;-a -r -u 60&quot;</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">OPTIONS</span><span class="o">=</span><span class="s2">&quot;-a -r -u 60&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>Edit <code class="docutils literal notranslate"><span class="pre">/etc/sysconfig/ptp4l</span></code> and add the following options:</li>
+<li>Edit <code class="docutils literal"><span class="pre">/etc/sysconfig/ptp4l</span></code> and add the following options:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">OPTIONS</span><span class="o">=</span><span class="s2">&quot;-f /etc/ptp4l.conf -i enp3s0&quot;</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">OPTIONS</span><span class="o">=</span><span class="s2">&quot;-f /etc/ptp4l.conf -i enp3s0&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -572,7 +576,7 @@ summary_interval <span class="m">6</span>
 <li>Configure access through the firewall</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ firewall-offline-cmd --direct --add-rule ipv4 filter INPUT <span class="m">0</span> -p udp --dport <span class="m">319</span>:320 -j ACCEPT
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ firewall-offline-cmd --direct --add-rule ipv4 filter INPUT <span class="m">0</span> -p udp --dport <span class="m">319</span>:320 -j ACCEPT
 </pre></div>
 </div>
 </div></blockquote>
@@ -580,7 +584,7 @@ summary_interval <span class="m">6</span>
 <li>Enable the ptp service</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> ptp4l
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> ptp4l
 </pre></div>
 </div>
 </div></blockquote>
@@ -594,7 +598,7 @@ summary_interval <span class="m">6</span>
 <li>Create the <strong>Global GMT Software Location</strong>:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt
 </pre></div>
 </div>
 </div></blockquote>
@@ -602,7 +606,7 @@ summary_interval <span class="m">6</span>
 <li>Download the latest SDK distribution and install in the <strong>Global GMT Software Location</strong>:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo wget -P /opt/gmt http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.4.0.tar.gz
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo wget -P /opt/gmt http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.4.0.tar.gz
 $ <span class="nb">cd</span> /opt/gmt
 $ sudo tar -xvzf gmt-sdk-1.4.0.tar.gz
 </pre></div>
@@ -612,16 +616,16 @@ $ sudo tar -xvzf gmt-sdk-1.4.0.tar.gz
 <li>Create a <strong>Local Working Directory</strong></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir &lt;local_working_dir&gt;
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir &lt;local_working_dir&gt;
 </pre></div>
 </div>
 </div></blockquote>
-<p>where <code class="docutils literal notranslate"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
+<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users&#8217; home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
 <ol class="arabic simple" start="4">
 <li>Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">GMT_GLOBAL</span><span class="o">=</span>/opt/gmt
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">GMT_GLOBAL</span><span class="o">=</span>/opt/gmt
 $ <span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>&lt;local_working_dir&gt;
 $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env.sh
 </pre></div>
@@ -632,7 +636,7 @@ $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env
 <li>Check the values of the environment variables:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gmt_env
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ gmt_env
 </pre></div>
 </div>
 </div></blockquote>
@@ -640,25 +644,25 @@ $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env
 <li>Initialize the Development Environment:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
 $ gds init
 </pre></div>
 </div>
 </div></blockquote>
 <p>The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.</p>
 <p>Ensure that the <strong>bundles.coffee</strong> and <strong>ocs_local_bundle.coffee</strong> files exist, copying them from $GMT_GLOBAL if need be.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir <span class="nv">$GMT_LOCAL</span>/etc/bundles
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir <span class="nv">$GMT_LOCAL</span>/etc/bundles
 $ cp <span class="nv">$GMT_GLOBAL</span>/etc/bundles/bundles.coffee <span class="nv">$GMT_LOCAL</span>/etc/bundles/
 $ cp <span class="nv">$GMT_GLOBAL</span>/etc/bundles/ocs_local_bundle.coffee <span class="nv">$GMT_LOCAL</span>/etc/bundles/
 </pre></div>
 </div>
 <p>Edit bundles.coffee to point to the ocs_local_bundle.coffee file</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module.exports <span class="o">=</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>module.exports <span class="o">=</span>
   ocs_local_bundle:   <span class="o">{</span>scope: <span class="s2">&quot;local&quot;</span>,  desc: <span class="s2">&quot;GMT iSample and HDK bundle&quot;</span><span class="o">}</span>
 </pre></div>
 </div>
 <p>Edit ocs_local_bundle.coffee to include the isample and HDK modules</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module.exports <span class="o">=</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>module.exports <span class="o">=</span>
 name:      <span class="s2">&quot;local&quot;</span>
 desc:      <span class="s2">&quot;List of local development modules&quot;</span>
 elements:
@@ -667,7 +671,7 @@ elements:
 </pre></div>
 </div>
 <p>Finally, create the <strong>modules</strong> directory</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
 $ mkdir modules
 </pre></div>
 </div>
@@ -677,7 +681,9 @@ $ mkdir modules
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -699,7 +705,7 @@ $ mkdir modules
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -718,7 +724,6 @@ $ mkdir modules
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'1.4-1',
-            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -728,17 +733,23 @@ $ mkdir modules
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>
