@@ -5,79 +5,79 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
   <title>4. ISample Example &mdash; GMT Software And Controls documentation</title>
+  
 
-
-
-
+  
+  
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
 
+  
 
+  
+  
+    
 
+  
 
-
-
-
-
-
-
-
-
-
-
+  
+  
     <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
+  
 
+  
 
-
-
-
+  
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="5. Contribute" href="contribute.html"/>
-        <link rel="prev" title="3. Installing a Virtual Machine" href="virtual_machine/virtual_machine.html"/>
+        <link rel="next" title="Data Products" href="../data_products/index.html"/>
+        <link rel="prev" title="3. Installing a Virtual Machine" href="virtual_machine/virtual_machine.html"/> 
 
-
+  
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
-
+   
   <div class="wy-grid-for-nav">
 
-
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search">
+          
 
-
-
+          
             <a href="../index.html" class="icon icon-home"> GMT Software And Controls
+          
 
-
-
-
+          
+            
             <img src="../_static/logowhite.png" class="logo" />
-
+          
           </a>
 
-
-
-
+          
+            
+            
               <div class="version">
                 1.4
               </div>
+            
+          
 
-
-
-
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -86,16 +86,16 @@
   </form>
 </div>
 
-
+          
         </div>
 
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-
-
-
-
-
-
+          
+            
+            
+              
+            
+            
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SWC_architecture/index.html">Architecture and Design</a></li>
@@ -107,52 +107,50 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">4. ISample Example</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#clone-the-isample-dcs-repository">4.1. Clone the isample_dcs repository</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#model-files">4.2. Model Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-local-node-modules">4.3. Install local Node Modules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#code-generation">4.4. Code Generation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#component-attributes">4.5. Component Attributes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#state-variables">4.5.1. State Variables</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#input-ports">4.5.2. Input Ports</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#output-ports">4.5.3. Output Ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-generation">4.3. Code Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#component-attributes">4.4. Component Attributes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#state-variables">4.4.1. State Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#input-ports">4.4.2. Input Ports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output-ports">4.4.3. Output Ports</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#optional-defining-component-behavior">4.6. (Optional) Defining component behavior</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#compilation">4.7. Compilation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#running-the-example">4.8. Running the Example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#log-service">4.8.1. Log Service</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#component-setup">4.8.2. Component setup</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#telemetry-service">4.8.3. Telemetry Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-defining-component-behavior">4.5. (Optional) Defining component behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compilation">4.6. Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-example">4.7. Running the Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#log-service">4.7.1. Log Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-setup">4.7.2. Component setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#telemetry-service">4.7.3. Telemetry Service</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="contribute.html">5. Contribute</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary/swc_sys_glossary.html">Software and Controls Acronyms and Definitions</a></li>
 </ul>
 
-
-
+            
+          
         </div>
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
-
+      
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">GMT Software And Controls</a>
-
+        
       </nav>
 
 
-
+      
       <div class="wy-nav-content">
         <div class="rst-content">
-
+          
 
 
 
@@ -171,28 +169,28 @@
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
-
+    
       <li><a href="../index.html">Docs</a> &raquo;</li>
-
+        
           <li><a href="index.html">Software Development</a> &raquo;</li>
-
+        
       <li>4. ISample Example</li>
-
-
+    
+    
       <li class="wy-breadcrumbs-aside">
-
-
-
+        
+            
+        
       </li>
-
+    
   </ul>
 
-
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-
+            
   <div class="section" id="isample-example">
 <span id="id1"></span><h1>4. ISample Example<a class="headerlink" href="#isample-example" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="development/specification/specification.html#dcs-spec-example"><span class="std std-ref">ISample DCS</span></a> is an instrument control system example that provides
@@ -208,7 +206,19 @@ a template that instrument developers can use as a model.</p>
 $ gds clone isample_dcs -d gmto
 </pre></div>
 </div>
-<p>where the <code class="docutils literal"><span class="pre">-d</span> <span class="pre">option</span></code> defines the git repository owner.</p>
+<p>where the <code class="docutils literal"><span class="pre">-d</span> <span class="pre">option</span></code> defines the git repository owner. The output from the command
+will be:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>WRN<span class="o">]</span> <span class="o">[</span>hdk_dcs<span class="o">]</span> Module lib <span class="o">[</span>hdk_dcs<span class="o">]</span> not found, trying to load from <span class="nb">source</span>
+<span class="o">[</span>ERR<span class="o">]</span> <span class="o">[</span>hdk_dcs<span class="o">]</span> model definition <span class="k">for</span> module hdk_dcs not found
+<span class="o">[</span>ERR<span class="o">]</span> <span class="o">[</span>gds<span class="o">]</span> module isample_dcs not defined in bundle ocs_sdk_bundle
+<span class="o">[</span>INF<span class="o">]</span> <span class="o">[</span>gds<span class="o">]</span> clone module isample_dcs
+<span class="o">[</span>INF<span class="o">]</span> <span class="o">[</span>isample_dcs<span class="o">]</span> Cloning module: isample_dcs
+</pre></div>
+</div>
+<p>These warning are normal, the first two are because the hdk module is not installed yet,
+and the other one is generated because the isample_dcs is not defined in the SDK
+bundle. As it is included in the local bundle, the module is cloned successfully,
+as the two latest messages inform us.</p>
 </div>
 <div class="section" id="model-files">
 <h2>4.2. Model Files<a class="headerlink" href="#model-files" title="Permalink to this headline">¶</a></h2>
@@ -290,36 +300,31 @@ $ gds clone isample_dcs -d gmto
 </pre></div>
 </div>
 </div>
-<div class="section" id="install-local-node-modules">
-<h2>4.3. Install local Node Modules<a class="headerlink" href="#install-local-node-modules" title="Permalink to this headline">¶</a></h2>
-<p>This is a temporary work-around for a known issue with Webpack. It only needs to be run once to install the node modules under $GMT_LOCAL.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
-$ cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
-$ npm install
-</pre></div>
-</div>
-</div>
 <div class="section" id="code-generation">
-<h2>4.4. Code Generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h2>
+<h2>4.3. Code Generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h2>
 <p>To generate the code skeleton from the model files, execute:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/model
 $ webpack
 $ gds gen isample_dcs
 </pre></div>
 </div>
-<p>This will generate the basic framework of source code and configuration files for each component. The files will be located in the <cite>src/</cite> folder.
-To see the generated folders and files, navigate to:</p>
+<p>This will generate the basic framework of source code and configuration files for each component.
+The generated source files will be located in the <cite>src/</cite> folder. It is possible that gds
+outputs some warning because there are missing modules which are defined in the
+local bundle (in particular, the hdk). This is
+not a problem, and the code will be successfully generated.</p>
+<p>To see the generated folders and files, navigate to:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/
 $ ls -la
 </pre></div>
 </div>
 </div>
 <div class="section" id="component-attributes">
-<h2>4.5. Component Attributes<a class="headerlink" href="#component-attributes" title="Permalink to this headline">¶</a></h2>
+<h2>4.4. Component Attributes<a class="headerlink" href="#component-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Components are defined by their state variables, input ports, output ports and step function.</p>
 <p>The Filter Wheel component has the following attributes:</p>
 <div class="section" id="state-variables">
-<h3>4.5.1. State Variables<a class="headerlink" href="#state-variables" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.1. State Variables<a class="headerlink" href="#state-variables" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -367,7 +372,7 @@ $ ls -la
 <p><em>OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the “Range” column above.</em></p>
 </div>
 <div class="section" id="input-ports">
-<h3>4.5.2. Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.2. Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -421,7 +426,7 @@ $ ls -la
 </div></blockquote>
 </div>
 <div class="section" id="output-ports">
-<h3>4.5.3. Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.3. Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -486,7 +491,7 @@ $ ls -la
 </div>
 </div>
 <div class="section" id="optional-defining-component-behavior">
-<h2>4.6. (Optional) Defining component behavior<a class="headerlink" href="#optional-defining-component-behavior" title="Permalink to this headline">¶</a></h2>
+<h2>4.5. (Optional) Defining component behavior<a class="headerlink" href="#optional-defining-component-behavior" title="Permalink to this headline">¶</a></h2>
 <p>The core component behavior is specified in the *_step.cpp file. The component
 has a periodic thread that reads input from the input ports, runs the step
 function and then writes output to the output ports. Initially, the generated
@@ -531,7 +536,7 @@ positional input and immediately sets the position value to the new goal, if pos
 </div></blockquote>
 </div>
 <div class="section" id="compilation">
-<h2>4.7. Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
+<h2>4.6. Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
 <p>To compile the C++ Control Package code, edit the module.mk file to contain the correct library definitions:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ vi <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/cpp/isample_ctrl_pkg/module.mk
 </pre></div>
@@ -549,7 +554,7 @@ $ make
 </div>
 </div>
 <div class="section" id="running-the-example">
-<h2>4.8. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h2>
+<h2>4.7. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h2>
 <p>Start the logging and telemetry services:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_server <span class="p">&amp;</span>
 $ tele_server <span class="p">&amp;</span>
@@ -562,14 +567,14 @@ $ tele_server <span class="p">&amp;</span>
 <p>The application is running in the background and will not provide any console output.
 All output will be directed to the logging service after the components have been successfully set up.</p>
 <div class="section" id="log-service">
-<h3>4.8.1. Log Service<a class="headerlink" href="#log-service" title="Permalink to this headline">¶</a></h3>
+<h3>4.7.1. Log Service<a class="headerlink" href="#log-service" title="Permalink to this headline">¶</a></h3>
 <p>In a separate terminal (for example, <cite>tty2</cite>), <strong>start the logging service client</strong>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_client
 </pre></div>
 </div>
 </div>
 <div class="section" id="component-setup">
-<h3>4.8.2. Component setup<a class="headerlink" href="#component-setup" title="Permalink to this headline">¶</a></h3>
+<h3>4.7.2. Component setup<a class="headerlink" href="#component-setup" title="Permalink to this headline">¶</a></h3>
 <p>In the first terminal (<cite>tty1</cite>), <strong>initialize all components</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/etc
 $ ./send_config.coffee
@@ -579,12 +584,12 @@ $ ./send_config.coffee
 that the expected components are logging step info.</p>
 </div>
 <div class="section" id="telemetry-service">
-<h3>4.8.3. Telemetry Service<a class="headerlink" href="#telemetry-service" title="Permalink to this headline">¶</a></h3>
+<h3>4.7.3. Telemetry Service<a class="headerlink" href="#telemetry-service" title="Permalink to this headline">¶</a></h3>
 <p>In a separate terminal (for example <cite>tty3</cite>), <strong>start the telemetry service client</strong>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ tele_client
 </pre></div>
 </div>
-<p>In this example, we don&#8217;t filter, to show data for all monitors.
+<p>In this example, we don’t filter, to show data for all monitors.
 The output can be filtered on substrings of the monitor name by specifying the
 topic to be a specific component type (<code class="docutils literal"><span class="pre">filter_wheel_ctrl</span></code>) or an output port
 name, such as <code class="docutils literal"><span class="pre">position</span></code> or <code class="docutils literal"><span class="pre">heartbeat</span></code>. For example,</p>
@@ -600,20 +605,20 @@ name, such as <code class="docutils literal"><span class="pre">position</span></
 
            </div>
            <div class="articleComments">
-
+            
            </div>
           </div>
           <footer>
-
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-
-        <a href="contribute.html" class="btn btn-neutral float-right" title="5. Contribute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-
-
+      
+        <a href="../data_products/index.html" class="btn btn-neutral float-right" title="Data Products" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
         <a href="virtual_machine/virtual_machine.html" class="btn btn-neutral" title="3. Installing a Virtual Machine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-
+      
     </div>
-
+  
 
   <hr/>
 
@@ -623,7 +628,7 @@ name, such as <code class="docutils literal"><span class="pre">position</span></
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -633,10 +638,10 @@ name, such as <code class="docutils literal"><span class="pre">position</span></
     </section>
 
   </div>
+  
 
 
-
-
+  
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
@@ -651,23 +656,23 @@ name, such as <code class="docutils literal"><span class="pre">position</span></
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
+  
 
-
-
-
+  
+  
     <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
-
-
-
+  
+  
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-
+   
 
 </body>
 </html>

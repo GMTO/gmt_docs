@@ -146,11 +146,17 @@ For more detailed information on Virtual Networking, consult the official
 
 Network Address Translation (NAT)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-This is the default networking mode in VirtualBox and should work in most cases.
+This is the default networking mode in VirtualBox.
 The Virtual machine will be placed on a private internal network that is not
 directly accessible from the outside. Instead, the networking engine will map
 traffic through the host interface, making it appear as though the packets
 originated from the VirtualBox application on the host IP address.
+
+This mode is simple to configure, but it has the drawback that it is not
+useful when the Virtual machine must be accessed from the outside, for
+example to make ssh connections to it, or to have two components that must interchange data
+deployed in two different machines. In these cases, the Bridged Adapter
+networking (see next paragraph) should be used.
 
 Bridged Adapter
 ~~~~~~~~~~~~~~~
@@ -175,12 +181,23 @@ The settings under **Advanced** can remain on defaults.
 
 Select *OK* to save settings and close the dialog.
 
+Host-only networking
+~~~~~~~~~~~~~~~~~~~~
+Host-only networking can be though as a hybrid between the Bridged
+and the internal networking modes. With this setup, the Virtual Machines will
+be able to communicate between them, and also to the host. However, the
+Virtual Machines will not be able to communicate to the outside world. Therefore,
+it will be possible to connect to the virtualized machines using ssh from the
+host that is running them or to have several Virtual Machines in the same host
+with components that share data between these Virtual Machines, but it will not
+be possible to do the same with other hosts.
+
 Download the iso image
 ----------------------
 
-Before running the virtual machine for the first time, use the instructions in 
-:ref:`installation` to download the iso image that will be used to install the 
-Fedora operating system. Instead of creating a bootable USB drive, the iso image 
+Before running the virtual machine for the first time, use the instructions in
+:ref:`installation` to download the iso image that will be used to install the
+Fedora operating system. Instead of creating a bootable USB drive, the iso image
 will be directly loaded into the Virtual Optical Drive for installation.
 
 Run the Virtual Machine
@@ -202,7 +219,7 @@ device.
   :scale: 70 %
   :alt: First Run Install Menu
 
-Select *Install Fedora 26* and follow the instructions in :ref:`anaconda_install` to install 
+Select *Install Fedora 26* and follow the instructions in :ref:`anaconda_install` to install
 the operating system. Ensure that the boot partition is set to File System *ext4* for the RT kernel
 to work.
 
@@ -245,7 +262,7 @@ Close the window to power off the Virtual Machine.
 In the Storage settings panel, click on **[Optical drive]** and select
 **Remove disk from virtual drive**
 
-Start the Virtual Machine back up. The system will now boot off its own hard drive instead of the 
+Start the Virtual Machine back up. The system will now boot off its own hard drive instead of the
 installation disk.
 
 .. image:: images/ss18_boot_select_kernel.png
@@ -253,7 +270,7 @@ installation disk.
   :scale: 70 %
   :alt: Select kernel
 
-Finish the operating system configuration and SDK installation process outlined 
+Finish the operating system configuration and SDK installation process outlined
 in :ref:`installation`.
 
 The system is now ready to use for development.

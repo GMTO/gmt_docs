@@ -110,6 +110,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#configure-network-settings">3.4. Configure Network Settings</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#network-address-translation-nat">3.4.1. Network Address Translation (NAT)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bridged-adapter">3.4.2. Bridged Adapter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#host-only-networking">3.4.3. Host-only networking</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#download-the-iso-image">3.5. Download the iso image</a></li>
@@ -123,7 +124,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../isample_example.html">4. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../contribute.html">5. Contribute</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../data_products/index.html">Data Products</a></li>
@@ -224,30 +224,30 @@ version 5.1.20, for use on OS X.</p>
 <div class="section" id="create-a-virtual-machine">
 <h2>3.3. Create a Virtual Machine<a class="headerlink" href="#create-a-virtual-machine" title="Permalink to this headline">¶</a></h2>
 <p>Run the application</p>
-<a class="reference internal image-reference" href="../../_images/ss04_virtualbox_welcome.png"><img alt="VirtualBox Application Window" class="align-center" src="../../_images/ss04_virtualbox_welcome.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss04_virtualbox_welcome.png"><img alt="VirtualBox Application Window" class="align-center" src="../../_images/ss04_virtualbox_welcome.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>Select <em>New</em></p>
-<a class="reference internal image-reference" href="../../_images/ss05_new_name_type.png"><img alt="Name and Operating System" class="align-center" src="../../_images/ss05_new_name_type.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss05_new_name_type.png"><img alt="Name and Operating System" class="align-center" src="../../_images/ss05_new_name_type.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>Choose a descriptive <strong>Name</strong> for the Virtual Machine and select the <strong>Type</strong>
 as <em>Linux</em> and the <strong>Version</strong> as <em>Fedora (64-bit)</em>.</p>
 <p>Select <em>Continue</em> to proceed.</p>
-<a class="reference internal image-reference" href="../../_images/ss06_new_memory_size.png"><img alt="Memory Size" class="align-center" src="../../_images/ss06_new_memory_size.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss06_new_memory_size.png"><img alt="Memory Size" class="align-center" src="../../_images/ss06_new_memory_size.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>The amount of memory allocated to the Virtual Machine can be varied depending
 on how much memory is available to the host machine and how heavily the
 Virtual Machine will be utilized. At this stage, <em>2 GB</em> is more than sufficient.
 It can be changed after the Virtual Machine has been set up, if necessary.</p>
 <p>Select <em>Continue</em> to proceed.</p>
-<a class="reference internal image-reference" href="../../_images/ss07_new_hard_disk.png"><img alt="Hard Disk" class="align-center" src="../../_images/ss07_new_hard_disk.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss07_new_hard_disk.png"><img alt="Hard Disk" class="align-center" src="../../_images/ss07_new_hard_disk.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>Select <strong>Create a virtual hard disk now</strong>, to set up a hard drive.
 This will be a file on the host machine that can dynamically resize based
 on demand, up to a specified maximum value.</p>
 <p>Select <em>Create</em> to proceed.</p>
-<a class="reference internal image-reference" href="../../_images/ss08_new_hard_disk_type.png"><img alt="Hard Disk File Type" class="align-center" src="../../_images/ss08_new_hard_disk_type.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss08_new_hard_disk_type.png"><img alt="Hard Disk File Type" class="align-center" src="../../_images/ss08_new_hard_disk_type.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>Select the default, <strong>VDI (VirtualBox Disk Image)</strong>, and then click
 <em>Continue</em> to proceed.</p>
-<a class="reference internal image-reference" href="../../_images/ss09_new_hard_disk_storage.png"><img alt="Storage on Physical Hard Disk" class="align-center" src="../../_images/ss09_new_hard_disk_storage.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss09_new_hard_disk_storage.png"><img alt="Storage on Physical Hard Disk" class="align-center" src="../../_images/ss09_new_hard_disk_storage.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>Select the default, <strong>Dynamically allocated</strong>, and then click
 <em>Continue</em> to proceed.</p>
-<a class="reference internal image-reference" href="../../_images/ss10_new_hard_disk_location_size.png"><img alt="File Location and Size" class="align-center" src="../../_images/ss10_new_hard_disk_location_size.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss10_new_hard_disk_location_size.png"><img alt="File Location and Size" class="align-center" src="../../_images/ss10_new_hard_disk_location_size.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>The amount of disk space allocated to the Virtual Machine can be varied
 depending on how much disk space is available to the host machine and the
 hardware requirements of the Virtual Machine.
@@ -256,7 +256,7 @@ machine file system because the virtual drive space is allocated dynamically.
 At this stage 20 GB is sufficient.
 The minimum capacity for the SWC development machine is 5 GB.</p>
 <p>Select <em>Create</em> to proceed.</p>
-<a class="reference internal image-reference" href="../../_images/ss11_virtualbox_main_window.png"><img alt="VirtualBox Main Window" class="align-center" src="../../_images/ss11_virtualbox_main_window.png" style="width: 1234.8px; height: 957.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss11_virtualbox_main_window.png"><img alt="VirtualBox Main Window" class="align-center" src="../../_images/ss11_virtualbox_main_window.png" style="width: 1234.8px; height: 957.5999999999999px;" /></a>
 <p>The Virtual Machine is now set up and ready to use.
 The system properties of the VM can be changed whenever it is turned off
 by selecting the VM and clicking on Settings.</p>
@@ -271,11 +271,16 @@ work.</p>
 <a class="reference external" href="https://www.virtualbox.org/manual/ch06.html">documentation</a></p>
 <div class="section" id="network-address-translation-nat">
 <h3>3.4.1. Network Address Translation (NAT)<a class="headerlink" href="#network-address-translation-nat" title="Permalink to this headline">¶</a></h3>
-<p>This is the default networking mode in VirtualBox and should work in most cases.
+<p>This is the default networking mode in VirtualBox.
 The Virtual machine will be placed on a private internal network that is not
 directly accessible from the outside. Instead, the networking engine will map
 traffic through the host interface, making it appear as though the packets
 originated from the VirtualBox application on the host IP address.</p>
+<p>This mode is simple to configure, but it has the drawback that it is not
+useful when the Virtual machine must be accessed from the outside, for
+example to make ssh connections to it, or to have two components that must interchange data
+deployed in two different machines. In these cases, the Bridged Adapter
+networking (see next paragraph) should be used.</p>
 </div>
 <div class="section" id="bridged-adapter">
 <h3>3.4.2. Bridged Adapter<a class="headerlink" href="#bridged-adapter" title="Permalink to this headline">¶</a></h3>
@@ -291,6 +296,17 @@ with <strong>Name</strong> the same as the network adapter used by the host mach
 connect to the internet. In this case, it’s the wireless adapter <em>en0</em>.
 The settings under <strong>Advanced</strong> can remain on defaults.</p>
 <p>Select <em>OK</em> to save settings and close the dialog.</p>
+</div>
+<div class="section" id="host-only-networking">
+<h3>3.4.3. Host-only networking<a class="headerlink" href="#host-only-networking" title="Permalink to this headline">¶</a></h3>
+<p>Host-only networking can be though as a hybrid between the Bridged
+and the internal networking modes. With this setup, the Virtual Machines will
+be able to communicate between them, and also to the host. However, the
+Virtual Machines will not be able to communicate to the outside world. Therefore,
+it will be possible to connect to the virtualized machines using ssh from the
+host that is running them or to have several Virtual Machines in the same host
+with components that share data between these Virtual Machines, but it will not
+be possible to do the same with other hosts.</p>
 </div>
 </div>
 <div class="section" id="download-the-iso-image">
@@ -311,7 +327,7 @@ device.</p>
 <p>Select <em>Install Fedora 26</em> and follow the instructions in <a class="reference internal" href="../dev_environment/anaconda_install.html#anaconda-install"><span class="std std-ref">Installing Using Anaconda</span></a> to install
 the operating system. Ensure that the boot partition is set to File System <em>ext4</em> for the RT kernel
 to work.</p>
-<a class="reference internal image-reference" href="../../_images/ss26_partition_ext4.png"><img alt="Custom Partitioning" class="align-center" src="../../_images/ss26_partition_ext4.png" style="width: 1590.4px; height: 1292.2px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss26_partition_ext4.png"><img alt="Custom Partitioning" class="align-center" src="../../_images/ss26_partition_ext4.png" style="width: 1590.3999999999999px; height: 1292.1999999999998px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>At this point it is useful to note that when you click on the Virtual Machine
@@ -323,10 +339,10 @@ configured as the host key.</p>
 <p>To change to host key, select <strong>VirtualBox VM -&gt; Preferences</strong> from the
 application control bar. Select the <strong>Input</strong> tab and edit the value next
 to the <em>Host Key Combination field</em>.</p>
-<a class="last reference internal image-reference" href="../../_images/ss15_host_key_configuration.png"><img alt="Host Key Configuration" class="align-center" src="../../_images/ss15_host_key_configuration.png" style="width: 926.8px; height: 747.6px;" /></a>
+<a class="last reference internal image-reference" href="../../_images/ss15_host_key_configuration.png"><img alt="Host Key Configuration" class="align-center" src="../../_images/ss15_host_key_configuration.png" style="width: 926.8px; height: 747.5999999999999px;" /></a>
 </div>
 <p>Wait for the installation to complete and selet <em>Reboot</em> when done.</p>
-<a class="reference internal image-reference" href="../../_images/ss16_os_install_inprogress.png"><img alt="OS Installation" class="align-center" src="../../_images/ss16_os_install_inprogress.png" style="width: 1590.4px; height: 1292.2px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss16_os_install_inprogress.png"><img alt="OS Installation" class="align-center" src="../../_images/ss16_os_install_inprogress.png" style="width: 1590.3999999999999px; height: 1292.1999999999998px;" /></a>
 <p>Close the window to power off the Virtual Machine.</p>
 <a class="reference internal image-reference" href="../../_images/ss27_reboot_after_install.png"><img alt="Reboot after installation is complete" class="align-center" src="../../_images/ss27_reboot_after_install.png" style="width: 1052.8px; height: 889.0px;" /></a>
 <p>In the Storage settings panel, click on <strong>[Optical drive]</strong> and select
@@ -430,7 +446,7 @@ $ sudo ./VBoxLinuxAdditions.run install
 host machine and give it a name.</p>
 <p>Select “Auto-mount” to automatically link the folders at start-up and
 “Make Permanent” to create a machine folder and not a temporary folder.</p>
-<a class="reference internal image-reference" href="../../_images/ss25_shared_folder.png"><img alt="Configuring a Shared Folder" class="align-center" src="../../_images/ss25_shared_folder.png" style="width: 1073.8px; height: 677.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/ss25_shared_folder.png"><img alt="Configuring a Shared Folder" class="align-center" src="../../_images/ss25_shared_folder.png" style="width: 1073.8px; height: 677.5999999999999px;" /></a>
 <p>Click <em>OK</em> to save the settings.</p>
 <p>Restart the Virtual Machine. The shared folder will be mounted at <code class="docutils literal"><span class="pre">/media/sf_share</span></code>.</p>
 <p>For easy folder access, add the current user to the vboxsf group:</p>
@@ -548,7 +564,7 @@ $ systemctl status -l mongod
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

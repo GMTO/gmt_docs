@@ -578,44 +578,44 @@ been subject to the same design process. <a class="reference internal" href="../
 <a class="reference internal" href="../frameworks/data_processing.html#data-processing-framework"><span class="std std-ref">Data Processing Framework</span></a> sections describe them respectively.</li>
 </ul>
 </div></blockquote>
-<div class="highlight-coffeescript" id="baselinearaxiscontroller"><div class="highlight"><pre><span></span>properties:
-    max_torque:
-        desc:     &quot;This property shall indicate the configured maximum permissible
-                   torque in the motor. The value shall be given per thousand of rated
-                   torque.&quot;
-        type:     &quot;uint16&quot;
-        pattern:  &quot;pull&quot;
-        max_rate: 1
-        default:  1000
+<div class="highlight-coffeescript" id="baselinearaxiscontroller"><div class="highlight"><pre><span></span><span class="nv">properties:</span>
+    <span class="nv">max_torque:</span>
+        <span class="nv">desc: </span>    <span class="s">&quot;This property shall indicate the configured maximum permissible</span>
+<span class="s">                   torque in the motor. The value shall be given per thousand of rated</span>
+<span class="s">                   torque.&quot;</span>
+        <span class="nv">type: </span>    <span class="s">&quot;uint16&quot;</span>
+        <span class="nv">pattern: </span> <span class="s">&quot;pull&quot;</span>
+        <span class="nv">max_rate: </span><span class="mi">1</span>
+        <span class="nv">default: </span> <span class="mi">1000</span>
 
-    motor_rated_torque:
-        desc:     &quot;This property shall indicate the configured motor rated torque.
-                   It is taken from the motors nameplate. All relative torque
-                   data shall refer to this value. For linear motors, the object
-                   name is not changed, but the motor rated force value shall be
-                   entered as multiples of mN (milliNewton). The value shall be
-                   given in mNm (milli Newton metre).&quot;
-        type:     &quot;uint32&quot;
-        pattern:  &quot;pull&quot;
-        max_rate: 1
-        default:  1000
+    <span class="nv">motor_rated_torque:</span>
+        <span class="nv">desc: </span>    <span class="s">&quot;This property shall indicate the configured motor rated torque.</span>
+<span class="s">                   It is taken from the motors nameplate. All relative torque</span>
+<span class="s">                   data shall refer to this value. For linear motors, the object</span>
+<span class="s">                   name is not changed, but the motor rated force value shall be</span>
+<span class="s">                   entered as multiples of mN (milliNewton). The value shall be</span>
+<span class="s">                   given in mNm (milli Newton metre).&quot;</span>
+        <span class="nv">type: </span>    <span class="s">&quot;uint32&quot;</span>
+        <span class="nv">pattern: </span> <span class="s">&quot;pull&quot;</span>
+        <span class="nv">max_rate: </span><span class="mi">1</span>
+        <span class="nv">default: </span> <span class="mi">1000</span>
 
-    motion_profile_type:
-        desc:     &quot;This property shall indicate the configured type of motion profile
-                   used to perform a profiled motion.
+    <span class="nv">motion_profile_type:</span>
+        <span class="nv">desc: </span>    <span class="s">&quot;This property shall indicate the configured type of motion profile</span>
+<span class="s">                   used to perform a profiled motion.</span>
 
-                     Value        | Definition
-                     -------------|----------------------------------
-                     -32768 to -1 | Manufacturer-specific
-                     0            | Linear ramp (trapezoidal profile)
-                     1            | Sin2 ramp
-                     2            | Jerk-free ramp
-                     3            | Jerk-limited ramp
-                     4 to 32767   | Reserved&quot;
-        type:     &quot;int16&quot;
-        pattern:  &quot;pull&quot;
-        max_rate: 1
-        default:  0
+<span class="s">                     Value        | Definition</span>
+<span class="s">                     -------------|----------------------------------</span>
+<span class="s">                     -32768 to -1 | Manufacturer-specific</span>
+<span class="s">                     0            | Linear ramp (trapezoidal profile)</span>
+<span class="s">                     1            | Sin2 ramp</span>
+<span class="s">                     2            | Jerk-free ramp</span>
+<span class="s">                     3            | Jerk-limited ramp</span>
+<span class="s">                     4 to 32767   | Reserved&quot;</span>
+        <span class="nv">type: </span>    <span class="s">&quot;int16&quot;</span>
+        <span class="nv">pattern: </span> <span class="s">&quot;pull&quot;</span>
+        <span class="nv">max_rate: </span><span class="mi">1</span>
+        <span class="nv">default: </span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p><em>BaseLinearAxisController Specification File excerpt</em></p>
@@ -675,7 +675,7 @@ been subject to the same design process. <a class="reference internal" href="../
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

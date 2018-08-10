@@ -19,7 +19,22 @@ On the development machine, clone the repository in the development folder:
   $ cd $GMT_LOCAL/modules
   $ gds clone isample_dcs -d gmto
 
-where the ``-d option`` defines the git repository owner.
+where the ``-d option`` defines the git repository owner. The output from the command
+will be:
+
+.. code-block:: bash
+
+  [WRN] [hdk_dcs] Module lib [hdk_dcs] not found, trying to load from source
+  [ERR] [hdk_dcs] model definition for module hdk_dcs not found
+  [ERR] [gds] module isample_dcs not defined in bundle ocs_sdk_bundle
+  [INF] [gds] clone module isample_dcs
+  [INF] [isample_dcs] Cloning module: isample_dcs
+
+These warning are normal, the first two are because the hdk module is not installed yet,
+and the other one is generated because the isample_dcs is not defined in the SDK
+bundle. As it is included in the local bundle, the module is cloned successfully,
+as the two latest messages inform us.
+
 
 Model Files
 -----------
@@ -112,16 +127,6 @@ isample_ctrl_pkg/isample_temp_ctrl.coffee
       +--------------+                                     +---------------+
 
 
-Install local Node Modules
---------------------------
-
-This is a temporary work-around for a known issue with Webpack. It only needs to be run once to install the node modules under $GMT_LOCAL.
-
-.. code-block:: bash
-
-   $ cd $GMT_LOCAL
-   $ cp $GMT_GLOBAL/package.json ./
-   $ npm install
 
 Code Generation
 ---------------
@@ -134,7 +139,12 @@ To generate the code skeleton from the model files, execute:
    $ webpack
    $ gds gen isample_dcs
 
-This will generate the basic framework of source code and configuration files for each component. The files will be located in the `src/` folder.
+This will generate the basic framework of source code and configuration files for each component.
+The generated source files will be located in the `src/` folder. It is possible that gds
+outputs some warning because there are missing modules which are defined in the
+local bundle (in particular, the hdk). This is
+not a problem, and the code will be successfully generated.
+
 To see the generated folders and files, navigate to:
 
 .. code-block:: bash

@@ -35,13 +35,13 @@ Operating System
 
 The SDK is currently configured to run on the **Fedora 26 Server** Linux Operating System.
 
-  1. The ISO file can be downloaded from the Fedora website: https://dl.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/.
+  1. The ISO file can be downloaded from the Fedora website: https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/
 
     Alternatively, download the file directly from the terminal:
 
     .. code-block:: bash
 
-      $ curl -O https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/Fedora-Server-dvd-x86_64-26-1.5.iso
+      $ curl -L -O https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/Fedora-Server-dvd-x86_64-26-1.5.iso
 
   2. Install the operating system on the development machine by either creating a bootable USB drive or via network installation using tools such as Cobbler and Kickstart. Other options include running Fedora 26 in a Virtual Machine or Docker Containers, however, the use of virtualization and its impact on connecting to actual hardware has not been fully tested.
 
@@ -131,13 +131,13 @@ Node Installation
   .. code-block:: bash
 
     $ curl -sL https://rpm.nodesource.com/setup_8.x | sudo bash -
-    $ dnf install -y nodejs
+    $ sudo dnf install -y nodejs
 
 2. Install necessary node packages:
 
   .. code-block:: bash
 
-    $ npm install -g coffeescript webpack webpack-cli raw-loader
+    $ sudo npm install -g coffeescript webpack webpack-cli raw-loader
 
 MongoDB Configuration
 .....................
@@ -152,20 +152,20 @@ MongoDB Configuration
 
   .. code-block:: bash
 
-    $ firewall-offline-cmd --direct --add-rule ipv4 filter INPUT 0 -p tcp --dport 27017 -j ACCEPT
+    $ sudo firewall-offline-cmd --direct --add-rule ipv4 filter INPUT 0 -p tcp --dport 27017 -j ACCEPT
 
 2. Enable the MongoDB service
 
   .. code-block:: bash
 
-    $ systemctl enable mongod
-    $ systemctl start mongod
+    $ sudo systemctl enable mongod
+    $ sudo systemctl start mongod
 
 3. Check that the MongoDB service is up
 
   .. code-block:: bash
 
-    $ systemctl status -l mongod
+    $ sudo systemctl status -l mongod
 
 Infiniband Configuration (optional)
 ...................................
@@ -201,10 +201,10 @@ Infiniband is a low-latency networking communications protocol that requires spe
 
   .. code-block:: bash
 
-    $ systemctl enable opensm
-    $ systemctl enable rdma
+    $ sudo systemctl enable opensm
+    $ sudo systemctl enable rdma
 
-Ethercat Configuration (optional)
+Ethercat Configuration
 .................................
 
 EtherCAT is a high-speed fieldbus communication system used for real-time control. The following configuration steps should be used as a guide when configuring EtherCAT communications.
@@ -213,7 +213,7 @@ EtherCAT is a high-speed fieldbus communication system used for real-time contro
 
   .. code-block:: bash
 
-    $ dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
+    $ sudo dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
 
 2. Select the Ethernet interface to be used for EtherCAT communication (e.g. enp4s0) and edit the corresponding configuration file (e.g. ``/etc/sysconfig/network-scripts/ifcfg-enp4s0``) to set the following options:
 
@@ -246,8 +246,8 @@ EtherCAT is a high-speed fieldbus communication system used for real-time contro
 
   .. code-block:: bash
 
-    $ systemctl enable ethercat
-    $ systemctl start ethercat
+    $ sudo systemctl enable ethercat
+    $ sudo systemctl start ethercat
 
 7. Reboot into the RT Kernel if you're not in it already.
 
@@ -274,8 +274,8 @@ Real-time Configuration (optional)
 
   .. code-block:: bash
 
-    $ groupadd -f -g 2001 realtime
-    $ usermod --groups realtime gmto
+    $ sudo groupadd -f -g 2001 realtime
+    $ sudo usermod --groups realtime gmto
 
 Network Time Protocol Configuration
 ...................................
@@ -292,7 +292,7 @@ For general network timekeeping, use NTP, unless Precision Time Protocol is requ
 
   .. code-block:: bash
 
-    $ systemctl enable chronyd
+    $ sudo systemctl enable chronyd
 
 
 Precision Time Protocol Configuration (optional)
@@ -333,13 +333,13 @@ where ``[enp3s0]`` should be set to the interface to use for PTP.
 
   .. code-block:: bash
 
-    $ firewall-offline-cmd --direct --add-rule ipv4 filter INPUT 0 -p udp --dport 319:320 -j ACCEPT
+    $ sudo firewall-offline-cmd --direct --add-rule ipv4 filter INPUT 0 -p udp --dport 319:320 -j ACCEPT
 
 6. Enable the ptp service
 
   .. code-block:: bash
 
-    $ systemctl enable ptp4l
+    $ sudo systemctl enable ptp4l
 
 
 Software Development Kit (SDK)
@@ -422,11 +422,20 @@ Edit ocs_local_bundle.coffee to include the isample and HDK modules
         isample_dcs: { active: true, test: false, developer: 'gmto', domain: 'idcs' }
         hdk_dcs:     { active: true, test: false, developer: 'gmto', domain: 'idcs' }
 
+Install local Node Modules
+
+.. code-block:: bash
+
+   $ cd $GMT_LOCAL
+   $ cp $GMT_GLOBAL/package.json ./
+   $ npm install
+
 Finally, create the **modules** directory
 
 .. code-block:: bash
 
     $ cd $GMT_LOCAL
     $ mkdir modules
+
 
 :ref:`[back to top] <installation>`
