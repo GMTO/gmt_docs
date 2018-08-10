@@ -479,7 +479,7 @@ $ sudo systemctl start ethercat
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="7">
-<li>Reboot into the RT Kernel if you’re not in it already.</li>
+<li>Reboot into the RT Kernel if you&#8217;re not in it already.</li>
 <li>Test the Ethercat configuration</li>
 </ol>
 <blockquote>
@@ -488,7 +488,7 @@ $ ethercat slaves
 </pre></div>
 </div>
 </div></blockquote>
-<p>If the “ethercat master” command does not produce the correct output, ensure that you’re currently running the real-time kernel. If the “ethercat slaves” command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
+<p>If the &#8220;ethercat master&#8221; command does not produce the correct output, ensure that you&#8217;re currently running the real-time kernel. If the &#8220;ethercat slaves&#8221; command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
 </div>
 <div class="section" id="real-time-configuration-optional">
 <h3>1.2.9. Real-time Configuration (optional)<a class="headerlink" href="#real-time-configuration-optional" title="Permalink to this headline">¶</a></h3>
@@ -502,7 +502,7 @@ $ ethercat slaves
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Add a new group and add the “gmto” user to it.</li>
+<li>Add a new group and add the &#8220;gmto&#8221; user to it.</li>
 </ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo groupadd -f -g <span class="m">2001</span> realtime
@@ -619,7 +619,7 @@ $ sudo tar -xvzf gmt-sdk-1.4.0.tar.gz
 </pre></div>
 </div>
 </div></blockquote>
-<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
+<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users&#8217; home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
 <ol class="arabic simple" start="4">
 <li>Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)</li>
 </ol>
@@ -738,7 +738,7 @@ $ mkdir modules
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -172,11 +172,11 @@ within the GMT framework.</p>
 <div class="section" id="options">
 <h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
-<dt><strong>-m</strong>, <strong>–model</strong></dt>
-<dd>The <strong>model</strong> to use. This defaults to “model”. Valid options include
+<dt><strong>-m</strong>, <strong>&#8211;model</strong></dt>
+<dd>The <strong>model</strong> to use. This defaults to &#8220;model&#8221;. Valid options include
 <strong>metametamodel</strong>, <strong>metamodel</strong>, <strong>model</strong> and <strong>runtime</strong>.</dd>
-<dt><strong>-e</strong>, <strong>–element</strong></dt>
-<dd>The model <strong>element</strong> to use. This defaults to “swc_sys”.
+<dt><strong>-e</strong>, <strong>&#8211;element</strong></dt>
+<dd>The model <strong>element</strong> to use. This defaults to &#8220;swc_sys&#8221;.
 <code class="docutils literal"><span class="pre">How</span> <span class="pre">do</span> <span class="pre">we</span> <span class="pre">list</span> <span class="pre">valid</span> <span class="pre">options?</span></code></dd>
 </dl>
 </div>
@@ -189,7 +189,7 @@ within the GMT framework.</p>
 <p>Print the list of gds options and commands.</p>
 <blockquote>
 <div><dl class="docutils">
-<dt><strong>-h</strong>, <strong>–help</strong></dt>
+<dt><strong>-h</strong>, <strong>&#8211;help</strong></dt>
 <dd>Print gds usage information.</dd>
 </dl>
 </div></blockquote>
@@ -220,7 +220,7 @@ from <cite>gmt.runtime.log_server_1_config</cite>.</p>
 <dd>The topic to subscribe to. This will filter the content of the messages and
 only the messages containing the topic will be shown.
 To listen for events from a specific component, use the component name.
-Using topic “gmt” will show all log messages.</dd>
+Using topic &#8220;gmt&#8221; will show all log messages.</dd>
 </dl>
 </div></blockquote>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>gds log_service query &lt;key&gt; &lt;number&gt;
@@ -275,7 +275,7 @@ from <cite>gmt.runtime.telemetry_server_1_config</cite>.</p>
 <dd>The topic to subscribe to. This will filter the content of the messages and
 only the messages containing the topic will be shown.
 To listen for events from a specific component, use the component name.
-Using topic “gmt” will show all telemetry messages.</dd>
+Using topic &#8220;gmt&#8221; will show all telemetry messages.</dd>
 </dl>
 </div></blockquote>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>gds telemetry_service query &lt;key&gt; &lt;number&gt;
@@ -311,16 +311,16 @@ oldest.</dd>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>gds <span class="o">[</span>-m model<span class="o">]</span> <span class="o">[</span>-e element<span class="o">]</span> skeleton <span class="o">[</span>-t template<span class="o">]</span> <span class="o">[</span>-f FORMAT<span class="o">]</span> <span class="o">[</span>-l LEVEL<span class="o">]</span>
 </pre></div>
 </div>
-<p>Generates a skeleton for an instance of the given model element, by default “swc_sys”.</p>
+<p>Generates a skeleton for an instance of the given model element, by default &#8220;swc_sys&#8221;.</p>
 <blockquote>
 <div><dl class="docutils">
-<dt><strong>-t</strong>, <strong>–template</strong></dt>
-<dd>The template to use. This defaults to “Undefined”.
+<dt><strong>-t</strong>, <strong>&#8211;template</strong></dt>
+<dd>The template to use. This defaults to &#8220;Undefined&#8221;.
 <code class="docutils literal"><span class="pre">How</span> <span class="pre">do</span> <span class="pre">we</span> <span class="pre">list</span> <span class="pre">valid</span> <span class="pre">options?</span></code></dd>
-<dt><strong>-f</strong>, <strong>–format</strong></dt>
-<dd>The format to use. This defaults to “txt”. Valid options include <em>json</em>,
+<dt><strong>-f</strong>, <strong>&#8211;format</strong></dt>
+<dd>The format to use. This defaults to &#8220;txt&#8221;. Valid options include <em>json</em>,
 <em>txt</em>, <em>csv</em> and <em>html</em>.</dd>
-<dt><strong>-l</strong>, <strong>–level</strong></dt>
+<dt><strong>-l</strong>, <strong>&#8211;level</strong></dt>
 <dd>Numeric value. Defaults to 1.</dd>
 </dl>
 </div></blockquote>
@@ -367,7 +367,7 @@ configuration.</p>
 </pre></div>
 </div>
 <p>Send a value to an input port on the specified component instance. The model
-should always be “runtime”, as values can only be sent to runtime instances of
+should always be &#8220;runtime&#8221;, as values can only be sent to runtime instances of
 components.</p>
 <blockquote>
 <div><dl class="docutils">
@@ -395,13 +395,13 @@ a valid port defined in the component.</dd>
 <p>Run a command on the given model element.</p>
 <blockquote>
 <div><dl class="docutils">
-<dt><strong>-c</strong>, <strong>–cmd</strong></dt>
+<dt><strong>-c</strong>, <strong>&#8211;cmd</strong></dt>
 <dd>The <strong>command</strong> to use for the specified element. The command is mandatory.
 Available commands depend on the model element on which it will be run.</dd>
-<dt><strong>-i</strong>, <strong>–input</strong></dt>
+<dt><strong>-i</strong>, <strong>&#8211;input</strong></dt>
 <dd>The <strong>input</strong> file name to use as input to the process command. This file
 can be used in addition to command line arguments.</dd>
-<dt><strong>-o</strong>, <strong>–output</strong></dt>
+<dt><strong>-o</strong>, <strong>&#8211;output</strong></dt>
 <dd>The <strong>output</strong> file name to use for output generated by the process command.
 If not specified, output will be written to the console.</dd>
 </dl>
@@ -413,7 +413,7 @@ If not specified, output will be written to the console.</dd>
 </div></blockquote>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">What is the difference between “process” and “exec”? Do we need both?</p>
+<p class="last">What is the difference between &#8220;process&#8221; and &#8220;exec&#8221;? Do we need both?</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -430,7 +430,7 @@ If not specified, output will be written to the console.</dd>
 <dd>The <strong>target element</strong> to use and the <strong>command</strong> to use with it.
 This value is mandatory. Available commands depend on the model element on
 which it will be run.</dd>
-<dt><strong>-o</strong>, <strong>–output</strong></dt>
+<dt><strong>-o</strong>, <strong>&#8211;output</strong></dt>
 <dd>The <strong>output file name</strong> to use for output generated by the process command.
 If not specified, output will be written to the console.</dd>
 </dl>
@@ -443,7 +443,7 @@ If not specified, output will be written to the console.</dd>
 </div></blockquote>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">What is the difference between “process” and “exec”? Do we need both?</p>
+<p class="last">What is the difference between &#8220;process&#8221; and &#8220;exec&#8221;? Do we need both?</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -478,7 +478,7 @@ from specified vendors.</p>
 <blockquote>
 <div><dl class="docutils">
 <dt><strong>vendor</strong></dt>
-<dd>The name of the vendor to use. Currently, the only valid option is “beckhoff”.</dd>
+<dd>The name of the vendor to use. Currently, the only valid option is &#8220;beckhoff&#8221;.</dd>
 </dl>
 </div></blockquote>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>gds ecat -c extract <span class="o">[</span>vendor...<span class="o">]</span>
@@ -489,7 +489,7 @@ specified vendors. The modules need to be already downloaded.</p>
 <blockquote>
 <div><dl class="docutils">
 <dt><strong>vendor</strong></dt>
-<dd>The name of the vendor to use. Currently, the only valid option is “beckhoff”.</dd>
+<dd>The name of the vendor to use. Currently, the only valid option is &#8220;beckhoff&#8221;.</dd>
 </dl>
 </div></blockquote>
 <p>Examples:</p>
@@ -564,7 +564,7 @@ specified vendors. The modules need to be already downloaded.</p>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
