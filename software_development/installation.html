@@ -111,7 +111,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#node-installation">1.2.5. Node Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mongodb-configuration">1.2.6. MongoDB Configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#infiniband-configuration-optional">1.2.7. Infiniband Configuration (optional)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ethercat-configuration-optional">1.2.8. Ethercat Configuration (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ethercat-configuration">1.2.8. Ethercat Configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#real-time-configuration-optional">1.2.9. Real-time Configuration (optional)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#network-time-protocol-configuration">1.2.10. Network Time Protocol Configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#precision-time-protocol-configuration-optional">1.2.11. Precision Time Protocol Configuration (optional)</a></li>
@@ -123,7 +123,6 @@
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="isample_example.html">4. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="contribute.html">5. Contribute</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -225,11 +224,11 @@
 <p>The SDK is currently configured to run on the <strong>Fedora 26 Server</strong> Linux Operating System.</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>The ISO file can be downloaded from the Fedora website: <a class="reference external" href="https://dl.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/">https://dl.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/</a>.</li>
+<li>The ISO file can be downloaded from the Fedora website: <a class="reference external" href="https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/">https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/</a></li>
 </ol>
 <blockquote>
 <div><p>Alternatively, download the file directly from the terminal:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -O https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/Fedora-Server-dvd-x86_64-26-1.5.iso
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -L -O https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/Fedora-Server-dvd-x86_64-26-1.5.iso
 </pre></div>
 </div>
 </div></blockquote>
@@ -333,7 +332,7 @@ $ sudo dnf install -y boost-devel freeopcua freeopcua-devel
 </ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sL https://rpm.nodesource.com/setup_8.x <span class="p">|</span> sudo bash -
-$ dnf install -y nodejs
+$ sudo dnf install -y nodejs
 </pre></div>
 </div>
 </div></blockquote>
@@ -341,7 +340,7 @@ $ dnf install -y nodejs
 <li>Install necessary node packages:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install -g coffeescript webpack webpack-cli raw-loader
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo npm install -g coffeescript webpack webpack-cli raw-loader
 </pre></div>
 </div>
 </div></blockquote>
@@ -360,7 +359,7 @@ $ dnf install -y nodejs
 <li>Configure the firewall</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ firewall-offline-cmd --direct --add-rule ipv4 filter INPUT <span class="m">0</span> -p tcp --dport <span class="m">27017</span> -j ACCEPT
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo firewall-offline-cmd --direct --add-rule ipv4 filter INPUT <span class="m">0</span> -p tcp --dport <span class="m">27017</span> -j ACCEPT
 </pre></div>
 </div>
 </div></blockquote>
@@ -368,8 +367,8 @@ $ dnf install -y nodejs
 <li>Enable the MongoDB service</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> mongod
-$ systemctl start mongod
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl <span class="nb">enable</span> mongod
+$ sudo systemctl start mongod
 </pre></div>
 </div>
 </div></blockquote>
@@ -377,7 +376,7 @@ $ systemctl start mongod
 <li>Check that the MongoDB service is up</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl status -l mongod
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl status -l mongod
 </pre></div>
 </div>
 </div></blockquote>
@@ -419,20 +418,20 @@ $ systemctl start mongod
 <li>Enable Infiniband Services</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> opensm
-$ systemctl <span class="nb">enable</span> rdma
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl <span class="nb">enable</span> opensm
+$ sudo systemctl <span class="nb">enable</span> rdma
 </pre></div>
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="ethercat-configuration-optional">
-<h3>1.2.8. Ethercat Configuration (optional)<a class="headerlink" href="#ethercat-configuration-optional" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ethercat-configuration">
+<h3>1.2.8. Ethercat Configuration<a class="headerlink" href="#ethercat-configuration" title="Permalink to this headline">¶</a></h3>
 <p>EtherCAT is a high-speed fieldbus communication system used for real-time control. The following configuration steps should be used as a guide when configuring EtherCAT communications.</p>
 <ol class="arabic simple">
 <li>Install the real-time kernel and relevant packages</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
 </pre></div>
 </div>
 </div></blockquote>
@@ -474,13 +473,13 @@ $ systemctl <span class="nb">enable</span> rdma
 <li>Enable the Ethercat service</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> ethercat
-$ systemctl start ethercat
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl <span class="nb">enable</span> ethercat
+$ sudo systemctl start ethercat
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="7">
-<li>Reboot into the RT Kernel if you’re not in it already.</li>
+<li>Reboot into the RT Kernel if you&#8217;re not in it already.</li>
 <li>Test the Ethercat configuration</li>
 </ol>
 <blockquote>
@@ -489,7 +488,7 @@ $ ethercat slaves
 </pre></div>
 </div>
 </div></blockquote>
-<p>If the “ethercat master” command does not produce the correct output, ensure that you’re currently running the real-time kernel. If the “ethercat slaves” command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
+<p>If the &#8220;ethercat master&#8221; command does not produce the correct output, ensure that you&#8217;re currently running the real-time kernel. If the &#8220;ethercat slaves&#8221; command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
 </div>
 <div class="section" id="real-time-configuration-optional">
 <h3>1.2.9. Real-time Configuration (optional)<a class="headerlink" href="#real-time-configuration-optional" title="Permalink to this headline">¶</a></h3>
@@ -503,11 +502,11 @@ $ ethercat slaves
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Add a new group and add the “gmto” user to it.</li>
+<li>Add a new group and add the &#8220;gmto&#8221; user to it.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ groupadd -f -g <span class="m">2001</span> realtime
-$ usermod --groups realtime gmto
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo groupadd -f -g <span class="m">2001</span> realtime
+$ sudo usermod --groups realtime gmto
 </pre></div>
 </div>
 </div></blockquote>
@@ -527,7 +526,7 @@ $ usermod --groups realtime gmto
 <li>Enable the NTP Service</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> chronyd
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl <span class="nb">enable</span> chronyd
 </pre></div>
 </div>
 </div></blockquote>
@@ -576,7 +575,7 @@ summary_interval <span class="m">6</span>
 <li>Configure access through the firewall</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ firewall-offline-cmd --direct --add-rule ipv4 filter INPUT <span class="m">0</span> -p udp --dport <span class="m">319</span>:320 -j ACCEPT
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo firewall-offline-cmd --direct --add-rule ipv4 filter INPUT <span class="m">0</span> -p udp --dport <span class="m">319</span>:320 -j ACCEPT
 </pre></div>
 </div>
 </div></blockquote>
@@ -584,7 +583,7 @@ summary_interval <span class="m">6</span>
 <li>Enable the ptp service</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> ptp4l
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl <span class="nb">enable</span> ptp4l
 </pre></div>
 </div>
 </div></blockquote>
@@ -620,7 +619,7 @@ $ sudo tar -xvzf gmt-sdk-1.4.0.tar.gz
 </pre></div>
 </div>
 </div></blockquote>
-<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
+<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users&#8217; home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
 <ol class="arabic simple" start="4">
 <li>Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)</li>
 </ol>
@@ -668,6 +667,12 @@ desc:      <span class="s2">&quot;List of local development modules&quot;</span>
 elements:
     isample_dcs: <span class="o">{</span> active: true, test: false, developer: <span class="s1">&#39;gmto&#39;</span>, domain: <span class="s1">&#39;idcs&#39;</span> <span class="o">}</span>
     hdk_dcs:     <span class="o">{</span> active: true, test: false, developer: <span class="s1">&#39;gmto&#39;</span>, domain: <span class="s1">&#39;idcs&#39;</span> <span class="o">}</span>
+</pre></div>
+</div>
+<p>Install local Node Modules</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+$ cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
+$ npm install
 </pre></div>
 </div>
 <p>Finally, create the <strong>modules</strong> directory</p>
