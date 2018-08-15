@@ -122,7 +122,14 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="isample_example.html">4. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs_module_spec.html">4. OCS Module Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gds_guide.html">5. GDS User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">8. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io_fwk_guide.html">9. I/O Framework user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">10. HDK example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">11. ISample Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -479,7 +486,7 @@ $ sudo systemctl start ethercat
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="7">
-<li>Reboot into the RT Kernel if you&#8217;re not in it already.</li>
+<li>Reboot into the RT Kernel if you’re not in it already.</li>
 <li>Test the Ethercat configuration</li>
 </ol>
 <blockquote>
@@ -488,7 +495,7 @@ $ ethercat slaves
 </pre></div>
 </div>
 </div></blockquote>
-<p>If the &#8220;ethercat master&#8221; command does not produce the correct output, ensure that you&#8217;re currently running the real-time kernel. If the &#8220;ethercat slaves&#8221; command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
+<p>If the “ethercat master” command does not produce the correct output, ensure that you’re currently running the real-time kernel. If the “ethercat slaves” command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
 </div>
 <div class="section" id="real-time-configuration-optional">
 <h3>1.2.9. Real-time Configuration (optional)<a class="headerlink" href="#real-time-configuration-optional" title="Permalink to this headline">¶</a></h3>
@@ -502,7 +509,7 @@ $ ethercat slaves
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Add a new group and add the &#8220;gmto&#8221; user to it.</li>
+<li>Add a new group and add the “gmto” user to it.</li>
 </ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo groupadd -f -g <span class="m">2001</span> realtime
@@ -619,7 +626,7 @@ $ sudo tar -xvzf gmt-sdk-1.4.0.tar.gz
 </pre></div>
 </div>
 </div></blockquote>
-<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users&#8217; home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
+<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
 <ol class="arabic simple" start="4">
 <li>Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)</li>
 </ol>

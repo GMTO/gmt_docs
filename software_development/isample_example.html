@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>4. ISample Example &mdash; GMT Software And Controls documentation</title>
+  <title>11. ISample Example &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -40,7 +40,7 @@
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
         <link rel="next" title="Data Products" href="../data_products/index.html"/>
-        <link rel="prev" title="3. Installing a Virtual Machine" href="virtual_machine/virtual_machine.html"/> 
+        <link rel="prev" title="10. HDK example" href="hdk_example.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -104,22 +104,29 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">1. Installing the SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4. ISample Example</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#clone-the-isample-dcs-repository">4.1. Clone the isample_dcs repository</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#model-files">4.2. Model Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#code-generation">4.3. Code Generation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#component-attributes">4.4. Component Attributes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#state-variables">4.4.1. State Variables</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#input-ports">4.4.2. Input Ports</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#output-ports">4.4.3. Output Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocs_module_spec.html">4. OCS Module Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gds_guide.html">5. GDS User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">8. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io_fwk_guide.html">9. I/O Framework user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">10. HDK example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11. ISample Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clone-the-isample-dcs-repository">11.1. Clone the isample_dcs repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-files">11.2. Model Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-generation">11.3. Code Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#component-attributes">11.4. Component Attributes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#state-variables">11.4.1. State Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#input-ports">11.4.2. Input Ports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output-ports">11.4.3. Output Ports</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#optional-defining-component-behavior">4.5. (Optional) Defining component behavior</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#compilation">4.6. Compilation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#running-the-example">4.7. Running the Example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#log-service">4.7.1. Log Service</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#component-setup">4.7.2. Component setup</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#telemetry-service">4.7.3. Telemetry Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-defining-component-behavior">11.5. (Optional) Defining component behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compilation">11.6. Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-example">11.7. Running the Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#log-service">11.7.1. Log Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-setup">11.7.2. Component setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#telemetry-service">11.7.3. Telemetry Service</a></li>
 </ul>
 </li>
 </ul>
@@ -174,7 +181,7 @@
         
           <li><a href="index.html">Software Development</a> &raquo;</li>
         
-      <li>4. ISample Example</li>
+      <li>11. ISample Example</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -192,7 +199,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="isample-example">
-<span id="id1"></span><h1>4. ISample Example<a class="headerlink" href="#isample-example" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>11. ISample Example<a class="headerlink" href="#isample-example" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="development/specification/specification.html#dcs-spec-example"><span class="std std-ref">ISample DCS</span></a> is an instrument control system example that provides
 a template that instrument developers can use as a model.</p>
 <div class="admonition note">
@@ -200,7 +207,7 @@ a template that instrument developers can use as a model.</p>
 <p class="last">The following instructions assume that the SDK has been installed and the Development Environment configured correctly according to the instructions in <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installing the SDK</span></a> or <a class="reference internal" href="upgrade.html#upgrade"><span class="std std-ref">Upgrade</span></a>.</p>
 </div>
 <div class="section" id="clone-the-isample-dcs-repository">
-<h2>4.1. Clone the isample_dcs repository<a class="headerlink" href="#clone-the-isample-dcs-repository" title="Permalink to this headline">¶</a></h2>
+<h2>11.1. Clone the isample_dcs repository<a class="headerlink" href="#clone-the-isample-dcs-repository" title="Permalink to this headline">¶</a></h2>
 <p>On the development machine, clone the repository in the development folder:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules
 $ gds clone isample_dcs -d gmto
@@ -221,7 +228,7 @@ bundle. As it is included in the local bundle, the module is cloned successfully
 as the two latest messages inform us.</p>
 </div>
 <div class="section" id="model-files">
-<h2>4.2. Model Files<a class="headerlink" href="#model-files" title="Permalink to this headline">¶</a></h2>
+<h2>11.2. Model Files<a class="headerlink" href="#model-files" title="Permalink to this headline">¶</a></h2>
 <p>The model files can be found in the <strong>$GMT_LOCAL/modules/ocs_isample_dcs/model/</strong> folder.</p>
 <dl class="docutils">
 <dt>isample_core_if.coffee</dt>
@@ -301,7 +308,7 @@ as the two latest messages inform us.</p>
 </div>
 </div>
 <div class="section" id="code-generation">
-<h2>4.3. Code Generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h2>
+<h2>11.3. Code Generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h2>
 <p>To generate the code skeleton from the model files, execute:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/model
 $ webpack
@@ -320,11 +327,11 @@ $ ls -la
 </div>
 </div>
 <div class="section" id="component-attributes">
-<h2>4.4. Component Attributes<a class="headerlink" href="#component-attributes" title="Permalink to this headline">¶</a></h2>
+<h2>11.4. Component Attributes<a class="headerlink" href="#component-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Components are defined by their state variables, input ports, output ports and step function.</p>
 <p>The Filter Wheel component has the following attributes:</p>
 <div class="section" id="state-variables">
-<h3>4.4.1. State Variables<a class="headerlink" href="#state-variables" title="Permalink to this headline">¶</a></h3>
+<h3>11.4.1. State Variables<a class="headerlink" href="#state-variables" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -369,10 +376,10 @@ $ ls -la
 </tbody>
 </table>
 </div></blockquote>
-<p><em>OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the &#8220;Range&#8221; column above.</em></p>
+<p><em>OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the “Range” column above.</em></p>
 </div>
 <div class="section" id="input-ports">
-<h3>4.4.2. Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h3>
+<h3>11.4.2. Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -426,7 +433,7 @@ $ ls -la
 </div></blockquote>
 </div>
 <div class="section" id="output-ports">
-<h3>4.4.3. Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h3>
+<h3>11.4.3. Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -491,7 +498,7 @@ $ ls -la
 </div>
 </div>
 <div class="section" id="optional-defining-component-behavior">
-<h2>4.5. (Optional) Defining component behavior<a class="headerlink" href="#optional-defining-component-behavior" title="Permalink to this headline">¶</a></h2>
+<h2>11.5. (Optional) Defining component behavior<a class="headerlink" href="#optional-defining-component-behavior" title="Permalink to this headline">¶</a></h2>
 <p>The core component behavior is specified in the *_step.cpp file. The component
 has a periodic thread that reads input from the input ports, runs the step
 function and then writes output to the output ports. Initially, the generated
@@ -536,7 +543,7 @@ positional input and immediately sets the position value to the new goal, if pos
 </div></blockquote>
 </div>
 <div class="section" id="compilation">
-<h2>4.6. Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
+<h2>11.6. Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
 <p>To compile the C++ Control Package code, edit the module.mk file to contain the correct library definitions:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ vi <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/cpp/isample_ctrl_pkg/module.mk
 </pre></div>
@@ -554,7 +561,7 @@ $ make
 </div>
 </div>
 <div class="section" id="running-the-example">
-<h2>4.7. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h2>
+<h2>11.7. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h2>
 <p>Start the logging and telemetry services:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_server <span class="p">&amp;</span>
 $ tele_server <span class="p">&amp;</span>
@@ -567,14 +574,14 @@ $ tele_server <span class="p">&amp;</span>
 <p>The application is running in the background and will not provide any console output.
 All output will be directed to the logging service after the components have been successfully set up.</p>
 <div class="section" id="log-service">
-<h3>4.7.1. Log Service<a class="headerlink" href="#log-service" title="Permalink to this headline">¶</a></h3>
+<h3>11.7.1. Log Service<a class="headerlink" href="#log-service" title="Permalink to this headline">¶</a></h3>
 <p>In a separate terminal (for example, <cite>tty2</cite>), <strong>start the logging service client</strong>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_client
 </pre></div>
 </div>
 </div>
 <div class="section" id="component-setup">
-<h3>4.7.2. Component setup<a class="headerlink" href="#component-setup" title="Permalink to this headline">¶</a></h3>
+<h3>11.7.2. Component setup<a class="headerlink" href="#component-setup" title="Permalink to this headline">¶</a></h3>
 <p>In the first terminal (<cite>tty1</cite>), <strong>initialize all components</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/etc
 $ ./send_config.coffee
@@ -584,12 +591,12 @@ $ ./send_config.coffee
 that the expected components are logging step info.</p>
 </div>
 <div class="section" id="telemetry-service">
-<h3>4.7.3. Telemetry Service<a class="headerlink" href="#telemetry-service" title="Permalink to this headline">¶</a></h3>
+<h3>11.7.3. Telemetry Service<a class="headerlink" href="#telemetry-service" title="Permalink to this headline">¶</a></h3>
 <p>In a separate terminal (for example <cite>tty3</cite>), <strong>start the telemetry service client</strong>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ tele_client
 </pre></div>
 </div>
-<p>In this example, we don&#8217;t filter, to show data for all monitors.
+<p>In this example, we don’t filter, to show data for all monitors.
 The output can be filtered on substrings of the monitor name by specifying the
 topic to be a specific component type (<code class="docutils literal"><span class="pre">filter_wheel_ctrl</span></code>) or an output port
 name, such as <code class="docutils literal"><span class="pre">position</span></code> or <code class="docutils literal"><span class="pre">heartbeat</span></code>. For example,</p>
@@ -615,7 +622,7 @@ name, such as <code class="docutils literal"><span class="pre">position</span></
         <a href="../data_products/index.html" class="btn btn-neutral float-right" title="Data Products" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="virtual_machine/virtual_machine.html" class="btn btn-neutral" title="3. Installing a Virtual Machine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="hdk_example.html" class="btn btn-neutral" title="10. HDK example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

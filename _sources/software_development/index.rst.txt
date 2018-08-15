@@ -17,5 +17,11 @@ The Observatory Control System (OCS) includes a Software Development Kit (SDK) t
    installation
    upgrade
    virtual_machine/virtual_machine.rst
+   ocs_module_spec
+   gds_guide
+   modeling_guidelines
+   model_language_mapping/index
+   core_services_user_guide
+   io_fwk_guide
+   hdk_example
    isample_example
-   
