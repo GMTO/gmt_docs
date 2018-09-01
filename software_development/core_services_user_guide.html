@@ -105,10 +105,20 @@
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ocs_module_spec.html">4. OCS Module Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gds_guide.html">5. GDS User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gds_guide.html">5. gds documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">8. Core Services user guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8. Core Services user guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">8.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-usage">8.2. Service Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#service-server-application">8.2.1. Service Server Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service-client-application">8.2.2. Service Client Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service-adapter">8.2.3. Service Adapter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service-database">8.2.4. Service Database</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="io_fwk_guide.html">9. I/O Framework user guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hdk_example.html">10. HDK example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="isample_example.html">11. ISample Example</a></li>
@@ -181,6 +191,386 @@
             
   <div class="section" id="core-services-user-guide">
 <span id="core-services-usr-guide"></span><h1>8. Core Services user guide<a class="headerlink" href="#core-services-user-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>8.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This documents describes the use of the GMT OCS Core Services. The OCS Architecture Documment [ref]
+describes the overall design of the OCS and provides a description of the function and
+architecture of the OCS Core Services. In short the Core Services are part of the OCS distributed
+architecture and provides services that the OCS distributed Components can use to perform their
+function. The following diagram shows the OCS Core Services in the context of the overall OCS.</p>
+<div class="figure" id="id1">
+<img alt="../_images/core_systems_core_services.png" src="../_images/core_systems_core_services.png" />
+<p class="caption"><span class="caption-number">Fig. 8.12 </span><span class="caption-text">Core Services in the context of the OCS</span></p>
+</div>
+<p>The Core Services that are available in the latest release are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Logging Service</li>
+<li>Alarm Service</li>
+<li>Telemetry Service</li>
+<li>Configuration Service</li>
+<li>Supervisory Service</li>
+</ul>
+</div></blockquote>
+<p>Although the fuctions offered by each service are orthogonal to each other, all of them share
+similar design and operation principles. The implementatio of the services is distributed
+and consists of the following components:</p>
+<blockquote>
+<div><ul class="simple">
+<li>A <strong>Service Adapter</strong> that allows Components to access the interface of the Service.
+The Core Framework presents the Service Adapters to the the Component base class via dependency
+injection, making the Core Services available to every Component in the system.</li>
+<li>A <strong>Service Server</strong> (or Servers) that process the data relative to the specific service.
+All the Core Services transport and process data in the form of Events. The Service Server
+makes the Events persistent and allows other Components to subscribe to the Events. It
+is also capable of receiving querys and reply with the result of executing the query in
+the Service Database. The Service Server is instanciated as part of each Service Server Application.</li>
+<li>A <strong>Service Database</strong> that is stores each server data.</li>
+<li>A <strong>Service Client</strong> that allows to interact with the Server. The Service Client can be instaciated
+by a Component. A Service Client Application is provided that facilitates interacting with
+each Service from the command line.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="service-usage">
+<h2>8.2. Service Usage<a class="headerlink" href="#service-usage" title="Permalink to this headline">¶</a></h2>
+<p>This section describes the usage of the different components of each service. As all the services
+support the same options and operate in a similar way, examples of the usage of different
+services are included in the descriptions. The following command line application are installed as
+part of the SDK:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Service</th>
+<th class="head">Application</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Alarm</td>
+<td>alarm_server</td>
+</tr>
+<tr class="row-odd"><td>Alarm</td>
+<td>alarm_client</td>
+</tr>
+<tr class="row-even"><td>Configuration</td>
+<td>conf_server</td>
+</tr>
+<tr class="row-odd"><td>Configuration</td>
+<td>conf_client</td>
+</tr>
+<tr class="row-even"><td>Configuration</td>
+<td>conf_send (alpha)</td>
+</tr>
+<tr class="row-odd"><td>Logging</td>
+<td>log_server</td>
+</tr>
+<tr class="row-even"><td>Logging</td>
+<td>log_client</td>
+</tr>
+<tr class="row-odd"><td>Supervision</td>
+<td>sup_server</td>
+</tr>
+<tr class="row-even"><td>Supervision</td>
+<td>sup_client</td>
+</tr>
+<tr class="row-odd"><td>Telemetry</td>
+<td>tele_server</td>
+</tr>
+<tr class="row-even"><td>Telemetry</td>
+<td>tele_client</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="section" id="service-server-application">
+<h3>8.2.1. Service Server Application<a class="headerlink" href="#service-server-application" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">&lt;service&gt;_server</span></code> command line application starts the alarm service server.
+For the purposes of developing and testing software components with the SDK it is
+recommended to start the service with the default options or with the logging set
+to debug in case of troubleshooting.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>λ alarm_server<span class="p">&amp;</span>
+
+<span class="c1"># -&gt; will start the server with default options (recommended)</span>
+
+λ alarm_server --logging debug
+
+<span class="c1"># -&gt; will start the server with default options and will output debug log messages (recommended for troubleshooting)</span>
+</pre></div>
+</div>
+<p>The following section shows the execution of the help command and the available options.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>λ alarm_server --help
+
+Usage: alarm_server_app <span class="o">[</span>options<span class="o">]</span>
+
+If called without options alarm_server_app will use default values <span class="k">for</span> them
+
+Options:
+
+--srv_conf_file<span class="o">=</span>&lt;name&gt;    name of the service server configuration file
+--database<span class="o">=</span>&lt;name&gt;         name of the service database
+--collection<span class="o">=</span>&lt;name&gt;       name of the service collection
+--help                    prints <span class="nb">help</span>
+--logging<span class="o">=</span>&lt;level&gt;         logging level
+--name<span class="o">=</span>&lt;name&gt;             application name
+--scope<span class="o">=</span>&lt;local<span class="p">|</span>global&gt;    scope to load the configuration file
+--conf_file<span class="o">=</span>&lt;name&gt;        name of the application configuration file
+--ctnr_conf_file<span class="o">=</span>&lt;name&gt;   name of the container configuration file
+</pre></div>
+</div>
+<p><strong>Options</strong></p>
+<p><code class="docutils literal"><span class="pre">--srv_conf_file</span></code></p>
+<blockquote>
+<div><p>This option specifices the name of the Server configuration file to be loaded during the
+Server startup. The configuration file defines the port configuration of each server.
+The following example shows the configuration of the Alarm Server. Configurations are
+stored in $GMT_LOCAL/etc/conf</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nv">module.exports =</span>
+   <span class="nv">properties:</span>
+      <span class="nv">uri: </span>        <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;uri&quot;</span><span class="p">,</span>         <span class="nv">default_value: </span><span class="s">&#39;gmt://127.0.0.1:12000/alarm_sys/alarm_srv_pkg/alarm_srv&#39;</span><span class="p">}</span>
+      <span class="nv">name: </span>       <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;name&quot;</span><span class="p">,</span>        <span class="nv">default_value: </span><span class="s">&#39;alarm_srv&#39;</span><span class="p">}</span>
+      <span class="nv">host: </span>       <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;host&quot;</span><span class="p">,</span>        <span class="nv">default_value: </span><span class="s">&#39;127.0.0.1&#39;</span><span class="p">}</span>
+      <span class="nv">port: </span>       <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;port&quot;</span><span class="p">,</span>        <span class="nv">default_value: </span><span class="s">&#39;12000&#39;</span><span class="p">}</span>
+      <span class="nv">scan_rate: </span>  <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;scan_rate&quot;</span><span class="p">,</span>   <span class="nv">default_value: </span><span class="mi">1</span><span class="p">}</span>
+      <span class="nv">acl: </span>        <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;acl&quot;</span><span class="p">,</span>         <span class="nv">default_value: </span><span class="s">&#39;PRIVATE&#39;</span><span class="p">}</span>
+      <span class="nv">db_uri: </span>     <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;db_uri&quot;</span><span class="p">,</span>      <span class="nv">default_value: </span><span class="s">&#39;mongodb://127.0.0.1:27017/&#39;</span><span class="p">}</span>
+      <span class="nv">collection: </span> <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;collection&quot;</span><span class="p">,</span>  <span class="nv">default_value: </span><span class="s">&#39;alarms&#39;</span><span class="p">}</span>
+      <span class="nv">database: </span>   <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;database&quot;</span><span class="p">,</span>    <span class="nv">default_value: </span><span class="s">&#39;gmt_alarm_1&#39;</span><span class="p">}</span>
+
+   <span class="nv">state_vars:</span>
+      <span class="nv">ops_state: </span> <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;ops_state&#39;</span><span class="p">,</span>    <span class="nv">default_value: </span><span class="s">&#39;OFF&#39;</span>  <span class="p">}</span>
+
+   <span class="nv">inputs:</span>
+      <span class="nv">conf_in: </span>        <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;conf_in&#39;</span><span class="p">,</span>         <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
+      <span class="nv">ops_state_goal: </span> <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;ops_state_goal&#39;</span><span class="p">,</span>  <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12010&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
+      <span class="nv">srv_port: </span>       <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;srv_port&#39;</span><span class="p">,</span>        <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12001&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
+      <span class="nv">query_port: </span>     <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;query_port&#39;</span><span class="p">,</span>      <span class="nv">port_type: </span><span class="s">&#39;rep&#39;</span><span class="p">,</span>   <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12002&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
+
+   <span class="nv">outputs:</span>
+      <span class="nv">ops_state_value: </span><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;ops_state_value&#39;</span><span class="p">,</span> <span class="nv">port_type: </span><span class="s">&#39;push&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12011&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
+      <span class="nv">heartbeat_out: </span>  <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;heartbeat_out&#39;</span><span class="p">,</span>   <span class="nv">port_type: </span><span class="s">&#39;push&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12012&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
+      <span class="nv">pub_port: </span>       <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;pub_port&#39;</span><span class="p">,</span>        <span class="nv">port_type: </span><span class="s">&#39;pub&#39;</span><span class="p">,</span>   <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12003&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--database=&lt;name&gt;</span></code></p>
+<blockquote>
+<div>The name of the database to be used by the Server</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--collection=&lt;name&gt;</span></code></p>
+<blockquote>
+<div><p>The name of the collection to be used by the Server.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Different databases or collections can be used for testing and development purposes.
+For the purpose of software testing with the SDK, the services have predefined
+databases and collections.</p>
+</div>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--help</span></code></p>
+<blockquote>
+<div>Outputs the description and options of the application</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--logging=&lt;level&gt;</span></code></p>
+<blockquote>
+<div><p>The following table describes the different values available for the <code class="docutils literal"><span class="pre">logging</span></code> option</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="4%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&lt;level&gt;</th>
+<th class="head">Abbr</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>fatal</td>
+<td>FTL</td>
+<td>fatal   - errors which make the application unusable</td>
+</tr>
+<tr class="row-odd"><td>error</td>
+<td>ERR</td>
+<td>error   - errors that preclude to achive an specific request</td>
+</tr>
+<tr class="row-even"><td>warning</td>
+<td>WRN</td>
+<td>warning - problems that may caused that the result achieved may not be the expected</td>
+</tr>
+<tr class="row-odd"><td>info</td>
+<td>INF</td>
+<td>info    - information about the general execution of the application</td>
+</tr>
+<tr class="row-even"><td>debug</td>
+<td>DBG</td>
+<td>debug   - information to provide an understanding of the internal of the application</td>
+</tr>
+<tr class="row-odd"><td>trace</td>
+<td>TRC</td>
+<td>trace   - information that may server to identify a potential problem</td>
+</tr>
+<tr class="row-even"><td>metric</td>
+<td>MET</td>
+<td>metric  - information to record performance metrics relative to the execution of the application</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--name=&lt;name&gt;</span></code></p>
+<blockquote>
+<div>application name</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--scope=&lt;local|global&gt;</span></code></p>
+<blockquote>
+<div>This option defines where the application should search for the <em>Server</em> and <em>Container</em>
+configuration file.  When set to <code class="docutils literal"><span class="pre">local</span></code> the file will be search in $GMT_LOCAL/etc/conf/&lt;service_dir&gt;/
+When set to <code class="docutils literal"><span class="pre">global</span></code> the file will be search in $GMT_GLOBAL/etc/conf/&lt;service_dir&gt;/</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--conf_file=&lt;name&gt;</span></code></p>
+<blockquote>
+<div>This option defines the name of the <em>Application</em> configuration file.</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--ctnr_conf_file=&lt;name&gt;</span></code></p>
+<blockquote>
+<div><p>This option defines the name of the application <em>Container</em> configuration file.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The options <code class="docutils literal"><span class="pre">--scope</span></code>, <code class="docutils literal"><span class="pre">--conf_file</span></code>, <code class="docutils literal"><span class="pre">--ctnr_conf_file</span></code>, <code class="docutils literal"><span class="pre">--srv_conf_file</span></code> are intended for
+the testing of the core services and their deployment in different locations. It should
+not be necessary to modify them for normal operation of the SDK.</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="service-client-application">
+<h3>8.2.2. Service Client Application<a class="headerlink" href="#service-client-application" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">&lt;service&gt;_client</span></code> command line application starts the service client.
+For the purposes of developing and testing software components with the SDK it is
+recommended to start the service client with the default options or with the logging set
+to debug in case of troubleshooting.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>λ tele_client
+
+<span class="c1"># -&gt; will start the client with default options (recommended)</span>
+
+λ tele_client --logging debug
+
+<span class="c1"># -&gt; will start the server with default options and will output debug log messages (recommended for troubleshooting)</span>
+</pre></div>
+</div>
+<p>The following section shows the execution of the help command and the available options.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>λ alarm_client --help
+
+Usage: alarm_client_app <span class="o">[</span>options<span class="o">]</span>
+
+If called without options alarm_client_app will use default values <span class="k">for</span> them
+
+Options:
+
+--save                    saves service stream to file
+--query<span class="o">=</span>&lt;query_spec&gt;      querys the service database using the mongodb query syntax
+                        e.g.: srv_client --query <span class="s1">&#39;{source: &quot;component_name&quot;, level: &quot;error&quot;}&#39;</span>
+--topic<span class="o">=</span>&lt;topic_name&gt;      filters service data frames matching the topic
+--client_conf_file<span class="o">=</span>&lt;name&gt; name of the client configuration file
+--help                    prints <span class="nb">help</span>
+--logging<span class="o">=</span>&lt;level&gt;         logging level
+--name<span class="o">=</span>&lt;name&gt;             application name
+--scope<span class="o">=</span>&lt;local<span class="p">|</span>global&gt;    scope to load the configuration file
+--conf_file<span class="o">=</span>&lt;name&gt;        name of the application configuration file
+--ctnr_conf_file<span class="o">=</span>&lt;name&gt;   name of the container configuration file
+</pre></div>
+</div>
+<p><strong>Options</strong></p>
+<p><code class="docutils literal"><span class="pre">--save</span></code></p>
+<blockquote>
+<div><p>Saves service stream to file. The name of the files conforms to the following syntax:
+<code class="docutils literal"><span class="pre">&lt;service_app&gt;_&lt;pid&gt;.csv</span></code> where pid is the process identifier during the execution
+of the application. The file is saved in the directory where the application was invoked.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>λ alarm_client --save
+
+<span class="c1"># -&gt; will create the file alarm_client_app_2457.csv</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The service stream is the data stream that is published by the service server.
+If a topic is specified in the command line, only the messages matching the topic
+will be saved to the file. The service client will still output it’s own logging
+events to the standard output.</p>
+</div>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--query=&lt;query_spec&gt;</span></code></p>
+<blockquote>
+<div><p>Sends a query to the service server and returns the result. The query must be writen
+using the mongodb query syntax [<a class="reference external" href="https://docs.mongodb.com/manual/tutorial/query-documents/">https://docs.mongodb.com/manual/tutorial/query-documents/</a>]</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>λ log_client --query <span class="s1">&#39;{source: &quot;component_name&quot;, level: &quot;error&quot;}&#39;</span>
+
+<span class="c1"># -&gt; will return the log events of the component &quot;component_name&quot; which level is &quot;error&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The query capability of this command line option are very limited and intented for
+basic testing purposes. A more advanced interface will be provided in the OCS UI.</p>
+</div>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--topic=&lt;topic_name&gt;</span></code></p>
+<blockquote>
+<div>filters service data frames matching the topic</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--client_conf_file=&lt;name&gt;</span></code></p>
+<blockquote>
+<div>name of the container configuration file</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--help</span></code></p>
+<blockquote>
+<div>prints the description and options of the application</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--logging=&lt;level&gt;</span></code></p>
+<blockquote>
+<div>See the description of the logging option in the server application above.</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--name=&lt;name&gt;</span></code></p>
+<blockquote>
+<div>application name</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--scope=&lt;local|global&gt;</span></code></p>
+<blockquote>
+<div>See the description of the <code class="docutils literal"><span class="pre">--scope</span></code> option in the server application above.</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--conf_file=&lt;name&gt;</span></code></p>
+<blockquote>
+<div>See the description of the <code class="docutils literal"><span class="pre">--conf_file</span></code> option in the server application above.</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--ctnr_conf_file=&lt;name&gt;</span></code></p>
+<blockquote>
+<div><p>See the description of the <code class="docutils literal"><span class="pre">--ctnr_conf_file</span></code> option in the server application above.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The options <code class="docutils literal"><span class="pre">--scope</span></code>, <code class="docutils literal"><span class="pre">--conf_file</span></code>, <code class="docutils literal"><span class="pre">--ctnr_conf_file</span></code>, <code class="docutils literal"><span class="pre">--client_conf_file</span></code>
+are intended for the testing of the core services and their deployment in different locations.
+It should not be necessary to modify them for normal operation of the SDK.</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="service-adapter">
+<h3>8.2.3. Service Adapter<a class="headerlink" href="#service-adapter" title="Permalink to this headline">¶</a></h3>
+<p>The interface with each service is provided by the specific implementation of
+the Core Framework: cpp, python, nodejs. Each framework implementation user guide
+describes the corresponding Service Adapter API. The following diagram shows
+an example of how the different parts of the Logging and Telemetry services interact
+with the rest of the system.</p>
+<div class="figure" id="id2">
+<img alt="../_images/context_isample_testing.png" src="../_images/context_isample_testing.png" />
+<p class="caption"><span class="caption-number">Fig. 8.13 </span><span class="caption-text">Service operation overview</span></p>
+</div>
+</div>
+<div class="section" id="service-database">
+<h3>8.2.4. Service Database<a class="headerlink" href="#service-database" title="Permalink to this headline">¶</a></h3>
+<p>The Services database is implemented in mongodb. The installation of mongodb is described
+in the SDK installation guide. Once the database is installed, the database daemon will
+be started automatically during the startup process of the hosting machine.
+The Service Servers take care of initializing the service database and collections.
+In addition to the installation of the mongodb daemons, the SDK also includes instructions
+for the installaction of the <strong>mongo</strong> shell, which permits more sophisticated interaction
+with the database. The user guide of the <strong>mongo</strong> shell utility is available in [<a class="reference external" href="https://docs.mongodb.com/manual/reference/mongo-shell/">https://docs.mongodb.com/manual/reference/mongo-shell/</a>].</p>
+</div>
+</div>
 </div>
 
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5. GDS User Guide &mdash; GMT Software And Controls documentation</title>
+  <title>5. gds documentation &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -105,7 +105,26 @@
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ocs_module_spec.html">4. OCS Module Specification</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5. GDS User Guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. gds documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">5.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#local-and-global-environment">5.2. Local and global environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-bundles-and-modules">5.3. Working with bundles and modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-gds-command-line-tool">5.4. The gds command line tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gds-init">5.4.1. gds init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-new-options-module">5.4.2. gds new [options] &lt;module&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-env">5.4.3. gds env</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-gen-options-element">5.4.4. gds gen [options] [element]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-info-options-module">5.4.5. gds info [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-build-options-module">5.4.6. gds build [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-install-options-module">5.4.7. gds install [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-clone-options-module">5.4.8. gds clone [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-run-test-options-module">5.4.9. gds run_test [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-options">5.4.10. gds options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-to-use-gds">5.5. Starting to use gds</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">8. Core Services user guide</a></li>
@@ -162,7 +181,7 @@
         
           <li><a href="index.html">Software Development</a> &raquo;</li>
         
-      <li>5. GDS User Guide</li>
+      <li>5. gds documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -179,8 +198,649 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="gds-user-guide">
-<span id="gds-guide"></span><h1>5. GDS User Guide<a class="headerlink" href="#gds-user-guide" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="gds-documentation">
+<span id="gds-guide"></span><h1>5. gds documentation<a class="headerlink" href="#gds-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>5.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This document describes the GMT OCS development environment and the use
+of the <em>gds</em> tool.</p>
+</div>
+<div class="section" id="local-and-global-environment">
+<h2>5.2. Local and global environment<a class="headerlink" href="#local-and-global-environment" title="Permalink to this headline">¶</a></h2>
+<p>In order to support the deployment of completed modules and the development
+of new modules or new versions of existing ones, the GMT SDK defines two different
+scopes in the file system:</p>
+<ol class="arabic simple">
+<li>The global scope includes modules that are available for all the
+users in an SDK installation. The default location is <code class="docutils literal"><span class="pre">/opt/gmt</span></code> although
+it can be configured to a different location setting the shell environment
+variable <code class="docutils literal"><span class="pre">GMT_GLOBAL</span></code>. The global scope directories and files are usually
+owned by and deployment account and not by an individual user account.
+The default account is root.</li>
+<li>The local scope includes modules that are being actively developed or different
+versions of existing ones for testing purposes. The location of the local
+scope in the file system is defined by the <code class="docutils literal"><span class="pre">GMT_LOCAL</span></code> environment variable.
+The variable is set individually for every developer.</li>
+</ol>
+</div>
+<div class="section" id="working-with-bundles-and-modules">
+<h2>5.3. Working with bundles and modules<a class="headerlink" href="#working-with-bundles-and-modules" title="Permalink to this headline">¶</a></h2>
+<p>A Module represents the basic unit of development, integration and test in the GMT SDK.
+Modules are grouped in bundles.</p>
+<p>By default the SDK defines two types of bundles, <em>global</em> and <em>local</em>,
+for each development scope. The global bundles include modules
+procured by GMT as part of the SDK. These modules cannot be altered,
+but must be available in order to build and run the system.
+The local bundle(s) define the modules in which developers will be working.</p>
+<p>Subsystem defined in the GMT model are mapped into Modules for the
+purpose of development, testing and integration. As explained in [ref]
+Subsystems are modeling entities and are decomposed in Packages and
+Components. The Module file system structure is based in the
+Subsystem file system structure too.</p>
+<p>An example of a local bundle is include in the following code segment:</p>
+<blockquote>
+<div><div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nv">module.exports =</span>
+   <span class="nv">name: </span>     <span class="s">&quot;local&quot;</span>
+   <span class="nv">desc: </span>     <span class="s">&quot;List of local development modules&quot;</span>
+   <span class="nv">elements:</span>
+      <span class="nv">isample_dcs: </span><span class="p">{</span> <span class="nv">active: </span><span class="kc">true</span><span class="p">,</span> <span class="nv">test: </span><span class="kc">false</span><span class="p">,</span> <span class="nv">developer: </span><span class="s">&#39;gmto&#39;</span><span class="p">,</span> <span class="nv">domain: </span><span class="s">&#39;idcs&#39;</span> <span class="p">}</span>
+      <span class="nv">hdk_dcs: </span>    <span class="p">{</span> <span class="nv">active: </span><span class="kc">true</span><span class="p">,</span> <span class="nv">test: </span><span class="kc">false</span><span class="p">,</span> <span class="nv">developer: </span><span class="s">&#39;gmto&#39;</span><span class="p">,</span> <span class="nv">domain: </span><span class="s">&#39;idcs&#39;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Bundle definitions are saved in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/</span></code>. The file with this definition is saved as
+<code class="docutils literal"><span class="pre">local_bundle.coffee</span></code>. This step has to be performed only when a module has to be defined.</p>
+<p>The bundle includes the definition of a module (isample_dcs) that is
+part of the idcs (Instrument Device Control System) domain.</p>
+<p>The gds utility allows to manage the life-cycle of each module as a unit.
+So for example, if we want to start to work on a module we will execute:</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds new isample_dcs
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="the-gds-command-line-tool">
+<h2>5.4. The gds command line tool<a class="headerlink" href="#the-gds-command-line-tool" title="Permalink to this headline">¶</a></h2>
+<p>The GMT SDK includes the gds tool to assist in the development of GMT software.</p>
+<blockquote>
+<div><div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">In order to see the commands available for the gds tool write in <code class="docutils literal"><span class="pre">gds</span> <span class="pre">--help</span></code> in
+the shell command line.</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds --help
+
+
+Usage: gds <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>command<span class="o">]</span>
+
+Options:
+
+  -V, --version                output the version number
+  -l, --logging &lt;level&gt;        Activates &lt;level&gt; logging
+  -i, --interactive            Activates interactive mode
+  -f, --file_log &lt;filename&gt;    Streams the log output to filename
+  -s, --sim_mode               Executes commads in simulation mode
+  -h, --help                   output usage information
+
+Commands:
+
+  init                         Initializes development environment
+  new <span class="o">[</span>options<span class="o">]</span> &lt;module&gt;       Creates a new module
+  env                          Prints the GMT environment variables
+  gen <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>element<span class="o">]</span>      Generates code <span class="k">for</span> the <span class="nb">local</span> bundle or the optional element
+  info <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>      List information of the <span class="nb">local</span> bundles or the optional module
+  build <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>     Builds the <span class="nb">local</span> bundles or the optional module
+  install <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>   Installs the <span class="nb">local</span> bundle modules or the optional module
+  clone <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>     Clones the <span class="nb">local</span> bundle modules or the optional module
+  run_test <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>  Run the <span class="nb">test</span> of the <span class="nb">local</span> bundle modules or the optional module
+  validate <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>  Validates the <span class="nb">local</span> bundle or the optional module
+</pre></div>
+</div>
+</div></blockquote>
+<p>The gds tool implements a set of commands that allow to operate with bundles, modules and
+module elements as a whole. The following sections describe each of the commands. Each command
+has its own help that can be displayed by executing:</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds &lt;command&gt; --help
+</pre></div>
+</div>
+</div></blockquote>
+<div class="section" id="gds-init">
+<h3>5.4.1. gds init<a class="headerlink" href="#gds-init" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>Initializes the file system structure of the local development environment (defined by
+the shell variable GMT_LOCAL). This operation is usually only needed when
+the GMT SDK is used for the first time.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds init
+</pre></div>
+</div>
+</div></blockquote>
+<p>The file structure contains the following directories:</p>
+<blockquote>
+<div><ul class="simple">
+<li>$GMT_LOCAL/install directory, where the deployable files of your local development are saved.</li>
+<li>$GMT_LOCAL/etc</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="gds-new-options-module">
+<h3>5.4.2. gds new [options] &lt;module&gt;<a class="headerlink" href="#gds-new-options-module" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">new</span></code> command creates a default file structure for a new module.
+Each module is mapped into the file system using the following structure:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;/</span>
+   <span class="o">|--</span> <span class="n">model</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;.</span><span class="n">coffee</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="n">_def</span><span class="o">.</span><span class="n">coffee</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;.</span><span class="n">rst</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="n">_ld</span><span class="o">.</span><span class="n">coffee</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="n">_types</span><span class="o">.</span><span class="n">coffee</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">pkg_1_pkg</span><span class="o">&gt;/</span>
+   <span class="o">|</span>    <span class="o">|</span>        <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_1</span><span class="o">&gt;</span>
+   <span class="o">|</span>    <span class="o">|</span>        <span class="o">|--</span> <span class="o">...</span>
+   <span class="o">|</span>    <span class="o">|</span>        <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_n</span><span class="o">&gt;</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="o">...</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">pkg_n_pkg</span><span class="o">&gt;</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="n">webpack</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coffee</span>
+   <span class="o">|--</span> <span class="n">src</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="n">coffee</span><span class="o">/</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="n">py</span><span class="o">/</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="n">cpp</span><span class="o">/</span>
+   <span class="o">|</span>    <span class="o">|--</span> <span class="n">etc</span><span class="o">/</span>
+   <span class="o">|</span>
+   <span class="o">|--</span> <span class="n">docs</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>See the <a class="reference internal" href="modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">Model Specification Guide Document</span></a> for a description
+of the <code class="docutils literal"><span class="pre">model</span></code> file structure and the corresponding model to target language mapping guide
+for a description of the <code class="docutils literal"><span class="pre">src</span></code> file structure.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds new --help
+
+Usage: new <span class="o">[</span>options<span class="o">]</span> &lt;module&gt;
+
+Creates a new module
+
+Options:
+
+-o, --override  override existing files
+-p, --preserve  preserve existing files
+-h, --help      output usage information
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">-o,</span> <span class="pre">--override</span></code></dt>
+<dd>If the command is run more than once, this flag will write over the existing files</dd>
+<dt><code class="docutils literal"><span class="pre">-p,</span> <span class="pre">--preserve</span></code></dt>
+<dd>If the command is run more than once, this flag will preserve a copy of the existing
+files with the extension <em>.as_is</em></dd>
+<dt><code class="docutils literal"><span class="pre">-h,</span> <span class="pre">--help</span></code></dt>
+<dd>Display the help message</dd>
+</dl>
+</div>
+<div class="section" id="gds-env">
+<h3>5.4.3. gds env<a class="headerlink" href="#gds-env" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">env</span></code> command displays the values of the environment variables used by gds.</p>
+</div>
+<div class="section" id="gds-gen-options-element">
+<h3>5.4.4. gds gen [options] [element]<a class="headerlink" href="#gds-gen-options-element" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">gen</span></code> command implements a set of generators that use as an input the model
+specifications and applies to them different transformations. The output of this transformations
+produces one or several files that are stored in the module file system.</p>
+<p>Model definition files and their effect in generators
+Output file locations</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds gen --help
+
+Usage: gen <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>element<span class="o">]</span>
+
+Generates code <span class="k">for</span> the <span class="nb">local</span> bundle or the optional element
+
+Options:
+
+   -m, --model  <span class="o">[</span>name<span class="o">]</span>  model containing element <span class="o">(</span>default: model<span class="o">)</span>
+   -t, --target <span class="o">[</span>name<span class="o">]</span>  code<span class="p">|</span>scaffold<span class="p">|</span>doc <span class="o">(</span>default: code<span class="o">)</span>
+   -h, --help           output usage information
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<p><code class="docutils literal"><span class="pre">element</span></code></p>
+<blockquote>
+<div><p>Specifies the model element used as source for the transformations. The model element could be
+aggregate or simple. If the model element is aggregate, e.g. SubSystem or Package, gds
+would apply transformations to all the elements contained in the aggregate.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds gen isample_dcs
+</pre></div>
+</div>
+<p>In this example gds will generate artifacts for all the packages part of the DCS isample_dcs. As
+Packages are also aggregates it would generate artifacts for all the Components in each Package.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds gen isample_ctrl_pkg
+</pre></div>
+</div>
+<p>In this example gds will generate artifacts for all the Components part of the isample_ctrl_pkg.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds gen isample_filter_wheel_ctrl
+</pre></div>
+</div>
+<p>In this example gds will generate artifacts for the Component isample_filter_wheel_ctrl.</p>
+<p>The behavior of the generator can be configured per component basis in the module definition file.
+The following attributes are available per Component:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">language</span></code></dt>
+<dd>List of language transformations to be used by the generators. The values of language
+depend on which target generator is being used. See description of the option ‘–target’</dd>
+<dt><code class="docutils literal"><span class="pre">build</span></code></dt>
+<dd><p class="first">Specifies how the generated code should be build. Possible values are:</p>
+<dl class="last docutils">
+<dt><code class="docutils literal"><span class="pre">obj</span></code></dt>
+<dd>When the language is compiled the generator will produce Makefile targets that
+build an object library with the Component code. The library file will be installed
+in $GMT_LOCAL/&lt;deployment_destination&gt;/lib/&lt;platform&gt;. Where platform is ‘so’ or ‘js’.
+The value of &lt;deployment_destination&gt; depends on the attribute ‘deploy’.</dd>
+<dt><code class="docutils literal"><span class="pre">app</span></code></dt>
+<dd>When the language is compiled the generator will produce Makefile targets that
+build an executable. The executable file will be installed in $GMT_LOCAL/&lt;deployment_destination&gt;/bin.
+The value of &lt;deployment_destination&gt; depends on the attribute ‘deploy’.</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal"><span class="pre">deploy</span></code></dt>
+<dd><p class="first">Specifies where the artifacts resulting from building the generated code will be installed.
+The possible values are:</p>
+<dl class="last docutils">
+<dt><code class="docutils literal"><span class="pre">dist</span></code></dt>
+<dd>The build artifacts will be installed in the base module path: $GMT_LOCAL/</dd>
+<dt><code class="docutils literal"><span class="pre">test</span></code></dt>
+<dd>The build artifacts will be installed in $GMT_LOCAL/test</dd>
+<dt><code class="docutils literal"><span class="pre">example</span></code></dt>
+<dd>The build artifacts will be installed in $GMT_LOCAL/example</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal"><span class="pre">codegen</span></code></dt>
+<dd>If <strong>true</strong> the codegen transformations will be applied to the element, otherwise will be ignored.</dd>
+<dt><code class="docutils literal"><span class="pre">active</span></code></dt>
+<dd>If <strong>false</strong> the element will be ignored by any gds command.</dd>
+</dl>
+</div></blockquote>
+<p>The following paragraph includes an excerpt from the isample_dcs_def.coffee module definition file.</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nv">module.exports =</span>
+   <span class="nv">elements:</span>
+      <span class="nv">isample_ctrl_pkg:</span>
+            <span class="nv">elements:</span>
+
+               <span class="nv">isample_ctrl_super:</span>
+                  <span class="nv">language: </span>   <span class="p">[</span><span class="s">&#39;cpp&#39;</span><span class="p">,</span><span class="s">&#39;coffee&#39;</span><span class="p">]</span>
+                  <span class="nv">build: </span>      <span class="s">&#39;obj&#39;</span>
+                  <span class="nv">deploy: </span>     <span class="s">&#39;dist&#39;</span>
+                  <span class="nv">codegen: </span>    <span class="kc">true</span>
+                  <span class="nv">active: </span>     <span class="kc">true</span>
+
+               <span class="nv">isample_filter_wheel_ctrl:</span>
+                  <span class="nv">language: </span>   <span class="p">[</span><span class="s">&#39;cpp&#39;</span><span class="p">]</span>
+                  <span class="nv">build: </span>      <span class="s">&#39;obj&#39;</span>
+                  <span class="nv">deploy: </span>     <span class="s">&#39;dist&#39;</span>
+                  <span class="nv">codegen: </span>    <span class="kc">true</span>
+                  <span class="nv">active: </span>     <span class="kc">true</span>
+
+               <span class="nv">isample_hw_adapter:</span>
+                  <span class="nv">language: </span>   <span class="p">[</span><span class="s">&#39;cpp&#39;</span><span class="p">]</span>
+                  <span class="nv">build: </span>      <span class="s">&#39;obj&#39;</span>
+                  <span class="nv">deploy: </span>     <span class="s">&#39;dist&#39;</span>
+                  <span class="nv">codegen: </span>    <span class="kc">true</span>
+                  <span class="nv">active: </span>     <span class="kc">true</span>
+
+               <span class="nv">isample_ctrl_app:</span>
+                  <span class="nv">language: </span>   <span class="p">[</span><span class="s">&#39;cpp&#39;</span><span class="p">]</span>
+                  <span class="nv">build: </span>      <span class="s">&#39;obj&#39;</span>
+                  <span class="nv">deploy: </span>     <span class="s">&#39;dist&#39;</span>
+                  <span class="nv">codegen: </span>    <span class="kc">true</span>
+                  <span class="nv">active: </span>     <span class="kc">true</span>
+
+               <span class="nv">isample_main_app:</span>
+                  <span class="nv">language: </span>   <span class="p">[</span><span class="s">&#39;coffee&#39;</span><span class="p">]</span>
+                  <span class="nv">build: </span>      <span class="s">&#39;app&#39;</span>
+                  <span class="nv">deploy: </span>     <span class="s">&#39;dist&#39;</span>
+                  <span class="nv">codegen: </span>    <span class="kc">true</span>
+                  <span class="nv">active: </span>     <span class="kc">true</span>
+
+      <span class="nv">isample_example_pkg:</span>
+            <span class="nv">elements:</span>
+
+               <span class="nv">isample_ex_app:</span>
+                  <span class="nv">language: </span>   <span class="p">[</span><span class="s">&#39;coffee&#39;</span><span class="p">]</span>
+                  <span class="nv">build: </span>      <span class="s">&#39;app&#39;</span>
+                  <span class="nv">deploy: </span>     <span class="s">&#39;example&#39;</span>
+                  <span class="nv">codegen: </span>    <span class="kc">true</span>
+                  <span class="nv">active: </span>     <span class="kc">false</span>
+
+      <span class="nv">isample_doc_pkg:</span>
+            <span class="nv">elements:</span>
+
+               <span class="nv">isample_manual_doc:</span>
+                  <span class="nv">language: </span><span class="p">[</span><span class="s">&#39;rst&#39;</span><span class="p">]</span>
+                  <span class="nv">build: </span><span class="s">&#39;pdf&#39;</span>
+                  <span class="nv">deploy: </span><span class="s">&#39;doc&#39;</span>
+                  <span class="nv">codegen: </span><span class="kc">true</span>
+                  <span class="nv">active: </span><span class="kc">false</span>
+
+               <span class="nv">isample_notes_rpt:</span>
+                  <span class="nv">language: </span><span class="p">[</span><span class="s">&#39;rst&#39;</span><span class="p">]</span>
+                  <span class="nv">build: </span><span class="s">&#39;pdf&#39;</span>
+                  <span class="nv">deploy: </span><span class="s">&#39;doc&#39;</span>
+                  <span class="nv">codegen: </span><span class="kc">true</span>
+                  <span class="nv">active: </span><span class="kc">false</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--model</span></code></p>
+<blockquote>
+<div><p>Specifies the model layer to use as source for the generator, The possible values are
+model, metamodel or metametamodel.</p>
+<p>Each model layer has a different set of generators. For code generation the source model
+layer is ‘model’. The different transformations for code generation can be consulted
+in the corresponding mapping document:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Model to c++ Mapping Specification Document. ref: TBD</li>
+<li>Model to nodejs Mapping Specification Document. ref: TBD</li>
+<li>Model to python Mapping Specification Document. ref: TBD</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--target</span></code></p>
+<blockquote>
+<div><p>Specifies the family of generators to be use. The possible values are:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">code</span></code></dt>
+<dd>The transformations from model to code will be applied to the specified model element.
+The target language for each component is defined in the module definition file (see above example).</dd>
+<dt><code class="docutils literal"><span class="pre">scaffold</span></code></dt>
+<dd>This target value takes as an input the module definition file and applies metamodel transformations
+to the model elements defined in the module definition file. The output of the transformations
+is saved in the file system and includes skeleton files for the specification of the module model
+elements. The types of each model element is inferred from the termination of the names
+on the model elements. The appendix model n-grams in the ‘Model Specification Guide Document’ - ref TBD
+defines the predefined termination and their corresponding mapping.</dd>
+<dt><code class="docutils literal"><span class="pre">doc</span></code></dt>
+<dd>This target value generates documentation taking as an input the specification of the
+module elements. Documents have to be specified in the module definition file (see example above).
+The language transformation output values can be specified on a per document basis.</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="gds-info-options-module">
+<h3>5.4.5. gds info [options] [module]<a class="headerlink" href="#gds-info-options-module" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">info</span></code> command display information of the modules that the gds tool is processing.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds info --help
+
+Usage: info <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>
+
+List information of the <span class="nb">local</span> bundles or the optional module
+
+Options:
+
+  -b, --bundle &lt;name&gt;  uses the bundle &lt;name&gt; instead of the <span class="nb">local</span> bundles <span class="o">(</span>default: <span class="o">)</span>
+  -h, --help           output usage information
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="gds-build-options-module">
+<h3>5.4.6. gds build [options] [module]<a class="headerlink" href="#gds-build-options-module" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">build</span></code> command builds the specified module. If no argument is passed
+it will build the modules of the local bundle.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds build --help
+
+Usage: build <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>
+
+Builds the <span class="nb">local</span> bundles or the optional module
+
+Options:
+
+  -b, --bundle &lt;name&gt;  uses the bundle &lt;name&gt; instead of the <span class="nb">local</span> bundles <span class="o">(</span>default: <span class="o">)</span>
+  -h, --help           output usage information
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">--bundle</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>The command will build the modules contained in the specified bundle.</dd>
+</dl>
+</div>
+<div class="section" id="gds-install-options-module">
+<h3>5.4.7. gds install [options] [module]<a class="headerlink" href="#gds-install-options-module" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">install</span></code> command install the deployable artifacts of the specified module.
+If no argument is passed it will install the artifacts of the modules in the local bundle.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds install --help
+
+Usage: install <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>
+
+Installs the <span class="nb">local</span> bundle modules or the optional module
+
+Options:
+
+  -b, --bundle &lt;name&gt;  uses the bundle &lt;name&gt; instead of the <span class="nb">local</span> bundles <span class="o">(</span>default: <span class="o">)</span>
+  -h, --help           output usage information
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">--bundle</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>The command will install the modules contained in the specified bundle.</dd>
+</dl>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In the latest release the use of the <code class="docutils literal"><span class="pre">install</span></code> command is not recommended as the installation will
+be performed as part of the invocation of the make command.</p>
+</div>
+</div>
+<div class="section" id="gds-clone-options-module">
+<h3>5.4.8. gds clone [options] [module]<a class="headerlink" href="#gds-clone-options-module" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">clone</span></code> command will clone the Github repositories corresponding to the
+specified module. The option <code class="docutils literal"><span class="pre">--developer</span></code> is used to determine which Github account
+is to be used as upstream repository. If no argument is passed all the modules of
+the local bundle will be cloned.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds clone --help
+
+Usage: clone <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>
+
+Clones the <span class="nb">local</span> bundle modules or the optional module
+
+Options:
+
+  -b, --bundle    &lt;name&gt;  uses the bundle &lt;name&gt; instead of the <span class="nb">local</span> bundles <span class="o">(</span>default: <span class="o">)</span>
+  -d, --developer &lt;name&gt;  overrides the developer defined in the bundle file <span class="o">(</span>default: <span class="o">)</span>
+  -h, --help              output usage information
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">bundle</span></code></dt>
+<dd>The command will clone the modules contained in the specified bundle.</dd>
+<dt><code class="docutils literal"><span class="pre">developer</span></code></dt>
+<dd>The name of the Github repository account.</dd>
+</dl>
+</div>
+<div class="section" id="gds-run-test-options-module">
+<h3>5.4.9. gds run_test [options] [module]<a class="headerlink" href="#gds-run-test-options-module" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">run_test</span></code> allows the automated execution of module tests. Module tests
+are created in the corresponding module test package. The name of the files
+containing the tests must conform to the syntax: &lt;module&gt;_&lt;test_number&gt;_&lt;test_suite&gt;_test.coffee</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds run_test --help
+
+Usage: run_test <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>
+
+Run the <span class="nb">test</span> of the <span class="nb">local</span> bundle modules or the optional module
+
+Options:
+
+   -b, --bundle &lt;name&gt;    uses the bundle &lt;name&gt; instead of the <span class="nb">local</span> bundles <span class="o">(</span>default: <span class="o">)</span>
+   -n, --number &lt;number&gt;  number of the <span class="nb">test</span> <span class="o">(</span>default: <span class="o">)</span>
+   --scope &lt;scope name&gt;   scope <span class="k">for</span> running the <span class="nb">test</span> <span class="o">(</span>default: <span class="nb">local</span><span class="o">)</span>
+   --suite &lt;suite name&gt;   runs only the <span class="nb">test</span> suite &lt;name&gt; <span class="o">(</span>default: unit<span class="o">)</span>
+   -h, --help             output usage information
+</pre></div>
+</div>
+</div></blockquote>
+<p>The following code shows an example of executing a unit test.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds run_test app_sys -n <span class="m">01</span> --suite unit
+
+<span class="c1"># -&gt; will run the test $GMT_GLOBAL/test/app_sys/app_sys_01_unit_test.coffee</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">bundle</span></code></dt>
+<dd>The command will execute all the test of the modules contained in the specified bundle.</dd>
+<dt><code class="docutils literal"><span class="pre">number</span></code></dt>
+<dd>Only the test matching the number will be executed.</dd>
+<dt><code class="docutils literal"><span class="pre">scope</span></code></dt>
+<dd>The command will search for tests in the specified scope. The default value is <em>global</em></dd>
+<dt><code class="docutils literal"><span class="pre">suite</span></code></dt>
+<dd>Only the test matching the suite identifier will be executed. This allow to organize
+tests in different categories that can be invoked incrementally (e.g. integration or performance
+tests after unit tests).</dd>
+</dl>
+</div>
+<div class="section" id="gds-options">
+<h3>5.4.10. gds options<a class="headerlink" href="#gds-options" title="Permalink to this headline">¶</a></h3>
+<p>The following options can be used in combination with the previous commands</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">-V,</span> <span class="pre">--version</span></code></dt>
+<dd>The <code class="docutils literal"><span class="pre">gds</span></code> command will print the version number</dd>
+<dt><code class="docutils literal"><span class="pre">-l,</span> <span class="pre">--logging</span> <span class="pre">&lt;level&gt;</span></code></dt>
+<dd><p class="first">Activates &lt;level&gt; logging. The following table describes the different values available for the <code class="docutils literal"><span class="pre">logging</span></code> option</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="7%" />
+<col width="4%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&lt;level&gt;</th>
+<th class="head">Abbr</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>fatal</td>
+<td>FTL</td>
+<td>fatal   - errors which make the application unusable</td>
+</tr>
+<tr class="row-odd"><td>error</td>
+<td>ERR</td>
+<td>error   - errors that preclude to achive an specific request</td>
+</tr>
+<tr class="row-even"><td>warning</td>
+<td>WRN</td>
+<td>warning - problems that may caused that the result achieved may not be the expected</td>
+</tr>
+<tr class="row-odd"><td>info</td>
+<td>INF</td>
+<td>info    - information about the general execution of the application</td>
+</tr>
+<tr class="row-even"><td>debug</td>
+<td>DBG</td>
+<td>debug   - information to provide an understanding of the internal of the application</td>
+</tr>
+<tr class="row-odd"><td>trace</td>
+<td>TRC</td>
+<td>trace   - information that may server to identify a potential problem</td>
+</tr>
+<tr class="row-even"><td>metric</td>
+<td>MET</td>
+<td>metric  - information to record performance metrics relative to the execution of the application</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="docutils literal"><span class="pre">-i,</span> <span class="pre">--interactive</span></code></dt>
+<dd><p class="first">Activates interactive mode. In this mode, the gds tool enters in a interactive session in which
+the model can be navigated and plugin methods can be invoked.</p>
+<div class="last admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In the current release, after invoking <code class="docutils literal"><span class="pre">gds</span> <span class="pre">-i</span></code> entering the <code class="docutils literal"><span class="pre">return</span></code> key is needed
+in order for the gds interactive prompt to appear.</p>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">-f,</span> <span class="pre">--file_log</span> <span class="pre">&lt;filename&gt;</span></code></dt>
+<dd>Streams the log output produced during the execution of a gds command to <em>&lt;filename&gt;</em></dd>
+<dt><code class="docutils literal"><span class="pre">-s,</span> <span class="pre">--sim_mode</span></code></dt>
+<dd><p class="first">Executes commands in simulation mode. In this mode, commands are executed but
+changes to the file system are prevented</p>
+<div class="last admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Use this option in combination with <code class="docutils literal"><span class="pre">--logging</span> <span class="pre">trace</span></code> for troubleshooting.</p>
+</div>
+</dd>
+<dt><code class="docutils literal"><span class="pre">-h,</span> <span class="pre">--help</span></code></dt>
+<dd>output usage information</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="starting-to-use-gds">
+<h2>5.5. Starting to use gds<a class="headerlink" href="#starting-to-use-gds" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Confirm with your system administrator that the GMT SDK has
+been installed in your machine. The default installation
+location is /opt/gmt</p>
+</li>
+<li><p class="first">Add the GMT environment variables to your .profile</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>&lt;your <span class="nb">local</span> development directory&gt;
+<span class="nb">export</span> <span class="nv">GMT_GLOBAL</span><span class="o">=</span>&lt;the global installation of the OCS SDK&gt;
+<span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env.sh
+</pre></div>
+</div>
+</li>
+<li><p class="first">Close and open a new terminal session so the new environment
+becomes available</p>
+</li>
+<li><p class="first">Execute the following commands to verify that the GMT environment
+variables are correctly set</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds --help
+&gt; gds --env       <span class="c1"># displays GMT environment variables</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Change to your local GMT development directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If it’s the first time using the GMT SDK, initialize your
+file system structure</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds init
+</pre></div>
+</div>
+<p>gds init will initialize the file system structure of GMT_LOCAL.
+It will create the $GMT_LOCAL file structure, where the
+deployable files of your local development are saved.</p>
+<p>From this moment the gds commands can be invoked to perform the required
+development tasks.</p>
+</li>
+</ol>
+</div>
 </div>
 
 
