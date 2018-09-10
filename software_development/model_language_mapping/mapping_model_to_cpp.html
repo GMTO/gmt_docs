@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7.1. Mapping between the Model Definition Files and C++ source code &mdash; GMT Software And Controls documentation</title>
+  <title>6.1. Mapping between the Model Definition Files and C++ source code &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -32,15 +32,17 @@
   
 
   
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
-        <link rel="up" title="7. Model-language mapping" href="index.html"/>
-        <link rel="next" title="7.2. Mapping between the Model Definition Files and Coffee Script source code" href="mapping_model_to_coffee.html"/>
-        <link rel="prev" title="7. Model-language mapping" href="index.html"/> 
+        <link rel="up" title="6. Model-language mapping" href="index.html"/>
+        <link rel="next" title="7. Core Services user guide" href="../core_services_user_guide.html"/>
+        <link rel="prev" title="6. Model-language mapping" href="index.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -104,22 +106,20 @@
 <li class="toctree-l2"><a class="reference internal" href="../installation.html">1. Installing the SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ocs_module_spec.html">4. OCS Module Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../gds_guide.html">5. gds documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modeling_guidelines.html">6. Model specification guide document</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">7. Model-language mapping</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">7.1. Mapping between the Model Definition Files and C++ source code</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#generated-c-source-code-structure">7.1.1. Generated C++ source code structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gds_guide.html">4. gds documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling_guidelines.html">5. Model specification guide document</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6. Model-language mapping</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.1. Mapping between the Model Definition Files and C++ source code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c-source-code-file-tree-structure">6.1.1. C++ source code file tree structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-types-mapping">6.1.2. Data types mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-mapping">6.1.3. Component mapping</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="mapping_model_to_coffee.html">7.2. Mapping between the Model Definition Files and Coffee Script source code</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mapping_model_to_python.html">7.3. Mapping between the Model Definition Files and Python source code</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../core_services_user_guide.html">8. Core Services user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../io_fwk_guide.html">9. I/O Framework user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../hdk_example.html">10. HDK example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../isample_example.html">11. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core_services_user_guide.html">7. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../isample_example.html">8. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hdk_example.html">9. HDK example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../data_products/index.html">Data Products</a></li>
@@ -170,9 +170,9 @@
         
           <li><a href="../index.html">Software Development</a> &raquo;</li>
         
-          <li><a href="index.html">7. Model-language mapping</a> &raquo;</li>
+          <li><a href="index.html">6. Model-language mapping</a> &raquo;</li>
         
-      <li>7.1. Mapping between the Model Definition Files and C++ source code</li>
+      <li>6.1. Mapping between the Model Definition Files and C++ source code</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -190,11 +190,789 @@
            <div itemprop="articleBody">
             
   <div class="section" id="mapping-between-the-model-definition-files-and-c-source-code">
-<span id="mapping-model-to-cpp"></span><h1>7.1. Mapping between the Model Definition Files and C++ source code<a class="headerlink" href="#mapping-between-the-model-definition-files-and-c-source-code" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="generated-c-source-code-structure">
-<h2>7.1.1. Generated C++ source code structure<a class="headerlink" href="#generated-c-source-code-structure" title="Permalink to this headline">¶</a></h2>
-<p>The C++ generated source files are located under the <code class="docutils literal"><span class="pre">&lt;MOD_DIR&gt;/src/cpp</span></code>
-directory.</p>
+<span id="mapping-model-to-cpp"></span><h1>6.1. Mapping between the Model Definition Files and C++ source code<a class="headerlink" href="#mapping-between-the-model-definition-files-and-c-source-code" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="c-source-code-file-tree-structure">
+<span id="map-cpp-file-tree"></span><h2>6.1.1. C++ source code file tree structure<a class="headerlink" href="#c-source-code-file-tree-structure" title="Permalink to this headline">¶</a></h2>
+<p>The C++ generated source files are located under the <code class="docutils literal"><span class="pre">&lt;MODULE_DIR&gt;/src/cpp</span></code>
+directory, which has the following structure:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">MODULE_DIR</span><span class="o">&gt;/</span>
+   <span class="o">|--</span> <span class="o">...</span>
+   <span class="o">|--</span> <span class="n">src</span><span class="o">/</span>
+         <span class="o">|--</span> <span class="o">...</span>
+         <span class="o">|--</span> <span class="n">cpp</span><span class="o">/</span>
+               <span class="o">|--</span> <span class="n">build</span><span class="o">/</span>
+               <span class="o">|--</span> <span class="n">include</span><span class="o">/</span>
+               <span class="o">|--</span> <span class="o">&lt;</span><span class="n">pk_1_pkg</span><span class="o">&gt;/</span>
+               <span class="o">|--</span> <span class="o">...</span>
+               <span class="o">|--</span> <span class="o">&lt;</span><span class="n">pk_n_pkg</span><span class="o">&gt;/</span>
+               <span class="o">|</span>
+               <span class="o">|--</span> <span class="n">Makefile</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Makefile</dt>
+<dd>The <code class="docutils literal"><span class="pre">`Makefile`</span></code> file contains the directives to include the system wide
+make rules that are defined in <code class="docutils literal"><span class="pre">$GMT_GLOBAL</span></code>. Users can modify it to add
+the specific Makefile definitions that are needed for the module, but the
+recommended way is to use the <code class="docutils literal"><span class="pre">`module.mk`</span></code> file of each package.</dd>
+<dt>build/</dt>
+<dd>The <code class="docutils literal"><span class="pre">`build/`</span></code> directory is the place where the compilation products will
+be generated</dd>
+<dt>include/</dt>
+<dd>The <code class="docutils literal"><span class="pre">`include/`</span></code> directory contains the generated include files which must
+be part of the module external interface. In general, the contents of the
+this directory are the include files for the
+module-defined data types. In addition, in the <code class="docutils literal"><span class="pre">`include/``</span></code> directory there
+is one convenience header file (<code class="docutils literal"><span class="pre">`&lt;module&gt;_port_types.h`</span></code>) that contains
+the includes to all of the module
+headers.</dd>
+<dt>&lt;pk_i_pkg&gt;/</dt>
+<dd>One directory is created for each package defined in the DCS definition
+file of the model. The name of the directory is exactly the same name
+that was given to the package <em>(note: the suffix of the name should be
+`_pkg`; see the Model Specification Guide document for more details)</em>.</dd>
+</dl>
+<p>The structure inside the package directories is as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pk_i_pkg</span><span class="o">&gt;/</span>
+    <span class="o">|</span>
+    <span class="o">|--</span> <span class="n">module</span><span class="o">.</span><span class="n">mk</span>
+    <span class="o">|</span>
+    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">comp_1</span><span class="o">&gt;/</span>
+    <span class="o">|--</span> <span class="o">...</span>
+    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">comp_n</span><span class="o">&gt;/</span>
+    <span class="o">|</span>
+    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">a_1</span><span class="o">&gt;</span><span class="n">_app</span><span class="o">.</span><span class="n">cpp</span>
+    <span class="o">|--</span> <span class="o">...</span>
+    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">a_n</span><span class="o">&gt;</span><span class="n">_app</span><span class="o">.</span><span class="n">cpp</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>&lt;comp_i&gt;/</dt>
+<dd>For each component there is a directory where all its source files are
+placed. The name of the directory is the same as the component. See <a class="reference internal" href="#map-cpp-map-component"><span class="std std-numref">Section 6.1.3</span></a> for more details.</dd>
+<dt>&lt;a_i&gt;_app.cpp</dt>
+<dd>For each application defined in the model for the current package there
+is a C++ file which contains the source of the application.</dd>
+<dt>module.mk</dt>
+<dd>The <code class="docutils literal"><span class="pre">`module.mk`</span></code> file contains all the directives that are needed
+to compile and link the current package. See <a class="reference internal" href="#map-cpp-map-makefiles"><span class="std std-numref">Section 6.1.1.1</span></a> for
+more details.</dd>
+</dl>
+<div class="section" id="makefiles">
+<span id="map-cpp-map-makefiles"></span><h3>6.1.1.1. Makefiles<a class="headerlink" href="#makefiles" title="Permalink to this headline">¶</a></h3>
+<p>As seen above, there is one <code class="docutils literal"><span class="pre">`Makefile`</span></code> in the <code class="docutils literal"><span class="pre">`src/cpp/`</span></code> directory
+of each module, which only the system level Makefile
+rules. This Makefile should not be modified by the user, unless necessary.</p>
+<p>In each package directory there is a <code class="docutils literal"><span class="pre">`module.mk`</span></code> file. This file is included
+by <em>make</em> when the package is built, and it is the place where the user must
+add the needed compiler and linker directives to build the module.</p>
+<p>In general, the set of Makefile rules defined globally in the SDK are sufficient
+to build any package, so the user must not add any rule. However, the libraries
+used by each package are not known by the make system, and therefore the user
+must specify them. In the auto-generated version of the <code class="docutils literal"><span class="pre">`module.mk`</span></code> files
+there is an example of such directives.</p>
+<p>The user must specify the compiler and linker directives in the
+<code class="docutils literal"><span class="pre">`MOD_BUILD_CFLAGS`</span></code>, <code class="docutils literal"><span class="pre">`MOD_BUILD_CXXFLAGS`</span></code>, <code class="docutils literal"><span class="pre">`MOD_BUILD_LDFLAGS`</span></code>, <code class="docutils literal"><span class="pre">`MOD_SHRLIBS_CFLAGS`</span></code>,
+<code class="docutils literal"><span class="pre">`MOD_SHRLIBS_CXXFLAGS`</span></code> and <code class="docutils literal"><span class="pre">`MOD_SHRLIBS_LDFLAGS`</span></code> macros, in the
+<code class="docutils literal"><span class="pre">`module.mk`</span></code> file of each package.</p>
+</div>
+</div>
+<div class="section" id="data-types-mapping">
+<h2>6.1.2. Data types mapping<a class="headerlink" href="#data-types-mapping" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="primitive-types">
+<h3>6.1.2.1. Primitive types<a class="headerlink" href="#primitive-types" title="Permalink to this headline">¶</a></h3>
+<p>The mapping from the model primitive types to the corresponding C++ types can be
+found in the following table</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Model Type</th>
+<th class="head">C++ type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Integer</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>String</td>
+<td>std::string</td>
+</tr>
+<tr class="row-even"><td>Boolean</td>
+<td>bool</td>
+</tr>
+<tr class="row-odd"><td>Date</td>
+<td>struct tm</td>
+</tr>
+<tr class="row-even"><td>TimeStamp</td>
+<td>struct timeval</td>
+</tr>
+<tr class="row-odd"><td>TimeInterval</td>
+<td>struct timeval</td>
+</tr>
+<tr class="row-even"><td>void</td>
+<td>void</td>
+</tr>
+<tr class="row-odd"><td>bool</td>
+<td>bool</td>
+</tr>
+<tr class="row-even"><td>byte</td>
+<td>uint8_t</td>
+</tr>
+<tr class="row-odd"><td>char</td>
+<td>char</td>
+</tr>
+<tr class="row-even"><td>uchar</td>
+<td>unsigned char</td>
+</tr>
+<tr class="row-odd"><td>int</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>int8</td>
+<td>int8_t</td>
+</tr>
+<tr class="row-odd"><td>int16</td>
+<td>int16_t</td>
+</tr>
+<tr class="row-even"><td>int32</td>
+<td>int32_t</td>
+</tr>
+<tr class="row-odd"><td>int64</td>
+<td>int64_t</td>
+</tr>
+<tr class="row-even"><td>uint</td>
+<td>unsigned int</td>
+</tr>
+<tr class="row-odd"><td>uint8</td>
+<td>uint8_t</td>
+</tr>
+<tr class="row-even"><td>uint16</td>
+<td>uint16_t</td>
+</tr>
+<tr class="row-odd"><td>uint32</td>
+<td>uint32_t</td>
+</tr>
+<tr class="row-even"><td>uint64</td>
+<td>uint64_t</td>
+</tr>
+<tr class="row-odd"><td>float</td>
+<td>float</td>
+</tr>
+<tr class="row-even"><td>float32</td>
+<td>float</td>
+</tr>
+<tr class="row-odd"><td>float64</td>
+<td>double</td>
+</tr>
+<tr class="row-even"><td>float128</td>
+<td>long double</td>
+</tr>
+<tr class="row-odd"><td>string</td>
+<td>std::string</td>
+</tr>
+<tr class="row-even"><td>complex</td>
+<td>std::complex&lt;float&gt;</td>
+</tr>
+<tr class="row-odd"><td>complex64</td>
+<td>std::complex&lt;double&gt;</td>
+</tr>
+<tr class="row-even"><td>complex128</td>
+<td>std::complex&lt;long double&gt;</td>
+</tr>
+<tr class="row-odd"><td>TimeValue_ns</td>
+<td>struct timespec</td>
+</tr>
+<tr class="row-even"><td>TimeValue_us</td>
+<td>struct timeval</td>
+</tr>
+<tr class="row-odd"><td>TimeValue_Date</td>
+<td>struct tm</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="struct-types">
+<h3>6.1.2.2. Struct types<a class="headerlink" href="#struct-types" title="Permalink to this headline">¶</a></h3>
+<p>The data types defined in the model files as <code class="docutils literal"><span class="pre">`StructType`</span></code> are
+mapped to C++ struct types. The C++ definition is generated to a
+header file inside the <code class="docutils literal"><span class="pre">`include/`</span></code> directory, with its name
+equal to the user-defined type name.</p>
+<p>For example, one structured type defined in the model as</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nx">StructType</span> <span class="s">&quot;my_struct&quot;</span><span class="p">,</span>
+    <span class="nv">desc: </span><span class="s">&quot;Struct type example&quot;</span>
+    <span class="nv">elements:</span>
+        <span class="nv">data_field1: </span><span class="p">{</span><span class="nv">type: </span><span class="s">&quot;String&quot;</span><span class="p">,</span> <span class="nv">desc: </span><span class="s">&quot;This is field 1&quot;</span><span class="p">}</span>
+        <span class="nv">data_field2: </span><span class="p">{</span><span class="nv">type: </span><span class="s">&quot;Integer&quot;</span><span class="p">,</span> <span class="nv">desc: </span><span class="s">&quot;This is field 2&quot;</span><span class="p">}</span>
+        <span class="nv">data_field3: </span><span class="p">{</span><span class="nv">type: </span><span class="s">&quot;my_other_struct&quot;</span><span class="p">,</span> <span class="nv">desc: </span><span class="s">&quot;This is field 3&quot;</span><span class="p">}</span>
+        <span class="nv">data_field4: </span><span class="p">{</span><span class="nv">type: </span><span class="s">&quot;float[4]&quot;</span><span class="p">,</span> <span class="nv">desc: </span><span class="s">&quot;This is field 4&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>will have its C++ representation in the <code class="docutils literal"><span class="pre">`include/my_struct.h`</span></code> file,
+with the following contents:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+<span class="cp">#include</span> <span class="cpf">&lt;msgpack.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;array&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="k">struct</span> <span class="n">my_struct</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span>          <span class="n">data_field1</span><span class="p">;</span>    <span class="c1">// This is field 1</span>
+    <span class="kt">int</span>                  <span class="n">data_field2</span><span class="p">;</span>    <span class="c1">// This is field 2</span>
+    <span class="n">my_other_struct</span>      <span class="n">data_field3</span><span class="p">;</span>    <span class="c1">// This is field 3</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span><span class="mi">4</span><span class="o">&gt;</span>  <span class="n">data_field4</span><span class="p">;</span>    <span class="c1">// This is field 4</span>
+
+    <span class="n">MSGPACK_DEFINE_MAP</span><span class="p">(</span><span class="n">data_field1</span><span class="p">,</span> <span class="n">data_field2</span><span class="p">,</span> <span class="n">data_field3</span><span class="p">)</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>As it can be seen in the example, the types of the fields can either be
+primitive types, user-defined types and arrays or sequences.</p>
+<p>The <code class="docutils literal"><span class="pre">`MSGPACK_DEFINE_MAP`</span></code> directive allows the C++ instances of this
+type to be serialized automatically by the <a class="reference external" href="https://msgpack.org/">msgpack library</a>.</p>
+</div>
+<div class="section" id="enumerated-types">
+<h3>6.1.2.3. Enumerated types<a class="headerlink" href="#enumerated-types" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">`Enum`</span></code> types defined in the DCS model files are mapped to C++
+as <a class="reference external" href="https://en.cppreference.com/w/cpp/language/enum">enum classes</a>. The
+labels of the C++ enum class will be the literals defined in the Enum type
+in the model, and in the same order.</p>
+<p>A header file will be generated for each <code class="docutils literal"><span class="pre">`Enum`</span></code> type. These headers
+will be named after the type name, and they
+will be placed in the <code class="docutils literal"><span class="pre">`include/`</span></code> directory.</p>
+<p>As an example, if we have the following enumerated type in the
+<code class="docutils literal"><span class="pre">`&lt;module_name&gt;_dcs_types.coffee`</span></code> model file,</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nx">Enum</span> <span class="s">&quot;my_enum_type&quot;</span><span class="p">,</span>
+<span class="nv">desc: </span><span class="s">&quot;An enumerated type&quot;</span>
+<span class="nv">literals:</span>
+    <span class="nv">THE_FIRST_LABEL: </span>    <span class="p">{</span><span class="nv">desc: </span><span class="s">&quot;First label of the enumerate&quot;</span><span class="p">}</span>
+    <span class="nv">THE_SECOND_LABEL: </span>   <span class="p">{</span><span class="nv">desc: </span><span class="s">&quot;First label of the enumerate&quot;</span><span class="p">}</span>
+    <span class="nv">THE_THIRD_LABEL: </span>    <span class="p">{</span><span class="nv">desc: </span><span class="s">&quot;Third label of the enumerate&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>then the generated C++ file will be <code class="docutils literal"><span class="pre">`include/my_enum_type.h`</span></code>, and
+its contents will be:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+
+<span class="k">enum</span> <span class="k">class</span> <span class="nc">my_enum_type</span> <span class="o">:</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="p">{</span> <span class="n">THE_FIRST_LABEL</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                         <span class="n">THE_SECOND_LABEL</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                         <span class="n">THE_THIRD_LABEL</span><span class="o">=</span><span class="mi">2</span><span class="p">};</span>
+<span class="n">MSGPACK_ADD_ENUM</span><span class="p">(</span><span class="n">my_enum_type</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As in the Struct Type mapping, the <code class="docutils literal"><span class="pre">`MSGPACK_ADD_ENUM`</span></code> directive allows
+the variables of this type to be automatically serialized by msgpack.</p>
+</div>
+</div>
+<div class="section" id="component-mapping">
+<span id="map-cpp-map-component"></span><h2>6.1.3. Component mapping<a class="headerlink" href="#component-mapping" title="Permalink to this headline">¶</a></h2>
+<p>Each Component has its own directory in the file tree of the package it
+belongs to, as shown in <a class="reference internal" href="#map-cpp-file-tree"><span class="std std-numref">Section 6.1.1</span></a>. The Component
+directory will have the following contents:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pk_i_pkg</span><span class="o">&gt;/</span>
+   <span class="o">|--</span> <span class="o">...</span>
+   <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;</span>
+         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;.</span><span class="n">h</span>
+         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;.</span><span class="n">cpp</span>
+         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;</span><span class="n">_step</span><span class="o">.</span><span class="n">cpp</span>
+         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;</span><span class="n">_setup</span><span class="o">.</span><span class="n">cpp</span>
+         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;</span><span class="n">_msgpack</span><span class="o">.</span><span class="n">h</span>
+         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;</span><span class="n">_app</span><span class="o">.</span><span class="n">cpp</span>
+</pre></div>
+</div>
+<p>The name of the Component directory and the prefix of all the generated
+source files inside it is equal to the Component name.</p>
+<div class="section" id="component-header-file">
+<span id="map-cpp-model-example"></span><h3>6.1.3.1. Component header file<a class="headerlink" href="#component-header-file" title="Permalink to this headline">¶</a></h3>
+<p>The C++ class definition of the component is located in the <code class="docutils literal"><span class="pre">`&lt;component_name&gt;.h`</span></code>
+file. The name of the class is set as the name defined in the model file, but
+in CamelCase. For example, a component named <code class="docutils literal"><span class="pre">`my_component`</span></code> in the
+model files would be mapped as a class named <code class="docutils literal"><span class="pre">`MyComponent`</span></code>.</p>
+<p>The generated class will inherit from the C++ version of the superclasses listed
+in the <code class="docutils literal"><span class="pre">`extends`</span></code> list of the component model. In the following table
+there is the list of the mapping between the most common model superclasses and
+the corresponding C++ base classes:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="37%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Model class</th>
+<th class="head">extends item</th>
+<th class="head">C++ class</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Component</td>
+<td>BaseComponent</td>
+<td>Component</td>
+</tr>
+<tr class="row-odd"><td>Controller</td>
+<td>BaseController</td>
+<td>BaseController</td>
+</tr>
+<tr class="row-even"><td>Supervisor</td>
+<td>BaseController</td>
+<td>BaseController</td>
+</tr>
+<tr class="row-odd"><td>Adapter</td>
+<td>HwAdapter</td>
+<td>HwAdapter</td>
+</tr>
+<tr class="row-even"><td>Adapter</td>
+<td>EthercatAdapter</td>
+<td>EthercatAdapter</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>As an example, if we have the following component in the model definition:</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nx">Component</span>         <span class="s">&#39;my_component&#39;</span><span class="p">,</span>
+    <span class="nv">info: </span>         <span class="s">&#39;My Component&#39;</span>
+    <span class="nv">desc: </span>         <span class="s">&#39;This is an example component&#39;</span>
+    <span class="k">extends</span><span class="o">:</span>       <span class="p">[</span><span class="s">&#39;BaseComponent&#39;</span><span class="p">]</span>
+    <span class="nv">abstract: </span>     <span class="kc">false</span>
+    <span class="nv">uses: </span>         <span class="p">[</span><span class="s">&quot;ocs_core_fwk&quot;</span><span class="p">,</span> <span class="s">&quot;ocs_ctrl_fwk&quot;</span><span class="p">]</span>
+
+    <span class="nv">state_vars:</span>
+        <span class="nv">my_state1:</span>
+            <span class="nv">desc: </span>              <span class="s">&#39;One State Var&#39;</span>
+            <span class="nv">type: </span>              <span class="s">&#39;my_custom_type&#39;</span>
+            <span class="nv">max_rate: </span>          <span class="mi">1000</span>
+            <span class="nv">blocking_mode: </span>     <span class="s">&#39;async&#39;</span>
+            <span class="nv">is_controllable: </span>   <span class="kc">true</span>
+
+    <span class="nv">input_ports:</span>
+        <span class="nv">my_input_port1:</span>
+            <span class="nv">desc: </span>           <span class="s">&#39;One input port&#39;</span>
+            <span class="nv">type: </span>           <span class="s">&#39;Integer&#39;</span>
+            <span class="nv">protocol: </span>       <span class="s">&#39;pull&#39;</span>
+            <span class="nv">max_rate: </span>       <span class="mi">1000</span>
+            <span class="nv">blocking_mode: </span>  <span class="s">&#39;async&#39;</span>
+
+    <span class="nv">output_ports:</span>
+        <span class="nv">my_output_port1:</span>
+            <span class="nv">desc: </span>           <span class="s">&#39;One output port&#39;</span>
+            <span class="nv">type: </span>           <span class="s">&#39;float64&#39;</span>
+            <span class="nv">protocol: </span>       <span class="s">&#39;push&#39;</span>
+            <span class="nv">max_rate: </span>       <span class="mi">1000</span>
+            <span class="nv">blocking_mode: </span>  <span class="s">&#39;async&#39;</span>
+
+    <span class="nv">properties:</span>
+        <span class="nv">my_prop1:</span>
+            <span class="nv">desc: </span>    <span class="s">&#39;One property&#39;</span>
+            <span class="nv">type: </span>    <span class="s">&#39;float32&#39;</span>
+            <span class="nv">default: </span> <span class="mf">30.0</span>
+</pre></div>
+</div>
+<p>then the generated C++ class would be:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#ifndef _my_component_h_</span>
+<span class="cp">#define _my_component_h_</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;ocs_core_fwk.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;ocs_ctrl_fwk.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../../include/my_subsystem_port_types.h&quot;</span><span class="cp"></span>
+
+<span class="k">class</span> <span class="nc">MyComponentSetup</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="n">gmt</span>
+<span class="p">{</span>
+
+<span class="k">class</span> <span class="nc">MyComponent</span> <span class="o">:</span> <span class="k">public</span> <span class="n">BaseComponent</span>
+<span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+        <span class="n">MyComponent</span><span class="p">(</span>
+            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_uri</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_name</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_host</span><span class="p">,</span>
+            <span class="kt">int</span> <span class="n">comp_port</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_acl</span><span class="p">,</span>
+            <span class="kt">float</span> <span class="n">comp_scan_rate</span><span class="p">);</span>
+
+        <span class="k">virtual</span> <span class="o">~</span><span class="n">MyComponent</span><span class="p">();</span>
+
+        <span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="nf">step</span><span class="p">(</span><span class="kt">bool</span> <span class="n">setup_ok</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+
+        <span class="k">typedef</span> <span class="n">MyComponentSetup</span> <span class="n">Setup</span><span class="p">;</span>
+
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">create_config</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="c1">// Create state variables</span>
+        <span class="n">StateVar</span><span class="o">&lt;</span><span class="n">my_custom_type</span><span class="o">&gt;</span> <span class="n">my_state1_sv</span><span class="p">;</span>
+
+        <span class="c1">// Input port declaration</span>
+        <span class="kt">int</span>   <span class="n">my_input_port1</span><span class="p">;</span>     <span class="c1">// One input port</span>
+
+        <span class="c1">// Output port declaration</span>
+        <span class="kt">double</span> <span class="n">my_output_port1</span><span class="p">;</span>   <span class="c1">// One output port</span>
+
+        <span class="c1">// Configuration properties</span>
+        <span class="kt">float</span>  <span class="n">my_prop1</span><span class="p">;</span>          <span class="c1">// One property</span>
+<span class="p">};</span>
+
+<span class="p">}</span> <span class="c1">// namespace gmt</span>
+
+<span class="cp">#endif   </span><span class="c1">// _my_component_h_</span>
+</pre></div>
+</div>
+<p>As we can see, the contents of the class definition are: the overridden methods from the base class,
+the <em>State Variables</em> definition, the <em>Input Ports</em> definition, the <em>Output Ports</em>
+definition and the <em>Properties</em> definition.</p>
+<p>In the class definition there will be only
+the State Variables, Properties and Ports from the model that are owned (first defined by) by
+this class. Please note that there is a set of other class members that will be
+inherited from the base classes. The list of class members inherited from the most
+common superclasses are listed in the following table:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="27%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Class member</th>
+<th class="head">Kind</th>
+<th class="head">Inherited from</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ops_state</td>
+<td>state_vars</td>
+<td>Component</td>
+</tr>
+<tr class="row-odd"><td>heartbeat_out</td>
+<td>output_ports</td>
+<td>Component</td>
+</tr>
+<tr class="row-even"><td>uri</td>
+<td>properties</td>
+<td>Component</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>properties</td>
+<td>Component</td>
+</tr>
+<tr class="row-even"><td>host</td>
+<td>properties</td>
+<td>Component</td>
+</tr>
+<tr class="row-odd"><td>port</td>
+<td>properties</td>
+<td>Component</td>
+</tr>
+<tr class="row-even"><td>acl</td>
+<td>properties</td>
+<td>Component</td>
+</tr>
+<tr class="row-odd"><td>scan_rate</td>
+<td>properties</td>
+<td>Component</td>
+</tr>
+<tr class="row-even"><td>ecat_bus</td>
+<td>input_ports</td>
+<td>EthercatAdapter</td>
+</tr>
+<tr class="row-odd"><td>sim_mode</td>
+<td>state_vars</td>
+<td>BaseController</td>
+</tr>
+<tr class="row-even"><td>control_mode</td>
+<td>state_vars</td>
+<td>BaseController</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Includes</strong></p>
+<p>The first section of the component header file is  a set of
+<em>#include</em> directives. This list is composed by:</p>
+<ul class="simple">
+<li>The include to the DCS types header, <code class="docutils literal"><span class="pre">`../../include/my_subsystem_port_types.h`</span></code></li>
+<li>The includes to the header of each of the frameworks listed in the <code class="docutils literal"><span class="pre">`uses`</span></code> element of the model</li>
+</ul>
+<p><strong>Typedefs</strong></p>
+<p>The class definition always contains a <em>typedef</em> directive for the
+component setup class. Therefore, one can always refer to the component
+configuration class as <code class="docutils literal"><span class="pre">`MyComponent::Setup`</span></code>.</p>
+<p><strong>Methods</strong></p>
+<p>The  class definition contains the declarations of the constructor and
+the overridden methods from the base class:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Constructor and destructor:</dt>
+<dd>Constructor and virtual destructor for the class. The definition
+is in the <code class="docutils literal"><span class="pre">`my_component.cpp`</span></code> source file.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>step() method:</dt>
+<dd>The <code class="code docutils literal"><span class="pre">step()</span></code> method is one of the most important methods of any
+component. This is the place where the developer must insert the code
+for the component step function, which implements the main functionality
+of the component. A basic version of this method is generated in the
+<code class="docutils literal"><span class="pre">`my_component_step.cpp`</span></code> source file, which must be updated by the
+module developer to add the component specific code.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>setup() method:</dt>
+<dd>Contains the code that handles the component configuration, and that
+creates the links between class member variables and the corresponding
+ports, state variables or properties. The definition of the <code class="code docutils literal"><span class="pre">setup()</span></code>
+method is generated in the <code class="docutils literal"><span class="pre">`my_component_setup.cpp`</span></code> source file.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>create_config():</dt>
+<dd>This is an auxiliary method called by <code class="code docutils literal"><span class="pre">my_component::setup()</span></code> in
+order to polymorphically create the configuration member variable.</dd>
+</dl>
+</li>
+</ul>
+<p><strong>State Variables</strong></p>
+<p>The start of the State Variables section is marked by
+the comment <code class="docutils literal"><span class="pre">//</span> <span class="pre">Create</span> <span class="pre">state</span> <span class="pre">variables</span></code>. For each component State Variable
+<code class="code docutils literal"><span class="pre">my_statevar</span></code> of <code class="code docutils literal"><span class="pre">my_type</span></code>, a class member variable will be created, with
+the form <code class="code docutils literal"><span class="pre">StateVar&lt;my_type&gt;</span> <span class="pre">my_statevar_sv;</span></code> (note that  the
+suffix <code class="docutils literal"><span class="pre">`_sv`</span></code> has been added to the variable name). The type of the State
+Variable is mapped to the C++ equivalent one, if needed.</p>
+<p>The
+<code class="docutils literal"><span class="pre">`StateVar&lt;my_type&gt;`</span></code> template is a struct that contains the fields</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span>  <span class="n">name</span><span class="p">;</span>
+<span class="kt">bool</span>         <span class="n">is_controlable</span><span class="p">;</span>
+<span class="n">my_type</span>      <span class="n">value</span><span class="p">;</span>
+<span class="n">my_type</span>      <span class="n">goal</span><span class="p">;</span>
+<span class="n">my_type</span>      <span class="n">max</span><span class="p">;</span>
+<span class="n">my_type</span>      <span class="n">min</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Therefore, the goal and the current value of the <code class="code docutils literal"><span class="pre">my_statevar_sv</span></code>
+State Variable are accessible by means of <code class="code docutils literal"><span class="pre">my_statevar_sv.goal</span></code>
+and <code class="code docutils literal"><span class="pre">my_statevar_sv.value</span></code>.</p>
+<p><strong>Input Ports</strong></p>
+<p>The Input Port definition section is marked with the comment
+<code class="docutils literal"><span class="pre">//</span> <span class="pre">Input</span> <span class="pre">port</span> <span class="pre">declaration</span></code>. A class member variable will be generated
+for each Input Port defined in the model. For example, if the component
+model file contains</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nv">input_ports:</span>
+    <span class="nv">my_input_port:</span>
+        <span class="nv">desc: </span>           <span class="s">&#39;One input port&#39;</span>
+        <span class="nv">type: </span>           <span class="s">&#39;my_type&#39;</span>
+        <span class="nv">protocol: </span>       <span class="s">&#39;pull&#39;</span>
+        <span class="nv">max_rate: </span>       <span class="mi">1000</span>
+        <span class="nv">blocking_mode: </span>  <span class="s">&#39;async&#39;</span>
+</pre></div>
+</div>
+<p>then the C++ counterpart will be a member variable defined as:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">my_type</span>   <span class="n">my_input_port</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The type of the port declared in the model file is mapped to its C++ equivalent,
+if needed.</p>
+<p>In addition, the <code class="docutils literal"><span class="pre">`Commponent`</span></code> base class provides an <code class="docutils literal"><span class="pre">`inputs`</span></code> member variable,
+which has the collection of all the inputs ports. This collection can be
+indexed by the port name, for example <code class="code docutils literal"><span class="pre">inputs[&quot;my_input_port&quot;]</span></code>.
+The object returned contains the actual structure that supports
+the port functionality. In particular, the port parameters (nominal rate, etc)
+are stored in the <code class="docutils literal"><span class="pre">`config`</span></code> field (e.g.: <code class="code docutils literal"><span class="pre">inputs[&quot;my_input_port&quot;].config</span></code>),
+of type <code class="code docutils literal"><span class="pre">PortConfig</span></code>:</p>
+<blockquote>
+<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Port_config</span>
+<span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">protocol</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">url</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">blocking_mode</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">max_rate</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">nom_rate</span><span class="p">;</span>
+    <span class="n">Transport_config_ifce</span><span class="o">&amp;</span> <span class="n">transport_config</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Output Ports</strong></p>
+<p>The Output Port definition section is marked with the comment
+<code class="docutils literal"><span class="pre">//</span> <span class="pre">Output</span> <span class="pre">port</span> <span class="pre">declaration</span></code>. A class member variable will be generated
+for each Output Port defined in the model. For example, if the component
+model file contains</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nv">output_ports:</span>
+    <span class="nv">my_output_port:</span>
+        <span class="nv">desc: </span>           <span class="s">&#39;One output port&#39;</span>
+        <span class="nv">type: </span>           <span class="s">&#39;my_type&#39;</span>
+        <span class="nv">protocol: </span>       <span class="s">&#39;push&#39;</span>
+        <span class="nv">max_rate: </span>       <span class="mi">1000</span>
+        <span class="nv">blocking_mode: </span>  <span class="s">&#39;async&#39;</span>
+</pre></div>
+</div>
+<p>then the C++ counterpart will be a member variable defined as:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">my_type</span>   <span class="n">my_output_port</span><span class="p">;</span>  <span class="c1">// One output port</span>
+</pre></div>
+</div>
+<p>The type of the port declared in the model file is mapped to its C++ equivalent,
+if needed.</p>
+<p>Similarly to the Input Ports case, the Output Ports can be navigated using the
+<code class="docutils literal"><span class="pre">`outputs`</span></code> member variable, which is inherited from the <code class="docutils literal"><span class="pre">`Component`</span></code> base class.</p>
+<p><strong>Configuration Properties</strong></p>
+<p>The Configuration Properties section is marked with the comment
+<code class="docutils literal"><span class="pre">//</span> <span class="pre">Configuration</span> <span class="pre">properties</span></code>. A class member variable will be generated
+for each Property defined in the model. As the previous cases, the type
+of the properties member variables will be the C++ mapping of the Property
+model type.</p>
+<p>As an example, if the component model file contains</p>
+<p>then the C++ class will have:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">float</span>   <span class="n">my_prop1</span><span class="p">;</span>  <span class="c1">// One property</span>
+</pre></div>
+</div>
+<p>The type of the port declared in the model file is mapped to its C++ equivalent,
+if needed.</p>
+<p>The Properties of a component are also navigable, using the <code class="docutils literal"><span class="pre">`properties`</span></code>
+member variable, which is inherited from the base class.</p>
+</div>
+<div class="section" id="component-setup-class-header-file">
+<h3>6.1.3.2. Component setup class header file<a class="headerlink" href="#component-setup-class-header-file" title="Permalink to this headline">¶</a></h3>
+<p>The configuration of any component (values of the properties and setup
+information for the state variables and ports) is stored in a class
+named <code class="docutils literal"><span class="pre">`&lt;ComponentName&gt;Setup`</span></code>, and as stated above, the component
+class has an alias for this setup class which always has the name
+<code class="code docutils literal"><span class="pre">&lt;ComponentName&gt;::Setup</span></code>.</p>
+<p>The <code class="docutils literal"><span class="pre">`&lt;ComponentName&gt;Setup`</span></code> inherits from the base class Setup class.
+The root of the setup classes hierarchy is the <code class="code docutils literal"><span class="pre">BaseComponent::Setup</span></code>
+class.</p>
+<p>The Setup class definition is generated in the file <code class="docutils literal"><span class="pre">`&lt;component_name&gt;_msgpack.h`</span></code>.
+The generated code for the example component of <a class="reference internal" href="#map-cpp-model-example"><span class="std std-numref">Section 6.1.3.1</span></a>
+would be in the file <code class="docutils literal"><span class="pre">`my_component_msgpack.h`</span></code>, with the following content:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#ifndef _my_component_msgpack_h_</span>
+<span class="cp">#define _my_component_msgpack_h_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;msgpack.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;ocs_core_fwk.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;ocs_ctrl_fwk.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../../include/hdk_dcs_port_types.h&quot;</span><span class="cp"></span>
+
+<span class="k">struct</span> <span class="nl">MyComponentSetup</span> <span class="p">:</span> <span class="k">public</span>  <span class="n">BaseComponentSetup</span> <span class="p">{</span>
+
+    <span class="k">struct</span> <span class="nl">PropertyConf</span> <span class="p">:</span> <span class="k">public</span>  <span class="n">BaseComponentSetup</span><span class="o">::</span><span class="n">PropertyConf</span> <span class="p">{</span>
+        <span class="n">PropertyDef</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span>             <span class="n">my_prop1</span><span class="p">;</span>
+        <span class="n">MSGPACK_DEFINE_MAP</span><span class="p">(</span><span class="n">my_prop1</span><span class="p">,</span> <span class="n">uri</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">acl</span><span class="p">,</span> <span class="n">scan_rate</span><span class="p">)</span>
+    <span class="p">};</span>
+
+    <span class="k">struct</span> <span class="nl">StateVarConf</span> <span class="p">:</span> <span class="k">public</span>  <span class="n">BaseComponentSetup</span><span class="o">::</span><span class="n">StateVarConf</span> <span class="p">{</span>
+        <span class="n">StateVarDef</span><span class="o">&lt;</span><span class="n">my_custom_type</span><span class="o">&gt;</span>    <span class="n">my_state1</span><span class="p">;</span>
+        <span class="n">MSGPACK_DEFINE_MAP</span><span class="p">(</span><span class="n">my_state1</span><span class="p">,</span> <span class="n">ops_state</span><span class="p">)</span>
+    <span class="p">};</span>
+
+    <span class="k">struct</span> <span class="nl">InputPortConf</span> <span class="p">:</span> <span class="k">public</span> <span class="n">BaseComponentSetup</span><span class="o">::</span><span class="n">InputPortConf</span> <span class="p">{</span>
+        <span class="n">PortDef</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span>                   <span class="n">my_input_port1</span><span class="p">;</span>
+        <span class="n">PortDef</span><span class="o">&lt;</span><span class="n">my_custom_type</span><span class="o">&gt;</span>        <span class="n">my_state1_goal</span><span class="p">;</span>
+        <span class="n">MSGPACK_DEFINE_MAP</span><span class="p">(</span><span class="n">my_input_port1</span><span class="p">,</span> <span class="n">my_state1_goal</span><span class="p">,</span> <span class="n">ops_state_goal</span><span class="p">)</span>
+    <span class="p">};</span>
+
+    <span class="k">struct</span> <span class="nl">OutputPortConf</span> <span class="p">:</span> <span class="k">public</span> <span class="n">BaseComponentSetup</span><span class="o">::</span><span class="n">OutputPortConf</span> <span class="p">{</span>
+        <span class="n">PortDef</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span>                <span class="n">my_output_port1</span><span class="p">;</span>
+        <span class="n">PortDef</span><span class="o">&lt;</span><span class="n">my_custom_type</span><span class="o">&gt;</span>        <span class="n">my_state1_value</span><span class="p">;</span>
+        <span class="n">MSGPACK_DEFINE_MAP</span><span class="p">(</span><span class="n">my_output_port1</span><span class="p">,</span> <span class="n">heartbeat_out</span><span class="p">,</span> <span class="n">my_state1_value</span><span class="p">,</span> <span class="n">ops_state_value</span><span class="p">)</span>
+    <span class="p">};</span>
+
+    <span class="n">PropertyConf</span>     <span class="n">properties</span><span class="p">;</span>
+    <span class="n">StateVarConf</span>     <span class="n">state_vars</span><span class="p">;</span>
+    <span class="n">InputPortConf</span>    <span class="n">input_ports</span><span class="p">;</span>
+    <span class="n">OutputPortConf</span>   <span class="n">output_ports</span><span class="p">;</span>
+
+    <span class="n">MSGPACK_DEFINE_MAP</span><span class="p">(</span><span class="n">properties</span><span class="p">,</span> <span class="n">state_vars</span><span class="p">,</span> <span class="n">input_ports</span><span class="p">,</span> <span class="n">output_ports</span><span class="p">)</span>
+<span class="p">};</span>
+
+<span class="cp">#endif </span><span class="c1">// _my_component_msgpack_h_</span>
+</pre></div>
+</div>
+<p>Here we can see 5 main blocks:</p>
+<dl class="docutils">
+<dt><code class="code docutils literal"><span class="pre">struct</span> <span class="pre">PropertyConf</span></code> definition:</dt>
+<dd>This is the definition for the inner struct where all the configuration
+properties will be stored. There is one entry <code class="code docutils literal"><span class="pre">PropertyDef&lt;type&gt;</span> <span class="pre">prop</span></code>
+for each configuration property defined in the component model. In addition,
+there is the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> clause that allows the struct to be serialized
+automatically by msgpack. Note that although the properties defined in the
+base class are inherited from <code class="code docutils literal"><span class="pre">BaseComponentSetup::PropertyConf</span></code> and,
+therefore, they are not re-defined here, they are explicitly listed in
+the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> directive.</dd>
+<dt><code class="code docutils literal"><span class="pre">struct</span> <span class="pre">StateVarConf</span></code> definition:</dt>
+<dd>This is the definition for the inner struct where all the state variables
+meta-information will be stored. There is one entry <code class="code docutils literal"><span class="pre">StateVarDef&lt;type&gt;</span> <span class="pre">state_var</span></code>
+for each state variable defined in the component model. In addition,
+there is the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> clause that allows the struct to be serialized
+automatically by msgpack. Note that although the state variables defined in the
+base class are inherited from <code class="code docutils literal"><span class="pre">BaseComponentSetup::StateVarConf</span></code> and,
+therefore, they are not re-defined here, they are explicitly listed in
+the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> directive.</dd>
+<dt><code class="code docutils literal"><span class="pre">struct</span> <span class="pre">InputPortConf</span></code> definition:</dt>
+<dd>This is the definition for the inner struct where all the input ports
+meta-information will be stored. There is one entry <code class="code docutils literal"><span class="pre">PortDef&lt;type&gt;</span> <span class="pre">port</span></code>
+for each input port defined in the component model, and also one entry for
+the goal of each state variable. The suffix <code class="docutils literal"><span class="pre">`_goal`</span></code> is added automatically
+to the state variable names. In addition,
+there is the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> clause that allows the struct to be serialized
+automatically by msgpack. Note that although the input ports defined in the
+base class are inherited from <code class="code docutils literal"><span class="pre">BaseComponentSetup::InputPortConf</span></code> and,
+therefore, they are not re-defined here, they are explicitly listed in
+the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> directive.</dd>
+<dt><code class="code docutils literal"><span class="pre">struct</span> <span class="pre">OutputPortConf</span></code> definition:</dt>
+<dd>This is the definition for the inner struct where all the output ports
+meta-information will be stored. There is one entry <code class="code docutils literal"><span class="pre">PortDef&lt;type&gt;</span> <span class="pre">port</span></code>
+for each output port defined in the component model, and also one entry for
+the value of each state variable. The suffix <code class="docutils literal"><span class="pre">`_value`</span></code> is added automatically
+to the state variable names. In addition,
+there is the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> clause that allows the struct to be serialized
+automatically by msgpack. Note that although the output ports defined in the
+base class are inherited from <code class="code docutils literal"><span class="pre">BaseComponentSetup::OutputPortConf</span></code> and,
+therefore, they are not re-defined here, they are explicitly listed in
+the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> directive.</dd>
+<dt>Setup class fields definition:</dt>
+<dd><p class="first">The previous sections were only type definitions. After these sections,
+the following setup class member variables are defined:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">`properties`</span></code> member variable, of type <code class="docutils literal"><span class="pre">`PropertyConf`</span></code></li>
+<li>The <code class="docutils literal"><span class="pre">`state_vars`</span></code> member variable, of type <code class="docutils literal"><span class="pre">`StateVarConf`</span></code></li>
+<li>The <code class="docutils literal"><span class="pre">`input_ports`</span></code> member variable, of type <code class="docutils literal"><span class="pre">`InputPortConf`</span></code></li>
+<li>The <code class="docutils literal"><span class="pre">`output_ports`</span></code> member variable, of type <code class="docutils literal"><span class="pre">`OutputPortConf`</span></code></li>
+</ul>
+</div></blockquote>
+<p class="last">Analogously to the previous sections, the <code class="docutils literal"><span class="pre">`MSGPACK`</span></code> directive
+allows the component Setup class to be serialized automatically.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="component-setup-method-definition-file">
+<h3>6.1.3.3. Component setup method definition file<a class="headerlink" href="#component-setup-method-definition-file" title="Permalink to this headline">¶</a></h3>
+<p>The code for the <code class="code docutils literal"><span class="pre">&lt;component_name&gt;::setup()</span></code> and <code class="code docutils literal"><span class="pre">&lt;component_name&gt;::create_config()</span></code>
+methods is automatically generated from the model to the file <code class="docutils literal"><span class="pre">`&lt;component_name&gt;_setup.cpp`</span></code>.</p>
+<p>The code generated for the <code class="code docutils literal"><span class="pre">create_config()</span></code> method
+creates polymorphically the <code class="docutils literal"><span class="pre">`config`</span></code> pointer.</p>
+<p>The code generated for the <code class="code docutils literal"><span class="pre">setup()</span></code> method creates the structures for the input ports,
+output ports and properties, initializes them and creates the links between the
+ports and properties to the actual member variables of the component class.</p>
+</div>
+<div class="section" id="component-step-method-definition-file">
+<h3>6.1.3.4. Component step method definition file<a class="headerlink" href="#component-step-method-definition-file" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="code docutils literal"><span class="pre">&lt;component_name&gt;::step()</span></code> method is the one that defines the
+behavior of the component. Hence, it is one of the most important methods
+of any component, and the only one from the auto-generated methods that
+the user should change.</p>
+<p>The code of the <cite>step</cite> method is in the  <code class="docutils literal"><span class="pre">`&lt;component_name&gt;_step.cpp`</span></code>
+file. When the component code is auto-generated from the model, the code
+generator places a skeleton of the <cite>step</cite> method in this file. The developer
+must overwrite it with the actual implementation for the current component.</p>
+</div>
 </div>
 </div>
 
@@ -208,10 +986,10 @@ directory.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mapping_model_to_coffee.html" class="btn btn-neutral float-right" title="7.2. Mapping between the Model Definition Files and Coffee Script source code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../core_services_user_guide.html" class="btn btn-neutral float-right" title="7. Core Services user guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="7. Model-language mapping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="6. Model-language mapping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

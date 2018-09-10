@@ -428,31 +428,31 @@ available templates.
 .. table:: SWCS Documentation Templates Overview
 
   +---------------+----------------------------------+----------------------------------------------------+
-  | Component     | | Documents                      | | Description                                      |
+  | Component     |   Documents                      |   Description                                      |
   +===============+==================================+====================================================+
-  | | System      | | SWCS WBS Dictionary            | | List and description of all the Software and     |
-  | |             | |                                | | Controls WBS items                               |
-  | |             +----------------------------------+----------------------------------------------------+
-  | |             | | SWCS Product Tree Report       | | List and description of all the Software and     |
-  | |             | |                                | | Controls Configuration items                     |
-  | |             +----------------------------------+----------------------------------------------------+
-  | |             | | SWCS Cost Report               | | Cost estimation organized by subsystem, package, |
-  | |             | |                                | | component, and project stage                     |
-  | |             +----------------------------------+----------------------------------------------------+
-  | |             | | SWCS Project Progress Report   | | SWCS development progress metrics, includes      |
-  | |             | |                                | | burnout charts for all the subsystems            |
+  |   System      |   SWCS WBS Dictionary            |   List and description of all the Software and     |
+  |               |                                  |   Controls WBS items                               |
+  |               +----------------------------------+----------------------------------------------------+
+  |               |   SWCS Product Tree Report       |   List and description of all the Software and     |
+  |               |                                  |   Controls Configuration items                     |
+  |               +----------------------------------+----------------------------------------------------+
+  |               |   SWCS Cost Report               |   Cost estimation organized by subsystem, package, |
+  |               |                                  |   component, and project stage                     |
+  |               +----------------------------------+----------------------------------------------------+
+  |               |   SWCS Project Progress Report   |   SWCS development progress metrics, includes      |
+  |               |                                  |   burnout charts for all the subsystems            |
   +---------------+----------------------------------+----------------------------------------------------+
-  | | Subsystem   | | Subsystem Specification Report | | Subsystem Specification Report                   |
-  | |             +----------------------------------+----------------------------------------------------+
-  | |             | | Subsystem Design Report        | | Subsystem Design Report                          |
-  | |             +----------------------------------+----------------------------------------------------+
-  | |             | | Subsystem Backlog Report       | | Subsystem Backlog Report                         |
-  | |             +----------------------------------+----------------------------------------------------+
-  | |             | | Subsystem Progress Report      | | Subsystem Progress Report                        |
-  | |             +----------------------------------+----------------------------------------------------+
-  | |             | | Subsystem AIT Test Plan        | | Subsystem AIT Test Plan                          |
-  | |             +----------------------------------+----------------------------------------------------+
-  | |             | | Subsystem AIT results          | | Subsystem AIT results                            |
+  |   Subsystem   |   Subsystem Specification Report |   Subsystem Specification Report                   |
+  |               +----------------------------------+----------------------------------------------------+
+  |               |   Subsystem Design Report        |   Subsystem Design Report                          |
+  |               +----------------------------------+----------------------------------------------------+
+  |               |   Subsystem Backlog Report       |   Subsystem Backlog Report                         |
+  |               +----------------------------------+----------------------------------------------------+
+  |               |   Subsystem Progress Report      |   Subsystem Progress Report                        |
+  |               +----------------------------------+----------------------------------------------------+
+  |               |   Subsystem AIT Test Plan        |   Subsystem AIT Test Plan                          |
+  |               +----------------------------------+----------------------------------------------------+
+  |               |   Subsystem AIT results          |   Subsystem AIT results                            |
   +---------------+----------------------------------+----------------------------------------------------+
 
 
@@ -495,31 +495,41 @@ provides an overview of the main SWCS Development Workflows:
 .. table:: SWCS Development Workflows Outline
 
   +--------------+-------------------------------+------------------------------+------------------------------+----------------------------+
-  | | Components | | Workflows                   | | Input                      | | Output                     | | Roles                    |
+  |   Components |   Workflows                   |   Input                      |   Output                     |   Roles                    |
   +==============+===============================+==============================+==============================+============================+
-  | | System     | | Domain Analysis             | | SLR document               | | SWCS L3 requirements       | |  System Architect        |
-  | |            | | Requirement Analysis        | | OCD document               | | SWCS WBS Dictionary        | |  SWCS Stakeholders       |
-  | |            | | Cost Estimation             | | L2 Common documents        | | SWCS Cost Report           | |                          |
-  | |            | | Development Planning        | |                            | | SWCS Handbook              | |                          |
-  | |            | | AIT Planning                | |                            | | SWCS Development Plan      | |                          |
-  | |            | |                             | |                            | | SWCS Metamodel/Model       | |                          |
-  | |            | |                             | |                            | | SWCS Architecture Report   | |                          |
+  |   System     |   Domain Analysis             |   SLR document               |   SWCS L3 requirements       |    System Architect        |
+  |              |                               |                              |                              |                            |
+  |              |   Requirement Analysis        |   OCD document               |   SWCS WBS Dictionary        |    SWCS Stakeholders       |
+  |              |                               |                              |                              |                            |
+  |              |   Cost Estimation             |   L2 Common documents        |   SWCS Cost Report           |                            |
+  |              |                               |                              |                              |                            |
+  |              |   Development Planning        |                              |   SWCS Handbook              |                            |
+  |              |                               |                              |                              |                            |
+  |              |   AIT Planning                |                              |   SWCS Development Plan      |                            |
+  |              |                               |                              |                              |                            |
+  |              |                               |                              |   SWCS Metamodel/Model       |                            |
+  |              |                               |                              |                              |                            |
+  |              |                               |                              |   SWCS Architecture Report   |                            |
   +--------------+-------------------------------+------------------------------+------------------------------+----------------------------+
-  | | Subsystem  | | Subsystem Specification     | | SWC Metamodel/Model        | | Subsystem Definition Files | |  System Architect        |
-  | |            | | Subsystem Sprint Planning   | | SWC Architecture Report    | | Subsystem Implementation   | |  Subsystem Developer     |
-  | |            | | Subsystem AIT Definition    | |                            | | Subsystem Iteration Plan   | |  Subsystem Stakeholders  |
+  |   Subsystem  |   Subsystem Specification     |   SWC Metamodel/Model        |   Subsystem Definition Files |    System Architect        |
+  |              |                               |                              |                              |                            |
+  |              |   Subsystem Sprint Planning   |   SWC Architecture Report    |   Subsystem Implementation   |    Subsystem Developer     |
+  |              |                               |                              |                              |                            |
+  |              |   Subsystem AIT Definition    |                              |   Subsystem Iteration Plan   |    Subsystem Stakeholders  |
   +--------------+-------------------------------+------------------------------+------------------------------+----------------------------+
-  | | Package    | | Control Package Development | | Subsystem Definition Files | | Package Definition Files   | |  System Architect        |
-  | |            | | Data Processing Package     | |                            | | Package Implementation     | |  Subsystem Developer     |
-  | |            | | Package Development         | |                            | |                            | |  Subsystem Stakeholders  |
-  | |            | | Framework Development       | |                            | |                            | |                          |
+  |   Package    |   Control Package Development |   Subsystem Definition Files |   Package Definition Files   |    System Architect        |
+  |              |                               |                              |                              |                            |
+  |              |   Data Processing Package     |                              |   Package Implementation     |    Subsystem Developer     |
+  |              |                               |                              |                              |                            |
+  |              |   Package Development         |                              |                              |    Subsystem Stakeholders  |
+  |              |                               |                              |                              |                            |
+  |              |   Framework Development       |                              |                              |                            |
   +--------------+-------------------------------+------------------------------+------------------------------+----------------------------+
-  | | Component  | | Controller Development      | | Subsystem definition Files | | Component Definition       | |  Subsystem Developer     |
-  | |            | | Pipeline Development        | | Package Definition Files   | | Component Tests            | |  Subsystem Stakeholders  |
-  | |            | | UI Panel Development        | |                            | | Component Implementation   | |                          |
-  | |            | | Sequence Development        | |                            | |                            | |                          |
+  |   Component  |   Controller Development      |   Subsystem definition Files |   Component Definition       |    Subsystem Developer     |
+  |              |                               |                              |                              |                            |
+  |              |   Pipeline Development        |   Package Definition Files   |   Component Tests            |    Subsystem Stakeholders  |
+  |              |                               |                              |                              |                            |
+  |              |   UI Panel Development        |                              |   Component Implementation   |                            |
+  |              |                               |                              |                              |                            |
+  |              |   Sequence Development        |                              |                              |                            |
   +--------------+-------------------------------+------------------------------+------------------------------+----------------------------+
-
-
-
-

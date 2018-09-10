@@ -31,23 +31,23 @@ The table below shows the data persistence strategies:
 .. table:: Data Persistence Strategies
 
   +--------------------------+----------------------------+-------------------+---------------------------+
-  | | Data Type              | |  Storage Strategy        | | Persistence     | | Data format             |
+  |   Data Type              |    Storage Strategy        |   Persistence     |   Data format             |
   +==========================+============================+===================+===========================+
-  | | Science and WFS        | |  Files +                 | | Permanent/      | | FITS + MongoDB          |
-  | | frames                 | |  metadata object store   | | Time partition  | |                         |
+  |   Science and WFS        |    Files +                 |   Permanent/      |   FITS + MongoDB          |
+  |   frames                 |    metadata object store   |   Time partition  |                           |
   +--------------------------+----------------------------+-------------------+---------------------------+
-  | | Telemetry streams      | |  Files +                 | | Time partition  | | HDF5/BSON/MessagePack + |
-  | |                        | |  metadata object store   | |                 | | MongoDB                 |
+  |   Telemetry streams      |    Files +                 |   Time partition  |   HDF5/BSON/MessagePack + |
+  |                          |    metadata object store   |                   |   MongoDB                 |
   +--------------------------+----------------------------+-------------------+---------------------------+
-  | | Alarm, Log streams     | |  Object store            | | Time partition  | | NoSQL DB (MongoDB)      |
+  |   Alarm, Log streams     |    Object store            |   Time partition  |   NoSQL DB (MongoDB)      |
   +--------------------------+----------------------------+-------------------+---------------------------+
-  | | Configuration          | |  Object store            | | Permanent       | | NoSQL DB (MongoDB)      |
+  |   Configuration          |    Object store            |   Permanent       |   NoSQL DB (MongoDB)      |
   +--------------------------+----------------------------+-------------------+---------------------------+
-  | | Observing Programs     | |  Object store            | | Permanent       | | NoSQL DB (MongoDB)      |
+  |   Observing Programs     |    Object store            |   Permanent       |   NoSQL DB (MongoDB)      |
   +--------------------------+----------------------------+-------------------+---------------------------+
-  | | Observing Sequences    | |  Object store            | | Permanent       | | NoSQL DB (MongoDB)      |
+  |   Observing Sequences    |    Object store            |   Permanent       |   NoSQL DB (MongoDB)      |
   +--------------------------+----------------------------+-------------------+---------------------------+
-  | | Recipe Parameters      | |  Object store            | | Permanent       | | NoSQL DB (MongoDB)      |
+  |   Recipe Parameters      |    Object store            |   Permanent       |   NoSQL DB (MongoDB)      |
   +--------------------------+----------------------------+-------------------+---------------------------+
 
 The design of the Persistence Framework is based on the use of a High
@@ -62,4 +62,3 @@ advisable to delay the adoption of a concrete technology until the detailed
 design phase to take advantage of further technology developments. MongoDB is
 been used meanwhile to develop the Application Programming Interface of the
 Persistence Framework.
-

@@ -29,19 +29,19 @@ that are available.
 .. table:: SWCS Service Architecture Requirements (Level 3)
 
   +---------------------+------------------------------------------------------------------+
-  | | Requirement       | | Statement                                                      |
+  |   Requirement       |   Statement                                                      |
   +=====================+==================================================================+
-  | | Architecture      | | Establish an architecture for instrument software and control  |
-  | |                   | | subsystems.                                                    |
+  |   Architecture      |   Establish an architecture for instrument software and control  |
+  |                     |   subsystems.                                                    |
   +---------------------+------------------------------------------------------------------+
-  | | Reference Model   | | Provide a reference model to design control subsystems in a    |
-  | |                   | | consistent way.                                                |
+  |   Reference Model   |   Provide a reference model to design control subsystems in a    |
+  |                     |   consistent way.                                                |
   +---------------------+------------------------------------------------------------------+
-  | | Semantic Model    | | Provide a method to specify formally the features and          |
-  | |                   | | capabilities provided by every subsystem.                      |
+  |   Semantic Model    |   Provide a method to specify formally the features and          |
+  |                     |   capabilities provided by every subsystem.                      |
   +---------------------+------------------------------------------------------------------+
-  | | Software/Hardware | | Establish a set of software/hardware standards (GMT_SWC-       |
-  | | Standards         | | REF-00029) for the project.                                    |
+  |   Software/Hardware |   Establish a set of software/hardware standards (GMT_SWC-       |
+  |   Standards         |   REF-00029) for the project.                                    |
   +---------------------+------------------------------------------------------------------+
 
 
@@ -62,7 +62,7 @@ help to:
 
   *  Standardize base implmentation. A base component (in an object oriented
      sense) implementation provides a template for all service adapters
-     to bootstrap from. 
+     to bootstrap from.
 
   *  Simplify interaction and deployment.  Software components need to only
      know about the service native API, and not how the service or
@@ -93,7 +93,7 @@ The adapter hides from the component service implementation details like:
 Communication between adapters and supervisors may follow different
 communication patterns (e.g., publish/subscribe, push/pull, request/reply).
 The Section on :ref:`core_framework` describes the different communication
-patterns that are available. 
+patterns that are available.
 
 .. _service_supervisors:
 
@@ -133,7 +133,7 @@ The implementation of the service supervisors is not monolithic. Depending
 on the prevailing communication patterns, it is possible to implement
 different ways to distribute the process workload (e.g., broker, fan-out).
 This allows the efficient use of computing resources and elastic adaptation
-to the load. 
+to the load.
 
 .. _service_bus:
 
@@ -145,4 +145,3 @@ Each service bus provides a logical network connection that addresses the
 specific throughput, bandwidth and latency requirements of the service.  The
 Section on the :ref:`networking platform <networking>` provides a description
 of the GMT networking infrastructure.
-

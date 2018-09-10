@@ -21,7 +21,7 @@ The telemetry adapter provides an interface that allows:
 Two categories of measurement data can be sampled:
 
   * Continuous: quantities that are continuous in values. For instance, a
-    temperature sensor. 
+    temperature sensor.
 
   * Discrete: quantities that are discrete in values. For instance, the state
     of a switch (ON, OFF), the position of a window within a range of three
@@ -32,15 +32,15 @@ Two categories of measurement data can be sampled:
 .. table:: SWCS Telemetry Service Requirements (Level 3)
 
   +---------------------------+----------------------------------------------------------------------+
-  | | Requirement             | | Statement                                                          |
+  |   Requirement             |   Statement                                                          |
   +===========================+======================================================================+
-  | | Telemetry               | | Provide the capability to sample, display, and correlate any       |
-  | |                         | | signal with the resolution and frequency required to               |
-  | |                         | | characterize the behavior of the signal.                           |
+  |   Telemetry               |   Provide the capability to sample, display, and correlate any       |
+  |                           |   signal with the resolution and frequency required to               |
+  |                           |   characterize the behavior of the signal.                           |
   +---------------------------+----------------------------------------------------------------------+
-  | | Instrument and          | | Provide data storage facility with sufficient capacity to store at |
-  | | Telemetry Data Storage  | | least 15 years (TBR) of an instrument data and telemetry logs and  |
-  | |                         | | essential data for the lifetime of the observatory.                |
+  |   Instrument and          |   Provide data storage facility with sufficient capacity to store at |
+  |   Telemetry Data Storage  |   least 15 years (TBR) of an instrument data and telemetry logs and  |
+  |                           |   essential data for the lifetime of the observatory.                |
   +---------------------------+----------------------------------------------------------------------+
 
 
@@ -54,18 +54,18 @@ requirements.
 .. table:: Estimated Telemetry Bandwidth
 
   +---------------+-------------------+---------------+---------------------+--------------+
-  | | Subsystem   | | Raw Bandwidth   | | Duty Cycle  | | Operational       | | Percentage | 
-  | |             | | (MBps)          | | (%)         | | Bandwidth (MBps)  | | (%)        | 
+  |   Subsystem   |   Raw Bandwidth   |   Duty Cycle  |   Operational       |   Percentage |
+  |               |   (MBps)          |   (%)         |   Bandwidth (MBps)  |   (%)        |
   +===============+===================+===============+=====================+==============+
-  | | Telescope   | | 22.95           | | 100         | | 22.95             | | 30.1       | 
+  |   Telescope   |   22.95           |   100         |   22.95             |   30.1       |
   +---------------+-------------------+---------------+---------------------+--------------+
-  | | AO-LTAO     | | 174             | | 20          | | 34.80             | | 45.6       | 
+  |   AO-LTAO     |   174             |   20          |   34.80             |   45.6       |
   +---------------+-------------------+---------------+---------------------+--------------+
-  | | AO-GLAO     | | 21              | | 50          | | 10.50             | | 13.7       | 
+  |   AO-GLAO     |   21              |   50          |   10.50             |   13.7       |
   +---------------+-------------------+---------------+---------------------+--------------+
-  | | AO-NGSAO    | | 162             | | 5           | |  8.10             | | 10.6       | 
+  |   AO-NGSAO    |   162             |   5           |    8.10             |   10.6       |
   +---------------+-------------------+---------------+---------------------+--------------+
-  | | Total                                           | | 76.35             | | 100        | 
+  |   Total                                           |   76.35             |   100        |
   +---------------+-------------------+---------------+---------------------+--------------+
 
 
@@ -82,7 +82,7 @@ the streams of data for presentation in the user interface.
 
 **Service Packages**
 
-  *Service Package (server & adapter)* - 
+  *Service Package (server & adapter)* -
 
     A telemetry server system, deployed eventually in several machines takes
     care of receiving telemetry samples, storing them and forwarding them to
@@ -107,37 +107,37 @@ the streams of data for presentation in the user interface.
 
     The visualization package provides custom panels that allow observatory
     operators to monitor and manage the telemetry of the system. This is done
-    by implementing several optimized visualizations.  
+    by implementing several optimized visualizations.
 
   .. table:: Telemetry Service Visualization Panels
 
     +---------------------------+-----------------------------------------------------------------------------------+
-    | | Visualization Panel     | | Description                                                                     |
+    |   Visualization Panel     |   Description                                                                     |
     +===========================+===================================================================================+
-    | | Global Panel            | | Provides an overall view of the status of the telemetry system. The following   |
-    | |                         | | information will be displayed:                                                  |
-    | |                         | |                                                                                 |
-    | |                         | |   * State of each telemetry server component                                    |
-    | |                         | |     (e.g., RUNNING, STOPPED, FAULT)                                             |
-    | |                         | |   * State of each telemetry adapter component                                   |
-    | |                         | |     (e.g., RUNNING, STOPPED, FAULT)                                             |
-    | |                         | |   * List of active monitors                                                     |
-    | |                         | |   * Overall view of the service health, one box per subsystem color coded:      |
-    | |                         | |     - green: No active monitors in fault state                                  |
-    | |                         | |     - yellow: No serious active alarms                                          |
-    | |                         | |     - red: The telemetry system is not working                                  |
+    |   Global Panel            |   Provides an overall view of the status of the telemetry system. The following   |
+    |                           |   information will be displayed:                                                  |
+    |                           |                                                                                   |
+    |                           |    * State of each telemetry server component (e.g., RUNNING, STOPPED, FAULT)     |
+    |                           |    * State of each telemetry adapter component (e.g., RUNNING, STOPPED, FAULT)    |
+    |                           |    * List of active monitors                                                      |
+    |                           |    * Overall view of the service health, one box per subsystem color coded:       |
+    |                           |                                                                                   |
+    |                           |       - green: No active monitors in fault state                                  |
+    |                           |       - yellow: No serious active alarms                                          |
+    |                           |       - red: The telemetry system is not working                                  |
     +---------------------------+-----------------------------------------------------------------------------------+
-    | | Navigation Panel        | | Provides a way to navigate all the monitor servers and adapters. From the       |
-    | |                         | | navigation panel the state and detailed info of every server and adapter can be |
-    | |                         | | accessed.                                                                       |
+    |   Navigation Panel        |   Provides a way to navigate all the monitor servers and adapters. From the       |
+    |                           |   navigation panel the state and detailed info of every server and adapter can be |
+    |                           |   accessed.                                                                       |
     +---------------------------+-----------------------------------------------------------------------------------+
-    | | Analytics Panel         | | Provides access to the runtime statistics of the telemetry service.             |
-    | |                         | | These should include at least.                                                  |
-    | |                         | |   * Number and state (running/stopped/fault)                                    |
-    | |                         | |   * Instant throughput of the system                                            |
-    | |                         | |   * Total and Subsystem Monitor samples/sec                                     |
-    | |                         | |   * Total data bandwidth                                                        |
-    | |                         | |   * Storage capacity (used/available)                                           |
+    |   Analytics Panel         |   Provides access to the runtime statistics of the telemetry service.             |
+    |                           |   These should include at least.                                                  |
+    |                           |                                                                                   |
+    |                           |     * Number and state (running/stopped/fault)                                    |
+    |                           |     * Instant throughput of the system                                            |
+    |                           |     * Total and Subsystem Monitor samples/sec                                     |
+    |                           |     * Total data bandwidth                                                        |
+    |                           |     * Storage capacity (used/available)                                           |
     +---------------------------+-----------------------------------------------------------------------------------+
 
 
@@ -171,4 +171,3 @@ the streams of data for presentation in the user interface.
 .. figure:: _static/telemetry_service_implementation.png
 
   A Possible Telemetry Service Implementation
-

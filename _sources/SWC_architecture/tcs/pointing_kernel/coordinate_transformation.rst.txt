@@ -30,7 +30,7 @@ information:
 
   * Epoch – For objects that have proper motions, this is the time-zero from
     which proper motions are calculated.  The epoch is generally specified as a
-    given year (e.g., 1964.25).  
+    given year (e.g., 1964.25).
 
   * Proper motion – There are various units for proper motion (arcsec yr
     :sup:`-1`, arcmin century :sup:`-1`, etc.).  By default proper motion is
@@ -54,29 +54,29 @@ described below.
   +---------------------------+---------------------------------------------------------------------------+
   |  Coordinate System        |  Description                                                              |
   +===========================+===========================================================================+
-  | | FK4 [α, δ]              | | Often referred to as the B1950 (Besselian epoch 1950.0) coordinate      |
-  | |                         | | system, this mean equatorial system pre-dates the 1976 IAU resolutions. |
+  |   FK4 [α, δ]              |   Often referred to as the B1950 (Besselian epoch 1950.0) coordinate      |
+  |                           |   system, this mean equatorial system pre-dates the 1976 IAU resolutions. |
   +---------------------------+---------------------------------------------------------------------------+
-  | | FK5 [α, δ]              | | Often referred to as the J2000 (Julian epoch 2000.0) coordinate system, |
-  | |                         | | this mean equatorial system post-dates the 1976 IAU resolutions.        |
+  |   FK5 [α, δ]              |   Often referred to as the J2000 (Julian epoch 2000.0) coordinate system, |
+  |                           |   this mean equatorial system post-dates the 1976 IAU resolutions.        |
   +---------------------------+---------------------------------------------------------------------------+
-  | | ICRS [α, δ]             | | The International Celestial Reference System (ICRS) is the current      |
-  | |                         | | standard adopted by the International Astronomical Union, beginning     |
-  | |                         | | 1998. The origin is at the barycenter of the solar system with the axes |
-  | |                         | | fixed in space, and corresponds closely to FK5 J2000 to within ~30      |
-  | |                         | | mas for an object. [Default]                                            |
+  |   ICRS [α, δ]             |   The International Celestial Reference System (ICRS) is the current      |
+  |                           |   standard adopted by the International Astronomical Union, beginning     |
+  |                           |   1998. The origin is at the barycenter of the solar system with the axes |
+  |                           |   fixed in space, and corresponds closely to FK5 J2000 to within ~30      |
+  |                           |   mas for an object. [Default]                                            |
   +---------------------------+---------------------------------------------------------------------------+
-  | | Topocentric             | | Mostly used for solar system targets when inputs come from solar system |
-  | | apparent [α, δ]         | | ephemeris.  programs where parallax (annual and diurnal), planetary     |
-  | |                         | | aberrations, and their motions (i.e., tracking rates in [α, δ]), would  |
-  | |                         | | already have been pre-computed.                                         |
+  |   Topocentric             |   Mostly used for solar system targets when inputs come from solar system |
+  |   apparent [α, δ]         |   ephemeris.  programs where parallax (annual and diurnal), planetary     |
+  |                           |   aberrations, and their motions (i.e., tracking rates in [α, δ]), would  |
+  |                           |   already have been pre-computed.                                         |
   +---------------------------+---------------------------------------------------------------------------+
-  | | Observed [Az, El]       | | Used when another program, external to the TCS, has made all the        |
-  | |                         | | transformations necessary.                                              |
+  |   Observed [Az, El]       |   Used when another program, external to the TCS, has made all the        |
+  |                           |   transformations necessary.                                              |
   +---------------------------+---------------------------------------------------------------------------+
-  | | Mount [Az, El]          | | Mostly used for engineering and calibration applications. The relation  |
-  | |                         | | between the Mount [Az, El] and observed [Az, El] is given by the        |
-  | |                         | | pointing model.                                                         |
+  |   Mount [Az, El]          |   Mostly used for engineering and calibration applications. The relation  |
+  |                           |   between the Mount [Az, El] and observed [Az, El] is given by the        |
+  |                           |   pointing model.                                                         |
   +---------------------------+---------------------------------------------------------------------------+
 
 **Celestial Coordinate System Transformation Flow**
@@ -107,8 +107,8 @@ described below.
   the steps taken to convert celestial coordinates [α, δ] into instrumental
   direction [Az, El] and rotator angles that the mount servo system needs to
   position the telescope. There are two flow directions, distinguished by how
-  often the information needs to update: downward (slow, ≳20 Hz) and upward
-  (fast, ≫20 Hz). The downward direction (upper half of Figure) first transforms
+  often the information needs to update: downward (slow, 20 Hz) and upward
+  (fast, > 20 Hz). The downward direction (upper half of Figure) first transforms
   target celestial coordinates into a corresponding line-of- sight [Az, El]
   coordinate, correcting for terms that are independent of the telescope mount.
   Those terms include: aberrations (annual and diurnal), light deflection,
@@ -128,7 +128,7 @@ described below.
   telescope mount.
 
   In contrast, upward transformations (lower half of Figure) take place at much
-  higher frequencies (≫20 Hz), the purpose of which is to react to fast
+  higher frequencies (>20 Hz), the purpose of which is to react to fast
   mechanical positioning demands, such as target scanning, tip-tilt guiding,
   wind perturbations, AO closed loop operations, image centroiding, and encoder
   errors.  The telescope Az/El servo system compares the mount demand (downward
@@ -152,5 +152,3 @@ described below.
   systems (in small box).  Details of the pointing model, blue box, are
   elaborated in :ref:`the Figure below on the Virtual
   Telescope<figure-virtual_telescope>`.
-
-

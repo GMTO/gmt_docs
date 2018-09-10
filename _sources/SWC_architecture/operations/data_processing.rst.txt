@@ -15,33 +15,33 @@ Requirements derived from the SLR are:
 .. table:: SWCS Data Processing Requirements (Level 3)
 
   +----------------------------+------------------------------------------------------------+
-  | | Title                    | | Statement                                                |
+  |   Title                    |   Statement                                                |
   +============================+============================================================+
-  | | Efficient Operations     | | The SWCS shall identify and define sequences for         |
-  | |                          | | instruments, telescope, and science, operations to       |
-  | |                          | | optimize on-sky observing efficiency and to comply       |
-  | |                          | | with GMT Efficiency Budget (GMT-SE-REF-00593).           |
+  |   Efficient Operations     |   The SWCS shall identify and define sequences for         |
+  |                            |   instruments, telescope, and science, operations to       |
+  |                            |   optimize on-sky observing efficiency and to comply       |
+  |                            |   with GMT Efficiency Budget (GMT-SE-REF-00593).           |
   +----------------------------+------------------------------------------------------------+
-  | | Telescope Operators,     | | The SWCS shall be designed to efficiently support the    |
-  | | Instrument Specialists,  | | roles (operations, setup) of Telescope Operators,        |
-  | | and AO specialists       | | Instrument Specialists, and AO specialists.              |
+  |   Telescope Operators,     |   The SWCS shall be designed to efficiently support the    |
+  |   Instrument Specialists,  |   roles (operations, setup) of Telescope Operators,        |
+  |   and AO specialists       |   Instrument Specialists, and AO specialists.              |
   +----------------------------+------------------------------------------------------------+
-  | | Quick Look               | | Provide software to facilitate near real-time            |
-  | |                          | | assessment of data quality for each instrument.          |
+  |   Quick Look               |   Provide software to facilitate near real-time            |
+  |                            |   assessment of data quality for each instrument.          |
   +----------------------------+------------------------------------------------------------+
-  | | Observing Program        | | The SWCS shall provide software tools to execute         |
-  | | Execution                | | Observing Programs.                                      |
+  |   Observing Program        |   The SWCS shall provide software tools to execute         |
+  |   Execution                |   Observing Programs.                                      |
   +----------------------------+------------------------------------------------------------+
-  | | Engineering Data         | | Provide hardware and software to collect, store,         |
-  | | Management System        | | retrieve, analyze, and display engineering data to       |
-  | |                          | | monitor the performance and health of the GMT system     |
-  | |                          | | and environmental information.                           |
+  |   Engineering Data         |   Provide hardware and software to collect, store,         |
+  |   Management System        |   retrieve, analyze, and display engineering data to       |
+  |                            |   monitor the performance and health of the GMT system     |
+  |                            |   and environmental information.                           |
   +----------------------------+------------------------------------------------------------+
-  | | Calibration              | | The SWCS shall provide the capability to perform or      |
-  | | Efficiencies: AO, WFS,   | | support calibrations of all subsystems, instruments,     |
-  | | daytime, nighttime,      | | AO, WFS, daytime, nighttime, routine, and non-routine    |
-  | | routine, non-routine     | | calibrations within the time window specified in their   |
-  | |                          | | respective requirements.                                 |
+  |   Calibration              |   The SWCS shall provide the capability to perform or      |
+  |   Efficiencies: AO, WFS,   |   support calibrations of all subsystems, instruments,     |
+  |   daytime, nighttime,      |   AO, WFS, daytime, nighttime, routine, and non-routine    |
+  |   routine, non-routine     |   calibrations within the time window specified in their   |
+  |                            |   respective requirements.                                 |
   +----------------------------+------------------------------------------------------------+
 
 Data processing refers generally to a system that takes input information or

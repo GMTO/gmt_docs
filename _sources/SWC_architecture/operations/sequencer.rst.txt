@@ -13,35 +13,35 @@ observation execution, instrument switch).
 .. table:: SWCS Sequencing Requirements (Level 3)
 
   +----------------------------+------------------------------------------------------------------+
-  | | Title                    | | Statement                                                      | 
+  |   Title                    |   Statement                                                      |
   +============================+==================================================================+
-  | | Sequence Automation      | | Provide the capability to arrange commands in a way that       |
-  | |                          | | allows users to automate the execution of complex operations.  |
+  |   Sequence Automation      |   Provide the capability to arrange commands in a way that       |
+  |                            |   allows users to automate the execution of complex operations.  |
   +----------------------------+------------------------------------------------------------------+
-  | | Synchronous Instrument   | | Provide the capability to automate the observing               |
-  | | Operation                | | activities that require multiple instruments operating         |
-  | |                          | | synchronously or simultaneously.                               |
+  |   Synchronous Instrument   |   Provide the capability to automate the observing               |
+  |   Operation                |   activities that require multiple instruments operating         |
+  |                            |   synchronously or simultaneously.                               |
   +----------------------------+------------------------------------------------------------------+
-  | | Automated Start-up/      | | Provide the capability to execute start-up and shutdown        |
-  | | Shut-down Procedures     | | processes that are initiated and monitored under               |
-  | |                          | | operator control.                                              |
+  |   Automated Start-up/      |   Provide the capability to execute start-up and shutdown        |
+  |   Shut-down Procedures     |   processes that are initiated and monitored under               |
+  |                            |   operator control.                                              |
   +----------------------------+------------------------------------------------------------------+
-  | | Observing Mode           | | Provide the capability to switch from one observing            |
-  | | Switching                | | mode to another.                                               |
+  |   Observing Mode           |   Provide the capability to switch from one observing            |
+  |   Switching                |   mode to another.                                               |
   +----------------------------+------------------------------------------------------------------+
-  | | Acquisition Efficiencies | | Provide the capability to complete target acquisition          |
-  | | for Observing Modes      | | in Natural Seeing, LTAO, NGSAO, LGSAO, NGLAO, and              |
-  | |                          | | reacquisition in all modes, within the time budgets            |
-  | |                          | | specified in the GMT Efficiency Budget                         |
-  | |                          | | (GMT-SE-REF-00593).                                            |
+  |   Acquisition Efficiencies |   Provide the capability to complete target acquisition          |
+  |   for Observing Modes      |   in Natural Seeing, LTAO, NGSAO, LGSAO, NGLAO, and              |
+  |                            |   reacquisition in all modes, within the time budgets            |
+  |                            |   specified in the GMT Efficiency Budget                         |
+  |                            |   (GMT-SE-REF-00593).                                            |
   +----------------------------+------------------------------------------------------------------+
-  | | Telescope Optical        | | Provide the capability to switch from one telescope            |
-  | | Configuration Switching  | | optical configuration to another in an automated way           |
-  | |                          | | for any active instruments.                                    |
+  |   Telescope Optical        |   Provide the capability to switch from one telescope            |
+  |   Configuration Switching  |   optical configuration to another in an automated way           |
+  |                            |   for any active instruments.                                    |
   +----------------------------+------------------------------------------------------------------+
-  | | Automated Instrument     | | Provide the capability to automate the switching of            |
-  | | Switching                | | the active instrument set during the night initiated           |
-  | |                          | | and monitored by the operator.                                 |
+  |   Automated Instrument     |   Provide the capability to automate the switching of            |
+  |   Switching                |   the active instrument set during the night initiated           |
+  |                            |   and monitored by the operator.                                 |
   +----------------------------+------------------------------------------------------------------+
 
 Sequencers are often implemented via a hierarchical pattern: high-level

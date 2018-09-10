@@ -32,6 +32,8 @@
   
 
   
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
@@ -307,138 +309,59 @@ these may automate calibration, diagnosis or other engineering Tasks.</p>
 <col width="84%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">State</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Description</div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Pending</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">This is the initial state of an Observing sequence.  Observing Sequences</div>
-<div class="line">are created in the Operations Database once the Phase II proposal process</div>
-<div class="line">is finished.  This could be well in advance of the execution of the</div>
-<div class="line">observation, or in the case of PI directed mode, could be on-the-fly.</div>
-</div>
-</td>
+<tr class="row-even"><td>Pending</td>
+<td>This is the initial state of an Observing sequence.  Observing Sequences
+are created in the Operations Database once the Phase II proposal process
+is finished.  This could be well in advance of the execution of the
+observation, or in the case of PI directed mode, could be on-the-fly.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Scheduled</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The Observation Sequence has been selected for short-term execution. The</div>
-<div class="line">duration of “short-term” depends on the observatory operation procedures,</div>
-<div class="line">and could be the next night or many nights, pending long-term schedules.</div>
-</div>
-</td>
+<tr class="row-odd"><td>Scheduled</td>
+<td>The Observation Sequence has been selected for short-term execution. The
+duration of “short-term” depends on the observatory operation procedures,
+and could be the next night or many nights, pending long-term schedules.</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Executing</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The sequencer is executing the Observation Sequence.  Should a fault occur</div>
-<div class="line">that compromises data quality (e.g. this could be triggered by automated</div>
-<div class="line">rules or by the system operators) the state changes provisionally to</div>
-<div class="line">“Parking_lot” (below). The goal is to start executing the next Observing or</div>
-<div class="line">Operation Sequence while another member of the staff diagnoses the problem.</div>
-</div>
-</td>
+<tr class="row-even"><td>Executing</td>
+<td>The sequencer is executing the Observation Sequence.  Should a fault occur
+that compromises data quality (e.g. this could be triggered by automated
+rules or by the system operators) the state changes provisionally to
+“Parking_lot” (below). The goal is to start executing the next Observing or
+Operation Sequence while another member of the staff diagnoses the problem.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">QC_Check</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Once an observation is finished, the data, telescope telemetry, alarms and</div>
-<div class="line">logs are checked for basic errors.  Automated error-checking rules can be</div>
-<div class="line">defined for each Observing Sequence Template, as they may depend on the AO</div>
-<div class="line">or Instrument Observing mode.  The observational data are processed to</div>
-<div class="line">allow for quick-look.  In some observing modes, the observer may decide</div>
-<div class="line">whether to abort or execute the next Observational Sequence, such as when</div>
-<div class="line">an observational state has been changed to “Parking_lot” due to errors.</div>
-</div>
-</td>
+<tr class="row-odd"><td>QC_Check</td>
+<td>Once an observation is finished, the data, telescope telemetry, alarms and
+logs are checked for basic errors.  Automated error-checking rules can be
+defined for each Observing Sequence Template, as they may depend on the AO
+or Instrument Observing mode.  The observational data are processed to
+allow for quick-look.  In some observing modes, the observer may decide
+whether to abort or execute the next Observational Sequence, such as when
+an observational state has been changed to “Parking_lot” due to errors.</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Archived</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The raw data is archived as soon as they are read out from the detector.</div>
-<div class="line">Calibration data are retrieved and prepared for further processing.</div>
-</div>
-</td>
+<tr class="row-even"><td>Archived</td>
+<td>The raw data is archived as soon as they are read out from the detector.
+Calibration data are retrieved and prepared for further processing.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Processing</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Raw data and calibrations are processed for a first-pass data reduction.</div>
-<div class="line">If an error occurs during data reduction, the observational state may be</div>
-<div class="line">changed to Parking_lot depending on the severity of the error.</div>
-</div>
-</td>
+<tr class="row-odd"><td>Processing</td>
+<td>Raw data and calibrations are processed for a first-pass data reduction.
+If an error occurs during data reduction, the observational state may be
+changed to Parking_lot depending on the severity of the error.</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Distributed</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The raw data are distributed to remote sites (e.g. remote observer or</div>
-<div class="line">remote operation center).  An observation remains in this state until all</div>
-<div class="line">the data have been transmitted to the intended destinations.</div>
-</div>
-</td>
+<tr class="row-even"><td>Distributed</td>
+<td>The raw data are distributed to remote sites (e.g. remote observer or
+remote operation center).  An observation remains in this state until all
+the data have been transmitted to the intended destinations.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Parking_lot</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">This is the repository for errors that occurred during an observation.</div>
-<div class="line">An observation is pending further analysis by a human operator.</div>
-<div class="line">Depending on the problem and changing observing conditions, the</div>
-<div class="line">observation can be fixed and moved further down to QC, can be included</div>
-<div class="line">again in the short term queue, or further back into the long-term</div>
-<div class="line">observing backlog.</div>
-</div>
-</td>
+<tr class="row-odd"><td>Parking_lot</td>
+<td>This is the repository for errors that occurred during an observation.
+An observation is pending further analysis by a human operator.
+Depending on the problem and changing observing conditions, the
+observation can be fixed and moved further down to QC, can be included
+again in the short term queue, or further back into the long-term
+observing backlog.</td>
 </tr>
 </tbody>
 </table>

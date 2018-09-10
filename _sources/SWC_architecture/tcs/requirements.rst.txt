@@ -15,19 +15,19 @@ details to follow below.
 .. table:: Initial Blind Pointing Requirements (Level 3)
 
   +-----------------------+------------------------------------------------------------------------------+
-  | | Title               | | Statement                                                                  |
+  |   Title               |   Statement                                                                  |
   +=======================+==============================================================================+
-  | | Initialization for  | | Provide the capability to initialize and calibrate the telescope pointing  |
-  | | Target Acquisition  | | system from a cold start by acquiring a position reference star with a     |
-  | |                     | | target acquisition camera.                                                 |
+  |   Initialization for  |   Provide the capability to initialize and calibrate the telescope pointing  |
+  |   Target Acquisition  |   system from a cold start by acquiring a position reference star with a     |
+  |                       |   target acquisition camera.                                                 |
   +-----------------------+------------------------------------------------------------------------------+
-  | | Telescope Initial   | | Provide the capability to perform blind pointing from cold start with      |
-  | | Blind Pointing      | | pointing accuracy required by the Pointing Budget (GMT-SE-REF-00477).      |
-  | | Accuracy            | |                                                                            |
+  |   Telescope Initial   |   Provide the capability to perform blind pointing from cold start with      |
+  |   Blind Pointing      |   pointing accuracy required by the Pointing Budget (GMT-SE-REF-00477).      |
+  |   Accuracy            |                                                                              |
   +-----------------------+------------------------------------------------------------------------------+
-  | | Blind Pointing      | | Provide the capability to perform blind pointing after start-of-the-night  |
-  | | Accuracy            | | encoder initialization with pointing accuracy required by the Pointing     |
-  | |                     | | Budget (GMT-SE-REF-00477).                                                 |
+  |   Blind Pointing      |   Provide the capability to perform blind pointing after start-of-the-night  |
+  |   Accuracy            |   encoder initialization with pointing accuracy required by the Pointing     |
+  |                       |   Budget (GMT-SE-REF-00477).                                                 |
   +-----------------------+------------------------------------------------------------------------------+
 
 **Blind pointing** relies entirely on the mechanical positional accuracy of the
@@ -66,21 +66,21 @@ target to maintain its position fixed in the science detector reference frame.
 .. table:: Tracking Mode requirements (Level 3)
 
   +--------------------------+-------------------------------------------------------------------+
-  | | Title                  | | Statement                                                       |
+  |   Title                  |   Statement                                                       |
   +==========================+===================================================================+
-  | | Sidereal Tracking      | | Support tracking and guiding at sidereal rate in all observing  |
-  | |                        | | modes.                                                          |
+  |   Sidereal Tracking      |   Support tracking and guiding at sidereal rate in all observing  |
+  |                          |   modes.                                                          |
   +--------------------------+-------------------------------------------------------------------+
-  | | Non-Sidereal Tracking  | | Support tracking and guiding on an object itself.               |
+  |   Non-Sidereal Tracking  |   Support tracking and guiding on an object itself.               |
   +--------------------------+-------------------------------------------------------------------+
-  | | GIR Fixed Rotator      | | Provide capability to track objects in fixed GIR mode.          |
-  | | Tracking               | |                                                                 |
+  |   GIR Fixed Rotator      |   Provide capability to track objects in fixed GIR mode.          |
+  |   Tracking               |                                                                   |
   +--------------------------+-------------------------------------------------------------------+
-  | | GIR Field Tracking     | | Provide capability to track while the GIR rotates to maintain a |
-  | |                        | | fixed offset relative to the cardinal directions.               |
+  |   GIR Field Tracking     |   Provide capability to track while the GIR rotates to maintain a |
+  |                          |   fixed offset relative to the cardinal directions.               |
   +--------------------------+-------------------------------------------------------------------+
-  | | GIR Parallactic Angle  | | Provide tracking mode where the GIR rotates to maintain a fixed |
-  | | Tracking               | | parallactic angle.                                              |
+  |   GIR Parallactic Angle  |   Provide tracking mode where the GIR rotates to maintain a fixed |
+  |   Tracking               |   parallactic angle.                                              |
   +--------------------------+-------------------------------------------------------------------+
 
 
@@ -95,20 +95,20 @@ errors in three axes (elevation, azimuth, and rotation in GIR).
 .. table:: Pointing Accuracy Requirements (Level 3)
 
   +--------------------------+-----------------------------------------------------------------------+
-  | | Title                  | | Statement                                                           |
+  |   Title                  |   Statement                                                           |
   +==========================+=======================================================================+
-  | | Telescope Pointing     | | Provide the capability to point the field of a DG science           |
-  | | Accuracy at the DG     | | instrument, under natural seeing, with an overall accuracy that     |
-  | | Ports                  | | complies with the Pointing Budget (GMT-SE-REF-00477).               |
+  |   Telescope Pointing     |   Provide the capability to point the field of a DG science           |
+  |   Accuracy at the DG     |   instrument, under natural seeing, with an overall accuracy that     |
+  |   Ports                  |   complies with the Pointing Budget (GMT-SE-REF-00477).               |
   +--------------------------+-----------------------------------------------------------------------+
-  | | SWC Telescope          | | Provide the capability to point the field of an FP science          |
-  | | Pointing Accuracy at   | | instrument, under natural seeing, with an overall accuracy that     |
-  | | the Folded Ports       | | complies with Pointing Budget (GMT-SE-REF-00477).                   |
+  |   SWC Telescope          |   Provide the capability to point the field of an FP science          |
+  |   Pointing Accuracy at   |   instrument, under natural seeing, with an overall accuracy that     |
+  |   the Folded Ports       |   complies with Pointing Budget (GMT-SE-REF-00477).                   |
   +--------------------------+-----------------------------------------------------------------------+
-  | | Differential Flexure   | | Provide the capability to correct the differential flexure between  |
-  | | Correction             | | the AGWS and/or AO Wavefront Sensors and the Science Instruments,   |
-  | |                        | | using internal guide sensors provided by Science Instruments, and   |
-  | |                        | | to comply with the GMT Pointing Budget (GMT-SE-REF-00477).          |
+  |   Differential Flexure   |   Provide the capability to correct the differential flexure between  |
+  |   Correction             |   the AGWS and/or AO Wavefront Sensors and the Science Instruments,   |
+  |                          |   using internal guide sensors provided by Science Instruments, and   |
+  |                          |   to comply with the GMT Pointing Budget (GMT-SE-REF-00477).          |
   +--------------------------+-----------------------------------------------------------------------+
 
 
@@ -126,21 +126,21 @@ seamlessly and automatically.
 .. table:: Continuous Scan Requirements (Level 3)
 
   +----------------------+-----------------------------------------------------------------------+
-  | | Title              | | Statement                                                           |
+  |   Title              |   Statement                                                           |
   +======================+=======================================================================+
-  | | Continuous Scan    | | Provide guiding for linear scanning of target at a fixed position   |
-  | | Guide Mode         | | angle while continuously reading out data.                          |
+  |   Continuous Scan    |   Provide guiding for linear scanning of target at a fixed position   |
+  |   Guide Mode         |   angle while continuously reading out data.                          |
   +----------------------+-----------------------------------------------------------------------+
-  | | Continuous Scan    | | The maximum continuous scan rate is limited by the non-sidereal     |
-  | | Rate               | | tracking rate.                                                      |
+  |   Continuous Scan    |   The maximum continuous scan rate is limited by the non-sidereal     |
+  |   Rate               |   tracking rate.                                                      |
   +----------------------+-----------------------------------------------------------------------+
-  | | Continuous Scan    | | The maximum continuous scan distance is limited by the travel       |
-  | | Distance           | | distance of the autoguiders.                                        |
+  |   Continuous Scan    |   The maximum continuous scan distance is limited by the travel       |
+  |   Distance           |   distance of the autoguiders.                                        |
   +----------------------+-----------------------------------------------------------------------+
-  | | Coordination of    | | The SWCS will coordinate the operation of continuous scan and       |
-  | | Continuous Scans   | | science instrument operations.                                      |
+  |   Coordination of    |   The SWCS will coordinate the operation of continuous scan and       |
+  |   Continuous Scans   |   science instrument operations.                                      |
   +----------------------+-----------------------------------------------------------------------+
- 
+
 
 **Offsets** are used during observing to reposition the science
 detector relative to the pointing origin of the telescope. Offsetting is used
@@ -150,32 +150,32 @@ a slit or aperture, to create mosaic observations, etc.
 .. table:: Offset Requirements (Level 3)
 
   +-----------------------+-----------------------------------------------------------------------+
-  | | Title               | | Statement                                                           |
+  |   Title               |   Statement                                                           |
   +=======================+=======================================================================+
-  | | Offset Distance     | | Provide the capability to perform telescope offsets, limited by     |
-  | |                     | | guide star changes, and an absolute maximum radius of 3 arcmin.     |
+  |   Offset Distance     |   Provide the capability to perform telescope offsets, limited by     |
+  |                       |   guide star changes, and an absolute maximum radius of 3 arcmin.     |
   +-----------------------+-----------------------------------------------------------------------+
-  | | Seeing-Limited      | | Provide the capability to perform telescope offsets with an         |
-  | | Offset Accuracy     | | accuracy given by SLR-4100 under seeing-limited operation, and      |
-  | |                     | | comply with Pointing Budget (GMT-SE-REF-00477).                     |
+  |   Seeing-Limited      |   Provide the capability to perform telescope offsets with an         |
+  |   Offset Accuracy     |   accuracy given by SLR-4100 under seeing-limited operation, and      |
+  |                       |   comply with Pointing Budget (GMT-SE-REF-00477).                     |
   +-----------------------+-----------------------------------------------------------------------+
-  | | Diffraction Limited | | Provide the capability to perform telescope offsets with an         |
-  | | Offset Accuracy     | | accuracy given by SLR-4110 under diffraction-limited operation,     |
-  | |                     | | and comply with Pointing Budget (GMT-SE-REF-00477).                 |
+  |   Diffraction Limited |   Provide the capability to perform telescope offsets with an         |
+  |   Offset Accuracy     |   accuracy given by SLR-4110 under diffraction-limited operation,     |
+  |                       |   and comply with Pointing Budget (GMT-SE-REF-00477).                 |
   +-----------------------+-----------------------------------------------------------------------+
-  | | Seeing-Limited      | | After a telescope offset, provide the capability to deliver seeing- |
-  | | Offset Dwell Time   | | limited images that meet the image quality budget after at least a  |
-  | |                     | | 45 second dwell time.                                               |
+  |   Seeing-Limited      |   After a telescope offset, provide the capability to deliver seeing- |
+  |   Offset Dwell Time   |   limited images that meet the image quality budget after at least a  |
+  |                       |   45 second dwell time.                                               |
   +-----------------------+-----------------------------------------------------------------------+
-  | | Coordination of     | | Provide the capability to coordinate offsetting of telescope and    |
-  | | Offsets and Data    | | operation of science data collection.                               |
-  | | Collection          | |                                                                     |
+  |   Coordination of     |   Provide the capability to coordinate offsetting of telescope and    |
+  |   Offsets and Data    |   operation of science data collection.                               |
+  |   Collection          |                                                                       |
   +-----------------------+-----------------------------------------------------------------------+
-  | | Offset Efficiency   | | Provide capability to execute offsets in less than the amount of    |
-  | |                     | | time specified in the GMT Efficiency Budget document (GMT-          |
-  | |                     | | SE-REF-00593).                                                      |
-  | |                     | | Note: The offset tie is for unlocking guide system, making the      |
-  | |                     | | move, and re-engaging the guiders                                   |
+  |   Offset Efficiency   |   Provide capability to execute offsets in less than the amount of    |
+  |                       |   time specified in the GMT Efficiency Budget document (GMT-          |
+  |                       |   SE-REF-00593).                                                      |
+  |                       |   Note: The offset tie is for unlocking guide system, making the      |
+  |                       |   move, and re-engaging the guiders                                   |
   +-----------------------+-----------------------------------------------------------------------+
 
 
@@ -188,45 +188,44 @@ continue telescope guiding and tracking.
 .. table:: Active Optics Requirements (Level 3)
 
   +----------------------+-----------------------------------------------------------------------+
-  | | Title              | | Statement                                                           |
+  |   Title              |   Statement                                                           |
   +======================+=======================================================================+
-  | | AGWS Setup Time    | | Provide capability to set up the AGWS in less than the amount       |
-  | |                    | | of time specified by the GMT Efficiency Budget (GMT-SE-             |
-  | |                    | | REF-00593) after the telescope is in position and the sensor        |
-  | |                    | | probes are deployed.                                                |
+  |   AGWS Setup Time    |   Provide capability to set up the AGWS in less than the amount       |
+  |                      |   of time specified by the GMT Efficiency Budget (GMT-SE-             |
+  |                      |   REF-00593) after the telescope is in position and the sensor        |
+  |                      |   probes are deployed.                                                |
   +----------------------+-----------------------------------------------------------------------+
-  | | AGWS Probe         | | Provide the capability to position the AGWS probes anywhere         |
-  | | Position Time      | | in their patrol area in less than the amount of time specified      |
-  | |                    | | by the GMT Efficiency Budget (GMT-SE-REF-00593).                    |
+  |   AGWS Probe         |   Provide the capability to position the AGWS probes anywhere         |
+  |   Position Time      |   in their patrol area in less than the amount of time specified      |
+  |                      |   by the GMT Efficiency Budget (GMT-SE-REF-00593).                    |
   +----------------------+-----------------------------------------------------------------------+
-  | | AO Acquisition     | | Provide the capability to complete target acquisition, at the end   |
-  | | Efficiency         | | of Active Optics acquisition/setup, in less than the amount of      |
-  | |                    | | time specified by the GMT Efficiency Budget (GMT-SE-REF- 00593).    |
+  |   AO Acquisition     |   Provide the capability to complete target acquisition, at the end   |
+  |   Efficiency         |   of Active Optics acquisition/setup, in less than the amount of      |
+  |                      |   time specified by the GMT Efficiency Budget (GMT-SE-REF- 00593).    |
   +----------------------+-----------------------------------------------------------------------+
-  | | AO Re-acquisition  | | Provide the capability to re-acquire a natural guide star, after    |
-  | | After Opening NGS  | | opening the NGS loop, in less than the amount of time specified     |
-  | | Loop               | | by the GMT Efficiency Budget (GMT-SE-REF-00593).                    |
+  |   AO Re-acquisition  |   Provide the capability to re-acquire a natural guide star, after    |
+  |   After Opening NGS  |   opening the NGS loop, in less than the amount of time specified     |
+  |   Loop               |   by the GMT Efficiency Budget (GMT-SE-REF-00593).                    |
   +----------------------+-----------------------------------------------------------------------+
-  | | LTAO Re-           | | Provide the capability to re-acquire LGS guide stars in the         |
-  | | acquisition of LGS | | LTAO mode after opening the LGS loop in less than the amount        |
-  | | after open loop    | | of time specified by the GMT Efficiency Budget (GMT-SE-             |
-  | |                    | | REF-00593).                                                         |
+  |   LTAO Re-           |   Provide the capability to re-acquire LGS guide stars in the         |
+  |   acquisition of LGS |   LTAO mode after opening the LGS loop in less than the amount        |
+  |   after open loop    |   of time specified by the GMT Efficiency Budget (GMT-SE-             |
+  |                      |   REF-00593).                                                         |
   +----------------------+-----------------------------------------------------------------------+
-  | | NGLAO NGS Re-      | | Provide the capability to re-acquire NGS guide star in NGLAO        |
-  | | acquisition after  | | mode, after opening the NGS loop in less than the amount of         |
-  | | open loop          | | time specified by the GMT Efficiency Budget (GMT-SE-REF-            |
-  | |                    | | 00593).                                                             |
+  |   NGLAO NGS Re-      |   Provide the capability to re-acquire NGS guide star in NGLAO        |
+  |   acquisition after  |   mode, after opening the NGS loop in less than the amount of         |
+  |   open loop          |   time specified by the GMT Efficiency Budget (GMT-SE-REF-            |
+  |                      |   00593).                                                             |
   +----------------------+-----------------------------------------------------------------------+
-  | | SWC Active         | | Actively control the optical system to obtain the best image        |
-  | | Correction         | | quality performance and comply with Natural Seeing Image            |
-  | |                    | | Quality Error Budgets (GMT-SE-REF-00145)                            |
+  |   SWC Active         |   Actively control the optical system to obtain the best image        |
+  |   Correction         |   quality performance and comply with Natural Seeing Image            |
+  |                      |   Quality Error Budgets (GMT-SE-REF-00145)                            |
   +----------------------+-----------------------------------------------------------------------+
-  | | Tracking in AcO    | | Provide capability to track when the guiders and active optics      |
-  | | Disabled Mode      | | disabled. [Goal to track with guiders enabled, but AcO disabled]    |
+  |   Tracking in AcO    |   Provide capability to track when the guiders and active optics      |
+  |   Disabled Mode      |   disabled. [Goal to track with guiders enabled, but AcO disabled]    |
   +----------------------+-----------------------------------------------------------------------+
-  | | AcO Setup Time     | | Provide the capability to complete the set up and configuration     |
-  | |                    | | of active optics after telescope slew in less than the amount       |
-  | |                    | | of time specified by the GMT Efficiency Budget (GMT-SE-REF-         |
-  | |                    | | 00593).                                                             |
+  |   AcO Setup Time     |   Provide the capability to complete the set up and configuration     |
+  |                      |   of active optics after telescope slew in less than the amount       |
+  |                      |   of time specified by the GMT Efficiency Budget (GMT-SE-REF-         |
+  |                      |   00593).                                                             |
   +----------------------+-----------------------------------------------------------------------+
-

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>5. gds documentation &mdash; GMT Software And Controls documentation</title>
+  <title>4. gds documentation &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -32,6 +32,8 @@
   
 
   
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
@@ -39,8 +41,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="6. Model specification guide document" href="modeling_guidelines.html"/>
-        <link rel="prev" title="4. OCS Module Specification" href="ocs_module_spec.html"/> 
+        <link rel="next" title="5. Model specification guide document" href="modeling_guidelines.html"/>
+        <link rel="prev" title="3. Installing a Virtual Machine" href="virtual_machine/virtual_machine.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -104,33 +106,31 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">1. Installing the SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ocs_module_spec.html">4. OCS Module Specification</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5. gds documentation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">5.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#local-and-global-environment">5.2. Local and global environment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#working-with-bundles-and-modules">5.3. Working with bundles and modules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-gds-command-line-tool">5.4. The gds command line tool</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#gds-init">5.4.1. gds init</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-new-options-module">5.4.2. gds new [options] &lt;module&gt;</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-env">5.4.3. gds env</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-gen-options-element">5.4.4. gds gen [options] [element]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-info-options-module">5.4.5. gds info [options] [module]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-build-options-module">5.4.6. gds build [options] [module]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-install-options-module">5.4.7. gds install [options] [module]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-clone-options-module">5.4.8. gds clone [options] [module]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-run-test-options-module">5.4.9. gds run_test [options] [module]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-options">5.4.10. gds options</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4. gds documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">4.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#local-and-global-environment">4.2. Local and global environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-bundles-and-modules">4.3. Working with bundles and modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-gds-command-line-tool">4.4. The gds command line tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gds-init">4.4.1. gds init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-new-options-module">4.4.2. gds new [options] &lt;module&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-env">4.4.3. gds env</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-gen-options-element">4.4.4. gds gen [options] [element]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-info-options-module">4.4.5. gds info [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-build-options-module">4.4.6. gds build [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-install-options-module">4.4.7. gds install [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-clone-options-module">4.4.8. gds clone [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-run-test-options-module">4.4.9. gds run_test [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-options">4.4.10. gds options</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#starting-to-use-gds">5.5. Starting to use gds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-to-use-gds">4.5. Starting to use gds</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">8. Core Services user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="io_fwk_guide.html">9. I/O Framework user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">10. HDK example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="isample_example.html">11. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">5. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">6. Model-language mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">7. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">8. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">9. HDK example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -181,7 +181,7 @@
         
           <li><a href="index.html">Software Development</a> &raquo;</li>
         
-      <li>5. gds documentation</li>
+      <li>4. gds documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -199,14 +199,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="gds-documentation">
-<span id="gds-guide"></span><h1>5. gds documentation<a class="headerlink" href="#gds-documentation" title="Permalink to this headline">¶</a></h1>
+<span id="gds-guide"></span><h1>4. gds documentation<a class="headerlink" href="#gds-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>5.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>4.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>This document describes the GMT OCS development environment and the use
 of the <em>gds</em> tool.</p>
 </div>
 <div class="section" id="local-and-global-environment">
-<h2>5.2. Local and global environment<a class="headerlink" href="#local-and-global-environment" title="Permalink to this headline">¶</a></h2>
+<h2>4.2. Local and global environment<a class="headerlink" href="#local-and-global-environment" title="Permalink to this headline">¶</a></h2>
 <p>In order to support the deployment of completed modules and the development
 of new modules or new versions of existing ones, the GMT SDK defines two different
 scopes in the file system:</p>
@@ -224,7 +224,7 @@ The variable is set individually for every developer.</li>
 </ol>
 </div>
 <div class="section" id="working-with-bundles-and-modules">
-<h2>5.3. Working with bundles and modules<a class="headerlink" href="#working-with-bundles-and-modules" title="Permalink to this headline">¶</a></h2>
+<h2>4.3. Working with bundles and modules<a class="headerlink" href="#working-with-bundles-and-modules" title="Permalink to this headline">¶</a></h2>
 <p>A Module represents the basic unit of development, integration and test in the GMT SDK.
 Modules are grouped in bundles.</p>
 <p>By default the SDK defines two types of bundles, <em>global</em> and <em>local</em>,
@@ -261,7 +261,7 @@ So for example, if we want to start to work on a module we will execute:</p>
 </div></blockquote>
 </div>
 <div class="section" id="the-gds-command-line-tool">
-<h2>5.4. The gds command line tool<a class="headerlink" href="#the-gds-command-line-tool" title="Permalink to this headline">¶</a></h2>
+<h2>4.4. The gds command line tool<a class="headerlink" href="#the-gds-command-line-tool" title="Permalink to this headline">¶</a></h2>
 <p>The GMT SDK includes the gds tool to assist in the development of GMT software.</p>
 <blockquote>
 <div><div class="admonition tip">
@@ -307,7 +307,7 @@ has its own help that can be displayed by executing:</p>
 </div>
 </div></blockquote>
 <div class="section" id="gds-init">
-<h3>5.4.1. gds init<a class="headerlink" href="#gds-init" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.1. gds init<a class="headerlink" href="#gds-init" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>Initializes the file system structure of the local development environment (defined by
 the shell variable GMT_LOCAL). This operation is usually only needed when
@@ -326,7 +326,7 @@ the GMT SDK is used for the first time.</p>
 </div></blockquote>
 </div>
 <div class="section" id="gds-new-options-module">
-<h3>5.4.2. gds new [options] &lt;module&gt;<a class="headerlink" href="#gds-new-options-module" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.2. gds new [options] &lt;module&gt;<a class="headerlink" href="#gds-new-options-module" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">new</span></code> command creates a default file structure for a new module.
 Each module is mapped into the file system using the following structure:</p>
@@ -383,12 +383,12 @@ files with the extension <em>.as_is</em></dd>
 </dl>
 </div>
 <div class="section" id="gds-env">
-<h3>5.4.3. gds env<a class="headerlink" href="#gds-env" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.3. gds env<a class="headerlink" href="#gds-env" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">env</span></code> command displays the values of the environment variables used by gds.</p>
 </div>
 <div class="section" id="gds-gen-options-element">
-<h3>5.4.4. gds gen [options] [element]<a class="headerlink" href="#gds-gen-options-element" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.4. gds gen [options] [element]<a class="headerlink" href="#gds-gen-options-element" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">gen</span></code> command implements a set of generators that use as an input the model
 specifications and applies to them different transformations. The output of this transformations
@@ -575,7 +575,7 @@ The language transformation output values can be specified on a per document bas
 </div></blockquote>
 </div>
 <div class="section" id="gds-info-options-module">
-<h3>5.4.5. gds info [options] [module]<a class="headerlink" href="#gds-info-options-module" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.5. gds info [options] [module]<a class="headerlink" href="#gds-info-options-module" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">info</span></code> command display information of the modules that the gds tool is processing.</p>
 <blockquote>
@@ -594,7 +594,7 @@ Options:
 </div></blockquote>
 </div>
 <div class="section" id="gds-build-options-module">
-<h3>5.4.6. gds build [options] [module]<a class="headerlink" href="#gds-build-options-module" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.6. gds build [options] [module]<a class="headerlink" href="#gds-build-options-module" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">build</span></code> command builds the specified module. If no argument is passed
 it will build the modules of the local bundle.</p>
@@ -619,7 +619,7 @@ Options:
 </dl>
 </div>
 <div class="section" id="gds-install-options-module">
-<h3>5.4.7. gds install [options] [module]<a class="headerlink" href="#gds-install-options-module" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.7. gds install [options] [module]<a class="headerlink" href="#gds-install-options-module" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">install</span></code> command install the deployable artifacts of the specified module.
 If no argument is passed it will install the artifacts of the modules in the local bundle.</p>
@@ -649,7 +649,7 @@ be performed as part of the invocation of the make command.</p>
 </div>
 </div>
 <div class="section" id="gds-clone-options-module">
-<h3>5.4.8. gds clone [options] [module]<a class="headerlink" href="#gds-clone-options-module" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.8. gds clone [options] [module]<a class="headerlink" href="#gds-clone-options-module" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">clone</span></code> command will clone the Github repositories corresponding to the
 specified module. The option <code class="docutils literal"><span class="pre">--developer</span></code> is used to determine which Github account
@@ -679,7 +679,7 @@ Options:
 </dl>
 </div>
 <div class="section" id="gds-run-test-options-module">
-<h3>5.4.9. gds run_test [options] [module]<a class="headerlink" href="#gds-run-test-options-module" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.9. gds run_test [options] [module]<a class="headerlink" href="#gds-run-test-options-module" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">run_test</span></code> allows the automated execution of module tests. Module tests
 are created in the corresponding module test package. The name of the files
@@ -724,7 +724,7 @@ tests after unit tests).</dd>
 </dl>
 </div>
 <div class="section" id="gds-options">
-<h3>5.4.10. gds options<a class="headerlink" href="#gds-options" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.10. gds options<a class="headerlink" href="#gds-options" title="Permalink to this headline">¶</a></h3>
 <p>The following options can be used in combination with the previous commands</p>
 <dl class="docutils">
 <dt><code class="docutils literal"><span class="pre">-V,</span> <span class="pre">--version</span></code></dt>
@@ -800,7 +800,7 @@ changes to the file system are prevented</p>
 </div>
 </div>
 <div class="section" id="starting-to-use-gds">
-<h2>5.5. Starting to use gds<a class="headerlink" href="#starting-to-use-gds" title="Permalink to this headline">¶</a></h2>
+<h2>4.5. Starting to use gds<a class="headerlink" href="#starting-to-use-gds" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">Confirm with your system administrator that the GMT SDK has
 been installed in your machine. The default installation
@@ -853,10 +853,10 @@ development tasks.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="modeling_guidelines.html" class="btn btn-neutral float-right" title="6. Model specification guide document" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="modeling_guidelines.html" class="btn btn-neutral float-right" title="5. Model specification guide document" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ocs_module_spec.html" class="btn btn-neutral" title="4. OCS Module Specification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="virtual_machine/virtual_machine.html" class="btn btn-neutral" title="3. Installing a Virtual Machine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

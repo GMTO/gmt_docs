@@ -56,26 +56,26 @@ the observatory. A carefully designed OPUI provides the following benefits:
 .. table::  SWCS User Interface Requirements (Level 3)
 
   +-----------------------+-------------------------------------------------------------------+
-  | | Title               | | Statement                                                       |
+  |   Title               |   Statement                                                       |
   +=======================+===================================================================+
-  | | Integrated User     | | The SWCS shall provide an integrated and consistent graphical   |
-  | | Interface           | | user interface.                                                 |
+  |   Integrated User     |   The SWCS shall provide an integrated and consistent graphical   |
+  |   Interface           |   user interface.                                                 |
   +-----------------------+-------------------------------------------------------------------+
-  | | Centralized         | | The SWCS shall provide centralized, on-line tools to inform,    |
-  | | Command             | | search, and execute, user commands, and software components.    |
-  | | Information and     | |                                                                 |
-  | | Execution           | |                                                                 |
+  |   Centralized         |   The SWCS shall provide centralized, on-line tools to inform,    |
+  |   Command             |   search, and execute, user commands, and software components.    |
+  |   Information and     |                                                                   |
+  |   Execution           |                                                                   |
   +-----------------------+-------------------------------------------------------------------+
-  | | Central Control     | | Provide central control capabilities for every control          |
-  | | Functions           | | subsystem.                                                      |
+  |   Central Control     |   Provide central control capabilities for every control          |
+  |   Functions           |   subsystem.                                                      |
   +-----------------------+-------------------------------------------------------------------+
-  | | Software Features   | | Provide the capability to discover, navigate, and access        |
-  | | Navigation          | | efficiently any feature provided by any software component.     |
+  |   Software Features   |   Provide the capability to discover, navigate, and access        |
+  |   Navigation          |   efficiently any feature provided by any software component.     |
   +-----------------------+-------------------------------------------------------------------+
-  | | Operation Console   | | Provide capability to change programs running in each           |
-  | | Mode                | | operation console depending on the operation mode.              |
+  |   Operation Console   |   Provide capability to change programs running in each           |
+  |   Mode                |   operation console depending on the operation mode.              |
   +-----------------------+-------------------------------------------------------------------+
- 
+
 
 .. figure:: _static/control_room_UI.png
 

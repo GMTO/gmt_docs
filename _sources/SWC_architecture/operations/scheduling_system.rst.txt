@@ -12,15 +12,15 @@ below. The requirements that flow down to the SWCS are shown here:
 .. table:: SWCS Scheduling System Requirements
 
   +----------------------+------------------------------------------------------------------+
-  | | Title              | |  Statement                                                     |
+  |   Title              |    Statement                                                     |
   +======================+==================================================================+
-  | | Queue Mode         | |  Support queue scheduling.                                     |
+  |   Queue Mode         |    Support queue scheduling.                                     |
   +----------------------+------------------------------------------------------------------+
-  | | Program Execution  | |  Provide observatory staff software for advanced planning of   |
-  | | Planning           | |  observing programs.                                           |
+  |   Program Execution  |    Provide observatory staff software for advanced planning of   |
+  |   Planning           |    observing programs.                                           |
   +----------------------+------------------------------------------------------------------+
-  | | Observation Status | |  Provide tools for advanced planning of science programs, and  |
-  | | Tracking           | |  capabilities to monitor the status of observing programs.     |
+  |   Observation Status |    Provide tools for advanced planning of science programs, and  |
+  |   Tracking           |    capabilities to monitor the status of observing programs.     |
   +----------------------+------------------------------------------------------------------+
 
 The observing modes determine how science programs are scheduled for long-term

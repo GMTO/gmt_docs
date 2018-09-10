@@ -167,9 +167,9 @@ State Variables
   +==================+=================+======================================+============+
   | float            | position_sv     | min: 5, max: 40                      | 20         |
   +------------------+-----------------+--------------------------------------+------------+
-  | OperationalState | ops_state_sv    | | OFF, STARTING, ON, INITIALIZING,   | OFF        |
-  |                  |                 | | RUN, HALTING, SHUTTING_DOWN,       |            |
-  |                  |                 | | FAULT, RESETTING, DISABLED         |            |
+  | OperationalState | ops_state_sv    |   OFF, STARTING, ON, INITIALIZING,   | OFF        |
+  |                  |                 |   RUN, HALTING, SHUTTING_DOWN,       |            |
+  |                  |                 |   FAULT, RESETTING, DISABLED         |            |
   +------------------+-----------------+--------------------------------------+------------+
   | SimulationMode   | sim_mode_sv     | SIMULATION, ON_LINE                  | ON_LINE    |
   +------------------+-----------------+--------------------------------------+------------+

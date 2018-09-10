@@ -26,26 +26,26 @@ The table below provides a definition of the main DPF components:
 .. table:: Data Processing Framework Component Description
 
   +------------------+---------------------------------------------------------------------+
-  | | Component Name | | Description                                                       |
+  |   Component Name |   Description                                                       |
   +==================+=====================================================================+
-  | | Pipeline       | | Collection of Filters and data processing Recipes                 |
+  |   Pipeline       |   Collection of Filters and data processing Recipes                 |
   +------------------+---------------------------------------------------------------------+
-  | | Filter         | | Elementary processing unit of a data processing pipeline (e.g.,   |
-  | |                | | bias or dark filter in a data reduction pipeline). Each Filter    |
-  | |                | | has a set of data inputs and outputs and a set of parameters      |
-  | |                | | that tailor its behavior. Data inputs and outputs can be streams  |
-  | |                | | or files and often capture an intermediate processing step. The   |
-  | |                | | Core Framework provides different communication transports (e.g.  |
-  | |                | | inproc, ipc, tcp) for flexible and efficient I/O management and   |
-  | |                | | deployment.                                                       |
+  |   Filter         |   Elementary processing unit of a data processing pipeline (e.g.,   |
+  |                  |   bias or dark filter in a data reduction pipeline). Each Filter    |
+  |                  |   has a set of data inputs and outputs and a set of parameters      |
+  |                  |   that tailor its behavior. Data inputs and outputs can be streams  |
+  |                  |   or files and often capture an intermediate processing step. The   |
+  |                  |   Core Framework provides different communication transports (e.g.  |
+  |                  |   inproc, ipc, tcp) for flexible and efficient I/O management and   |
+  |                  |   deployment.                                                       |
   +------------------+---------------------------------------------------------------------+
-  | | Recipe         | | Defines a concrete sequence of connected Filters. Each Recipe     |
-  | |                | | has a set of data inputs, data outputs, parameters and            |
-  | |                | | validation rules (e.g., an instrument data processing pipeline    |
-  | |                | | may define a Recipe for each observing mode that requires a       |
-  | |                | | different data reduction strategy). The execution of Recipes      |
-  | |                | | will be often triggered during the execution of an observing      |
-  | |                | | sequence.                                                         |
+  |   Recipe         |   Defines a concrete sequence of connected Filters. Each Recipe     |
+  |                  |   has a set of data inputs, data outputs, parameters and            |
+  |                  |   validation rules (e.g., an instrument data processing pipeline    |
+  |                  |   may define a Recipe for each observing mode that requires a       |
+  |                  |   different data reduction strategy). The execution of Recipes      |
+  |                  |   will be often triggered during the execution of an observing      |
+  |                  |   sequence.                                                         |
   +------------------+---------------------------------------------------------------------+
 
 The Figure below shows the DPF in the context of the definition of an

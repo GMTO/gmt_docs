@@ -55,19 +55,19 @@ explicitly shown, as it is provided as a system service to every component.
   A list of the NGSAO WFC components is provided in the Table below. A
   description of the most critical components is given below, followed by an
   identification of the connections between them.
-  
+
   Note that wavefront aberrations have been identified using the following
   nomenclature:
-  
+
     * Global aberrations are defined over the full GMT pupil, while segment
       aberrations are defined over each segment.
-  
+
     * System aberrations represent a measurement of the full telescope optical
       system, while M1, ASM, etc., aberrations represent only the contribution of
       one optical surface.
-  
+
     * Temporal averages of an aberration are identified as aberration_av.
-  
+
   At the present time, Zernike polynomials [Noll76]_ are used as the basis set
   throughout the WFC (with the exception of ASM and M1 figure control) due to
   their simple relationship to rigid body motions. Karhunen-Loeve modes which
@@ -76,25 +76,25 @@ explicitly shown, as it is provided as a system service to every component.
   .. table:: NGSAO Wavefront Control System Components
 
       +---------------------------+---------------------------------------+--------------------+
-      | | Component Name          | | Description                         | | Software Package |
+      |   Component Name          |   Description                         |   Software Package |
       +===========================+=======================================+====================+
-      | | wfc_ngsao_ctrl          | | NGSAO Wavefront Controller          | | wfc_ngsao_pkg    |
+      |   wfc_ngsao_ctrl          |   NGSAO Wavefront Controller          |   wfc_ngsao_pkg    |
       +---------------------------+---------------------------------------+--------------------+
-      | | wfc_aco_ctrl            | | Active Optics Controller            | | wfc_common_pkg   |
+      |   wfc_aco_ctrl            |   Active Optics Controller            |   wfc_common_pkg   |
       +---------------------------+---------------------------------------+--------------------+
-      | | wfc_ao_pupil_ctrl       | | AO Pupil Motion Controller          | | wfc_common_pkg   |
+      |   wfc_ao_pupil_ctrl       |   AO Pupil Motion Controller          |   wfc_common_pkg   |
       +---------------------------+---------------------------------------+--------------------+
-      | | wfc_phasing_ctrl        | | AO Phasing Controller               | | wfc_common_pkg   |
+      |   wfc_phasing_ctrl        |   AO Phasing Controller               |   wfc_common_pkg   |
       +---------------------------+---------------------------------------+--------------------+
-      | | wfc_ngsao_recon_srv     | | NGSAO Reconstructor Server          | | wfc_ngsao_pkg    |
+      |   wfc_ngsao_recon_srv     |   NGSAO Reconstructor Server          |   wfc_ngsao_pkg    |
       +---------------------------+---------------------------------------+--------------------+
-      | | wfc_aco_recon_srv       | | Active Optics Reconstructor Server  | | wfc_common_pkg   |
+      |   wfc_aco_recon_srv       |   Active Optics Reconstructor Server  |   wfc_common_pkg   |
       +---------------------------+---------------------------------------+--------------------+
-      | | m1_optics_ctrl          | | M1 Optics Controller                | | wfc_common_pkg   |
+      |   m1_optics_ctrl          |   M1 Optics Controller                |   wfc_common_pkg   |
       +---------------------------+---------------------------------------+--------------------+
-      | | m2_optics_ctrl          | | M2 Optics Controller                | | wfc_common_pkg   |
+      |   m2_optics_ctrl          |   M2 Optics Controller                |   wfc_common_pkg   |
       +---------------------------+---------------------------------------+--------------------+
-      | | m3_optics_ctrl          | | M3 Optics Controller                | | wfc_common_pkg   |
+      |   m3_optics_ctrl          |   M3 Optics Controller                |   wfc_common_pkg   |
       +---------------------------+---------------------------------------+--------------------+
 
 
@@ -113,7 +113,7 @@ explicitly shown, as it is provided as a system service to every component.
   control strategy.
 
   In addition to the primary control loop, the *wfc_ngsao_ctrl* component
-  performs several offloads to other WFC components at ≤1 Hz, calculated by
+  performs several offloads to other WFC components at <1 Hz, calculated by
   projecting the time-averaged difference between the ASM actuator positions
   and their calibrated "flat" positions onto various modes:
 
@@ -155,53 +155,53 @@ explicitly shown, as it is provided as a system service to every component.
   .. table:: NGSAO Wavefront Controller Ports
 
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | Port Name     | | Description                                   | | Unit  | | Size    | | Rate    | | Type    |
-    | |               | |                                               | |       | | (kB)    | | (Hz)    | |         |
+    |   Port Name     |   Description                                   |   Unit  |   Size    |   Rate    |   Type    |
+    |                 |                                                 |         |   (kB)    |   (Hz)    |           |
     +=================+=================================================+=========+===========+===========+===========+
-    | | ngws fast wfs | | NGWS AO camera Sx and Sy signals.             | | pixel | | 43.5    | | 2000    | | Input   |
-    | | slopes        | |                                               | |       | |         | |         | |         |
+    |   ngws fast wfs |   NGWS AO camera Sx and Sy signals.             |   pixel |   43.5    |   2000    |   Input   |
+    |   slopes        |                                                 |         |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | ngws slow wfs | | NGWS 2nd WL camera Sx and Sy signals.         | | pixel | | 43.5    | | 100     | | Input   |
-    | | slopes        | |                                               | |       | |         | |         | |         |
+    |   ngws slow wfs |   NGWS 2nd WL camera Sx and Sy signals.         |   pixel |   43.5    |   100     |   Input   |
+    |   slopes        |                                                 |         |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | oiws system   | | System global tip-tilt error measured by      | | mas   | | 0.008   | | 1000    | | Input   |
-    | | global tilt   | | an OIWFS, in instrument reference frame.      | |       | |         | |         | |         |
+    |   oiws system   |   System global tip-tilt error measured by      |   mas   |   0.008   |   1000    |   Input   |
+    |   global tilt   |   an OIWFS, in instrument reference frame.      |         |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | oiws system   | | System global focus error measured by         | | nm    | | 0.004   | | 100     | | Input   |
-    | | global focus  | | an OIWFS, in instrument reference frame.      | |       | |         | |         | |         |
+    |   oiws system   |   System global focus error measured by         |   nm    |   0.004   |   100     |   Input   |
+    |   global focus  |   an OIWFS, in instrument reference frame.      |         |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | oiws system   | | System global residual Zernike modes Z4-Z200  | | nm    | | 0.800   | | 10      | | Input   |
-    | | global lo     | | (approx.), in instrument reference frame.     | |       | |         | |         | |         |
+    |   oiws system   |   System global residual Zernike modes Z4-Z200  |   nm    |   0.800   |   10      |   Input   |
+    |   global lo     |   (approx.), in instrument reference frame.     |         |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | asm pos       | | ASM actuator actual positions.                | | nm    | | 18.8    | | 2000    | | Input   |
+    |   asm pos       |   ASM actuator actual positions.                |   nm    |   18.8    |   2000    |   Input   |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | ngsao recon   | | NGSAO wavefront reconstructor matrix.         | | n/a   | | 102227  | | 0.02    | | Input   |
+    |   ngsao recon   |   NGSAO wavefront reconstructor matrix.         |   n/a   |   102227  |   0.02    |   Input   |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | asm segment   | | Time-averaged ASM segment piston, to offload  | | nm    | | 0.028   | | 1       | | Output  |
-    | | piston av     | | to M1 Positioner.                             | |       | |         | |         | |         |
+    |   asm segment   |   Time-averaged ASM segment piston, to offload  |   nm    |   0.028   |   1       |   Output  |
+    |   piston av     |   to M1 Positioner.                             |         |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | asm segment   | | Time-averaged ASM segment tilt, to offload    | | μrad  | | 0.056   | | 1       | | Output  |
-    | | tilt av       | | to M1 Positioner.                             | |       | |         | |         | |         |
+    |   asm segment   |   Time-averaged ASM segment tilt, to offload    |   μrad  |   0.056   |   1       |   Output  |
+    |   tilt av       |   to M1 Positioner.                             |         |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | asm global    | | Time-averaged ASM global tilt, to offload to  | | μrad  | | 0.008   | | 1       | | Output  |
-    | | tilt av       | | the Mount.                                    | |       | |         | |         | |         |
+    |   asm global    |   Time-averaged ASM global tilt, to offload to  |   μrad  |   0.008   |   1       |   Output  |
+    |   tilt av       |   the Mount.                                    |         |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | asm global    | | Time-averaged ASM global Zernike modes Z4-6.  | | μm    | | 0.012   | | 1       | | Output  |
-    | | lo av         | |                                               | | RMS   | |         | |         | |         |
+    |   asm global    |   Time-averaged ASM global Zernike modes Z4-6.  |   μm    |   0.012   |   1       |   Output  |
+    |   lo av         |                                                 |   RMS   |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | asm segment   | | Time-average of ASM actuators, projected      | | μm    | | 1.26    | | 1       | | Output  |
-    | | lo av         | | onto M1 segment bending modes 1-45.           | | RMS   | |         | |         | |         |
+    |   asm segment   |   Time-average of ASM actuators, projected      |   μm    |   1.26    |   1       |   Output  |
+    |   lo av         |   onto M1 segment bending modes 1-45.           |   RMS   |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | ngws pos err  | | Position update for NGWS patrol stages or     | | mas   | | 0.012   | | 1       | | Output  |
-    | |               | | modulation mirror.                            | |       | |         | |         | |         |
+    |   ngws pos err  |   Position update for NGWS patrol stages or     |   mas   |   0.012   |   1       |   Output  |
+    |                 |   modulation mirror.                            |         |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | ngws fast     | | Update of NGWS fast channel slope zero-points | | pixel | | 43.5    | | 1       | | Output  |
-    | | slope ref err | |                                               | |       | |         | |         | |         |
+    |   ngws fast     |   Update of NGWS fast channel slope zero-points |   pixel |   43.5    |   1       |   Output  |
+    |   slope ref err |                                                 |         |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | ngws slow     | | Update of NGWS slow channel slope zero-       | | pixel | | 43.5    | | 1       | | Output  |
-    | | slope ref err | | points.                                       | |       | |         | |         | |         |
+    |   ngws slow     |   Update of NGWS slow channel slope zero-       |   pixel |   43.5    |   1       |   Output  |
+    |   slope ref err |   points.                                       |         |           |           |           |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
-    | | asm cmds      | | ASM actuator commands.                        | | nm    | | 18.8    | | 2000    | | Output  |
+    |   asm cmds      |   ASM actuator commands.                        |   nm    |   18.8    |   2000    |   Output  |
     +-----------------+-------------------------------------------------+---------+-----------+-----------+-----------+
 
 **Active Optics Wavefront Controller (NGSAO Mode)**
@@ -295,7 +295,7 @@ explicitly shown, as it is provided as a system service to every component.
   all the observing modes. The RTS will likely be composed of multiple server
   nodes in a small high-performance computing cluster (see Section 8.8.4
   [Bouc13b]_), and a smaller number of computing nodes might be used in the
-  less demanding modes (e.g., NGLAO). 
+  less demanding modes (e.g., NGLAO).
 
   .. _ngsao_wfcs_deployment_diagram:
 

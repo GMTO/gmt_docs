@@ -4,23 +4,23 @@ Revision Log
 ============
 
 +---------+------------+-------------------------+---------------+----------------------+
-| Version | Date       | | Affected              | | Engineering | | Reason/Initiation/ |
-|         |            | | Sections              | | Change #    | | Remarks            |
+| Version | Date       |   Affected              |   Engineering |   Reason/Initiation/ |
+|         |            |   Sections              |   Change #    |   Remarks            |
 +=========+============+=========================+===============+======================+
-| 1       | 2/5/2014   | | All                   | | None        | | Initial draft      |
+| 1       | 2/5/2014   |   All                   |   None        |   Initial draft      |
 +---------+------------+-------------------------+---------------+----------------------+
-| 2       | 10/14/2014 | | All                   | | None        | | Second draft       |
+| 2       | 10/14/2014 |   All                   |   None        |   Second draft       |
 +---------+------------+-------------------------+---------------+----------------------+
-| 3       | 12/4/2014  | | All                   | | None        | | Third draft        |
+| 3       | 12/4/2014  |   All                   |   None        |   Third draft        |
 +---------+------------+-------------------------+---------------+----------------------+
-| 4       | 2/11/2015  | | All                   | | None        | | Fourth draft       |
+| 4       | 2/11/2015  |   All                   |   None        |   Fourth draft       |
 +---------+------------+-------------------------+---------------+----------------------+
-| 5       | 8/11/2015  | | All                   | | None        | | Fifth draft        |
+| 5       | 8/11/2015  |   All                   |   None        |   Fifth draft        |
 +---------+------------+-------------------------+---------------+----------------------+
-| 6       | 11/4/2016  | | Add naming rules      | | None        | | Sixth draft        |
-|         |            | | Clarify I/O module    | |             | |                    |
-|         |            | | sizing                | |             | |                    |
-|         |            | | Review interface      | |             | |                    |
-|         |            | | section               | |             | |                    |
-|         |            | | Review SDF section    | |             | |                    |
+| 6       | 11/4/2016  |   Add naming rules      |   None        |   Sixth draft        |
+|         |            |   Clarify I/O module    |               |                      |
+|         |            |   sizing                |               |                      |
+|         |            |   Review interface      |               |                      |
+|         |            |   section               |               |                      |
+|         |            |   Review SDF section    |               |                      |
 +---------+------------+-------------------------+---------------+----------------------+

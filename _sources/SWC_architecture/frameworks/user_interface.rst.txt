@@ -12,39 +12,39 @@ a list of some of these components, based on `d3.js <http://d3js.org>`_.
 .. table:: Widget Description
 
   +--------------------+--------------------------------------------------------------------+
-  | | Widget Name      | | Description                                                      |
+  |   Widget Name      |   Description                                                      |
   +====================+====================================================================+
-  | | Scalar           | | Visualizes the instant numeric value of a quantity.              |
+  |   Scalar           |   Visualizes the instant numeric value of a quantity.              |
   +--------------------+--------------------------------------------------------------------+
-  | | Line/Area chart  | | Visualizes the value of a quantity or set of quantities versus   |
-  | |                  | | another.                                                         |
+  |   Line/Area chart  |   Visualizes the value of a quantity or set of quantities versus   |
+  |                    |   another.                                                         |
   +--------------------+--------------------------------------------------------------------+
-  | | Time chart       | | Visualizes and updates the value of a quantity or set of         |
-  | |                  | | quantities versus time.                                          |
+  |   Time chart       |   Visualizes and updates the value of a quantity or set of         |
+  |                    |   quantities versus time.                                          |
   +--------------------+--------------------------------------------------------------------+
-  | | Box plot         | | Summarizes a quantitative distribution with five standard        |
-  | |                  | | statistics: The smallest value, lower quartile, median , upper   |
-  | |                  | | quartile, and largest value.                                     |
+  |   Box plot         |   Summarizes a quantitative distribution with five standard        |
+  |                    |   statistics: The smallest value, lower quartile, median , upper   |
+  |                    |   quartile, and largest value.                                     |
   +--------------------+--------------------------------------------------------------------+
-  | | Bullet chart     | | Compares a given quantitative measure against qualitative        |
-  | |                  | | ranges (e.g., linear position and limit ranges).                 |
+  |   Bullet chart     |   Compares a given quantitative measure against qualitative        |
+  |                    |   ranges (e.g., linear position and limit ranges).                 |
   +--------------------+--------------------------------------------------------------------+
-  | | Calendar view    | | Visualizes values as colored cells per day.                      |
+  |   Calendar view    |   Visualizes values as colored cells per day.                      |
   +--------------------+--------------------------------------------------------------------+
-  | | Treemap          | | Recursively subdivides area into rectangles, the area of any     |
-  | |                  | | node in the tree corresponds to its value (e.g., visualization   |
-  | |                  | | of subsystem and components alarm states).                       |
+  |   Treemap          |   Recursively subdivides area into rectangles, the area of any     |
+  |                    |   node in the tree corresponds to its value (e.g., visualization   |
+  |                    |   of subsystem and components alarm states).                       |
   +--------------------+--------------------------------------------------------------------+
-  | | Chord diagram    | | Shows directed relationships among a group of entities.          |
+  |   Chord diagram    |   Shows directed relationships among a group of entities.          |
   +--------------------+--------------------------------------------------------------------+
-  | | Matrix diagram   | | Visualizes an NxN relationship (e.g., active component port      |
-  | |                  | | connections in a wavefront control observing mode).              |
+  |   Matrix diagram   |   Visualizes an NxN relationship (e.g., active component port      |
+  |                    |   connections in a wavefront control observing mode).              |
   +--------------------+--------------------------------------------------------------------+
-  | | Crossfilter      | | Supports exploration of large multivariable datasets.            |
+  |   Crossfilter      |   Supports exploration of large multivariable datasets.            |
   +--------------------+--------------------------------------------------------------------+
-  | | WFS RT display   | | Displays WFS pixels, slopes in realtime (24fps).                 |
+  |   WFS RT display   |   Displays WFS pixels, slopes in realtime (24fps).                 |
   +--------------------+--------------------------------------------------------------------+
-  | | Image viewer     | | Supports the visualization of FITS data.                         |
+  |   Image viewer     |   Supports the visualization of FITS data.                         |
   +--------------------+--------------------------------------------------------------------+
 
 

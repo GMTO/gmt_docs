@@ -32,6 +32,8 @@
   
 
   
+    <link rel="stylesheet" href="../../../_static/theme_overrides.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
@@ -249,49 +251,22 @@ as to be able to recover from faults quickly and efficiently.</p>
 <col width="73%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">Requirement</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Statement</div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">Requirement</th>
+<th class="head">Statement</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">System Health</div>
-<div class="line">Assessment</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Provide the capability to assess the overall health of the system.</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>System Health
+Assessment</td>
+<td>Provide the capability to assess the overall health of the system.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Overall System Health</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Provide the capability of continuous performance, status, and</div>
-<div class="line">system health monitoring.</div>
-</div>
-</td>
+<tr class="row-odd"><td>Overall System Health</td>
+<td>Provide the capability of continuous performance, status, and
+system health monitoring.</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Interlock Safety</div>
-<div class="line">System Interface</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Interface with the ISS to ensure the safe operation of the system.</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>Interlock Safety
+System Interface</td>
+<td>Interface with the ISS to ensure the safe operation of the system.</td>
 </tr>
 </tbody>
 </table>
@@ -378,111 +353,59 @@ in the following table:</p>
 <col width="75%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">Visualization Panel</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Description</div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">Visualization Panel</th>
+<th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Global Panel</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Provides an overall view of the status of the supervisor system. The following</div>
-<div class="line">information will be displayed:</div>
-<div class="line"><br /></div>
-<div class="line-block">
-<div class="line">* State of each telemetry server component</div>
-<div class="line-block">
-<div class="line">(e.g., RUNNING, STOPPED, FAULT)</div>
-</div>
-<div class="line">* State of each telemetry adapter component</div>
-<div class="line-block">
-<div class="line">(e.g., RUNNING, STOPPED, FAULT)</div>
-</div>
-<div class="line">* List of active monitors</div>
-<div class="line">* Overall view of the system health, one box per subsystem color coded:</div>
-<div class="line-block">
-<div class="line">- green: No active monitors in fault state</div>
-<div class="line">- yellow: No serious active alarms</div>
-<div class="line">- red: The monitor system is not working</div>
-</div>
-<div class="line">* Global life-cycle actions (global start and stop of the system, switching</div>
-<div class="line-block">
-<div class="line">modes)</div>
-</div>
-</div>
-<div class="line">Note: State information shall be color-coded.</div>
-</div>
+<tr class="row-even"><td>Global Panel</td>
+<td><p class="first">Provides an overall view of the status of the supervisor system. The following
+information will be displayed:</p>
+<ul>
+<li><p class="first">State of each telemetry server component (e.g., RUNNING, STOPPED, FAULT)</p>
+</li>
+<li><p class="first">State of each telemetry adapter component  (e.g., RUNNING, STOPPED, FAULT)</p>
+</li>
+<li><p class="first">List of active monitors</p>
+</li>
+<li><p class="first">Overall view of the system health, one box per subsystem color coded:</p>
+<blockquote>
+<div><ul class="simple">
+<li>green: No active monitors in fault state</li>
+<li>yellow: No serious active alarms</li>
+<li>red: The monitor system is not working</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Global life-cycle actions (global start and stop of the system, switching
+modes)</p>
+</li>
+</ul>
+<p class="last">Note: State information shall be color-coded.</p>
 </td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Navigation Panel</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Provides a way to navigate all the monitor servers and adapters. From the</div>
-<div class="line">navigation panel the state and detailed info of every server and adapter can be</div>
-<div class="line">accessed.</div>
-</div>
-</td>
+<tr class="row-odd"><td>Navigation Panel</td>
+<td>Provides a way to navigate all the monitor servers and adapters. From the
+navigation panel the state and detailed info of every server and adapter can be
+accessed.</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Guide Panel</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Displays the on line documentation of the system supervisor service.</div>
-<div class="line">Allows access to the user guide as well as the metadata (model information) of</div>
-<div class="line">the runtime objects.</div>
-</div>
-</td>
+<tr class="row-even"><td>Guide Panel</td>
+<td>Displays the on line documentation of the system supervisor service.
+Allows access to the user guide as well as the metadata (model information) of
+the runtime objects.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Analytics Panel</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Provides access to the runtime statistics of the supervisor service.</div>
-<div class="line">These should include at least.</div>
-<div class="line-block">
-<div class="line">* Number and state (running/stopped/fault)</div>
-<div class="line">* Instant throughput of the system</div>
-<div class="line">* Total and Subsystem Monitor samples/sec</div>
-<div class="line">* Total data bandwidth</div>
-<div class="line">* Persistence capacity (used/available)</div>
-</div>
-</div>
+<tr class="row-odd"><td>Analytics Panel</td>
+<td><p class="first">Provides access to the runtime statistics of the supervisor service.
+These should include at least.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Number and state (running/stopped/fault)</li>
+<li>Instant throughput of the system</li>
+<li>Total and Subsystem Monitor samples/sec</li>
+<li>Total data bandwidth</li>
+<li>Persistence capacity (used/available)</li>
+</ul>
+</div></blockquote>
 </td>
 </tr>
 </tbody>

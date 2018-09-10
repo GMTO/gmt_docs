@@ -34,30 +34,30 @@ provided by the frameworks involved.
 .. table::  Framework Typical Use Cases
 
   +----------------+-------------------+------------------------+-------------------------------+
-  | | Use Case     | | Framework       | | Base Classes         | | Function                    |
+  |   Use Case     |   Framework       |   Base Classes         |   Function                    |
   +================+===================+========================+===============================+
-  | | Create a new | | Core Framework  | | Base Component       | | Provides access to          |
-  | | Controller   | |                 | |                      | | observatory services        |
+  |   Create a new |   Core Framework  |   Base Component       |   Provides access to          |
+  |   Controller   |                   |                        |   observatory services        |
   +----------------+-------------------+------------------------+-------------------------------+
-  |                | | Device Control  | | BaseDeviceController | | Provides usable control     |
-  |                | | Framework       | |                      | | building blocks             |
+  |                |   Device Control  |   BaseDeviceController |   Provides usable control     |
+  |                |   Framework       |                        |   building blocks             |
   +----------------+-------------------+------------------------+-------------------------------+
-  |                | | I/O Framework   | | IOModule, Device     | | Provides access to the      |
-  |                | |                 | |                      | | hardware                    |
+  |                |   I/O Framework   |   IOModule, Device     |   Provides access to the      |
+  |                |                   |                        |   hardware                    |
   +----------------+-------------------+------------------------+-------------------------------+
-  | | Create a new | | Core Framework  | | BaseComponent        | | Provides access to the      |
-  | | Pipeline     | |                 | |                      | | observatory services        |
+  |   Create a new |   Core Framework  |   BaseComponent        |   Provides access to the      |
+  |   Pipeline     |                   |                        |   observatory services        |
   +----------------+-------------------+------------------------+-------------------------------+
-  |                | | Data Processing | | Pipeline, Filter,    | | Defines a reference         |
-  |                | | Framework       | | Recipe               | | architecture for data       |
-  |                | |                 | |                      | | processing pipelines        |
+  |                |   Data Processing |   Pipeline, Filter,    |   Defines a reference         |
+  |                |   Framework       |   Recipe               |   architecture for data       |
+  |                |                   |                        |   processing pipelines        |
   +----------------+-------------------+------------------------+-------------------------------+
-  |                | | Persistence     | | ObjectStore,         | | Provides persistence to     |
-  |                | | Framework       | | FileStore            | | files and data structures   |
+  |                |   Persistence     |   ObjectStore,         |   Provides persistence to     |
+  |                |   Framework       |   FileStore            |   files and data structures   |
   +----------------+-------------------+------------------------+-------------------------------+
-  | | Create a new | | Core Framework  | | BaseComponent        | | Provides access to          |
-  | | Panel        | |                 | |                      | | Observatory Services        |
+  |   Create a new |   Core Framework  |   BaseComponent        |   Provides access to          |
+  |   Panel        |                   |                        |   Observatory Services        |
   +----------------+-------------------+------------------------+-------------------------------+
-  |                | | UI Framework    | | Panel, Widget        | | Provides reusable           |
-  |                | |                 | |                      | | visualization components    |
+  |                |   UI Framework    |   Panel, Widget        |   Provides reusable           |
+  |                |                   |                        |   visualization components    |
   +----------------+-------------------+------------------------+-------------------------------+

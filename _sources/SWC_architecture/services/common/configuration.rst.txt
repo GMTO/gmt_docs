@@ -41,22 +41,22 @@ The SWCS requirements on Configuration Services are shown in the following Table
 .. table:: SWCS Configuration Service Requirements (Level 3)
 
   +-----------------------------+---------------------------------------------------------------+
-  | | Requirement               | | Statement                                                   |
+  |   Requirement               |   Statement                                                   |
   +=============================+===============================================================+
-  | | SWC Observing Mode        | | Provide the capability to switch from one observing mode    |
-  | | Switching                 | | to another.                                                 |
+  |   SWC Observing Mode        |   Provide the capability to switch from one observing mode    |
+  |   Switching                 |   to another.                                                 |
   +-----------------------------+---------------------------------------------------------------+
-  | | SWC Telescope Optical     | | Provide capability to switch from one telescope optical     |
-  | | Configuration Switching   | | configuration to another in an automatic way for any        |
-  | |                           | | active instruments.                                         |
+  |   SWC Telescope Optical     |   Provide capability to switch from one telescope optical     |
+  |   Configuration Switching   |   configuration to another in an automatic way for any        |
+  |                             |   active instruments.                                         |
   +-----------------------------+---------------------------------------------------------------+
-  | | SWC Automated             | | Provide capability to automate the switching of the active  |
-  | | Instrument Switching      | | instrument set during the night initiated and monitored by  |
-  | |                           | | the operator.                                               |
+  |   SWC Automated             |   Provide capability to automate the switching of the active  |
+  |   Instrument Switching      |   instrument set during the night initiated and monitored by  |
+  |                             |   the operator.                                               |
   +-----------------------------+---------------------------------------------------------------+
-  | | Software Component        | | Provide the capability to associate a set of configuration  |
-  | | Configuration             | | parameters with any software component.                     |
-  | | Parameters                | |                                                             |
+  |   Software Component        |   Provide the capability to associate a set of configuration  |
+  |   Configuration             |   parameters with any software component.                     |
+  |   Parameters                |                                                               |
   +-----------------------------+---------------------------------------------------------------+
 
 
@@ -106,40 +106,41 @@ The SWCS requirements on Configuration Services are shown in the following Table
       .. table:: Configuration Service Visualization Panels
 
         +---------------------------+-----------------------------------------------------------------------------------+
-        | | Visualization Panel     | | Description                                                                     |
+        |   Visualization Panel     |   Description                                                                     |
         +===========================+===================================================================================+
-        | | Global Panel            | | Provides an overall view of the status of the configuration service. The        |
-        | |                         | | following information will be displayed:                                        |
-        | |                         | |                                                                                 |
-        | |                         | |   * State of each server component                                              |
-        | |                         | |     (e.g., RUNNING, STOPPED, FAULT)                                             |
-        | |                         | |   * State of each adapter component                                             |
-        | |                         | |     (e.g., RUNNING, STOPPED, FAULT)                                             |
-        | |                         | |   * Overall view of the system health, one box per subsystem color coded:       |
-        | |                         | |     - green: No active alarms                                                   |
-        | |                         | |     - yellow: No serious active alarms                                          |
-        | |                         | |     - red: Critical alarm active                                                |
+        |   Global Panel            |   Provides an overall view of the status of the configuration service. The        |
+        |                           |   following information will be displayed:                                        |
+        |                           |                                                                                   |
+        |                           |     * State of each server component                                              |
+        |                           |       (e.g., RUNNING, STOPPED, FAULT)                                             |
+        |                           |     * State of each adapter component                                             |
+        |                           |       (e.g., RUNNING, STOPPED, FAULT)                                             |
+        |                           |     * Overall view of the system health, one box per subsystem color coded:       |
+        |                           |       - green: No active alarms                                                   |
+        |                           |       - yellow: No serious active alarms                                          |
+        |                           |       - red: Critical alarm active                                                |
         +---------------------------+-----------------------------------------------------------------------------------+
-        | | Navigation Panel        | | Provides a way to navigate all the configuration servers and adapters. From the |
-        | |                         | | navigation panel the state and detailed info of every server and adapter can be |
-        | |                         | | accessed. The Navigation Panel allows also browsing efficiently all             |
-        | |                         | | configurations of the GMT software components.                                  |
+        |   Navigation Panel        |   Provides a way to navigate all the configuration servers and adapters. From the |
+        |                           |   navigation panel the state and detailed info of every server and adapter can be |
+        |                           |   accessed. The Navigation Panel allows also browsing efficiently all             |
+        |                           |   configurations of the GMT software components.                                  |
         +---------------------------+-----------------------------------------------------------------------------------+
-        | | Guide Panel             | | Displays the on line documentation of the configuration service. Allows access  |
-        | |                         | | to the user guide as well as the metadata (model information) of the runtime    |
-        | |                         | | objects.                                                                        |
+        |   Guide Panel             |   Displays the on line documentation of the configuration service. Allows access  |
+        |                           |   to the user guide as well as the metadata (model information) of the runtime    |
+        |                           |   objects.                                                                        |
         +---------------------------+-----------------------------------------------------------------------------------+
-        | | Analytics Panel         | | Provides access to the runtime statistics of the configuration service.         |
-        | |                         | | These should include at least.                                                  |
-        | |                         | |   * Number and state (running/stopped/fault)                                    |
-        | |                         | |   * Instant throughput of the system                                            |
-        | |                         | |   * Configuration changes/sec                                                   |
-        | |                         | |   * Total data bandwidth                                                        |
-        | |                         | |   * Storage capacity (used/available)                                           |
+        |   Analytics Panel         |   Provides access to the runtime statistics of the configuration service.         |
+        |                           |   These should include at least.                                                  |
+        |                           |                                                                                   |
+        |                           |     * Number and state (running/stopped/fault)                                    |
+        |                           |     * Instant throughput of the system                                            |
+        |                           |     * Configuration changes/sec                                                   |
+        |                           |     * Total data bandwidth                                                        |
+        |                           |     * Storage capacity (used/available)                                           |
         +---------------------------+-----------------------------------------------------------------------------------+
-        | | Service Editor Panel    | | The Configuration Editor Panel provides the capability to edit the values of    |
-        | |                         | | the properties of a configuration. It also enables to save, copy, or delete the |
-        | |                         | | configuration of any given component.                                           |
+        |   Service Editor Panel    |   The Configuration Editor Panel provides the capability to edit the values of    |
+        |                           |   the properties of a configuration. It also enables to save, copy, or delete the |
+        |                           |   configuration of any given component.                                           |
         +---------------------------+-----------------------------------------------------------------------------------+
 
 **Service Deployment**

@@ -119,55 +119,55 @@ shown).
     .. table:: AGWS Slope Processor Ports
 
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | Port Name      | | Description                                   | | Unit    | | Size  | | Rate | | Type   |
-       | |                | |                                               | |         | | (kB)  | | (Hz) | |        |
+       |   Port Name      |   Description                                   |   Unit    |   Size  |   Rate |   Type   |
+       |                  |                                                 |           |   (kB)  |   (Hz) |          |
        +==================+=================================================+===========+=========+========+==========+
-       | | agws img       | | AGWS detector image streams (4 cameras).      | | count   | | 2048  | | 206  | | Input  |
+       |   agws img       |   AGWS detector image streams (4 cameras).      |   count   |   2048  |   206  |   Input  |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | agws bkg       | | AGWS background images.                       | | count   | | 2048  | | 1    | | Input  |
+       |   agws bkg       |   AGWS background images.                       |   count   |   2048  |   1    |   Input  |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | agws gain      | | AGWS pixel gain.                              | | N/A     | | 4096  | | 1    | | Input  |
+       |   agws gain      |   AGWS pixel gain.                              |   N/A     |   4096  |   1    |   Input  |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | agws wf        | | List of [x,y] expected positions of each WFS  | | pixel   | | 18.4  | | 1    | | Input  |
-       | | ref            | | subaperture or guider image.                  | |         | |       | |      | |        |
+       |   agws wf        |   List of [x,y] expected positions of each WFS  |   pixel   |   18.4  |   1    |   Input  |
+       |   ref            |   subaperture or guider image.                  |           |         |        |          |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | agws wf        | | List of [x,y] offsets from the reference      | | mas     | | 18.4  | | 1    | | Input  |
-       | | offset         | | positions of each WFS subaperture or guider   | |         | |       | |      | |        |
-       | |                | | image.                                        | |         | |       | |      | |        |
+       |   agws wf        |   List of [x,y] offsets from the reference      |   mas     |   18.4  |   1    |   Input  |
+       |   offset         |   positions of each WFS subaperture or guider   |           |         |        |          |
+       |                  |   image.                                        |           |         |        |          |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | system global  | | Difference between agws_wf_ref and computed   | | mas     | | 0.032 | | 2000 | | Output |
-       | | tilt           | | centroid position for cameras in Guide mode,  | |         | |       | |      | |        |
-       | |                | | or average of the slopes for cameras in TT7   | |         | |       | |      | |        |
-       | |                | | mode, in the probe coordinate system.         | |         | |       | |      | |        |
+       |   system global  |   Difference between agws_wf_ref and computed   |   mas     |   0.032 |   2000 |   Output |
+       |   tilt           |   centroid position for cameras in Guide mode,  |           |         |        |          |
+       |                  |   or average of the slopes for cameras in TT7   |           |         |        |          |
+       |                  |   mode, in the probe coordinate system.         |           |         |        |          |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | system segment | | Difference between agws_wf_ref and computed   | | mas     | | 0.224 | | 402  | | Output |
-       | | tilt           | | centroid position for cameras in TT7 mode,    | |         | |       | |      | |        |
-       | |                | | in the probe coordinate system.               | |         | |       | |      | |        |
+       |   system segment |   Difference between agws_wf_ref and computed   |   mas     |   0.224 |   402  |   Output |
+       |   tilt           |   centroid position for cameras in TT7 mode,    |           |         |        |          |
+       |                  |   in the probe coordinate system.               |           |         |        |          |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | agws wf slopes | | Difference between agws_wf_ref and computed   | | mas     | | 18.4  | | 206  | | Output |
-       | |                | | centroid position for camera in WFS mode,     | |         | |       | |      | |        |
-       | |                | | in the probe coordinate system.               | |         | |       | |      | |        |
+       |   agws wf slopes |   Difference between agws_wf_ref and computed   |   mas     |   18.4  |   206  |   Output |
+       |                  |   centroid position for camera in WFS mode,     |           |         |        |          |
+       |                  |   in the probe coordinate system.               |           |         |        |          |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | system global  | | Low-pass filtered system global tilt. If no   | | mas     | | 0.008 | | 20   | | Output |
-       | | tilt av        | | probe in Guide mode, derived from probe in    | |         | |       | |      | |        |
-       | |                | | TT7 mode.                                     | |         | |       | |      | |        |
+       |   system global  |   Low-pass filtered system global tilt. If no   |   mas     |   0.008 |   20   |   Output |
+       |   tilt av        |   probe in Guide mode, derived from probe in    |           |         |        |          |
+       |                  |   TT7 mode.                                     |           |         |        |          |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | agws sp flag   | | Quality flag for each slope measurement.      | | boolean | | 9.2   | | 206  | | Output |
-       | |                | |                                               | |         | |       | |      | |        |
+       |   agws sp flag   |   Quality flag for each slope measurement.      |   boolean |   9.2   |   206  |   Output |
+       |                  |                                                 |           |         |        |          |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | agws sp fwhm   | | FWHM of each subaperture image.               | | mas     | | 18.4  | | 206  | | Output |
-       | |                | |                                               | |         | |       | |      | |        |
+       |   agws sp fwhm   |   FWHM of each subaperture image.               |   mas     |   18.4  |   206  |   Output |
+       |                  |                                                 |           |         |        |          |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | agws sp snr    | | SNR of each slope measurement.                | | N/A     | | 18.4  | | 206  | | Output |
-       | |                | |                                               | |         | |       | |      | |        |
+       |   agws sp snr    |   SNR of each slope measurement.                |   N/A     |   18.4  |   206  |   Output |
+       |                  |                                                 |           |         |        |          |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | agws sp flux   | | Integrated flux in each subaperture.          | | count   | | 18.4  | | 206  | | Output |
-       | |                | |                                               | |         | |       | |      | |        |
+       |   agws sp flux   |   Integrated flux in each subaperture.          |   count   |   18.4  |   206  |   Output |
+       |                  |                                                 |           |         |        |          |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | agws sp bkg    | | Measured background flux in each subaperture. | | count   | | 18.4  | | 206  | | Output |
-       | | flux           | |                                               | |         | |       | |      | |        |
+       |   agws sp bkg    |   Measured background flux in each subaperture. |   count   |   18.4  |   206  |   Output |
+       |   flux           |                                                 |           |         |        |          |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
-       | | agws sp cent   | | Raw computed centroid in each subaperture.    | | pixel   | | 18.4  | | 206  | | Output |
+       |   agws sp cent   |   Raw computed centroid in each subaperture.    |   pixel   |   18.4  |   206  |   Output |
        +------------------+-------------------------------------------------+-----------+---------+--------+----------+
 
     Reference positions are provided by the Active Optics Reconstructor
@@ -194,24 +194,24 @@ shown).
     .. table:: Fast Guiding Controller Ports
 
        +------------------+------------------------------------------------------+--------+---------+--------+----------+
-       | | Port Name      | | Description                                        | | Unit | | size  | | Rate | | Type   |
-       | |                | |                                                    | |      | | (kB)  | | (Hz) | |        |
+       |   Port Name      |   Description                                        |   Unit |   size  |   Rate |   Type   |
+       |                  |                                                      |        |   (kB)  |   (Hz) |          |
        +==================+======================================================+========+=========+========+==========+
-       | | system global  | | Global tilt error in the probe coordinate system.  | | mas  | | 0.032 | | 2000 | | Input  |
-       | | tilt           | | Used only if system_segment_tilt is not available. | |      | |       | |      | |        |
+       |   system global  |   Global tilt error in the probe coordinate system.  |   mas  |   0.032 |   2000 |   Input  |
+       |   tilt           |   Used only if system_segment_tilt is not available. |        |         |        |          |
        +------------------+------------------------------------------------------+--------+---------+--------+----------+
-       | | system segment | | Segment tilt error in the AGWS probe coordinate    | | mas  | | 0.224 | | 402  | | Input  |
-       | | tilt           | | system.                                            | |      | |       | |      | |        |
+       |   system segment |   Segment tilt error in the AGWS probe coordinate    |   mas  |   0.224 |   402  |   Input  |
+       |   tilt           |   system.                                            |        |         |        |          |
        +------------------+------------------------------------------------------+--------+---------+--------+----------+
-       | | fast guide     | | Fast guiding reconstructor matrix. Converts Guide  | | n/a  | | 3.1   | | 0.3  | | Input  |
-       | | recon          | | or TT7 centroids to system segment tilt in         | |      | |       | |      | |        |
-       | |                | | telescope coordinate system.                       | |      | |       | |      | |        |
+       |   fast guide     |   Fast guiding reconstructor matrix. Converts Guide  |   n/a  |   3.1   |   0.3  |   Input  |
+       |   recon          |   or TT7 centroids to system segment tilt in         |        |         |        |          |
+       |                  |   telescope coordinate system.                       |        |         |        |          |
        +------------------+------------------------------------------------------+--------+---------+--------+----------+
-       | | m2 segment     | | Absolute segment tilt commands to each FSM         | | mas  | | 0.056 | | 2000 | | Output |
-       | | tilt           | | segment, in the telescope coordinate system.       | |      | |       | |      | |        |
+       |   m2 segment     |   Absolute segment tilt commands to each FSM         |   mas  |   0.056 |   2000 |   Output |
+       |   tilt           |   segment, in the telescope coordinate system.       |        |         |        |          |
        +------------------+------------------------------------------------------+--------+---------+--------+----------+
-       | | m2 segment     | | Time-average segment tilt, to offload to the M2    | | mas  | | 0.056 | | 0.3  | | Output |
-       | | tilt av        | | Positioner.                                        | |      | |       | |      | |        |
+       |   m2 segment     |   Time-average segment tilt, to offload to the M2    |   mas  |   0.056 |   0.3  |   Output |
+       |   tilt av        |   Positioner.                                        |        |         |        |          |
        +------------------+------------------------------------------------------+--------+---------+--------+----------+
 
     In routine operation, the Fast Guiding Controller will close the servo
@@ -249,8 +249,8 @@ shown).
     .. table:: Active Optics Reconstructor Output Terms
 
         +-------------------------------------+---------------+------------------------------------------+
-        |  Output Terms                       | | Degrees of  | Controlled Aberrations                   |
-        |                                     | | Freedom     |                                          |
+        |  Output Terms                       |   Degrees of  | Controlled Aberrations                   |
+        |                                     |   Freedom     |                                          |
         +=====================================+===============+==========================================+
         |  M1 global vertex tilt              | 2             | Global field-dependent focus             |
         +-------------------------------------+---------------+------------------------------------------+
@@ -315,63 +315,63 @@ shown).
     .. table:: Active Optics Wavefront Controller Ports
 
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | Port Name      | | Description                                | | Unit   | | Size   | | Rate   | | Type   | | Mode |
-        | |                | |                                            | |        | | (kB)   | | (Hz)   | |        | |      |
+        |   Port Name      |   Description                                |   Unit   |   Size   |   Rate   |   Type   |   Mode |
+        |                  |                                              |          |   (kB)   |   (Hz)   |          |        |
         +==================+==============================================+==========+==========+==========+==========+========+
-        | | agws wf        | | S-H centroids from up to 4 probes,         | | mas    | | 18.4   | | 206    | | Input  | | All  |
-        | | slopes         | | in frame of of reference of sensors,       | |        | |        | |        | |        | |      |
-        | |                | | potentially updated asynchronously.        | |        | |        | |        | |        | |      |
+        |   agws wf        |   S-H centroids from up to 4 probes,         |   mas    |   18.4   |   206    |   Input  |   All  |
+        |   slopes         |   in frame of of reference of sensors,       |          |          |          |          |        |
+        |                  |   potentially updated asynchronously.        |          |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | oiws system    | | System global tip-tilt error measured by   | | mas    | | 0.008  | | 1      | | Input  | | NS & |
-        | | global tilt    | | an OIWFS, in instrument coordinate system. | |        | |        | |        | |        | | GL   |
+        |   oiws system    |   System global tip-tilt error measured by   |   mas    |   0.008  |   1      |   Input  |   NS & |
+        |   global tilt    |   an OIWFS, in instrument coordinate system. |          |          |          |          |   GL   |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | oiws system    | | System global focus error measured by an   | | nm     | | 0.004  | | 1      | | Input  | | NS & |
-        | | global focus   | | OIWFS, in instrument coordinate system.    | |        | |        | |        | |        | | GL   |
+        |   oiws system    |   System global focus error measured by an   |   nm     |   0.004  |   1      |   Input  |   NS & |
+        |   global focus   |   OIWFS, in instrument coordinate system.    |          |          |          |          |   GL   |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | asm global     | | Time-averaged ASM global Zernike modes     | | μm     | | 0.012  | | 1      | | Input  | | AO   |
-        | | lo av          | | 4-6.                                       | | RMS    | |        | |        | |        | |      |
+        |   asm global     |   Time-averaged ASM global Zernike modes     |   μm     |   0.012  |   1      |   Input  |   AO   |
+        |   lo av          |   4-6.                                       |   RMS    |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | asm segment    | | Time-average of ASM actuators, projected   | | μm     | | 1.26   | | 1      | | Input  | | AO   |
-        | | lo av          | | onto M1 segment bending modes 1-45.        | | RMS    | |        | |        | |        | |      |
+        |   asm segment    |   Time-average of ASM actuators, projected   |   μm     |   1.26   |   1      |   Input  |   AO   |
+        |   lo av          |   onto M1 segment bending modes 1-45.        |   RMS    |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | aco recon      | | Reconstruction matrix, computed based on   | | n/a    | | 2925   | | 0.3    | | Input  | | All  |
-        | |                | | AGWS probe position, observing mode, and   | |        | |        | |        | |        | |      |
-        | |                | | GIR angle.                                 | |        | |        | |        | |        | |      |
+        |   aco recon      |   Reconstruction matrix, computed based on   |   n/a    |   2925   |   0.3    |   Input  |   All  |
+        |                  |   AGWS probe position, observing mode, and   |          |          |          |          |        |
+        |                  |   GIR angle.                                 |          |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | m2 global      | | Global Z position command to M2            | | μm     | | 0.004  | | 0.3    | | Output | | All  |
-        | | piston         | | Positioner, from AGWS or ASM system        | |        | |        | |        | |        | |      |
-        | |                | | global focus.                              | |        | |        | |        | |        | |      |
+        |   m2 global      |   Global Z position command to M2            |   μm     |   0.004  |   0.3    |   Output |   All  |
+        |   piston         |   Positioner, from AGWS or ASM system        |          |          |          |          |        |
+        |                  |   global focus.                              |          |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | m2 global      | | Global pointing-neutral tilt command to    | | μrad   | | 0.008  | | 0.3    | | Output | | All  |
-        | | point neutral  | | M2 Positioner, from AGWS or ASM system     | |        | |        | |        | |        | |      |
-        | | tilt           | | global coma.                               | |        | |        | |        | |        | |      |
+        |   m2 global      |   Global pointing-neutral tilt command to    |   μrad   |   0.008  |   0.3    |   Output |   All  |
+        |   point neutral  |   M2 Positioner, from AGWS or ASM system     |          |          |          |          |        |
+        |   tilt           |   global coma.                               |          |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | m2 global coma | | Global coma-neutral tilt command to M2     | | μrad   | | 0.008  | | 0.3    | | Output | | All  |
-        | | neutral tilt   | | Positioner, from AGWS system field-        | |        | |        | |        | |        | |      |
-        | |                | | dependent astigmatism.                     | |        | |        | |        | |        | |      |
+        |   m2 global coma |   Global coma-neutral tilt command to M2     |   μrad   |   0.008  |   0.3    |   Output |   All  |
+        |   neutral tilt   |   Positioner, from AGWS system field-        |          |          |          |          |        |
+        |                  |   dependent astigmatism.                     |          |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | m2 segment     | | Segment pointing-neutral tilt command to   | | μrad   | | 0.048  | | 0.3    | | Output | | NS   |
-        | | point neutral  | | M2 Positioner, from AGWS system segment    | |        | |        | |        | |        | |      |
-        | | tilt           | | coma.                                      | |        | |        | |        | |        | |      |
+        |   m2 segment     |   Segment pointing-neutral tilt command to   |   μrad   |   0.048  |   0.3    |   Output |   NS   |
+        |   point neutral  |   M2 Positioner, from AGWS system segment    |          |          |          |          |        |
+        |   tilt           |   coma.                                      |          |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | m2 segment     | | Segment Z position command to M2           | | μm     | | 0.048  | | 0.3    | | Output | | NS   |
-        | | piston         | | Positioner, from AGWS system segment       | |        | |        | |        | |        | |      |
-        | |                | | focus.                                     | |        | |        | |        | |        | |      |
+        |   m2 segment     |   Segment Z position command to M2           |   μm     |   0.048  |   0.3    |   Output |   NS   |
+        |   piston         |   Positioner, from AGWS system segment       |          |          |          |          |        |
+        |                  |   focus.                                     |          |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | m1 global      | | Global tilt command to M1 Positioner,      | | μrad   | | 0.008  | | 0.3    | | Output | | All  |
-        | | vertex tilt    | | from AGWS system field-dependent focus.    | |        | |        | |        | |        | |      |
+        |   m1 global      |   Global tilt command to M1 Positioner,      |   μrad   |   0.008  |   0.3    |   Output |   All  |
+        |   vertex tilt    |   from AGWS system field-dependent focus.    |          |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | m1 segment     | | M1 segment bending modes 5,6, 9-45.        | | μm     | | 1.04   | | 0.3    | | Output | | All  |
-        | | bending modes  | |                                            | | RMS    | |        | |        | |        | |      |
+        |   m1 segment     |   M1 segment bending modes 5,6, 9-45.        |   μm     |   1.04   |   0.3    |   Output |   All  |
+        |   bending modes  |                                              |   RMS    |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | m2 segment     | | ASM segment Zernike modes 5,6,9,10.        | | μm     | | 0.11   | | 0.3    | | Output | | NS   |
-        | | lo modes       | |                                            | | RMS    | |        | |        | |        | |      |
+        |   m2 segment     |   ASM segment Zernike modes 5,6,9,10.        |   μm     |   0.11   |   0.3    |   Output |   NS   |
+        |   lo modes       |                                              |   RMS    |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | agws diff      | | AGWS probe position error, from AGWS       | | μm     | | 0.032  | | 0.3    | | Output | | All  |
-        | | pos err        | | global tip-tilt.                           | |        | |        | |        | |        | |      |
+        |   agws diff      |   AGWS probe position error, from AGWS       |   μm     |   0.032  |   0.3    |   Output |   All  |
+        |   pos err        |   global tip-tilt.                           |          |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
-        | | gir rot err    | | GIR rotation error, from AGWS global       | | μrad   | | 0.004  | | 0.3    | | Output | | All  |
-        | |                | | tip-tilt.                                  | |        | |        | |        | |        | |      |
+        |   gir rot err    |   GIR rotation error, from AGWS global       |   μrad   |   0.004  |   0.3    |   Output |   All  |
+        |                  |   tip-tilt.                                  |          |          |          |          |        |
         +------------------+----------------------------------------------+----------+----------+----------+----------+--------+
 
 
@@ -380,21 +380,21 @@ shown).
     .. table:: Active Optics Reconstructor Server Ports
 
         +--------------------+-------------------------------------------------+--------+---------+--------+----------+
-        | | Port Name        | | Description                                   | | Unit | | Size  | | Rate | | Type   |
-        | |                  | |                                               | |      | | (kB)  | | (Hz) | |        |
+        |   Port Name        |   Description                                   |   Unit |   Size  |   Rate |   Type   |
+        |                    |                                                 |        |   (kB)  |   (Hz) |          |
         +====================+=================================================+========+=========+========+==========+
-        | | agws probe posn  | | AGWS probe position, in telescope             | | mm   | | 0.032 | | 1    | | Input  |
-        | |                  | | coordinate system.                            | |      | |       | |      | |        |
+        |   agws probe posn  |   AGWS probe position, in telescope             |   mm   |   0.032 |   1    |   Input  |
+        |                    |   coordinate system.                            |        |         |        |          |
         +--------------------+-------------------------------------------------+--------+---------+--------+----------+
-        | | gir posn         | | GIR position, in telescope coordinate system. | | deg  | | 0.004 | | 1    | | Input  |
+        |   gir posn         |   GIR position, in telescope coordinate system. |   deg  |   0.004 |   1    |   Input  |
         +--------------------+-------------------------------------------------+--------+---------+--------+----------+
-        | | fast guide recon | | Fast guiding reconstructor matrix.  Converts  | | n/a  | | 3.1   | | 0.3  | | Output |
-        | |                  | | Guide or TT7 centroids to system segment tilt | |      | |       | |      | |        |
-        | |                  | | in telescope coordinate system.               | |      | |       | |      | |        |
+        |   fast guide recon |   Fast guiding reconstructor matrix.  Converts  |   n/a  |   3.1   |   0.3  |   Output |
+        |                    |   Guide or TT7 centroids to system segment tilt |        |         |        |          |
+        |                    |   in telescope coordinate system.               |        |         |        |          |
         +--------------------+-------------------------------------------------+--------+---------+--------+----------+
-        | | aco recon        | | Active optics reconstruction matrix.          | | n/a  | | 2925  | | 0.3  | | Output |
-        | |                  | | Converts WFS centroids to M1 and M2 positions | |      | |       | |      | |        |
-        | |                  | | and bending modes.                            | |      | |       | |      | |        |
+        |   aco recon        |   Active optics reconstruction matrix.          |   n/a  |   2925  |   0.3  |   Output |
+        |                    |   Converts WFS centroids to M1 and M2 positions |        |         |        |          |
+        |                    |   and bending modes.                            |        |         |        |          |
         +--------------------+-------------------------------------------------+--------+---------+--------+----------+
 
 

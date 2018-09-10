@@ -13,20 +13,20 @@ coherent, easy to manage, maintain, and upgrade.
 .. table:: System Level Requirements on Observing Modes (Level 2)
 
     +------------------+-----------------------------------------------------------------------+
-    | | Title          | | Statement                                                           |
+    |   Title          |   Statement                                                           |
     +==================+=======================================================================+
-    | | Natural Seeing | | Provide natural seeing observing mode that will be operative with   |
-    | | Mode           | | FSM or ASM.                                                         |
+    |   Natural Seeing |   Provide natural seeing observing mode that will be operative with   |
+    |   Mode           |   FSM or ASM.                                                         |
     +------------------+-----------------------------------------------------------------------+
-    | | GLAO Observing | | Provide GLAO observing mode in which the light of astrophysical     |
-    | | Mode           | | sources is corrected using multiple guide stars.                    |
+    |   GLAO Observing |   Provide GLAO observing mode in which the light of astrophysical     |
+    |   Mode           |   sources is corrected using multiple guide stars.                    |
     +------------------+-----------------------------------------------------------------------+
-    | | NGSAO          | | Provide NGSAO observing mode in which the light of astrophysical    |
-    | | Observing Mode | | sources is corrected using a single natural guide star.             |
+    |   NGSAO          |   Provide NGSAO observing mode in which the light of astrophysical    |
+    |   Observing Mode |   sources is corrected using a single natural guide star.             |
     +------------------+-----------------------------------------------------------------------+
-    | | LTAO Observing | | Provide an LTAO observing mode in which the light of astrophysical  |
-    | | Mode           | | sources is corrected using multiple guide stars and one or more     |
-    | |                | | natural guide stars.                                                |
+    |   LTAO Observing |   Provide an LTAO observing mode in which the light of astrophysical  |
+    |   Mode           |   sources is corrected using multiple guide stars and one or more     |
+    |                  |   natural guide stars.                                                |
     +------------------+-----------------------------------------------------------------------+
 
 The TCS subsystems are organized in a control and supervisory subsystem
@@ -62,34 +62,34 @@ operations, as outlined in the System Level Requirements.
 .. table:: System Level Requirements on Efficiency and Robust Operations (Level 2)
 
   +---------------------------+-----------------------------------------------------------------------+
-  | | Title                   | | Statement                                                           |
+  |   Title                   |   Statement                                                           |
   +===========================+=======================================================================+
-  | | GMT Observing           | | Design to optimize on-sky observing efficiency.                     |
-  | | Efficiency              | |                                                                     |
+  |   GMT Observing           |   Design to optimize on-sky observing efficiency.                     |
+  |   Efficiency              |                                                                       |
   +---------------------------+-----------------------------------------------------------------------+
-  | | Design Safety           | | Adopt design safety practices to reduce risk to personnel           |
-  | |                         | | and equipment.                                                      |
+  |   Design Safety           |   Adopt design safety practices to reduce risk to personnel           |
+  |                           |   and equipment.                                                      |
   +---------------------------+-----------------------------------------------------------------------+
-  | | GMT System Health       | | Provide continuous performance, status, and system health           |
-  | |                         | | monitoring.                                                         |
+  |   GMT System Health       |   Provide continuous performance, status, and system health           |
+  |                           |   monitoring.                                                         |
   +---------------------------+-----------------------------------------------------------------------+
-  | | Flatfield and Spectral  | | Provide deployable flat-field and spectral calibration systems for  |
-  | | Calibration             | | natural seeing and AO instruments.                                  |
+  |   Flatfield and Spectral  |   Provide deployable flat-field and spectral calibration systems for  |
+  |   Calibration             |   natural seeing and AO instruments.                                  |
   +---------------------------+-----------------------------------------------------------------------+
-  | | AO Calibration          | | Provide a system for calibrating all deformable mirrors and         |
-  | |                         | | wavefront sensors required for each of the AO observing modes.      |
+  |   AO Calibration          |   Provide a system for calibrating all deformable mirrors and         |
+  |                           |   wavefront sensors required for each of the AO observing modes.      |
   +---------------------------+-----------------------------------------------------------------------+
-  | | Optical Alignment       | | Provide equipment and procedures for aligning all optical systems   |
-  | |                         | | to meet performance specifications.                                 |
+  |   Optical Alignment       |   Provide equipment and procedures for aligning all optical systems   |
+  |                           |   to meet performance specifications.                                 |
   +---------------------------+-----------------------------------------------------------------------+
-  | | Engineering Data        | | Provide an engineering data system to monitor the health of all     |
-  | | Systems                 | | subsystems critical to the functioning and performance of the       |
-  | |                         | | observatory.                                                        |
+  |   Engineering Data        |   Provide an engineering data system to monitor the health of all     |
+  |   Systems                 |   subsystems critical to the functioning and performance of the       |
+  |                           |   observatory.                                                        |
   +---------------------------+-----------------------------------------------------------------------+
-  | | Diagnostic Software     | | Provide software tools for displaying real-time and long term       |
-  | |                         | | trends in the performance of individual components/subsystems       |
-  | |                         | | and to correlate that information with time-stamped data from       |
-  | |                         | | other subsystems.                                                   |
+  |   Diagnostic Software     |   Provide software tools for displaying real-time and long term       |
+  |                           |   trends in the performance of individual components/subsystems       |
+  |                           |   and to correlate that information with time-stamped data from       |
+  |                           |   other subsystems.                                                   |
   +---------------------------+-----------------------------------------------------------------------+
 
 The above considerations lead to a design of the TCS that also has the

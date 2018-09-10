@@ -42,10 +42,10 @@ subsystems are discussed in the following subsections.
 
   `The VITRO system
   <http://www.dgac.gob.cl/portalweb/dgac/acercaDeLaDGAC/sistemaAeronauticoNacional/tecnologia>`_
-  (Visualización de Tránsito Aéreo Oceánico) shows in real-time a feed of aircraft locations,
+  (Visualizacion de Transito Aereo Oceanico) shows in real-time a feed of aircraft locations,
   with their altitude, velocity and flight direction, similar the one used by
   air traffic controllers. The VITRO system is available from accredited vendors
-  by the Chilean Dirección General de Aeronáutica Civil (DGAC), the Chilean
+  by the Chilean Direccion General de Aeronautica Civil (DGAC), the Chilean
   equivalent of the Federal Aviation Administration (FAA) in US. GMTO will
   contract with VITRO system vendors to provide the system, and to explore the
   possibility of interfacing with the data feed. This could allow for automation
@@ -55,7 +55,7 @@ subsystems are discussed in the following subsections.
 
 **All Sky Cameras, Boresight Cameras**
 
-  Complementary systems (e.g., all-sky and boresight cameras) have been
+  Complementary systems (e.g., all-sky and bore-sight cameras) have been
   successfully deployed by other observatories to provide additional aircraft
   detection redundancy. GMTO will explore deploying similar systems for its
   laser guide star operations. An all-sky camera system takes continuous images
@@ -143,6 +143,3 @@ sequencer should gracefully stop an LGS observation and, even long before,
 inform the observer of alternative observation strategies, e.g., wait if the
 window is short, move to another clear target, consult the scheduler for a
 better alternative, etc..
-
-
-

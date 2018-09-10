@@ -39,95 +39,95 @@ technologies in the project is included in the Software and Controls Handbook
 .. table:: Requirements Flow Down from Level 1 and Level 2
 
   +----------------------------+-------------------------------------------------------------------+
-  | | Requirement              | | Statement                                                       |
+  |   Requirement              |   Statement                                                       |
   +============================+===================================================================+
-  | | Software and Controls    | | The GMT shall establish a set of Software and Controls          |
-  | | Standards                | | Standards (GMT-SWC-REF-00029).                                  |
+  |   Software and Controls    |   The GMT shall establish a set of Software and Controls          |
+  |   Standards                |   Standards (GMT-SWC-REF-00029).                                  |
   +----------------------------+-------------------------------------------------------------------+
-  | | GMT System Health        | | The GMT shall provide continuous performance, status and        |
-  | |                          | | system health monitoring.                                       |
+  |   GMT System Health        |   The GMT shall provide continuous performance, status and        |
+  |                            |   system health monitoring.                                       |
   +----------------------------+-------------------------------------------------------------------+
-  | | Scheduled Maintenance    | | The SWCS shall be designed to facilitate maintenance and to     |
-  | | Time                     | | comply with GMT Maintenance Time Budget (GMT-SE-DOC-            |
-  | |                          | | 00420).                                                         |
+  |   Scheduled Maintenance    |   The SWCS shall be designed to facilitate maintenance and to     |
+  |   Time                     |   comply with GMT Maintenance Time Budget (GMT-SE-DOC-            |
+  |                            |   00420).                                                         |
   +----------------------------+-------------------------------------------------------------------+
-  | | Critical Spares          | | The GMT shall provide spares for critical subsystem and         |
-  | |                          | | instrument components as defined in the GMT Critical Spares     |
-  | |                          | | Document (GMT-SE-DOC-00277).                                    |
+  |   Critical Spares          |   The GMT shall provide spares for critical subsystem and         |
+  |                            |   instrument components as defined in the GMT Critical Spares     |
+  |                            |   Document (GMT-SE-DOC-00277).                                    |
   +----------------------------+-------------------------------------------------------------------+
-  | | Field Bus Standard       | | The GMT standard field bus shall be EtherCAT                    |
+  |   Field Bus Standard       |   The GMT standard field bus shall be EtherCAT                    |
   +----------------------------+-------------------------------------------------------------------+
-  | | Field Device Profiles    | | GMT device shall meet the standards defined in GMT-SWC-         |
-  | |                          | | REF-00029.                                                      |
+  |   Field Device Profiles    |   GMT device shall meet the standards defined in GMT-SWC-         |
+  |                            |   REF-00029.                                                      |
   +----------------------------+-------------------------------------------------------------------+
-  | | Electronics Standards    | | The GMT shall comply with the Electronics Standards (GMT-       |
-  | |                          | | SE-REF-00191) for the project.                                  |
+  |   Electronics Standards    |   The GMT shall comply with the Electronics Standards (GMT-       |
+  |                            |   SE-REF-00191) for the project.                                  |
   +----------------------------+-------------------------------------------------------------------+
-  | | GIR / OSS InfiniBand     | | GMT shall provide TBD redundant sets of InfiniBand lines that   |
-  | | Lines                    | | run from the control building electronics room (data center)    |
-  | |                          | | to junction boxes on the GIR/M2 using independent and           |
-  | |                          | | separate cable routings.                                        |
+  |   GIR / OSS InfiniBand     |   GMT shall provide TBD redundant sets of InfiniBand lines that   |
+  |   Lines                    |   run from the control building electronics room (data center)    |
+  |                            |   to junction boxes on the GIR/M2 using independent and           |
+  |                            |   separate cable routings.                                        |
   +----------------------------+-------------------------------------------------------------------+
-  | | Telecommunications       | | The GMT shall provide telecommunications between the            |
-  | |                          | | facilities on the summit, the support site, the base            |
-  | |                          | | facility, and connection to external commercial providers.      |
+  |   Telecommunications       |   The GMT shall provide telecommunications between the            |
+  |                            |   facilities on the summit, the support site, the base            |
+  |                            |   facility, and connection to external commercial providers.      |
   +----------------------------+-------------------------------------------------------------------+
-  | | Computer Network         | | The GMT shall provide a computer network infrastructure on      |
-  | |                          | | the summit to support telescope operation, the specified        |
-  | |                          | | Operating Modes, required data transfer rates, and connection   |
-  | |                          | | to the commercial provider.                                     |
+  |   Computer Network         |   The GMT shall provide a computer network infrastructure on      |
+  |                            |   the summit to support telescope operation, the specified        |
+  |                            |   Operating Modes, required data transfer rates, and connection   |
+  |                            |   to the commercial provider.                                     |
   +----------------------------+-------------------------------------------------------------------+
-  | | Communication            | | The GMT shall define a standard set of software protocols and   |
-  | | Protocols                | | APIs that allow the communication with the required             |
-  | |                          | | performance between different components.                       |
+  |   Communication            |   The GMT shall define a standard set of software protocols and   |
+  |   Protocols                |   APIs that allow the communication with the required             |
+  |                            |   performance between different components.                       |
   +----------------------------+-------------------------------------------------------------------+
-  | | GIR / OSS / Azimuth      | | GMT shall provide a redundant set of fiber trunk lines that     |
-  | | Disk Fiber Trunk         | | run from the control building electronics room (data center)    |
-  | | Lines                    | | to junction boxes on the GIR / OSS / azimuth disk using         |
-  | |                          | | independent and separate cable routings.                        |
+  |   GIR / OSS / Azimuth      |   GMT shall provide a redundant set of fiber trunk lines that     |
+  |   Disk Fiber Trunk         |   run from the control building electronics room (data center)    |
+  |   Lines                    |   to junction boxes on the GIR / OSS / azimuth disk using         |
+  |                            |   independent and separate cable routings.                        |
   +----------------------------+-------------------------------------------------------------------+
-  | | ASM Maximum Update       | | The ASM shall have a maximum update rate in the Field           |
-  | | Rate                     | | Stabilization and Adaptive Optics modes of no less than 1 kHz.  |
+  |   ASM Maximum Update       |   The ASM shall have a maximum update rate in the Field           |
+  |   Rate                     |   Stabilization and Adaptive Optics modes of no less than 1 kHz.  |
   +----------------------------+-------------------------------------------------------------------+
-  | | ASM Actuator             | | The ASM actuator response time to a 1 micron step (reaching     |
-  | | Response Time            | | 80% of the commanded step size) shall be less than 0.5 ms.      |
+  |   ASM Actuator             |   The ASM actuator response time to a 1 micron step (reaching     |
+  |   Response Time            |   80% of the commanded step size) shall be less than 0.5 ms.      |
   +----------------------------+-------------------------------------------------------------------+
-  | | NGWS Maximum             | | The NGW shall operate at a minimum frame rate of 1.0 kHz        |
-  | | Frame rate               | | [2.0 kHz goal].                                                 |
+  |   NGWS Maximum             |   The NGW shall operate at a minimum frame rate of 1.0 kHz        |
+  |   Frame rate               |   [2.0 kHz goal].                                                 |
   +----------------------------+-------------------------------------------------------------------+
-  | | LTWS Detector            | | The LTWS Detector shall have a full frame rate (or equivalent)  |
-  | | Maximum Frame Rate       | | of greater or equal to 1000 frames per second.                  |
+  |   LTWS Detector            |   The LTWS Detector shall have a full frame rate (or equivalent)  |
+  |   Maximum Frame Rate       |   of greater or equal to 1000 frames per second.                  |
   +----------------------------+-------------------------------------------------------------------+
-  | | AOS Embedded Control     | | The AOS shall provide embedded Control Systems to control       |
-  | | System                   | | individual AOS component / devices.                             |
+  |   AOS Embedded Control     |   The AOS shall provide embedded Control Systems to control       |
+  |   System                   |   individual AOS component / devices.                             |
   +----------------------------+-------------------------------------------------------------------+
 
 .. table:: General SWCS Platform Requirements (Level 3)
 
   +-----------------------------+---------------------------------------------------------------+
-  | | Requirement               | | Statement                                                   |
+  |   Requirement               |   Statement                                                   |
   +=============================+===============================================================+
-  | | Connections to            | | Provide standardized connections to science instruments per |
-  | | Instruments               | | the SWC Standards document (GMT-SWC-DOC-00029)              |
+  |   Connections to            |   Provide standardized connections to science instruments per |
+  |   Instruments               |   the SWC Standards document (GMT-SWC-DOC-00029)              |
   +-----------------------------+---------------------------------------------------------------+
-  | | Electronics Standards     | | Comply with the electronics standards specifications per    |
-  | |                           | | GMT-SE-REF-00191.                                           |
+  |   Electronics Standards     |   Comply with the electronics standards specifications per    |
+  |                             |   GMT-SE-REF-00191.                                           |
   +-----------------------------+---------------------------------------------------------------+
-  | | Software/Hardware         | | Establish a set of software/hardware standards              |
-  | | Standards                 | | (GMT-SWC-REF-00029) for the project.                        |
+  |   Software/Hardware         |   Establish a set of software/hardware standards              |
+  |   Standards                 |   (GMT-SWC-REF-00029) for the project.                        |
   +-----------------------------+---------------------------------------------------------------+
-  | | Software Standards        | | Follow the standards as stated in "SWC Software Standards"  |
-  | |                           | | document (GMT-SWC-REF-00029).                               |
+  |   Software Standards        |   Follow the standards as stated in "SWC Software Standards"  |
+  |                             |   document (GMT-SWC-REF-00029).                               |
   +-----------------------------+---------------------------------------------------------------+
-  | | Hardware Standards        | | Follow the standards as stated in "SWC Hardware Standards"  |
-  | |                           | | document (GMT-SWC-REF-00029).                               |
+  |   Hardware Standards        |   Follow the standards as stated in "SWC Hardware Standards"  |
+  |                             |   document (GMT-SWC-REF-00029).                               |
   +-----------------------------+---------------------------------------------------------------+
-  | | Communication Standards   | | Define a set of physical communication protocols to         |
-  | |                           | | integrate its different components.                         |
+  |   Communication Standards   |   Define a set of physical communication protocols to         |
+  |                             |   integrate its different components.                         |
   +-----------------------------+---------------------------------------------------------------+
-  | | Critical Spares           | | Provide spares for critical subsystem and instrument        |
-  | |                           | | components as defined in the GMT Critical Spares Document   |
-  | |                           | | (GMT-SE-DOC-00277).                                         |
+  |   Critical Spares           |   Provide spares for critical subsystem and instrument        |
+  |                             |   components as defined in the GMT Critical Spares Document   |
+  |                             |   (GMT-SE-DOC-00277).                                         |
   +-----------------------------+---------------------------------------------------------------+
 
 .. toctree::

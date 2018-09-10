@@ -79,52 +79,52 @@ considered:
 .. table:: Observatory Operations Requirements from Science and System Level governing the OPS. (Level 2)
 
   +---------------------------+--------------------------------------------------------------------+
-  | | Title                   | | Statement                                                        |
+  |   Title                   |   Statement                                                        |
   +===========================+====================================================================+
-  | | Observing Efficiency    | | The GMT facility shall be designed to optimize on-sky            |
-  | |                         | | observing efficiency, and comply with GMT Efficiency Budget      |
-  | |                         | | (GMT-SE-REF-00593).                                              |
+  |   Observing Efficiency    |   The GMT facility shall be designed to optimize on-sky            |
+  |                           |   observing efficiency, and comply with GMT Efficiency Budget      |
+  |                           |   (GMT-SE-REF-00593).                                              |
   +---------------------------+--------------------------------------------------------------------+
-  | | Classical, Queue,       | | Provide classical on-site investigator directed, queue,          |
-  | | Interrupt, and Remote   | | interrupt, or remote observing, modes.                           |
-  | | Observer Modes          | |                                                                  |
+  |   Classical, Queue,       |   Provide classical on-site investigator directed, queue,          |
+  |   Interrupt, and Remote   |   interrupt, or remote observing, modes.                           |
+  |   Observer Modes          |                                                                    |
   +---------------------------+--------------------------------------------------------------------+
-  | | Telescope Operators,    | | GMT will be designed to facilitate operations by telescope       |
-  | | Instrument Specialists, | | operators, instrument specialists, and AO specialists.           |
-  | | AO Specialists          | |                                                                  |
+  |   Telescope Operators,    |   GMT will be designed to facilitate operations by telescope       |
+  |   Instrument Specialists, |   operators, instrument specialists, and AO specialists.           |
+  |   AO Specialists          |                                                                    |
   +---------------------------+--------------------------------------------------------------------+
-  | | Observing Support       | | Provide tools needed to prepare and carry out observing          |
-  | | Tools                   | | programs. These include proposal preparation, observing          |
-  | |                         | | plan preparation, observing execution, tools, and user           |
-  | |                         | | manuals and guides.                                              |
+  |   Observing Support       |   Provide tools needed to prepare and carry out observing          |
+  |   Tools                   |   programs. These include proposal preparation, observing          |
+  |                           |   plan preparation, observing execution, tools, and user           |
+  |                           |   manuals and guides.                                              |
   +---------------------------+--------------------------------------------------------------------+
-  | | Science Data Archive    | | Ensure the integrity of the science data by providing an         |
-  | |                         | | archive for storing and retrieving science data.                 |
+  |   Science Data Archive    |   Ensure the integrity of the science data by providing an         |
+  |                           |   archive for storing and retrieving science data.                 |
   +---------------------------+--------------------------------------------------------------------+
-  | | Engineering Data        | | Provide hardware and software to collect, store, retrieve,       |
-  | | Management System       | | analyze and display engineering data to monitor the              |
-  | |                         | | performance and health of the GMT system and environmental       |
-  | |                         | | conditions.                                                      |
+  |   Engineering Data        |   Provide hardware and software to collect, store, retrieve,       |
+  |   Management System       |   analyze and display engineering data to monitor the              |
+  |                           |   performance and health of the GMT system and environmental       |
+  |                           |   conditions.                                                      |
   +---------------------------+--------------------------------------------------------------------+
-  | | Engineering Data        | | Provide an archive for storing engineering data.                 |
-  | | Archive                 | |                                                                  |
+  |   Engineering Data        |   Provide an archive for storing engineering data.                 |
+  |   Archive                 |                                                                    |
   +---------------------------+--------------------------------------------------------------------+
-  | | Observing and           | | Provide software tools that support, manage, and execute,        |
-  | | Operation Mode          | | the operational and observing modes of the telescope.            |
-  | | Support                 | |                                                                  |
+  |   Observing and           |   Provide software tools that support, manage, and execute,        |
+  |   Operation Mode          |   the operational and observing modes of the telescope.            |
+  |   Support                 |                                                                    |
   +---------------------------+--------------------------------------------------------------------+
-  | | GMT System Health       | | Provide continuous performance, status, and system               |
-  | |                         | | health monitoring.                                               |
+  |   GMT System Health       |   Provide continuous performance, status, and system               |
+  |                           |   health monitoring.                                               |
   +---------------------------+--------------------------------------------------------------------+
-  | | Product Quality         | | Provide software tools to assess the validity of                 |
-  | | Assessment              | | observation data products.                                       |
+  |   Product Quality         |   Provide software tools to assess the validity of                 |
+  |   Assessment              |   observation data products.                                       |
   +---------------------------+--------------------------------------------------------------------+
-  | | Integrated User         | | Provide an integrated and consistent interface that is intuitive |
-  | | Interface               | | for navigating and accessing the functionality of the system,    |
-  | |                         | | and defines a common look and feel across the system.            |
+  |   Integrated User         |   Provide an integrated and consistent interface that is intuitive |
+  |   Interface               |   for navigating and accessing the functionality of the system,    |
+  |                           |   and defines a common look and feel across the system.            |
   +---------------------------+--------------------------------------------------------------------+
-  | | Environmental           | | Provide an Environmental Facility for monitoring the seismic,    |
-  | | Monitoring Facility     | | particulate, weather, and atmospheric conditions.                |
+  |   Environmental           |   Provide an Environmental Facility for monitoring the seismic,    |
+  |   Monitoring Facility     |   particulate, weather, and atmospheric conditions.                |
   +---------------------------+--------------------------------------------------------------------+
 
 

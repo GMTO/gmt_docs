@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6. Model specification guide document &mdash; GMT Software And Controls documentation</title>
+  <title>5. Model specification guide document &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -32,6 +32,8 @@
   
 
   
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
@@ -39,8 +41,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="7. Model-language mapping" href="model_language_mapping/index.html"/>
-        <link rel="prev" title="5. gds documentation" href="gds_guide.html"/> 
+        <link rel="next" title="6. Model-language mapping" href="model_language_mapping/index.html"/>
+        <link rel="prev" title="4. gds documentation" href="gds_guide.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -104,48 +106,46 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">1. Installing the SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ocs_module_spec.html">4. OCS Module Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gds_guide.html">5. gds documentation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">6. Model specification guide document</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">6.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#modeling-language">6.2. Modeling Language</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#model-specification-workflow">6.3. Model specification workflow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#model-classifier-features">6.4. Model Classifier Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-specification">6.5. Module Specification</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">6.5.1. Introduction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-metaclass-structure">6.5.2. Module metaclass structure</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-file-mapping">6.5.3. Module File Mapping</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-definition-file">6.5.4. Module Definition File</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-specification-file">6.5.5. Module Specification File</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-loader-file">6.5.6. Module Loader File</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-types-file">6.5.7. Module Types File</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-documentation-file">6.5.8. Module Documentation File</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-compilation">6.5.9. Module Compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gds_guide.html">4. gds documentation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Model specification guide document</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">5.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modeling-language">5.2. Modeling Language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-specification-workflow">5.3. Model specification workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-classifier-features">5.4. Model Classifier Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-specification">5.5. Module Specification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">5.5.1. Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-metaclass-structure">5.5.2. Module metaclass structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-file-mapping">5.5.3. Module File Mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-definition-file">5.5.4. Module Definition File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-specification-file">5.5.5. Module Specification File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-loader-file">5.5.6. Module Loader File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-types-file">5.5.7. Module Types File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-documentation-file">5.5.8. Module Documentation File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-compilation">5.5.9. Module Compilation</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#package-specification">6.6. Package Specification</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">6.6.1. Introduction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#types-of-packages">6.6.2. Types of Packages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#package-specification-file">6.6.3. Package Specification File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-specification">5.6. Package Specification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">5.6.1. Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#types-of-packages">5.6.2. Types of Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#package-specification-file">5.6.3. Package Specification File</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#component-specification">6.7. Component Specification</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id3">6.7.1. Introduction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#component-specification-file">6.7.2. Component Specification File</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#component-features">6.7.3. Component Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dataport-features">6.7.4. <em>DataPort</em> Features</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#valueclassifier-features">6.7.5. <em>ValueClassifier</em> Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#component-specification">5.7. Component Specification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">5.7.1. Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-specification-file">5.7.2. Component Specification File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-features">5.7.3. Component Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataport-features">5.7.4. <em>DataPort</em> Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valueclassifier-features">5.7.5. <em>ValueClassifier</em> Features</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#appendix-a-model-datatype-listing">6.8. Appendix A - Model DataType Listing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#appendix-b-model-unittype-listing">6.9. Appendix B - Model UnitType Listing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appendix-a-model-datatype-listing">5.8. Appendix A - Model DataType Listing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appendix-b-model-unittype-listing">5.9. Appendix B - Model UnitType Listing</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">8. Core Services user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="io_fwk_guide.html">9. I/O Framework user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">10. HDK example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="isample_example.html">11. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">6. Model-language mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">7. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">8. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">9. HDK example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -196,7 +196,7 @@
         
           <li><a href="index.html">Software Development</a> &raquo;</li>
         
-      <li>6. Model specification guide document</li>
+      <li>5. Model specification guide document</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -214,16 +214,16 @@
            <div itemprop="articleBody">
             
   <div class="section" id="model-specification-guide-document">
-<span id="modeling-guidelines"></span><h1>6. Model specification guide document<a class="headerlink" href="#model-specification-guide-document" title="Permalink to this headline">¶</a></h1>
+<span id="modeling-guidelines"></span><h1>5. Model specification guide document<a class="headerlink" href="#model-specification-guide-document" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>6.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>5.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="../SWC_architecture/index.html#slpdr"><span class="std std-ref">OCS Architecture Document</span></a> and the <a class="reference internal" href="../SWC_standards/reference_architecture/dcs_reference_architecture.html#dcs-reference-architecture"><span class="std std-ref">Software and Controls Standards</span></a>
 provide extended descriptions of the nature and scope of the Observatory
 Control System. This document describes the use of a modeling language to write formal
 specifications of OCS elements.</p>
 </div>
 <div class="section" id="modeling-language">
-<h2>6.2. Modeling Language<a class="headerlink" href="#modeling-language" title="Permalink to this headline">¶</a></h2>
+<h2>5.2. Modeling Language<a class="headerlink" href="#modeling-language" title="Permalink to this headline">¶</a></h2>
 <p>The OCS uses an internal Domain Specific Language (DSL) to create a
 platform independent specification of the OCS Modules. The DSL uses
 a Javascript transpiler (Coffeescript) that generates modern Javascript
@@ -248,18 +248,18 @@ global context, there is no need to have awareness of module import declarations
 </div></blockquote>
 </div>
 <div class="section" id="model-specification-workflow">
-<h2>6.3. Model specification workflow<a class="headerlink" href="#model-specification-workflow" title="Permalink to this headline">¶</a></h2>
+<h2>5.3. Model specification workflow<a class="headerlink" href="#model-specification-workflow" title="Permalink to this headline">¶</a></h2>
 <p>The next diagram shows an overview of the model specification workflow and it’s
 relation with formal testing. The <a class="reference internal" href="../SWC_standards/reference_architecture/dcs_reference_architecture.html#dcs-reference-architecture"><span class="std std-ref">Software and Controls Standards</span></a>
 provide a more detailed description of a module life-cycle and the role of formal
 specifications in that context.</p>
 <div class="figure" id="id4">
 <img alt="../_images/dcs_implementation_strategy1.png" src="../_images/dcs_implementation_strategy1.png" />
-<p class="caption"><span class="caption-number">Fig. 6.10 </span><span class="caption-text">DCS Implementation Strategy</span></p>
+<p class="caption"><span class="caption-number">Fig. 5.26 </span><span class="caption-text">DCS Implementation Strategy</span></p>
 </div>
 </div>
 <div class="section" id="model-classifier-features">
-<span id="classifier-def"></span><h2>6.4. Model Classifier Features<a class="headerlink" href="#model-classifier-features" title="Permalink to this headline">¶</a></h2>
+<span id="classifier-def"></span><h2>5.4. Model Classifier Features<a class="headerlink" href="#model-classifier-features" title="Permalink to this headline">¶</a></h2>
 <p>Most Model Elements derive from the metaclass <em>Classifier</em>, which defines an
 elemental modeling element. The metaclass <em>Classifier</em> is <strong>abstract</strong> and as such
 it cannot be instantiated by itself. Model element specifications define a set of
@@ -358,9 +358,9 @@ A <em>File</em> has the following features:</p>
 </dl>
 </div>
 <div class="section" id="module-specification">
-<h2>6.5. Module Specification<a class="headerlink" href="#module-specification" title="Permalink to this headline">¶</a></h2>
+<h2>5.5. Module Specification<a class="headerlink" href="#module-specification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
-<h3>6.5.1. Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>5.5.1. Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p><em>Subsystems</em> are the top level organization unit for software modules and hardware
 components.  The <em>Components</em> that are part of a <em>Subsystem</em> are organized in <em>Packages</em>.
 In order to fully specify a module a set of files is needed:</p>
@@ -376,16 +376,16 @@ In order to fully specify a module a set of files is needed:</p>
 <p>The following sections describe each one of the files.</p>
 </div>
 <div class="section" id="module-metaclass-structure">
-<h3>6.5.2. Module metaclass structure<a class="headerlink" href="#module-metaclass-structure" title="Permalink to this headline">¶</a></h3>
+<h3>5.5.2. Module metaclass structure<a class="headerlink" href="#module-metaclass-structure" title="Permalink to this headline">¶</a></h3>
 <p>The following diagram shows the metaclasses relevant to the definition of a <em>DCS</em> module:
 A <em>DCS</em> is an aggregate of <em>Packages</em>, which are an aggregate of <em>Components</em></p>
 <div class="figure" id="id5">
 <img alt="../_images/dcs_bdd.png" src="../_images/dcs_bdd.png" />
-<p class="caption"><span class="caption-number">Fig. 6.11 </span><span class="caption-text">DCS Model Elements</span></p>
+<p class="caption"><span class="caption-number">Fig. 5.27 </span><span class="caption-text">DCS Model Elements</span></p>
 </div>
 </div>
 <div class="section" id="module-file-mapping">
-<h3>6.5.3. Module File Mapping<a class="headerlink" href="#module-file-mapping" title="Permalink to this headline">¶</a></h3>
+<h3>5.5.3. Module File Mapping<a class="headerlink" href="#module-file-mapping" title="Permalink to this headline">¶</a></h3>
 <p>Each module is mapped into the file system using the following structure:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;/</span>
    <span class="o">|--</span> <span class="n">model</span>
@@ -414,7 +414,7 @@ A <em>DCS</em> is an aggregate of <em>Packages</em>, which are an aggregate of <
 are described in the following sections.</p>
 </div>
 <div class="section" id="module-definition-file">
-<h3>6.5.4. Module Definition File<a class="headerlink" href="#module-definition-file" title="Permalink to this headline">¶</a></h3>
+<h3>5.5.4. Module Definition File<a class="headerlink" href="#module-definition-file" title="Permalink to this headline">¶</a></h3>
 <p>The <em>Module</em> definition file specifies the structure, i.e. the <em>Packages</em> and <em>Component</em>
 of the <em>Module</em>. The <em>Module</em> definition file must conform to the following naming convention:
 &lt;module_name&gt;_def.coffee, e.g. <em>hdk_dcs_def.coffee</em>. For each <em>Component</em> it also specifies the <em>Component</em> features that
@@ -460,7 +460,7 @@ The possible values are:</p>
 </dl>
 </div>
 <div class="section" id="module-specification-file">
-<h3>6.5.5. Module Specification File<a class="headerlink" href="#module-specification-file" title="Permalink to this headline">¶</a></h3>
+<h3>5.5.5. Module Specification File<a class="headerlink" href="#module-specification-file" title="Permalink to this headline">¶</a></h3>
 <p>The Module specification file contains the formal definition of the Module.
 Modules are specified with the metaclass <em>Subsystem</em> unless a specialitation exists
 like in the case of a <em>DCS</em>. In addition to the features of a <em>Classifier</em>
@@ -546,7 +546,7 @@ If the <code class="docutils literal"><span class="pre">nom_rate</span></code> i
 </div></blockquote>
 </div>
 <div class="section" id="module-loader-file">
-<h3>6.5.6. Module Loader File<a class="headerlink" href="#module-loader-file" title="Permalink to this headline">¶</a></h3>
+<h3>5.5.6. Module Loader File<a class="headerlink" href="#module-loader-file" title="Permalink to this headline">¶</a></h3>
 <p>The Module Loader File contains the list of model files that will be loaded in the
 GMT environment (e.g. by the gds command line application or by creating an
 instance of <em>ModelContext</em>). The name of the module loader must conform to the
@@ -579,12 +579,12 @@ export the module definition file</p>
 </div></blockquote>
 </div>
 <div class="section" id="module-types-file">
-<h3>6.5.7. Module Types File<a class="headerlink" href="#module-types-file" title="Permalink to this headline">¶</a></h3>
+<h3>5.5.7. Module Types File<a class="headerlink" href="#module-types-file" title="Permalink to this headline">¶</a></h3>
 <p>The Module Types File defines the <em>DataTypes</em> that are defined as part of the module.
 The name of the Module Types File must conform to the syntax: <em>&lt;module_name&gt;_types.coffee</em>.</p>
 <div class="figure" id="id6">
 <img alt="../_images/data_types.png" src="../_images/data_types.png" />
-<p class="caption"><span class="caption-number">Fig. 6.12 </span><span class="caption-text">DataTypes structure</span></p>
+<p class="caption"><span class="caption-number">Fig. 5.28 </span><span class="caption-text">DataTypes structure</span></p>
 </div>
 <p>The following section shows an excerpt of a Module Types File</p>
 <blockquote>
@@ -616,7 +616,7 @@ The name of the Module Types File must conform to the syntax: <em>&lt;module_nam
 </div></blockquote>
 </div>
 <div class="section" id="module-documentation-file">
-<h3>6.5.8. Module Documentation File<a class="headerlink" href="#module-documentation-file" title="Permalink to this headline">¶</a></h3>
+<h3>5.5.8. Module Documentation File<a class="headerlink" href="#module-documentation-file" title="Permalink to this headline">¶</a></h3>
 <p>In case that the description of the module is extensive, it is possible to
 defined in an independent file instead of inline. The next example shows how to
 include the documentation file in the Module Definition File.</p>
@@ -629,7 +629,7 @@ include the documentation file in the Module Definition File.</p>
 </div></blockquote>
 </div>
 <div class="section" id="module-compilation">
-<h3>6.5.9. Module Compilation<a class="headerlink" href="#module-compilation" title="Permalink to this headline">¶</a></h3>
+<h3>5.5.9. Module Compilation<a class="headerlink" href="#module-compilation" title="Permalink to this headline">¶</a></h3>
 <p>Once the module is fully defined it has to be compiled running the command <em>webpack</em> in
 the model directory of the module. The <em>webpack</em> command will process the model
 files, optimize them and install the corresponding model library file
@@ -640,9 +640,9 @@ so the code generation gds command can include the latest changes).</p>
 </div>
 </div>
 <div class="section" id="package-specification">
-<h2>6.6. Package Specification<a class="headerlink" href="#package-specification" title="Permalink to this headline">¶</a></h2>
+<h2>5.6. Package Specification<a class="headerlink" href="#package-specification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
-<h3>6.6.1. Introduction<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>5.6.1. Introduction<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p><em>Packages</em> are used to group software <em>Components</em> that show strong dependency between them. Software packages should be chosen
 in a way that maximizes internal consistency and minimizes inter-package coupling.</p>
 <p>Each DCS is made up of components organized into packages according to their
@@ -650,7 +650,7 @@ functional affinity or relationships. Examples of packages and their components
 are shown in the Table below.</p>
 </div>
 <div class="section" id="types-of-packages">
-<h3>6.6.2. Types of Packages<a class="headerlink" href="#types-of-packages" title="Permalink to this headline">¶</a></h3>
+<h3>5.6.2. Types of Packages<a class="headerlink" href="#types-of-packages" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Which packages exist in which subsystem depends on the specific functionality
 (e.g., some subsystems do not require special calibration components, or do
@@ -671,354 +671,161 @@ control subsystems.</li>
 </div></blockquote>
 </div></blockquote>
 <table border="1" class="docutils" id="id7">
-<caption><span class="caption-number">Table 6.13 </span><span class="caption-text">SWC Functional Packages:  Device Control</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 5.24 </span><span class="caption-text">SWC Functional Packages:  Device Control</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="22%" />
-<col width="58%" />
+<col width="57%" />
 <col width="20%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">Package Name</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Description</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Typical</div>
-<div class="line">Components</div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">Package Name</th>
+<th class="head">Description</th>
+<th class="head">Typical
+Components</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Control Package</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Contains software Components that implement the</div>
-<div class="line">supervisory and control functions of a Device</div>
-<div class="line">Control Subsystem (e.g., Mount Control System</div>
-<div class="line">Control Package).</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Supervisor,</div>
-<div class="line">Controller</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>Control Package</td>
+<td>Contains software Components that implement the
+supervisory and control functions of a Device
+Control Subsystem (e.g., Mount Control System
+Control Package).</td>
+<td>Supervisor,
+Controller</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Data Acquisition</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Contains software Components that implement the</div>
-<div class="line">supervisory and data acquisition functions of a Detector</div>
-<div class="line">Control Subsystem (e.g., AGWS Slope Processor Package).</div>
-<div class="line">Only Subsystems that contain detectors (e.g wavefront</div>
-<div class="line">sensor, acquisition/guide camera or a science detector)</div>
-<div class="line">need to provide a Data Acquisition Package.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Supervisor,</div>
-<div class="line">Controller,</div>
-<div class="line">Pipeline</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>Data Acquisition</td>
+<td>Contains software Components that implement the
+supervisory and data acquisition functions of a Detector
+Control Subsystem (e.g., AGWS Slope Processor Package).
+Only Subsystems that contain detectors (e.g wavefront
+sensor, acquisition/guide camera or a science detector)
+need to provide a Data Acquisition Package.</td>
+<td>Supervisor,
+Controller,
+Pipeline</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Hardware Package</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Contains hardware Components in which to deploy the</div>
-<div class="line">Device Control or Data Acquisition Package software</div>
-<div class="line">Component and the hardware to interface with the</div>
-<div class="line">electromechanical Devices.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Device Control</div>
-<div class="line">Computer,</div>
-<div class="line">I/O Module</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>Hardware Package</td>
+<td>Contains hardware Components in which to deploy the
+Device Control or Data Acquisition Package software
+Component and the hardware to interface with the
+electro-mechanical Devices.</td>
+<td>Device Control
+Computer,
+I/O Module</td>
 </tr>
 </tbody>
 </table>
 <table border="1" class="docutils" id="id8">
-<caption><span class="caption-number">Table 6.14 </span><span class="caption-text">SWC Functional Packages:  Operation Support</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 5.25 </span><span class="caption-text">SWC Functional Packages:  Operation Support</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="22%" />
-<col width="58%" />
-<col width="20%" />
+<col width="18%" />
+<col width="61%" />
+<col width="21%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">Package Name</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Description</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Typical</div>
-<div class="line">Components</div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">Package Name</th>
+<th class="head">Description</th>
+<th class="head">Typical
+Components</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Sequencing Package</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Contains sequence Components necessary for the</div>
-<div class="line">operation of the Subsystem.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Sequence</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>Sequencing
+Package</td>
+<td>Contains sequence Components necessary for the
+operation of the Subsystem.</td>
+<td>Sequence</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Diagnosis Package</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Contains software Components necessary to implement</div>
-<div class="line">diagnosis functions when required.  This may involve</div>
-<div class="line">the development of special control or operation modes.</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Supervisor,</div>
-<div class="line">Controller,</div>
-<div class="line">Pipeline,</div>
-<div class="line">Sequence</div>
-</div>
-</td>
+<tr class="row-odd"><td>Diagnosis
+Package</td>
+<td>Contains software Components necessary to implement
+diagnosis functions when required.  This may involve
+the development of special control or operation modes.</td>
+<td>Supervisor,
+Controller,
+Pipeline,
+Sequence</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Calibration Package</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Contains software Components necessary for the</div>
-<div class="line">calibration and characterization of hardware Devices.</div>
-<div class="line">This may include the development of special control</div>
-<div class="line">or operation modes.</div>
-<div class="line">Calibration packages usually produce influence matrices,</div>
-<div class="line">look up tables, or fitting polynomial coefficients.</div>
-<div class="line">Often these components can be modeled as pipeline</div>
-<div class="line">components and are run off-line.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Supervisor,</div>
-<div class="line">Controller,</div>
-<div class="line">Pipeline,</div>
-<div class="line">Sequence</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>Calibration
+Package</td>
+<td>Contains software Components necessary for the
+calibration and characterization of hardware Devices.
+This may include the development of special control
+or operation modes.
+Calibration packages usually produce influence matrices,
+look up tables, or fitting polynomial coefficients.
+Often these components can be modeled as pipeline
+components and are run off-line.</td>
+<td>Supervisor,
+Controller,
+Pipeline,
+Sequence</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Data Processing</div>
-<div class="line">Package</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Contains software Components necessary for the</div>
-<div class="line">calibration and processing of science and WFS detectors.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Supervisor,</div>
-<div class="line">Pipeline</div>
-</div>
-</td>
+<tr class="row-odd"><td>Data
+Processing
+Package</td>
+<td>Contains software Components necessary for the
+calibration and processing of science and WFS detectors.</td>
+<td>Supervisor,
+Pipeline</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Visualization</div>
-<div class="line">Package</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Contains software Components that provide custom</div>
-<div class="line">visualizations necessary for the efficient operation</div>
-<div class="line">of a given Subsystem (e.g., M1 global status Panel).</div>
-<div class="line">Note that default engineering Panels are available as</div>
-<div class="line">part of the Engineering UI service.</div>
-<div class="line">Visualization components may encompass functions to</div>
-<div class="line">enable the interaction of GMT users with the system:</div>
-<div class="line-block">
-<div class="line">- User experience</div>
-<div class="line">- User interaction</div>
-<div class="line">- Data visualization</div>
-<div class="line">- System navigation</div>
-</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Panel,</div>
-<div class="line">Widget,</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>Visualization
+Package</td>
+<td>Contains software Components that provide custom
+visualizations necessary for the efficient operation
+of a given Subsystem (e.g., M1 global status Panel).
+Note that default engineering Panels are available as
+part of the Engineering UI service.
+Visualization components may encompass functions to
+enable the interaction of GMT users with the system:
+User experience, user interaction, data visualization
+and system navigation</td>
+<td>Panel,
+Widget,</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Observing Tool</div>
-<div class="line">Plugin Package</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Observing Tool (OT) components provide instrument</div>
-<div class="line">specific editors that integrate with the GMT</div>
-<div class="line">Observing Tools to facilitate the specification of</div>
-<div class="line">instrument specific observation parameters.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Panel,</div>
-<div class="line">Widget,</div>
-<div class="line">Pipeline</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>Observing
+Tool
+Plugin
+Package</td>
+<td>Observing Tool (OT) components provide instrument
+specific editors that integrate with the GMT
+Observing Tools to facilitate the specification of
+instrument specific observation parameters.</td>
+<td>Panel,
+Widget,
+Pipeline</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Safety Package</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Contains software/hardware Components that implement</div>
-<div class="line">Subsystem specific safety functions.  These Components</div>
-<div class="line">often interface with the ISS, but are independent</div>
-<div class="line">(e.g., M1 safety controller).</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Supervisor,</div>
-<div class="line">Controller</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>Safety
+Package</td>
+<td>Contains software/hardware Components that implement
+Subsystem specific safety functions.  These Components
+often interface with the ISS, but are independent
+(e.g., M1 safety controller).</td>
+<td>Supervisor,
+Controller</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Operation Workflows</div>
-<div class="line">Package</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Contains Components that allow the automation of high-</div>
-<div class="line">level operation workflows relative to the Subsystem</div>
-<div class="line">(e.g., unit test workflow, or calibration workflow in</div>
-<div class="line">case that several sequences and human operations are</div>
-<div class="line">involved).</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Workflow</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>Operation
+Workflows
+Package</td>
+<td>Contains Components that allow the automation of high-
+level operation workflows relative to the Subsystem
+(e.g., unit test workflow, or calibration workflow in
+case that several sequences and human operations are
+involved).</td>
+<td>Workflow</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Management Package</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Contains Components that capture the development</div>
-<div class="line">backlog and the Assembly Integration and Testing plans.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Plan,</div>
-<div class="line">Workflow</div>
-</div>
-</td>
+<tr class="row-even"><td>Management
+Package</td>
+<td>Contains Components that capture the development
+backlog and the Assembly Integration and Testing plans.</td>
+<td>Plan,
+Workflow</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="package-specification-file">
-<h3>6.6.3. Package Specification File<a class="headerlink" href="#package-specification-file" title="Permalink to this headline">¶</a></h3>
+<h3>5.6.3. Package Specification File<a class="headerlink" href="#package-specification-file" title="Permalink to this headline">¶</a></h3>
 <p>The <em>Package</em> specification file contains the formal definition of the <em>Package</em>. Packages
 are specified with the metaclass <em>Package</em>. In addtion to the features of a <em>Classifier</em>
 a <em>Package has the features of an *Aggregate</em> and a <em>PBE</em>. We will omit the definition
@@ -1030,9 +837,9 @@ of the <em>Package</em> <em>PBE</em> and <em>Aggregate</em> features as they are
 </div>
 </div>
 <div class="section" id="component-specification">
-<h2>6.7. Component Specification<a class="headerlink" href="#component-specification" title="Permalink to this headline">¶</a></h2>
+<h2>5.7. Component Specification<a class="headerlink" href="#component-specification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3>6.7.1. Introduction<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>5.7.1. Introduction<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>The design of the GMT software and controls system is based on a distributed
 component architecture. Components represent the most elementary unit for the
 purpose of development, testing, integration and reuse. Groups of components can
@@ -1057,7 +864,7 @@ component configuration, subsystem robustness, component life cycle and
 subsystem modal transitions amongst other functions.</p>
 </div>
 <div class="section" id="component-specification-file">
-<h3>6.7.2. Component Specification File<a class="headerlink" href="#component-specification-file" title="Permalink to this headline">¶</a></h3>
+<h3>5.7.2. Component Specification File<a class="headerlink" href="#component-specification-file" title="Permalink to this headline">¶</a></h3>
 <p>Each Component is specified in it’s own independent file.
 In order to define a Component first we need to establish the
 component metaclass. The OCS metamodel defines a set of Component subtypes:
@@ -1065,11 +872,11 @@ component metaclass. The OCS metamodel defines a set of Component subtypes:
 specialitation of a class of Components</p>
 </div>
 <div class="section" id="component-features">
-<h3>6.7.3. Component Features<a class="headerlink" href="#component-features" title="Permalink to this headline">¶</a></h3>
+<h3>5.7.3. Component Features<a class="headerlink" href="#component-features" title="Permalink to this headline">¶</a></h3>
 <p>The following diagrams shows the basic structure of a <em>Component</em> and it’s building blocks.</p>
 <div class="figure" id="id9">
 <img alt="../_images/base_component.png" src="../_images/base_component.png" />
-<p class="caption"><span class="caption-number">Fig. 6.13 </span><span class="caption-text">Component model metaclasses</span></p>
+<p class="caption"><span class="caption-number">Fig. 5.29 </span><span class="caption-text">Component model metaclasses</span></p>
 </div>
 <p>The <em>Component</em> metaclass extends <em>SCI</em> (Software Configuration Item), which also extends
 <em>Classifier</em> and <em>PBE</em>. Therefore, in addition to the features of a <em>Classifier</em> and
@@ -1137,7 +944,7 @@ the recomended actions an operator must take in the ocurrence of the alarm.</dd>
 </dl>
 </div>
 <div class="section" id="dataport-features">
-<span id="dataport-def"></span><h3>6.7.4. <em>DataPort</em> Features<a class="headerlink" href="#dataport-features" title="Permalink to this headline">¶</a></h3>
+<span id="dataport-def"></span><h3>5.7.4. <em>DataPort</em> Features<a class="headerlink" href="#dataport-features" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt><code class="docutils literal"><span class="pre">max_rate</span></code></dt>
 <dd>The maximum update rate in Hz that the port must support</dd>
@@ -1266,7 +1073,7 @@ The possible values are:</p>
 </dl>
 </div>
 <div class="section" id="valueclassifier-features">
-<span id="value-classifier-def"></span><h3>6.7.5. <em>ValueClassifier</em> Features<a class="headerlink" href="#valueclassifier-features" title="Permalink to this headline">¶</a></h3>
+<span id="value-classifier-def"></span><h3>5.7.5. <em>ValueClassifier</em> Features<a class="headerlink" href="#valueclassifier-features" title="Permalink to this headline">¶</a></h3>
 <p>A <em>ValueClassifier</em> is a <em>Classifier</em> to which a value can be assigned. A <em>ValueClassifier</em> declaration
 has the following features.</p>
 <dl class="docutils">
@@ -1289,7 +1096,7 @@ B shows the predefined units in the model.</dd>
 </div>
 </div>
 <div class="section" id="appendix-a-model-datatype-listing">
-<h2>6.8. Appendix A - Model DataType Listing<a class="headerlink" href="#appendix-a-model-datatype-listing" title="Permalink to this headline">¶</a></h2>
+<h2>5.8. Appendix A - Model DataType Listing<a class="headerlink" href="#appendix-a-model-datatype-listing" title="Permalink to this headline">¶</a></h2>
 <p>The following paragraph includes the formal definition of the <em>DataType</em> classes predefined in the model.</p>
 <blockquote>
 <div><div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nx">DataType</span> <span class="s">&quot;bool&quot;</span><span class="p">,</span>         <span class="p">{</span><span class="nv">size: </span><span class="mi">1</span><span class="p">,</span>  <span class="nv">default: </span><span class="kc">false</span><span class="p">,</span> <span class="nv">desc: </span><span class="s">&quot;Boolean value&quot;</span><span class="p">}</span>
@@ -1328,7 +1135,7 @@ B shows the predefined units in the model.</dd>
 </div></blockquote>
 </div>
 <div class="section" id="appendix-b-model-unittype-listing">
-<h2>6.9. Appendix B - Model UnitType Listing<a class="headerlink" href="#appendix-b-model-unittype-listing" title="Permalink to this headline">¶</a></h2>
+<h2>5.9. Appendix B - Model UnitType Listing<a class="headerlink" href="#appendix-b-model-unittype-listing" title="Permalink to this headline">¶</a></h2>
 <p>The following paragraph includes the formal definition of the <em>UnitType</em> classes predefined in the model.</p>
 <blockquote>
 <div><div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nx">UnitType</span> <span class="s">&quot;meter&quot;</span><span class="p">,</span>       <span class="p">{</span><span class="nv">quantity: </span><span class="s">&quot;length&quot;</span><span class="p">,</span>                    <span class="nv">symbol: </span><span class="s">&quot;m&quot;</span><span class="p">,</span>             <span class="nv">desc: </span><span class="s">&quot;SI base unit: metre&quot;</span><span class="p">}</span>
@@ -1443,10 +1250,10 @@ B shows the predefined units in the model.</dd>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="model_language_mapping/index.html" class="btn btn-neutral float-right" title="7. Model-language mapping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="model_language_mapping/index.html" class="btn btn-neutral float-right" title="6. Model-language mapping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gds_guide.html" class="btn btn-neutral" title="5. gds documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gds_guide.html" class="btn btn-neutral" title="4. gds documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

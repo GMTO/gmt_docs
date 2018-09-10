@@ -24,14 +24,14 @@ archive data.
 .. table:: SWCS Time Distribution Requirements (Level 3)
 
   +--------------------+-----------------------------------------------------------+
-  | | Requirement      | | Statement                                               |
+  |   Requirement      |   Statement                                               |
   +====================+===========================================================+
-  | | Synchronization  | | Provide the capability to coordinate the operations of  |
-  | | Time Budget      | | subsystems during operations to within time budgets     |
-  | |                  | | allotted by the SLR.                                    |
+  |   Synchronization  |   Provide the capability to coordinate the operations of  |
+  |   Time Budget      |   subsystems during operations to within time budgets     |
+  |                    |   allotted by the SLR.                                    |
   +--------------------+-----------------------------------------------------------+
-  | | Time Reference   | | Provide the capability to obtain and distribute a time  |
-  | |                  | | reference accurate to 1ms (TBR).                        |
+  |   Time Reference   |   Provide the capability to obtain and distribute a time  |
+  |                    |   reference accurate to 1ms (TBR).                        |
   +--------------------+-----------------------------------------------------------+
 
 
@@ -119,7 +119,7 @@ the GMT lab67. A common arrangement is shown in Figure below:
 .. figure:: _static/PTP-master-slaves.png
 
    PTP Master with 2 Slaves Arrangement using a Switched Network and a Dedicated
-   NIC. 
+   NIC.
 
 Two slave computers were synchronized with PTP and each was generating a
 digital pulse over the serial communications port at 10 Hz. The test was

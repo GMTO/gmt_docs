@@ -32,6 +32,8 @@
   
 
   
+    <link rel="stylesheet" href="../../../_static/theme_overrides.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
@@ -237,66 +239,33 @@ operation.</p>
 <col width="68%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">Requirement</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Statement</div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">Requirement</th>
+<th class="head">Statement</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">SWC Observing Mode</div>
-<div class="line">Switching</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Provide the capability to switch from one observing mode</div>
-<div class="line">to another.</div>
-</div>
-</td>
+<tr class="row-even"><td>SWC Observing Mode
+Switching</td>
+<td>Provide the capability to switch from one observing mode
+to another.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">SWC Telescope Optical</div>
-<div class="line">Configuration Switching</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Provide capability to switch from one telescope optical</div>
-<div class="line">configuration to another in an automatic way for any</div>
-<div class="line">active instruments.</div>
-</div>
-</td>
+<tr class="row-odd"><td>SWC Telescope Optical
+Configuration Switching</td>
+<td>Provide capability to switch from one telescope optical
+configuration to another in an automatic way for any
+active instruments.</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">SWC Automated</div>
-<div class="line">Instrument Switching</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Provide capability to automate the switching of the active</div>
-<div class="line">instrument set during the night initiated and monitored by</div>
-<div class="line">the operator.</div>
-</div>
-</td>
+<tr class="row-even"><td>SWC Automated
+Instrument Switching</td>
+<td>Provide capability to automate the switching of the active
+instrument set during the night initiated and monitored by
+the operator.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Software Component</div>
-<div class="line">Configuration</div>
-<div class="line">Parameters</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Provide the capability to associate a set of configuration</div>
-<div class="line">parameters with any software component.</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>Software Component
+Configuration
+Parameters</td>
+<td>Provide the capability to associate a set of configuration
+parameters with any software component.</td>
 </tr>
 </tbody>
 </table>
@@ -347,117 +316,57 @@ following table:</p>
 <col width="75%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">Visualization Panel</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Description</div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">Visualization Panel</th>
+<th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Global Panel</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Provides an overall view of the status of the configuration service. The</div>
-<div class="line">following information will be displayed:</div>
-<div class="line"><br /></div>
-<div class="line-block">
-<div class="line">* State of each server component</div>
-<div class="line-block">
-<div class="line">(e.g., RUNNING, STOPPED, FAULT)</div>
-</div>
-<div class="line">* State of each adapter component</div>
-<div class="line-block">
-<div class="line">(e.g., RUNNING, STOPPED, FAULT)</div>
-</div>
-<div class="line">* Overall view of the system health, one box per subsystem color coded:</div>
-<div class="line-block">
-<div class="line">- green: No active alarms</div>
-<div class="line">- yellow: No serious active alarms</div>
-<div class="line">- red: Critical alarm active</div>
-</div>
-</div>
-</div>
+<tr class="row-even"><td>Global Panel</td>
+<td><p class="first">Provides an overall view of the status of the configuration service. The
+following information will be displayed:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>State of each server component
+(e.g., RUNNING, STOPPED, FAULT)</li>
+<li>State of each adapter component
+(e.g., RUNNING, STOPPED, FAULT)</li>
+<li>Overall view of the system health, one box per subsystem color coded:
+- green: No active alarms
+- yellow: No serious active alarms
+- red: Critical alarm active</li>
+</ul>
+</div></blockquote>
 </td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Navigation Panel</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Provides a way to navigate all the configuration servers and adapters. From the</div>
-<div class="line">navigation panel the state and detailed info of every server and adapter can be</div>
-<div class="line">accessed. The Navigation Panel allows also browsing efficiently all</div>
-<div class="line">configurations of the GMT software components.</div>
-</div>
+<tr class="row-odd"><td>Navigation Panel</td>
+<td>Provides a way to navigate all the configuration servers and adapters. From the
+navigation panel the state and detailed info of every server and adapter can be
+accessed. The Navigation Panel allows also browsing efficiently all
+configurations of the GMT software components.</td>
+</tr>
+<tr class="row-even"><td>Guide Panel</td>
+<td>Displays the on line documentation of the configuration service. Allows access
+to the user guide as well as the metadata (model information) of the runtime
+objects.</td>
+</tr>
+<tr class="row-odd"><td>Analytics Panel</td>
+<td><p class="first">Provides access to the runtime statistics of the configuration service.
+These should include at least.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Number and state (running/stopped/fault)</li>
+<li>Instant throughput of the system</li>
+<li>Configuration changes/sec</li>
+<li>Total data bandwidth</li>
+<li>Storage capacity (used/available)</li>
+</ul>
+</div></blockquote>
 </td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Guide Panel</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Displays the on line documentation of the configuration service. Allows access</div>
-<div class="line">to the user guide as well as the metadata (model information) of the runtime</div>
-<div class="line">objects.</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Analytics Panel</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Provides access to the runtime statistics of the configuration service.</div>
-<div class="line">These should include at least.</div>
-<div class="line-block">
-<div class="line">* Number and state (running/stopped/fault)</div>
-<div class="line">* Instant throughput of the system</div>
-<div class="line">* Configuration changes/sec</div>
-<div class="line">* Total data bandwidth</div>
-<div class="line">* Storage capacity (used/available)</div>
-</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Service Editor Panel</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The Configuration Editor Panel provides the capability to edit the values of</div>
-<div class="line">the properties of a configuration. It also enables to save, copy, or delete the</div>
-<div class="line">configuration of any given component.</div>
-</div>
-</td>
+<tr class="row-even"><td>Service Editor Panel</td>
+<td>The Configuration Editor Panel provides the capability to edit the values of
+the properties of a configuration. It also enables to save, copy, or delete the
+configuration of any given component.</td>
 </tr>
 </tbody>
 </table>

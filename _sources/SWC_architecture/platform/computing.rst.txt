@@ -60,25 +60,25 @@ The table below shows the GMT Base Computer Specification:
 .. table:: GMT Base Computer Specification
 
   +---------------------------+-------------------------------+-----------------------------------------------+
-  | | Category                | | Description                 | | Function                                    |
+  |   Category                |   Description                 |   Function                                    |
   +===========================+===============================+===============================================+
-  | | Processor architecture  | | Mulcore Intel CPU           | | Data processing and control processes       |
-  | |                         | |                             | | execution.  Hardware acceleration           |
+  |   Processor architecture  |   Mulcore Intel CPU           |   Data processing and control processes       |
+  |                           |                               |   execution.  Hardware acceleration           |
   +---------------------------+-------------------------------+-----------------------------------------------+
-  | | Storage                 | | SATA/PCIe solid state disk  | | OS image, local telemetry circular buffer   |
+  |   Storage                 |   SATA/PCIe solid state disk  |   OS image, local telemetry circular buffer   |
   +---------------------------+-------------------------------+-----------------------------------------------+
-  | | Memory                  | | > 4 GB RAM                  | | Process memory, ultra-fast telemetry        |
-  | |                         | |                             | | circular buffer                             |
+  |   Memory                  |   > 4 GB RAM                  |   Process memory, ultra-fast telemetry        |
+  |                           |                               |   circular buffer                             |
   +---------------------------+-------------------------------+-----------------------------------------------+
-  | | Networking              | | 2 x 1 GbE                   | | EtherCAT fieldbus network interface with    |
-  | |                         | |                             | | cable redundancy.                           |
-  | |                         +-------------------------------+-----------------------------------------------+
-  | |                         | | 2 x 10 GbE                  | | Observatory Service network interface       |
-  | |                         +-------------------------------+-----------------------------------------------+
-  | |                         | | 1 x 40 Gbps Infiniband      | | Low latency network interface               |
+  |   Networking              |   2 x 1 GbE                   |   EtherCAT fieldbus network interface with    |
+  |                           |                               |   cable redundancy.                           |
+  |                           +-------------------------------+-----------------------------------------------+
+  |                           |   2 x 10 GbE                  |   Observatory Service network interface       |
+  |                           +-------------------------------+-----------------------------------------------+
+  |                           |   1 x 40 Gbps Infiniband      |   Low latency network interface               |
   +---------------------------+-------------------------------+-----------------------------------------------+
-  | | Hardware acceleration   | | PCIe GPU                    | | Hardware acceleration of wavefront          |
-  | |                         | |                             | | processing and reconstruction               |
+  |   Hardware acceleration   |   PCIe GPU                    |   Hardware acceleration of wavefront          |
+  |                           |                               |   processing and reconstruction               |
   +---------------------------+-------------------------------+-----------------------------------------------+
 
 The figure below provides the description of the two control subsystem
@@ -198,4 +198,3 @@ The oscilloscope triggers on the rising edge; the green curve can be ignored as
 EtherCAT response was being tested in parallel. Over 3.5 million samples
 collected, the signal shows a (static) clock skew of 330 nanoseconds (125.00 -
 124.670), maximum jitter of 29 microseconds with 517 nanoseconds rms.
-

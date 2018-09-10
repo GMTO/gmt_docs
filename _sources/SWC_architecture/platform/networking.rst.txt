@@ -43,23 +43,23 @@ technology evolution and to optimize the final network design.
 .. table:: SWCS Networking Requirements (Level 3)
 
   +----------------------------+----------------------------------------------------------------+
-  | | Requirement              | | Statement                                                    |
+  |   Requirement              |   Statement                                                    |
   +============================+================================================================+
-  | | Communication Standards  | | SWCS shall define a set of physical communication protocols  |
-  | |                          | | to integrate its different components.                       |
+  |   Communication Standards  |   SWCS shall define a set of physical communication protocols  |
+  |                            |   to integrate its different components.                       |
   +----------------------------+----------------------------------------------------------------+
-  | | Communication Protocols  | | SWCS shall define a set of software protocols and APIs that  |
-  | |                          | | allow the communication with the required performance        |
-  | |                          | | between different components.                                |
+  |   Communication Protocols  |   SWCS shall define a set of software protocols and APIs that  |
+  |                            |   allow the communication with the required performance        |
+  |                            |   between different components.                                |
   +----------------------------+----------------------------------------------------------------+
-  | | Network Access           | | Support telescope operation, the specified operating modes   |
-  | |                          | | and data transfer rates as required.                         |
+  |   Network Access           |   Support telescope operation, the specified operating modes   |
+  |                            |   and data transfer rates as required.                         |
   +----------------------------+----------------------------------------------------------------+
-  | | General Network          | | Provide a low latency and control network.                   |
+  |   General Network          |   Provide a low latency and control network.                   |
   +----------------------------+----------------------------------------------------------------+
-  | | Storage Network          | | Provide a high bandwidth storage network.                    |
+  |   Storage Network          |   Provide a high bandwidth storage network.                    |
   +----------------------------+----------------------------------------------------------------+
-  | | Ultra-Low Latency Bus    | | Provide ultra-low latency, high bandwidth communication bus. |
+  |   Ultra-Low Latency Bus    |   Provide ultra-low latency, high bandwidth communication bus. |
   +----------------------------+----------------------------------------------------------------+
 
 

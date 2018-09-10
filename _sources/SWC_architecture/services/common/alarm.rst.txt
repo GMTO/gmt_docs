@@ -65,7 +65,7 @@ the problem, or else eventually up to the operations staff.
       an alarm event. Adapters forward the alarm events to the alarm
       supervisor using push/pull sockets. Usually a single Alarm Adapter is
       deployed for all the components of a Subsystem that are collocated in
-      the same computer. 
+      the same computer.
 
 .. figure:: _static/alarm-service-block-diagram.png
 
@@ -93,32 +93,33 @@ the problem, or else eventually up to the operations staff.
       .. table:: Alarm Service Visualization Panels
 
         +---------------------------+-----------------------------------------------------------------------------------+
-        | | Visualization Panel     | | Description                                                                     |
+        |   Visualization Panel     |   Description                                                                     |
         +===========================+===================================================================================+
-        | | Global Panel            | | Provides an overall view of the status of the alarm system. The following       |
-        | |                         | | information will be displayed:                                                  |
-        | |                         | |                                                                                 |
-        | |                         | |   * State of each telemetry server component                                    |
-        | |                         | |     (e.g., RUNNING, STOPPED, FAULT)                                             |
-        | |                         | |   * State of each telemetry adapter component                                   |
-        | |                         | |     (e.g., RUNNING, STOPPED, FAULT)                                             |
-        | |                         | |   * List of active monitors                                                     |
-        | |                         | |   * Overall view of the system health, one box per subsystem color coded:       |
-        | |                         | |     - green: No active alarms                                                   |
-        | |                         | |     - yellow: No serious active alarms                                          |
-        | |                         | |     - red: Critical alarm active                                                |
+        |   Global Panel            |   Provides an overall view of the status of the alarm system. The following       |
+        |                           |   information will be displayed:                                                  |
+        |                           |                                                                                   |
+        |                           |     * State of each telemetry server component                                    |
+        |                           |       (e.g., RUNNING, STOPPED, FAULT)                                             |
+        |                           |     * State of each telemetry adapter component                                   |
+        |                           |       (e.g., RUNNING, STOPPED, FAULT)                                             |
+        |                           |     * List of active monitors                                                     |
+        |                           |     * Overall view of the system health, one box per subsystem color coded:       |
+        |                           |       - green: No active alarms                                                   |
+        |                           |       - yellow: No serious active alarms                                          |
+        |                           |       - red: Critical alarm active                                                |
         +---------------------------+-----------------------------------------------------------------------------------+
-        | | Navigation Panel        | | Provides a way to navigate all the alarm servers and adapters. From the         |
-        | |                         | | navigation panel the state and detailed info of every server and adapter can be |
-        | |                         | | accessed.                                                                       |
+        |   Navigation Panel        |   Provides a way to navigate all the alarm servers and adapters. From the         |
+        |                           |   navigation panel the state and detailed info of every server and adapter can be |
+        |                           |   accessed.                                                                       |
         +---------------------------+-----------------------------------------------------------------------------------+
-        | | Analytics Panel         | | Provides access to the runtime statistics of the alarm service.                 |
-        | |                         | | These should include at least.                                                  |
-        | |                         | |   * Number and state (running/stopped/fault)                                    |
-        | |                         | |   * Instant throughput of the system                                            |
-        | |                         | |   * Alarms/sec                                                                  |
-        | |                         | |   * Total data bandwidth                                                        |
-        | |                         | |   * Persistence capacity (used/available)                                       |
+        |   Analytics Panel         |   Provides access to the runtime statistics of the alarm service.                 |
+        |                           |   These should include at least.                                                  |
+        |                           |                                                                                   |   
+        |                           |    * Number and state (running/stopped/fault)                                     |
+        |                           |    * Instant throughput of the system                                             |
+        |                           |    * Alarms/sec                                                                   |
+        |                           |    * Total data bandwidth                                                         |
+        |                           |    * Persistence capacity (used/available)                                        |
         +---------------------------+-----------------------------------------------------------------------------------+
 
 **Service Deployment**
@@ -127,5 +128,3 @@ the problem, or else eventually up to the operations staff.
   computers. A simple library is added to every component that allows the
   sending of alarm events. This is done via a simple API that doesn’t expose
   any service details to the component.
-
-

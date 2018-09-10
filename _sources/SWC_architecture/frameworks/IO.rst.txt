@@ -180,7 +180,7 @@ can be interfaced using the same architecture.
          uint8_t :2;
          uint8_t x1a01_6000_08 :1; // (ro) ENC Status - Status__Extrapolation stall
          uint8_t x1a01_6000_09 :1; // (ro) ENC Status - Status__Status of input A
-         ... 
+         ...
          uint32_t x1a06_6020_11;   // (ro) POS Status - Actual position
          int16_t x1a06_6020_21;    // (ro) POS Status - Actual velocity
          uint32_t x1a06_6020_22;   // (ro) POS Status - Actual drive time
@@ -215,18 +215,18 @@ The Table below shows an ECG I/O Module sysfs (EL7041 at position 10):
 .. table::  ECG I/O Module *sysfs* (EL7041 at position 10)
 
   +------------------------------------+----------+------------------------------------------------+
-  | |  sysfs                           | |  Type  | |  Description                                 |
+  |    sysfs                           |    Type  |    Description                                 |
   +====================================+==========+================================================+
-  | |  iom/dev10_EL7041/al_state       | |  int   | |  Application Layer state 0:INIT, 1:PREOP,    |
-  | |                                  | |        | |  2:SAFEOP, 3:OP)                             |
+  |    iom/dev10_EL7041/al_state       |    int   |    Application Layer state 0:INIT, 1:PREOP,    |
+  |                                    |          |    2:SAFEOP, 3:OP)                             |
   +------------------------------------+----------+------------------------------------------------+
-  | |  iom/dev10_EL7041online          | |  int   | |  IO Module online state                      |
+  |    iom/dev10_EL7041online          |    int   |    IO Module online state                      |
   +------------------------------------+----------+------------------------------------------------+
-  | |  iom/dev10_EL7041operational     | |  int   | |  IO Module operational flag                  |
+  |    iom/dev10_EL7041operational     |    int   |    IO Module operational flag                  |
   +------------------------------------+----------+------------------------------------------------+
-  | |  iom/dev10_EL7041/1a01_6000_01   | |  bit   | |  (ro) ENC Status – Status Latch C valid      |
+  |    iom/dev10_EL7041/1a01_6000_01   |    bit   |    (ro) ENC Status – Status Latch C valid      |
   +------------------------------------+----------+------------------------------------------------+
-  | |  iom/dev10_EL7041/1a01_6000_02   | |  bit   | |  (ro) ENC Status – Status Latch extern valid |
+  |    iom/dev10_EL7041/1a01_6000_02   |    bit   |    (ro) ENC Status – Status Latch extern valid |
   +------------------------------------+----------+------------------------------------------------+
 
 

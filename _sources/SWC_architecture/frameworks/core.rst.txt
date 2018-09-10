@@ -24,57 +24,57 @@ Component is specified and defined by a set of Features in the following Table:
 .. table:: Component Features
 
   +----------------+-----------------------------------------------------------------------+
-  |  Feature       | |  Description                                                        |
+  |  Feature       |    Description                                                        |
   +================+=======================================================================+
-  |  Name          | |  Unique component identifier. Allows unambiguous identification     |
-  |                | |  of each individual component in the system (e.g.,                  |
-  |                | |  ngws_xpatrol_ctrl).                                                |
+  |  Name          |    Unique component identifier. Allows unambiguous identification     |
+  |                |    of each individual component in the system (e.g.,                  |
+  |                |    ngws_xpatrol_ctrl).                                                |
   +----------------+-----------------------------------------------------------------------+
-  |  Requirements  | |  A list of requirements that can be associated with any type of     |
-  |                | |  component, allowing the allocation and traceability of             |
-  |                | |  requirements.                                                      |
+  |  Requirements  |    A list of requirements that can be associated with any type of     |
+  |                |    component, allowing the allocation and traceability of             |
+  |                |    requirements.                                                      |
   +----------------+-----------------------------------------------------------------------+
-  |  Notes         | |  Arbitrary notes can be added to any component to capture           |
-  |                | |  information during the design process. This information can be     |
-  |                | |  useful for communication between different developers, but is      |
-  |                | |  not part of the specification of the component.                    |
+  |  Notes         |    Arbitrary notes can be added to any component to capture           |
+  |                |    information during the design process. This information can be     |
+  |                |    useful for communication between different developers, but is      |
+  |                |    not part of the specification of the component.                    |
   +----------------+-----------------------------------------------------------------------+
-  |  State Machine | |  A state machine represents the operational state of a component.   |
-  |                | |  The Component state machine includes states to address the         |
-  |                | |  distributed nature of the component and its life cycle             |
-  |                | |  management.                                                        |
+  |  State Machine |    A state machine represents the operational state of a component.   |
+  |                |    The Component state machine includes states to address the         |
+  |                |    distributed nature of the component and its life cycle             |
+  |                |    management.                                                        |
   +----------------+-----------------------------------------------------------------------+
-  |  Properties    | |  Properties capture the persistent state of a component between     |
-  |                | |  different execution runs. The properties of a component are        |
-  |                | |  grouped into Component Configurations. Several configuration       |
-  |                | |  versions can be defined for a given component (e.g., diagnosis,    |
-  |                | |  engineering) and can be applied as a unit.                         |
+  |  Properties    |    Properties capture the persistent state of a component between     |
+  |                |    different execution runs. The properties of a component are        |
+  |                |    grouped into Component Configurations. Several configuration       |
+  |                |    versions can be defined for a given component (e.g., diagnosis,    |
+  |                |    engineering) and can be applied as a unit.                         |
   +----------------+-----------------------------------------------------------------------+
-  | State Variables| |  State variables allow continuous or episodic sampling of the       |
-  |                | |  phisical state of the Component. State variables are transported   |
-  |                | |  as a stream of time-stamped data. State variables are the source   |
-  |                | |  of the telemetry service. Telemetry communication is kept          |
-  |                | |  separated from control data.                                       |
+  | State Variables|    State variables allow continuous or episodic sampling of the       |
+  |                |    phisical state of the Component. State variables are transported   |
+  |                |    as a stream of time-stamped data. State variables are the source   |
+  |                |    of the telemetry service. Telemetry communication is kept          |
+  |                |    separated from control data.                                       |
   +----------------+-----------------------------------------------------------------------+
-  |  Alarms        | |  Alarms represent fault conditions that may affect the nominal      |
-  |                | |  behavior of the Component. The occurrence of an alarm is always    |
-  |                | |  reported.                                                          |
+  |  Alarms        |    Alarms represent fault conditions that may affect the nominal      |
+  |                |    behavior of the Component. The occurrence of an alarm is always    |
+  |                |    reported.                                                          |
   +----------------+-----------------------------------------------------------------------+
-  |  Input Ports   | |  Data inputs use communication ports that support low               |
-  |                | |  latency, synchronous and asynchronous control data flow. Data      |
-  |                | |  inputs and data outputs are specified with the data types and      |
-  |                | |  the maximum rate that they support. Data inputs and data output    |
-  |                | |  are linked with Connectors. Different operation modes may          |
-  |                | |  require different Quality of Service (QoS) between the same        |
-  |                | |  ports. Connectors include the QoS specification corresponding      |
-  |                | |  with connection configuration and the fault management strategy.   |
+  |  Input Ports   |    Data inputs use communication ports that support low               |
+  |                |    latency, synchronous and asynchronous control data flow. Data      |
+  |                |    inputs and data outputs are specified with the data types and      |
+  |                |    the maximum rate that they support. Data inputs and data output    |
+  |                |    are linked with Connectors. Different operation modes may          |
+  |                |    require different Quality of Service (QoS) between the same        |
+  |                |    ports. Connectors include the QoS specification corresponding      |
+  |                |    with connection configuration and the fault management strategy.   |
   +----------------+-----------------------------------------------------------------------+
-  |  Output Ports  | |  Data outputs are defined analogously to Data input features.       |
+  |  Output Ports  |    Data outputs are defined analogously to Data input features.       |
   +----------------+-----------------------------------------------------------------------+
-  |  Elements      | |  Aggregated components in the case of a composite Component.        |
+  |  Elements      |    Aggregated components in the case of a composite Component.        |
   +----------------+-----------------------------------------------------------------------+
-  |  Files         | |  Auxiliary information that can be associated to complete the       |
-  |                | |  description of the Component.                                      |
+  |  Files         |    Auxiliary information that can be associated to complete the       |
+  |                |    description of the Component.                                      |
   +----------------+-----------------------------------------------------------------------+
 
 The semantics of the Component Features (see example below for the
@@ -147,26 +147,26 @@ and transports. The following two tables provide an overview.
 .. table:: Communication Pattern Overview
 
   +-------------------------+----------------------------------------------------------------+
-  | Communication Pattern   | | Description                                                  |
-  +=========================+================================================================+ 
-  | Request-Reply           | | The request-reply pattern is used for sending requests from  |
-  |                         | | a REQ client to one or more REP services, and receiving      |
-  |                         | | subsequent replies to each request sent.                     |
-  +-------------------------+----------------------------------------------------------------+ 
-  | Publish-Subscribe       | | The publish-subscribe pattern is used for one-to many        |
-  |                         | | distribution of data from a single publisher to multiple     |
-  |                         | | subscribers in a fan out fashion.                            |
-  +-------------------------+----------------------------------------------------------------+ 
-  | Pipeline                | | The pipeline pattern is used for distributing data to nodes  |
-  |                         | | arranged in a pipeline. Data always flow down the pipeline,  |
-  |                         | | and each stage of the pipeline is connected to at least one  |
-  |                         | | node. When a pipeline stage is connected to multiple nodes   |
-  |                         | | data is “round-robin”-ed among all connected nodes.          |
-  +-------------------------+----------------------------------------------------------------+ 
-  | Exclusive Pair          | | The exclusive pair pattern is used to connect a peer to      |
-  |                         | | precisely one other peer. This pattern is used for           |
-  |                         | | inter-thread communication across the *inproc* transport.    |
-  +-------------------------+----------------------------------------------------------------+ 
+  | Communication Pattern   |   Description                                                  |
+  +=========================+================================================================+
+  | Request-Reply           |   The request-reply pattern is used for sending requests from  |
+  |                         |   a REQ client to one or more REP services, and receiving      |
+  |                         |   subsequent replies to each request sent.                     |
+  +-------------------------+----------------------------------------------------------------+
+  | Publish-Subscribe       |   The publish-subscribe pattern is used for one-to many        |
+  |                         |   distribution of data from a single publisher to multiple     |
+  |                         |   subscribers in a fan out fashion.                            |
+  +-------------------------+----------------------------------------------------------------+
+  | Pipeline                |   The pipeline pattern is used for distributing data to nodes  |
+  |                         |   arranged in a pipeline. Data always flow down the pipeline,  |
+  |                         |   and each stage of the pipeline is connected to at least one  |
+  |                         |   node. When a pipeline stage is connected to multiple nodes   |
+  |                         |   data is “round-robin”-ed among all connected nodes.          |
+  +-------------------------+----------------------------------------------------------------+
+  | Exclusive Pair          |   The exclusive pair pattern is used to connect a peer to      |
+  |                         |   precisely one other peer. This pattern is used for           |
+  |                         |   inter-thread communication across the *inproc* transport.    |
+  +-------------------------+----------------------------------------------------------------+
 
 GMT distributed component features are accessible through the control network.
 The table below shows how different features require different communication
@@ -176,21 +176,21 @@ High Water Mark (HWM) is the size of he incoming or outgoing buffer.
 .. table:: Communication Pattern:  Fault Management & Optimization Strategies
 
   +-----------------+-------------------+----------------------+------------------+-------------------+
-  | | Feature Type  | | Communication   | | On Fault           | | High Water     | | Serialization   |
-  | |               | | Pattern         | |                    | | Mark (HWM)     | |                 |
+  |   Feature Type  |   Communication   |   On Fault           |   High Water     |   Serialization   |
+  |                 |   Pattern         |                      |   Mark (HWM)     |                   |
   +=================+===================+======================+==================+===================+
-  | | Properties    | | Request/Reply   | | retry              | | > 1            | | MessagePack     |
+  |   Properties    |   Request/Reply   |   retry              |   > 1            |   MessagePack     |
   +-----------------+-------------------+----------------------+------------------+-------------------+
-  | | Commands      | | Request/Reply   | | retry              | | > 1            | | MessagePack     |
+  |   Commands      |   Request/Reply   |   retry              |   > 1            |   MessagePack     |
   +-----------------+-------------------+----------------------+------------------+-------------------+
-  | | Monitors      | | PUSH/PULL       | | Buffer to HWM      | | > 1            | | MessagePack/Raw |
-  | |               | | PUB/SUB         | |                    | |                | |                 |
+  |   Monitors      |   PUSH/PULL       |   Buffer to HWM      |   > 1            |   MessagePack/Raw |
+  |                 |   PUB/SUB         |                      |                  |                   |
   +-----------------+-------------------+----------------------+------------------+-------------------+
-  | | Data I/O      | | PUSH/PULL       | | discard            | | no             | | MessagePack     |
+  |   Data I/O      |   PUSH/PULL       |   discard            |   no             |   MessagePack     |
   +-----------------+-------------------+----------------------+------------------+-------------------+
-  | | Alarms        | | PUSH/PULL       | | Buffer to HWM      | | no  (?)        | | MessagePack     |
+  |   Alarms        |   PUSH/PULL       |   Buffer to HWM      |   no  (?)        |   MessagePack     |
   +-----------------+-------------------+----------------------+------------------+-------------------+
-  | | Logs          | | PUSH/PULL       | | Buffer to HWM      | | > 1            | | MessagePack     |
+  |   Logs          |   PUSH/PULL       |   Buffer to HWM      |   > 1            |   MessagePack     |
   +-----------------+-------------------+----------------------+------------------+-------------------+
 
 GMT distributed components support two operation modes, standalone and integrated:
@@ -221,48 +221,48 @@ several socket types, based on ZeroMQ Socket Types.
 .. table::  Communication Pattern Implementation:  Socket Types
 
   +-----------------+------------------------------------------------------------------------+
-  | | Socket Type   | |  Description                                                         |
+  |   Socket Type   |    Description                                                         |
   +=================+========================================================================+
-  | | REQ           | |  Used by a client to send requests and receive replies from a        |
-  | |               | |  service. Each request sent is round-robined among all services,     |
-  | |               | |  and each reply received is matched with the last issued request.    |
+  |   REQ           |    Used by a client to send requests and receive replies from a        |
+  |                 |    service. Each request sent is round-robined among all services,     |
+  |                 |    and each reply received is matched with the last issued request.    |
   +-----------------+------------------------------------------------------------------------+
-  | | REP           | |  Used by a service to receive requests from and sent replies to a    |
-  | |               | |  client. Each request received is fair-queued from among all         |
-  | |               | |  clients.                                                            |
+  |   REP           |    Used by a service to receive requests from and sent replies to a    |
+  |                 |    client. Each request received is fair-queued from among all         |
+  |                 |    clients.                                                            |
   +-----------------+------------------------------------------------------------------------+
-  | | DEALER        | |  Used for extending request/reply sockets. Each message sent is      |
-  | |               | |  "round-robin"-ed among all connected peers, and each message        |
-  | |               | |  received is fair- queued from all connected peers.                  |
+  |   DEALER        |    Used for extending request/reply sockets. Each message sent is      |
+  |                 |    "round-robin"-ed among all connected peers, and each message        |
+  |                 |    received is fair- queued from all connected peers.                  |
   +-----------------+------------------------------------------------------------------------+
-  | | ROUTER        | |  Used for extending request/reply sockets. When receiving            |
-  | |               | |  messages a ROUTER socket shall prepend a message part containing    |
-  | |               | |  the identity of the originating peer to the message before          |
-  | |               | |  passing it to the application. Messages received are fair-queued    |
-  | |               | |  from among all connected peers.                                     |
+  |   ROUTER        |    Used for extending request/reply sockets. When receiving            |
+  |                 |    messages a ROUTER socket shall prepend a message part containing    |
+  |                 |    the identity of the originating peer to the message before          |
+  |                 |    passing it to the application. Messages received are fair-queued    |
+  |                 |    from among all connected peers.                                     |
   +-----------------+------------------------------------------------------------------------+
-  | | PUB           | |  Used by a publisher to distribute data.  Messages sent are          |
-  | |               | |  distributed in a fan out fashion to all connected peers.            |
+  |   PUB           |    Used by a publisher to distribute data.  Messages sent are          |
+  |                 |    distributed in a fan out fashion to all connected peers.            |
   +-----------------+------------------------------------------------------------------------+
-  | | SUB           | |  Used by a subscriber to subscribe to data distributed by a          |
-  | |               | |  publisher.                                                          |
+  |   SUB           |    Used by a subscriber to subscribe to data distributed by a          |
+  |                 |    publisher.                                                          |
   +-----------------+------------------------------------------------------------------------+
-  | | XPUB          | |  Same as PUB except that the socket can receive subscriptions        |
-  | |               | |  from the peers in form of incoming messages.                        |
+  |   XPUB          |    Same as PUB except that the socket can receive subscriptions        |
+  |                 |    from the peers in form of incoming messages.                        |
   +-----------------+------------------------------------------------------------------------+
-  | | XSUB          | |  Same as SUB except that the socket can subscribe by sending         |
-  | |               | |  subscription messages to the socket.                                |
+  |   XSUB          |    Same as SUB except that the socket can subscribe by sending         |
+  |                 |    subscription messages to the socket.                                |
   +-----------------+------------------------------------------------------------------------+
-  | | PUSH          | |  Used by a pipeline node to send messages to downstream pipeline     |
-  | |               | |  nodes. Messages are "round-robin"-ed to all connected downstream    |
-  | |               | |  nodes.                                                              |
+  |   PUSH          |    Used by a pipeline node to send messages to downstream pipeline     |
+  |                 |    nodes. Messages are "round-robin"-ed to all connected downstream    |
+  |                 |    nodes.                                                              |
   +-----------------+------------------------------------------------------------------------+
-  | | PULL          | |  Used by a pipeline node to receive messages from upstream           |
-  | |               | |  pipeline nodes. Messages are fair-queued from among all             |
-  | |               | |  connected upstream nodes.                                           |
+  |   PULL          |    Used by a pipeline node to receive messages from upstream           |
+  |                 |    pipeline nodes. Messages are fair-queued from among all             |
+  |                 |    connected upstream nodes.                                           |
   +-----------------+------------------------------------------------------------------------+
-  | | PAIR          | |  Can only connect to a single peer at any one time. No message       |
-  | |               | |  routing or filtering is performed over a PAIR socket.               |
+  |   PAIR          |    Can only connect to a single peer at any one time. No message       |
+  |                 |    routing or filtering is performed over a PAIR socket.               |
   +-----------------+------------------------------------------------------------------------+
 
 ZeroMQ also provides various transports like in-process, inter-process, TCP and
@@ -275,7 +275,7 @@ The Table below gives an overview of available communication transports.
 
   +------------+----------------------------------------------------------+
   | Transport  | Description                                              |
-  +============+==========================================================+ 
+  +============+==========================================================+
   | tcp        | Unicast transport using TCP                              |
   +------------+----------------------------------------------------------+
   | ipc        | Local inter-process communication transport              |

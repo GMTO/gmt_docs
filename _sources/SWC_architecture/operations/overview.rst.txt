@@ -128,47 +128,46 @@ these may automate calibration, diagnosis or other engineering Tasks.
 .. table:: Observation Life Cycle
 
     +---------------+-------------------------------------------------------------------------------+
-    | | State       | | Description                                                                 |
+    |   State       |   Description                                                                 |
     +===============+===============================================================================+
-    | | Pending     | | This is the initial state of an Observing sequence.  Observing Sequences    |
-    | |             | | are created in the Operations Database once the Phase II proposal process   |
-    | |             | | is finished.  This could be well in advance of the execution of the         |
-    | |             | | observation, or in the case of PI directed mode, could be on-the-fly.       |
+    |   Pending     |   This is the initial state of an Observing sequence.  Observing Sequences    |
+    |               |   are created in the Operations Database once the Phase II proposal process   |
+    |               |   is finished.  This could be well in advance of the execution of the         |
+    |               |   observation, or in the case of PI directed mode, could be on-the-fly.       |
     +---------------+-------------------------------------------------------------------------------+
-    | | Scheduled   | | The Observation Sequence has been selected for short-term execution. The    |
-    | |             | | duration of “short-term” depends on the observatory operation procedures,   |
-    | |             | | and could be the next night or many nights, pending long-term schedules.    |
+    |   Scheduled   |   The Observation Sequence has been selected for short-term execution. The    |
+    |               |   duration of “short-term” depends on the observatory operation procedures,   |
+    |               |   and could be the next night or many nights, pending long-term schedules.    |
     +---------------+-------------------------------------------------------------------------------+
-    | | Executing   | | The sequencer is executing the Observation Sequence.  Should a fault occur  |
-    | |             | | that compromises data quality (e.g. this could be triggered by automated    |
-    | |             | | rules or by the system operators) the state changes provisionally to        |
-    | |             | | "Parking_lot" (below). The goal is to start executing the next Observing or |
-    | |             | | Operation Sequence while another member of the staff diagnoses the problem. |
+    |   Executing   |   The sequencer is executing the Observation Sequence.  Should a fault occur  |
+    |               |   that compromises data quality (e.g. this could be triggered by automated    |
+    |               |   rules or by the system operators) the state changes provisionally to        |
+    |               |   "Parking_lot" (below). The goal is to start executing the next Observing or |
+    |               |   Operation Sequence while another member of the staff diagnoses the problem. |
     +---------------+-------------------------------------------------------------------------------+
-    | | QC_Check    | | Once an observation is finished, the data, telescope telemetry, alarms and  |
-    | |             | | logs are checked for basic errors.  Automated error-checking rules can be   |
-    | |             | | defined for each Observing Sequence Template, as they may depend on the AO  |
-    | |             | | or Instrument Observing mode.  The observational data are processed to      |
-    | |             | | allow for quick-look.  In some observing modes, the observer may decide     |
-    | |             | | whether to abort or execute the next Observational Sequence, such as when   |
-    | |             | | an observational state has been changed to “Parking_lot” due to errors.     |
+    |   QC_Check    |   Once an observation is finished, the data, telescope telemetry, alarms and  |
+    |               |   logs are checked for basic errors.  Automated error-checking rules can be   |
+    |               |   defined for each Observing Sequence Template, as they may depend on the AO  |
+    |               |   or Instrument Observing mode.  The observational data are processed to      |
+    |               |   allow for quick-look.  In some observing modes, the observer may decide     |
+    |               |   whether to abort or execute the next Observational Sequence, such as when   |
+    |               |   an observational state has been changed to “Parking_lot” due to errors.     |
     +---------------+-------------------------------------------------------------------------------+
-    | | Archived    | | The raw data is archived as soon as they are read out from the detector.    |
-    | |             | | Calibration data are retrieved and prepared for further processing.         |
+    |   Archived    |   The raw data is archived as soon as they are read out from the detector.    |
+    |               |   Calibration data are retrieved and prepared for further processing.         |
     +---------------+-------------------------------------------------------------------------------+
-    | | Processing  | | Raw data and calibrations are processed for a first-pass data reduction.    |
-    | |             | | If an error occurs during data reduction, the observational state may be    |
-    | |             | | changed to Parking_lot depending on the severity of the error.              |
+    |   Processing  |   Raw data and calibrations are processed for a first-pass data reduction.    |
+    |               |   If an error occurs during data reduction, the observational state may be    |
+    |               |   changed to Parking_lot depending on the severity of the error.              |
     +---------------+-------------------------------------------------------------------------------+
-    | | Distributed | | The raw data are distributed to remote sites (e.g. remote observer or       |
-    | |             | | remote operation center).  An observation remains in this state until all   |
-    | |             | | the data have been transmitted to the intended destinations.                |
+    |   Distributed |   The raw data are distributed to remote sites (e.g. remote observer or       |
+    |               |   remote operation center).  An observation remains in this state until all   |
+    |               |   the data have been transmitted to the intended destinations.                |
     +---------------+-------------------------------------------------------------------------------+
-    | | Parking_lot | | This is the repository for errors that occurred during an observation.      |
-    | |             | | An observation is pending further analysis by a human operator.             |
-    | |             | | Depending on the problem and changing observing conditions, the             |
-    | |             | | observation can be fixed and moved further down to QC, can be included      |
-    | |             | | again in the short term queue, or further back into the long-term           |
-    | |             | | observing backlog.                                                          |
+    |   Parking_lot |   This is the repository for errors that occurred during an observation.      |
+    |               |   An observation is pending further analysis by a human operator.             |
+    |               |   Depending on the problem and changing observing conditions, the             |
+    |               |   observation can be fixed and moved further down to QC, can be included      |
+    |               |   again in the short term queue, or further back into the long-term           |
+    |               |   observing backlog.                                                          |
     +---------------+-------------------------------------------------------------------------------+
-

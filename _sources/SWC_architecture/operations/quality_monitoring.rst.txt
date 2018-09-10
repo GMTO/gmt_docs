@@ -23,26 +23,26 @@ The above are derived from the Science and System Level Requirements shown here:
 .. table:: SWCS Quality Monitoring Requirements (Level 3)
 
   +----------------------------+-----------------------------------------------------------+
-  | | Title                    | | Statement                                               |
+  |   Title                    |   Statement                                               |
   +============================+===========================================================+
-  | | Diagnostic Software      | | The SWCS shall provide software tools for displaying    |
-  | |                          | | real- time and long term trends in the performance of   |
-  | |                          | | individual components/subsystems and to correlate that  |
-  | |                          | | information with time-stamped data from other           |
-  | |                          | | subsystems.                                             |
+  |   Diagnostic Software      |   The SWCS shall provide software tools for displaying    |
+  |                            |   real- time and long term trends in the performance of   |
+  |                            |   individual components/subsystems and to correlate that  |
+  |                            |   information with time-stamped data from other           |
+  |                            |   subsystems.                                             |
   +----------------------------+-----------------------------------------------------------+
-  | | Engineering Data System  | | The SWCS shall provide an engineering data system to    |
-  | |                          | | monitor the health of all subsystems critical to the    |
-  | |                          | | functioning and performance of the observatory.         |
+  |   Engineering Data System  |   The SWCS shall provide an engineering data system to    |
+  |                            |   monitor the health of all subsystems critical to the    |
+  |                            |   functioning and performance of the observatory.         |
   +----------------------------+-----------------------------------------------------------+
-  | | Product Quality          | | The SWCS shall provide software tools to assess the     |
-  | | Assessment               | | quality of observation data products.                   |
+  |   Product Quality          |   The SWCS shall provide software tools to assess the     |
+  |   Assessment               |   quality of observation data products.                   |
   +----------------------------+-----------------------------------------------------------+
-  | | Monitoring of water      | |  The SWCS shall provide the capability to monitor       |
-  | | vapor, atmospheric       | |  during the night atmospheric turbulence, water vapor,  |
-  | | seeing, weather          | |  atmospheric seeing, and weather conditions.            |
-  | | conditions,              | |                                                         |
-  | | environmental statistics | |                                                         |
+  |   Monitoring of water      |    The SWCS shall provide the capability to monitor       |
+  |   vapor, atmospheric       |    during the night atmospheric turbulence, water vapor,  |
+  |   seeing, weather          |    atmospheric seeing, and weather conditions.            |
+  |   conditions,              |                                                           |
+  |   environmental statistics |                                                           |
   +----------------------------+-----------------------------------------------------------+
 
 The Quality Monitoring System comprises a server, and visualization and
@@ -124,4 +124,3 @@ categories that the QMS oversees the management of:
     the capability to turn any telemetry information of any subsystem or device
     instantaneously into runtime visualization displays that may be more closely
     monitored, or that may be correlated with the telemetry of other parameters.
-  

@@ -56,16 +56,16 @@ as to be able to recover from faults quickly and efficiently.
 .. table:: SWCS System Supervisor Requirements (Level 3)
 
   +--------------------------+----------------------------------------------------------------------+
-  | | Requirement            | | Statement                                                          |
+  |   Requirement            |   Statement                                                          |
   +==========================+======================================================================+
-  | | System Health          | | Provide the capability to assess the overall health of the system. |
-  | | Assessment             | |                                                                    |
+  |   System Health          |   Provide the capability to assess the overall health of the system. |
+  |   Assessment             |                                                                      |
   +--------------------------+----------------------------------------------------------------------+
-  | | Overall System Health  | | Provide the capability of continuous performance, status, and      |
-  | |                        | | system health monitoring.                                          |
+  |   Overall System Health  |   Provide the capability of continuous performance, status, and      |
+  |                          |   system health monitoring.                                          |
   +--------------------------+----------------------------------------------------------------------+
-  | | Interlock Safety       | | Interface with the ISS to ensure the safe operation of the system. |
-  | | System Interface       | |                                                                    |
+  |   Interlock Safety       |   Interface with the ISS to ensure the safe operation of the system. |
+  |   System Interface       |                                                                      |
   +--------------------------+----------------------------------------------------------------------+
 
 
@@ -160,39 +160,41 @@ as to be able to recover from faults quickly and efficiently.
       .. table:: Alarm Service Visualization Panels
 
         +---------------------------+-----------------------------------------------------------------------------------+
-        | | Visualization Panel     | | Description                                                                     |
+        |   Visualization Panel     |   Description                                                                     |
         +===========================+===================================================================================+
-        | | Global Panel            | | Provides an overall view of the status of the supervisor system. The following  |
-        | |                         | | information will be displayed:                                                  |
-        | |                         | |                                                                                 |
-        | |                         | |   * State of each telemetry server component                                    |
-        | |                         | |     (e.g., RUNNING, STOPPED, FAULT)                                             |
-        | |                         | |   * State of each telemetry adapter component                                   |
-        | |                         | |     (e.g., RUNNING, STOPPED, FAULT)                                             |
-        | |                         | |   * List of active monitors                                                     |
-        | |                         | |   * Overall view of the system health, one box per subsystem color coded:       |
-        | |                         | |     - green: No active monitors in fault state                                  |
-        | |                         | |     - yellow: No serious active alarms                                          |
-        | |                         | |     - red: The monitor system is not working                                    |
-        | |                         | |   * Global life-cycle actions (global start and stop of the system, switching   |
-        | |                         | |     modes)                                                                      |
-        | |                         | | Note: State information shall be color-coded.                                   |
+        |   Global Panel            |   Provides an overall view of the status of the supervisor system. The following  |
+        |                           |   information will be displayed:                                                  |
+        |                           |                                                                                   |
+        |                           |   * State of each telemetry server component (e.g., RUNNING, STOPPED, FAULT)      |
+        |                           |   * State of each telemetry adapter component  (e.g., RUNNING, STOPPED, FAULT)    |
+        |                           |   * List of active monitors                                                       |
+        |                           |   * Overall view of the system health, one box per subsystem color coded:         |
+        |                           |                                                                                   |
+        |                           |       - green: No active monitors in fault state                                  |
+        |                           |       - yellow: No serious active alarms                                          |
+        |                           |       - red: The monitor system is not working                                    |
+        |                           |                                                                                   |
+        |                           |   * Global life-cycle actions (global start and stop of the system, switching     |
+        |                           |     modes)                                                                        |
+        |                           |                                                                                   |
+        |                           |   Note: State information shall be color-coded.                                   |
         +---------------------------+-----------------------------------------------------------------------------------+
-        | | Navigation Panel        | | Provides a way to navigate all the monitor servers and adapters. From the       |
-        | |                         | | navigation panel the state and detailed info of every server and adapter can be |
-        | |                         | | accessed.                                                                       |
+        |   Navigation Panel        |   Provides a way to navigate all the monitor servers and adapters. From the       |
+        |                           |   navigation panel the state and detailed info of every server and adapter can be |
+        |                           |   accessed.                                                                       |
         +---------------------------+-----------------------------------------------------------------------------------+
-        | | Guide Panel             | | Displays the on line documentation of the system supervisor service.            |
-        | |                         | | Allows access to the user guide as well as the metadata (model information) of  |
-        | |                         | | the runtime objects.                                                            |
+        |   Guide Panel             |   Displays the on line documentation of the system supervisor service.            |
+        |                           |   Allows access to the user guide as well as the metadata (model information) of  |
+        |                           |   the runtime objects.                                                            |
         +---------------------------+-----------------------------------------------------------------------------------+
-        | | Analytics Panel         | | Provides access to the runtime statistics of the supervisor service.            |
-        | |                         | | These should include at least.                                                  |
-        | |                         | |   * Number and state (running/stopped/fault)                                    |
-        | |                         | |   * Instant throughput of the system                                            |
-        | |                         | |   * Total and Subsystem Monitor samples/sec                                     |
-        | |                         | |   * Total data bandwidth                                                        |
-        | |                         | |   * Persistence capacity (used/available)                                       |
+        |   Analytics Panel         |   Provides access to the runtime statistics of the supervisor service.            |
+        |                           |   These should include at least.                                                  |
+        |                           |                                                                                   |
+        |                           |     * Number and state (running/stopped/fault)                                    |
+        |                           |     * Instant throughput of the system                                            |
+        |                           |     * Total and Subsystem Monitor samples/sec                                     |
+        |                           |     * Total data bandwidth                                                        |
+        |                           |     * Persistence capacity (used/available)                                       |
         +---------------------------+-----------------------------------------------------------------------------------+
 
 
@@ -209,5 +211,3 @@ as to be able to recover from faults quickly and efficiently.
 
   The visualization package components are deployed in the control room
   Operation Support Computers.
-
-

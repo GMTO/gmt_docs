@@ -12,7 +12,7 @@ lifecycle is divided in four main phases as illustrated in :numref:`Figure %s
 <lifecycle_phases>`. Each phase is characterized by the definition of its inputs
 and outputs. The outputs for one phase are used as inputs to the next phase with
 the addition of other applicable GMTO documents. These phases shall be connected
-with the controlled plant milestones. 
+with the controlled plant milestones.
 
 .. _lifecycle_phases:
 
@@ -43,7 +43,7 @@ The life cycle phases are:
   * Construction Phase – During this phase the team implements the bulk of the
     DCS features backlog.  At the end of this phase all the features necessary
     to perform the Factory Acceptance Testing (FAT) of the system under control
-    have been developed, integrated, tested and deployed.  
+    have been developed, integrated, tested and deployed.
 
   * Assembly and Integration (AIT) Phase – During this phase the rest of the
     product backlog is implemented.  AIT sprint includes the development of
@@ -132,32 +132,32 @@ provided by the frameworks involved.
 .. table:: Framework Typical Use Cases
 
   +------------------+-------------------+--------------------+-------------------------------+
-  | | Use Case       | | Framework       | | Base Classes     | | Function                    |
+  |   Use Case       |   Framework       |   Base Classes     |   Function                    |
   +==================+===================+====================+===============================+
-  | | Create a new   | | Core Framework  | | BaseComponent    | | Provides access to          |
-  | | Controller     | |                 | |                  | | observatory services        |
-  | |                +-------------------+--------------------+-------------------------------+
-  | |                | | Device Control  | | BaseController   | | Provide reusable control    |
-  | |                | | Framework       | |                  | | building blocks             |
-  | |                +-------------------+--------------------+-------------------------------+
-  | |                | | I/O Framework   | | IOAdapter,       | | Provides access to the      |
-  | |                | |                 | | Device           | | hardware                    |
+  |   Create a new   |   Core Framework  |   BaseComponent    |   Provides access to          |
+  |   Controller     |                   |                    |   observatory services        |
+  |                  +-------------------+--------------------+-------------------------------+
+  |                  |   Device Control  |   BaseController   |   Provide reusable control    |
+  |                  |   Framework       |                    |   building blocks             |
+  |                  +-------------------+--------------------+-------------------------------+
+  |                  |   I/O Framework   |   IOAdapter,       |   Provides access to the      |
+  |                  |                   |   Device           |   hardware                    |
   +------------------+-------------------+--------------------+-------------------------------+
-  | | Create a new   | | Core Framework  | | BaseComponent    | | Provides access to the      |
-  | | Pipeline       | |                 | |                  | | observatory services        |
-  | |                +-------------------+--------------------+-------------------------------+
-  | |                | | Data Processing | | BasePipeline,    | | Defines a reference         |
-  | |                | | Framework       | | BaseFilter,      | | architecture for data       |
-  | |                | |                 | | BaseRecipe       | | processing pipelines        |
-  | |                +-------------------+--------------------+-------------------------------+
-  | |                | | Persistence     | | ObjectStore,     | | Provides persistence to     |
-  | |                | | Framework       | | FileStore        | | files and data structures   |
+  |   Create a new   |   Core Framework  |   BaseComponent    |   Provides access to the      |
+  |   Pipeline       |                   |                    |   observatory services        |
+  |                  +-------------------+--------------------+-------------------------------+
+  |                  |   Data Processing |   BasePipeline,    |   Defines a reference         |
+  |                  |   Framework       |   BaseFilter,      |   architecture for data       |
+  |                  |                   |   BaseRecipe       |   processing pipelines        |
+  |                  +-------------------+--------------------+-------------------------------+
+  |                  |   Persistence     |   ObjectStore,     |   Provides persistence to     |
+  |                  |   Framework       |   FileStore        |   files and data structures   |
   +------------------+-------------------+--------------------+-------------------------------+
-  | | Create a new   | | Core Framework  | | BaseComponent    | | Provides access to          |
-  | | Panel          | |                 | |                  | | observatory services        |
-  | |                +-------------------+--------------------+-------------------------------+
-  | |                | | UI Framework    | | BasePanel,       | | Provices reusable           |
-  | |                | |                 | | BaseWidget       | | visualization components    |
+  |   Create a new   |   Core Framework  |   BaseComponent    |   Provides access to          |
+  |   Panel          |                   |                    |   observatory services        |
+  |                  +-------------------+--------------------+-------------------------------+
+  |                  |   UI Framework    |   BasePanel,       |   Provices reusable           |
+  |                  |                   |   BaseWidget       |   visualization components    |
   +------------------+-------------------+--------------------+-------------------------------+
 
 GSC Simulator
@@ -296,4 +296,3 @@ of a DCS specification.
 .. figure:: _static/dcs_implementation_strategy.png
 
    DCS Implementation Strategy
-

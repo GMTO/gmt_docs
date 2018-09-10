@@ -32,6 +32,8 @@
   
 
   
+    <link rel="stylesheet" href="../../../_static/theme_overrides.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
@@ -332,515 +334,139 @@ provided.</p>
 <col width="10%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">Port Name</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Description</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Unit</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Size</div>
-<div class="line">(kB)</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Rate</div>
-<div class="line">(Hz)</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Type</div>
-<div class="line"><br /></div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">Port Name</th>
+<th class="head">Description</th>
+<th class="head">Unit</th>
+<th class="head">Size
+(kB)</th>
+<th class="head">Rate
+(Hz)</th>
+<th class="head">Type</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">agws img</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">AGWS detector image streams (4 cameras).</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">count</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">2048</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">206</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-</div>
-</td>
+<tr class="row-even"><td>agws img</td>
+<td>AGWS detector image streams (4 cameras).</td>
+<td>count</td>
+<td>2048</td>
+<td>206</td>
+<td>Input</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">agws bkg</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">AGWS background images.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">count</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">2048</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">1</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-</div>
-</td>
+<tr class="row-odd"><td>agws bkg</td>
+<td>AGWS background images.</td>
+<td>count</td>
+<td>2048</td>
+<td>1</td>
+<td>Input</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">agws gain</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">AGWS pixel gain.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">N/A</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">4096</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">1</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-</div>
-</td>
+<tr class="row-even"><td>agws gain</td>
+<td>AGWS pixel gain.</td>
+<td>N/A</td>
+<td>4096</td>
+<td>1</td>
+<td>Input</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">agws wf</div>
-<div class="line">ref</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">List of [x,y] expected positions of each WFS</div>
-<div class="line">subaperture or guider image.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">pixel</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">18.4</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">1</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>agws wf
+ref</td>
+<td>List of [x,y] expected positions of each WFS
+subaperture or guider image.</td>
+<td>pixel</td>
+<td>18.4</td>
+<td>1</td>
+<td>Input</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">agws wf</div>
-<div class="line">offset</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">List of [x,y] offsets from the reference</div>
-<div class="line">positions of each WFS subaperture or guider</div>
-<div class="line">image.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mas</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">18.4</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">1</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>agws wf
+offset</td>
+<td>List of [x,y] offsets from the reference
+positions of each WFS subaperture or guider
+image.</td>
+<td>mas</td>
+<td>18.4</td>
+<td>1</td>
+<td>Input</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">system global</div>
-<div class="line">tilt</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Difference between agws_wf_ref and computed</div>
-<div class="line">centroid position for cameras in Guide mode,</div>
-<div class="line">or average of the slopes for cameras in TT7</div>
-<div class="line">mode, in the probe coordinate system.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mas</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.032</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">2000</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>system global
+tilt</td>
+<td>Difference between agws_wf_ref and computed
+centroid position for cameras in Guide mode,
+or average of the slopes for cameras in TT7
+mode, in the probe coordinate system.</td>
+<td>mas</td>
+<td>0.032</td>
+<td>2000</td>
+<td>Output</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">system segment</div>
-<div class="line">tilt</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Difference between agws_wf_ref and computed</div>
-<div class="line">centroid position for cameras in TT7 mode,</div>
-<div class="line">in the probe coordinate system.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mas</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.224</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">402</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>system segment
+tilt</td>
+<td>Difference between agws_wf_ref and computed
+centroid position for cameras in TT7 mode,
+in the probe coordinate system.</td>
+<td>mas</td>
+<td>0.224</td>
+<td>402</td>
+<td>Output</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">agws wf slopes</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Difference between agws_wf_ref and computed</div>
-<div class="line">centroid position for camera in WFS mode,</div>
-<div class="line">in the probe coordinate system.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mas</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">18.4</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">206</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>agws wf slopes</td>
+<td>Difference between agws_wf_ref and computed
+centroid position for camera in WFS mode,
+in the probe coordinate system.</td>
+<td>mas</td>
+<td>18.4</td>
+<td>206</td>
+<td>Output</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">system global</div>
-<div class="line">tilt av</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Low-pass filtered system global tilt. If no</div>
-<div class="line">probe in Guide mode, derived from probe in</div>
-<div class="line">TT7 mode.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mas</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.008</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">20</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>system global
+tilt av</td>
+<td>Low-pass filtered system global tilt. If no
+probe in Guide mode, derived from probe in
+TT7 mode.</td>
+<td>mas</td>
+<td>0.008</td>
+<td>20</td>
+<td>Output</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">agws sp flag</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Quality flag for each slope measurement.</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">boolean</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">9.2</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">206</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>agws sp flag</td>
+<td>Quality flag for each slope measurement.</td>
+<td>boolean</td>
+<td>9.2</td>
+<td>206</td>
+<td>Output</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">agws sp fwhm</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">FWHM of each subaperture image.</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mas</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">18.4</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">206</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>agws sp fwhm</td>
+<td>FWHM of each subaperture image.</td>
+<td>mas</td>
+<td>18.4</td>
+<td>206</td>
+<td>Output</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">agws sp snr</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">SNR of each slope measurement.</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">N/A</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">18.4</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">206</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>agws sp snr</td>
+<td>SNR of each slope measurement.</td>
+<td>N/A</td>
+<td>18.4</td>
+<td>206</td>
+<td>Output</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">agws sp flux</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Integrated flux in each subaperture.</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">count</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">18.4</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">206</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>agws sp flux</td>
+<td>Integrated flux in each subaperture.</td>
+<td>count</td>
+<td>18.4</td>
+<td>206</td>
+<td>Output</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">agws sp bkg</div>
-<div class="line">flux</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Measured background flux in each subaperture.</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">count</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">18.4</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">206</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>agws sp bkg
+flux</td>
+<td>Measured background flux in each subaperture.</td>
+<td>count</td>
+<td>18.4</td>
+<td>206</td>
+<td>Output</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">agws sp cent</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Raw computed centroid in each subaperture.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">pixel</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">18.4</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">206</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-</div>
-</td>
+<tr class="row-even"><td>agws sp cent</td>
+<td>Raw computed centroid in each subaperture.</td>
+<td>pixel</td>
+<td>18.4</td>
+<td>206</td>
+<td>Output</td>
 </tr>
 </tbody>
 </table>
@@ -874,199 +500,62 @@ assembly installed. Its data interfaces are listed in the following Table:</p>
 <col width="9%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">Port Name</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Description</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Unit</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">size</div>
-<div class="line">(kB)</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Rate</div>
-<div class="line">(Hz)</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Type</div>
-<div class="line"><br /></div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">Port Name</th>
+<th class="head">Description</th>
+<th class="head">Unit</th>
+<th class="head">size
+(kB)</th>
+<th class="head">Rate
+(Hz)</th>
+<th class="head">Type</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">system global</div>
-<div class="line">tilt</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Global tilt error in the probe coordinate system.</div>
-<div class="line">Used only if system_segment_tilt is not available.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mas</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.032</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">2000</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>system global
+tilt</td>
+<td>Global tilt error in the probe coordinate system.
+Used only if system_segment_tilt is not available.</td>
+<td>mas</td>
+<td>0.032</td>
+<td>2000</td>
+<td>Input</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">system segment</div>
-<div class="line">tilt</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Segment tilt error in the AGWS probe coordinate</div>
-<div class="line">system.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mas</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.224</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">402</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>system segment
+tilt</td>
+<td>Segment tilt error in the AGWS probe coordinate
+system.</td>
+<td>mas</td>
+<td>0.224</td>
+<td>402</td>
+<td>Input</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">fast guide</div>
-<div class="line">recon</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Fast guiding reconstructor matrix. Converts Guide</div>
-<div class="line">or TT7 centroids to system segment tilt in</div>
-<div class="line">telescope coordinate system.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">n/a</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">3.1</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>fast guide
+recon</td>
+<td>Fast guiding reconstructor matrix. Converts Guide
+or TT7 centroids to system segment tilt in
+telescope coordinate system.</td>
+<td>n/a</td>
+<td>3.1</td>
+<td>0.3</td>
+<td>Input</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">m2 segment</div>
-<div class="line">tilt</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Absolute segment tilt commands to each FSM</div>
-<div class="line">segment, in the telescope coordinate system.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mas</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.056</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">2000</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>m2 segment
+tilt</td>
+<td>Absolute segment tilt commands to each FSM
+segment, in the telescope coordinate system.</td>
+<td>mas</td>
+<td>0.056</td>
+<td>2000</td>
+<td>Output</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">m2 segment</div>
-<div class="line">tilt av</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Time-average segment tilt, to offload to the M2</div>
-<div class="line">Positioner.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mas</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.056</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>m2 segment
+tilt av</td>
+<td>Time-average segment tilt, to offload to the M2
+Positioner.</td>
+<td>mas</td>
+<td>0.056</td>
+<td>0.3</td>
+<td>Output</td>
 </tr>
 </tbody>
 </table>
@@ -1106,11 +595,8 @@ low-order bending modes into segment rigid body motion as required.</p>
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Output Terms</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Degrees of</div>
-<div class="line">Freedom</div>
-</div>
-</th>
+<th class="head">Degrees of
+Freedom</th>
 <th class="head">Controlled Aberrations</th>
 </tr>
 </thead>
@@ -1198,668 +684,188 @@ transit near zenith when the pupil rotation rate exceeds 6 deg/min.</p>
 <col width="7%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">Port Name</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Description</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Unit</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Size</div>
-<div class="line">(kB)</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Rate</div>
-<div class="line">(Hz)</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Type</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Mode</div>
-<div class="line"><br /></div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">Port Name</th>
+<th class="head">Description</th>
+<th class="head">Unit</th>
+<th class="head">Size
+(kB)</th>
+<th class="head">Rate
+(Hz)</th>
+<th class="head">Type</th>
+<th class="head">Mode</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">agws wf</div>
-<div class="line">slopes</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">S-H centroids from up to 4 probes,</div>
-<div class="line">in frame of of reference of sensors,</div>
-<div class="line">potentially updated asynchronously.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mas</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">18.4</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">206</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">All</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>agws wf
+slopes</td>
+<td>S-H centroids from up to 4 probes,
+in frame of of reference of sensors,
+potentially updated asynchronously.</td>
+<td>mas</td>
+<td>18.4</td>
+<td>206</td>
+<td>Input</td>
+<td>All</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">oiws system</div>
-<div class="line">global tilt</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">System global tip-tilt error measured by</div>
-<div class="line">an OIWFS, in instrument coordinate system.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mas</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.008</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">1</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">NS &amp;</div>
-<div class="line">GL</div>
-</div>
-</td>
+<tr class="row-odd"><td>oiws system
+global tilt</td>
+<td>System global tip-tilt error measured by
+an OIWFS, in instrument coordinate system.</td>
+<td>mas</td>
+<td>0.008</td>
+<td>1</td>
+<td>Input</td>
+<td>NS &amp;
+GL</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">oiws system</div>
-<div class="line">global focus</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">System global focus error measured by an</div>
-<div class="line">OIWFS, in instrument coordinate system.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">nm</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.004</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">1</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">NS &amp;</div>
-<div class="line">GL</div>
-</div>
-</td>
+<tr class="row-even"><td>oiws system
+global focus</td>
+<td>System global focus error measured by an
+OIWFS, in instrument coordinate system.</td>
+<td>nm</td>
+<td>0.004</td>
+<td>1</td>
+<td>Input</td>
+<td>NS &amp;
+GL</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">asm global</div>
-<div class="line">lo av</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Time-averaged ASM global Zernike modes</div>
-<div class="line">4-6.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">μm</div>
-<div class="line">RMS</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.012</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">1</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">AO</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>asm global
+lo av</td>
+<td>Time-averaged ASM global Zernike modes
+4-6.</td>
+<td>μm
+RMS</td>
+<td>0.012</td>
+<td>1</td>
+<td>Input</td>
+<td>AO</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">asm segment</div>
-<div class="line">lo av</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Time-average of ASM actuators, projected</div>
-<div class="line">onto M1 segment bending modes 1-45.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">μm</div>
-<div class="line">RMS</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">1.26</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">1</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">AO</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>asm segment
+lo av</td>
+<td>Time-average of ASM actuators, projected
+onto M1 segment bending modes 1-45.</td>
+<td>μm
+RMS</td>
+<td>1.26</td>
+<td>1</td>
+<td>Input</td>
+<td>AO</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">aco recon</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Reconstruction matrix, computed based on</div>
-<div class="line">AGWS probe position, observing mode, and</div>
-<div class="line">GIR angle.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">n/a</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">2925</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">All</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>aco recon</td>
+<td>Reconstruction matrix, computed based on
+AGWS probe position, observing mode, and
+GIR angle.</td>
+<td>n/a</td>
+<td>2925</td>
+<td>0.3</td>
+<td>Input</td>
+<td>All</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">m2 global</div>
-<div class="line">piston</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Global Z position command to M2</div>
-<div class="line">Positioner, from AGWS or ASM system</div>
-<div class="line">global focus.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">μm</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.004</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">All</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>m2 global
+piston</td>
+<td>Global Z position command to M2
+Positioner, from AGWS or ASM system
+global focus.</td>
+<td>μm</td>
+<td>0.004</td>
+<td>0.3</td>
+<td>Output</td>
+<td>All</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">m2 global</div>
-<div class="line">point neutral</div>
-<div class="line">tilt</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Global pointing-neutral tilt command to</div>
-<div class="line">M2 Positioner, from AGWS or ASM system</div>
-<div class="line">global coma.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">μrad</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.008</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">All</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>m2 global
+point neutral
+tilt</td>
+<td>Global pointing-neutral tilt command to
+M2 Positioner, from AGWS or ASM system
+global coma.</td>
+<td>μrad</td>
+<td>0.008</td>
+<td>0.3</td>
+<td>Output</td>
+<td>All</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">m2 global coma</div>
-<div class="line">neutral tilt</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Global coma-neutral tilt command to M2</div>
-<div class="line">Positioner, from AGWS system field-</div>
-<div class="line">dependent astigmatism.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">μrad</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.008</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">All</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>m2 global coma
+neutral tilt</td>
+<td>Global coma-neutral tilt command to M2
+Positioner, from AGWS system field-
+dependent astigmatism.</td>
+<td>μrad</td>
+<td>0.008</td>
+<td>0.3</td>
+<td>Output</td>
+<td>All</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">m2 segment</div>
-<div class="line">point neutral</div>
-<div class="line">tilt</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Segment pointing-neutral tilt command to</div>
-<div class="line">M2 Positioner, from AGWS system segment</div>
-<div class="line">coma.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">μrad</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.048</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">NS</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>m2 segment
+point neutral
+tilt</td>
+<td>Segment pointing-neutral tilt command to
+M2 Positioner, from AGWS system segment
+coma.</td>
+<td>μrad</td>
+<td>0.048</td>
+<td>0.3</td>
+<td>Output</td>
+<td>NS</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">m2 segment</div>
-<div class="line">piston</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Segment Z position command to M2</div>
-<div class="line">Positioner, from AGWS system segment</div>
-<div class="line">focus.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">μm</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.048</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">NS</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>m2 segment
+piston</td>
+<td>Segment Z position command to M2
+Positioner, from AGWS system segment
+focus.</td>
+<td>μm</td>
+<td>0.048</td>
+<td>0.3</td>
+<td>Output</td>
+<td>NS</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">m1 global</div>
-<div class="line">vertex tilt</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Global tilt command to M1 Positioner,</div>
-<div class="line">from AGWS system field-dependent focus.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">μrad</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.008</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">All</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>m1 global
+vertex tilt</td>
+<td>Global tilt command to M1 Positioner,
+from AGWS system field-dependent focus.</td>
+<td>μrad</td>
+<td>0.008</td>
+<td>0.3</td>
+<td>Output</td>
+<td>All</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">m1 segment</div>
-<div class="line">bending modes</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">M1 segment bending modes 5,6, 9-45.</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">μm</div>
-<div class="line">RMS</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">1.04</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">All</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>m1 segment
+bending modes</td>
+<td>M1 segment bending modes 5,6, 9-45.</td>
+<td>μm
+RMS</td>
+<td>1.04</td>
+<td>0.3</td>
+<td>Output</td>
+<td>All</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">m2 segment</div>
-<div class="line">lo modes</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">ASM segment Zernike modes 5,6,9,10.</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">μm</div>
-<div class="line">RMS</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.11</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">NS</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>m2 segment
+lo modes</td>
+<td>ASM segment Zernike modes 5,6,9,10.</td>
+<td>μm
+RMS</td>
+<td>0.11</td>
+<td>0.3</td>
+<td>Output</td>
+<td>NS</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">agws diff</div>
-<div class="line">pos err</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">AGWS probe position error, from AGWS</div>
-<div class="line">global tip-tilt.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">μm</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.032</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">All</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>agws diff
+pos err</td>
+<td>AGWS probe position error, from AGWS
+global tip-tilt.</td>
+<td>μm</td>
+<td>0.032</td>
+<td>0.3</td>
+<td>Output</td>
+<td>All</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">gir rot err</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">GIR rotation error, from AGWS global</div>
-<div class="line">tip-tilt.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">μrad</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.004</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">All</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>gir rot err</td>
+<td>GIR rotation error, from AGWS global
+tip-tilt.</td>
+<td>μrad</td>
+<td>0.004</td>
+<td>0.3</td>
+<td>Output</td>
+<td>All</td>
 </tr>
 </tbody>
 </table>
@@ -1874,168 +880,49 @@ transit near zenith when the pupil rotation rate exceeds 6 deg/min.</p>
 <col width="10%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">Port Name</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Description</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Unit</div>
-<div class="line"><br /></div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Size</div>
-<div class="line">(kB)</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Rate</div>
-<div class="line">(Hz)</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Type</div>
-<div class="line"><br /></div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">Port Name</th>
+<th class="head">Description</th>
+<th class="head">Unit</th>
+<th class="head">Size
+(kB)</th>
+<th class="head">Rate
+(Hz)</th>
+<th class="head">Type</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">agws probe posn</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">AGWS probe position, in telescope</div>
-<div class="line">coordinate system.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">mm</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.032</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">1</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>agws probe posn</td>
+<td>AGWS probe position, in telescope
+coordinate system.</td>
+<td>mm</td>
+<td>0.032</td>
+<td>1</td>
+<td>Input</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">gir posn</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">GIR position, in telescope coordinate system.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">deg</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.004</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">1</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Input</div>
-</div>
-</td>
+<tr class="row-odd"><td>gir posn</td>
+<td>GIR position, in telescope coordinate system.</td>
+<td>deg</td>
+<td>0.004</td>
+<td>1</td>
+<td>Input</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">fast guide recon</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Fast guiding reconstructor matrix.  Converts</div>
-<div class="line">Guide or TT7 centroids to system segment tilt</div>
-<div class="line">in telescope coordinate system.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">n/a</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">3.1</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-even"><td>fast guide recon</td>
+<td>Fast guiding reconstructor matrix.  Converts
+Guide or TT7 centroids to system segment tilt
+in telescope coordinate system.</td>
+<td>n/a</td>
+<td>3.1</td>
+<td>0.3</td>
+<td>Output</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">aco recon</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Active optics reconstruction matrix.</div>
-<div class="line">Converts WFS centroids to M1 and M2 positions</div>
-<div class="line">and bending modes.</div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">n/a</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">2925</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">0.3</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Output</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
+<tr class="row-odd"><td>aco recon</td>
+<td>Active optics reconstruction matrix.
+Converts WFS centroids to M1 and M2 positions
+and bending modes.</td>
+<td>n/a</td>
+<td>2925</td>
+<td>0.3</td>
+<td>Output</td>
 </tr>
 </tbody>
 </table>

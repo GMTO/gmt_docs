@@ -453,7 +453,7 @@ Module Compilation
 
 Once the module is fully defined it has to be compiled running the command *webpack* in
 the model directory of the module. The *webpack* command will process the model
-files, optimize them and install the corresponding model library file 
+files, optimize them and install the corresponding model library file
 in $GMT_LOCAL/lib/js so they can be loaded by the OCS enviroment.
 Everytime that a model file is modified it needs to be recompile
 (e.g. if a Component definition is updated, the model library file has to be regenerated
@@ -483,7 +483,7 @@ Types of Packages
   split in two categories:
 
     * Device Control Packages (DCP) – These packages are included in subsystems
-      that involve the control of optomechanical hardware Devices.  
+      that involve the control of optomechanical hardware Devices.
 
     * Operation Support Packages (OSP) – These Packages include software
       components necessary to support health monitoring, automation, and proper
@@ -496,85 +496,84 @@ Types of Packages
 
 .. table:: SWC Functional Packages:  Device Control
 
-  +-----------------------+-------------------------------------------------------------+---------------------+
-  | | Package Name        | | Description                                               | | Typical           |
-  | |                     | |                                                           | | Components        |
-  +=======================+=============================================================+=====================+
-  | | Control Package     | | Contains software Components that implement the           | | Supervisor,       |
-  | |                     | | supervisory and control functions of a Device             | | Controller        |
-  | |                     | | Control Subsystem (e.g., Mount Control System             | |                   |
-  | |                     | | Control Package).                                         | |                   |
-  +-----------------------+-------------------------------------------------------------+---------------------+
-  | | Data Acquisition    | | Contains software Components that implement the           | | Supervisor,       |
-  | |                     | | supervisory and data acquisition functions of a Detector  | | Controller,       |
-  | |                     | | Control Subsystem (e.g., AGWS Slope Processor Package).   | | Pipeline          |
-  | |                     | | Only Subsystems that contain detectors (e.g wavefront     | |                   |
-  | |                     | | sensor, acquisition/guide camera or a science detector)   | |                   |
-  | |                     | | need to provide a Data Acquisition Package.               | |                   |
-  +-----------------------+-------------------------------------------------------------+---------------------+
-  | | Hardware Package    | | Contains hardware Components in which to deploy the       | | Device Control    |
-  | |                     | | Device Control or Data Acquisition Package software       | | Computer,         |
-  | |                     | | Component and the hardware to interface with the          | | I/O Module        |
-  | |                     | | electromechanical Devices.                                | |                   |
-  +-----------------------+-------------------------------------------------------------+---------------------+
+  +-----------------------+-----------------------------------------------------------+---------------------+
+  |   Package Name        |   Description                                             |   Typical           |
+  |                       |                                                           |   Components        |
+  +=======================+===========================================================+=====================+
+  |   Control Package     | Contains software Components that implement the           |   Supervisor,       |
+  |                       | supervisory and control functions of a Device             |   Controller        |
+  |                       | Control Subsystem (e.g., Mount Control System             |                     |
+  |                       | Control Package).                                         |                     |
+  +-----------------------+-----------------------------------------------------------+---------------------+
+  |   Data Acquisition    | Contains software Components that implement the           |   Supervisor,       |
+  |                       | supervisory and data acquisition functions of a Detector  |   Controller,       |
+  |                       | Control Subsystem (e.g., AGWS Slope Processor Package).   |   Pipeline          |
+  |                       | Only Subsystems that contain detectors (e.g wavefront     |                     |
+  |                       | sensor, acquisition/guide camera or a science detector)   |                     |
+  |                       | need to provide a Data Acquisition Package.               |                     |
+  +-----------------------+-----------------------------------------------------------+---------------------+
+  |   Hardware Package    | Contains hardware Components in which to deploy the       |   Device Control    |
+  |                       | Device Control or Data Acquisition Package software       |   Computer,         |
+  |                       | Component and the hardware to interface with the          |   I/O Module        |
+  |                       | electro-mechanical Devices.                               |                     |
+  +-----------------------+-----------------------------------------------------------+---------------------+
 
 .. table:: SWC Functional Packages:  Operation Support
 
-  +-----------------------+-------------------------------------------------------------+---------------------+
-  | | Package Name        | | Description                                               | | Typical           |
-  | |                     | |                                                           | | Components        |
-  +=======================+=============================================================+=====================+
-  | | Sequencing Package  | | Contains sequence Components necessary for the            | | Sequence          |
-  | |                     | | operation of the Subsystem.                               | |                   |
-  +-----------------------+-------------------------------------------------------------+---------------------+
-  | | Diagnosis Package   | | Contains software Components necessary to implement       | | Supervisor,       |
-  | |                     | | diagnosis functions when required.  This may involve      | | Controller,       |
-  | |                     | | the development of special control or operation modes.    | | Pipeline,         |
-  | |                     | |                                                           | | Sequence          |
-  +-----------------------+-------------------------------------------------------------+---------------------+
-  | | Calibration Package | | Contains software Components necessary for the            | | Supervisor,       |
-  | |                     | | calibration and characterization of hardware Devices.     | | Controller,       |
-  | |                     | | This may include the development of special control       | | Pipeline,         |
-  | |                     | | or operation modes.                                       | | Sequence          |
-  | |                     | | Calibration packages usually produce influence matrices,  | |                   |
-  | |                     | | look up tables, or fitting polynomial coefficients.       | |                   |
-  | |                     | | Often these components can be modeled as pipeline         | |                   |
-  | |                     | | components and are run off-line.                          | |                   |
-  +-----------------------+-------------------------------------------------------------+---------------------+
-  | | Data Processing     | | Contains software Components necessary for the            | | Supervisor,       |
-  | | Package             | | calibration and processing of science and WFS detectors.  | | Pipeline          |
-  +-----------------------+-------------------------------------------------------------+---------------------+
-  | | Visualization       | | Contains software Components that provide custom          | | Panel,            |
-  | | Package             | | visualizations necessary for the efficient operation      | | Widget,           |
-  | |                     | | of a given Subsystem (e.g., M1 global status Panel).      | |                   |
-  | |                     | | Note that default engineering Panels are available as     | |                   |
-  | |                     | | part of the Engineering UI service.                       | |                   |
-  | |                     | | Visualization components may encompass functions to       | |                   |
-  | |                     | | enable the interaction of GMT users with the system:      | |                   |
-  | |                     | |   - User experience                                       | |                   |
-  | |                     | |   - User interaction                                      | |                   |
-  | |                     | |   - Data visualization                                    | |                   |
-  | |                     | |   - System navigation                                     | |                   |
-  +-----------------------+-------------------------------------------------------------+---------------------+
-  | | Observing Tool      | | Observing Tool (OT) components provide instrument         | | Panel,            |
-  | | Plugin Package      | | specific editors that integrate with the GMT              | | Widget,           |
-  | |                     | | Observing Tools to facilitate the specification of        | | Pipeline          |
-  | |                     | | instrument specific observation parameters.               | |                   |
-  +-----------------------+-------------------------------------------------------------+---------------------+
-  | | Safety Package      | | Contains software/hardware Components that implement      | | Supervisor,       |
-  | |                     | | Subsystem specific safety functions.  These Components    | | Controller        |
-  | |                     | | often interface with the ISS, but are independent         | |                   |
-  | |                     | | (e.g., M1 safety controller).                             | |                   |
-  +-----------------------+-------------------------------------------------------------+---------------------+
-  | | Operation Workflows | | Contains Components that allow the automation of high-    | | Workflow          |
-  | | Package             | | level operation workflows relative to the Subsystem       | |                   |
-  | |                     | | (e.g., unit test workflow, or calibration workflow in     | |                   |
-  | |                     | | case that several sequences and human operations are      | |                   |
-  | |                     | | involved).                                                | |                   |
-  +-----------------------+-------------------------------------------------------------+---------------------+
-  | | Management Package  | | Contains Components that capture the development          | | Plan,             |
-  | |                     | | backlog and the Assembly Integration and Testing plans.   | | Workflow          |
-  +-----------------------+-------------------------------------------------------------+---------------------+
+  +------------------+-------------------------------------------------------------+---------------------+
+  |   Package Name   |   Description                                               |   Typical           |
+  |                  |                                                             |   Components        |
+  +==================+=============================================================+=====================+
+  | Sequencing       |   Contains sequence Components necessary for the            |   Sequence          |
+  | Package          |   operation of the Subsystem.                               |                     |
+  +------------------+-------------------------------------------------------------+---------------------+
+  | Diagnosis        |   Contains software Components necessary to implement       |   Supervisor,       |
+  | Package          |   diagnosis functions when required.  This may involve      |   Controller,       |
+  |                  |   the development of special control or operation modes.    |   Pipeline,         |
+  |                  |                                                             |   Sequence          |
+  +------------------+-------------------------------------------------------------+---------------------+
+  | Calibration      |   Contains software Components necessary for the            |   Supervisor,       |
+  | Package          |   calibration and characterization of hardware Devices.     |   Controller,       |
+  |                  |   This may include the development of special control       |   Pipeline,         |
+  |                  |   or operation modes.                                       |   Sequence          |
+  |                  |   Calibration packages usually produce influence matrices,  |                     |
+  |                  |   look up tables, or fitting polynomial coefficients.       |                     |
+  |                  |   Often these components can be modeled as pipeline         |                     |
+  |                  |   components and are run off-line.                          |                     |
+  +------------------+-------------------------------------------------------------+---------------------+
+  | Data             |   Contains software Components necessary for the            |   Supervisor,       |
+  | Processing       |   calibration and processing of science and WFS detectors.  |   Pipeline          |
+  | Package          |                                                             |                     |
+  +------------------+-------------------------------------------------------------+---------------------+
+  | Visualization    |   Contains software Components that provide custom          |   Panel,            |
+  | Package          |   visualizations necessary for the efficient operation      |   Widget,           |
+  |                  |   of a given Subsystem (e.g., M1 global status Panel).      |                     |
+  |                  |   Note that default engineering Panels are available as     |                     |
+  |                  |   part of the Engineering UI service.                       |                     |
+  |                  |   Visualization components may encompass functions to       |                     |
+  |                  |   enable the interaction of GMT users with the system:      |                     |
+  |                  |   User experience, user interaction, data visualization     |                     |
+  |                  |   and system navigation                                     |                     |
+  +------------------+-------------------------------------------------------------+---------------------+
+  | Observing        |   Observing Tool (OT) components provide instrument         |   Panel,            |
+  | Tool             |   specific editors that integrate with the GMT              |   Widget,           |
+  | Plugin           |   Observing Tools to facilitate the specification of        |   Pipeline          |
+  | Package          |   instrument specific observation parameters.               |                     |
+  +------------------+-------------------------------------------------------------+---------------------+
+  | Safety           |   Contains software/hardware Components that implement      |   Supervisor,       |
+  | Package          |   Subsystem specific safety functions.  These Components    |   Controller        |
+  |                  |   often interface with the ISS, but are independent         |                     |
+  |                  |   (e.g., M1 safety controller).                             |                     |
+  +------------------+-------------------------------------------------------------+---------------------+
+  | Operation        |   Contains Components that allow the automation of high-    |   Workflow          |
+  | Workflows        |   level operation workflows relative to the Subsystem       |                     |
+  | Package          |   (e.g., unit test workflow, or calibration workflow in     |                     |
+  |                  |   case that several sequences and human operations are      |                     |
+  |                  |   involved).                                                |                     |
+  +------------------+-------------------------------------------------------------+---------------------+
+  | Management       |   Contains Components that capture the development          |   Plan,             |
+  | Package          |   backlog and the Assembly Integration and Testing plans.   |   Workflow          |
+  +------------------+-------------------------------------------------------------+---------------------+
 
 
 Package Specification File
@@ -590,6 +589,8 @@ of the *Package* *PBE* and *Aggregate* features as they are the same as the *Sub
 
 Component Specification
 -----------------------
+
+
 
 Introduction
 ............
@@ -948,5 +949,3 @@ The following paragraph includes the formal definition of the *UnitType* classes
 
       PhysicalConstant "c", {value: 2.99792458e8,    units: "ms^-1",           desc: "" }
       PhysicalConstant "G", {value: 3.1415926536e16, units: "m^3 kg^-1 s-2",   desc: "" }
-
-

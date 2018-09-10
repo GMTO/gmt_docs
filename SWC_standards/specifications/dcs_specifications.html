@@ -32,6 +32,8 @@
   
 
   
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
@@ -359,253 +361,106 @@ implements its own specific logic.</p>
 <col width="79%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">State</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">State Description</div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">State Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">INITIAL</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Initial pseudo state.  The Controller is not operational because it</div>
-<div class="line">has not been created yet.  The Controller cannot inform this state</div>
-<div class="line">as it is not running.  In this state the software is not running and</div>
-<div class="line">controlled equipment is not available.</div>
-</div>
+<tr class="row-even"><td>INITIAL</td>
+<td>Initial pseudo state.  The Controller is not operational because it
+has not been created yet.  The Controller cannot inform this state
+as it is not running.  In this state the software is not running and
+controlled equipment is not available.</td>
+</tr>
+<tr class="row-odd"><td>TERMINAL</td>
+<td>Final pseudo state of any Controller.  It is equivalent to the
+initial state.  A final state cannot have any outgoing transitions.</td>
+</tr>
+<tr class="row-even"><td>PREVIOUS STATE</td>
+<td>This pseudo state is a UML formalism that, within a composite
+state, memorizes the previous sub-state that was active prior to
+leaving the composite state.  This is used when a Controller
+enters the FAULT or DISABLED states.</td>
+</tr>
+<tr class="row-odd"><td>OFF</td>
+<td>The Controller is created, loaded and initialized with the
+default properties, but part of the software and hardware is not
+initialized and configured yet.  All the external Devices
+controlled by the Controller shall be switched-off.  In this
+state the Controller is not ready for operation, but it is
+possible to perform tests and diagnostics activities, specially
+related to the communication capabilities.  The Controller is in
+a static state waiting for events.</td>
+</tr>
+<tr class="row-even"><td>STARTING</td>
+<td><p class="first">The Controller is being started.  Any external equipment
+controlled by the Controller is being switched on.  In some
+cases, the power supply is shared with other Controllers.  It
+also performs the starting procedure which can include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Obtaining configuration properties from the configuration
+system</li>
+<li>Obtaining references to the required device or bus drivers</li>
+<li>Starting telemetry samplers, alarm rules, etc.</li>
+<li>Checking communication with the connected Devices (e.g., a
+motion drive)</li>
+</ul>
+</div></blockquote>
+<p class="last">Other activities that depend on the specific Controllers and
+Devices connected to it.</p>
 </td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">TERMINAL</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Final pseudo state of any Controller.  It is equivalent to the</div>
-<div class="line">initial state.  A final state cannot have any outgoing transitions.</div>
-</div>
-</td>
+<tr class="row-odd"><td>ON</td>
+<td>The Controller and the connected Devices are already properly
+initialized and configured.  When connected, and depending on
+the Controller, external equipment shall be in safe state (e.g.,
+brake engaged, motion drives disabled, locking pins inserted).
+This state can be the final state after a reset or after a power
+failure.</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">PREVIOUS STATE</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">This pseudo state is a UML formalism that, within a composite</div>
-<div class="line">state, memorizes the previous sub-state that was active prior to</div>
-<div class="line">leaving the composite state.  This is used when a Controller</div>
-<div class="line">enters the FAULT or DISABLED states.</div>
-</div>
-</td>
+<tr class="row-even"><td>INITIALIZING</td>
+<td>While the Controller is in this state the necessary procedures
+required to make the controller ready to receive operation
+requests (e.g., find fiducial marks) are executed.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">OFF</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The Controller is created, loaded and initialized with the</div>
-<div class="line">default properties, but part of the software and hardware is not</div>
-<div class="line">initialized and configured yet.  All the external Devices</div>
-<div class="line">controlled by the Controller shall be switched-off.  In this</div>
-<div class="line">state the Controller is not ready for operation, but it is</div>
-<div class="line">possible to perform tests and diagnostics activities, specially</div>
-<div class="line">related to the communication capabilities.  The Controller is in</div>
-<div class="line">a static state waiting for events.</div>
-</div>
-</td>
+<tr class="row-odd"><td>RUNNING</td>
+<td>The Controller is running and can be idle or serving an
+operation request.  In this state the Controller can receive new
+commands or is accepting data in its data inputs and sending
+data through its data outputs.</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">STARTING</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The Controller is being started.  Any external equipment</div>
-<div class="line">controlled by the Controller is being switched on.  In some</div>
-<div class="line">cases, the power supply is shared with other Controllers.  It</div>
-<div class="line">also performs the starting procedure which can include:</div>
-<div class="line"><br /></div>
-<div class="line-block">
-<div class="line">• Obtaining configuration properties from the configuration</div>
-<div class="line-block">
-<div class="line">system</div>
-<div class="line"><br /></div>
-</div>
-<div class="line">• Obtaining references to the required device or bus drivers</div>
-<div class="line"><br /></div>
-<div class="line">• Starting telemetry samplers, alarm rules, etc.</div>
-<div class="line"><br /></div>
-<div class="line">• Checking communication with the connected Devices (e.g., a</div>
-<div class="line-block">
-<div class="line">motion drive)</div>
-<div class="line"><br /></div>
-</div>
-</div>
-<div class="line">Other activities that depend on the specific Controllers and</div>
-<div class="line">Devices connected to it.</div>
-</div>
-</td>
+<tr class="row-even"><td>SHUTTING DOWN</td>
+<td>Back to OFF state (different for each Controller: power off
+Devices)</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">ON</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The Controller and the connected Devices are already properly</div>
-<div class="line">initialized and configured.  When connected, and depending on</div>
-<div class="line">the Controller, external equipment shall be in safe state (e.g.,</div>
-<div class="line">brake engaged, motion drives disabled, locking pins inserted).</div>
-<div class="line">This state can be the final state after a reset or after a power</div>
-<div class="line">failure.</div>
-</div>
-</td>
+<tr class="row-odd"><td>HALTING</td>
+<td>Back to ON state (different for each Controller: Engage brakes,
+disable drives)</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">INITIALIZING</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">While the Controller is in this state the necessary procedures</div>
-<div class="line">required to make the controller ready to receive operation</div>
-<div class="line">requests (e.g., find fiducial marks) are executed.</div>
-</div>
-</td>
+<tr class="row-even"><td>FAULT</td>
+<td>The Controller has detected a severe failure and is waiting for
+an event to occur  (e.g., operator input) to correct such
+situation.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">RUNNING</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The Controller is running and can be idle or serving an</div>
-<div class="line">operation request.  In this state the Controller can receive new</div>
-<div class="line">commands or is accepting data in its data inputs and sending</div>
-<div class="line">data through its data outputs.</div>
-</div>
-</td>
+<tr class="row-odd"><td>RESETTING</td>
+<td>Return to a safe and known state.  For example, when the
+Controller has entered into a FAULT state, due to the ISS
+triggering an interlock condition (which can disable drives,
+remove power, etc.), a reset command must be sent to the
+Controller.</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">SHUTTING DOWN</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Back to OFF state (different for each Controller: power off</div>
-<div class="line">Devices)</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">HALTING</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Back to ON state (different for each Controller: Engage brakes,</div>
-<div class="line">disable drives)</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">FAULT</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The Controller has detected a severe failure and is waiting for</div>
-<div class="line">an event to occur  (e.g., operator input) to correct such</div>
-<div class="line">situation.</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">RESETTING</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Return to a safe and known state.  For example, when the</div>
-<div class="line">Controller has entered into a FAULT state, due to the ISS</div>
-<div class="line">triggering an interlock condition (which can disable drives,</div>
-<div class="line">remove power, etc.), a reset command must be sent to the</div>
-<div class="line">Controller.</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">DISABLED</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">In this state the Controller rejects attempts to perform any</div>
-<div class="line">control action.  This is especially important with Controllers</div>
-<div class="line">connected to Devices.  In this state the Controller does not</div>
-<div class="line">send demands to the equipment requesting motion or a change (a</div>
-<div class="line">message is sent to the client indicating that the Controller is</div>
-<div class="line">disabled).  Note that the Controller is ready and it will answer</div>
-<div class="line">requests that ask for some status, but it will not execute any</div>
-<div class="line">commands that lead to actions on connected Devices.  This state</div>
-<div class="line">can be reached from any state, and when enabled, will return to</div>
-<div class="line">the previous state.</div>
-</div>
-</td>
+<tr class="row-even"><td>DISABLED</td>
+<td>In this state the Controller rejects attempts to perform any
+control action.  This is especially important with Controllers
+connected to Devices.  In this state the Controller does not
+send demands to the equipment requesting motion or a change (a
+message is sent to the client indicating that the Controller is
+disabled).  Note that the Controller is ready and it will answer
+requests that ask for some status, but it will not execute any
+commands that lead to actions on connected Devices.  This state
+can be reached from any state, and when enabled, will return to
+the previous state.</td>
 </tr>
 </tbody>
 </table>
@@ -1436,65 +1291,30 @@ the Table below for each individual degree of freedom.</div></blockquote>
 <col width="69%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><div class="first last line-block">
-<div class="line">Control Deployment</div>
-<div class="line">Mode</div>
-</div>
-</th>
-<th class="head"><div class="first last line-block">
-<div class="line">Description</div>
-<div class="line"><br /></div>
-</div>
-</th>
+<tr class="row-odd"><th class="head">Control Deployment
+Mode</th>
+<th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">PVT</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Position, Velocity and Torque control loops are</div>
-<div class="line">implemented on a motion drive. This mode is recommended</div>
-<div class="line">for single degree of freedom controllers with single or</div>
-<div class="line">dual encoder feedback. In this mode encoder feedback is</div>
-<div class="line">connected to the drive.</div>
-</div>
-</td>
+<tr class="row-even"><td>PVT</td>
+<td>Position, Velocity and Torque control loops are
+implemented on a motion drive. This mode is recommended
+for single degree of freedom controllers with single or
+dual encoder feedback. In this mode encoder feedback is
+connected to the drive.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">P-VT</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The Position control loop is implemented in the DCC,</div>
-<div class="line">while the Velocity and Torque loops are implemented in</div>
-<div class="line">the drive. This mode is recommended when the position</div>
-<div class="line">feedback cannot be connected directly to the drive.</div>
-</div>
-</td>
+<tr class="row-odd"><td>P-VT</td>
+<td>The Position control loop is implemented in the DCC,
+while the Velocity and Torque loops are implemented in
+the drive. This mode is recommended when the position
+feedback cannot be connected directly to the drive.</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">PV-T</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The Position and Velocity control loops are implemented</div>
-<div class="line">in the DCC, while the Torque control loops is</div>
-<div class="line">implemented in the drive. This mode is necessary when</div>
-<div class="line">several actuators act on the same axis.</div>
-</div>
-</td>
+<tr class="row-even"><td>PV-T</td>
+<td>The Position and Velocity control loops are implemented
+in the DCC, while the Torque control loops is
+implemented in the drive. This mode is necessary when
+several actuators act on the same axis.</td>
 </tr>
 </tbody>
 </table>

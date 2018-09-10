@@ -17,47 +17,47 @@ Observing tools provide the following capabilities shown in the following Table,
 as derived from the System Level Requirements:
 
 +-----------------------------+-----------------------------------------------------------+
-| | Title                     | | Statement                                               |
+|   Title                     |   Statement                                               |
 +=============================+===========================================================+
-| | Efficient Operations      | | Identify and define sequences for instruments,          |
-| |                           | | telescope, and science, operations to optimize          |
-| |                           | | on-sky observing efficiency, and to comply with GMT     |
-| |                           | | Efficiency Budget ( GMT-SE-REF-00593).                  |
+|   Efficient Operations      |   Identify and define sequences for instruments,          |
+|                             |   telescope, and science, operations to optimize          |
+|                             |   on-sky observing efficiency, and to comply with GMT     |
+|                             |   Efficiency Budget ( GMT-SE-REF-00593).                  |
 +-----------------------------+-----------------------------------------------------------+
-| | Telescope Operators,      | | Efficiently support the roles (operations, setup) of    |
-| | Instrument Specialists,   | | Telescope Operators, Instrument Specialists, and AO     |
-| | and AO Specialists        | | Specialists.                                            |
+|   Telescope Operators,      |   Efficiently support the roles (operations, setup) of    |
+|   Instrument Specialists,   |   Telescope Operators, Instrument Specialists, and AO     |
+|   and AO Specialists        |   Specialists.                                            |
 +-----------------------------+-----------------------------------------------------------+
-| | Quick Look                | | Provide software to facilitate near real-time           |
-| |                           | | assessment of data quality for each instrument.         |
+|   Quick Look                |   Provide software to facilitate near real-time           |
+|                             |   assessment of data quality for each instrument.         |
 +-----------------------------+-----------------------------------------------------------+
-| | Central Control           | | Provide central control capabilities for every          |
-| | Functions                 | | control subsystem.                                      |
+|   Central Control           |   Provide central control capabilities for every          |
+|   Functions                 |   control subsystem.                                      |
 +-----------------------------+-----------------------------------------------------------+
-| | Engineering Mode          | | Provide an engineering mode that allows low-level       |
-| |                           | | control of components and subsystems.                   |
+|   Engineering Mode          |   Provide an engineering mode that allows low-level       |
+|                             |   control of components and subsystems.                   |
 +-----------------------------+-----------------------------------------------------------+
-| | Observing Preparation     | | Provide software tools to assist astronomers in the     |
-| | Tools                     | | proposal preparation process.                           |
+|   Observing Preparation     |   Provide software tools to assist astronomers in the     |
+|   Tools                     |   proposal preparation process.                           |
 +-----------------------------+-----------------------------------------------------------+
-| | Observatory Workflow      | | Provide the capability to schedule and manage           |
-| | Scheduling                | | observatory workflows and tasks                         |
+|   Observatory Workflow      |   Provide the capability to schedule and manage           |
+|   Scheduling                |   observatory workflows and tasks                         |
 +-----------------------------+-----------------------------------------------------------+
-| | Program Execution         | | Provide the observatory staff software tools for        |
-| | Planning                  | | advanced planning of observing programs.                |
+|   Program Execution         |   Provide the observatory staff software tools for        |
+|   Planning                  |   advanced planning of observing programs.                |
 +-----------------------------+-----------------------------------------------------------+
-| | Observing Program         | | Provide software tools to assist astronomers in         |
-| | Definition                | | defining observing programs.                            |
+|   Observing Program         |   Provide software tools to assist astronomers in         |
+|   Definition                |   defining observing programs.                            |
 +-----------------------------+-----------------------------------------------------------+
-| | Observing Program         | | Provide software tools to execute Observing             |
-| | Programs.  Execution      | |                                                         |
+|   Observing Program         |   Provide software tools to execute Observing             |
+|   Programs.  Execution      |                                                           |
 +-----------------------------+-----------------------------------------------------------+
-| | Calibration               | | Provide the capability to perform or support            |
-| | Efficiencies: AO, WFS,    | | calibrations of all subsystems, instruments, AO,        |
-| | daytime, nighttime,       | | WFS, daytime, nighttime, routine, and non-routine       |
-| | routine, non-routine      | | calibrations within the time window specified in        |
-| |                           | | their respective requirements, and comply with GMT      |
-| |                           | | Efficiency Budget (GMT-SE-REF-00593).                   |
+|   Calibration               |   Provide the capability to perform or support            |
+|   Efficiencies: AO, WFS,    |   calibrations of all subsystems, instruments, AO,        |
+|   daytime, nighttime,       |   WFS, daytime, nighttime, routine, and non-routine       |
+|   routine, non-routine      |   calibrations within the time window specified in        |
+|                             |   their respective requirements, and comply with GMT      |
+|                             |   Efficiency Budget (GMT-SE-REF-00593).                   |
 +-----------------------------+-----------------------------------------------------------+
 
 
@@ -507,7 +507,7 @@ Exposure Time Calculator.
   target. The ROC can also interact with the :ref:`scheduling_system`
   to instantaneously visualize the sky location of the targets during
   queue planning, as the weights are changed.
-  
+
   Environmental information is also provided in the same visualization display
   that may be turned on/off. If cloud information is available, via either the
   weather service or an all-sky fish-eye camera located near the site, then it
@@ -516,4 +516,4 @@ Exposure Time Calculator.
   between the clouds” with a higher chance of success. Wind speed and direction
   are represented as arrows along the periphery of the display. The length and
   color of the arrows indicate wind speed, whereas the location along the
-  periphery indicates incoming direction. 
+  periphery indicates incoming direction.

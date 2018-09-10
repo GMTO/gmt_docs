@@ -19,14 +19,12 @@ telemetry data streams independently of control data.
 .. table:: SWCS Networking System Requirements (Level 3)
 
   +------------------------+-----------------------------------------------------------------+
-  | | Requirement          | | Statement                                                     |
+  |   Requirement          |   Statement                                                     |
   +========================+=================================================================+
-  | | General Network      | | Provide low latency and control network.                      |
+  |   General Network      |   Provide low latency and control network.                      |
   +------------------------+-----------------------------------------------------------------+
-  | | Service Connections  | | Provide the capability to connect a temporary computer in any |
-  | |                      | | serviceable location of the GMT observatory.                  |
+  |   Service Connections  |   Provide the capability to connect a temporary computer in any |
+  |                        |   serviceable location of the GMT observatory.                  |
   +------------------------+-----------------------------------------------------------------+
-  | | Storage Network      | | Provide a high bandwidth storage network.                     |
+  |   Storage Network      |   Provide a high bandwidth storage network.                     |
   +------------------------+-----------------------------------------------------------------+
-
-

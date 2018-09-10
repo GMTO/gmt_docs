@@ -32,6 +32,8 @@
   
 
   
+    <link rel="stylesheet" href="../../../_static/theme_overrides.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
@@ -250,83 +252,36 @@ the Table below; the default will be ICRS:</div></blockquote>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">FK4 [α, δ]</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Often referred to as the B1950 (Besselian epoch 1950.0) coordinate</div>
-<div class="line">system, this mean equatorial system pre-dates the 1976 IAU resolutions.</div>
-</div>
-</td>
+<tr class="row-even"><td>FK4 [α, δ]</td>
+<td>Often referred to as the B1950 (Besselian epoch 1950.0) coordinate
+system, this mean equatorial system pre-dates the 1976 IAU resolutions.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">FK5 [α, δ]</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Often referred to as the J2000 (Julian epoch 2000.0) coordinate system,</div>
-<div class="line">this mean equatorial system post-dates the 1976 IAU resolutions.</div>
-</div>
-</td>
+<tr class="row-odd"><td>FK5 [α, δ]</td>
+<td>Often referred to as the J2000 (Julian epoch 2000.0) coordinate system,
+this mean equatorial system post-dates the 1976 IAU resolutions.</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">ICRS [α, δ]</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">The International Celestial Reference System (ICRS) is the current</div>
-<div class="line">standard adopted by the International Astronomical Union, beginning</div>
-<div class="line">1998. The origin is at the barycenter of the solar system with the axes</div>
-<div class="line">fixed in space, and corresponds closely to FK5 J2000 to within ~30</div>
-<div class="line">mas for an object. [Default]</div>
-</div>
-</td>
+<tr class="row-even"><td>ICRS [α, δ]</td>
+<td>The International Celestial Reference System (ICRS) is the current
+standard adopted by the International Astronomical Union, beginning
+1998. The origin is at the barycenter of the solar system with the axes
+fixed in space, and corresponds closely to FK5 J2000 to within ~30
+mas for an object. [Default]</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Topocentric</div>
-<div class="line">apparent [α, δ]</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Mostly used for solar system targets when inputs come from solar system</div>
-<div class="line">ephemeris.  programs where parallax (annual and diurnal), planetary</div>
-<div class="line">aberrations, and their motions (i.e., tracking rates in [α, δ]), would</div>
-<div class="line">already have been pre-computed.</div>
-</div>
-</td>
+<tr class="row-odd"><td>Topocentric
+apparent [α, δ]</td>
+<td>Mostly used for solar system targets when inputs come from solar system
+ephemeris.  programs where parallax (annual and diurnal), planetary
+aberrations, and their motions (i.e., tracking rates in [α, δ]), would
+already have been pre-computed.</td>
 </tr>
-<tr class="row-even"><td><div class="first last line-block">
-<div class="line">Observed [Az, El]</div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Used when another program, external to the TCS, has made all the</div>
-<div class="line">transformations necessary.</div>
-</div>
-</td>
+<tr class="row-even"><td>Observed [Az, El]</td>
+<td>Used when another program, external to the TCS, has made all the
+transformations necessary.</td>
 </tr>
-<tr class="row-odd"><td><div class="first last line-block">
-<div class="line">Mount [Az, El]</div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-</td>
-<td><div class="first last line-block">
-<div class="line">Mostly used for engineering and calibration applications. The relation</div>
-<div class="line">between the Mount [Az, El] and observed [Az, El] is given by the</div>
-<div class="line">pointing model.</div>
-</div>
-</td>
+<tr class="row-odd"><td>Mount [Az, El]</td>
+<td>Mostly used for engineering and calibration applications. The relation
+between the Mount [Az, El] and observed [Az, El] is given by the
+pointing model.</td>
 </tr>
 </tbody>
 </table>
@@ -355,8 +310,8 @@ before final conversions to apparent [α, δ] to point the telescope.</p>
 the steps taken to convert celestial coordinates [α, δ] into instrumental
 direction [Az, El] and rotator angles that the mount servo system needs to
 position the telescope. There are two flow directions, distinguished by how
-often the information needs to update: downward (slow, ≳20 Hz) and upward
-(fast, ≫20 Hz). The downward direction (upper half of Figure) first transforms
+often the information needs to update: downward (slow, 20 Hz) and upward
+(fast, &gt; 20 Hz). The downward direction (upper half of Figure) first transforms
 target celestial coordinates into a corresponding line-of- sight [Az, El]
 coordinate, correcting for terms that are independent of the telescope mount.
 Those terms include: aberrations (annual and diurnal), light deflection,
@@ -374,7 +329,7 @@ and position offset relative to the optical telescope axis. The above
 transformations result in the actual demand, angle [Az, El] for aiming the
 telescope mount.</p>
 <p>In contrast, upward transformations (lower half of Figure) take place at much
-higher frequencies (≫20 Hz), the purpose of which is to react to fast
+higher frequencies (&gt;20 Hz), the purpose of which is to react to fast
 mechanical positioning demands, such as target scanning, tip-tilt guiding,
 wind perturbations, AO closed loop operations, image centroiding, and encoder
 errors.  The telescope Az/El servo system compares the mount demand (downward
