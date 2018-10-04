@@ -45,12 +45,16 @@ The SDK is currently configured to run on the **Fedora 26 Server** Linux Operati
 
   2. Install the operating system on the development machine by either creating a bootable USB drive or via network installation using tools such as Cobbler and Kickstart. Other options include running Fedora 26 in a Virtual Machine or Docker Containers, however, the use of virtualization and its impact on connecting to actual hardware has not been fully tested.
 
-    .. toctree::
-       :maxdepth: 1
+.. warning::
+  The real-time Linux kernel requires the root partition to be an **ext4** file system. Please ensure that this is configured correctly in the disk partitioning settings.
 
-       dev_environment/prep_installation
-       dev_environment/boot_installation
-       dev_environment/anaconda_install
+
+.. toctree::
+   :maxdepth: 1
+
+   dev_environment/prep_installation
+   dev_environment/boot_installation
+   dev_environment/anaconda_install
 
 Repository Configuration
 ........................
@@ -242,14 +246,14 @@ EtherCAT is a high-speed fieldbus communication system used for real-time contro
 
     Before=network.service
 
-6. Enable the Ethercat service
+6. Reboot into the RT Kernel, if you're not in it already.
+
+7. Enable the Ethercat service
 
   .. code-block:: bash
 
     $ sudo systemctl enable ethercat
     $ sudo systemctl start ethercat
-
-7. Reboot into the RT Kernel if you're not in it already.
 
 8. Test the Ethercat configuration
 
