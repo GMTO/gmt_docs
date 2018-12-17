@@ -3,6 +3,53 @@
 Release 1
 =========
 
+Contents of release 1.5.0
+-------------------------
+
+- Release distribution and installation
+
+  - Support added for Fedora 28
+  - Installation instructions updated for creating either a Fedora 28 Server or a Fedora 28 Workstation
+  - Instructions added for installing and running the SDK and Navigator application on Linux and MacOS 
+
+- Development Framework
+
+  - Added Model validation with ```gds validate``` command
+  - Added Test plugin to for generating and executing module tests
+  - Fixed ```gds new``` command (issue #108)
+
+- Core Frameworks
+
+  - C++ components generate heartbeats using timestamps instead of 0 values
+  - EtherCAT support
+
+    - Added ability to send SDOs to slaves during runtime and not just during initialization
+    - Fixed issue with sending SDOs to multiple slaves with the same name
+
+  - Added Ethernet TCP/IP Hardware Adapter
+  - Initial release of the UI Framework for building User Interface panels
+
+    - Navigator Application for viewing Engineering UI panels and custom UI Panels
+    - Model files are loaded automatically for configured modules to build Engineering UI Panels
+    - Custom UI panels can be defined in the Visualization package of the module
+
+  - Initial release of the Test Framework for generating and running tests on the Component level 
+
+- Implementation examples
+
+  - Documentation for the HDK example has been updated to include UI components.
+
+- Documentation: Software Development
+
+  - New page ``UI Framework user guide``, with the user manual of UI Framework.
+  - New page ``Navigator Application user guide``, with the user manual for 
+    using the Navigator Application.
+  - New page ``Test Framework user guide``, with the user manual of the
+    Test Framework.
+  - Updated page ``HDK example``, with instructions on running the Engineering UI and building custom
+    UI panels.
+
+
 Contents of release 1.4.1
 -------------------------
 

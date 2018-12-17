@@ -210,7 +210,7 @@ Double-click the VM in the left pane or select the VM and click "Start".
   :scale: 70 %
   :alt: First Run
 
-Browse to the *Fedora-Server-dvd-x86_64-26-1.5.iso* file downloaded before and click *Start*.
+Browse to the iso file downloaded before and click *Start*.
 This will mount the iso into a Virtual Optical Drive and select it as the boot
 device.
 
@@ -219,7 +219,7 @@ device.
   :scale: 70 %
   :alt: First Run Install Menu
 
-Select *Install Fedora 26* and follow the instructions in :ref:`anaconda_install` to install
+Select *Install Fedora* and follow the instructions in :ref:`fedora_server` to install
 the operating system. Ensure that the boot partition is set to File System *ext4* for the RT kernel
 to work.
 

@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1.2.2.1. Fedora 28 Server &mdash; GMT Software And Controls documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
+        <link rel="up" title="1. Installing the SDK" href="../installation.html"/>
+        <link rel="next" title="1.2.4.1. User Authentication using LDAP" href="ldap_configuration.html"/>
+        <link rel="prev" title="1. Installing the SDK" href="../installation.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GMT Software And Controls
+          
+
+          
+            
+            <img src="../../_static/logowhite.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SWC_architecture/index.html">Architecture and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../SWC_standards/index.html">Software and Controls Standards</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Software Development</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../installation.html">1. Installing the SDK</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#development-platform">1.1. Development Platform</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../installation.html#server-configuration">1.2. Server Configuration</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#required-hardware">1.2.1. Required Hardware</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../installation.html#operating-system">1.2.2. Operating System</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#repository-configuration">1.2.3. Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#advanced-system-configuration-optional">1.2.4. Advanced System Configuration (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#package-list">1.2.5. Package List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#node-installation">1.2.6. Node Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#mongodb-configuration">1.2.7. MongoDB Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#infiniband-configuration-optional">1.2.8. Infiniband Configuration (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#ethercat-configuration">1.2.9. Ethercat Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#network-time-protocol-configuration">1.2.10. Network Time Protocol Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation.html#precision-time-protocol-configuration-optional">1.2.11. Precision Time Protocol Configuration (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#operations-workstation-configuration">1.3. Operations Workstation Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#software-development-kit-sdk">1.4. Software Development Kit (SDK)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade.html">2. Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gds_guide.html">4. gds documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling_guidelines.html">5. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_language_mapping/index.html">6. Model-language mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core_services_user_guide.html">7. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../isample_example.html">8. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hdk_example.html">9. HDK example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../data_products/index.html">Data Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary/swc_sys_glossary.html">Software and Controls Acronyms and Definitions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">GMT Software And Controls</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Software Development</a> &raquo;</li>
+        
+          <li><a href="../installation.html">1. Installing the SDK</a> &raquo;</li>
+        
+      <li>1.2.2.1. Fedora 28 Server</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fedora-28-server">
+<span id="fedora-server"></span><h1>1.2.2.1. Fedora 28 Server<a class="headerlink" href="#fedora-28-server" title="Permalink to this headline">¶</a></h1>
+<p>The ISO file can be downloaded from the Fedora website: <a class="reference external" href="https://download.fedoraproject.org/pub/fedora/linux/releases/28/Server/x86_64/iso/">https://download.fedoraproject.org/pub/fedora/linux/releases/28/Server/x86_64/iso/</a></p>
+<p>Alternatively, download the file directly from the terminal:</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget https://download.fedoraproject.org/pub/fedora/linux/releases/28/Server/x86_64/iso/Fedora-Server-dvd-x86_64-28-1.1.iso
+</pre></div>
+</div>
+</div></blockquote>
+<p>Install the operating system on the development machine by either creating a bootable USB drive or via network installation using tools such as Cobbler and Kickstart. Other options include running Fedora 28 in a Virtual Machine or Docker Containers, however, the use of virtualization and its impact on connecting to actual hardware has not been fully tested.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The real-time Linux kernel requires the root partition to be an <strong>ext4</strong> file system. Please ensure that this is configured correctly in the disk partitioning settings.</p>
+</div>
+<div class="section" id="preparing-usb-for-installation">
+<h2>1.2.2.1.1. Preparing USB for Installation<a class="headerlink" href="#preparing-usb-for-installation" title="Permalink to this headline">¶</a></h2>
+<p>Full instructions for downloading Fedora 28 and preparing various types of boot media in different environments can be found here: <a class="reference external" href="https://docs.fedoraproject.org/en-US/fedora/f28/install-guide/install/Preparing_for_Installation/index.html">https://docs.fedoraproject.org/en-US/fedora/f28/install-guide/install/Preparing_for_Installation/index.html</a></p>
+<p>Alternatively, the following command-line instructions may be used on OSX or Linux:</p>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<ul class="last simple">
+<li>The USB drive needs a minimum capacity of 3GB</li>
+<li>Ensure that you properly identify the <code class="docutils literal"><span class="pre">device</span></code> assigned to the USB drive</li>
+<li>The entire USB drive will be erased!</li>
+</ul>
+</div>
+<p>OSX - with a drive on <code class="docutils literal"><span class="pre">/dev/disk2</span></code></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ diskutil list
+$ sudo diskutil unmountDisk /dev/disk2
+$ sudo dd <span class="nv">bs</span><span class="o">=</span>4m <span class="k">if</span><span class="o">=</span>Fedora-Server-dvd-x86_64-28-1.1.iso <span class="nv">of</span><span class="o">=</span>/dev/rdisk2
+</pre></div>
+</div>
+<p>Linux - with a drive on <code class="docutils literal"><span class="pre">/dev/sdb</span></code></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo umount /dev/sdb*
+$ sudo dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">if</span><span class="o">=</span>Fedora-Server-dvd-x86_64-28-1.1.iso <span class="nv">of</span><span class="o">=</span>/dev/sdb
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="booting-from-prepared-usb">
+<h2>1.2.2.1.2. Booting from Prepared USB<a class="headerlink" href="#booting-from-prepared-usb" title="Permalink to this headline">¶</a></h2>
+<p>Full instructions for booting from prepared Fedora 28 installation media can be found here: <a class="reference external" href="https://docs.fedoraproject.org/en-US/fedora/f28/install-guide/install/Booting_the_Installation/">https://docs.fedoraproject.org/en-US/fedora/f28/install-guide/install/Booting_the_Installation/</a></p>
+<p>The following instructions are applicable to the HDK:</p>
+<ol class="arabic simple">
+<li>Configure your BIOS to boot from USB</li>
+</ol>
+<blockquote>
+<div><p>This step is vendor specific. On the Beckhoff Industrial PC (IPC) provided
+with the Hardware Development Kit (HDK):</p>
+<p>1.1  Insert the USB drive into the IPC and power up the system</p>
+<p>1.2  Enter the BIOS settings by pressing the &lt;Del&gt; key.</p>
+<p>1.3  In the Boot panel, set Option #1 to [USB Stick].</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/hdk-bios-usb.png"><img alt="BIOS boot configuration" class="align-center" src="../../_images/hdk-bios-usb.png" style="width: 560.0px; height: 352.1px;" /></a>
+</div></blockquote>
+<p>1.4 Select ‘Save &amp; Exit’; the system will reboot</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>OS Installation</li>
+</ol>
+<blockquote>
+<div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<ul class="last simple">
+<li>Your system drive will be reformatted and erased! For HDK, <strong>do not</strong> use the Beckhoff CFast card with TwinCAT3!</li>
+</ul>
+</div>
+<p>2.1 Once the system is back up, select the ‘Install Fedora 28’ option</p>
+</div></blockquote>
+</div>
+<div class="section" id="installation-using-anaconda">
+<h2>1.2.2.1.3. Installation (Using Anaconda)<a class="headerlink" href="#installation-using-anaconda" title="Permalink to this headline">¶</a></h2>
+<p>The installation for the Server version of Fedora may be completed using the Anaconda Installer in either Graphical or Text Mode. Full instructions can be found here: <a class="reference external" href="https://docs.fedoraproject.org/en-US/fedora/f28/install-guide/install/Installing_Using_Anaconda/">https://docs.fedoraproject.org/en-US/fedora/f28/install-guide/install/Installing_Using_Anaconda/</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To boot the installer in text mode, add the boot option <code class="docutils literal"><span class="pre">inst.text</span></code> to the command line boot menu and select option 2 (Use text mode) from the subsequent menu. Text mode has some limitations, such as not being able to select a custom partitioning scheme.</p>
+</div>
+<p>Ensure that all items listed are configured appropriately, ready for installation.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../../_images/fedora_anaconda01.png"><img alt="Installation Menu" class="align-center" src="../../_images/fedora_anaconda01.png" style="width: 1009.4px; height: 562.8px;" /></a>
+</div></blockquote>
+<ol class="arabic simple">
+<li><strong>Language settings</strong> - English (US)</li>
+<li><strong>Time settings</strong> - Select the appropriate Time Zone (for example America/Los_Angeles)</li>
+<li><strong>Installation source</strong> - Local media (CD/DVD)</li>
+<li><strong>Software Selection</strong> - Default packages are sufficient for now</li>
+<li><strong>Installation Destination</strong> - Select the appropriate drive for installation and whether to use the entire drive. Custom partitioning can be configured here as well. The default Partition Scheme to use is LVM. Ensure that the file system is set to <code class="docutils literal"><span class="pre">ext4</span></code> for the RT kernel to work.</li>
+<li><strong>Network Configuration</strong> - At least one interface with internet access should be configured</li>
+<li><strong>Root Password</strong> - Set a secure root password</li>
+<li><strong>User Creation</strong> - Create the default user. The default user for a typical GMT development environment is <code class="docutils literal"><span class="pre">gmto</span></code>. This user should have Administrator access.</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The real-time Linux kernel requires the root partition to be an <strong>ext4</strong> file system. Please ensure that this is configured correctly in the disk partitioning settings.</p>
+</div>
+<p>The following extract from the GMTO kickstart file shows settings used for automated PXE installs:</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># -- Installation Parameters ------------------------------------------------------</span>
+install                                       <span class="c1"># Install, instead of Upgrade</span>
+reboot                                        <span class="c1"># Reboot after installation</span>
+text                                          <span class="c1"># Use text mode install</span>
+keyboard us                                   <span class="c1"># System keyboard</span>
+lang en_US                                    <span class="c1"># System language</span>
+timezone America/Los_Angeles                  <span class="c1"># System timezone</span>
+bootloader --location<span class="o">=</span>mbr                     <span class="c1"># Bootloader configuration</span>
+clearpart --all --initlabel                   <span class="c1"># Partition clearing information</span>
+skipx                                         <span class="c1"># Skip X11 configuration</span>
+
+<span class="c1"># -- Security Settings ------------------------------------------------------------</span>
+auth --useshadow --enablemd5                  <span class="c1"># Use shadow passwords</span>
+firewall --enabled                            <span class="c1"># Firewall configuration</span>
+selinux --disabled                            <span class="c1"># SELinux configuration</span>
+rootpw --iscrypted <span class="nv">$default_password_crypted</span>  <span class="c1"># Root password</span>
+
+<span class="c1"># -- User configuration -----------------------------------------------------------</span>
+user --name<span class="o">=</span>gmto --password<span class="o">=</span>gmto --plaintext
+
+<span class="c1"># -- Disk Partitioning ------------------------------------------------------------</span>
+clearpart --drives<span class="o">=</span>sda                         <span class="c1"># Remove existing partitions</span>
+zerombr                                        <span class="c1"># Clear the Master Boot Record</span>
+part /boot --label<span class="o">=</span>/boot --asprimary --size<span class="o">=</span><span class="m">500</span> --fstype<span class="o">=</span>ext4 --ondisk<span class="o">=</span>sda
+part swap --recommended --ondisk<span class="o">=</span>sda
+part / --label<span class="o">=</span>/ --fstype<span class="o">=</span>ext4 --grow --ondisk<span class="o">=</span>sda
+</pre></div>
+</div>
+</div></blockquote>
+<p>After installation, the system will reboot. Remove the boot drive (USB drive or network mount) and select the default kernel.</p>
+<p><a class="reference internal" href="#fedora-server"><span class="std std-ref">[back to top]</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ldap_configuration.html" class="btn btn-neutral float-right" title="1.2.4.1. User Authentication using LDAP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../installation.html" class="btn btn-neutral" title="1. Installing the SDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, contributors.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'1.5.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

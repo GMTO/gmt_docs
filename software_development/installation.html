@@ -41,7 +41,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="1.2.1.1. Preparing for Installation" href="dev_environment/prep_installation.html"/>
+        <link rel="next" title="1.2.2.1. Fedora 28 Server" href="dev_environment/fedora_server.html"/>
         <link rel="prev" title="Software Development" href="index.html"/> 
 
   
@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.4
+                1.5
               </div>
             
           
@@ -104,22 +104,29 @@
 <li class="toctree-l1"><a class="reference internal" href="../SWC_standards/index.html">Software and Controls Standards</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Software Development</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">1. Installing the SDK</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#required-hardware">1.1. Required Hardware</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#development-platform">1.2. Development Platform</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#operating-system">1.2.1. Operating System</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#repository-configuration">1.2.2. Repository Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#advanced-system-configuration">1.2.3. Advanced System Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#package-list">1.2.4. Package List</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#node-installation">1.2.5. Node Installation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mongodb-configuration">1.2.6. MongoDB Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#infiniband-configuration-optional">1.2.7. Infiniband Configuration (optional)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ethercat-configuration">1.2.8. Ethercat Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#real-time-configuration-optional">1.2.9. Real-time Configuration (optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#development-platform">1.1. Development Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#server-configuration">1.2. Server Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#required-hardware">1.2.1. Required Hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operating-system">1.2.2. Operating System</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#repository-configuration">1.2.3. Repository Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-system-configuration-optional">1.2.4. Advanced System Configuration (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#package-list">1.2.5. Package List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#node-installation">1.2.6. Node Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mongodb-configuration">1.2.7. MongoDB Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#infiniband-configuration-optional">1.2.8. Infiniband Configuration (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ethercat-configuration">1.2.9. Ethercat Configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#network-time-protocol-configuration">1.2.10. Network Time Protocol Configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#precision-time-protocol-configuration-optional">1.2.11. Precision Time Protocol Configuration (optional)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#software-development-kit-sdk">1.3. Software Development Kit (SDK)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operations-workstation-configuration">1.3. Operations Workstation Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">1.3.1. Operating System</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#packages">1.3.2. Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-installation">1.3.3. Python Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.3.4. Node Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#software-development-kit-sdk">1.4. Software Development Kit (SDK)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
@@ -199,8 +206,34 @@
             
   <div class="section" id="installing-the-sdk">
 <span id="installation"></span><h1>1. Installing the SDK<a class="headerlink" href="#installing-the-sdk" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="development-platform">
+<h2>1.1. Development Platform<a class="headerlink" href="#development-platform" title="Permalink to this headline">¶</a></h2>
+<p>The development platform is no longer distributed as a standalone ISO file. Instead, the following guide is provided to assist with hardware, operating system and third-party software configuration required for running the OCS SDK. Some key areas, such as disk partitioning, user authentication and NFS mounting of home directories, depend on individual factors at each partner institution and should therefore be considered examples only.</p>
+<p>Benefits of this approach, versus distributing the complete ISO, include the ability to support different network, hardware and software platforms used for software development by different partner institutions, as well as allowing for separate upgrade schedules for the Development Platform and Software Development Kit without affecting ongoing subsystem software development.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At GMTO, these instructions are formalized using Kickstart files and installed via the network using tools such as Cobbler. The GMTO DevOps team can provide assistance in setting up a similar system for development at partner institutions, if required.</p>
+</div>
+<p>The Observatory Control System (OCS) is designed to be a distributed system with device control components running on real-time computers, connected to common services and user interface components via the control network.</p>
+<dl class="docutils">
+<dt>For device control systems, the following operating systems are supported:</dt>
+<dd><ul class="first last simple">
+<li>Fedora server</li>
+</ul>
+</dd>
+<dt>For user interfaces, the following operating systems are supported:</dt>
+<dd><ul class="first last simple">
+<li>MacOS</li>
+</ul>
+</dd>
+</dl>
+<p>Future versions of the SDK could include support for CentOS, RHEL or Scientific Linux. Fedora has a very short release and support cycle (6 months and 18 months respectively), which is not ideal for a platform that requires significant stability over long periods of time.</p>
+</div>
+<div class="section" id="server-configuration">
+<h2>1.2. Server Configuration<a class="headerlink" href="#server-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Servers are used for developing, running and testing device control software and core services. When real-time communication with hardware is required, the real-time kernel should be installed and configured. The following guidelines for creating a server should be tailored according to its intended purpose.</p>
 <div class="section" id="required-hardware">
-<h2>1.1. Required Hardware<a class="headerlink" href="#required-hardware" title="Permalink to this headline">¶</a></h2>
+<h3>1.2.1. Required Hardware<a class="headerlink" href="#required-hardware" title="Permalink to this headline">¶</a></h3>
 <p>Minimum hardware requirements for development machines:</p>
 <blockquote>
 <div><ul class="simple">
@@ -218,45 +251,19 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="development-platform">
-<h2>1.2. Development Platform<a class="headerlink" href="#development-platform" title="Permalink to this headline">¶</a></h2>
-<p>The development platform is no longer distributed as a standalone ISO file. Instead, the following guide is provided to assist with hardware, operating system and third-party software configuration required for running the OCS SDK. Some key areas, such as disk partitioning, user authentication and NFS mounting of home directories, depend on individual factors at each partner institution and should therefore be considered examples only.</p>
-<p>Benefits of this approach versus distributing the complete ISO include the ability to support different network, hardware and software platforms used for software development by different partner institutions, as well as allowing for separate upgrade schedules for the Development Platform and Software Development Kit without affecting ongoing subsystem software development.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">At GMTO, these instructions are formalized using Kickstart files and installed via the network using tools such as Cobbler. The GMTO DevOps team can provide assistance in setting up a similar system for development at partner institutions, if required.</p>
-</div>
 <div class="section" id="operating-system">
-<h3>1.2.1. Operating System<a class="headerlink" href="#operating-system" title="Permalink to this headline">¶</a></h3>
-<p>The SDK is currently configured to run on the <strong>Fedora 26 Server</strong> Linux Operating System.</p>
+<h3>1.2.2. Operating System<a class="headerlink" href="#operating-system" title="Permalink to this headline">¶</a></h3>
+<p>Install the Operating System using these instructions:</p>
 <blockquote>
-<div><ol class="arabic simple">
-<li>The ISO file can be downloaded from the Fedora website: <a class="reference external" href="https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/">https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/</a></li>
-</ol>
-<blockquote>
-<div><p>Alternatively, download the file directly from the terminal:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -L -O https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/Fedora-Server-dvd-x86_64-26-1.5.iso
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Install the operating system on the development machine by either creating a bootable USB drive or via network installation using tools such as Cobbler and Kickstart. Other options include running Fedora 26 in a Virtual Machine or Docker Containers, however, the use of virtualization and its impact on connecting to actual hardware has not been fully tested.</li>
-</ol>
-</div></blockquote>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The real-time Linux kernel requires the root partition to be an <strong>ext4</strong> file system. Please ensure that this is configured correctly in the disk partitioning settings.</p>
-</div>
-<div class="toctree-wrapper compound">
+<div><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="dev_environment/prep_installation.html">1.2.1.1. Preparing for Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dev_environment/boot_installation.html">1.2.1.2. Booting the Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dev_environment/anaconda_install.html">1.2.1.3. Installing Using Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_environment/fedora_server.html">1.2.2.1. Fedora 28 Server</a></li>
 </ul>
 </div>
+</div></blockquote>
 </div>
 <div class="section" id="repository-configuration">
-<h3>1.2.2. Repository Configuration<a class="headerlink" href="#repository-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.3. Repository Configuration<a class="headerlink" href="#repository-configuration" title="Permalink to this headline">¶</a></h3>
 <p>Some required RPMs are built by GMTO and need to be downloaded from the GMTO Yum Repository, currently hosted on Amazon Web Services.</p>
 <p>To add the GMT repositories:</p>
 <ol class="arabic simple">
@@ -284,8 +291,8 @@
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="advanced-system-configuration">
-<h3>1.2.3. Advanced System Configuration<a class="headerlink" href="#advanced-system-configuration" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="advanced-system-configuration-optional">
+<h3>1.2.4. Advanced System Configuration (optional)<a class="headerlink" href="#advanced-system-configuration-optional" title="Permalink to this headline">¶</a></h3>
 <p>In a distributed computing environment, used by multiple developers, it is very convenient to use a centralized LDAP server for User Authentication and automatically mount /home directories from a network drive. The LDAP and NFS server configuration is network-dependent. The following instructions can be used as guidelines when configuring individual development machines to make use these services, if available.</p>
 <blockquote>
 <div><div class="admonition note">
@@ -294,14 +301,14 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="dev_environment/ldap_configuration.html">1.2.3.1. User Authentication using LDAP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dev_environment/nfs_configuration.html">1.2.3.2. Mounting Home Directories using NFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_environment/ldap_configuration.html">1.2.4.1. User Authentication using LDAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_environment/nfs_configuration.html">1.2.4.2. Mounting Home Directories using NFS</a></li>
 </ul>
 </div>
 </div></blockquote>
 </div>
 <div class="section" id="package-list">
-<h3>1.2.4. Package List<a class="headerlink" href="#package-list" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.5. Package List<a class="headerlink" href="#package-list" title="Permalink to this headline">¶</a></h3>
 <p>The following RPM packages should be installed by an Administrative user for use in the development environment:</p>
 <ol class="arabic simple">
 <li>Install Common OS Utilities</li>
@@ -328,20 +335,18 @@ $ sudo dnf install -y python3-sphinx python3-sphinx_rtd_theme
 <li>Install OCS Dependencies</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y rdma librdmacm-devel
-$ sudo dnf install -y boost-devel freeopcua freeopcua-devel
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y rdma librdmacm-devel boost-devel
 </pre></div>
 </div>
 </div></blockquote>
 </div>
 <div class="section" id="node-installation">
-<h3>1.2.5. Node Installation<a class="headerlink" href="#node-installation" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.6. Node Installation<a class="headerlink" href="#node-installation" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Download and install <strong>Node version 8</strong></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sL https://rpm.nodesource.com/setup_8.x <span class="p">|</span> sudo bash -
-$ sudo dnf install -y nodejs
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y nodejs
 </pre></div>
 </div>
 </div></blockquote>
@@ -355,7 +360,7 @@ $ sudo dnf install -y nodejs
 </div></blockquote>
 </div>
 <div class="section" id="mongodb-configuration">
-<h3>1.2.6. MongoDB Configuration<a class="headerlink" href="#mongodb-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.7. MongoDB Configuration<a class="headerlink" href="#mongodb-configuration" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Install the necessary packages:</li>
 </ol>
@@ -391,7 +396,7 @@ $ sudo systemctl start mongod
 </div></blockquote>
 </div>
 <div class="section" id="infiniband-configuration-optional">
-<h3>1.2.7. Infiniband Configuration (optional)<a class="headerlink" href="#infiniband-configuration-optional" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.8. Infiniband Configuration (optional)<a class="headerlink" href="#infiniband-configuration-optional" title="Permalink to this headline">¶</a></h3>
 <p>Infiniband is a low-latency networking communications protocol that requires specialized hardware. The following configuration steps should be used as a guide when configuring Infiniband communications.</p>
 <ol class="arabic simple">
 <li>Install the neccessary packages</li>
@@ -434,7 +439,7 @@ $ sudo systemctl <span class="nb">enable</span> rdma
 </div></blockquote>
 </div>
 <div class="section" id="ethercat-configuration">
-<h3>1.2.8. Ethercat Configuration<a class="headerlink" href="#ethercat-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.9. Ethercat Configuration<a class="headerlink" href="#ethercat-configuration" title="Permalink to this headline">¶</a></h3>
 <p>EtherCAT is a high-speed fieldbus communication system used for real-time control. The following configuration steps should be used as a guide when configuring EtherCAT communications.</p>
 <ol class="arabic simple">
 <li>Install the real-time kernel and relevant packages</li>
@@ -489,6 +494,24 @@ $ sudo systemctl start ethercat
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="8">
+<li>Edit <code class="docutils literal"><span class="pre">/etc/security/limits.d/99-realtime.conf</span></code> and add the following options:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>@realtime - rtprio <span class="m">99</span>
+@realtime - memlock unlimited
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="9">
+<li>Add a new group and add the “gmto” user to it.</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo groupadd -f -g <span class="m">2001</span> realtime
+$ sudo usermod --groups realtime gmto
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="8">
 <li>Test the Ethercat configuration</li>
 </ol>
 <blockquote>
@@ -498,27 +521,6 @@ $ ethercat slaves
 </div>
 </div></blockquote>
 <p>If the “ethercat master” command does not produce the correct output, ensure that you’re currently running the real-time kernel. If the “ethercat slaves” command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
-</div>
-<div class="section" id="real-time-configuration-optional">
-<h3>1.2.9. Real-time Configuration (optional)<a class="headerlink" href="#real-time-configuration-optional" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Edit <code class="docutils literal"><span class="pre">/etc/security/limits.d/99-realtime.conf</span></code> and add the following options:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>@realtime - rtprio <span class="m">99</span>
-@realtime - memlock unlimited
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Add a new group and add the “gmto” user to it.</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo groupadd -f -g <span class="m">2001</span> realtime
-$ sudo usermod --groups realtime gmto
-</pre></div>
-</div>
-</div></blockquote>
 </div>
 <div class="section" id="network-time-protocol-configuration">
 <h3>1.2.10. Network Time Protocol Configuration<a class="headerlink" href="#network-time-protocol-configuration" title="Permalink to this headline">¶</a></h3>
@@ -598,38 +600,127 @@ summary_interval <span class="m">6</span>
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="software-development-kit-sdk">
-<h2>1.3. Software Development Kit (SDK)<a class="headerlink" href="#software-development-kit-sdk" title="Permalink to this headline">¶</a></h2>
-<p>The Software Development Kit is distributed as a TAR file and can be downloaded from the GMTO release server.</p>
-<p>The SDK should be installed in a <strong>Global GMT Software Location</strong>, defined by the GMT_GLOBAL environment variable (default value: /opt/gmt). A <strong>Local Working Directory</strong>, unique for each individual developer (GMT_LOCAL). The local working directory typically resides underneath the /home/&lt;username&gt; directory.</p>
+<div class="section" id="operations-workstation-configuration">
+<h2>1.3. Operations Workstation Configuration<a class="headerlink" href="#operations-workstation-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The OCS User Interface needs to be run on a system with sufficient graphical rendering capability. At the moment, the Real-time kernel used for device control systems running EtherCAT does not contain the graphics modules necessary to support the user interface. It is recommended to run the user interface in a Mac, connected to the DCS via the network. Future releases will include support for Linux workstations (Fedora).</p>
+<div class="section" id="id1">
+<h3>1.3.1. Operating System<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Apple Mac systems have the operating system already installed. The User Interface has been tested on the following versions of MacOS:</p>
+<blockquote>
+<div><ul class="simple">
+<li>MacOS High Sierra</li>
+<li>MacOS Mojave</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="packages">
+<h3>1.3.2. Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h3>
+<p>There are very few external packages that are not already installed in MacOS. The application Homebrew can be used to install these:</p>
 <ol class="arabic simple">
-<li>Create the <strong>Global GMT Software Location</strong>:</li>
+<li>Install Homebrew</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ /usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>More information can be found on the Homebrew website: &lt;<a class="reference external" href="https://brew.sh/">https://brew.sh/</a>&gt;</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Install common utilities</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ brew install wget
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="python-installation">
+<h3>1.3.3. Python Installation<a class="headerlink" href="#python-installation" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Check whether Python3 is installed</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ python3 --version
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Download the latest SDK distribution and install in the <strong>Global GMT Software Location</strong>:</li>
+<li>Install Python3, if not already installed</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo wget -P /opt/gmt http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.4.1.tar.gz
-$ <span class="nb">cd</span> /opt/gmt
-$ sudo tar -xvzf gmt-sdk-1.4.1.tar.gz
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ brew install python3
 </pre></div>
 </div>
 </div></blockquote>
+</div>
+<div class="section" id="id2">
+<h3>1.3.4. Node Installation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Check whether <strong>Node version 8</strong> is installed</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ node --version
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>If Node is not installed or you are using a different version of Node, install <strong>nvm</strong> and use it to install <strong>Node 8</strong></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ touch ~/.bash_profile
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh <span class="p">|</span> bash
+$ nvm use <span class="m">8</span>.12.0
+</pre></div>
+</div>
+<p>More information can be found on the nvm GitHub site: &lt;<a class="reference external" href="https://github.com/creationix/nvm">https://github.com/creationix/nvm</a>&gt;</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="software-development-kit-sdk">
+<h2>1.4. Software Development Kit (SDK)<a class="headerlink" href="#software-development-kit-sdk" title="Permalink to this headline">¶</a></h2>
+<p>The Software Development Kit is distributed as a TAR file and can be downloaded from the GMTO release server.</p>
+<p>The SDK should be installed in a <strong>Global GMT Software Location</strong>, defined by the GMT_GLOBAL environment variable (default value: /opt/gmt). A <strong>Local Working Directory</strong>, defined by the GMT_LOCAL variable, is used as a unique workspace for individual developers. The local working directory typically resides underneath the /home/&lt;username&gt; directory.</p>
+<ol class="arabic simple">
+<li>Download the latest SDK distribution:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.5.0.tar.gz
+</pre></div>
+</div>
+<p>for the server version of the SDK, or</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/macos/gmt-ui-1.5.0.tar.gz
+</pre></div>
+</div>
+<p>for the workstation version.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Extract the TAR file in the /opt directory, into a new folder for the latest release:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt_release_1.5.0
+$ sudo tar -xzvf &lt;gmt-tar.gz&gt; -C /opt/gmt_release_1.5.0
+</pre></div>
+</div>
+<p>where &lt;gmt-tar.gz&gt; is the file downloaded in step 1.</p>
+</div></blockquote>
 <ol class="arabic simple" start="3">
+<li>Create a symbolic link from the <strong>Global GMT Software Location</strong> to the latest release:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -sfn gmt_release_1.5.0 /opt/gmt
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
 <li>Create a <strong>Local Working Directory</strong></li>
 </ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir &lt;local_working_dir&gt;
 </pre></div>
 </div>
+<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, for example ~/work. The GMT software modules developed by the user are created in this folder.</p>
 </div></blockquote>
-<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="5">
 <li>Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)</li>
 </ol>
 <blockquote>
@@ -638,9 +729,9 @@ $ <span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o
 $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env.sh
 </pre></div>
 </div>
-</div></blockquote>
 <p>This will ensure that the environment variables are correctly configured when opening a new terminal. Please log out and back in for the changes to take effect. To configure the environment for the current shell, run the commands manually.</p>
-<ol class="arabic simple" start="5">
+</div></blockquote>
+<ol class="arabic simple" start="6">
 <li>Check the values of the environment variables:</li>
 </ol>
 <blockquote>
@@ -648,7 +739,7 @@ $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env
 </pre></div>
 </div>
 </div></blockquote>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple" start="7">
 <li>Initialize the Development Environment:</li>
 </ol>
 <blockquote>
@@ -656,20 +747,55 @@ $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env
 $ gds init
 </pre></div>
 </div>
-</div></blockquote>
 <p>The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.</p>
-<p>Ensure that the <strong>bundles.coffee</strong> and <strong>ocs_local_bundle.coffee</strong> files exist, copying them from $GMT_GLOBAL if need be.</p>
+</div></blockquote>
+<ol class="arabic simple" start="8">
+<li>Install local Node Modules</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+$ cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
+$ npm install
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="9">
+<li>Create a <strong>modules</strong> directory in $GMT_LOCAL</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+$ mkdir modules
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="10">
+<li>Clone the HDK and isample modules</li>
+</ol>
+<blockquote>
+<div><p>This step is relevant for any module that the developer will be working on. It is recommended to fork the central repository in GitHub and cloning your personal fork, instead of working with the GMTO repositories. Any modifications should be submitted through a Pull Request, to be approved and merged after peer review.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules
+$ git clone https://github.com/&lt;username&gt;/ocs_hdk_dcs
+$ git clone https://github.com/&lt;username&gt;/ocs_isample_dcs
+</pre></div>
+</div>
+<p>Where &lt;username&gt; is your GitHub username, assuming you’ve forked from the GMTO repository. Alternatively, use <code class="docutils literal"><span class="pre">GMTO</span></code> to clone from the central repository.</p>
+</div></blockquote>
+<ol class="arabic simple" start="11">
+<li>Create the <strong>bundles.coffee</strong> and <strong>ocs_local_bundle.coffee</strong> files, defining the local modules under development</li>
+</ol>
+<blockquote>
+<div><p>These files may be copied from $GMT_GLOBAL and then edited to reflect the developer’s configuration.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir <span class="nv">$GMT_LOCAL</span>/etc/bundles
 $ cp <span class="nv">$GMT_GLOBAL</span>/etc/bundles/bundles.coffee <span class="nv">$GMT_LOCAL</span>/etc/bundles/
 $ cp <span class="nv">$GMT_GLOBAL</span>/etc/bundles/ocs_local_bundle.coffee <span class="nv">$GMT_LOCAL</span>/etc/bundles/
 </pre></div>
 </div>
-<p>Edit bundles.coffee to point to the ocs_local_bundle.coffee file</p>
+<p>Edit <strong>bundles.coffee</strong> to point to the ocs_local_bundle.coffee file</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>module.exports <span class="o">=</span>
-  ocs_local_bundle:   <span class="o">{</span>scope: <span class="s2">&quot;local&quot;</span>,  desc: <span class="s2">&quot;GMT iSample and HDK bundle&quot;</span><span class="o">}</span>
+    ocs_local_bundle:   <span class="o">{</span>scope: <span class="s2">&quot;local&quot;</span>,  desc: <span class="s2">&quot;GMT iSample and HDK bundle&quot;</span><span class="o">}</span>
 </pre></div>
 </div>
-<p>Edit ocs_local_bundle.coffee to include the isample and HDK modules</p>
+<p>Edit <strong>ocs_local_bundle.coffee</strong> to include the isample and HDK modules, or other modules that you are working on</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>module.exports <span class="o">=</span>
 name:      <span class="s2">&quot;local&quot;</span>
 desc:      <span class="s2">&quot;List of local development modules&quot;</span>
@@ -678,17 +804,7 @@ elements:
     hdk_dcs:     <span class="o">{</span> active: true, test: false, developer: <span class="s1">&#39;gmto&#39;</span>, domain: <span class="s1">&#39;idcs&#39;</span> <span class="o">}</span>
 </pre></div>
 </div>
-<p>Install local Node Modules</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
-$ cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
-$ npm install
-</pre></div>
-</div>
-<p>Finally, create the <strong>modules</strong> directory</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
-$ mkdir modules
-</pre></div>
-</div>
+</div></blockquote>
 <p><a class="reference internal" href="#installation"><span class="std std-ref">[back to top]</span></a></p>
 </div>
 </div>
@@ -703,7 +819,7 @@ $ mkdir modules
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dev_environment/prep_installation.html" class="btn btn-neutral float-right" title="1.2.1.1. Preparing for Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dev_environment/fedora_server.html" class="btn btn-neutral float-right" title="1.2.2.1. Fedora 28 Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Software Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -737,7 +853,7 @@ $ mkdir modules
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.4.1',
+            VERSION:'1.5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

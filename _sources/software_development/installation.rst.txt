@@ -3,8 +3,34 @@
 Installing the SDK
 ==================
 
+Development Platform
+--------------------
+
+The development platform is no longer distributed as a standalone ISO file. Instead, the following guide is provided to assist with hardware, operating system and third-party software configuration required for running the OCS SDK. Some key areas, such as disk partitioning, user authentication and NFS mounting of home directories, depend on individual factors at each partner institution and should therefore be considered examples only.
+
+Benefits of this approach, versus distributing the complete ISO, include the ability to support different network, hardware and software platforms used for software development by different partner institutions, as well as allowing for separate upgrade schedules for the Development Platform and Software Development Kit without affecting ongoing subsystem software development.
+
+.. note::
+
+   At GMTO, these instructions are formalized using Kickstart files and installed via the network using tools such as Cobbler. The GMTO DevOps team can provide assistance in setting up a similar system for development at partner institutions, if required.
+
+The Observatory Control System (OCS) is designed to be a distributed system with device control components running on real-time computers, connected to common services and user interface components via the control network. 
+
+For device control systems, the following operating systems are supported:
+    - Fedora server
+
+For user interfaces, the following operating systems are supported:
+    - MacOS
+
+Future versions of the SDK could include support for CentOS, RHEL or Scientific Linux. Fedora has a very short release and support cycle (6 months and 18 months respectively), which is not ideal for a platform that requires significant stability over long periods of time.
+
+Server Configuration
+--------------------
+
+Servers are used for developing, running and testing device control software and core services. When real-time communication with hardware is required, the real-time kernel should be installed and configured. The following guidelines for creating a server should be tailored according to its intended purpose. 
+
 Required Hardware
------------------
+.................
 
 Minimum hardware requirements for development machines:
 
@@ -18,43 +44,18 @@ Typical GMT OCS development machine specs:
   * 4 - 8 GB Memory
   * 120 - 250 GB Hard drive
 
-Development Platform
---------------------
-
-The development platform is no longer distributed as a standalone ISO file. Instead, the following guide is provided to assist with hardware, operating system and third-party software configuration required for running the OCS SDK. Some key areas, such as disk partitioning, user authentication and NFS mounting of home directories, depend on individual factors at each partner institution and should therefore be considered examples only.
-
-Benefits of this approach versus distributing the complete ISO include the ability to support different network, hardware and software platforms used for software development by different partner institutions, as well as allowing for separate upgrade schedules for the Development Platform and Software Development Kit without affecting ongoing subsystem software development.
-
-.. note::
-
-   At GMTO, these instructions are formalized using Kickstart files and installed via the network using tools such as Cobbler. The GMTO DevOps team can provide assistance in setting up a similar system for development at partner institutions, if required.
-
 
 Operating System
 ................
 
-The SDK is currently configured to run on the **Fedora 26 Server** Linux Operating System.
+Install the Operating System using these instructions: 
 
-  1. The ISO file can be downloaded from the Fedora website: https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/
+ 
+  .. toctree::
+     :maxdepth: 1
 
-    Alternatively, download the file directly from the terminal:
+     dev_environment/fedora_server
 
-    .. code-block:: bash
-
-      $ curl -L -O https://download.fedoraproject.org/pub/fedora/linux/releases/26/Server/x86_64/iso/Fedora-Server-dvd-x86_64-26-1.5.iso
-
-  2. Install the operating system on the development machine by either creating a bootable USB drive or via network installation using tools such as Cobbler and Kickstart. Other options include running Fedora 26 in a Virtual Machine or Docker Containers, however, the use of virtualization and its impact on connecting to actual hardware has not been fully tested.
-
-.. warning::
-  The real-time Linux kernel requires the root partition to be an **ext4** file system. Please ensure that this is configured correctly in the disk partitioning settings.
-
-
-.. toctree::
-   :maxdepth: 1
-
-   dev_environment/prep_installation
-   dev_environment/boot_installation
-   dev_environment/anaconda_install
 
 Repository Configuration
 ........................
@@ -83,8 +84,8 @@ To add the GMT repositories:
     gpgcheck=0
     enabled=1
 
-Advanced System Configuration
-.............................
+Advanced System Configuration (optional)
+........................................
 
 In a distributed computing environment, used by multiple developers, it is very convenient to use a centralized LDAP server for User Authentication and automatically mount /home directories from a network drive. The LDAP and NFS server configuration is network-dependent. The following instructions can be used as guidelines when configuring individual development machines to make use these services, if available.
 
@@ -124,8 +125,7 @@ The following RPM packages should be installed by an Administrative user for use
 
   .. code-block:: bash
 
-    $ sudo dnf install -y rdma librdmacm-devel
-    $ sudo dnf install -y boost-devel freeopcua freeopcua-devel
+    $ sudo dnf install -y rdma librdmacm-devel boost-devel
 
 Node Installation
 .................
@@ -134,7 +134,6 @@ Node Installation
 
   .. code-block:: bash
 
-    $ curl -sL https://rpm.nodesource.com/setup_8.x | sudo bash -
     $ sudo dnf install -y nodejs
 
 2. Install necessary node packages:
@@ -209,7 +208,7 @@ Infiniband is a low-latency networking communications protocol that requires spe
     $ sudo systemctl enable rdma
 
 Ethercat Configuration
-.................................
+......................
 
 EtherCAT is a high-speed fieldbus communication system used for real-time control. The following configuration steps should be used as a guide when configuring EtherCAT communications.
 
@@ -255,6 +254,20 @@ EtherCAT is a high-speed fieldbus communication system used for real-time contro
     $ sudo systemctl enable ethercat
     $ sudo systemctl start ethercat
 
+8. Edit ``/etc/security/limits.d/99-realtime.conf`` and add the following options:
+
+  .. code-block:: bash
+
+    @realtime - rtprio 99
+    @realtime - memlock unlimited
+
+9. Add a new group and add the "gmto" user to it.
+
+  .. code-block:: bash
+
+    $ sudo groupadd -f -g 2001 realtime
+    $ sudo usermod --groups realtime gmto
+
 8. Test the Ethercat configuration
 
   .. code-block:: bash
@@ -264,22 +277,6 @@ EtherCAT is a high-speed fieldbus communication system used for real-time contro
 
 If the "ethercat master" command does not produce the correct output, ensure that you're currently running the real-time kernel. If the "ethercat slaves" command produces no output, check that the ethernet cable is connected to the correct port as configured above.
 
-Real-time Configuration (optional)
-..................................
-
-1. Edit ``/etc/security/limits.d/99-realtime.conf`` and add the following options:
-
-  .. code-block:: bash
-
-    @realtime - rtprio 99
-    @realtime - memlock unlimited
-
-2. Add a new group and add the "gmto" user to it.
-
-  .. code-block:: bash
-
-    $ sudo groupadd -f -g 2001 realtime
-    $ sudo usermod --groups realtime gmto
 
 Network Time Protocol Configuration
 ...................................
@@ -346,36 +343,120 @@ where ``[enp3s0]`` should be set to the interface to use for PTP.
     $ sudo systemctl enable ptp4l
 
 
+Operations Workstation Configuration
+------------------------------------
+
+The OCS User Interface needs to be run on a system with sufficient graphical rendering capability. At the moment, the Real-time kernel used for device control systems running EtherCAT does not contain the graphics modules necessary to support the user interface. It is recommended to run the user interface in a Mac, connected to the DCS via the network. Future releases will include support for Linux workstations (Fedora). 
+
+Operating System
+................
+
+Apple Mac systems have the operating system already installed. The User Interface has been tested on the following versions of MacOS:
+
+    - MacOS High Sierra
+    - MacOS Mojave
+
+Packages
+........
+
+There are very few external packages that are not already installed in MacOS. The application Homebrew can be used to install these:
+
+1. Install Homebrew
+
+  .. code-block:: bash
+
+    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+  More information can be found on the Homebrew website: <https://brew.sh/>
+
+2. Install common utilities
+
+  .. code-block:: bash
+
+    $ brew install wget
+
+
+Python Installation
+...................
+
+1. Check whether Python3 is installed
+
+  .. code-block:: bash
+
+    $ python3 --version
+
+2. Install Python3, if not already installed
+
+  .. code-block:: bash
+
+    $ brew install python3
+
+Node Installation
+.................
+
+1. Check whether **Node version 8** is installed
+
+  .. code-block:: bash
+
+    $ node --version
+
+2. If Node is not installed or you are using a different version of Node, install **nvm** and use it to install **Node 8**
+
+  .. code-block:: bash
+
+    $ touch ~/.bash_profile
+    $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+    $ nvm use 8.12.0
+
+  More information can be found on the nvm GitHub site: <https://github.com/creationix/nvm>
+
+
+
 Software Development Kit (SDK)
 ------------------------------
 
 The Software Development Kit is distributed as a TAR file and can be downloaded from the GMTO release server.
 
-The SDK should be installed in a **Global GMT Software Location**, defined by the GMT_GLOBAL environment variable (default value: /opt/gmt). A **Local Working Directory**, unique for each individual developer (GMT_LOCAL). The local working directory typically resides underneath the /home/<username> directory.
+The SDK should be installed in a **Global GMT Software Location**, defined by the GMT_GLOBAL environment variable (default value: /opt/gmt). A **Local Working Directory**, defined by the GMT_LOCAL variable, is used as a unique workspace for individual developers. The local working directory typically resides underneath the /home/<username> directory.
 
-1. Create the **Global GMT Software Location**:
-
-  .. code-block:: bash
-
-    $ sudo mkdir /opt/gmt
-
-2. Download the latest SDK distribution and install in the **Global GMT Software Location**:
+1. Download the latest SDK distribution:
 
   .. code-block:: bash
 
-    $ sudo wget -P /opt/gmt http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.4.1.tar.gz
-    $ cd /opt/gmt
-    $ sudo tar -xvzf gmt-sdk-1.4.1.tar.gz
+    $ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.5.0.tar.gz
 
-3. Create a **Local Working Directory**
+  for the server version of the SDK, or 
+
+  .. code-block:: bash
+
+    $ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/macos/gmt-ui-1.5.0.tar.gz
+
+  for the workstation version.
+
+2. Extract the TAR file in the /opt directory, into a new folder for the latest release:
+
+  .. code-block:: bash
+
+    $ sudo mkdir /opt/gmt_release_1.5.0
+    $ sudo tar -xzvf <gmt-tar.gz> -C /opt/gmt_release_1.5.0
+
+  where <gmt-tar.gz> is the file downloaded in step 1.
+
+3. Create a symbolic link from the **Global GMT Software Location** to the latest release:
+
+  .. code-block:: bash
+
+    $ sudo ln -sfn gmt_release_1.5.0 /opt/gmt
+
+4. Create a **Local Working Directory**
 
   .. code-block:: bash
 
     $ mkdir <local_working_dir>
 
-where ``<local_working_dir>`` is in the current users' home directory, typically /home/<username>/<path_to_working_dir>. The GMT software modules developed by the user are created in this folder.
+  where ``<local_working_dir>`` is in the current users' home directory, for example ~/work. The GMT software modules developed by the user are created in this folder.
 
-4. Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)
+5. Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)
 
   .. code-block:: bash
 
@@ -383,63 +464,76 @@ where ``<local_working_dir>`` is in the current users' home directory, typically
     $ export GMT_LOCAL=<local_working_dir>
     $ source $GMT_GLOBAL/bin/gmt_env.sh
 
-This will ensure that the environment variables are correctly configured when opening a new terminal. Please log out and back in for the changes to take effect. To configure the environment for the current shell, run the commands manually.
+  This will ensure that the environment variables are correctly configured when opening a new terminal. Please log out and back in for the changes to take effect. To configure the environment for the current shell, run the commands manually.
 
-5. Check the values of the environment variables:
+6. Check the values of the environment variables:
 
   .. code-block:: bash
 
     $ gmt_env
 
-6. Initialize the Development Environment:
+7. Initialize the Development Environment:
 
   .. code-block:: bash
 
     $ cd $GMT_LOCAL
     $ gds init
 
-The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.
+  The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.
 
-Ensure that the **bundles.coffee** and **ocs_local_bundle.coffee** files exist, copying them from $GMT_GLOBAL if need be.
+8. Install local Node Modules
 
-.. code-block:: bash
+  .. code-block:: bash
 
-  $ mkdir $GMT_LOCAL/etc/bundles
-  $ cp $GMT_GLOBAL/etc/bundles/bundles.coffee $GMT_LOCAL/etc/bundles/
-  $ cp $GMT_GLOBAL/etc/bundles/ocs_local_bundle.coffee $GMT_LOCAL/etc/bundles/
+    $ cd $GMT_LOCAL
+    $ cp $GMT_GLOBAL/package.json ./
+    $ npm install
 
-Edit bundles.coffee to point to the ocs_local_bundle.coffee file
+9. Create a **modules** directory in $GMT_LOCAL
 
-.. code-block:: bash
-
-  module.exports =
-    ocs_local_bundle:   {scope: "local",  desc: "GMT iSample and HDK bundle"}
-
-Edit ocs_local_bundle.coffee to include the isample and HDK modules
-
-.. code-block:: bash
-
-    module.exports =
-    name:      "local"
-    desc:      "List of local development modules"
-    elements:
-        isample_dcs: { active: true, test: false, developer: 'gmto', domain: 'idcs' }
-        hdk_dcs:     { active: true, test: false, developer: 'gmto', domain: 'idcs' }
-
-Install local Node Modules
-
-.. code-block:: bash
-
-   $ cd $GMT_LOCAL
-   $ cp $GMT_GLOBAL/package.json ./
-   $ npm install
-
-Finally, create the **modules** directory
-
-.. code-block:: bash
+  .. code-block:: bash
 
     $ cd $GMT_LOCAL
     $ mkdir modules
 
+10. Clone the HDK and isample modules
+
+  This step is relevant for any module that the developer will be working on. It is recommended to fork the central repository in GitHub and cloning your personal fork, instead of working with the GMTO repositories. Any modifications should be submitted through a Pull Request, to be approved and merged after peer review.
+
+  .. code-block:: bash
+
+    $ cd $GMT_LOCAL/modules
+    $ git clone https://github.com/<username>/ocs_hdk_dcs
+    $ git clone https://github.com/<username>/ocs_isample_dcs
+
+  Where <username> is your GitHub username, assuming you've forked from the GMTO repository. Alternatively, use ``GMTO`` to clone from the central repository.
+
+11. Create the **bundles.coffee** and **ocs_local_bundle.coffee** files, defining the local modules under development 
+
+  These files may be copied from $GMT_GLOBAL and then edited to reflect the developer's configuration.
+
+  .. code-block:: bash
+
+    $ mkdir $GMT_LOCAL/etc/bundles
+    $ cp $GMT_GLOBAL/etc/bundles/bundles.coffee $GMT_LOCAL/etc/bundles/
+    $ cp $GMT_GLOBAL/etc/bundles/ocs_local_bundle.coffee $GMT_LOCAL/etc/bundles/
+
+  Edit **bundles.coffee** to point to the ocs_local_bundle.coffee file
+
+  .. code-block:: bash
+
+    module.exports =
+        ocs_local_bundle:   {scope: "local",  desc: "GMT iSample and HDK bundle"}
+
+  Edit **ocs_local_bundle.coffee** to include the isample and HDK modules, or other modules that you are working on
+
+  .. code-block:: bash
+
+     module.exports =
+     name:      "local"
+     desc:      "List of local development modules"
+     elements:
+         isample_dcs: { active: true, test: false, developer: 'gmto', domain: 'idcs' }
+         hdk_dcs:     { active: true, test: false, developer: 'gmto', domain: 'idcs' }
 
 :ref:`[back to top] <installation>`
