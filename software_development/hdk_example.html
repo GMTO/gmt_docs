@@ -248,7 +248,7 @@ hardware architecture, refer to GMT document GMT-SWC-DOC-00710.</p>
 <div class="section" id="connection-to-the-dcc">
 <h3>10.2.1. Connection to the DCC<a class="headerlink" href="#connection-to-the-dcc" title="Permalink to this headline">¶</a></h3>
 <p>The HDK can be controlled using its embedded PC, or using a Real Time
-Linux DCC. In this example we will use the later option.</p>
+Linux DCC. In this example we will use the latter option.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The following instructions assume that the Linux Real Time kernel
@@ -356,14 +356,16 @@ A single instance called <strong>hdk_hw1_adapter</strong> will be created.</dd>
 <div class="section" id="code-generation">
 <h3>10.3.3. Code generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h3>
 <p>The hdk_dcs repository already has the source code of the HDK, so it is not
-needed to generate it.</p>
+necessary to generate it.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">If the source code is generated again using <em>gds</em>, all the source files
 will be overwritten, including the step function implementations. By default,
 <em>gds</em> will preserve the step function files by
 copying the the previous version of the <code class="docutils literal"><span class="pre">`&lt;component&gt;_step.cpp`</span></code> files to
-<code class="docutils literal"><span class="pre">`&lt;component&gt;_step.cpp.preserve`</span></code></p>
+<code class="docutils literal"><span class="pre">`&lt;component&gt;_step.cpp.preserve`</span></code>. If compilation fails, check the file differences
+between the repository files and the generated files for manual changes that may have
+to be reapplied.</p>
 </div>
 <p>If the source code needs to be generated
 again (for example, if some feature to the components must be added), then
@@ -373,6 +375,7 @@ $ webpack
 $ gds gen hdk_dcs
 </pre></div>
 </div>
+<p>After re-generating code from the model, all manual changes will need to be re-applied.</p>
 </div>
 <div class="section" id="hdk-main-controller-behavior">
 <h3>10.3.4. HDK Main Controller Behavior<a class="headerlink" href="#hdk-main-controller-behavior" title="Permalink to this headline">¶</a></h3>
@@ -588,7 +591,7 @@ contain the correct library definitions:</p>
 <p>Ensure that the following lines are defined:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Add in this file the compile flags for the package, eg:</span>
 <span class="nv">MOD_BUILD_LDFLAGS</span> <span class="o">+=</span> -lcore_core_pkg -lio_core_pkg -lctrl_core_pkg -lio_ethercat_pkg
-<span class="nv">MOD_BUILD_LDFLAGS</span> <span class="o">+=</span> -lethercat -lopcuacore -lopcuaclient
+<span class="nv">MOD_BUILD_LDFLAGS</span> <span class="o">+=</span> -lethercat
 </pre></div>
 </div>
 <p>Run <strong>make</strong> to compile the code:</p>

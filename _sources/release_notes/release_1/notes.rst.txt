@@ -9,13 +9,13 @@ Contents of release 1.5.0
 - Release distribution and installation
 
   - Support added for Fedora 28
-  - Installation instructions updated for creating either a Fedora 28 Server or a Fedora 28 Workstation
-  - Instructions added for installing and running the SDK and Navigator application on Linux and MacOS 
+  - Installation instructions updated for creating either a Fedora 28 Server or a MacOS Workstation
+  - Instructions added for installing and running the SDK and Navigator application on MacOS 
 
 - Development Framework
 
   - Added Model validation with ```gds validate``` command
-  - Added Test plugin to for generating and executing module tests
+  - Added Test plugin for generating and executing module tests
   - Fixed ```gds new``` command (issue #108)
 
 - Core Frameworks
@@ -37,15 +37,13 @@ Contents of release 1.5.0
 
 - Implementation examples
 
+  - HDK components have been updated to provide visibility to data for the UI
   - Documentation for the HDK example has been updated to include UI components.
 
 - Documentation: Software Development
 
-  - New page ``UI Framework user guide``, with the user manual of UI Framework.
-  - New page ``Navigator Application user guide``, with the user manual for 
-    using the Navigator Application.
-  - New page ``Test Framework user guide``, with the user manual of the
-    Test Framework.
+  - New page ``UI Framework``, contains a user guide for UI Framework.
+  - New page ``OCS Test Guidelines``, contains a user guide for the Test Framework.
   - Updated page ``HDK example``, with instructions on running the Engineering UI and building custom
     UI panels.
 

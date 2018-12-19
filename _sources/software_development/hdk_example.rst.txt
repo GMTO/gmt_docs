@@ -62,7 +62,7 @@ Connection to the DCC
 ^^^^^^^^^^^^^^^^^^^^^
 
 The HDK can be controlled using its embedded PC, or using a Real Time
-Linux DCC. In this example we will use the later option.
+Linux DCC. In this example we will use the latter option.
 
 .. note::
     The following instructions assume that the Linux Real Time kernel
@@ -191,14 +191,16 @@ Code generation
 ^^^^^^^^^^^^^^^
 
 The hdk_dcs repository already has the source code of the HDK, so it is not
-needed to generate it.
+necessary to generate it.
 
 .. warning::
     If the source code is generated again using *gds*, all the source files
     will be overwritten, including the step function implementations. By default,
     *gds* will preserve the step function files by
     copying the the previous version of the ```<component>_step.cpp``` files to
-    ```<component>_step.cpp.preserve```
+    ```<component>_step.cpp.preserve```. If compilation fails, check the file differences
+    between the repository files and the generated files for manual changes that may have
+    to be reapplied.
 
 If the source code needs to be generated
 again (for example, if some feature to the components must be added), then
@@ -209,6 +211,8 @@ it can be done using the standard procedure:
     $ cd $GMT_LOCAL/modules/ocs_hdk_dcs/model
     $ webpack
     $ gds gen hdk_dcs
+
+After re-generating code from the model, all manual changes will need to be re-applied.
 
 HDK Main Controller Behavior
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -453,7 +457,7 @@ Ensure that the following lines are defined:
 
    # Add in this file the compile flags for the package, eg:
    MOD_BUILD_LDFLAGS += -lcore_core_pkg -lio_core_pkg -lctrl_core_pkg -lio_ethercat_pkg
-   MOD_BUILD_LDFLAGS += -lethercat -lopcuacore -lopcuaclient
+   MOD_BUILD_LDFLAGS += -lethercat
 
 Run **make** to compile the code:
 

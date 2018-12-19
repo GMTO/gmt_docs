@@ -3,10 +3,55 @@
 Upgrade
 =======
 
-As an alternative to installing the Operating System and associated packages from scratch, tho following procedure can be followed to upgrade an existing version 1.3 system to version 1.4. Please refer to the :ref:`installation` page for help in configuring individual services.
+Upgrading from v1.4 to v1.5
+---------------------------
+
+Because version 1.5 is built for Fedora 28, upgraded from Fedora 26, it is recommended to use the instructions on the :ref:`installation` page to install on a clean system.
+
+Multiple versions of the SDK software may be installed on the same system, with the version currently in use reflected by the $GMT_GLOBAL environment variable.
+
+1. Download the latest SDK distribution:
+
+  .. code-block:: bash
+
+    $ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.5.0.tar.gz
+
+  for the server version of the SDK, or
+
+  .. code-block:: bash
+
+    $ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/macos/gmt-ui-1.5.0.tar.gz
+
+  for the workstation version.
+
+2. Extract the TAR file in the /opt directory, into a new folder for the latest release:
+
+  .. code-block:: bash
+
+    $ sudo mkdir /opt/gmt_release_1.5.0
+    $ sudo tar -xzvf <gmt-tar.gz> -C /opt/gmt_release_1.5.0
+
+  where <gmt-tar.gz> is the file downloaded in step 1.
+
+3. Update the symbolic link from the **Global GMT Software Location** to the latest release:
+
+  .. code-block:: bash
+
+    $ sudo ln -sfn gmt_release_1.5.0 /opt/gmt
+
+4. Check all applicable environment variables
+
+  .. code-block:: bash
+
+    $ gmt_env
+
+These instructions assume that a working development environment has been set up before. To follow all steps for creating a new development environment, please follow the instructions on the :ref:`installation` page.
+
 
 Upgrading from v1.3 to 1.4
 --------------------------
+
+As an alternative to installing the Operating System and associated packages from scratch, tho following procedure can be followed to upgrade an existing version 1.3 system to version 1.4. Please refer to the :ref:`installation` page for help in configuring individual services.
 
 Uninstall Old GMT packages
 ..........................
@@ -90,7 +135,7 @@ Node Installation
     $ npm install -g coffeescript webpack webpack-cli raw-loader
 
 Software Development Kit (SDK)
-------------------------------
+..............................
 
 The Software Development Kit is distributed as a TAR file and can be downloaded from the GMTO release server.
 
