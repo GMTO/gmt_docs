@@ -406,11 +406,12 @@ Node Installation
 
     $ touch ~/.bash_profile
     $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-    $ nvm use 8.12.0
+    $ source ~/.bash_profile
+    $ nvm install 8.12.0
+    $ node --version
+    v8.12.0
 
   More information can be found on the nvm GitHub site: <https://github.com/creationix/nvm>
-
-
 
 Software Development Kit (SDK)
 ------------------------------
@@ -456,7 +457,7 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
   where ``<local_working_dir>`` is in the current users' home directory, for example ~/work. The GMT software modules developed by the user are created in this folder.
 
-5. Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)
+5. Add the following lines to your .bash_profile (or .kshrc or .bashrc depending on your preferred shell)
 
   .. code-block:: bash
 
@@ -472,22 +473,34 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
     $ gmt_env
 
-7. Initialize the Development Environment:
-
-  .. code-block:: bash
-
-    $ cd $GMT_LOCAL
-    $ gds init
-
-  The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.
-
-8. Install local Node Modules
+7. Install local Node Modules
 
   .. code-block:: bash
 
     $ cd $GMT_LOCAL
     $ cp $GMT_GLOBAL/package.json ./
     $ npm install
+
+  Install global node modules for `Webpack` and `Coffeescript`.
+
+  .. code-block:: bash
+
+    $ npm install -g coffeescript webpack webpack-cli
+
+8. Initialize the Development Environment:
+
+  .. code-block:: bash
+
+    $ cd $GMT_LOCAL
+    $ gds init
+
+  The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.  
+
+  When running the User Interface, create a **local javascript library folder**.
+
+  .. code-block:: bash
+
+    $ mkdir -p $GMT_LOCAL/lib/js
 
 9. Create a **modules** directory in $GMT_LOCAL
 
@@ -506,7 +519,9 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
     $ git clone https://github.com/<username>/ocs_hdk_dcs
     $ git clone https://github.com/<username>/ocs_isample_dcs
 
-  Where <username> is your GitHub username, assuming you've forked from the GMTO repository. Alternatively, use ``GMTO`` to clone from the central repository.
+  Where <username> is your GitHub username, assuming you've forked from the GMTO repository. 
+
+  Alternatively, use ``git clone https://github.com/GMTO/ocs_hdk_dcs`` to clone from the central repository.
 
 11. Create the **bundles.coffee** and **ocs_local_bundle.coffee** files, defining the local modules under development 
 
@@ -535,5 +550,23 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
      elements:
          isample_dcs: { active: true, test: false, developer: 'gmto', domain: 'idcs' }
          hdk_dcs:     { active: true, test: false, developer: 'gmto', domain: 'idcs' }
+
+12. Systems that run the User Interface require compiled model files to be used by the Navigator application.
+
+  Build all model files from modules in your ocs_local_bundles definition using webpack. For example:
+
+  .. code-block:: bash
+
+    $ cd $GMT_LOCAL/modules/ocs_hdk_dcs/model
+    $ webpack
+    $ cd $GMT_LOCAL/modules/ocs_isample_dcs/model
+    $ webpack
+
+
+Next Steps
+----------
+To start using the SDK with the Hardware Development Kit (HDK), instructions can be found here: :ref:`hdk_example`.
+
+To run the Navigator application and start using the UI framework, see the UI Framework guide: :ref:`ui_fwk`.
 
 :ref:`[back to top] <installation>`

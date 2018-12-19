@@ -20,7 +20,7 @@ scopes in the file system:
    users in an SDK installation. The default location is ``/opt/gmt`` although
    it can be configured to a different location setting the shell environment
    variable ``GMT_GLOBAL``. The global scope directories and files are usually
-   owned by and deployment account and not by an individual user account.
+   owned by an administration and deployment account and not by an individual user account.
    The default account is root.
 
 2. The local scope includes modules that are being actively developed or different
@@ -33,21 +33,22 @@ Working with bundles and modules
 --------------------------------
 
 A Module represents the basic unit of development, integration and test in the GMT SDK.
-Modules are grouped in bundles.
+Modules are grouped in Bundles.
 
 By default the SDK defines two types of bundles, *global* and *local*,
-for each development scope. The global bundles include modules
+for each development scope. The global bundle include modules
 procured by GMT as part of the SDK. These modules cannot be altered,
 but must be available in order to build and run the system.
 The local bundle(s) define the modules in which developers will be working.
 
-Subsystem defined in the GMT model are mapped into Modules for the
-purpose of development, testing and integration. As explained in [ref]
-Subsystems are modeling entities and are decomposed in Packages and
+Subsystems defined in the GMT model are mapped into Modules for the
+purpose of development, testing and integration. As explained in
+the :ref:`Software and Controls Standards <dcs_reference_architecture>`, Subsystems
+are modeling entities and are decomposed in Packages and
 Components. The Module file system structure is based in the
 Subsystem file system structure too.
 
-An example of a local bundle is include in the following code segment:
+An example of a local bundle is included in the following code segment:
 
    .. code-block:: coffeescript
 
@@ -60,13 +61,13 @@ An example of a local bundle is include in the following code segment:
 
 
 Bundle definitions are saved in ``$GMT_LOCAL/etc/``. The file with this definition is saved as
-``local_bundle.coffee``. This step has to be performed only when a module has to be defined.
+``local_bundle.coffee``. This step has to be performed only when a new module is created.
 
 The bundle includes the definition of a module (isample_dcs) that is
 part of the idcs (Instrument Device Control System) domain.
 
-The gds utility allows to manage the life-cycle of each module as a unit.
-So for example, if we want to start to work on a module we will execute:
+The gds utility allows managing the life-cycle of each module as a unit.
+If we want to create a new module we will execute:
 
    .. code-block:: bash
 
@@ -109,8 +110,8 @@ The GMT SDK includes the gds tool to assist in the development of GMT software.
        build [options] [module]     Builds the local bundles or the optional module
        install [options] [module]   Installs the local bundle modules or the optional module
        clone [options] [module]     Clones the local bundle modules or the optional module
-       run_test [options] [module]  Run the test of the local bundle modules or the optional module
-       validate [options] [module]  Validates the local bundle or the optional module
+       test [options] [module]      Run the test of the local bundle modules or the optional module
+       validate [element]           Validates the model element
 
 
 The gds tool implements a set of commands that allow to operate with bundles, modules and
@@ -128,18 +129,32 @@ gds init
 **Description**
 
 Initializes the file system structure of the local development environment (defined by
-the shell variable GMT_LOCAL). This operation is usually only needed when
-the GMT SDK is used for the first time.
+the shell variable ``GMT_LOCAL``). This operation is usually only needed when
+a developer uses the GMT SDK for the first time.
 
   .. code-block:: bash
 
    > gds init
 
-The file structure contains the following directories:
+The local file structure created contains the following directories::
 
-  - $GMT_LOCAL/install directory, where the deployable files of your local development are saved.
-  - $GMT_LOCAL/etc
+  $GMT_LOCAL/
+      |-- bin/
+      |-- db/
+      |-- doc/
+      |-- etc/
+      |-- examples/
+      |-- include/
+      |-- lib/
+      |-- test/
+      |-- var/
 
+
+This structure is similar to the one in ``GMT_GLOBAL``. The deployable files
+of the local modules will be installed in these directories and will have
+preference over the ones installed in ``GMT_LOCAL``. This is specially useful for
+developers working on new versions of modules that are part of the SDK
+distribution.
 
 gds new [options] <module>
 ..........................
@@ -172,8 +187,8 @@ Each module is mapped into the file system using the following structure::
       |-- docs/
 
 See the :ref:`Model Specification Guide Document <modeling_guidelines>` for a description
-of the ``model`` file structure and the corresponding model to target language mapping guide
-for a description of the ``src`` file structure.
+of the ``model`` file structure. The ``src`` file structure depends on the target programming
+language. The details of each language mapping are described in the corresponding document.
 
    .. code-block:: bash
 
@@ -220,8 +235,6 @@ The ``gds gen`` command implements a set of generators that use as an input the 
 specifications and applies to them different transformations. The output of this transformations
 produces one or several files that are stored in the module file system.
 
-Model definition files and their effect in generators
-Output file locations
 
    .. code-block:: bash
 
@@ -234,7 +247,7 @@ Output file locations
       Options:
 
          -m, --model  [name]  model containing element (default: model)
-         -t, --target [name]  code|scaffold|doc (default: code)
+         -t, --target [name]  code|scaffold|doc|test (default: code)
          -h, --help           output usage information
 
 
@@ -243,8 +256,8 @@ Output file locations
 ``element``
 
    Specifies the model element used as source for the transformations. The model element could be
-   aggregate or simple. If the model element is aggregate, e.g. SubSystem or Package, gds
-   would apply transformations to all the elements contained in the aggregate.
+   an aggregate or simple. If the model element is an aggregate, e.g. SubSystem or Package, gds
+   would apply the transformations to all the elements contained in the aggregate.
 
    .. code-block:: bash
 
@@ -270,7 +283,7 @@ Output file locations
 
       ``language``
          List of language transformations to be used by the generators. The values of language
-         depend on which target generator is being used. See description of the option '--target'
+         depend on which target is being used. See description of the option '--target'
 
       ``build``
          Specifies how the generated code should be build. Possible values are:
@@ -388,7 +401,7 @@ Output file locations
    layer is 'model'. The different transformations for code generation can be consulted
    in the corresponding mapping document:
 
-      - Model to c++ Mapping Specification Document. ref: TBD
+      - :ref:`Model to c++ Mapping Specification Document <mapping_model_to_cpp>` 
 
       - Model to nodejs Mapping Specification Document. ref: TBD
 
@@ -400,14 +413,14 @@ Output file locations
 
    ``code``
       The transformations from model to code will be applied to the specified model element.
-      The target language for each component is defined in the module definition file (see above example).
+      The language(s) for each component are defined in the module definition file (see above example).
 
    ``scaffold``
       This target value takes as an input the module definition file and applies metamodel transformations
       to the model elements defined in the module definition file. The output of the transformations
       is saved in the file system and includes skeleton files for the specification of the module model
       elements. The types of each model element is inferred from the termination of the names
-      on the model elements. The appendix model n-grams in the 'Model Specification Guide Document' - ref TBD
+      on the model elements. The appendix :ref:`Class n-grams in the Glossary <class_n_grams>`
       defines the predefined termination and their corresponding mapping.
 
    ``doc``
@@ -415,9 +428,13 @@ Output file locations
       module elements. Documents have to be specified in the module definition file (see example above).
       The language transformation output values can be specified on a per document basis.
 
+   ``test``
+      This target value generates conformance tests skeletons taking as an input the specification of the
+      module elements. The test skeletons are generated in <module>/test directory.
 
-gds info [options] [module]
-...........................
+
+gds info [options]
+..................
 
 **Description**
 
@@ -427,13 +444,12 @@ The ``gds info`` command display information of the modules that the gds tool is
 
      > gds info --help
 
-     Usage: info [options] [module]
+     Usage: info [options]
 
-     List information of the local bundles or the optional module
+     List information of the active modules
 
      Options:
 
-       -b, --bundle <name>  uses the bundle <name> instead of the local bundles (default: )
        -h, --help           output usage information
 
 
@@ -468,7 +484,7 @@ gds install [options] [module]
 
 **Description**
 
-The ``gds install`` command install the deployable artifacts of the specified module.
+The ``gds install`` command installs the deployable artifacts of the specified module.
 If no argument is passed it will install the artifacts of the modules in the local bundle.
 
    .. code-block:: bash
@@ -526,43 +542,43 @@ the local bundle will be cloned.
    The name of the Github repository account.
 
 
-gds run_test [options] [module]
-...............................
+gds test [options] [module]
+...........................
 
 **Description**
 
-The ``gds run_test`` allows the automated execution of module tests. Module tests
-are created in the corresponding module test package. The name of the files
-containing the tests must conform to the syntax: <module>_<test_number>_<test_suite>_test.coffee
+The ``gds test`` allows the automated execution of module tests. Module tests
+are created in the corresponding module test directory. The name of the files
+containing the tests must conform to the syntax: <element>_<test_number>_<test_type>_test.coffee
 
    .. code-block:: bash
 
-     > gds run_test --help
+     > gds test --help
 
-     Usage: run_test [options] [module]
+     Usage: test [element]
 
-     Run the test of the local bundle modules or the optional module
+     Run the tests for thee model element
 
      Options:
 
-        -b, --bundle <name>    uses the bundle <name> instead of the local bundles (default: )
-        -n, --number <number>  number of the test (default: )
-        --scope <scope name>   scope for running the test (default: local)
-        --suite <suite name>   runs only the test suite <name> (default: unit)
-        -h, --help             output usage information
+        --scope <scope name>    scope for running the test (default: local)
+        -n, --number <number>   number of the test (default: 01)
+        --type <test_type_name> runs only the tests of the specified type (interface|functional|performance|all) (default: all)
+        --recursive             runs the test recursively if the element is an aggregate
+        -h, --help              output usage information
 
-The following code shows an example of executing a unit test.
+The following code shows an example of executing a functional test.
 
    .. code-block:: bash
 
-     > gds run_test app_sys -n 01 --suite unit
+     > gds test isample_dcs -n 01 --type functional
 
-     # -> will run the test $GMT_GLOBAL/test/app_sys/app_sys_01_unit_test.coffee
+     # -> will run the test $GMT_GLOBAL/test/isample_dcs/isample_dcs_01_functional_test.coffee
 
 **Options**
 
-``bundle``
-   The command will execute all the test of the modules contained in the specified bundle.
+``type``
+   The command will execute the test of the specified type
 
 ``number``
    Only the test matching the number will be executed.
@@ -574,6 +590,9 @@ The following code shows an example of executing a unit test.
    Only the test matching the suite identifier will be executed. This allow to organize
    tests in different categories that can be invoked incrementally (e.g. integration or performance
    tests after unit tests).
+
+``recursive``
+   The command will search for tests in the specified scope. The default value is *global*
 
 
 gds options

@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>11. UI Framework &mdash; GMT Software And Controls documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
+        <link rel="up" title="Software Development" href="index.html"/>
+        <link rel="next" title="Data Products" href="../data_products/index.html"/>
+        <link rel="prev" title="10. HDK example" href="hdk_example.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GMT Software And Controls
+          
+
+          
+            
+            <img src="../_static/logowhite.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SWC_architecture/index.html">Architecture and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SWC_standards/index.html">Software and Controls Standards</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">1. Installing the SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gds_guide.html">4. gds documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">5. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">6. Model-language mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">7. OCS Test Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">8. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">9. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">10. HDK example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11. UI Framework</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#engineering-app">11.1. Engineering App</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#launching-custom-panels">11.1.1. Launching Custom panels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">11.1.2. Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/swc_sys_glossary.html">Software and Controls Acronyms and Definitions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT Software And Controls</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Software Development</a> &raquo;</li>
+        
+      <li>11. UI Framework</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ui-framework">
+<span id="ui-fwk"></span><h1>11. UI Framework<a class="headerlink" href="#ui-framework" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The UI framework is currently only supported on MacOS.  Linux support will be available in future releases.</p>
+</div>
+<p>The UI Framework introduces a set of libraries and a windowed application that provides a GUI for the OCS.  The framework handles three primary concerns</p>
+<ul class="simple">
+<li>Rendering (drawing) elements to the screen (DOM)</li>
+<li>Library of re-usable UI components that can be shared across the project</li>
+<li>An App that provides an interface to the OCS</li>
+</ul>
+<div class="section" id="engineering-app">
+<h2>11.1. Engineering App<a class="headerlink" href="#engineering-app" title="Permalink to this headline">¶</a></h2>
+<p>The engineering application provides a GUI to the OCS model.  It is launched via the command line and it will spawn an OS window that renders the UI.</p>
+<p>The UI engineering app uses your local bundles from <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code> and allows you to see a visual representation of your model files’ input/output ports.  For now, the Engineering app needs to run in MacOS or a Linux Desktop.</p>
+<p>To launch the application, run this in the command line</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ navigator
+</pre></div>
+</div>
+<p>This will launch the GUI as a child process of the CLI application.  To stop the GUI, stop the CLI app with <code class="docutils literal"><span class="pre">CTRL</span> <span class="pre">+</span> <span class="pre">C</span></code>.</p>
+<div class="section" id="launching-custom-panels">
+<h3>11.1.1. Launching Custom panels<a class="headerlink" href="#launching-custom-panels" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">navigator</span></code> application can also launch custom panels that are defined in a DCS’ <cite>*_vis_pkg</cite> folders.  When defined, it’s possible to launch standalone panels with the following parameters</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ navigator --panel emf_custom_weather_view --port <span class="m">9098</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">--panel</span></code> flag specifies an exported panel in some vis package.  The <code class="docutils literal"><span class="pre">--port</span></code> flag is currently required to avoid port collisions (for now).</p>
+<p>The engineering app reserves port <code class="docutils literal"><span class="pre">9199</span></code>.  Custom panel launches of the application need to specify a different port for each instance.</p>
+</div>
+<div class="section" id="troubleshooting">
+<h3>11.1.2. Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first"><strong>MacOS - nvm command not found</strong>: If, after installing nvm, the command <code class="docutils literal"><span class="pre">nvm</span> <span class="pre">install</span></code> fails with the message, <code class="docutils literal"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>, check the <code class="docutils literal"><span class="pre">~/.bash_profile</span></code> file to ensure that it contains a command for loading nvm. The .bash_profile file should contain the following lines:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">NVM_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.nvm&quot;</span>
+<span class="o">[</span> -s <span class="s2">&quot;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="se">\.</span> <span class="s2">&quot;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&quot;</span>  <span class="c1"># This loads nvm</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>Unresponsive UI</strong>: in some case if the UI becomes unresponsive, press <code class="docutils literal"><span class="pre">CMD+R</span></code> to refresh.  If that fails to solve the problem, restart the CLI app.  You can stop the CLI app with <code class="docutils literal"><span class="pre">CTRL+C</span></code>.</p>
+</li>
+<li><p class="first"><strong>No navigation tree</strong>: the navigation tree is rendered off the local bundles in <code class="docutils literal"><span class="pre">$GMT_LOCAL\etc\bundles</span></code>.  The bundles described there need to have been built with webpack.</p>
+</li>
+<li><p class="first"><strong>No data</strong>: Ensure that the ports used by the controllers to publish data are accessible through the firewall. The following command should be used on the Device Control Computer to open the applicable range of ports (8122 - 8124):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo firewall-cmd --add-port<span class="o">=</span><span class="m">8122</span>-8124/tcp
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../data_products/index.html" class="btn btn-neutral float-right" title="Data Products" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="hdk_example.html" class="btn btn-neutral" title="10. HDK example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, contributors.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

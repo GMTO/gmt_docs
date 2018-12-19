@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9. HDK example &mdash; GMT Software And Controls documentation</title>
+  <title>10. HDK example &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -41,8 +41,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="Data Products" href="../data_products/index.html"/>
-        <link rel="prev" title="8. ISample Example" href="isample_example.html"/> 
+        <link rel="next" title="11. UI Framework" href="ui_fwk.html"/>
+        <link rel="prev" title="9. ISample Example" href="isample_example.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -109,25 +109,33 @@
 <li class="toctree-l2"><a class="reference internal" href="gds_guide.html">4. gds documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">5. Model specification guide document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">6. Model-language mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">7. Core Services user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="isample_example.html">8. ISample Example</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9. HDK example</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">9.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hdk-hardware">9.2. HDK Hardware</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#connection-to-the-dcc">9.2.1. Connection to the DCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">7. OCS Test Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">8. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">9. ISample Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10. HDK example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">10.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hdk-hardware">10.2. HDK Hardware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#connection-to-the-dcc">10.2.1. Connection to the DCC</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#hdk-software">9.3. HDK Software</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#clone-the-hdk-dcs-repository">9.3.1. Clone the hdk_dcs repository</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#model-files">9.3.2. Model files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#code-generation">9.3.3. Code generation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#hdk-main-controller-behavior">9.3.4. HDK Main Controller Behavior</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#compilation">9.3.5. Compilation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#running-the-example">9.3.6. Running the Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hdk-software">10.3. HDK Software</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#clone-the-hdk-dcs-repository">10.3.1. Clone the hdk_dcs repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model-files">10.3.2. Model files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#code-generation">10.3.3. Code generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hdk-main-controller-behavior">10.3.4. HDK Main Controller Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compilation">10.3.5. Compilation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-example">10.3.6. Running the Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-custom-ui-panel">10.4. Creating a custom UI panel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#updating-the-model">10.4.1. Updating the model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simple-hello-world-panel">10.4.2. Simple ‘Hello World’ panel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#complex-panel">10.4.3. Complex panel</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="ui_fwk.html">11. UI Framework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -178,7 +186,7 @@
         
           <li><a href="index.html">Software Development</a> &raquo;</li>
         
-      <li>9. HDK example</li>
+      <li>10. HDK example</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -196,49 +204,49 @@
            <div itemprop="articleBody">
             
   <div class="section" id="hdk-example">
-<span id="id1"></span><h1>9. HDK example<a class="headerlink" href="#hdk-example" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>10. HDK example<a class="headerlink" href="#hdk-example" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>9.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>10.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>The HDK (Hardware Development Kit) is a tool which has the purpose of
 serving as a template to facilitate the development of Device Control
 Systems (DCS).</p>
 </div>
 <div class="section" id="hdk-hardware">
-<h2>9.2. HDK Hardware<a class="headerlink" href="#hdk-hardware" title="Permalink to this headline">¶</a></h2>
+<h2>10.2. HDK Hardware<a class="headerlink" href="#hdk-hardware" title="Permalink to this headline">¶</a></h2>
 <p>The main hardware component of the HDK is the control panel, displayed
-in <a class="reference internal" href="#hdk-main-panel"><span class="std std-numref">Fig. 9.5</span></a>:</p>
+in <a class="reference internal" href="#hdk-main-panel"><span class="std std-numref">Fig. 10.1</span></a>:</p>
 <div class="figure" id="id2">
 <span id="hdk-main-panel"></span><img alt="../_images/hdk_hw_panel.png" src="../_images/hdk_hw_panel.png" />
-<p class="caption"><span class="caption-number">Fig. 9.5 </span><span class="caption-text">HDK Hardware Control Panel</span></p>
+<p class="caption"><span class="caption-number">Fig. 10.1 </span><span class="caption-text">HDK Hardware Control Panel</span></p>
 </div>
 <p>The panel has two DIN rails with all the necessary components. The top rail
 contains the power section on the left, an embedded PC in the central part,
-and the Ethercat I/O modules on the right (<a class="reference internal" href="#hdk-io-modules"><span class="std std-numref">Fig. 9.6</span></a>),
-as well as an emergency button (<a class="reference internal" href="#hdk-emergency-button"><span class="std std-numref">Fig. 9.7</span></a>).
+and the Ethercat I/O modules on the right (<a class="reference internal" href="#hdk-io-modules"><span class="std std-numref">Fig. 10.2</span></a>),
+as well as an emergency button (<a class="reference internal" href="#hdk-emergency-button"><span class="std std-numref">Fig. 10.3</span></a>).
 The lower rail contains a stepper motor on the left with a
-temperature probe (<a class="reference internal" href="#hdk-stepper"><span class="std std-numref">Fig. 9.8</span></a>), the terminal blocks interface
+temperature probe (<a class="reference internal" href="#hdk-stepper"><span class="std std-numref">Fig. 10.4</span></a>), the terminal blocks interface
 and a couple of push buttons with a led on the
-right side (<a class="reference internal" href="#hdk-pushbuttons"><span class="std std-numref">Fig. 9.9</span></a>).</p>
+right side (<a class="reference internal" href="#hdk-pushbuttons"><span class="std std-numref">Fig. 10.5</span></a>).</p>
 <div class="figure" id="id3">
 <span id="hdk-io-modules"></span><img alt="../_images/hdk_io_modules.png" src="../_images/hdk_io_modules.png" />
-<p class="caption"><span class="caption-number">Fig. 9.6 </span><span class="caption-text">HDK I/O modules</span></p>
+<p class="caption"><span class="caption-number">Fig. 10.2 </span><span class="caption-text">HDK I/O modules</span></p>
 </div>
 <div class="figure" id="id4">
 <span id="hdk-emergency-button"></span><img alt="../_images/hdk_emergency_button.png" src="../_images/hdk_emergency_button.png" />
-<p class="caption"><span class="caption-number">Fig. 9.7 </span><span class="caption-text">HDK emergency button</span></p>
+<p class="caption"><span class="caption-number">Fig. 10.3 </span><span class="caption-text">HDK emergency button</span></p>
 </div>
 <div class="figure" id="id5">
 <span id="hdk-stepper"></span><img alt="../_images/hdk_stepper.png" src="../_images/hdk_stepper.png" />
-<p class="caption"><span class="caption-number">Fig. 9.8 </span><span class="caption-text">HDK stepper motor</span></p>
+<p class="caption"><span class="caption-number">Fig. 10.4 </span><span class="caption-text">HDK stepper motor</span></p>
 </div>
 <div class="figure" id="id6">
 <span id="hdk-pushbuttons"></span><img alt="../_images/hdk_pushbuttons.png" src="../_images/hdk_pushbuttons.png" />
-<p class="caption"><span class="caption-number">Fig. 9.9 </span><span class="caption-text">HDK pushbuttons</span></p>
+<p class="caption"><span class="caption-number">Fig. 10.5 </span><span class="caption-text">HDK pushbuttons</span></p>
 </div>
 <p>For more details on the HDK
 hardware architecture, refer to GMT document GMT-SWC-DOC-00710.</p>
 <div class="section" id="connection-to-the-dcc">
-<h3>9.2.1. Connection to the DCC<a class="headerlink" href="#connection-to-the-dcc" title="Permalink to this headline">¶</a></h3>
+<h3>10.2.1. Connection to the DCC<a class="headerlink" href="#connection-to-the-dcc" title="Permalink to this headline">¶</a></h3>
 <p>The HDK can be controlled using its embedded PC, or using a Real Time
 Linux DCC. In this example we will use the later option.</p>
 <div class="admonition note">
@@ -248,12 +256,12 @@ and the Ethercat drivers have been installed in the DCC, according
 to the instructions in the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation Guide document</span></a>.</p>
 </div>
 <p>The EtherCAT bus must be connected to the RJ-45 connector that is located
-to the left of the I/O modules block (see <a class="reference internal" href="#hdk-ethercat-bus"><span class="std std-numref">Fig. 9.10</span></a>). The other
+to the left of the I/O modules block (see <a class="reference internal" href="#hdk-ethercat-bus"><span class="std std-numref">Fig. 10.6</span></a>). The other
 end of the bus must be connected to the EtherCAT port of the Real Time Linux
 DCC.</p>
 <div class="figure" id="id7">
 <span id="hdk-ethercat-bus"></span><img alt="../_images/hdk_ethercat_conn.png" src="../_images/hdk_ethercat_conn.png" />
-<p class="caption"><span class="caption-number">Fig. 9.10 </span><span class="caption-text">HDK panel EtherCAT bus connection</span></p>
+<p class="caption"><span class="caption-number">Fig. 10.6 </span><span class="caption-text">HDK panel EtherCAT bus connection</span></p>
 </div>
 <p>We can check that the installation has been done correctly using the
 <code class="docutils literal"><span class="pre">`ethercat`</span></code> command in the Linux machine. If we execute:</p>
@@ -276,9 +284,9 @@ DCC.</p>
 </div>
 </div>
 <div class="section" id="hdk-software">
-<h2>9.3. HDK Software<a class="headerlink" href="#hdk-software" title="Permalink to this headline">¶</a></h2>
+<h2>10.3. HDK Software<a class="headerlink" href="#hdk-software" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="clone-the-hdk-dcs-repository">
-<h3>9.3.1. Clone the hdk_dcs repository<a class="headerlink" href="#clone-the-hdk-dcs-repository" title="Permalink to this headline">¶</a></h3>
+<h3>10.3.1. Clone the hdk_dcs repository<a class="headerlink" href="#clone-the-hdk-dcs-repository" title="Permalink to this headline">¶</a></h3>
 <p>On the real-time DCC, clone the repository in the development folder:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules
 $ gds clone hdk_dcs -d gmto
@@ -298,7 +306,7 @@ Resolving deltas: <span class="m">100</span>% <span class="o">(</span><span clas
 </div>
 </div>
 <div class="section" id="model-files">
-<h3>9.3.2. Model files<a class="headerlink" href="#model-files" title="Permalink to this headline">¶</a></h3>
+<h3>10.3.2. Model files<a class="headerlink" href="#model-files" title="Permalink to this headline">¶</a></h3>
 <p>The model files can be found in the <strong>$GMT_LOCAL/modules/ocs_hdk_dcs/model/</strong> folder.</p>
 <dl class="docutils">
 <dt>webpack.config.coffee</dt>
@@ -346,7 +354,7 @@ A single instance called <strong>hdk_hw1_adapter</strong> will be created.</dd>
 </div>
 </div>
 <div class="section" id="code-generation">
-<h3>9.3.3. Code generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h3>
+<h3>10.3.3. Code generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h3>
 <p>The hdk_dcs repository already has the source code of the HDK, so it is not
 needed to generate it.</p>
 <div class="admonition warning">
@@ -367,7 +375,7 @@ $ gds gen hdk_dcs
 </div>
 </div>
 <div class="section" id="hdk-main-controller-behavior">
-<h3>9.3.4. HDK Main Controller Behavior<a class="headerlink" href="#hdk-main-controller-behavior" title="Permalink to this headline">¶</a></h3>
+<h3>10.3.4. HDK Main Controller Behavior<a class="headerlink" href="#hdk-main-controller-behavior" title="Permalink to this headline">¶</a></h3>
 <p>The behavior of the HDK is defined in the <em>hdk_main_ctrl</em> component, and
 more specifically, in the step() function of this controller.</p>
 <p>The file that contains the HDK controller step function is <code class="docutils literal"><span class="pre">`hdk_main_ctrl_step.cpp`</span></code>.
@@ -456,7 +464,7 @@ $ vi hdk_main_ctrl_step.cpp
 <li>Heartbeat LED</li>
 </ol>
 <div class="section" id="step-function-emergency-button-section">
-<h4>9.3.4.1. Step function. Emergency button section<a class="headerlink" href="#step-function-emergency-button-section" title="Permalink to this headline">¶</a></h4>
+<h4>10.3.4.1. Step function. Emergency button section<a class="headerlink" href="#step-function-emergency-button-section" title="Permalink to this headline">¶</a></h4>
 <p>The first code block of the step function is</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">hmi_inputs</span><span class="p">.</span><span class="n">emergency_button</span><span class="p">)</span>
 <span class="p">{</span>
@@ -478,7 +486,7 @@ above code block disables the stepper motor and sets the velocity to
 if not.</p>
 </div>
 <div class="section" id="step-function-motor-control">
-<h4>9.3.4.2. Step function. Motor control<a class="headerlink" href="#step-function-motor-control" title="Permalink to this headline">¶</a></h4>
+<h4>10.3.4.2. Step function. Motor control<a class="headerlink" href="#step-function-motor-control" title="Permalink to this headline">¶</a></h4>
 <p>The next section of code implements the motor control:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">motor_state</span><span class="p">.</span><span class="n">enabled</span><span class="p">)</span>
 <span class="p">{</span>
@@ -503,7 +511,7 @@ if not.</p>
 <p>In the <code class="docutils literal"><span class="pre">`green_push_button`</span></code> field of the <code class="docutils literal"><span class="pre">`hmi_inputs`</span></code> input
 port we have the state of the green push button of the HDK panel (<code class="docutils literal"><span class="pre">True</span></code>
 when pushed, <code class="docutils literal"><span class="pre">False</span></code> when not) and in the field <code class="docutils literal"><span class="pre">`red_push_button`</span></code>
-we have the state of the red button (see <a class="reference internal" href="#hdk-pushbuttons"><span class="std std-numref">Fig. 9.9</span></a>).</p>
+we have the state of the red button (see <a class="reference internal" href="#hdk-pushbuttons"><span class="std std-numref">Fig. 10.5</span></a>).</p>
 <p>The <code class="docutils literal"><span class="pre">`motor_ctrl`</span></code> output port has 3 fields: the <code class="docutils literal"><span class="pre">`velocity`</span></code> field,
 which will be forwarded to the stepper motor as the velocity set point; the
 <code class="docutils literal"><span class="pre">`enable`</span></code>, which will control if the motor is enabled or not; and the
@@ -514,7 +522,7 @@ will be decreased; and if the emergency button is pushed then the motor is
 disabled.</p>
 </div>
 <div class="section" id="step-function-leds-control">
-<h4>9.3.4.3. Step function. LEDs control<a class="headerlink" href="#step-function-leds-control" title="Permalink to this headline">¶</a></h4>
+<h4>10.3.4.3. Step function. LEDs control<a class="headerlink" href="#step-function-leds-control" title="Permalink to this headline">¶</a></h4>
 <p>The next code section takes care of the control of the LEDs:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">moving</span> <span class="o">=</span> <span class="n">motor_state</span><span class="p">.</span><span class="n">moving_positive</span> <span class="o">||</span> <span class="n">motor_state</span><span class="p">.</span><span class="n">moving_negative</span><span class="p">;</span>
 <span class="n">hmi_outputs</span><span class="p">.</span><span class="n">pilot</span> <span class="o">=</span> <span class="n">moving</span><span class="p">;</span> <span class="c1">// pilot on when moving</span>
@@ -522,12 +530,12 @@ disabled.</p>
 </pre></div>
 </div>
 <p>In the fist line we read the motion state of the stepper motor, and in the
-second line we light the white led (see <a class="reference internal" href="#hdk-pushbuttons"><span class="std std-numref">Fig. 9.9</span></a>) if the motor is moving. In the third
-line, we light the red led (<a class="reference internal" href="#hdk-emergency-button"><span class="std std-numref">Fig. 9.7</span></a>) if the emergency
+second line we light the white led (see <a class="reference internal" href="#hdk-pushbuttons"><span class="std std-numref">Fig. 10.5</span></a>) if the motor is moving. In the third
+line, we light the red led (<a class="reference internal" href="#hdk-emergency-button"><span class="std std-numref">Fig. 10.3</span></a>) if the emergency
 button is pushed.</p>
 </div>
 <div class="section" id="step-function-logs">
-<h4>9.3.4.4. Step function. Logs<a class="headerlink" href="#step-function-logs" title="Permalink to this headline">¶</a></h4>
+<h4>10.3.4.4. Step function. Logs<a class="headerlink" href="#step-function-logs" title="Permalink to this headline">¶</a></h4>
 <p>Once each second, the HDK application produces some logs to inform about
 the slaves readings:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>    <span class="c1">// every 100 steps = 1 second</span>
@@ -556,7 +564,7 @@ variables. The <code class="docutils literal"><span class="pre">`log_info`</span
 class, and it sends the given string to the Log Service.</p>
 </div>
 <div class="section" id="step-function-heartbeat-led">
-<h4>9.3.4.5. Step function. Heartbeat LED<a class="headerlink" href="#step-function-heartbeat-led" title="Permalink to this headline">¶</a></h4>
+<h4>10.3.4.5. Step function. Heartbeat LED<a class="headerlink" href="#step-function-heartbeat-led" title="Permalink to this headline">¶</a></h4>
 <p>Finally, the section</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">500</span><span class="p">))</span>  <span class="c1">// every 500 steps = 5 seconds</span>
 <span class="p">{</span>
@@ -571,7 +579,7 @@ change is visible in the LED array of the digital output EL2008 Ethercat slave.<
 </div>
 </div>
 <div class="section" id="compilation">
-<h3>9.3.5. Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h3>
+<h3>10.3.5. Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h3>
 <p>To compile the C++ Control Package code of the HDK, edit the module.mk file to
 contain the correct library definitions:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ vi <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/cpp/hdk_ctrl_pkg/module.mk
@@ -590,7 +598,7 @@ $ make
 </div>
 </div>
 <div class="section" id="running-the-example">
-<h3>9.3.6. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h3>
+<h3>10.3.6. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h3>
 <p>Start the logging and telemetry services:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_server <span class="p">&amp;</span>
 $ tele_server <span class="p">&amp;</span>
@@ -603,21 +611,21 @@ $ tele_server <span class="p">&amp;</span>
 <p>The application is running in the background and will not provide any console output.
 All output will be directed to the logging service after the components have been successfully set up.</p>
 <div class="section" id="log-client">
-<h4>9.3.6.1. Log client<a class="headerlink" href="#log-client" title="Permalink to this headline">¶</a></h4>
+<h4>10.3.6.1. Log client<a class="headerlink" href="#log-client" title="Permalink to this headline">¶</a></h4>
 <p>In a separate terminal (for example, <cite>tty2</cite>), <strong>start the logging service client</strong>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_client
 </pre></div>
 </div>
 </div>
 <div class="section" id="telemetry-client">
-<h4>9.3.6.2. Telemetry client<a class="headerlink" href="#telemetry-client" title="Permalink to this headline">¶</a></h4>
+<h4>10.3.6.2. Telemetry client<a class="headerlink" href="#telemetry-client" title="Permalink to this headline">¶</a></h4>
 <p>In a separate terminal (for example <cite>tty3</cite>), <strong>start the telemetry service client</strong>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ tele_client
 </pre></div>
 </div>
 </div>
 <div class="section" id="component-setup">
-<h4>9.3.6.3. Component setup<a class="headerlink" href="#component-setup" title="Permalink to this headline">¶</a></h4>
+<h4>10.3.6.3. Component setup<a class="headerlink" href="#component-setup" title="Permalink to this headline">¶</a></h4>
 <p>In the first terminal (<cite>tty1</cite>), <strong>initialize all components</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/etc
 $ ./send_config.coffee
@@ -627,7 +635,7 @@ $ ./send_config.coffee
 that the expected components are logging step info.</p>
 </div>
 <div class="section" id="hdk-operation">
-<h4>9.3.6.4. HDK operation<a class="headerlink" href="#hdk-operation" title="Permalink to this headline">¶</a></h4>
+<h4>10.3.6.4. HDK operation<a class="headerlink" href="#hdk-operation" title="Permalink to this headline">¶</a></h4>
 <p>Now the HDK is available to be operated. The behaviour of the system
 will be the described one:</p>
 <ul class="simple">
@@ -645,6 +653,204 @@ be on.</li>
 </div>
 </div>
 </div>
+<div class="section" id="creating-a-custom-ui-panel">
+<h2>10.4. Creating a custom UI panel<a class="headerlink" href="#creating-a-custom-ui-panel" title="Permalink to this headline">¶</a></h2>
+<p>To create a custom UI panel to load in the UI, a vis package is required.  We’ll first register this package in the model, then export the code that will be run by the UI framework.</p>
+<div class="section" id="updating-the-model">
+<h3>10.4.1. Updating the model<a class="headerlink" href="#updating-the-model" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/model
+$ mkdir hdk_vis_pkg
+$ touch hdk_custom_view.coffee
+</pre></div>
+</div>
+<p>Edit <code class="docutils literal"><span class="pre">hdk_custom_view.coffee</span></code>, and add the following code</p>
+<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nx">Panel</span> <span class="s">&quot;hdk_custom_view&quot;</span><span class="p">,</span>
+    <span class="nv">info: </span><span class="s">&#39;Example view for HDK&#39;</span>
+</pre></div>
+</div>
+<p>Now edit <code class="docutils literal"><span class="pre">$GMT_LOCAL/modules/ocs_hdk_dcs/model/hdk_dcs_def.coffee</span></code> with following</p>
+<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nv">module.exports =</span>
+    <span class="nv">elements:</span>
+        <span class="nv">hdk_ctrl_pkg:</span>
+        <span class="c1"># Leave unchanged.</span>
+
+        <span class="c1"># Add this</span>
+        <span class="nv">hdk_vis_pkg:</span>
+            <span class="nv">elements:</span>
+                <span class="nv">hdk_custom_view: </span> <span class="p">{</span> <span class="nv">language: </span><span class="p">[</span><span class="s">&#39;coffee&#39;</span><span class="p">],</span> <span class="nv">build: </span><span class="s">&#39;obj&#39;</span><span class="p">,</span> <span class="nv">deploy: </span><span class="s">&#39;dist&#39;</span><span class="p">,</span>    <span class="nv">codegen: </span><span class="kc">false</span><span class="p">,</span> <span class="nv">active: </span><span class="kc">true</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Finally edit <code class="docutils literal"><span class="pre">$GMT_LOCAL/modules/ocs_hdk_dcs/model/hdk_dcs_ld.coffee</span></code> to require the new vis package coffee file.</p>
+<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="nx">require</span> <span class="s">&#39;./hdk_vis_pkg/hdk_custom_view&#39;</span>
+
+<span class="nv">module.exports = </span><span class="nx">require</span> <span class="s">&#39;./hdk_dcs_def&#39;</span>
+</pre></div>
+</div>
+<p>This step is to register a vis package in the OCS model.  This package is only visible after you rebuild your model with <code class="docutils literal"><span class="pre">webpack</span></code> and re-launch the navigator app.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Future releases will make more use of these model definition files.  For now a single <cite>Panel</cite> definition is required for the vis_pkg to become visible to the UI framework.</p>
+</div>
+</div>
+<div class="section" id="simple-hello-world-panel">
+<h3>10.4.2. Simple ‘Hello World’ panel<a class="headerlink" href="#simple-hello-world-panel" title="Permalink to this headline">¶</a></h3>
+<p>Now that your vis package is visible to the model, you need to write some UI code.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/coffee
+$ mkdir hdk_vis_pkg
+$ touch hdk_vis_pkg.coffee
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">$GMT_LOCAL/modules/ocs_hdk_dcs/src/coffee/hdk_vis_pkg/hdk_vis_pkg.coffee</span></code> file is imported by the Engineering application when you launch it with a <code class="docutils literal"><span class="pre">--panel</span></code> parameter.  There is nothing in that file yet, so we’ll first create a ‘Hello World’ example.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/coffee/hdk_vis_pkg
+$ touch hello.coffee
+</pre></div>
+</div>
+<p>Now edit the <code class="docutils literal"><span class="pre">hello.coffee</span></code> and add the following</p>
+<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nx">import</span> <span class="p">{</span> <span class="nx">Panel</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;ocs_ui_fwk/ui&#39;</span>
+
+<span class="nv">View = </span><span class="nf">() =&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Panel</span><span class="o">&gt;</span>
+        <span class="nx">Hello</span> <span class="nx">World</span><span class="o">!</span>
+    <span class="o">&lt;/</span><span class="nx">Panel</span><span class="o">&gt;</span>
+
+<span class="nx">export</span> <span class="nx">default</span> <span class="nx">View</span>
+</pre></div>
+</div>
+<p>That effectively renders a ‘Hello World’ message in a UI panel.  This is still not visible the the Engineering app, for that you’ll need to export that <cite>View</cite> in the <code class="docutils literal"><span class="pre">hdk_vis_pkg.coffee</span></code> file</p>
+<p>Edit <code class="docutils literal"><span class="pre">$GMT_LOCAL/modules/ocs_hdk_dcs/src/coffee/hdk_vis_pkg/hdk_vis_pkg.coffee</span></code></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When you export <code class="docutils literal"><span class="pre">default</span></code> modules, the name you use to import does not matter.  This is why the declared <cite>View</cite> can be exported as <code class="docutils literal"><span class="pre">View</span></code> and imported as <code class="docutils literal"><span class="pre">HelloWorld</span></code>.</p>
+</div>
+<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nx">import</span> <span class="nx">HelloWorld</span> <span class="nx">from</span> <span class="s">&#39;./hello&#39;</span>
+
+<span class="nv">views = </span><span class="p">[</span>
+    <span class="nv">nav: </span><span class="s">&#39;hdk_dcs/hdk_hello_world_view&#39;</span>
+    <span class="nv">type: </span><span class="s">&#39;hdk_hello_world_view&#39;</span>
+    <span class="nv">Component: </span><span class="nx">HelloWorld</span>
+<span class="p">]</span>
+
+<span class="nx">export</span> <span class="nx">default</span> <span class="nx">views</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">type</span></code> key is used by the navigator app to locate your exported <cite>View</cite>.  The <code class="docutils literal"><span class="pre">--panel</span></code> parameter in the cli app needs to be the same as the <code class="docutils literal"><span class="pre">type</span></code> value.  The <code class="docutils literal"><span class="pre">nav</span></code> key provides a navigation tree hint that for the general engineering app.  This way your panel is exposed both as a custom panel, and is also read by the engineering app.</p>
+</div>
+<p>It should now be possible to see this view by running the <code class="docutils literal"><span class="pre">--panel</span></code> flag on the <code class="docutils literal"><span class="pre">navigator</span></code> cli app.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ navigator --panel hdk_hello_world_view --port <span class="m">9197</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="complex-panel">
+<h3>10.4.3. Complex panel<a class="headerlink" href="#complex-panel" title="Permalink to this headline">¶</a></h3>
+<p>That example is to get your feet wet, but you’ll want to render more complex views of your components.  The UI framework provides an abstraction that parallels the <cite>step</cite> function of your components.  This abstraction provides the data you expose through your output ports and state var values, and provides a way to send values to input ports and state var goals.</p>
+<p>First, let’s create the <cite>Step</cite> rendering function.  We will create a step function for the <code class="docutils literal"><span class="pre">hdk_main_ctrl</span></code> model.  The data that the step render function exposes comes from the <code class="docutils literal"><span class="pre">hdk_main_ctrl.coffee</span></code> model.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/coffee/hdk_vis_pkg
+$ touch hdk_main_ctrl_step.coffee
+</pre></div>
+</div>
+<p>Now edit <code class="docutils literal"><span class="pre">hdk_main_ctrl_step.coffee</span></code>, and add the following boilerplate code.  Note that if you decide to create a step render function for another component you’ll need to edit only a few lines of boilerplate.  Mainly the config path and the component name.</p>
+<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nx">import</span> <span class="p">{</span> <span class="nx">Store</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;ocs_ui_fwk/ui&#39;</span>
+
+<span class="nv">config = </span><span class="nx">require</span> <span class="s">&#39;../../etc/conf/hdk_ctrl_pkg/hdk_main_ctrl/hdk_main_ctrl_config&#39;</span>
+
+<span class="nv">dcs = </span><span class="s">&#39;hdk_dcs&#39;</span>
+<span class="nv">component = </span><span class="s">&#39;hdk_main_ctrl&#39;</span>
+
+<span class="c1"># Default options</span>
+<span class="nv">options =</span>
+    <span class="nv">type: </span><span class="s">&quot;@</span><span class="si">#{</span><span class="nx">dcs</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span><span class="si">}</span><span class="s">/</span><span class="si">#{</span><span class="nx">component</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span><span class="si">}</span><span class="s">&quot;</span>
+    <span class="nv">key: </span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">dcs</span><span class="si">}</span><span class="s">/</span><span class="si">#{</span><span class="nx">component</span><span class="si">}</span><span class="s">&quot;</span>
+
+<span class="c1"># Initialize ports to start data streams</span>
+<span class="nx">Store</span><span class="p">.</span><span class="nx">initPorts</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">options</span>
+
+<span class="c1"># Create step function view renderer</span>
+<span class="nv">Step =</span>
+    <span class="nv">Render: </span><span class="nx">Store</span><span class="p">.</span><span class="nx">renderStep</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">options</span>
+
+<span class="nx">export</span> <span class="nx">default</span> <span class="nx">Step</span>
+</pre></div>
+</div>
+<p>This creates the step render function, but you’ll need to write a separate view to render that content.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This loads the configuration file that’s usually auto-generated when you build your model.  The configuration needs to have accessible url definitions.  In some cases that means having opened firewall ports when you’re component is running on a separate machine.  The navigator app reads those url’s to receive and render data.</p>
+<p class="last">To open a firewall port in Fedora, you can run <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">firewall-cmd</span> <span class="pre">--add-port=8122-8124/tcp</span></code> where <code class="docutils literal"><span class="pre">8122-8124</span></code> is a port range you want to open.</p>
+</div>
+<p>The <cite>Step.Render</cite> function maps the model declared in <cite>hdk_main_ctrl</cite> to a renderable <cite>View</cite>.  The function exposes <code class="docutils literal"><span class="pre">input_ports</span></code>, <code class="docutils literal"><span class="pre">output_ports</span></code> and <code class="docutils literal"><span class="pre">state_vars</span></code> declared in the model.  Note that a combination of the <code class="docutils literal"><span class="pre">hdk_main_ctrl_config</span></code> and <code class="docutils literal"><span class="pre">hdk_main_ctrl</span></code> model is used to generate this function.  To see an example of this in use, we’ll need to create a separate view.</p>
+<p>In this example, we’ll visualize the digital outputs to the control lights.  This is the <code class="docutils literal"><span class="pre">hmi_outputs</span></code> in the <code class="docutils literal"><span class="pre">hdk_main_ctrl</span></code> model.  <code class="docutils literal"><span class="pre">hmi_outputs</span></code> is defined as an output port of type <code class="docutils literal"><span class="pre">hdk_hmi_leds</span></code>.  In the DCS types, the <code class="docutils literal"><span class="pre">hdk_hmi_leds</span></code> type is a <code class="docutils literal"><span class="pre">StructType</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">hmi_outputs</span></code> url needs to be an accessible <cite>TCP</cite> port.  In most cases, you should define the URL explicity as the IP address of the machine.  So <code class="docutils literal"><span class="pre">url:</span> <span class="pre">'tcp://127.0.0.1:8104'</span></code> should be <code class="docutils literal"><span class="pre">url:</span> <span class="pre">'tcp://10.20.10.12:8104'</span></code> when your machine’s IP is <code class="docutils literal"><span class="pre">10.20.10.12</span></code>.  Additionally, the navigator app can only subscribe to <code class="docutils literal"><span class="pre">pub</span></code> protocols, so your port should be set to <code class="docutils literal"><span class="pre">protocol:</span> <span class="pre">'pub'</span></code>.  Reading telemetry from other protocols is planned for a future release.</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/coffee/hdk_vis_pkg
+$ touch hdk_main_ctrl_view.coffee
+</pre></div>
+</div>
+<p>Now edit <code class="docutils literal"><span class="pre">hdk_main_ctrl_view.coffee</span></code> with the following boilerplate:</p>
+<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nx">import</span> <span class="p">{</span> <span class="nx">Panel</span><span class="p">,</span> <span class="nx">Widget</span><span class="p">,</span> <span class="nx">Box</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;ocs_ui_fwk/ui&#39;</span>
+<span class="nx">import</span> <span class="nx">HDKMain</span> <span class="nx">from</span> <span class="s">&#39;./hdk_main_ctrl_step&#39;</span>
+
+<span class="nv">View = </span><span class="nf">() =&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Panel</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">HDKMain</span><span class="p">.</span><span class="nx">Render</span><span class="o">&gt;</span>
+            <span class="p">{</span><span class="nf">({state_vars}) =&gt;</span>
+                <span class="c1">#...rendered views go here</span>
+                <span class="o">&lt;</span><span class="nx">Panel</span><span class="o">&gt;</span><span class="nx">This</span> <span class="o">is</span> <span class="nx">rendered</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">HDKMain</span><span class="p">.</span><span class="nx">Render</span> <span class="nx">step</span> <span class="nx">function</span><span class="o">&lt;/</span><span class="nx">Panel</span><span class="o">&gt;</span>
+            <span class="p">}</span>
+        <span class="o">&lt;/</span><span class="nx">HDKMain</span><span class="p">.</span><span class="nx">Render</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nx">Panel</span><span class="o">&gt;</span>
+
+<span class="nx">export</span> <span class="nx">default</span> <span class="nx">View</span>
+</pre></div>
+</div>
+<p>In the above example, you get a <code class="docutils literal"><span class="pre">Render</span></code> function from the imported <code class="docutils literal"><span class="pre">hdk_main_ctrl_step</span></code> that we declared earlier.  The <code class="docutils literal"><span class="pre">Render</span></code> function gives you <code class="docutils literal"><span class="pre">state_vars</span></code> as an input, and expects a renderable <cite>View</cite> as an output.  The <code class="docutils literal"><span class="pre">state_vars</span></code> map directly to the model, so we can expect the <code class="docutils literal"><span class="pre">hmi</span></code> data to be included as part of the <code class="docutils literal"><span class="pre">state_vars</span></code> data.  For example, if we wanted to get the value of the pilot light, we can use the safe access operator <code class="docutils literal"><span class="pre">state_vars?.hmi?.output?.pilot</span></code> to retrieve that value.</p>
+<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">HDKMain</span><span class="p">.</span><span class="nx">Render</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="nf">({state_vars}) =&gt;</span>
+        <span class="c1">#...rendered views go here</span>
+        <span class="o">&lt;</span><span class="nx">Panel</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Box</span><span class="o">&gt;</span><span class="nx">Pilot</span> <span class="nx">light</span><span class="o">&lt;/</span><span class="nx">Box</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Box</span><span class="o">&gt;</span>
+                <span class="p">{</span><span class="nx">state_vars</span><span class="o">?</span><span class="p">.</span><span class="nx">hmi</span><span class="o">?</span><span class="p">.</span><span class="nx">output</span><span class="o">?</span><span class="p">.</span><span class="nx">pilot</span><span class="p">.</span><span class="nx">toString</span><span class="p">()}</span>
+            <span class="o">&lt;/</span><span class="nx">Box</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nx">Panel</span><span class="o">&gt;</span>
+    <span class="p">}</span>
+<span class="o">&lt;/</span><span class="nx">HDKMain</span><span class="p">.</span><span class="nx">Render</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We use the Coffeescript existential operator <code class="docutils literal"><span class="pre">?</span></code> so that we don’t access <code class="docutils literal"><span class="pre">undefined</span></code> values and crash.  This may be the case when there are errors in your model, or the data streams are not available to the UI.</p>
+</div>
+<p>You won’t be able to load this panel until you export it in <code class="docutils literal"><span class="pre">hdk_vis_pkg.coffee</span></code></p>
+<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nx">import</span> <span class="nx">HelloWorld</span> <span class="nx">from</span> <span class="s">&#39;./hello&#39;</span>
+<span class="nx">import</span> <span class="nx">HDKMainView</span> <span class="nx">from</span> <span class="s">&#39;./hdk_main_ctrl_view&#39;</span>
+
+<span class="nx">export</span> <span class="nx">default</span> <span class="p">[</span>
+    <span class="nv">nav: </span><span class="s">&#39;hdk_dcs/hdk_hello_world_view&#39;</span>
+    <span class="nv">type: </span><span class="s">&#39;hdk_hello_world_view&#39;</span>
+    <span class="nv">Component: </span><span class="nx">HelloWorld</span>
+<span class="p">,</span>
+    <span class="nv">nav: </span><span class="s">&#39;hdk_dcs/hdk_main_ctrl_view&#39;</span>
+    <span class="nv">type: </span><span class="s">&#39;hdk_main_ctrl_view&#39;</span>
+    <span class="nv">Component: </span><span class="nx">HDKMainView</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>You can now run it with the <code class="docutils literal"><span class="pre">--panel</span></code> flag on the <code class="docutils literal"><span class="pre">navigator</span></code> cli app, with the type.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ navigator --panel hdk_main_ctrl_view --port <span class="m">9198</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The navigator app allows you to run instances of multiple panels at the same time.  However, you will need to specify a different <code class="docutils literal"><span class="pre">--port</span></code> for each instance to avoid port collision errors.  Also, note that the navigator app will reuse the internal data server for multiple instances, so if you close the initial instance, the data server may become unavailable for the other panels.</p>
+</div>
+<p>You should now see <cite>true</cite> or <cite>false</cite> string rendered on the screen indicating the pilot light status.  But the UI can render more than strings.  A more extensive example that shows the status of the motor and LED lights can be found in the HDK vis package <code class="docutils literal"><span class="pre">https://github.com/GMTO/ocs_hdk_dcs</span></code>.</p>
+</div>
+</div>
 </div>
 
 
@@ -657,10 +863,10 @@ be on.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../data_products/index.html" class="btn btn-neutral float-right" title="Data Products" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ui_fwk.html" class="btn btn-neutral float-right" title="11. UI Framework" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="isample_example.html" class="btn btn-neutral" title="8. ISample Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="isample_example.html" class="btn btn-neutral" title="9. ISample Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

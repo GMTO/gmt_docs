@@ -108,6 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#general-glossary">General Glossary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#control-engineering-glossary">Control Engineering Glossary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#n-grams">N-grams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#class-n-grams">Class N-grams</a></li>
 </ul>
 </li>
 </ul>
@@ -246,8 +247,8 @@ used in the description of the GMT Software and Controls</p>
 <div class="section" id="general-glossary">
 <h2>General Glossary<a class="headerlink" href="#general-glossary" title="Permalink to this headline">¶</a></h2>
 <p>GMT Software and Controls Glossary and Definitions.</p>
-<table border="1" class="docutils" id="id2">
-<caption><span class="caption-number">Table 1 </span><span class="caption-text">Software and Controls General Glossary</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id3">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Software and Controls General Glossary</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="50%" />
 <col width="50%" />
@@ -297,8 +298,8 @@ used in the description of the GMT Software and Controls</p>
 <div class="section" id="control-engineering-glossary">
 <h2>Control Engineering Glossary<a class="headerlink" href="#control-engineering-glossary" title="Permalink to this headline">¶</a></h2>
 <p>GMT Software and Controls Control Engineering Glossary and Definitions. Based on ECSS-E-60A</p>
-<table border="1" class="docutils" id="id3">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">Control engineering Glossary</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id4">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Control engineering Glossary</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="50%" />
 <col width="50%" />
@@ -990,7 +991,12 @@ the sensors</td>
 </tr>
 </tbody>
 </table>
-<p>Combinations of two (digrams), three (trigrams) or four (tetragrams) letters used in GMT descriptors</p>
+</div>
+<div class="section" id="class-n-grams">
+<span id="id2"></span><h2>Class N-grams<a class="headerlink" href="#class-n-grams" title="Permalink to this headline">¶</a></h2>
+<p>Combinations of two (digrams), three (trigrams) or four (tetragrams) letters used in GMT
+model element names. The are also used to infer a model element class in case
+a detailed element definition is provided.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
@@ -1002,12 +1008,6 @@ the sensors</td>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><em>cs</em></td>
-<td>Subsystem</td>
-</tr>
-<tr class="row-odd"><td><em>sw</em></td>
-<td>Component</td>
-</tr>
 <tr class="row-even"><td><em>daq</em></td>
 <td>Controller</td>
 </tr>
@@ -1099,6 +1099,123 @@ the sensors</td>
 <td>Network</td>
 </tr>
 <tr class="row-even"><td><em>mngt</em></td>
+<td>Management</td>
+</tr>
+<tr class="row-odd"><td><em>app</em></td>
+<td>Application</td>
+</tr>
+<tr class="row-even"><td><em>dcs</em></td>
+<td>DCS</td>
+</tr>
+<tr class="row-odd"><td><em>cat</em></td>
+<td>Catalog</td>
+</tr>
+<tr class="row-even"><td><em>lib</em></td>
+<td>Library</td>
+</tr>
+<tr class="row-odd"><td><em>daq</em></td>
+<td>Controller</td>
+</tr>
+<tr class="row-even"><td><em>eng</em></td>
+<td>Engineering</td>
+</tr>
+<tr class="row-odd"><td><em>pack</em></td>
+<td>Host</td>
+</tr>
+<tr class="row-even"><td><em>dpc</em></td>
+<td>Host</td>
+</tr>
+<tr class="row-odd"><td><em>dcc</em></td>
+<td>Host</td>
+</tr>
+<tr class="row-even"><td><em>wks</em></td>
+<td>Host</td>
+</tr>
+<tr class="row-odd"><td><em>iom</em></td>
+<td>IOModule</td>
+</tr>
+<tr class="row-even"><td><em>cmp</em></td>
+<td>Component</td>
+</tr>
+<tr class="row-odd"><td><em>wrp</em></td>
+<td>Component</td>
+</tr>
+<tr class="row-even"><td><em>seq</em></td>
+<td>Sequence</td>
+</tr>
+<tr class="row-odd"><td><em>wkf</em></td>
+<td>Workflow</td>
+</tr>
+<tr class="row-even"><td><em>srv</em></td>
+<td>Server</td>
+</tr>
+<tr class="row-odd"><td><em>swt</em></td>
+<td>NetworkSwitch</td>
+</tr>
+<tr class="row-even"><td><em>drv</em></td>
+<td>Driver</td>
+</tr>
+<tr class="row-odd"><td><em>dev</em></td>
+<td>Device</td>
+</tr>
+<tr class="row-even"><td><em>sys</em></td>
+<td>Subsystem</td>
+</tr>
+<tr class="row-odd"><td><em>pkg</em></td>
+<td>Package</td>
+</tr>
+<tr class="row-even"><td><em>rpt</em></td>
+<td>Document</td>
+</tr>
+<tr class="row-odd"><td><em>doc</em></td>
+<td>Document</td>
+</tr>
+<tr class="row-even"><td><em>ecab</em></td>
+<td>ECabinet</td>
+</tr>
+<tr class="row-odd"><td><em>ctrl</em></td>
+<td>Controller</td>
+</tr>
+<tr class="row-even"><td><em>comp</em></td>
+<td>Component</td>
+</tr>
+<tr class="row-odd"><td><em>plan</em></td>
+<td>Plan</td>
+</tr>
+<tr class="row-even"><td><em>proc</em></td>
+<td>Process</td>
+</tr>
+<tr class="row-odd"><td><em>panel</em></td>
+<td>Panel</td>
+</tr>
+<tr class="row-even"><td><em>cable</em></td>
+<td>Cable</td>
+</tr>
+<tr class="row-odd"><td><em>super</em></td>
+<td>Supervisor</td>
+</tr>
+<tr class="row-even"><td><em>adapter</em></td>
+<td>Adapter</td>
+</tr>
+<tr class="row-odd"><td><em>pipeline</em></td>
+<td>Pipeline</td>
+</tr>
+<tr class="row-even"><td><em>inttravel</em></td>
+<td>Travel</td>
+</tr>
+<tr class="row-odd"><td><em>domtravel</em></td>
+<td>Travel</td>
+</tr>
+<tr class="row-even"><td><em>shipping</em></td>
+<td>Shipping</td>
+</tr>
+<tr class="row-odd"><td><em>lic</em></td>
+<td>License</td>
+</tr>
+<tr class="row-even"><td><em>cabling</em></td>
+<td>Network</td>
+</tr>
+<tr class="row-odd"><td><em>mngt</em></td>
 <td>Management</td>
 </tr>
 </tbody>

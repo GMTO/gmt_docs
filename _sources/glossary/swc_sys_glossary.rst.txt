@@ -612,11 +612,16 @@ Combinations of two (digrams), three (trigrams) or four (tetragrams) letters use
     * - *messagepack*
       - MessagePack
 
+.. _class_n_grams:
+
+-------------
+Class N-grams
+-------------
 
 
-
-
-Combinations of two (digrams), three (trigrams) or four (tetragrams) letters used in GMT descriptors
+Combinations of two (digrams), three (trigrams) or four (tetragrams) letters used in GMT
+model element names. The are also used to infer a model element class in case
+a detailed element definition is provided.
 
 .. tabularcolumns:: p{4cm} | p{11cm}
 
@@ -625,10 +630,6 @@ Combinations of two (digrams), three (trigrams) or four (tetragrams) letters use
 
     * - Term
       - Definition
-    * - *cs*
-      - Subsystem
-    * - *sw*
-      - Component
     * - *daq*
       - Controller
     * - *pac*
@@ -693,6 +694,84 @@ Combinations of two (digrams), three (trigrams) or four (tetragrams) letters use
       - Management
 
 
+    * - *app*
+      - Application
+    * - *dcs*
+      - DCS
+    * - *cat*
+      - Catalog
+    * - *lib*
+      - Library
+    * - *daq*
+      - Controller
+    * - *eng*
+      - Engineering
+    * - *pack*
+      - Host
+    * - *dpc*
+      - Host
+    * - *dcc*
+      - Host
+    * - *wks*
+      - Host
+    * - *iom*
+      - IOModule
+    * - *cmp*
+      - Component
+    * - *wrp*
+      - Component
+    * - *seq*
+      - Sequence
+    * - *wkf*
+      - Workflow
+    * - *srv*
+      - Server
+    * - *swt*
+      - NetworkSwitch
+    * - *drv*
+      - Driver
+    * - *dev*
+      - Device
+    * - *sys*
+      - Subsystem
+    * - *pkg*
+      - Package
+    * - *rpt*
+      - Document
+    * - *doc*
+      - Document
+    * - *ecab*
+      - ECabinet
+    * - *ctrl*
+      - Controller
+    * - *comp*
+      - Component
+    * - *plan*
+      - Plan
+    * - *proc*
+      - Process
+    * - *panel*
+      - Panel
+    * - *cable*
+      - Cable
+    * - *super*
+      - Supervisor
+    * - *adapter*
+      - Adapter
+    * - *pipeline*
+      - Pipeline
+    * - *inttravel*
+      - Travel
+    * - *domtravel*
+      - Travel
+    * - *shipping*
+      - Shipping
+    * - *lic*
+      - License
+    * - *cabling*
+      - Network
+    * - *mngt*
+      - Management
 
 
 .. raw:: latex

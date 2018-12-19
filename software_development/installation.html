@@ -127,6 +127,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#software-development-kit-sdk">1.4. Software Development Kit (SDK)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#next-steps">1.5. Next Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
@@ -134,9 +135,11 @@
 <li class="toctree-l2"><a class="reference internal" href="gds_guide.html">4. gds documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">5. Model specification guide document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">6. Model-language mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">7. Core Services user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="isample_example.html">8. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">9. HDK example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">7. OCS Test Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">8. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">9. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">10. HDK example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_fwk.html">11. UI Framework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -669,7 +672,10 @@ summary_interval <span class="m">6</span>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ touch ~/.bash_profile
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh <span class="p">|</span> bash
-$ nvm use <span class="m">8</span>.12.0
+$ <span class="nb">source</span> ~/.bash_profile
+$ nvm install <span class="m">8</span>.12.0
+$ node --version
+v8.12.0
 </pre></div>
 </div>
 <p>More information can be found on the nvm GitHub site: &lt;<a class="reference external" href="https://github.com/creationix/nvm">https://github.com/creationix/nvm</a>&gt;</p>
@@ -721,7 +727,7 @@ $ sudo tar -xzvf &lt;gmt-tar.gz&gt; -C /opt/gmt_release_1.5.0
 <p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, for example ~/work. The GMT software modules developed by the user are created in this folder.</p>
 </div></blockquote>
 <ol class="arabic simple" start="5">
-<li>Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)</li>
+<li>Add the following lines to your .bash_profile (or .kshrc or .bashrc depending on your preferred shell)</li>
 </ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">GMT_GLOBAL</span><span class="o">=</span>/opt/gmt
@@ -740,6 +746,20 @@ $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="7">
+<li>Install local Node Modules</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+$ cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
+$ npm install
+</pre></div>
+</div>
+<p>Install global node modules for <cite>Webpack</cite> and <cite>Coffeescript</cite>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install -g coffeescript webpack webpack-cli
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="8">
 <li>Initialize the Development Environment:</li>
 </ol>
 <blockquote>
@@ -748,14 +768,8 @@ $ gds init
 </pre></div>
 </div>
 <p>The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.</p>
-</div></blockquote>
-<ol class="arabic simple" start="8">
-<li>Install local Node Modules</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
-$ cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
-$ npm install
+<p>When running the User Interface, create a <strong>local javascript library folder</strong>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir -p <span class="nv">$GMT_LOCAL</span>/lib/js
 </pre></div>
 </div>
 </div></blockquote>
@@ -778,7 +792,8 @@ $ git clone https://github.com/&lt;username&gt;/ocs_hdk_dcs
 $ git clone https://github.com/&lt;username&gt;/ocs_isample_dcs
 </pre></div>
 </div>
-<p>Where &lt;username&gt; is your GitHub username, assuming you’ve forked from the GMTO repository. Alternatively, use <code class="docutils literal"><span class="pre">GMTO</span></code> to clone from the central repository.</p>
+<p>Where &lt;username&gt; is your GitHub username, assuming you’ve forked from the GMTO repository.</p>
+<p>Alternatively, use <code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/GMTO/ocs_hdk_dcs</span></code> to clone from the central repository.</p>
 </div></blockquote>
 <ol class="arabic simple" start="11">
 <li>Create the <strong>bundles.coffee</strong> and <strong>ocs_local_bundle.coffee</strong> files, defining the local modules under development</li>
@@ -805,6 +820,23 @@ elements:
 </pre></div>
 </div>
 </div></blockquote>
+<ol class="arabic simple" start="12">
+<li>Systems that run the User Interface require compiled model files to be used by the Navigator application.</li>
+</ol>
+<blockquote>
+<div><p>Build all model files from modules in your ocs_local_bundles definition using webpack. For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/model
+$ webpack
+$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/model
+$ webpack
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="next-steps">
+<h2>1.5. Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>To start using the SDK with the Hardware Development Kit (HDK), instructions can be found here: <a class="reference internal" href="hdk_example.html#hdk-example"><span class="std std-ref">HDK example</span></a>.</p>
+<p>To run the Navigator application and start using the UI framework, see the UI Framework guide: <a class="reference internal" href="ui_fwk.html#ui-fwk"><span class="std std-ref">UI Framework</span></a>.</p>
 <p><a class="reference internal" href="#installation"><span class="std std-ref">[back to top]</span></a></p>
 </div>
 </div>

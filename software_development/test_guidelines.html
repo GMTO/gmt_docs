@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7. OCS Test Guidelines &mdash; GMT Software And Controls documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
+        <link rel="up" title="Software Development" href="index.html"/>
+        <link rel="next" title="8. Core Services user guide" href="core_services_user_guide.html"/>
+        <link rel="prev" title="6.1. Mapping between the Model Definition Files and C++ source code" href="model_language_mapping/mapping_model_to_cpp.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GMT Software And Controls
+          
+
+          
+            
+            <img src="../_static/logowhite.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SWC_architecture/index.html">Architecture and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SWC_standards/index.html">Software and Controls Standards</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">1. Installing the SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gds_guide.html">4. gds documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">5. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">6. Model-language mapping</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7. OCS Test Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">7.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types-of-tests">7.2. Types of tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types-of-elements-under-test">7.3. Types of elements under test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-guidelines">7.4. General guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementation">7.5. Implementation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#test-generation">7.5.1. Test Generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-framework">7.5.2. Test Framework</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-execution">7.5.3. Test Execution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">8. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">9. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">10. HDK example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_fwk.html">11. UI Framework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/swc_sys_glossary.html">Software and Controls Acronyms and Definitions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT Software And Controls</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Software Development</a> &raquo;</li>
+        
+      <li>7. OCS Test Guidelines</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ocs-test-guidelines">
+<span id="test-guidelines"></span><h1>7. OCS Test Guidelines<a class="headerlink" href="#ocs-test-guidelines" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>7.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Each module of the OCS, like any other subsystem of the GMT is required to
+provide a method for the verification of it’s requirements. The most common
+methods of verification are demonstration, test, inspection and analysis.
+Although the OCS modules include both hardware and software components, these guidelines
+only apply to the verification of requirements that involve software components.
+Following is a brief description  of the verification methods <a class="reference external" href="https://www.sebokwiki.org/wiki/Guide_to_the_Systems_Engineering_Body_of_Knowledge_(SEBoK)">[SEBoK]</a> :</p>
+<blockquote>
+<div><ul class="simple">
+<li>Inspection: Technique based on visual or dimensional examination of an element. Inspection
+is generally non-destructive, and typically includes the use of sight, hearing or simple
+physical manipulation. No stimuli (tests) are necessary. In the case of the OCS
+software modules this affects mostly the visual aspects of the user interface, for
+example, confirming that the requested user interface elements are present. Usually,
+no specific tests have to be created as the execution of software applications
+in the presence of the users may be enough. In the context of the OCS, this
+method often involves the inspection of the module as a whole.</li>
+<li>Analysis: Technique based on analytical evidence obtained without any intervention on the
+element under test using mathematical or probabilistic calculation, logical reasoning, modeling
+and/or simulation. Mainly used where testing to realistic conditions cannot be achieved
+or is not cost-effective. How to implement the analysis method of an OCS software module and how to preserve its
+embodiment is beyond the scope of these guidelines and most likely should be coordinated
+with Systems Engineering department.</li>
+<li>Demonstration: Technique used to demonstrate correct operation of the element under test
+against operational and observable characteristics whitout using physical measurements
+(no or minimal instrumentation or test equipment). Demonstration is sometimes called
+‘field testing’. It generally consists of a set of tests selected by the user to
+show that the element response to stimuli is suitable or to show that operators can
+perform their assigned tasks when using the element. Observations are made and compared
+with predetermined/expected responses. As in the case of of the inspection method, no expecific
+tests have to constructed or executed. In the context of the OCS, this method often involves the demonstration of the module as a whole.</li>
+<li>Test: Technique performed onto the element under test by which functional, measurable characteristics,
+operability, supportability, or performance capability is quantitatively verified when
+subjected to controlled conditions that are real or simulated. Testing often uses
+special test equipment or instrumentation to obtain accurate quantitative data to
+be analyzed. This verification method is specially relevant to the test of software elements
+in the domain of control systems. It’s also relevant as it is the main verification method
+used to verify the Components and Packages that form a OCS Module. The tests that we discuss
+in these guidelines belong mostly to this category.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that in this context, requirements is used as a general term, as in software
+systems requirements are also expresed as features or user stories.</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="types-of-tests">
+<h2>7.2. Types of tests<a class="headerlink" href="#types-of-tests" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned above the test method involves the verification of functional, operational
+or performace capabilities of the element under test. For the purpose of the
+verification of the OCS system and its modules we defined three categories of tests:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Functional tests: These tests are necessary to verifiy the functional capabilities
+of the element under test. These capabilities are often captured as
+functional or operational behaviors in formal system engineering or
+user stories in agile software engineering. The tests must fulfill the following guidelines:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Should be executed automatically when possible</li>
+<li>Shall have positive and negative cases</li>
+<li>Shall be able to establish if the element behaves according to specification</li>
+<li>The source and version of the functional test specification shall be recorded</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Performance tests: These tests are necessary to verify the performance capabilities
+of the element under test. The tests must fulfill the following guidelines:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Should be executed automatically when possible (it may depend on the measurement method)</li>
+<li>The method to measure performance shall be characterized</li>
+<li>The uncertainty in the measurement shall be specified for each performance tests</li>
+<li>The source and version of the performance test specification shall be recorded</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Interface tests: These tests are necessary to verify the ability of the element under test
+to be integrated with other elements. The interface tests must fulfill the following guidelines:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Should be executed automatically when possible</li>
+<li>The interface test shall be able to establish if the interface is present</li>
+<li>The interface test shall be able to establish if the interface conforms to the protocol specification</li>
+<li>The interface test doesn’t check the correctness of the behavior of the element under test</li>
+<li>The source and version of the interface test specification shall be recorded</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="types-of-elements-under-test">
+<h2>7.3. Types of elements under test<a class="headerlink" href="#types-of-elements-under-test" title="Permalink to this headline">¶</a></h2>
+<p>The OCS modules are build up from a hierarchical composition of <cite>Components</cite> and <cite>Packages</cite>.
+The test strategy is thus bottom-up, where elementary components are tested (analogous to unit testing)
+prior to being integrated in aggregated entities. The following guidelines shall be fulfilled by
+each type of element:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Component testing</p>
+<blockquote>
+<div><ul class="simple">
+<li>There shall be an independent test for every Component Feature</li>
+<li>A Component is considered tested when all its Feature tests are performed</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Package testing</p>
+<blockquote>
+<div><ul class="simple">
+<li>There shall be at least one integration test per Package</li>
+<li>A Package is considered tested when all its Component tests are performed and
+the Package integration tests are performed</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Subsystem testing</p>
+<blockquote>
+<div><ul class="simple">
+<li>There shall be at least one integration test per Subsystem</li>
+<li>A Subsystem is considered tested when all its Package tests are performed and
+the Subsystem integrated tests are performed</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Subsystems defined in the GMT model are mapped into Modules for the
+purpose of development, testing and integration. As explained in
+the <a class="reference internal" href="../SWC_standards/reference_architecture/dcs_reference_architecture.html#dcs-reference-architecture"><span class="std std-ref">Software and Controls Standards</span></a>, Subsystems
+are modeling entities and are decomposed in Packages and
+Components.</p>
+<p class="last">Note that in this context, Component Feature is used as defined in the OCS metamodel:
+an elementary capability of a Component, e.g. a property, a state variable, an alarm event</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="general-guidelines">
+<h2>7.4. General guidelines<a class="headerlink" href="#general-guidelines" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p class="first">Every test (Feature, Component, Package, Subsystem) must include positive and
+negative tests</p>
+</li>
+<li><p class="first">The results of the tests must be reported in a standardized manner by creating a
+TestRecord data structure:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">attribute</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>Name of the test</td>
+</tr>
+<tr class="row-odd"><td>desc</td>
+<td>Description of the test</td>
+</tr>
+<tr class="row-even"><td>req_id</td>
+<td>Id of the requirement verified by the test</td>
+</tr>
+<tr class="row-odd"><td>target_type</td>
+<td>Type of the element under test</td>
+</tr>
+<tr class="row-even"><td>test_type</td>
+<td>Type of the test</td>
+</tr>
+<tr class="row-odd"><td>input</td>
+<td>Input data to the test when applicable (e.g. parameter file)</td>
+</tr>
+<tr class="row-even"><td>output</td>
+<td>Output data to the test when applicable</td>
+</tr>
+<tr class="row-odd"><td>url</td>
+<td>URL of the element under test</td>
+</tr>
+<tr class="row-even"><td>expected</td>
+<td>Expected value</td>
+</tr>
+<tr class="row-odd"><td>result</td>
+<td>Result of the test</td>
+</tr>
+<tr class="row-even"><td>timestamps</td>
+<td>Sequence of timestamps. The first indicates the start of the test,
+the last indicates the end of the test. The intermediate timestamps
+can be used to inject additional time probes during the execution
+of the test (e.g. comunication send and receive events in a distributed
+test).</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nv">test_record:</span>
+    <span class="nv">name: </span>        <span class="s">&quot;Feature a (positive)&quot;</span>
+    <span class="nv">desc: </span>        <span class="s">&quot;&quot;</span>
+    <span class="nv">req_id: </span>      <span class="s">&quot;&quot;</span>
+    <span class="nv">target_type: </span> <span class="sr">/feature|component|package|subsystem/</span>
+    <span class="nv">test_type: </span>   <span class="sr">/interface|correctness|performance/</span>
+    <span class="nv">input: </span>       <span class="p">{}</span>
+    <span class="nv">output: </span>      <span class="p">{}</span>
+    <span class="nv">result: </span>      <span class="sr">/PASS|FAIL/</span>
+    <span class="nv">expected: </span>    <span class="p">{}</span>
+    <span class="nv">url: </span>         <span class="s">&quot;&quot;</span>
+    <span class="nv">timestamps: </span>  <span class="p">[]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Test records shall be saved as files during the test run or stored a test database</p>
+</li>
+<li><p class="first">The following table defines which tests are considered mandatory</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="17%" />
+<col width="19%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">target_type / test_type</th>
+<th class="head">interface</th>
+<th class="head">functional</th>
+<th class="head">performance</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>feature</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>yes</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>component</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>yes</td>
+<td>yes*</td>
+</tr>
+<tr class="row-even"><td>package</td>
+<td>yes**</td>
+<td>yes</td>
+<td>yes*</td>
+</tr>
+<tr class="row-odd"><td>subsystem</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes*</td>
+</tr>
+<tr class="row-even"><td>system</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>yes</td>
+<td>yes*</td>
+</tr>
+</tbody>
+</table>
+<p><cite>*</cite>  only when performance requirements are specified
+<cite>**</cite> only when packages are procured by different entities</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="implementation">
+<h2>7.5. Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>The OCS development environment provides a set of tools to support the definition,
+creation and execution of tests.</p>
+<ul class="simple">
+<li>The <cite>gds gen</cite> command generates tests skeletons based on the model definition of
+a module.</li>
+<li>The OCS Test Framework implements a set of classes that facilitate the execution of
+distributed tests.</li>
+<li>The <cite>gds test</cite> command allows the automatic execution of test.</li>
+</ul>
+<div class="section" id="test-generation">
+<h3>7.5.1. Test Generation<a class="headerlink" href="#test-generation" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>gds gen</cite> command is able to generate test skeletons based on the model definition
+of any model element. If the model element is an aggregate (e.g. Package, Subsystem)
+it will generate also the tests of the elements that are part of that model element.</p>
+<p>The generated skeletons are created in the test directory of the module:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$GMT_LOCAL/&lt;module&gt;/
+   |-- model/
+   |-- src/
+   |-- test/
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the version 1.5 of the SDK, complete skeletons are only generated for
+elements of the class <cite>Component</cite>. For elements that are aggregated the skeleton
+includes an example of how to invoke an external test.</p>
+</div>
+<p>The generated tests are organized in the file system according to the following structure:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$GMT_LOCAL/&lt;module&gt;/test/coffee/
+   |-- &lt;module&gt;_&lt;pkg_1&gt;_pkg/
+   |     |-- &lt;module&gt;_&lt;cmp_1&gt;_cmp/
+   |     |       |-- &lt;subs&gt;_&lt;cmp1&gt;_functional_01_test.coffee
+   |     |       |-- &lt;subs&gt;_&lt;cmp1&gt;_performance_01_test.coffee
+   |     |-- ...
+   |     |-- &lt;module&gt;_&lt;cmp_n&gt;_cmp/
+   |     |
+   |     |-- &lt;module&gt;_&lt;pkg_1&gt;_interface_01_test.coffee
+   |     |-- &lt;module&gt;_&lt;pkg_1&gt;_functional_01_test.coffee
+   |     |-- &lt;module&gt;_&lt;pkg_1&gt;_performance_01_test.coffee
+   |-- ...
+   |-- &lt;module&gt;_&lt;pkg_n&gt;_pkg/
+   |-- &lt;module&gt;_interface_01_test.coffee
+   |-- &lt;module&gt;_functional_01_test.coffee
+   |-- &lt;module&gt;_performance_01_test.coffee
+</pre></div>
+</div>
+<ul>
+<li><p class="first">The following example generates the skeletons for the DCS subsystem <cite>hdk_dcs</cite></p>
+<blockquote>
+<div><div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nx">gds</span> <span class="nx">gen</span> <span class="o">--</span><span class="nx">target</span> <span class="nx">test</span> <span class="nx">hdk_dcs</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>The previous command will generate several test skeletons for the hdk_dcs module:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$GMT_LOCAL/ocs_hdk_dcs/
+   |-- test/
+   |     |-- coffee/
+   |     |     |-- hdk_ctrl_pkg/
+   |     |     |     |-- hdk_main_ctrl
+   |     |     |     |     |-- hdk_main_ctrl_01_functional_test.coffee
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-framework">
+<h3>7.5.2. Test Framework<a class="headerlink" href="#test-framework" title="Permalink to this headline">¶</a></h3>
+<p>The Test Framework provides several classes that facilitate the creation and execution
+of distributed test</p>
+<p>As can be seen in the example below, the skeleton includes the following:</p>
+<ul>
+<li><p class="first">The skeleton class <cite>HdkMainCtrlTestClient</cite> that extends the superclass <cite>TestClient</cite>. The skeleton redefines two methods:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt><cite>start</cite>:  For ‘one shot’ test, write the test block in this method. If it is feasible</dt>
+<dd>here is where the element(s) under test can be spawned. If the element(s) under test
+are executed in a different computer the could be started executing a remote shell command,
+which can be invoked with the node method spawnSync</dd>
+</dl>
+</li>
+<li><cite>step</cite>:  For iterative tests, write the test block in this method</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">An instance of a command line application <cite>CoreCLIApplication</cite> that provides access to the console
+and to command line options</p>
+</li>
+<li><p class="first">An instance of a <cite>CoreContainer</cite> which will direct to the console or to a file any
+core service event generated by the test client (e.g. logs, alarms, telemetry)</p>
+</li>
+<li><p class="first">An instance of the test client class <cite>HdkMainCtrlTestClient</cite> that is initialized with
+the conjugated of the element under test ports. Notice that the url’s generated are those
+defined in the model class of the element under test, as the test generator doesn’t have
+knowledge of which instance to test, as a consequence these urls need to be redefined with
+the ones corresponding to the instance that we intent to test. A more refined strategy
+would be implemented in future releases.</p>
+<blockquote>
+<div><div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="c1"># Component hdk_main_ctrl functional test</span>
+
+<span class="p">{</span> <span class="nx">CoreContainer</span>
+<span class="nx">CoreCLIApplication</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span> <span class="s">&#39;ocs_core_fwk&#39;</span>
+<span class="p">{</span> <span class="nx">TestClient</span> <span class="p">}</span>       <span class="o">=</span> <span class="nx">require</span> <span class="s">&#39;ocs_test_fwk&#39;</span>
+
+<span class="k">class</span> <span class="nx">HdkMainCtrlTestClient</span> <span class="k">extends</span> <span class="nx">TestClient</span>
+
+   <span class="nv">start: </span><span class="nf">-&gt;</span>
+      <span class="k">super</span><span class="p">()</span>
+      <span class="nx">@log</span><span class="p">.</span><span class="nx">info</span> <span class="nx">@name</span><span class="p">,</span> <span class="s">&quot;Running functional test 01&quot;</span>      <span class="c1"># Substitute number with actual one</span>
+      <span class="c1"># Include here the test section</span>
+
+   <span class="nv">step: </span><span class="nf">-&gt;</span>
+      <span class="k">super</span><span class="p">()</span>
+      <span class="c1"># Include here any periodic test</span>
+
+
+<span class="nv">app         = </span><span class="k">new</span> <span class="nx">CoreCLIApplication</span>  <span class="kc">null</span><span class="p">,</span> <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;hdk_main_ctrl_test_client_app&#39;</span><span class="p">}</span> <span class="c1">#, logging:  &#39;metric&#39;}</span>
+<span class="nv">cntr        = </span><span class="k">new</span> <span class="nx">CoreContainer</span> <span class="nx">app</span><span class="p">,</span>  <span class="kc">null</span><span class="p">,</span> <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;hdk_main_ctrl_test_container&#39;</span> <span class="p">}</span>
+
+<span class="c1"># Note 1: The test client ports are conjugated of the component under test ports</span>
+<span class="c1"># Note 2: This configuration shall be updated in case a specific instance configuration of the Component under test is used</span>
+<span class="c1"># Note 3: To execute this test run: &gt; gds test --type functional hdk_main_ctrl --number 01</span>
+
+<span class="nv">test_client = </span><span class="k">new</span> <span class="nx">HdkMainCtrlTestClient</span> <span class="nx">cntr</span><span class="p">,</span>
+   <span class="nv">properties:</span>
+      <span class="nv">uri: </span>                <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;uri&quot;</span><span class="p">,</span>         <span class="nv">default_value: </span><span class="s">&#39;gmt://127.0.0.1:19000/test_fwk/test_test_pkg/hdk_main_ctrl_test_client&#39;</span><span class="p">}</span>
+      <span class="nv">name: </span>               <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;name&quot;</span><span class="p">,</span>        <span class="nv">default_value: </span><span class="s">&#39;hdk_main_ctrl_test_client&#39;</span><span class="p">}</span>
+      <span class="nv">host: </span>               <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;host&quot;</span><span class="p">,</span>        <span class="nv">default_value: </span><span class="s">&#39;127.0.0.1&#39;</span><span class="p">}</span>
+      <span class="nv">port: </span>               <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;port&quot;</span><span class="p">,</span>        <span class="nv">default_value: </span><span class="s">&#39;19000&#39;</span><span class="p">}</span>
+      <span class="nv">scan_period: </span>        <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;scan_period&quot;</span><span class="p">,</span> <span class="nv">default_value: </span><span class="mi">1000</span><span class="p">}</span>
+      <span class="nv">acl: </span>                <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;acl&quot;</span><span class="p">,</span>         <span class="nv">default_value: </span><span class="s">&#39;PRIVATE&#39;</span><span class="p">}</span>
+   <span class="nv">inputs:</span>
+      <span class="nv">hmi_outputs: </span>        <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;hmi_outputs&#39;</span><span class="p">,</span>           <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+      <span class="nv">motor_ctrl: </span>         <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;motor_ctrl&#39;</span><span class="p">,</span>            <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+      <span class="nv">config: </span>             <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;config&#39;</span><span class="p">,</span>                <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+      <span class="nv">heartbeat_out: </span>      <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;heartbeat_out&#39;</span><span class="p">,</span>         <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+      <span class="nv">ops_state_value: </span>    <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;ops_state_value&#39;</span><span class="p">,</span>       <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+      <span class="nv">sim_mode_value: </span>     <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;sim_mode_value&#39;</span><span class="p">,</span>        <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+      <span class="nv">control_mode_value: </span> <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;control_mode_value&#39;</span><span class="p">,</span>    <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+   <span class="nv">outputs:</span>
+      <span class="nv">hmi_inputs: </span>         <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;hmi_inputs&#39;</span><span class="p">,</span>            <span class="nv">port_type: </span><span class="s">&#39;push&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+      <span class="nv">motor_state: </span>        <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;motor_state&#39;</span><span class="p">,</span>           <span class="nv">port_type: </span><span class="s">&#39;push&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+      <span class="nv">temperatures: </span>       <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;temperatures&#39;</span><span class="p">,</span>          <span class="nv">port_type: </span><span class="s">&#39;push&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+      <span class="nv">ops_state_goal: </span>     <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;ops_state_goal&#39;</span><span class="p">,</span>        <span class="nv">port_type: </span><span class="s">&#39;push&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+      <span class="nv">sim_mode_goal: </span>      <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;sim_mode_goal&#39;</span><span class="p">,</span>         <span class="nv">port_type: </span><span class="s">&#39;push&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+      <span class="nv">control_mode_goal: </span>  <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;control_mode_goal&#39;</span><span class="p">,</span>     <span class="nv">port_type: </span><span class="s">&#39;push&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span>     <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">setup</span><span class="p">()</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>Once the test has been modified it can be process and installed by executing the command
+<cite>webpack</cite> in $GMT_LOCAL/ocs_hdk_dcs/test/coffee</p>
+</div>
+<div class="section" id="test-execution">
+<h3>7.5.3. Test Execution<a class="headerlink" href="#test-execution" title="Permalink to this headline">¶</a></h3>
+<p>In order to execute the previous test we write:</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nx">gds</span> <span class="nx">test</span> <span class="nx">hdk_main_ctrl</span> <span class="o">--</span><span class="nx">type</span> <span class="nx">functional</span> <span class="o">--</span><span class="nx">number</span> <span class="o">-</span><span class="mi">01</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="core_services_user_guide.html" class="btn btn-neutral float-right" title="8. Core Services user guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="model_language_mapping/mapping_model_to_cpp.html" class="btn btn-neutral" title="6.1. Mapping between the Model Definition Files and C++ source code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, contributors.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
