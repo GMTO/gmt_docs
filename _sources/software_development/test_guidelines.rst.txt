@@ -95,7 +95,7 @@ verification of the OCS system and its modules we defined three categories of te
 Types of elements under test
 ----------------------------
 
-The OCS modules are build up from a hierarchical composition of `Components` and `Packages`.
+The OCS modules are built up from a hierarchical composition of `Components` and `Packages`.
 The test strategy is thus bottom-up, where elementary components are tested (analogous to unit testing)
 prior to being integrated in aggregated entities. The following guidelines shall be fulfilled by
 each type of element:
@@ -218,7 +218,7 @@ it will generate also the tests of the elements that are part of that model elem
 
 The generated skeletons are created in the test directory of the module::
 
-      $GMT_LOCAL/<module>/
+      $GMT_LOCAL/modules/<module>/
          |-- model/
          |-- src/
          |-- test/
@@ -232,7 +232,7 @@ The generated skeletons are created in the test directory of the module::
 
 The generated tests are organized in the file system according to the following structure::
 
-   $GMT_LOCAL/<module>/test/coffee/
+   $GMT_LOCAL/modules/<module>/test/coffee/
       |-- <module>_<pkg_1>_pkg/
       |     |-- <module>_<cmp_1>_cmp/
       |     |       |-- <subs>_<cmp1>_functional_01_test.coffee
@@ -250,17 +250,21 @@ The generated tests are organized in the file system according to the following 
       |-- <module>_performance_01_test.coffee
 
 
-
 - The following example generates the skeletons for the DCS subsystem `hdk_dcs`
 
    .. code-block:: coffeescript
 
       gds gen --target test hdk_dcs
 
+.. note::
+
+    The gds command will generate a warning when the model includes an element that is 
+    not supported for test generation yet, such as the Application element in the hdk example.
+    This is expected behavior.
 
 The previous command will generate several test skeletons for the hdk_dcs module::
 
-      $GMT_LOCAL/ocs_hdk_dcs/
+      $GMT_LOCAL/modules/ocs_hdk_dcs/
          |-- test/
          |     |-- coffee/
          |     |     |-- hdk_ctrl_pkg/
@@ -278,12 +282,14 @@ As can be seen in the example below, the skeleton includes the following:
 
 - The skeleton class `HdkMainCtrlTestClient` that extends the superclass `TestClient`. The skeleton redefines two methods:
 
-   - `start`:  For 'one shot' test, write the test block in this method. If it is feasible
-      here is where the element(s) under test can be spawned. If the element(s) under test
-      are executed in a different computer the could be started executing a remote shell command,
-      which can be invoked with the node method spawnSync
+   **start**: 
+     For 'one shot' tests, write the test block in this method. If it is feasible here is where 
+     the element(s) under test can be spawned. If the element(s) under test are executed in a 
+     different computer, they could be started executing a remote shell command, which can be 
+     invoked with the node method spawnSync.
 
-   - `step`:  For iterative tests, write the test block in this method
+   **step**: 
+     For iterative tests, write the test block in this method
 
 - An instance of a command line application `CoreCLIApplication` that provides access to the console
   and to command line options
@@ -298,6 +304,10 @@ As can be seen in the example below, the skeleton includes the following:
   the ones corresponding to the instance that we intent to test. A more refined strategy
   would be implemented in future releases.
 
+
+  Edit the file `ocs_hdk_dcs/test/coffee/hdk_ctrl_pkg/hdk_main_ctrl/hdk_main_ctrl_01_functional_test.coffee` to contain urls
+  that correspond to the ones defined in `ocs_hdk_dcs/src/etc/conf/hdk_ctrl_pkg/hdk_main_ctrl/hdk_main_ctrl_config.coffee`.
+  For example:
 
    .. code-block:: coffeescript
 
@@ -335,25 +345,31 @@ As can be seen in the example below, the skeleton includes the following:
             scan_period:         {name: "scan_period", default_value: 1000}
             acl:                 {name: "acl",         default_value: 'PRIVATE'}
          inputs:
-            hmi_outputs:         { name: 'hmi_outputs',           port_type: 'pull',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
-            motor_ctrl:          { name: 'motor_ctrl',            port_type: 'pull',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
-            config:              { name: 'config',                port_type: 'pull',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
-            heartbeat_out:       { name: 'heartbeat_out',         port_type: 'pull',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
-            ops_state_value:     { name: 'ops_state_value',       port_type: 'pull',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
-            sim_mode_value:      { name: 'sim_mode_value',        port_type: 'pull',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
-            control_mode_value:  { name: 'control_mode_value',    port_type: 'pull',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
+            hmi_outputs_req:     { name: 'hmi_outputs_req',       port_type: 'pull',  url: 'tcp://127.0.0.1:8104', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+            motor_ctrl_req:      { name: 'motor_ctrl_req',        port_type: 'pull',  url: 'tcp://127.0.0.1:8105', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+            sdo_config_req:      { name: 'sdo_config_req',        port_type: 'pull',  url: 'tcp://127.0.0.1:8106', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+            heartbeat_out:       { name: 'heartbeat_out',         port_type: 'pull',  url: 'tcp://127.0.0.1:8108', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
+            hmi_value:           { name: 'hmi_value',             port_type: 'pull',  url: 'tcp://127.0.0.1:8122', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+            motor_value:         { name: 'motor_value',           port_type: 'pull',  url: 'tcp://127.0.0.1:8123', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+            temperatures_value:  { name: 'temperatures_value',    port_type: 'pull',  url: 'tcp://127.0.0.1:8124', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+            ops_state_value:     { name: 'ops_state_value',       port_type: 'pull',  url: 'tcp://127.0.0.1:8119', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
+            sim_mode_value:      { name: 'sim_mode_value',        port_type: 'pull',  url: 'tcp://127.0.0.1:8120', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
+            control_mode_value:  { name: 'control_mode_value',    port_type: 'pull',  url: 'tcp://127.0.0.1:8121', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
          outputs:
-            hmi_inputs:          { name: 'hmi_inputs',            port_type: 'push',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
-            motor_state:         { name: 'motor_state',           port_type: 'push',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
-            temperatures:        { name: 'temperatures',          port_type: 'push',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
-            ops_state_goal:      { name: 'ops_state_goal',        port_type: 'push',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
-            sim_mode_goal:       { name: 'sim_mode_goal',         port_type: 'push',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
-            control_mode_goal:   { name: 'control_mode_goal',     port_type: 'push',  url: 'tcp://127.0.0.1:8000', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
+            hmi_inputs_val:      { name: 'hmi_inputs_val',        port_type: 'push',  url: 'tcp://127.0.0.1:8101', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+            motor_state_val:     { name: 'motor_state_val',       port_type: 'push',  url: 'tcp://127.0.0.1:8103', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+            temperatures_val:    { name: 'temperatures_val',      port_type: 'push',  url: 'tcp://127.0.0.1:8102', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+            hmi_goal:            { name: 'hmi_goal',              port_type: 'push',  url: 'tcp://127.0.0.1:8116', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+            motor_goal:          { name: 'motor_goal',            port_type: 'push',  url: 'tcp://127.0.0.1:8117', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+            temperatures_goal:   { name: 'temperatures_goal',     port_type: 'push',  url: 'tcp://127.0.0.1:8118', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+            ops_state_goal:      { name: 'ops_state_goal',        port_type: 'push',  url: 'tcp://127.0.0.1:8113', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
+            sim_mode_goal:       { name: 'sim_mode_goal',         port_type: 'push',  url: 'tcp://127.0.0.1:8114', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
+            control_mode_goal:   { name: 'control_mode_goal',     port_type: 'push',  url: 'tcp://127.0.0.1:8115', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
 
       app.setup()
       app.start()
 
-Once the test has been modified it can be process and installed by executing the command
+Once the test has been modified it can be processed and installed by executing the command
 `webpack` in $GMT_LOCAL/ocs_hdk_dcs/test/coffee
 
 
@@ -364,6 +380,6 @@ In order to execute the previous test we write:
 
 .. code-block:: coffeescript
 
-   > gds test hdk_main_ctrl --type functional --number -01
+   > gds test hdk_main_ctrl --type functional --number 01
 
 
