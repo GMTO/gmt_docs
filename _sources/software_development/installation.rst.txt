@@ -485,7 +485,7 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
   .. code-block:: bash
 
-    $ npm install -g coffeescript webpack webpack-cli
+    $ sudo npm install -g coffeescript webpack webpack-cli
 
 8. Initialize the Development Environment:
 

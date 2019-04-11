@@ -281,7 +281,7 @@ positional input and immediately sets the position value to the new goal, if pos
                         log_warning("Position is at or exceeding maximum value: " + std::to_string(position_sv.max));
                         // prevent further movement
                         position_sv.value = position_sv.max;
-                    } if (position_sv.goal <= position_sv.min) {
+                    } else if (position_sv.goal <= position_sv.min) {
                         log_warning("Position is at or exceeding minimum value: " + std::to_string(position_sv.min));
                         // prevent further movement
                         position_sv.value = position_sv.min;
