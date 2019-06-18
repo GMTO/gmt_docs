@@ -40,6 +40,7 @@ All the C++ component classes used in the GMT subsystem control software derive 
   :align: center
 
 Most of the *Component* function-members are pure virtual. They are declared in the *gmt::Component* base class but defined in each specific component. Thus, the functions *setup_wrapper()* and *step_wrapper()* are virtually declared and called in *gmt::Component* but defined in each child class.
+
 .. figure:: ../_static/io-fwk-classes.png
   :align: center
 
@@ -61,9 +62,11 @@ The TCP/IP adapter
   :align: center
 The TCP/IP adapter doesn’t contain port. This is the responsibility of the user to define ports in the adapter derived from *gmt::TcpIpHwAdapter*. The two only pieces of information are two *properties*: the *device_ip* address of the server/slave to connect and its *device_port* number.
 The data stored in the variable *TcpIpHwAdapter::device_data_in* (string type) is sent on the network at every step. The data received from the network is stored in the variable *TcpIpHwAdapter::device_data_out* (string type). The maximum size of the data is limited by the constant *DEFAULT_BUFFLEN*.
+
 .. figure:: ../_static/tcpip-activity.png
   :align: center
 The data is read and write every step if the operational state variable is equal to ‘*idle*’. The operational state variable is usually set to ‘*idle*’ state when the TCP/IP is connected to the slave/master is connected. If the TCP/IP adapter cannot find the server or cannot open the socket or cannot connect the server, then the adapter goes to the ‘*fault*’ state.
+
 .. figure:: ../_static/tcpip-states.png
   :align: center
 
@@ -92,6 +95,7 @@ The master identified each of the N slaves of the ring by its position (between 
  to set the alias 123 to the module located at the 3rd position in the ring
 
 Each slave embeds a state machine to control its communication. The connection to the slave triggers the state change from *init* to *preop*. The configuration of the slave trigger from *preop* to *safeop*. Then the slave come to op and stay in this state to share PDOs (periodically) and SDOs (on demand) as long as the connection is established.
+
 .. figure:: ../_static/ethercat-states.png
   :align: center
 The data is organized in each Ethercat slave according to its *index* (uint16 from 0 to 65535) and its *sub-index* (uint8 from 0 to 255). The 2 elements of the address are generally written in hexadecimal and separated by a column (Ex: data1 @ 6001:03).
@@ -240,6 +244,7 @@ When the user wants to know the Ethercat state (op, preop or safeop) of a module
    - 4: SAFEOP
    - 8: OP
 If there is no module at  the position entered in slave_state_req or if the state is not received yet, then slave_state_result returns -1.
+
 .. figure:: ../_static/ethercat-activity.png
   :align: center
 
@@ -267,6 +272,7 @@ Two properties must be set by the user:
 The value set on the input port *device_data_out* is sent to the serial file at every step. However, the baud rate of the serial communication can be slower than the frequency of the component. In that case the value cannot be sent to the serial device at every step.
 Similarly, the value received from the serial device is copied on the output port *device_data_in*. The size of the received vale is limited by the constant *BUFFLEN* defined in *serial_adapter.h*.
 The only supported type is the string type. This limitation is acceptable for our use case. If the user wants to send or receive another type, the cast to/from string is their responsibility.
+
 .. figure:: ../_static/ethercat-activity.png
   :align: center
 
@@ -292,7 +298,9 @@ At the opposite of the point-to-multipoint RS485, the RS232 protocol is a point-
 -	The distance between the central computer and the serial devices can be big (dozens of meters). But the serial communication is accurate up to some meters only. According to Wikipedia, the RS232 communication distance cannot be bigger than 2.6m at 56000 bauds.
 The direct serial connection between the computer and the serial devices is not possible because of these 3 reasons. As a consequence, the Beckhoff 6002 Ethercat slave/module is set between the computer and the serial devices. Ethercat protocol supports point-to-multipoint (P2MP) and long-distance communication unlike Serial.
 The Beckhoff 6002 Ethercat module contains 2 Ethernet ports (like all the other Ethercat modules) to connect it to the other modules in the Ethercta ring. Plus 2 serial/RS232 ports to connect up to 2 serial devices per module. Some parameters like the baud rate are set using SDOs.
+
 `Beckhoff EL6002 module documentation <https://download.beckhoff.com/download/document/io/ethercat-terminals/el600x_el602xen.pdf/>`_.
+
 .. figure:: ../_static/serialoverethercat-archi.png
   :align: center
 The Etherlab Ethercat library offers a feature to communicate with 6002 modules via a virtual serial terminal (located at “/dev/ttyEC0”). As a consequence, the user transparently communicates with their RS232 device using a GMT Serial Adapter.
