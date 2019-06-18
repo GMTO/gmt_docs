@@ -12,16 +12,19 @@ Two other adapters are in progress: Serial-over-Ethercat adapter and OPCUA proxy
 Some other adapters will probably be developed to communicate with the instruments: CameraLink adapter, CoaXPress adapter, GigE Vision Adapter and USB3 Vision adapter.
 Each adapter supports a specific communication protocol.
 Some protocols are trivial: the serial consists in opening a socket and read/write raw data to a unique device across this socket. The pseudocode prototype of sending function is basic:
-.. centered::SEND_SERIAL(VALUE)
+.. centered::
+    SEND_SERIAL(VALUE)
 The TCP/IP requests must be sent to a specific device:
 .. centered::
     SEND_TCP-IP(VALUE to SERVER)
 The most complex tasks such as multi-layer encapsulation and low-level data exchange are out of the IO framework scope. They are supported by the operating system (Linux Fedora) or by external libraries.
 Some other protocols like Ethercat are more complex. The data must be addressed at a specific slave/module/server at a specific address:
-[center]SEND_ETHERCAT(VALUE to SERVER at ADDRESS)[/center]
+.. centered::
+    SEND_ETHERCAT(VALUE to SERVER at ADDRESS)
 In that case a configuration file (CoffeeScript format) is necessary to link each data (client side) to its respective address (client side).
 Finally, the OPCUA protocol is a little more complex to use:
-[center]SEND_OPCUA(VALUE typed according TYPE-NODE to SERVER at PROPERTY of VARIABLE-NODE)[/center]
+.. centered::
+    SEND_OPCUA(VALUE typed according TYPE-NODE to SERVER at PROPERTY of VARIABLE-NODE)
 
 
 Common architecture of the adapters
@@ -37,7 +40,7 @@ All the C++ component classes used in the GMT subsystem control software derive 
   :align: center
 Most of the *Component* function-members are pure virtual. They are declared in the *gmt::Component* base class but defined in each specific component. Thus, the functions *setup_wrapper()* and *step_wrapper()* are virtually declared and called in *gmt::Component* but defined in each child class.
 .. figure:: ../_static/io-fwk-classes.png
-  :align: center
+  :width: 200px
 
 
 The TCP/IP adapter
