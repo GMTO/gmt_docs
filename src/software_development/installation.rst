@@ -231,13 +231,13 @@ EtherCAT is a high-speed fieldbus communication system used for real-time contro
 
     $ ifconfig
 
-4. Edit ``/etc/ethercat.conf`` and set the following configuration options:
+4. Edit ``/etc/ethercat.conf`` and set the following configuration option:
 
   .. code-block:: bash
 
     MASTER0_DEVICE="<mac_address>"
 
-  where ``<mac_address>`` and ``<mac_address>`` is the hardware addresses associated with the Ethercat network interface.
+  where ``<mac_address>`` is the hardware addresses associated with the Ethercat network interface.
 
 5. Edit ``/usr/lib/systemd/system/ethercat.service`` and uncomment the following line:
 
