@@ -256,7 +256,7 @@ The Serial Adapter
 | Library used  | The ethercat adapter integrate an Ethercat master/client called “EtherCAT” and developed by Etherlab. The libray has not been maintained in the last 3 years. The last version we use (the last one) is EtherCAT master 1.5.2 .              |
 +-----------------------+-----------------------+
 
-.. figure:: ../_static/serial-interfaceinterface.png
+.. figure:: ../_static/serial-interface.png
   :align: center
 The interface of the serial adapter contains one data input (*device_data_out*) and one data output (*device data_in*). A third port called RTS controls the *RTS* bit. This bit is used on old serial devices only.
 Two properties must be set by the user:
