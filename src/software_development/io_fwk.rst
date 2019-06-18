@@ -2,10 +2,9 @@
 
 IO Framework
 ============
-.. figure:: ../_static/core_systems_core_services.png
 The IO framework contains the hardware adapter class definitions.
-The hardware adapters are the components supporting the interface between the software [i]controlers[/i] (derivated from [i]BaseControler[/i] class) and the hardware devices via the physical networks (Ethernet for example).
-.. figure:: _static/adapter_interface.png
+The hardware adapters are the components supporting the interface between the software *controlers* (derivated from *BaseControler* class) and the hardware devices via the physical networks (Ethernet for example).
+.. figure:: ../_static/adapter_interface.png
   :align: center
 Three adapters are already implemented: TCP/IP adapter, Ethercat adapter and Serial adapter.
 Two other adapters are in progress: Serial-over-Ethercat adapter and OPCUA proxy.
@@ -26,14 +25,16 @@ Finally, the OPCUA protocol is a little more complex to use:
 Common architecture of the adapters
 ---------------
 
-All the C++ component classes used in the GMT subsystem control software derive (indirectly) from the class [i]gmt::Component[/i] defined in the core framework. This base class supports the common features such as:
-- The [i]nanomsg[/i] communication (input and output ports) to make the component communicate with other components
+All the C++ component classes used in the GMT subsystem control software derive (indirectly) from the class *gmt::Component* defined in the core framework. This base class supports the common features such as:
+- The *nanomsg* communication (input and output ports) to make the component communicate with other components
 - The component configuration and initialization (setup)
-- The component runtime ([i]step[/i])
+- The component runtime (*step*)
 - The telemetry logs
-///picture
-Most of the [i]Component[/i] function-members are pure virtual. They are declared in the [i]gmt::Component[/i] base class but defined in each specific component. Thus, the functions [i]setup_wrapper()[/i] and [i]step_wrapper()[/i] are virtually declared and called in [i]gmt::Component[/i] but defined in each child class.
-///picture
+.. figure:: ../_static/component-activity.png
+  :align: center
+Most of the *Component* function-members are pure virtual. They are declared in the *gmt::Component* base class but defined in each specific component. Thus, the functions *setup_wrapper()* and *step_wrapper()* are virtually declared and called in *gmt::Component* but defined in each child class.
+.. figure:: ../_static/io-fwk-classes.png
+  :align: center
 
 
 The TCP/IP adapter
@@ -44,21 +45,20 @@ The TCP/IP adapter
 +=======================+=======================+
 | Progress status   | Implementation done            |
 +-----------------------+-----------------------+
-| Main user(s)  | Jordi                  |
-+-----------------------+-----------------------+
-| Subsystem(s)   | EMF              |
-+-----------------------+-----------------------+
 | Adapter Class name  | gmt::TcpIpHwAdapter                |
 +-----------------------+-----------------------+
 | Library used  | The TCP/IP communication doesn’t require any external library. The functions we use (socket(), read() and write()) are defined in native Linux libraries: netinet/in.h, sys/socket.h and unistd.h.               |
 +-----------------------+-----------------------+
 
-///picture
-The TCP/IP adapter doesn’t contain port. This is the responsibility of the user to define ports in the adapter derived from [i]gmt::TcpIpHwAdapter[/i]. The two only pieces of information are two [i]properties[/i]: the [i]device_ip[/i] address of the server/slave to connect and its [i]device_port[/i] number.
-The data stored in the variable [i]TcpIpHwAdapter::device_data_in[/i] (string type) is sent on the network at every step. The data received from the network is stored in the variable [i]TcpIpHwAdapter::device_data_out[/i] (string type). The maximum size of the data is limited by the constant [i]DEFAULT_BUFFLEN[/i].
-///picture
-The data is read and write every step if the operational state variable is equal to ‘[i]idle[/i]’. The operational state variable is usually set to ‘[i]idle[/i]’ state when the TCP/IP is connected to the slave/master is connected. If the TCP/IP adapter cannot find the server or cannot open the socket or cannot connect the server, then the adapter goes to the ‘[i]fault[/i]’ state.
-///picture
+.. figure:: ../_static/tcpip-interface.png
+  :align: center
+The TCP/IP adapter doesn’t contain port. This is the responsibility of the user to define ports in the adapter derived from *gmt::TcpIpHwAdapter*. The two only pieces of information are two *properties*: the *device_ip* address of the server/slave to connect and its *device_port* number.
+The data stored in the variable *TcpIpHwAdapter::device_data_in* (string type) is sent on the network at every step. The data received from the network is stored in the variable *TcpIpHwAdapter::device_data_out* (string type). The maximum size of the data is limited by the constant *DEFAULT_BUFFLEN*.
+.. figure:: ../_static/tcpip-activity.png
+  :align: center
+The data is read and write every step if the operational state variable is equal to ‘*idle*’. The operational state variable is usually set to ‘*idle*’ state when the TCP/IP is connected to the slave/master is connected. If the TCP/IP adapter cannot find the server or cannot open the socket or cannot connect the server, then the adapter goes to the ‘*fault*’ state.
+.. figure:: ../_static/tcpip-states.png
+  :align: center
 
 
 The Ethercat adapter
@@ -67,12 +67,7 @@ The Ethercat adapter
 +-----------------------------------------------+
 | General information about the Ethercat adapter               |
 +=======================+=======================+
-| Progress status   | Implementation done. Some minor changes might be added in the future depending on requirement of m1.
-            |
-+-----------------------+-----------------------+
-| Main user(s)  | Divya (and Trupti)                 |
-+-----------------------+-----------------------+
-| Subsystem(s)   | M1              |
+| Progress status   | Implementation done. Some minor changes might be added in the future depending on requirement of m1. |
 +-----------------------+-----------------------+
 | Adapter Class name  | gmt::EthercatAdapter                |
 +-----------------------+-----------------------+
@@ -84,15 +79,16 @@ Protocol and library overview
 
 The Ethercat standard is an Ethernet protocol. The real-time computer executing the master is physically connected to the slaves/modules in a ring (redundant topology) via 2 ethernet ports. The originality and the strength of this protocol consist of its ability to organize the data communication between the master and several slaves in a unique frame. As a consequence, the Ethercat master can communicate with a a large number of slaves in the same time at high frequency. Thus, the master communicates with N slaves at a frequency = F Hertz using F frames. At the opposite, IP-based protocols (such as modbus/TCP, Ethernet/IP or Profinet) would need to encapsulate (N* F) frames.
 
-The master identified each of the N slaves of the ring by its position (between 0 and N-1) and its [i]alias[/i] (a unique 16-bit integer identifier set by the user)
+The master identified each of the N slaves of the ring by its position (between 0 and N-1) and its *alias* (a unique 16-bit integer identifier set by the user)
 >	The user can change the alias of any Ethercat module/slave this way:
  'ethercat alias -p 3 -f 123' or 'ethercat alias --position 3 --force 123'
  to set the alias 123 to the module located at the 3rd position in the ring
 
-Each slave embeds a state machine to control its communication. The connection to the slave triggers the state change from [i]init[/i] to [i]preop[/i]. The configuration of the slave trigger from [i]preop[/i] to [i]safeop[/i]. Then the slave come to op and stay in this state to share PDOs (periodically) and SDOs (on demand) as long as the connection is established.
-///picture
-The data is organized in each Ethercat slave according to its [i]index[/i] (uint16 from 0 to 65535) and its [i]sub-index[/i] (uint8 from 0 to 255). The 2 elements of the address are generally written in hexadecimal and separated by a column (Ex: data1 @ 6001:03).
-The data management split the [i]data objects[/i] into 2 groups: the [i]Service Data Objects[/i] (SDO) and the [i]Process Data Objects[/i] (PDO). The PDOs are sent and received periodically and automatically depending on the frequency of the master. The SDOs are sent or received every time the user sends a request to do only.
+Each slave embeds a state machine to control its communication. The connection to the slave triggers the state change from *init* to *preop*. The configuration of the slave trigger from *preop* to *safeop*. Then the slave come to op and stay in this state to share PDOs (periodically) and SDOs (on demand) as long as the connection is established.
+.. figure:: ../_static/ethercat-states.png
+  :align: center
+The data is organized in each Ethercat slave according to its *index* (uint16 from 0 to 65535) and its *sub-index* (uint8 from 0 to 255). The 2 elements of the address are generally written in hexadecimal and separated by a column (Ex: data1 @ 6001:03).
+The data management split the *data objects* into 2 groups: the *Service Data Objects* (SDO) and the *Process Data Objects* (PDO). The PDOs are sent and received periodically and automatically depending on the frequency of the master. The SDOs are sent or received every time the user sends a request to do only.
 The data_types supported by the Ethercat standard (and by the library) are:
   -	bool
   -	int8
@@ -212,7 +208,8 @@ PDOs are updated automatically and periodically. Nothing to do.
 User interface
 ..............
 
-///picture
+.. figure:: ../_static/ethercat_interface.png
+  :align: center
 
 **Sending RX-SDOs**
 The SDOs cannot be sent from the Ethercat adapter by default. To do so the user must set the boolean input sdo_write_enable to true. By the way, a SDO is sent the Ethercat ring as often the SDO value changes in the adapter (if the flag sdo_write_enable is on).
@@ -236,7 +233,8 @@ When the user wants to know the Ethercat state (op, preop or safeop) of a module
    - 4: SAFEOP
    - 8: OP
 If there is no module at  the position entered in slave_state_req or if the state is not received yet, then slave_state_result returns -1.
-///picture
+.. figure:: ../_static/ethercat-activity.png
+  :align: center
 
 
 The Serial Adapter
@@ -247,25 +245,23 @@ The Serial Adapter
 +=======================+=======================+
 | Progress status   | Implementation done. Some minor changes might be added in the future depending on requirement of the instruments. |
 +-----------------------+-----------------------+
-| Main user(s)  | William                 |
-+-----------------------+-----------------------+
-| Subsystem(s)   | Instruments: GMAC and GCLEF              |
-+-----------------------+-----------------------+
 | Adapter Class name  | gmt::SerialAdapter                |
 +-----------------------+-----------------------+
 | Library used  | The ethercat adapter integrate an Ethercat master/client called “EtherCAT” and developed by Etherlab. The libray has not been maintained in the last 3 years. The last version we use (the last one) is EtherCAT master 1.5.2 .              |
 +-----------------------+-----------------------+
 
-///picture
-The interface of the serial adapter contains one data input ([i]device_data_out[/i]) and one data output ([i]device data_in[/i]). A third port called RTS controls the [i]RTS[/i] bit. This bit is used on old serial devices only.
+.. figure:: ../_static/serial-interfaceinterface.png
+  :align: center
+The interface of the serial adapter contains one data input (*device_data_out*) and one data output (*device data_in*). A third port called RTS controls the *RTS* bit. This bit is used on old serial devices only.
 Two properties must be set by the user:
--	[i]port_file_path[/i]: a string property setting the full path of the serial file. Its default value is the path of the serial file on RTC3: '/dev/ttyS0'
--	[i]baud_rate[/i]: the frequency of the serial communication. Its type is not numeric but a string. These are its possible value: ‘B50’, ‘B75’, ‘B110’, ‘B134’, ‘B150’, ‘B200’, ‘B300’, ‘B600’, ‘B1200’, ‘B1800’, ‘B2400’, ‘B4800’, ‘B9600’, ‘B19200’, ‘B38400’, ‘B57600’ and ‘B115200’.
+-	*port_file_path*: a string property setting the full path of the serial file. Its default value is the path of the serial file on RTC3: '/dev/ttyS0'
+-	*baud_rate*: the frequency of the serial communication. Its type is not numeric but a string. These are its possible value: ‘B50’, ‘B75’, ‘B110’, ‘B134’, ‘B150’, ‘B200’, ‘B300’, ‘B600’, ‘B1200’, ‘B1800’, ‘B2400’, ‘B4800’, ‘B9600’, ‘B19200’, ‘B38400’, ‘B57600’ and ‘B115200’.
 
-The value set on the input port [i]device_data_out[/i] is sent to the serial file at every step. However, the baud rate of the serial communication can be slower than the frequency of the component. In that case the value cannot be sent to the serial device at every step.
-Similarly, the value received from the serial device is copied on the output port [i]device_data_in[/i]. The size of the received vale is limited by the constant [i]BUFFLEN[/i] defined in [i]serial_adapter.h[/i].
+The value set on the input port *device_data_out* is sent to the serial file at every step. However, the baud rate of the serial communication can be slower than the frequency of the component. In that case the value cannot be sent to the serial device at every step.
+Similarly, the value received from the serial device is copied on the output port *device_data_in*. The size of the received vale is limited by the constant *BUFFLEN* defined in *serial_adapter.h*.
 The only supported type is the string type. This limitation is acceptable for our use case. If the user wants to send or receive another type, the cast to/from string is their responsibility.
-
+.. figure:: ../_static/ethercat-activity.png
+  :align: center
 
 
 The Serial-over-Ethercat Adapter
@@ -275,10 +271,6 @@ The Serial-over-Ethercat Adapter
 | General information about the Serial-over-Ethercat adapter   |
 +=======================+=======================+
 | Progress status   | Implementation in progress            |
-+-----------------------+-----------------------+
-| Main user(s)  | William                 |
-+-----------------------+-----------------------+
-| Subsystem(s)   | Instruments: GMAC and GCLEF              |
 +-----------------------+-----------------------+
 | Adapter Class name  | gmt::SerialOverEthercatAdapter                |
 +-----------------------+-----------------------+
@@ -294,7 +286,8 @@ At the opposite of the point-to-multipoint RS485, the RS232 protocol is a point-
 The direct serial connection between the computer and the serial devices is not possible because of these 3 reasons. As a consequence, the Beckhoff 6002 Ethercat slave/module is set between the computer and the serial devices. Ethercat protocol supports point-to-multipoint (P2MP) and long-distance communication unlike Serial.
 The Beckhoff 6002 Ethercat module contains 2 Ethernet ports (like all the other Ethercat modules) to connect it to the other modules in the Ethercta ring. Plus 2 serial/RS232 ports to connect up to 2 serial devices per module. Some parameters like the baud rate are set using SDOs.
 `Beckhoff EL6002 module documentation <https://download.beckhoff.com/download/document/io/ethercat-terminals/el600x_el602xen.pdf/>`_.
-///picture
+.. figure:: ../_static/serialoverethercat-archi.png
+  :align: center
 The Etherlab Ethercat library offers a feature to communicate with 6002 modules via a virtual serial terminal (located at “/dev/ttyEC0”). As a consequence, the user transparently communicates with their RS232 device using a GMT Serial Adapter.
 This feature must be installed with the following commands:
 .. code-block:: bash
@@ -314,16 +307,12 @@ The interface between the user and the Ethercat protocol is supported by a Linux
 The OPCUA Proxy
 ---------------
 
-+-----------------------------------------------+
-| General information about the OPCUA proxy               |
-+=======================+=======================+
-| Progress status   | Implementation in progress            |
-+-----------------------+-----------------------+
-| Main user(s)  | Charles                  |
-+-----------------------+-----------------------+
-| Subsystem(s)   | Mount and enclosure              |
-+-----------------------+-----------------------+
-| Adapter Class name  | gmt::OpcuaProxy                |
-+-----------------------+-----------------------+
-| Library used  | Open62541              |
-+-----------------------+-----------------------+
++------------------------------------------------+
+|  General information about the OPCUA proxy     |
++====================+===========================+
+| Progress status    | Implementation in progress|
++--------------------+---------------------------+
+| Adapter Class name | gmt::OpcuaProxy           |
++--------------------+---------------------------+
+| Library used       | Open62541                 |
++--------------------+---------------------------+
