@@ -4,6 +4,7 @@ IO Framework
 ============
 The IO framework contains the hardware adapter class definitions.
 The hardware adapters are the components supporting the interface between the software *controlers* (derivated from *BaseControler* class) and the hardware devices via the physical networks (Ethernet for example).
+
 .. figure:: ../_static/adapter-interface.png
   :align: center
 Three adapters are already implemented: TCP/IP adapter, Ethercat adapter and Serial adapter.
@@ -34,8 +35,10 @@ All the C++ component classes used in the GMT subsystem control software derive 
 - The component configuration and initialization (setup)
 - The component runtime (*step*)
 - The telemetry logs
+
 .. figure:: ../_static/component-activity.png
   :align: center
+
 Most of the *Component* function-members are pure virtual. They are declared in the *gmt::Component* base class but defined in each specific component. Thus, the functions *setup_wrapper()* and *step_wrapper()* are virtually declared and called in *gmt::Component* but defined in each child class.
 .. figure:: ../_static/io-fwk-classes.png
   :align: center
