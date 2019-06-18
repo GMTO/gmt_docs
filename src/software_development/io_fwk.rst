@@ -5,7 +5,8 @@ IO Framework
 
 The IO framework contains the hardware adapter class definitions.
 The hardware adapters are the components supporting the interface between the software [i]controlers[/i] (derivated from [i]BaseControler[/i] class) and the hardware devices via the physical networks (Ethernet for example).
-///picture
+.. figure:: _static/adapter_interface.png
+  :align: center
 Three adapters are already implemented: TCP/IP adapter, Ethercat adapter and Serial adapter.
 Two other adapters are in progress: Serial-over-Ethercat adapter and OPCUA proxy.
 Some other adapters will probably be developed to communicate with the instruments: CameraLink adapter, CoaXPress adapter, GigE Vision Adapter and USB3 Vision adapter.
