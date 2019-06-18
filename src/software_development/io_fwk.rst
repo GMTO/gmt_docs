@@ -2,7 +2,7 @@
 
 IO Framework
 ============
-.. figure:: _static/core_systems_core_services.png
+.. figure:: ../_static/core_systems_core_services.png
 The IO framework contains the hardware adapter class definitions.
 The hardware adapters are the components supporting the interface between the software [i]controlers[/i] (derivated from [i]BaseControler[/i] class) and the hardware devices via the physical networks (Ethernet for example).
 .. figure:: _static/adapter_interface.png
