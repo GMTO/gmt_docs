@@ -12,9 +12,10 @@ Two other adapters are in progress: Serial-over-Ethercat adapter and OPCUA proxy
 Some other adapters will probably be developed to communicate with the instruments: CameraLink adapter, CoaXPress adapter, GigE Vision Adapter and USB3 Vision adapter.
 Each adapter supports a specific communication protocol.
 Some protocols are trivial: the serial consists in opening a socket and read/write raw data to a unique device across this socket. The pseudocode prototype of sending function is basic:
-[center]SEND_SERIAL(VALUE)[/center]
+.. centered::SEND_SERIAL(VALUE)
 The TCP/IP requests must be sent to a specific device:
-[center]SEND_TCP-IP(VALUE to SERVER)[/center]
+.. centered::
+    SEND_TCP-IP(VALUE to SERVER)
 The most complex tasks such as multi-layer encapsulation and low-level data exchange are out of the IO framework scope. They are supported by the operating system (Linux Fedora) or by external libraries.
 Some other protocols like Ethercat are more complex. The data must be addressed at a specific slave/module/server at a specific address:
 [center]SEND_ETHERCAT(VALUE to SERVER at ADDRESS)[/center]
