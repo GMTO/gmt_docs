@@ -37,7 +37,6 @@ All the C++ component classes used in the GMT subsystem control software derive 
 - The telemetry logs
 
 .. image:: ../_static/component-activity.png
-    :align: center
     :width: 50
     :scale: 3
 
