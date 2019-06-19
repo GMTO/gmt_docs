@@ -127,7 +127,7 @@ The data_types supported by the Ethercat standard (and by the library) are:
   -	octet_string
   -	unicode_string
 The Ethercat adapter supports booleans and all numeric types only. If the user wants to read or write a string, they need to convert this string to (or from) a numeric type, by translating each character of the string by its ASCII code. Of course, the strings longer than 8 characters are never used (the longest type being int64 and uint64). Example: The user wants to write the string ‘hello’ to a slave:
-[center]
+
 +-----------+------------+
 | Character | ASCII code |
 +===========+============+
@@ -139,12 +139,13 @@ The Ethercat adapter supports booleans and all numeric types only. If the user w
 +-----------+------------+
 |     o     |    111     |
 +-----------+------------+
+
 +----------+-------+-------+-------+-------+-------+-------+-------+-------+
 | string   |   h   |   e   |   l   |   l   |   o   |       |       |       |
 +----------+-------+-------+-------+-------+-------+-------+-------+-------+
 | uint64   |   0   |   0   |   0   |  111  |  108  |  108  |  101  |  104  |
 +----------+-------+-------+-------+-------+-------+-------+-------+-------+
-[/center]
+
 The user write ‘hello’ to the slave by sending it the value 30024610536 because:
     104 * (256^0)
   + 101 * (256^1)
@@ -313,7 +314,7 @@ At the opposite of the point-to-multipoint RS485, the RS232 protocol is a point-
 The direct serial connection between the computer and the serial devices is not possible because of these 3 reasons. As a consequence, the Beckhoff 6002 Ethercat slave/module is set between the computer and the serial devices. Ethercat protocol supports point-to-multipoint (P2MP) and long-distance communication unlike Serial.
 The Beckhoff 6002 Ethercat module contains 2 Ethernet ports (like all the other Ethercat modules) to connect it to the other modules in the Ethercta ring. Plus 2 serial/RS232 ports to connect up to 2 serial devices per module. Some parameters like the baud rate are set using SDOs.
 
-`Beckhoff EL6002 module documentation <https://download.beckhoff.com/download/document/io/ethercat-terminals/el600x_el602xen.pdf/>`_.
+`Beckhoff EL6002 module documentation <https://download.beckhoff.com/download/document/io/ethercat-terminals/el600x_el602xen.pdf>`_.
 
 .. figure:: ../_static/serialoverethercat-archi.png
   :align: center
