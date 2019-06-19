@@ -38,6 +38,7 @@ All the C++ component classes used in the GMT subsystem control software derive 
 
 .. figure:: ../_static/component-activity.png
   :align: center
+  :scale: 50 %
 
 Most of the *Component* function-members are pure virtual. They are declared in the *gmt::Component* base class but defined in each specific component. Thus, the functions *setup_wrapper()* and *step_wrapper()* are virtually declared and called in *gmt::Component* but defined in each child class.
 
@@ -48,41 +49,50 @@ Most of the *Component* function-members are pure virtual. They are declared in 
 The TCP/IP adapter
 ---------------
 
-+-----------------------------------------------+
-| General information about the TCP/IP adapter               |
-+=======================+=======================+
-| Progress status   | Implementation done            |
-+-----------------------+-----------------------+
-| Adapter Class name  | gmt::TcpIpHwAdapter                |
-+-----------------------+-----------------------+
-| Library used  | The TCP/IP communication doesn’t require any external library. The functions we use (socket(), read() and write()) are defined in native Linux libraries: netinet/in.h, sys/socket.h and unistd.h.               |
-+-----------------------+-----------------------+
++-----------------------------------------------------------------------------------------+
+| General information about the TCP/IP adapter                                            |
++====================+====================================================================+
+| Progress status    | Implementation done                                                |
++--------------------+--------------------------------------------------------------------+
+| Adapter Class name | gmt::TcpIpHwAdapter                                                |
++--------------------+--------------------------------------------------------------------+
+| Library used       | The TCP/IP communication doesn’t require any external library.     |
+|                    | The functions we use (socket(), read() and write()) are defined in |
+|                    | native Linux libraries: netinet/in.h, sys/socket.h and unistd.h.   |
++--------------------+--------------------------------------------------------------------+
 
 .. figure:: ../_static/tcpip-interface.png
   :align: center
+  :scale: 50 %
 The TCP/IP adapter doesn’t contain port. This is the responsibility of the user to define ports in the adapter derived from *gmt::TcpIpHwAdapter*. The two only pieces of information are two *properties*: the *device_ip* address of the server/slave to connect and its *device_port* number.
 The data stored in the variable *TcpIpHwAdapter::device_data_in* (string type) is sent on the network at every step. The data received from the network is stored in the variable *TcpIpHwAdapter::device_data_out* (string type). The maximum size of the data is limited by the constant *DEFAULT_BUFFLEN*.
 
 .. figure:: ../_static/tcpip-activity.png
   :align: center
+  :scale: 50 %
 The data is read and write every step if the operational state variable is equal to ‘*idle*’. The operational state variable is usually set to ‘*idle*’ state when the TCP/IP is connected to the slave/master is connected. If the TCP/IP adapter cannot find the server or cannot open the socket or cannot connect the server, then the adapter goes to the ‘*fault*’ state.
 
 .. figure:: ../_static/tcpip-states.png
   :align: center
+  :scale: 50 %
 
 
 The Ethercat adapter
 ---------------
 
-+-----------------------------------------------+
-| General information about the Ethercat adapter               |
-+=======================+=======================+
-| Progress status   | Implementation done. Some minor changes might be added in the future depending on requirement of m1. |
-+-----------------------+-----------------------+
-| Adapter Class name  | gmt::EthercatAdapter                |
-+-----------------------+-----------------------+
-| Library used  | The ethercat adapter integrate an Ethercat master/client called “EtherCAT” and developed by Etherlab. The libray has not been maintained in the last 3 years. The last version we use (the last one) is EtherCAT master 1.5.2 .        |
-+-----------------------+-----------------------+
++-------------------------------------------------------------------------------------------+
+|                     General information about the Ethercat adapter                        |
++====================+======================================================================+
+| Progress status    | Implementation done. Some minor changes might be added in the future |
+|                    | depending on requirement of m1.                                      |
++--------------------+----------------------------------------------------------------------+
+| Adapter Class name | gmt::EthercatAdapter                                                 |
++--------------------+----------------------------------------------------------------------+
+| Library used       | The ethercat adapter integrate an Ethercat master/client called      |
+|                    | “EtherCAT” and developed by Etherlab.                                |
+|                    | The libray has not been maintained in the last 3 years.              |
+|                    | The last version we use (the last one) is EtherCAT master 1.5.2 .    |
++--------------------+----------------------------------------------------------------------+
 
 Protocol and library overview
 .............................
@@ -98,6 +108,7 @@ Each slave embeds a state machine to control its communication. The connection t
 
 .. figure:: ../_static/ethercat-states.png
   :align: center
+  :scale: 50 %
 The data is organized in each Ethercat slave according to its *index* (uint16 from 0 to 65535) and its *sub-index* (uint8 from 0 to 255). The 2 elements of the address are generally written in hexadecimal and separated by a column (Ex: data1 @ 6001:03).
 The data management split the *data objects* into 2 groups: the *Service Data Objects* (SDO) and the *Process Data Objects* (PDO). The PDOs are sent and received periodically and automatically depending on the frequency of the master. The SDOs are sent or received every time the user sends a request to do only.
 The data_types supported by the Ethercat standard (and by the library) are:
@@ -221,6 +232,7 @@ User interface
 
 .. figure:: ../_static/ethercat_interface.png
   :align: center
+  :scale: 50 %
 
 **Sending RX-SDOs**
 The SDOs cannot be sent from the Ethercat adapter by default. To do so the user must set the boolean input sdo_write_enable to true. By the way, a SDO is sent the Ethercat ring as often the SDO value changes in the adapter (if the flag sdo_write_enable is on).
@@ -247,6 +259,7 @@ If there is no module at  the position entered in slave_state_req or if the stat
 
 .. figure:: ../_static/ethercat-activity.png
   :align: center
+  :scale: 50 %
 
 
 The Serial Adapter
@@ -264,6 +277,7 @@ The Serial Adapter
 
 .. figure:: ../_static/serial-interface.png
   :align: center
+  :scale: 50 %
 The interface of the serial adapter contains one data input (*device_data_out*) and one data output (*device data_in*). A third port called RTS controls the *RTS* bit. This bit is used on old serial devices only.
 Two properties must be set by the user:
 -	*port_file_path*: a string property setting the full path of the serial file. Its default value is the path of the serial file on RTC3: '/dev/ttyS0'
@@ -275,7 +289,7 @@ The only supported type is the string type. This limitation is acceptable for ou
 
 .. figure:: ../_static/ethercat-activity.png
   :align: center
-
+  :scale: 50 %
 
 The Serial-over-Ethercat Adapter
 -----------------------------
@@ -303,6 +317,7 @@ The Beckhoff 6002 Ethercat module contains 2 Ethernet ports (like all the other 
 
 .. figure:: ../_static/serialoverethercat-archi.png
   :align: center
+  :scale: 50 %
 The Etherlab Ethercat library offers a feature to communicate with 6002 modules via a virtual serial terminal (located at “/dev/ttyEC0”). As a consequence, the user transparently communicates with their RS232 device using a GMT Serial Adapter.
 This feature must be installed with the following commands:
 .. code-block:: bash
