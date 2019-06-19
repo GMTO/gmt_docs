@@ -230,7 +230,7 @@ PDOs are updated automatically and periodically. Nothing to do.
 User interface
 ..............
 
-.. figure:: ../_static/ethercat_interface.png
+.. figure:: ../_static/ethercat-interface.png
   :align: center
   :scale: 50 %
 
@@ -294,15 +294,15 @@ The only supported type is the string type. This limitation is acceptable for ou
 The Serial-over-Ethercat Adapter
 -----------------------------
 
-+-----------------------------------------------+
-| General information about the Serial-over-Ethercat adapter   |
-+=======================+=======================+
-| Progress status   | Implementation in progress            |
-+-----------------------+-----------------------+
-| Adapter Class name  | gmt::SerialOverEthercatAdapter                |
-+-----------------------+-----------------------+
-| Library used  | Etherlab Ethercat              |
-+-----------------------+-----------------------+
++------------------------------------------------------------+
+| General information about the Serial-over-Ethercat adapter |
++=======================+====================================+
+| Progress status       | Implementation in progress         |
++-----------------------+------------------------------------+
+| Adapter Class name    | gmt::SerialOverEthercatAdapter     |
++-----------------------+------------------------------------+
+| Library used          | Etherlab Ethercat                  |
++-----------------------+------------------------------------+
 
 The Serial-over-Ethercat adapter derives from the Ethercat adapter.
 The purpose of this feature consists in controlling serial devices (RS232) using Ethercat protocol via Ethercat slaves/modules making the translation between serial and Ethercat.
