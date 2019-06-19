@@ -38,7 +38,7 @@ All the C++ component classes used in the GMT subsystem control software derive 
 
 .. figure:: ../_static/component-activity.png
   :align: center
-  :scale: 50 %
+  :width: 150
 
 Most of the *Component* function-members are pure virtual. They are declared in the *gmt::Component* base class but defined in each specific component. Thus, the functions *setup_wrapper()* and *step_wrapper()* are virtually declared and called in *gmt::Component* but defined in each child class.
 
