@@ -470,13 +470,14 @@ $ sudo systemctl <span class="nb">enable</span> rdma
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>Edit <code class="docutils literal"><span class="pre">/etc/ethercat.conf</span></code> and set the following configuration option:</li>
+<li>Edit <code class="docutils literal"><span class="pre">/etc/ethercat.conf</span></code> and set the following configuration options:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">MASTER0_DEVICE</span><span class="o">=</span><span class="s2">&quot;&lt;mac_address&gt;&quot;</span>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">MASTER0_DEVICE</span><span class="o">=</span><span class="s2">&quot;&lt;mac_address_1&gt;&quot;</span>
+<span class="nv">MASTER0_BACKUP</span><span class="o">=</span><span class="s2">&quot;&lt;mac_address_2&gt;&quot;</span>  <span class="c1"># optional line</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal"><span class="pre">&lt;mac_address&gt;</span></code> is the hardware address associated with the Ethercat network interface.</p>
+<p>where <code class="docutils literal"><span class="pre">&lt;mac_address_1&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;mac_address_2&gt;</span></code> are the two hardware addresses associated with the Ethercat network interface communicating with the Ethercat ring (redundant topology). If you you prefer using a linear topology (non redundant), comment or remove the second line (MASTER0_BACKUP=”&lt;mac_address_2&gt;”).</p>
 </div></blockquote>
 <ol class="arabic simple" start="5">
 <li>Edit <code class="docutils literal"><span class="pre">/usr/lib/systemd/system/ethercat.service</span></code> and uncomment the following line:</li>
