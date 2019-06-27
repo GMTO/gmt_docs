@@ -11,28 +11,26 @@ Three adapters are already implemented: TCP/IP adapter, Ethercat adapter and Ser
 Two other adapters are in progress: Serial-over-Ethercat adapter and OPCUA proxy.
 Some other adapters will be developed to communicate with devices typically used by instruments, such as: CameraLink adapter, CoaXPress adapter, GigE Vision Adapter and USB3 Vision adapter.
 Each adapter supports a specific communication protocol.
-Some protocols are trivial: the serial consists in opening a socket and read/write raw data to a unique device across this socket. The pseudocode prototype of sending function is basic:
+Some protocols are trivial: the serial consists in opening a socket and read/write raw data to a unique device across this socket. The pseudocode prototype of sending function is basic: ::
 
     SEND_SERIAL(VALUE)
     
-The TCP/IP requests must be sent to a specific device:
+The TCP/IP requests must be sent to a specific device: ::
 
     SEND_TCP-IP(VALUE to SERVER)
     
 The most complex tasks such as multi-layer encapsulation and low-level data exchange are out of the IO framework scope. They are supported by the operating system (Linux Fedora) or by external libraries.
-Some other protocols like Ethercat are more complex. The data must be addressed at a specific slave/module/server at a specific address:
+Some other protocols like Ethercat are more complex. The data must be addressed at a specific slave/module/server at a specific address: ::
 
     SEND_ETHERCAT(VALUE to SERVER at ADDRESS)
     
 In that case a configuration file (CoffeeScript format) is necessary to link each data (client side) to its respective address (client side).
-Finally, the OPCUA protocol is a little more complex to use:
+Finally, the OPCUA protocol is a little more complex to use: ::
 
     SEND_OPCUA(VALUE typed according TYPE-NODE to SERVER at PROPERTY of VARIABLE-NODE)
-    
-
 
 Common architecture of the adapters
----------------
+-----------------------------------
 
 All the C++ component classes used in the GMT subsystem control software derive (indirectly) from the class *gmt::Component* defined in the core framework. This base class supports the common features such as:
 
@@ -43,8 +41,6 @@ All the C++ component classes used in the GMT subsystem control software derive 
 
 
 .. image:: ../_static/component-activity.png
-    :width: 50
-    :scale: 3
 
 Most of the *Component* function-members are pure virtual. They are declared in the *gmt::Component* base class but defined in each specific component. Thus, the functions *setup_wrapper()* and *step_wrapper()* are virtually declared and called in *gmt::Component* but defined in each child class.
 
@@ -53,7 +49,7 @@ Most of the *Component* function-members are pure virtual. They are declared in 
 
 
 The TCP/IP adapter
----------------
+------------------
 
 +-----------------------------------------------------------------------------------------+
 | General information about the TCP/IP adapter                                            |
@@ -84,7 +80,7 @@ The data is read and written every step if the operational state variable is equ
 
 
 The EtherCAT adapter
----------------
+--------------------
 
 +-------------------------------------------------------------------------------------------+
 |                     General information about the EtherCAT adapter                        |
@@ -104,10 +100,11 @@ Protocol and library overview
 
 The EtherCAT standard is an Ethernet protocol. The real-time computer executing the master is physically connected to the slaves/modules in a ring (redundant topology) via 2 ethernet ports. The originality and the strength of this protocol consist of its ability to organize the data communication between the master and several slaves in a unique frame. As a consequence, the EtherCAT master can communicate with a large number of slaves at the same time at high frequency. Thus, the master communicates with N slaves at a frequency = F Hertz using N frames. At the opposite, IP-based protocols (such as modbus/TCP, Ethernet/IP or Profinet) would need to encapsulate (N * F) frames.
 
-The master identifies each of the N slaves of the ring by its position (between 0 and N-1) and its *alias* (a unique 16-bit integer identifier set by the user)
->	The user can change the alias of any EtherCAT module/slave this way:
- 'etherCAT alias -p 3 -f 123' or 'etherCAT alias --position 3 --force 123'
- to set the alias 123 to the module located at the 3rd position in the ring
+The master identifies each of the N slaves of the ring by its position (between 0 and N-1) and its *alias* (a unique 16-bit integer identifier set by the user). The user can change the alias of any EtherCAT module/slave this way: ::
+
+    $ etherCAT alias -p 3 -f 123' or 'etherCAT alias --position 3 --force 123
+
+to set the alias 123 to the module located at the 3rd position in the ring
 
 Each slave embeds a state machine to control its communication. The connection to the slave triggers the state change from *init* to *preop*. The configuration of the slave triggers a state change from *preop* to *safeop*. After successful configuration, the slave transitions to the *op* state to start sharing PDOs (periodically) and SDOs (on demand) as long as the connection is established.
 
@@ -163,15 +160,16 @@ Implementation
 ..............
 
 **Data object creation**
-The PDOs and the SDOs are created by calling:
--	int ecrt_slave_config_reg_pdo_entry( ec_slave_config_t * sc, // Slave config
+The PDOs and the SDOs are created by calling: ::
+
+ 	int ecrt_slave_config_reg_pdo_entry( ec_slave_config_t * sc, // Slave config
                                        uint16_t 		       entry_index,
                                        uint8_t             entry_subindex,
                                        ec_domain_t       * domain,
                                        unsigned int      * bit_position
                                       );
 
--	ec_sdo_request_t * ecrt_slave_config_create_sdo_request( ec_slave_config_t * sc, // Slave config
+ 	ec_sdo_request_t * ecrt_slave_config_create_sdo_request( ec_slave_config_t * sc, // Slave config
                                                     			 uint16_t            index,
                                                     			 uint8_t             subindex,
                                                    			   size_t              size 		// size in bytes
@@ -179,55 +177,88 @@ The PDOs and the SDOs are created by calling:
 
 **Service Data Object (SDO) read/write**
 The user can use the functions of Etherlab EtherCAT library via command lines (command ethercat) or by calling the functions in a C++ program (#include <ecrt.h>).
-  -	To send SDO
-    o	By entering command line:
-      $ethercat download -p <pos> <index> <subindex> <val>
-    o By calling C++ function during master initialization:
-      int ecrt_master_sdo_ ecrt_master_sdo_download( ec_master_t * master, 		    // EtherCAT master
-                                                     uint16_t      slave_position,	// Slave position
-                                                     uint16_t      index,			    // Index of the SDO
-                                                     uint8_t       subindex,		    // Subindex of the SDO
-                                                     uint8_t     * data,			      // Data buffer to download
-                                                     size_t        data_size		    // Size of the data buffer
-                                                     uint32_t    * abort_code		  // Abort code of the upload
-                                                   );
-    o By calling 2 C++ functions after master initialization:
-    	First: EC_WRITE_<TYPE>() must be called
-      	void EC_WRITE_<TYPE>( uint8_t		data_address,
-                              <TYPE>		data_value
-                            );
+    - To send SDO
+        o By entering command line::
+
+            $ethercat download -p <pos> <index> <subindex> <val>
+        ..
+
+        o By calling C++ function during master initialization::
+
+          int ecrt_master_sdo_ ecrt_master_sdo_download( ec_master_t * master, 		    // EtherCAT master
+                                                         uint16_t      slave_position,	// Slave position
+                                                         uint16_t      index,			    // Index of the SDO
+                                                         uint8_t       subindex,		    // Subindex of the SDO
+                                                         uint8_t     * data,			      // Data buffer to download
+                                                         size_t        data_size		    // Size of the data buffer
+                                                         uint32_t    * abort_code		  // Abort code of the upload
+                                                       );
+        o By calling 2 C++ functions after master initialization:
+            First: EC_WRITE_<TYPE>() must be called::
+
+                void EC_WRITE_<TYPE>( uint8_t		data_address,
+                                      <TYPE>		data_value
+                                    );
+    ..
+
         “<TYPE>” must be replaced by the C++ type of the SDO data to send. The user can call: EC_WRITE_U8(), EC_WRITE_S8(), EC_WRITE_U16(), EC_WRITE_S16(), EC_WRITE_U32(), EC_WRITE_S32(), EC_WRITE_U64(), EC_WRITE_S64().
+
         .. note::
             EC_WRITE_BOOL(), EC_WRITE_FLOAT() and EC_WRITE_DOUBLE() don’t exist. Use respectively EC_WRITE_U8(), EC_WRITE_U32() and EC_WRITE_U64().
-      Second: the buffer is set, now the user can send the SDO on the network by calling:
-        void ecrt_sdo_request_write( uint8_t		data_address );
+
+        Second: the buffer is set, now the user can send the SDO on the network by calling::
+
+            void ecrt_sdo_request_write( uint8_t data_address );
+..
+
+        .. note::
+        Before calling the 2 functions, the user has to make sure the master is not busy::
+
+            if( ecrt_sdo_request_state(data_address) != EC_REQUEST_BUSY ) {...}
+
+    - To receive SDO
+
+        o By entering command line::
+
+            $ethercat upload -p <pos> <index> <subindex>
+
+            ..
+
+        o By calling C++ function during master initialization::
+
+          int ecrt_master_sdo_upload( ec_master_t * master, 		    // EtherCAT master
+                                      uint16_t      slave_position,	// Slave position
+                                      uint16_t      index,			    // Index of the SDO
+                                      uint8_t       subindex,		    // Subindex of the SDO
+                                      uint8_t     * target,			    // Target buffer
+                                      size_t        target_size,		// Size of the target buffer
+                                      size_t      * result_size,		// Uploaded data size
+                                      uint32_t    * abort_code		  // Abort code of the upload
+                                    );
+        ..
+
+        o By calling 2 C++ functions after master initialization:
+
+            First: ecrt_sdo_request_read() must be called::
+
+                void ecrt_sdo_request_read( uint8_t data_address );
+
+                ..
+
+            Second: the buffer is read, now the user can read the SDO value by calling::
+
+                void EC_READ_<TYPE> ( uint8_t data_address );
+..
+
+
+              “<TYPE>” must be replaced by the C++ type of the SDO data to send. The user can call: EC_READ_U8(), EC_READ_S8(), EC_READ_U16(), EC_READ_S16(), EC_READ_U32(), EC_READ_S32(), EC_READ_U64(), EC_READ_S64().
+
+        .. note::
+            EC_WRITE_BOOL(), EC_WRITE_FLOAT() and EC_WRITE_DOUBLE() don’t exist. Use respectively EC_WRITE_U8(), EC_WRITE_U32() and EC_WRITE_U64().
         .. note::
             Before calling the 2 functions, the user has to make sure the master is not busy:
             if( ecrt_sdo_request_state(data_address) != EC_REQUEST_BUSY ) {...}
-  -	To receive SDO
-    o	By entering command line:
-      $ethercat upload -p <pos> <index> <subindex>
-    o	By calling C++ function during master initialization:
-      int ecrt_master_sdo_upload( ec_master_t * master, 		    // EtherCAT master
-                                  uint16_t      slave_position,	// Slave position
-                                  uint16_t      index,			    // Index of the SDO
-                                  uint8_t       subindex,		    // Subindex of the SDO
-                                  uint8_t     * target,			    // Target buffer
-                                  size_t        target_size,		// Size of the target buffer
-                                  size_t      * result_size,		// Uploaded data size
-                                  uint32_t    * abort_code		  // Abort code of the upload
-                                );
-    o	By calling 2 C++ functions after master initialization:
-    	First: ecrt_sdo_request_read() must be called
-    		void ecrt_sdo_request_read( uint8_t data_address );
-      Second: the buffer is read, now the user can read the SDO value by calling:
-        void EC_READ_<TYPE> ( uint8_t data_address );
-        “<TYPE>” must be replaced by the C++ type of the SDO data to send. The user can call: EC_READ_U8(), EC_ READ _S8(), EC_ READ _U16(), EC_ READ _S16(), EC_ READ _U32(), EC_ READ _S32(), EC_ READ _U64(), EC_ READ _S64().
-        .. note::
-            EC_WRITE_BOOL(), EC_WRITE_FLOAT() and EC_WRITE_DOUBLE() don’t exist. Use respectively EC_WRITE_U8(), EC_WRITE_U32() and EC_WRITE_U64().
-        .. note::
-            Before calling the 2 functions, the user has to make sure the master is not busy:
-            if( ecrt_sdo_request_state(data_address) != EC_REQUEST_BUSY ) {...}
+
 
 **Process Data Object (PDO) read/write**
 PDOs are updated automatically and periodically. Nothing to do.
@@ -299,7 +330,7 @@ The only supported type is the string type. This limitation is acceptable for ou
   :scale: 50 %
 
 The Serial-over-EtherCAT Adapter
------------------------------
+--------------------------------
 
 +------------------------------------------------------------+
 | General information about the Serial-over-EtherCAT adapter |
@@ -308,7 +339,7 @@ The Serial-over-EtherCAT Adapter
 +-----------------------+------------------------------------+
 | Adapter Class name    | gmt::SerialOverEthercatAdapter     |
 +-----------------------+------------------------------------+
-| Library used          | Etherlab EtherCAT                 |
+| Library used          | Etherlab EtherCAT                  |
 +-----------------------+------------------------------------+
 
 The Serial-over-EtherCAT adapter derives from the EtherCAT adapter.
@@ -328,12 +359,14 @@ The Beckhoff 6002 EtherCAT module contains 2 Ethernet ports (like all the other 
 The Etherlab EtherCAT library offers a feature to communicate with 6002 modules via a virtual serial terminal (located at “/dev/ttyEC0”). As a consequence, the user transparently communicates with their RS232 device using a GMT Serial Adapter.
 This feature must be installed with the following commands:
 .. code-block:: bash
-  ./configure --with-linux-dir=/your/linux/directory --enable-tty
-  make all modules
-  make modules_install install
-  rcethercat start
-  insmod tty/ec_tty.ko
-  insmod examples/tty/ec_tty_example.ko
+
+      ./configure --with-linux-dir=/your/linux/directory --enable-tty
+      make all modules
+      make modules_install install
+      rcethercat start
+      insmod tty/ec_tty.ko
+      insmod examples/tty/ec_tty_example.ko
+
 The default settings for the serial line are 9600 8 N 1.
 Then testing:
 .. code-block:: bash
