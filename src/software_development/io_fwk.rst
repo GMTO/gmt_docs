@@ -3,38 +3,48 @@
 IO Framework
 ============
 The IO framework contains the hardware adapter class definitions.
-The hardware adapters are the components supporting the interface between the software *controlers* (derivated from *BaseControler* class) and the hardware devices via the physical networks (Ethernet for example).
+The hardware adapters are the components supporting the interface between the software *controllers* (derivated from *BaseController* class) and the hardware devices via the physical networks (Ethernet for example).
 
 .. figure:: ../_static/adapter-interface.png
   :align: center
 Three adapters are already implemented: TCP/IP adapter, Ethercat adapter and Serial adapter.
 Two other adapters are in progress: Serial-over-Ethercat adapter and OPCUA proxy.
-Some other adapters will probably be developed to communicate with the instruments: CameraLink adapter, CoaXPress adapter, GigE Vision Adapter and USB3 Vision adapter.
+Some other adapters will be developed to communicate with devices typically used by instruments, such as: CameraLink adapter, CoaXPress adapter, GigE Vision Adapter and USB3 Vision adapter.
 Each adapter supports a specific communication protocol.
 Some protocols are trivial: the serial consists in opening a socket and read/write raw data to a unique device across this socket. The pseudocode prototype of sending function is basic:
+
 .. centered::
     SEND_SERIAL(VALUE)
+    
 The TCP/IP requests must be sent to a specific device:
+
 .. centered::
     SEND_TCP-IP(VALUE to SERVER)
+    
 The most complex tasks such as multi-layer encapsulation and low-level data exchange are out of the IO framework scope. They are supported by the operating system (Linux Fedora) or by external libraries.
 Some other protocols like Ethercat are more complex. The data must be addressed at a specific slave/module/server at a specific address:
+
 .. centered::
     SEND_ETHERCAT(VALUE to SERVER at ADDRESS)
+    
 In that case a configuration file (CoffeeScript format) is necessary to link each data (client side) to its respective address (client side).
 Finally, the OPCUA protocol is a little more complex to use:
+
 .. centered::
     SEND_OPCUA(VALUE typed according TYPE-NODE to SERVER at PROPERTY of VARIABLE-NODE)
+    
 
 
 Common architecture of the adapters
 ---------------
 
 All the C++ component classes used in the GMT subsystem control software derive (indirectly) from the class *gmt::Component* defined in the core framework. This base class supports the common features such as:
+
 - The *nanomsg* communication (input and output ports) to make the component communicate with other components
 - The component configuration and initialization (setup)
 - The component runtime (*step*)
 - The telemetry logs
+
 
 .. image:: ../_static/component-activity.png
     :width: 50
@@ -70,48 +80,47 @@ The data stored in the variable *TcpIpHwAdapter::device_data_in* (string type) i
 .. figure:: ../_static/tcpip-activity.png
   :align: center
   :scale: 50 %
-The data is read and write every step if the operational state variable is equal to ‘*idle*’. The operational state variable is usually set to ‘*idle*’ state when the TCP/IP is connected to the slave/master is connected. If the TCP/IP adapter cannot find the server or cannot open the socket or cannot connect the server, then the adapter goes to the ‘*fault*’ state.
+The data is read and written every step if the operational state variable is equal to ‘*idle*’. The operational state variable is usually set to ‘*idle*’ state when the TCP/IP is connected to the slave/master. If the TCP/IP adapter cannot find the server or cannot open the socket or cannot connect the server, then the adapter goes to the ‘*fault*’ state.
 
 .. figure:: ../_static/tcpip-states.png
   :align: center
   :scale: 50 %
 
 
-The Ethercat adapter
+The EtherCAT adapter
 ---------------
 
 +-------------------------------------------------------------------------------------------+
-|                     General information about the Ethercat adapter                        |
+|                     General information about the EtherCAT adapter                        |
 +====================+======================================================================+
 | Progress status    | Implementation done. Some minor changes might be added in the future |
-|                    | depending on requirement of m1.                                      |
+|                    | depending on the future needs of individual subsystems.              |
 +--------------------+----------------------------------------------------------------------+
 | Adapter Class name | gmt::EthercatAdapter                                                 |
 +--------------------+----------------------------------------------------------------------+
-| Library used       | The ethercat adapter integrate an Ethercat master/client called      |
+| Library used       | The EtherCAT adapter integrate an EtherCAT master/client called      |
 |                    | “EtherCAT” and developed by Etherlab.                                |
-|                    | The libray has not been maintained in the last 3 years.              |
 |                    | The last version we use (the last one) is EtherCAT master 1.5.2 .    |
 +--------------------+----------------------------------------------------------------------+
 
 Protocol and library overview
 .............................
 
-The Ethercat standard is an Ethernet protocol. The real-time computer executing the master is physically connected to the slaves/modules in a ring (redundant topology) via 2 ethernet ports. The originality and the strength of this protocol consist of its ability to organize the data communication between the master and several slaves in a unique frame. As a consequence, the Ethercat master can communicate with a a large number of slaves in the same time at high frequency. Thus, the master communicates with N slaves at a frequency = F Hertz using F frames. At the opposite, IP-based protocols (such as modbus/TCP, Ethernet/IP or Profinet) would need to encapsulate (N* F) frames.
+The EtherCAT standard is an Ethernet protocol. The real-time computer executing the master is physically connected to the slaves/modules in a ring (redundant topology) via 2 ethernet ports. The originality and the strength of this protocol consist of its ability to organize the data communication between the master and several slaves in a unique frame. As a consequence, the EtherCAT master can communicate with a large number of slaves at the same time at high frequency. Thus, the master communicates with N slaves at a frequency = F Hertz using N frames. At the opposite, IP-based protocols (such as modbus/TCP, Ethernet/IP or Profinet) would need to encapsulate (N * F) frames.
 
-The master identified each of the N slaves of the ring by its position (between 0 and N-1) and its *alias* (a unique 16-bit integer identifier set by the user)
->	The user can change the alias of any Ethercat module/slave this way:
- 'ethercat alias -p 3 -f 123' or 'ethercat alias --position 3 --force 123'
+The master identifies each of the N slaves of the ring by its position (between 0 and N-1) and its *alias* (a unique 16-bit integer identifier set by the user)
+>	The user can change the alias of any EtherCAT module/slave this way:
+ 'etherCAT alias -p 3 -f 123' or 'etherCAT alias --position 3 --force 123'
  to set the alias 123 to the module located at the 3rd position in the ring
 
-Each slave embeds a state machine to control its communication. The connection to the slave triggers the state change from *init* to *preop*. The configuration of the slave trigger from *preop* to *safeop*. Then the slave come to op and stay in this state to share PDOs (periodically) and SDOs (on demand) as long as the connection is established.
+Each slave embeds a state machine to control its communication. The connection to the slave triggers the state change from *init* to *preop*. The configuration of the slave triggers a state change from *preop* to *safeop*. After successful configuration, the slave transitions to the *op* state to start sharing PDOs (periodically) and SDOs (on demand) as long as the connection is established.
 
 .. figure:: ../_static/ethercat-states.png
   :align: center
   :scale: 50 %
-The data is organized in each Ethercat slave according to its *index* (uint16 from 0 to 65535) and its *sub-index* (uint8 from 0 to 255). The 2 elements of the address are generally written in hexadecimal and separated by a column (Ex: data1 @ 6001:03).
-The data management split the *data objects* into 2 groups: the *Service Data Objects* (SDO) and the *Process Data Objects* (PDO). The PDOs are sent and received periodically and automatically depending on the frequency of the master. The SDOs are sent or received every time the user sends a request to do only.
-The data_types supported by the Ethercat standard (and by the library) are:
+The data is organized in each EtherCAT slave according to its *index* (uint16 from 0 to 65535) and its *sub-index* (uint8 from 0 to 255). The 2 elements of the address are generally written in hexadecimal and separated by a colon (Ex: data1 @ 6001:03).
+The *data objects* are split into 2 groups: the *Service Data Objects* (SDO) and the *Process Data Objects* (PDO). The PDOs are sent and received periodically and automatically depending on the frequency of the master. The SDOs are sent or received every time the user sends a request to do only.
+The data_types supported by the EtherCAT standard (and by the library) are:
   -	bool
   -	int8
   -	int16
@@ -126,7 +135,7 @@ The data_types supported by the Ethercat standard (and by the library) are:
   -	string
   -	octet_string
   -	unicode_string
-The Ethercat adapter supports booleans and all numeric types only. If the user wants to read or write a string, they need to convert this string to (or from) a numeric type, by translating each character of the string by its ASCII code. Of course, the strings longer than 8 characters are never used (the longest type being int64 and uint64). Example: The user wants to write the string ‘hello’ to a slave:
+The EtherCAT adapter supports booleans and all numeric types only. If the user wants to read or write a string, they need to convert this string to (or from) a numeric type, by translating each character of the string by its ASCII code. Of course, the strings longer than 8 characters are never used (the longest type being int64 and uint64). Example: The user wants to write the string ‘hello’ to a slave:
 
 +-----------+------------+
 | Character | ASCII code |
@@ -158,7 +167,7 @@ Implementation
 ..............
 
 **Data object creation**
-The PDOs and the SDOs are created by calling respectivally:
+The PDOs and the SDOs are created by calling:
 -	int ecrt_slave_config_reg_pdo_entry( ec_slave_config_t * sc, // Slave config
                                        uint16_t 		       entry_index,
                                        uint8_t             entry_subindex,
@@ -173,7 +182,7 @@ The PDOs and the SDOs are created by calling respectivally:
                                                          );
 
 **Service Data Object (SDO) read/write**
-The user can use the functions of Etherlab Ethercat library via command lines (command ethercat) or by calling the functions in a C++ program (#include <ecrt.h>).
+The user can use the functions of Etherlab EtherCAT library via command lines (command ethercat) or by calling the functions in a C++ program (#include <ecrt.h>).
   -	To send SDO
     o	By entering command line:
       $ethercat download -p <pos> <index> <subindex> <val>
@@ -224,7 +233,7 @@ The user can use the functions of Etherlab Ethercat library via command lines (c
             Before calling the 2 functions, the user has to make sure the master is not busy:
             if( ecrt_sdo_request_state(data_address) != EC_REQUEST_BUSY ) {...}
 
-**Process Data Object (DDO) read/write**
+**Process Data Object (PDO) read/write**
 PDOs are updated automatically and periodically. Nothing to do.
 
 
@@ -236,11 +245,11 @@ User interface
   :scale: 50 %
 
 **Sending RX-SDOs**
-The SDOs cannot be sent from the Ethercat adapter by default. To do so the user must set the boolean input sdo_write_enable to true. By the way, a SDO is sent the Ethercat ring as often the SDO value changes in the adapter (if the flag sdo_write_enable is on).
+The SDOs cannot be sent from the EtherCAT adapter by default. To do so the user must set the boolean input sdo_write_enable to true. A SDO is sent the EtherCAT ring as often the SDO value changes in the adapter (if the flag sdo_write_enable is on).
 
 **Receiving TX-SDOs**
 Sending SDOs can be done anytime. But receiving SDOs is possible when the user sends a request to the modules/slaves asking them for sending their SDO values to the master. To do that the user needs to set the flag sdo_read_update_req to true.
-When the Ethercat receives all the SDOs from all the modules/slaves, the values are automatically updated and the flag sdo_read_update_done set to true. Then, the user (or the controller) has to set the flag sdo_read_update_req back to false.
+When the EtherCAT receives all the SDOs from all the modules/slaves, the values are automatically updated and the flag sdo_read_update_done set to true. Then, the user (or the controller) has to set the flag sdo_read_update_req back to false.
 To recap the process to update the SDOs from the slaves/modules to the adapter :
   1)	sdo_read_update_req <- true
   2)	Waiting…
@@ -250,8 +259,8 @@ To recap the process to update the SDOs from the slaves/modules to the adapter :
 **Sending RX-PDOs and receiving TX-PDOs**
 The user has nothing to do. The PDOs are sent and received automatically depending on the frequency of the master.
 
-**Getting the Ethercat state of the slaves/modules**
-When the user wants to know the Ethercat state (op, preop or safeop) of a module of the Ethercat ring, he or she sends the position of the module on slave_state_req input port. The output port slave_state_result returns the code of the module state according to Ethercat standard:
+**Getting the EtherCAT state of the slaves/modules**
+When the user wants to know the EtherCAT state (op, preop or safeop) of a module of the EtherCAT ring, he or she sends the position of the module on slave_state_req input port. The output port slave_state_result returns the code of the module state according to EtherCAT standard:
    - 1: INIT
    - 2: PREOP
    - 4: SAFEOP
@@ -266,15 +275,16 @@ If there is no module at  the position entered in slave_state_req or if the stat
 The Serial Adapter
 ------------------
 
-+-----------------------------------------------+
-| General information about the Serial adapter   |
-+=======================+=======================+
-| Progress status   | Implementation done. Some minor changes might be added in the future depending on requirement of the instruments. |
-+-----------------------+-----------------------+
-| Adapter Class name  | gmt::SerialAdapter                |
-+-----------------------+-----------------------+
-| Library used  | The ethercat adapter integrate an Ethercat master/client called “EtherCAT” and developed by Etherlab. The libray has not been maintained in the last 3 years. The last version we use (the last one) is EtherCAT master 1.5.2 .              |
-+-----------------------+-----------------------+
++--------------------------------------------------------------------------------+
+|                    General information about the Serial adapter                |
++====================+===========================================================+
+| Progress status    | Implementation done. Some minor changes might be added in |
+|                    | the future depending on requirement of the instruments.   |
++--------------------+-----------------------------------------------------------+
+| Adapter Class name | gmt::SerialAdapter                                        |
++--------------------+-----------------------------------------------------------+
+| Library used       | termios.h (works with unistd.h)                           |
++--------------------+-----------------------------------------------------------+
 
 .. figure:: ../_static/serial-interface.png
   :align: center
@@ -288,38 +298,38 @@ The value set on the input port *device_data_out* is sent to the serial file at 
 Similarly, the value received from the serial device is copied on the output port *device_data_in*. The size of the received vale is limited by the constant *BUFFLEN* defined in *serial_adapter.h*.
 The only supported type is the string type. This limitation is acceptable for our use case. If the user wants to send or receive another type, the cast to/from string is their responsibility.
 
-.. figure:: ../_static/ethercat-activity.png
+.. figure:: ../_static/serial-activity.png
   :align: center
   :scale: 50 %
 
-The Serial-over-Ethercat Adapter
+The Serial-over-EtherCAT Adapter
 -----------------------------
 
 +------------------------------------------------------------+
-| General information about the Serial-over-Ethercat adapter |
+| General information about the Serial-over-EtherCAT adapter |
 +=======================+====================================+
 | Progress status       | Implementation in progress         |
 +-----------------------+------------------------------------+
 | Adapter Class name    | gmt::SerialOverEthercatAdapter     |
 +-----------------------+------------------------------------+
-| Library used          | Etherlab Ethercat                  |
+| Library used          | Etherlab EtherCAT                 |
 +-----------------------+------------------------------------+
 
-The Serial-over-Ethercat adapter derives from the Ethercat adapter.
-The purpose of this feature consists in controlling serial devices (RS232) using Ethercat protocol via Ethercat slaves/modules making the translation between serial and Ethercat.
-At the opposite of the point-to-multipoint RS485, the RS232 protocol is a point-to-point (P2P) protocol. That means each serial port of the computer (master/client side) cannot be connected to more than one device (slave/server side).  Imagine N serial devices must be connected to the real-time computer. This requirement would cause 3 issues:
+The Serial-over-EtherCAT adapter derives from the EtherCAT adapter.
+The purpose of this feature consists in controlling serial devices (RS232) using EtherCAT protocol via EtherCAT slaves/modules making the translation between serial and EtherCAT.
+Unlike the point-to-multipoint RS485, the RS232 protocol is a point-to-point (P2P) protocol. That means each serial port of the computer (master/client side) cannot be connected to more than one device (slave/server side).  Imagine N serial devices must be connected to the real-time computer. This requirement would cause 3 issues:
 -	If N is bigger than one, we cannot connect the N serial devices to the same computer because the computers we use have only one physical serial port.
 -	The second issue is about the wiring between the central computer in the cabinet and the serial devices embedded in the instruments. The N serial devices must be physically connected to the computer using N serial cables since the RS232 communication cannot be multiplexed in the same cable.
 -	The distance between the central computer and the serial devices can be big (dozens of meters). But the serial communication is accurate up to some meters only. According to Wikipedia, the RS232 communication distance cannot be bigger than 2.6m at 56000 bauds.
-The direct serial connection between the computer and the serial devices is not possible because of these 3 reasons. As a consequence, the Beckhoff 6002 Ethercat slave/module is set between the computer and the serial devices. Ethercat protocol supports point-to-multipoint (P2MP) and long-distance communication unlike Serial.
-The Beckhoff 6002 Ethercat module contains 2 Ethernet ports (like all the other Ethercat modules) to connect it to the other modules in the Ethercta ring. Plus 2 serial/RS232 ports to connect up to 2 serial devices per module. Some parameters like the baud rate are set using SDOs.
+The direct serial connection between the computer and the serial devices is not possible because of these 3 reasons. As a consequence, the Beckhoff 6002 EtherCAT slave/module is set between the computer and the serial devices. EtherCAT protocol supports point-to-multipoint (P2MP) and long-distance communication unlike Serial.
+The Beckhoff 6002 EtherCAT module contains 2 Ethernet ports (like all the other EtherCAT modules) to connect it to the other modules in the Ethercta ring. Plus 2 serial/RS232 ports to connect up to 2 serial devices per module. Some parameters like the baud rate are set using SDOs.
 
 `Beckhoff EL6002 module documentation <https://download.beckhoff.com/download/document/io/ethercat-terminals/el600x_el602xen.pdf>`_.
 
 .. figure:: ../_static/serialoverethercat-archi.png
   :align: center
   :scale: 50 %
-The Etherlab Ethercat library offers a feature to communicate with 6002 modules via a virtual serial terminal (located at “/dev/ttyEC0”). As a consequence, the user transparently communicates with their RS232 device using a GMT Serial Adapter.
+The Etherlab EtherCAT library offers a feature to communicate with 6002 modules via a virtual serial terminal (located at “/dev/ttyEC0”). As a consequence, the user transparently communicates with their RS232 device using a GMT Serial Adapter.
 This feature must be installed with the following commands:
 .. code-block:: bash
   ./configure --with-linux-dir=/your/linux/directory --enable-tty
@@ -332,7 +342,7 @@ The default settings for the serial line are 9600 8 N 1.
 Then testing:
 .. code-block:: bash
   echo "Hello World" > /dev/ttyEC0
-The interface between the user and the Ethercat protocol is supported by a Linux kernel module (ec_tty.ko). Unfortunately, this module is not compatible with our version of our Linux kernel (Linux freezes when data is written on /dev/ttyEC0). The kernel module must be fixed. That’s why the Serial-over-Ethercat adapter is not finished yet.
+The interface between the user and the EtherCAT protocol is supported by a Linux kernel module (ec_tty.ko). Unfortunately, this module is not compatible with our version of our Linux kernel (Linux freezes when data is written on /dev/ttyEC0). The kernel module must be fixed. That’s why the Serial-over-EtherCAT adapter is not finished yet.
 
 
 The OPCUA Proxy
