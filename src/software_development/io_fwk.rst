@@ -70,7 +70,7 @@ The TCP/IP adapter
 .. figure:: ../_static/tcpip-interface.png
   :align: center
   :scale: 50 %
-The TCP/IP adapter doesn’t contain port. This is the responsibility of the user to define ports in the adapter derived from *gmt::TcpIpHwAdapter*. The two only pieces of information are two *properties*: the *device_ip* address of the server/slave to connect and its *device_port* number.
+The two only pieces of information are two *properties*: the *device_ip* address of the server/slave to connect and its *device_port* number. The data sent and received by the TCP/IP adapter must be exchanged with the controllers by user-defined ports. This is the responsibility of the user to define ports in the model file of the adapter derived from *gmt::TcpIpHwAdapter*. 
 The data stored in the variable *TcpIpHwAdapter::device_data_in* (string type) is sent on the network at every step. The data received from the network is stored in the variable *TcpIpHwAdapter::device_data_out* (string type). The maximum size of the data is limited by the constant *DEFAULT_BUFFLEN*.
 
 .. figure:: ../_static/tcpip-activity.png
