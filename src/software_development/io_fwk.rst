@@ -13,24 +13,20 @@ Some other adapters will be developed to communicate with devices typically used
 Each adapter supports a specific communication protocol.
 Some protocols are trivial: the serial consists in opening a socket and read/write raw data to a unique device across this socket. The pseudocode prototype of sending function is basic:
 
-.. centered::
     SEND_SERIAL(VALUE)
     
 The TCP/IP requests must be sent to a specific device:
 
-.. centered::
     SEND_TCP-IP(VALUE to SERVER)
     
 The most complex tasks such as multi-layer encapsulation and low-level data exchange are out of the IO framework scope. They are supported by the operating system (Linux Fedora) or by external libraries.
 Some other protocols like Ethercat are more complex. The data must be addressed at a specific slave/module/server at a specific address:
 
-.. centered::
     SEND_ETHERCAT(VALUE to SERVER at ADDRESS)
     
 In that case a configuration file (CoffeeScript format) is necessary to link each data (client side) to its respective address (client side).
 Finally, the OPCUA protocol is a little more complex to use:
 
-.. centered::
     SEND_OPCUA(VALUE typed according TYPE-NODE to SERVER at PROPERTY of VARIABLE-NODE)
     
 
