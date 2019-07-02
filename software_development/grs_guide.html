@@ -1,0 +1,812 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5. grs documentation &mdash; GMT Software And Controls documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/additional_style.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
+        <link rel="up" title="Software Development" href="index.html"/>
+        <link rel="next" title="6. Model specification guide document" href="modeling_guidelines.html"/>
+        <link rel="prev" title="4. gds documentation" href="gds_guide.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GMT Software And Controls
+          
+
+          
+            
+            <img src="../_static/logowhite.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SWC_architecture/index.html">Architecture and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SWC_standards/index.html">Software and Controls Standards</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">1. Installing the SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gds_guide.html">4. gds documentation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. grs documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">5.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-grs-command-line-tool">5.2. The grs command line tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#grs-send">5.2.1. grs send</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grs-listen">5.2.2. grs listen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grs-compile">5.2.3. grs compile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grs-info">5.2.4. grs info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grs-get">5.2.5. grs get</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grs-set">5.2.6. grs set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grs-inspect">5.2.7. grs inspect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grs-options">5.2.8. grs options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">8. OCS Test Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">9. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">10. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">11. HDK example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_fwk.html">12. UI Framework</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/swc_sys_glossary.html">Software and Controls Acronyms and Definitions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GMT Software And Controls</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Software Development</a> &raquo;</li>
+        
+      <li>5. grs documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="grs-documentation">
+<span id="grs-guide"></span><h1>5. grs documentation<a class="headerlink" href="#grs-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>5.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This document describes the use of the <em>grs</em> (GMT Runtime System) tool.</p>
+</div>
+<div class="section" id="the-grs-command-line-tool">
+<h2>5.2. The grs command line tool<a class="headerlink" href="#the-grs-command-line-tool" title="Permalink to this headline">¶</a></h2>
+<p>The grs utility allows interacting and communicating with remote component instances.
+The utility has several commands that are explained in the following sections.
+The <code class="docutils literal"><span class="pre">send</span></code> and <code class="docutils literal"><span class="pre">listen</span></code> commands are mostly used for debugging purposes, while the <code class="docutils literal"><span class="pre">get</span></code>, <code class="docutils literal"><span class="pre">set</span></code> and
+<code class="docutils literal"><span class="pre">inspect</span></code> commands are intended to interact with a remote component during operation.
+The <code class="docutils literal"><span class="pre">compile</span></code> command process the configuration file of a given component so it’s ready
+to be consumed during the start up of a component. This removes the need for sending
+the configuration of a component to the configuration port after starting the component.</p>
+<p>The <code class="docutils literal"><span class="pre">grs</span></code> common options are described at the end of this document.
+The <code class="docutils literal"><span class="pre">grs</span></code> help command provides a brief description of the utility:</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs --help
+
+ grs <span class="o">[</span>command<span class="o">]</span>
+
+ Commands:
+ grs send <span class="o">[</span>instance<span class="o">]</span>         send a message to a port of a remote instance   <span class="o">[</span>aliases: push<span class="o">]</span>
+ grs listen <span class="o">[</span>instance<span class="o">]</span>       listen to messages from a port of the instance
+ grs compile <span class="o">[</span>instance<span class="o">]</span>      compile the configuration of an instance. Compiled files are
+                             saved in <span class="nv">$GMT_LOCAL</span>
+ grs info <span class="o">[</span>instance<span class="o">]</span>         displays configuration information <span class="k">for</span> a given instance
+ grs get <span class="o">[</span>instance<span class="o">]</span>          displays the value of a feature of a remote Component instance
+ grs <span class="nb">set</span> <span class="o">[</span>instance<span class="o">]</span>          sets the value of a feature in a remote Component instance
+ grs inspect <span class="o">[</span>instance<span class="o">]</span>      continuously display the values of all the features of a remote
+                             Component instance
+
+ Options:
+ --version    show version number                                                    <span class="o">[</span>boolean<span class="o">]</span>
+ --name       name of the configurable entity                        <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;grs&quot;</span><span class="o">]</span>
+ --scope      scope to load the configuration file                      <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;&quot;</span><span class="o">]</span>
+ --config     name of the component configuration to be applied  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --auto_conf  load the configuration from file <span class="k">if</span> it exists          <span class="o">[</span>boolean<span class="o">]</span> <span class="o">[</span>default: true<span class="o">]</span>
+ --logging    logging level                                         <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;info&quot;</span><span class="o">]</span>
+ --help       show <span class="nb">help</span>                                                              <span class="o">[</span>boolean<span class="o">]</span>
+
+ Examples:
+ grs send -i x_ctrl -p position -m <span class="m">25</span>.01
+
+ For more information, find our manual at https://gmto.github.io/gmt_docs/
+</pre></div>
+</div>
+</div></blockquote>
+<div class="section" id="grs-send">
+<h3>5.2.1. grs send<a class="headerlink" href="#grs-send" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">send</span></code> command sends messages to a running component instance. The receiver endpoint
+can be specified in two ways:</p>
+<ul class="simple">
+<li>Using the instance, the port and the configuration (this last one is optional).</li>
+<li>Using the url of the receiver port.</li>
+</ul>
+<p>The help options displays an overview of the send command:</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs send --help
+
+ grs send <span class="o">[</span>instance<span class="o">]</span>
+
+ Send a message to the port of the instance
+
+ Options:
+ --instance, -i  name of the instance                                            <span class="o">[</span>string<span class="o">]</span>
+ --delay, -d     Delay between messages                             <span class="o">[</span>number<span class="o">]</span> <span class="o">[</span>default: <span class="m">1</span><span class="o">]</span>
+ --port, -p      name of the port                                                <span class="o">[</span>string<span class="o">]</span>
+ --url, -u       url of the port                                                 <span class="o">[</span>string<span class="o">]</span>
+ --msg, -m       message<span class="o">(</span>s<span class="o">)</span> to be send                                            <span class="o">[</span>array<span class="o">]</span>
+ --file, -f      Name of the file to send                                        <span class="o">[</span>string<span class="o">]</span>
+ --repeats, -r   Number of <span class="nb">times</span> the message is send                <span class="o">[</span>number<span class="o">]</span> <span class="o">[</span>default: <span class="m">1</span><span class="o">]</span>
+ --conf, -c      name of the configuration                  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">--instance,</span> <span class="pre">-i</span></code></dt>
+<dd>the name of the receiver component instance.</dd>
+<dt><code class="docutils literal"><span class="pre">--delay,</span> <span class="pre">-d</span></code></dt>
+<dd>the delay between messages in milliseconds if case more than one message is sent (see option –repeats)</dd>
+<dt><code class="docutils literal"><span class="pre">--port,</span> <span class="pre">-p</span></code></dt>
+<dd>the name of the receiver component port</dd>
+<dt><code class="docutils literal"><span class="pre">--url,</span> <span class="pre">-u</span></code></dt>
+<dd>the url of the receiver port</dd>
+<dt><code class="docutils literal"><span class="pre">--msg,</span> <span class="pre">-m</span></code></dt>
+<dd><p class="first">the message(s) to be send. The messages are separated by an space.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs send -i test_cmp -p position_goal -m <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> -d <span class="m">100</span>
+
+<span class="c1"># will send 3 messages (1 -&gt; a), (2 -&gt; b), (3 -&gt; c) with a delay of 100 ms between them</span>
+</pre></div>
+</div>
+<p>The following data types are supported:</p>
+<ul class="last simple">
+<li>string: ‘message content’</li>
+<li>array:  ‘[1, 2, 3, [4, 5]]’</li>
+<li>struct: ‘{one: 1, two: “two”, three: [1, 2, 3]}’</li>
+<li>number: 10</li>
+</ul>
+</dd>
+<dt><code class="docutils literal"><span class="pre">--file,</span> <span class="pre">-f</span></code></dt>
+<dd>name of the file to be send</dd>
+<dt><code class="docutils literal"><span class="pre">--repeats,</span> <span class="pre">-r</span></code></dt>
+<dd>Number of times that the message(s) is send.</dd>
+<dt><code class="docutils literal"><span class="pre">--conf,</span> <span class="pre">-c</span></code></dt>
+<dd>the name of the configuration of the receiver component</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div></div></blockquote>
+</div>
+<div class="section" id="grs-listen">
+<h3>5.2.2. grs listen<a class="headerlink" href="#grs-listen" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">listen</span></code> command listens to messages from a running component instance
+Like in the <code class="docutils literal"><span class="pre">send</span></code> command is possible to address a remote endpoint by
+giving the instance, port and configuration or by using directly the url of the
+remote port</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs listen --help
+
+ grs listen <span class="o">[</span>instance<span class="o">]</span>
+
+ Listen to messages from the port of the instance
+
+ Options:
+ --instance, -i  name of the instance                                            <span class="o">[</span>string<span class="o">]</span>
+ --port, -p      name of the port                        <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;sd_rep_out&quot;</span><span class="o">]</span>
+ --url, -u       url of the port                                                 <span class="o">[</span>string<span class="o">]</span>
+ --conf, -c      name of the configuration                  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">--instance,</span> <span class="pre">-i</span></code></dt>
+<dd>the name of the remote component instance.</dd>
+<dt><code class="docutils literal"><span class="pre">--port,</span> <span class="pre">-p</span></code></dt>
+<dd>the name of the remote component port</dd>
+<dt><code class="docutils literal"><span class="pre">--url,</span> <span class="pre">-u</span></code></dt>
+<dd>the url of the remote port</dd>
+<dt><code class="docutils literal"><span class="pre">--conf,</span> <span class="pre">-c</span></code></dt>
+<dd>the name of the configuration of the remote component</dd>
+</dl>
+</div>
+<div class="section" id="grs-compile">
+<h3>5.2.3. grs compile<a class="headerlink" href="#grs-compile" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">compile</span></code> commands process the configuration file of a given component so it’s ready
+to be consumed during the start up of a component. This removes the need for sending
+the configuration of a component to the configuration port after starting the component.
+The compiled configuration is saved in the same location as the configuration file
+(e.g: $GMT_LOCAL/etc/conf/&lt;subsystem&gt;) with the extension .cfg</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs compile --help
+
+ grs compile <span class="o">[</span>instance<span class="o">]</span>
+
+ Compile the configuration of an instance. Compiled files are saved in <span class="nv">$GMT_LOCAL</span>/etc/conf/subsystem/
+
+ Options:
+ --instance, -i  name of the instance                                            <span class="o">[</span>string<span class="o">]</span>
+ --conf, -c      name of the configuration                  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">--instance,</span> <span class="pre">-i</span></code></dt>
+<dd>the name of the component instance.</dd>
+<dt><code class="docutils literal"><span class="pre">--conf,</span> <span class="pre">-c</span></code></dt>
+<dd>the name of the configuration of the component intance</dd>
+</dl>
+</div>
+<div class="section" id="grs-info">
+<h3>5.2.4. grs info<a class="headerlink" href="#grs-info" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">info</span></code> command displays the configuration information of a component instance, showing
+what features are defined. This information can be used in the <code class="docutils literal"><span class="pre">get</span></code>, <code class="docutils literal"><span class="pre">set</span></code> commands.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs info --help
+
+ grs info <span class="o">[</span>instance<span class="o">]</span>
+
+ displays configuration information <span class="k">for</span> a given instance
+
+ Options:
+ --instance, -i  name of the instance                                            <span class="o">[</span>string<span class="o">]</span>
+ --conf, -c      name of the configuration                  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">--instance,</span> <span class="pre">-i</span></code></dt>
+<dd>the name of the remote component instance.</dd>
+<dt><code class="docutils literal"><span class="pre">--conf,</span> <span class="pre">-c</span></code></dt>
+<dd>the name of the configuration of the remote component</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs info -i x_ctrl
+
+ Configuration: default
+ <span class="o">{</span> properties:
+ <span class="o">{</span> host:
+     <span class="o">{</span> name: <span class="s1">&#39;host&#39;</span>,
+         default_value: <span class="s1">&#39;127.0.0.1&#39;</span>,
+         type: <span class="s1">&#39;string&#39;</span>,
+         desc: <span class="s1">&#39;&#39;</span> <span class="o">}</span>,
+     port:
+     <span class="o">{</span> name: <span class="s1">&#39;port&#39;</span>, default_value: <span class="m">12200</span>, type: <span class="s1">&#39;integer&#39;</span>, desc: <span class="s1">&#39;&#39;</span> <span class="o">}</span>,
+     scan_rate:
+     <span class="o">{</span> name: <span class="s1">&#39;scan_rate&#39;</span>, default_value: <span class="m">1</span>, type: <span class="s1">&#39;integer&#39;</span>, desc: <span class="s1">&#39;&#39;</span> <span class="o">}</span> <span class="o">}</span>,
+ state_vars:
+ <span class="o">{</span> position:
+     <span class="o">{</span> name: <span class="s1">&#39;position&#39;</span>,
+         default_value: <span class="m">1</span>.1,
+         min: -100,
+         max: <span class="m">100</span>,
+         type: <span class="s1">&#39;float&#39;</span>,
+         blocking_mode: <span class="s1">&#39;sync&#39;</span>,
+         desc: <span class="s1">&#39;Axis position&#39;</span> <span class="o">}</span> <span class="o">}</span>,
+ inputs:
+ <span class="o">{</span> encoder:
+     <span class="o">{</span> name: <span class="s1">&#39;encoder&#39;</span>,
+         default_value: <span class="m">1</span>.1,
+         min: -100,
+         max: <span class="m">100</span>,
+         type: <span class="s1">&#39;float&#39;</span>,
+         blocking_mode: <span class="s1">&#39;sync&#39;</span>,
+         desc: <span class="s1">&#39;Axis encoder input&#39;</span> <span class="o">}</span> <span class="o">}</span>,
+ outputs:
+ <span class="o">{</span> motor:
+     <span class="o">{</span> name: <span class="s1">&#39;motor&#39;</span>,
+         default_value: <span class="m">1</span>.1,
+         min: -100,
+         max: <span class="m">100</span>,
+         type: <span class="s1">&#39;float&#39;</span>,
+         blocking_mode: <span class="s1">&#39;sync&#39;</span>,
+         desc: <span class="s1">&#39;Axis motor demand&#39;</span> <span class="o">}</span> <span class="o">}</span>,
+ faults:
+ <span class="o">{</span> motor_over_heat:
+     <span class="o">{</span> name: <span class="s1">&#39;motor_over_heat&#39;</span>,
+         default_value: <span class="s1">&#39;NOT_ACTIVE&#39;</span>,
+         kind: <span class="s1">&#39;primary&#39;</span>,
+         level: <span class="s1">&#39;CRITICAL&#39;</span>,
+         detection_latency: <span class="m">1</span>,
+         type: <span class="s1">&#39;string&#39;</span>,
+         parent: <span class="s1">&#39;axis_fault&#39;</span>,
+         desc: <span class="s1">&#39;Motor Overheat&#39;</span> <span class="o">}</span>,
+     encoder_fault:
+     <span class="o">{</span> name: <span class="s1">&#39;encoder_fault&#39;</span>,
+         default_value: <span class="s1">&#39;NOT_ACTIVE&#39;</span>,
+         kind: <span class="s1">&#39;primary&#39;</span>,
+         level: <span class="s1">&#39;CRITICAL&#39;</span>,
+         detection_latency: <span class="m">1</span>,
+         type: <span class="s1">&#39;string&#39;</span>,
+         parent: <span class="s1">&#39;axis_fault&#39;</span>,
+         desc: <span class="s1">&#39;Encoder not responding&#39;</span> <span class="o">}</span>,
+     motor_fault:
+     <span class="o">{</span> name: <span class="s1">&#39;motor_fault&#39;</span>,
+         default_value: <span class="s1">&#39;NOT_ACTIVE&#39;</span>,
+         kind: <span class="s1">&#39;primary&#39;</span>,
+         level: <span class="s1">&#39;CRITICAL&#39;</span>,
+         detection_latency: <span class="m">1</span>,
+         type: <span class="s1">&#39;string&#39;</span>,
+         parent: <span class="s1">&#39;axis_fault&#39;</span>,
+         desc: <span class="s1">&#39;Motor not responding&#39;</span> <span class="o">}</span>,
+     axis_fault:
+     <span class="o">{</span> name: <span class="s1">&#39;axis_fault&#39;</span>,
+         default_value: <span class="s1">&#39;NOT_ACTIVE&#39;</span>,
+         kind: <span class="s1">&#39;or&#39;</span>,
+         level: <span class="s1">&#39;CRITICAL&#39;</span>,
+         detection_latency: <span class="m">1</span>,
+         type: <span class="s1">&#39;string&#39;</span>,
+         parent: null,
+         desc: <span class="s1">&#39;Axis fault&#39;</span> <span class="o">}</span> <span class="o">}</span>,
+ alarms:
+ <span class="o">{</span> axis_malfunction_alarm:
+     <span class="o">{</span> name: <span class="s1">&#39;axis_malfunction_alarm&#39;</span>,
+         default_value: <span class="s1">&#39;NORM&#39;</span>,
+         type: <span class="s1">&#39;string&#39;</span>,
+         desc: <span class="s1">&#39;The X Axis is not operational&#39;</span> <span class="o">}</span> <span class="o">}</span>,
+ connectors: <span class="o">[]</span>
+ Proxy ports:
+ <span class="o">{</span> sd_req_in: <span class="s1">&#39;tcp://127.0.0.1:12204&#39;</span>,
+ sd_rep_out: <span class="s1">&#39;tcp://127.0.0.1:12203&#39;</span>,
+ sd_req_out: <span class="s1">&#39;tcp://127.0.0.1:12201&#39;</span>,
+ sd_rep_in: <span class="s1">&#39;tcp://127.0.0.1:12202&#39;</span> <span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="grs-get">
+<h3>5.2.5. grs get<a class="headerlink" href="#grs-get" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">get</span></code> command retrieves information about the state of a component. If not
+feature is specified it will display all the features of the component.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs get --help
+
+ grs get <span class="o">[</span>instance<span class="o">]</span>
+
+ displays the value of a feature of a remote Component instance
+
+ Options:
+ --instance, -i  name of the instance                                            <span class="o">[</span>string<span class="o">]</span>
+ --conf, -c      name of the configuration                  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --feature, -f   name of the feature                                             <span class="o">[</span>string<span class="o">]</span>
+ --slice, -s     name of the attribute to slice the collection                   <span class="o">[</span>string<span class="o">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">--instance,</span> <span class="pre">-i</span></code></dt>
+<dd>the name of the remote component instance.</dd>
+<dt><code class="docutils literal"><span class="pre">--conf,</span> <span class="pre">-c</span></code></dt>
+<dd>the name of the configuration of the remote component</dd>
+<dt><code class="docutils literal"><span class="pre">--feature,</span> <span class="pre">-f</span></code></dt>
+<dd><p class="first">the name of the feature to be get from the remote component. The feature is specified
+by defining its path: &lt;feature_set&gt;/&lt;feature_name&gt;/&lt;feature_attribute&gt;, where</p>
+<ul class="last simple">
+<li>feature_set: the category of the component feature, eg.: state_vars, inputs</li>
+<li>feature_name: the name of the feature, e.g: op_state</li>
+<li>feature_atrribute: the name of the attribute of the feature e.g: value, goal, desc</li>
+</ul>
+</dd>
+<dt><code class="docutils literal"><span class="pre">--slice,</span> <span class="pre">-s</span></code></dt>
+<dd>the name of the slice</dd>
+</dl>
+<p><strong>Examples</strong></p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs get -i x_ctrl
+
+ <span class="c1"># will display all the features of the x_ctrl component</span>
+
+$ grs get -i x_ctrl -f state_vars
+
+ <span class="c1"># will display all the values of all the state variables of x_ctrl</span>
+
+$ grs get -i x_ctrl -f state_vars -s desc
+
+ <span class="c1"># will display all the descriptions of all the state variables of x_ctrl</span>
+
+$ grs get -i x_ctrl -f state_vars/position
+
+ <span class="c1"># will display all the attributes of the x_ctrl position state variable</span>
+
+$ grs get -i x_ctrl -f state_vars/position/goal
+
+ <span class="c1"># will display the goal of the x_ctrl position state variable</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="grs-set">
+<h3>5.2.6. grs set<a class="headerlink" href="#grs-set" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">set</span></code> command sets the value of a feature in a remote component</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs <span class="nb">set</span> --help
+
+ grs <span class="nb">set</span> <span class="o">[</span>instance<span class="o">]</span>
+
+ Sets the value of a feature in a remote Component instance
+
+ Options:
+ --instance, -i  name of the instance                                            <span class="o">[</span>string<span class="o">]</span>
+ --conf, -c      name of the configuration                  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --feature, -f   name of the feature                                             <span class="o">[</span>string<span class="o">]</span>
+ --value, -v     New value                                                        <span class="o">[</span>array<span class="o">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">--instance,</span> <span class="pre">-i</span></code></dt>
+<dd>the name of the remote component instance.</dd>
+<dt><code class="docutils literal"><span class="pre">--conf,</span> <span class="pre">-c</span></code></dt>
+<dd>the name of the configuration of the remote component</dd>
+<dt><code class="docutils literal"><span class="pre">--feature,</span> <span class="pre">-f</span></code></dt>
+<dd>the name of the feature to be set in the remote component</dd>
+<dt><code class="docutils literal"><span class="pre">--value,</span> <span class="pre">-v</span></code></dt>
+<dd><p class="first">the new value to be set in the remote component feature</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs <span class="nb">set</span> -i x_ctrl -f state_vars/position/goal -v <span class="m">1</span>.5
+
+<span class="c1"># will set the goal of the remote component position state variable to 1.5</span>
+</pre></div>
+</div>
+<p>The following data types are supported:</p>
+<ul class="last simple">
+<li>string: ‘value content’</li>
+<li>array:  ‘[1, 2, 3, [4, 5]]’</li>
+<li>struct: ‘{one: 1, two: “two”, three: [1, 2, 3]}’</li>
+<li>number: 10</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="grs-inspect">
+<h3>5.2.7. grs inspect<a class="headerlink" href="#grs-inspect" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">inspect</span></code> continuously retrieve the values of all the features of a remote component instance</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs inspect --help
+
+ grs inspect <span class="o">[</span>instance<span class="o">]</span>
+
+ retrieves the values of all the features of a remote Component instance
+
+ Options:
+ --instance, -i  name of the instance                                            <span class="o">[</span>string<span class="o">]</span>
+ --feature, -f   name of the feature                                             <span class="o">[</span>string<span class="o">]</span>
+ --rate, -r      Scan rate, <span class="nv">0</span> <span class="o">=</span> <span class="m">1</span> shot                             <span class="o">[</span>number<span class="o">]</span> <span class="o">[</span>default: <span class="m">10</span><span class="o">]</span>
+ --conf, -c      name of the configuration                  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">--instance,</span> <span class="pre">-i</span></code></dt>
+<dd>the name of the remote component instance.</dd>
+<dt><code class="docutils literal"><span class="pre">--feature,</span> <span class="pre">-f</span></code></dt>
+<dd>the name of the feature to retrieve from the remote component. If this parameter is passed
+<code class="docutils literal"><span class="pre">grs</span> <span class="pre">inspect</span></code> will update only the value of the specified feature</dd>
+<dt><code class="docutils literal"><span class="pre">--rate,</span> <span class="pre">-r</span></code></dt>
+<dd>the rate at which <code class="docutils literal"><span class="pre">grs</span> <span class="pre">inspect</span></code> will retrieve and display the remote information</dd>
+<dt><code class="docutils literal"><span class="pre">--conf,</span> <span class="pre">-c</span></code></dt>
+<dd>the name of the configuration of the remote component</dd>
+</dl>
+<p>The following example shows the ouput of the inspect command for a component implemented in nodeJS:</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs inspect cartesian_ctrl
+
+ Timestamp:  Mon Jul <span class="m">01</span> <span class="m">2019</span> <span class="m">17</span>:37:21 GMT-0700 <span class="o">(</span>Pacific Daylight Time<span class="o">)</span> hb#:<span class="o">[</span><span class="m">0</span><span class="o">]</span>
+ <span class="o">{</span> properties:
+ <span class="o">{</span> name: <span class="s1">&#39;cartesian_ctrl&#39;</span>,
+     scope: <span class="s1">&#39;&#39;</span>,
+     config: <span class="s1">&#39;default&#39;</span>,
+     auto_conf: true,
+     uri: <span class="s1">&#39;&#39;</span>,
+     host: <span class="s1">&#39;127.0.0.1&#39;</span>,
+     port: <span class="m">12500</span>,
+     scan_rate: <span class="m">1</span>,
+     auto_start: false,
+     auto_init: false,
+     auto_halt: true,
+     auto_shutdown: <span class="nb">true</span> <span class="o">}</span>,
+ state_vars: <span class="o">{</span> op_state: <span class="s1">&#39;RUNNING&#39;</span>, position: <span class="m">0</span>.01 <span class="o">}</span>,
+ inputs:
+ <span class="o">{</span> x_position_in: <span class="m">18</span>.499999999999996,
+     y_position_in: <span class="m">1</span>.1,
+     z_position_in: <span class="m">18</span>.499999999999996 <span class="o">}</span>,
+ outputs:
+ <span class="o">{</span> x_position_out: <span class="m">17</span>.69999999999998,
+     y_position_out: <span class="m">17</span>.69999999999998,
+     z_position_out: <span class="m">17</span>.69999999999998 <span class="o">}</span>,
+ faults:
+ <span class="o">{</span> x_axis_fault: <span class="s1">&#39;NOT_ACTIVE&#39;</span>,
+     y_axis_fault: <span class="s1">&#39;NOT_ACTIVE&#39;</span>,
+     z_axis_fault: <span class="s1">&#39;NOT_ACTIVE&#39;</span>,
+     stage_fault: <span class="s1">&#39;NOT_ACTIVE&#39;</span> <span class="o">}</span>,
+ alarms: <span class="o">{}</span>,
+ connectors: <span class="o">{</span> <span class="o">}</span>,
+ proxies: <span class="o">{</span> x_ctrl: null, y_ctrl: null, z_ctrl: null <span class="o">}</span> <span class="o">}</span>
+ Enter &lt;CTRL-C&gt; to <span class="nb">exit</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="grs-options">
+<h3>5.2.8. grs options<a class="headerlink" href="#grs-options" title="Permalink to this headline">¶</a></h3>
+<p>The following options can be used in combination with the previous commands</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">-V,</span> <span class="pre">--version</span></code></dt>
+<dd>The <code class="docutils literal"><span class="pre">grs</span></code> command will print the version number</dd>
+<dt><code class="docutils literal"><span class="pre">-l,</span> <span class="pre">--logging</span> <span class="pre">&lt;level&gt;</span></code></dt>
+<dd><p class="first">Activates &lt;level&gt; logging. The following table describes the different values available for the <code class="docutils literal"><span class="pre">logging</span></code> option</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="7%" />
+<col width="4%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&lt;level&gt;</th>
+<th class="head">Abbr</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>fatal</td>
+<td>FTL</td>
+<td>fatal   - errors which make the application unusable</td>
+</tr>
+<tr class="row-odd"><td>error</td>
+<td>ERR</td>
+<td>error   - errors that preclude to achive an specific request</td>
+</tr>
+<tr class="row-even"><td>warning</td>
+<td>WRN</td>
+<td>warning - problems that may caused that the result achieved may not be the expected</td>
+</tr>
+<tr class="row-odd"><td>info</td>
+<td>INF</td>
+<td>info    - information about the general execution of the application</td>
+</tr>
+<tr class="row-even"><td>debug</td>
+<td>DBG</td>
+<td>debug   - information to provide an understanding of the internal of the application</td>
+</tr>
+<tr class="row-odd"><td>trace</td>
+<td>TRC</td>
+<td>trace   - information that may server to identify a potential problem</td>
+</tr>
+<tr class="row-even"><td>metric</td>
+<td>MET</td>
+<td>metric  - information to record performance metrics relative to the execution of the application</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="docutils literal"><span class="pre">auto_conf</span></code></dt>
+<dd>Loads and applies the <code class="docutils literal"><span class="pre">grs</span></code> application configuration file if it exists.</dd>
+<dt><code class="docutils literal"><span class="pre">config</span></code></dt>
+<dd>Name of the <code class="docutils literal"><span class="pre">grs</span></code> application configuration file</dd>
+<dt><code class="docutils literal"><span class="pre">scope</span></code></dt>
+<dd>Scope used to load the <code class="docutils literal"><span class="pre">grs</span></code> configuration file</dd>
+<dt><code class="docutils literal"><span class="pre">-h,</span> <span class="pre">--help</span></code></dt>
+<dd>output usage information</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modeling_guidelines.html" class="btn btn-neutral float-right" title="6. Model specification guide document" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gds_guide.html" class="btn btn-neutral" title="4. gds documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, contributors.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

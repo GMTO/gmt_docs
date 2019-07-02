@@ -491,7 +491,7 @@ In a separate terminal (for example, `tty2`), **start the logging service client
 
 .. code-block:: bash
 
-   $ log_client
+   $ log_client listen
 
 
 Telemetry client
@@ -501,23 +501,7 @@ In a separate terminal (for example `tty3`), **start the telemetry service clien
 
 .. code-block:: bash
 
-  $ tele_client
-
-
-Component setup
-...............
-
-In the first terminal (`tty1`), **initialize all components**
-
-.. code-block:: bash
-
-   $ cd $GMT_LOCAL/modules/ocs_hdk_dcs/src/etc
-   $ ./send_config.coffee
-
-Switch to the session running the logging service client (`tty2`), and confirm
-that the expected components are logging step info.
-
-
+  $ tele_client listen
 
 
 HDK operation

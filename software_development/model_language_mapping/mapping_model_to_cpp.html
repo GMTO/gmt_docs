@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>6.1. Mapping between the Model Definition Files and C++ source code &mdash; GMT Software And Controls documentation</title>
+  <title>7.1. Mapping between the Model Definition Files and C++ source code &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -40,9 +40,9 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
-        <link rel="up" title="6. Model-language mapping" href="index.html"/>
-        <link rel="next" title="7. OCS Test Guidelines" href="../test_guidelines.html"/>
-        <link rel="prev" title="6. Model-language mapping" href="index.html"/> 
+        <link rel="up" title="7. Model-language mapping" href="index.html"/>
+        <link rel="next" title="8. OCS Test Guidelines" href="../test_guidelines.html"/>
+        <link rel="prev" title="7. Model-language mapping" href="index.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -107,21 +107,22 @@
 <li class="toctree-l2"><a class="reference internal" href="../upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gds_guide.html">4. gds documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modeling_guidelines.html">5. Model specification guide document</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">6. Model-language mapping</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.1. Mapping between the Model Definition Files and C++ source code</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#c-source-code-file-tree-structure">6.1.1. C++ source code file tree structure</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#data-types-mapping">6.1.2. Data types mapping</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#component-mapping">6.1.3. Component mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grs_guide.html">5. grs documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">7. Model-language mapping</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">7.1. Mapping between the Model Definition Files and C++ source code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c-source-code-file-tree-structure">7.1.1. C++ source code file tree structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-types-mapping">7.1.2. Data types mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-mapping">7.1.3. Component mapping</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../test_guidelines.html">7. OCS Test Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core_services_user_guide.html">8. Core Services user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../isample_example.html">9. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../hdk_example.html">10. HDK example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ui_fwk.html">11. UI Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test_guidelines.html">8. OCS Test Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core_services_user_guide.html">9. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../isample_example.html">10. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hdk_example.html">11. HDK example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_fwk.html">12. UI Framework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../data_products/index.html">Data Products</a></li>
@@ -172,9 +173,9 @@
         
           <li><a href="../index.html">Software Development</a> &raquo;</li>
         
-          <li><a href="index.html">6. Model-language mapping</a> &raquo;</li>
+          <li><a href="index.html">7. Model-language mapping</a> &raquo;</li>
         
-      <li>6.1. Mapping between the Model Definition Files and C++ source code</li>
+      <li>7.1. Mapping between the Model Definition Files and C++ source code</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -192,9 +193,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="mapping-between-the-model-definition-files-and-c-source-code">
-<span id="mapping-model-to-cpp"></span><h1>6.1. Mapping between the Model Definition Files and C++ source code<a class="headerlink" href="#mapping-between-the-model-definition-files-and-c-source-code" title="Permalink to this headline">¶</a></h1>
+<span id="mapping-model-to-cpp"></span><h1>7.1. Mapping between the Model Definition Files and C++ source code<a class="headerlink" href="#mapping-between-the-model-definition-files-and-c-source-code" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="c-source-code-file-tree-structure">
-<span id="map-cpp-file-tree"></span><h2>6.1.1. C++ source code file tree structure<a class="headerlink" href="#c-source-code-file-tree-structure" title="Permalink to this headline">¶</a></h2>
+<span id="map-cpp-file-tree"></span><h2>7.1.1. C++ source code file tree structure<a class="headerlink" href="#c-source-code-file-tree-structure" title="Permalink to this headline">¶</a></h2>
 <p>The C++ generated source files are located under the <code class="docutils literal"><span class="pre">&lt;MODULE_DIR&gt;/src/cpp</span></code>
 directory, which has the following structure:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">MODULE_DIR</span><span class="o">&gt;/</span>
@@ -251,17 +252,17 @@ that was given to the package <em>(note: the suffix of the name should be
 <dl class="docutils">
 <dt>&lt;comp_i&gt;/</dt>
 <dd>For each component there is a directory where all its source files are
-placed. The name of the directory is the same as the component. See <a class="reference internal" href="#map-cpp-map-component"><span class="std std-numref">Section 6.1.3</span></a> for more details.</dd>
+placed. The name of the directory is the same as the component. See <a class="reference internal" href="#map-cpp-map-component"><span class="std std-numref">Section 7.1.3</span></a> for more details.</dd>
 <dt>&lt;a_i&gt;_app.cpp</dt>
 <dd>For each application defined in the model for the current package there
 is a C++ file which contains the source of the application.</dd>
 <dt>module.mk</dt>
 <dd>The <code class="docutils literal"><span class="pre">`module.mk`</span></code> file contains all the directives that are needed
-to compile and link the current package. See <a class="reference internal" href="#map-cpp-map-makefiles"><span class="std std-numref">Section 6.1.1.1</span></a> for
+to compile and link the current package. See <a class="reference internal" href="#map-cpp-map-makefiles"><span class="std std-numref">Section 7.1.1.1</span></a> for
 more details.</dd>
 </dl>
 <div class="section" id="makefiles">
-<span id="map-cpp-map-makefiles"></span><h3>6.1.1.1. Makefiles<a class="headerlink" href="#makefiles" title="Permalink to this headline">¶</a></h3>
+<span id="map-cpp-map-makefiles"></span><h3>7.1.1.1. Makefiles<a class="headerlink" href="#makefiles" title="Permalink to this headline">¶</a></h3>
 <p>As seen above, there is one <code class="docutils literal"><span class="pre">`Makefile`</span></code> in the <code class="docutils literal"><span class="pre">`src/cpp/`</span></code> directory
 of each module, which only the system level Makefile
 rules. This Makefile should not be modified by the user, unless necessary.</p>
@@ -280,9 +281,9 @@ there is an example of such directives.</p>
 </div>
 </div>
 <div class="section" id="data-types-mapping">
-<h2>6.1.2. Data types mapping<a class="headerlink" href="#data-types-mapping" title="Permalink to this headline">¶</a></h2>
+<h2>7.1.2. Data types mapping<a class="headerlink" href="#data-types-mapping" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="primitive-types">
-<h3>6.1.2.1. Primitive types<a class="headerlink" href="#primitive-types" title="Permalink to this headline">¶</a></h3>
+<h3>7.1.2.1. Primitive types<a class="headerlink" href="#primitive-types" title="Permalink to this headline">¶</a></h3>
 <p>The mapping from the model primitive types to the corresponding C++ types can be
 found in the following table</p>
 <blockquote>
@@ -398,7 +399,7 @@ found in the following table</p>
 </div></blockquote>
 </div>
 <div class="section" id="struct-types">
-<h3>6.1.2.2. Struct types<a class="headerlink" href="#struct-types" title="Permalink to this headline">¶</a></h3>
+<h3>7.1.2.2. Struct types<a class="headerlink" href="#struct-types" title="Permalink to this headline">¶</a></h3>
 <p>The data types defined in the model files as <code class="docutils literal"><span class="pre">`StructType`</span></code> are
 mapped to C++ struct types. The C++ definition is generated to a
 header file inside the <code class="docutils literal"><span class="pre">`include/`</span></code> directory, with its name
@@ -437,7 +438,7 @@ primitive types, user-defined types and arrays or sequences.</p>
 type to be serialized automatically by the <a class="reference external" href="https://msgpack.org/">msgpack library</a>.</p>
 </div>
 <div class="section" id="enumerated-types">
-<h3>6.1.2.3. Enumerated types<a class="headerlink" href="#enumerated-types" title="Permalink to this headline">¶</a></h3>
+<h3>7.1.2.3. Enumerated types<a class="headerlink" href="#enumerated-types" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal"><span class="pre">`Enum`</span></code> types defined in the DCS model files are mapped to C++
 as <a class="reference external" href="https://en.cppreference.com/w/cpp/language/enum">enum classes</a>. The
 labels of the C++ enum class will be the literals defined in the Enum type
@@ -470,9 +471,9 @@ the variables of this type to be automatically serialized by msgpack.</p>
 </div>
 </div>
 <div class="section" id="component-mapping">
-<span id="map-cpp-map-component"></span><h2>6.1.3. Component mapping<a class="headerlink" href="#component-mapping" title="Permalink to this headline">¶</a></h2>
+<span id="map-cpp-map-component"></span><h2>7.1.3. Component mapping<a class="headerlink" href="#component-mapping" title="Permalink to this headline">¶</a></h2>
 <p>Each Component has its own directory in the file tree of the package it
-belongs to, as shown in <a class="reference internal" href="#map-cpp-file-tree"><span class="std std-numref">Section 6.1.1</span></a>. The Component
+belongs to, as shown in <a class="reference internal" href="#map-cpp-file-tree"><span class="std std-numref">Section 7.1.1</span></a>. The Component
 directory will have the following contents:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pk_i_pkg</span><span class="o">&gt;/</span>
    <span class="o">|--</span> <span class="o">...</span>
@@ -488,7 +489,7 @@ directory will have the following contents:</p>
 <p>The name of the Component directory and the prefix of all the generated
 source files inside it is equal to the Component name.</p>
 <div class="section" id="component-header-file">
-<span id="map-cpp-model-example"></span><h3>6.1.3.1. Component header file<a class="headerlink" href="#component-header-file" title="Permalink to this headline">¶</a></h3>
+<span id="map-cpp-model-example"></span><h3>7.1.3.1. Component header file<a class="headerlink" href="#component-header-file" title="Permalink to this headline">¶</a></h3>
 <p>The C++ class definition of the component is located in the <code class="docutils literal"><span class="pre">`&lt;component_name&gt;.h`</span></code>
 file. The name of the class is set as the name defined in the model file, but
 in CamelCase. For example, a component named <code class="docutils literal"><span class="pre">`my_component`</span></code> in the
@@ -841,7 +842,7 @@ if needed.</p>
 member variable, which is inherited from the base class.</p>
 </div>
 <div class="section" id="component-setup-class-header-file">
-<h3>6.1.3.2. Component setup class header file<a class="headerlink" href="#component-setup-class-header-file" title="Permalink to this headline">¶</a></h3>
+<h3>7.1.3.2. Component setup class header file<a class="headerlink" href="#component-setup-class-header-file" title="Permalink to this headline">¶</a></h3>
 <p>The configuration of any component (values of the properties and setup
 information for the state variables and ports) is stored in a class
 named <code class="docutils literal"><span class="pre">`&lt;ComponentName&gt;Setup`</span></code>, and as stated above, the component
@@ -851,7 +852,7 @@ class has an alias for this setup class which always has the name
 The root of the setup classes hierarchy is the <code class="code docutils literal"><span class="pre">BaseComponent::Setup</span></code>
 class.</p>
 <p>The Setup class definition is generated in the file <code class="docutils literal"><span class="pre">`&lt;component_name&gt;_msgpack.h`</span></code>.
-The generated code for the example component of <a class="reference internal" href="#map-cpp-model-example"><span class="std std-numref">Section 6.1.3.1</span></a>
+The generated code for the example component of <a class="reference internal" href="#map-cpp-model-example"><span class="std std-numref">Section 7.1.3.1</span></a>
 would be in the file <code class="docutils literal"><span class="pre">`my_component_msgpack.h`</span></code>, with the following content:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#ifndef _my_component_msgpack_h_</span>
 <span class="cp">#define _my_component_msgpack_h_</span>
@@ -955,7 +956,7 @@ allows the component Setup class to be serialized automatically.</p>
 </dl>
 </div>
 <div class="section" id="component-setup-method-definition-file">
-<h3>6.1.3.3. Component setup method definition file<a class="headerlink" href="#component-setup-method-definition-file" title="Permalink to this headline">¶</a></h3>
+<h3>7.1.3.3. Component setup method definition file<a class="headerlink" href="#component-setup-method-definition-file" title="Permalink to this headline">¶</a></h3>
 <p>The code for the <code class="code docutils literal"><span class="pre">&lt;component_name&gt;::setup()</span></code> and <code class="code docutils literal"><span class="pre">&lt;component_name&gt;::create_config()</span></code>
 methods is automatically generated from the model to the file <code class="docutils literal"><span class="pre">`&lt;component_name&gt;_setup.cpp`</span></code>.</p>
 <p>The code generated for the <code class="code docutils literal"><span class="pre">create_config()</span></code> method
@@ -965,7 +966,7 @@ output ports and properties, initializes them and creates the links between the
 ports and properties to the actual member variables of the component class.</p>
 </div>
 <div class="section" id="component-step-method-definition-file">
-<h3>6.1.3.4. Component step method definition file<a class="headerlink" href="#component-step-method-definition-file" title="Permalink to this headline">¶</a></h3>
+<h3>7.1.3.4. Component step method definition file<a class="headerlink" href="#component-step-method-definition-file" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="code docutils literal"><span class="pre">&lt;component_name&gt;::step()</span></code> method is the one that defines the
 behavior of the component. Hence, it is one of the most important methods
 of any component, and the only one from the auto-generated methods that
@@ -988,10 +989,10 @@ must overwrite it with the actual implementation for the current component.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../test_guidelines.html" class="btn btn-neutral float-right" title="7. OCS Test Guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../test_guidelines.html" class="btn btn-neutral float-right" title="8. OCS Test Guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="6. Model-language mapping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="7. Model-language mapping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>11. UI Framework &mdash; GMT Software And Controls documentation</title>
+  <title>12. UI Framework &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -42,7 +42,7 @@
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
         <link rel="next" title="Data Products" href="../data_products/index.html"/>
-        <link rel="prev" title="10. HDK example" href="hdk_example.html"/> 
+        <link rel="prev" title="11. HDK example" href="hdk_example.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -107,24 +107,25 @@
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gds_guide.html">4. gds documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">5. Model specification guide document</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">6. Model-language mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">7. OCS Test Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">8. Core Services user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="isample_example.html">9. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">10. HDK example</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">11. UI Framework</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#engineering-app">11.1. Engineering App</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">11.2. Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#user-guide">11.3. User Guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#launching-custom-panels">11.4. Launching Custom Panels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-custom-panels">11.5. Creating Custom Panels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#updating-the-model">11.5.1. Updating the model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#simple-hello-world-panel">11.5.2. Simple ‘Hello World’ panel</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#complex-panel">11.5.3. Complex panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grs_guide.html">5. grs documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">8. OCS Test Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">9. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">10. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">11. HDK example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">12. UI Framework</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#engineering-app">12.1. Engineering App</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">12.2. Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-guide">12.3. User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launching-custom-panels">12.4. Launching Custom Panels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-custom-panels">12.5. Creating Custom Panels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#updating-the-model">12.5.1. Updating the model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simple-hello-world-panel">12.5.2. Simple ‘Hello World’ panel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#complex-panel">12.5.3. Complex panel</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-guide">11.6. Troubleshooting Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-guide">12.6. Troubleshooting Guide</a></li>
 </ul>
 </li>
 </ul>
@@ -177,7 +178,7 @@
         
           <li><a href="index.html">Software Development</a> &raquo;</li>
         
-      <li>11. UI Framework</li>
+      <li>12. UI Framework</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -195,7 +196,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="ui-framework">
-<span id="ui-fwk"></span><h1>11. UI Framework<a class="headerlink" href="#ui-framework" title="Permalink to this headline">¶</a></h1>
+<span id="ui-fwk"></span><h1>12. UI Framework<a class="headerlink" href="#ui-framework" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The UI framework is currently only supported on MacOS.  Linux support will be available in future releases.</p>
@@ -207,7 +208,7 @@
 <li>An App that provides an interface to the OCS</li>
 </ul>
 <div class="section" id="engineering-app">
-<h2>11.1. Engineering App<a class="headerlink" href="#engineering-app" title="Permalink to this headline">¶</a></h2>
+<h2>12.1. Engineering App<a class="headerlink" href="#engineering-app" title="Permalink to this headline">¶</a></h2>
 <p>The engineering application provides a GUI to the OCS model.  It is launched via the command line and it will spawn an OS window that renders the UI.</p>
 <p>The UI engineering app uses your local bundles from <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code> and allows you to see a visual representation of your model files’ input/output ports.  For now, the Engineering app needs to run in MacOS or a Linux Desktop.</p>
 <p>To launch the application, run this in the command line</p>
@@ -217,7 +218,7 @@
 <p>This will launch the GUI as a child process of the CLI application.  To stop the GUI, stop the CLI app with <code class="docutils literal"><span class="pre">CTRL</span> <span class="pre">+</span> <span class="pre">C</span></code>.</p>
 </div>
 <div class="section" id="configuration">
-<h2>11.2. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<h2>12.2. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>The User Interface needs to be configured to connect to the correct control components to receive data. Without proper configuration, the application may look like this:</p>
 <img alt="Navigator application - No connection to HDK components" class="align-center" src="../_images/Navigator_HDK_noconnection.png" />
 <p>Edit the appropriate config files in the <code class="docutils literal"><span class="pre">src/etc/conf</span></code> folder to point to the correct IP address for input and output ports. For example,</p>
@@ -229,7 +230,7 @@ $ sed -i <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s/172.0.0.1/1
 <p>Restart the Navigator application for changes to take affect.</p>
 </div>
 <div class="section" id="user-guide">
-<h2>11.3. User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
+<h2>12.3. User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
 <img alt="Navigator application regions" class="align-center" src="../_images/Navigator_slices.png" />
 <p>The navigator application contains four regions.</p>
 <ol class="arabic simple">
@@ -248,7 +249,7 @@ $ sed -i <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s/172.0.0.1/1
 </div>
 </div>
 <div class="section" id="launching-custom-panels">
-<h2>11.4. Launching Custom Panels<a class="headerlink" href="#launching-custom-panels" title="Permalink to this headline">¶</a></h2>
+<h2>12.4. Launching Custom Panels<a class="headerlink" href="#launching-custom-panels" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">navigator</span></code> application can also launch custom panels that are defined in a DCS’ <cite>*_vis_pkg</cite> folders.  When defined, it’s possible to launch standalone panels with the following parameters</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ navigator --panel emf_custom_weather_view --port <span class="m">9098</span>
 </pre></div>
@@ -261,10 +262,10 @@ $ sed -i <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s/172.0.0.1/1
 </div>
 </div>
 <div class="section" id="creating-custom-panels">
-<h2>11.5. Creating Custom Panels<a class="headerlink" href="#creating-custom-panels" title="Permalink to this headline">¶</a></h2>
+<h2>12.5. Creating Custom Panels<a class="headerlink" href="#creating-custom-panels" title="Permalink to this headline">¶</a></h2>
 <p>The following tutorial uses the HDK module to step through the process of creating a simple, and then a more complex custom UI panel. In some cases, the files and folders created in the tutorial already exist in the repository.</p>
 <div class="section" id="updating-the-model">
-<h3>11.5.1. Updating the model<a class="headerlink" href="#updating-the-model" title="Permalink to this headline">¶</a></h3>
+<h3>12.5.1. Updating the model<a class="headerlink" href="#updating-the-model" title="Permalink to this headline">¶</a></h3>
 <p>The UI Framework needs to notified of the existence of custom UI panels when loading the model. This is currently achieved by adding a panel definition in the model and rebuilding it with <code class="docutils literal"><span class="pre">webpack</span></code>.</p>
 <p>To create a custom UI panel to load in the UI, a vis package is required.  We’ll first register this package in the model, then export the code that will be run by the UI framework.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/model
@@ -303,7 +304,7 @@ $ touch hdk_custom_view.coffee
 </div>
 </div>
 <div class="section" id="simple-hello-world-panel">
-<h3>11.5.2. Simple ‘Hello World’ panel<a class="headerlink" href="#simple-hello-world-panel" title="Permalink to this headline">¶</a></h3>
+<h3>12.5.2. Simple ‘Hello World’ panel<a class="headerlink" href="#simple-hello-world-panel" title="Permalink to this headline">¶</a></h3>
 <p>Now that your vis package is visible to the model, you need to write some UI code.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/coffee
 $ mkdir hdk_vis_pkg
@@ -353,7 +354,7 @@ $ touch hello.coffee
 </div>
 </div>
 <div class="section" id="complex-panel">
-<h3>11.5.3. Complex panel<a class="headerlink" href="#complex-panel" title="Permalink to this headline">¶</a></h3>
+<h3>12.5.3. Complex panel<a class="headerlink" href="#complex-panel" title="Permalink to this headline">¶</a></h3>
 <p>That example is to get your feet wet, but you’ll want to render more complex views of your components.  The UI framework provides an abstraction that parallels the <cite>step</cite> function of your components.  This abstraction provides the data you expose through your output ports and state var values, and provides a way to send values to input ports and state var goals.</p>
 <p>First, let’s create the <cite>Step</cite> rendering function.  We will create a step function for the <code class="docutils literal"><span class="pre">hdk_main_ctrl</span></code> model.  The data that the step render function exposes comes from the <code class="docutils literal"><span class="pre">hdk_main_ctrl.coffee</span></code> model.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/coffee/hdk_vis_pkg
@@ -461,7 +462,7 @@ $ touch hdk_main_ctrl_view.coffee
 </div>
 </div>
 <div class="section" id="troubleshooting-guide">
-<h2>11.6. Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permalink to this headline">¶</a></h2>
+<h2>12.6. Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permalink to this headline">¶</a></h2>
 <p>The engineering app loads the local bundles defined in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code>.  It currently uses the model generated config files to read data for your package.  Those config files are created in <code class="docutils literal"><span class="pre">$GMT_LOCAL/modules/&lt;your_module&gt;/src/etc/conf/&lt;your_package&gt;_pkg/&lt;component&gt;_config.coffee</span></code>; it’s useful to see what’s in those configs when troubleshooting data availability issues.  The availability of data to the UI largely depends on those config files.  The values generated will depend on how you write your model, but a sample of a config file might look like</p>
 <blockquote>
 <div><div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nv">module.exports =</span>
@@ -520,7 +521,7 @@ $ touch hdk_main_ctrl_view.coffee
         <a href="../data_products/index.html" class="btn btn-neutral float-right" title="Data Products" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="hdk_example.html" class="btn btn-neutral" title="10. HDK example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="hdk_example.html" class="btn btn-neutral" title="11. HDK example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

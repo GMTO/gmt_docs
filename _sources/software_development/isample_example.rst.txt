@@ -345,21 +345,8 @@ In a separate terminal (for example, `tty2`), **start the logging service client
 
 .. code-block:: bash
 
-   $ log_client
+   $ log_client listen
 
-
-Component setup
-~~~~~~~~~~~~~~~
-
-In the first terminal (`tty1`), **initialize all components**
-
-.. code-block:: bash
-
-   $ cd $GMT_LOCAL/modules/ocs_isample_dcs/src/etc
-   $ ./send_config.coffee
-
-Switch to the session running the logging service client (`tty2`), and confirm
-that the expected components are logging step info.
 
 Telemetry Service
 ~~~~~~~~~~~~~~~~~
@@ -368,7 +355,7 @@ In a separate terminal (for example `tty3`), **start the telemetry service clien
 
 .. code-block:: bash
 
-   $ tele_client
+   $ tele_client listen
 
 In this example, we don't filter, to show data for all monitors.
 The output can be filtered on substrings of the monitor name by specifying the
@@ -377,7 +364,7 @@ name, such as ``position`` or ``heartbeat``. For example,
 
 .. code-block:: bash
 
-    tele_client --topic=gmt://isample_dcs/isample_focus_ctrl/isample_focus1_ctrl/hmi_outputs
+    tele_client listen --topic=gmt://isample_dcs/isample_focus_ctrl/isample_focus1_ctrl/hmi_outputs
 
 will show only the values of the ``hmi_outputs`` monitor from ``isample_focus1_ctrl``.
 

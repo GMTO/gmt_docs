@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8. Core Services user guide &mdash; GMT Software And Controls documentation</title>
+  <title>9. Core Services user guide &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -41,8 +41,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="9. ISample Example" href="isample_example.html"/>
-        <link rel="prev" title="7. OCS Test Guidelines" href="test_guidelines.html"/> 
+        <link rel="next" title="10. ISample Example" href="isample_example.html"/>
+        <link rel="prev" title="8. OCS Test Guidelines" href="test_guidelines.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -107,23 +107,25 @@
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gds_guide.html">4. gds documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">5. Model specification guide document</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">6. Model-language mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">7. OCS Test Guidelines</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">8. Core Services user guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">8.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#service-usage">8.2. Service Usage</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#service-server-application">8.2.1. Service Server Application</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#service-client-application">8.2.2. Service Client Application</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#service-adapter">8.2.3. Service Adapter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#service-database">8.2.4. Service Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grs_guide.html">5. grs documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">8. OCS Test Guidelines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9. Core Services user guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">9.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-usage">9.2. Service Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#service-server-application">9.2.1. Service Server Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service-client-application">9.2.2. Service Client Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#core-services-monitoring">9.2.3. Core Services Monitoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service-adapter">9.2.4. Service Adapter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service-database">9.2.5. Service Database</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="isample_example.html">9. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">10. HDK example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ui_fwk.html">11. UI Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">10. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">11. HDK example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_fwk.html">12. UI Framework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -174,7 +176,7 @@
         
           <li><a href="index.html">Software Development</a> &raquo;</li>
         
-      <li>8. Core Services user guide</li>
+      <li>9. Core Services user guide</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -192,9 +194,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="core-services-user-guide">
-<span id="core-services-usr-guide"></span><h1>8. Core Services user guide<a class="headerlink" href="#core-services-user-guide" title="Permalink to this headline">¶</a></h1>
+<span id="core-services-usr-guide"></span><h1>9. Core Services user guide<a class="headerlink" href="#core-services-user-guide" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>8.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>9.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>This documents describes the use of the GMT OCS Core Services. The OCS Architecture Documment [ref]
 describes the overall design of the OCS and provides a description of the function and
 architecture of the OCS Core Services. In short the Core Services are part of the OCS distributed
@@ -202,7 +204,7 @@ architecture and provides services that the OCS distributed Components can use t
 function. The following diagram shows the OCS Core Services in the context of the overall OCS.</p>
 <div class="figure" id="id1">
 <img alt="../_images/core_systems_core_services.png" src="../_images/core_systems_core_services.png" />
-<p class="caption"><span class="caption-number">Fig. 8.12 </span><span class="caption-text">Core Services in the context of the OCS</span></p>
+<p class="caption"><span class="caption-number">Fig. 9.5 </span><span class="caption-text">Core Services in the context of the OCS</span></p>
 </div>
 <p>The Core Services that are available in the latest release are:</p>
 <blockquote>
@@ -235,7 +237,7 @@ each Service from the command line.</li>
 </div></blockquote>
 </div>
 <div class="section" id="service-usage">
-<h2>8.2. Service Usage<a class="headerlink" href="#service-usage" title="Permalink to this headline">¶</a></h2>
+<h2>9.2. Service Usage<a class="headerlink" href="#service-usage" title="Permalink to this headline">¶</a></h2>
 <p>This section describes the usage of the different components of each service. As all the services
 support the same options and operate in a similar way, examples of the usage of different
 services are included in the descriptions. The following command line application are installed as
@@ -264,32 +266,29 @@ part of the SDK:</p>
 <tr class="row-odd"><td>Configuration</td>
 <td>conf_client</td>
 </tr>
-<tr class="row-even"><td>Configuration</td>
-<td>conf_send (alpha)</td>
-</tr>
-<tr class="row-odd"><td>Logging</td>
+<tr class="row-even"><td>Logging</td>
 <td>log_server</td>
 </tr>
-<tr class="row-even"><td>Logging</td>
+<tr class="row-odd"><td>Logging</td>
 <td>log_client</td>
 </tr>
-<tr class="row-odd"><td>Supervision</td>
+<tr class="row-even"><td>Supervision</td>
 <td>sup_server</td>
 </tr>
-<tr class="row-even"><td>Supervision</td>
+<tr class="row-odd"><td>Supervision</td>
 <td>sup_client</td>
 </tr>
-<tr class="row-odd"><td>Telemetry</td>
+<tr class="row-even"><td>Telemetry</td>
 <td>tele_server</td>
 </tr>
-<tr class="row-even"><td>Telemetry</td>
+<tr class="row-odd"><td>Telemetry</td>
 <td>tele_client</td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
 <div class="section" id="service-server-application">
-<h3>8.2.1. Service Server Application<a class="headerlink" href="#service-server-application" title="Permalink to this headline">¶</a></h3>
+<h3>9.2.1. Service Server Application<a class="headerlink" href="#service-server-application" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">&lt;service&gt;_server</span></code> command line application starts the alarm service server.
 For the purposes of developing and testing software components with the SDK it is
@@ -307,55 +306,50 @@ to debug in case of troubleshooting.</p>
 <p>The following section shows the execution of the help command and the available options.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>λ alarm_server --help
 
-Usage: alarm_server_app <span class="o">[</span>options<span class="o">]</span>
-
 If called without options alarm_server_app will use default values <span class="k">for</span> them
 
-Options:
+ Options:
+ --version        Show version number                                                      <span class="o">[</span>boolean<span class="o">]</span>
+ --name           name of the configurable entity             <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;alarm_server_app&quot;</span><span class="o">]</span>
+ --scope          scope to load the configuration file                  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;global&quot;</span><span class="o">]</span>
+ --config         name of the component configuration to be applied    <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --auto_conf      load the configuration from file <span class="k">if</span> it exists            <span class="o">[</span>boolean<span class="o">]</span> <span class="o">[</span>default: true<span class="o">]</span>
+ --logging        logging level                                           <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;info&quot;</span><span class="o">]</span>
+ --ctnr_config    name of the container configuration file             <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --server_config  Name of the service server configuration file        <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --db_uri                                           <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;mongodb://127.0.0.1:27017/&quot;</span><span class="o">]</span>
+ --database       Name of the service database                     <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;gmt_alarm_1&quot;</span><span class="o">]</span>
+ --collection     Name of the service collection                  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;alarm_events&quot;</span><span class="o">]</span>
+ --help           Show <span class="nb">help</span>                                                                <span class="o">[</span>boolean<span class="o">]</span>
 
---srv_conf_file<span class="o">=</span>&lt;name&gt;    name of the service server configuration file
---database<span class="o">=</span>&lt;name&gt;         name of the service database
---collection<span class="o">=</span>&lt;name&gt;       name of the service collection
---help                    prints <span class="nb">help</span>
---logging<span class="o">=</span>&lt;level&gt;         logging level
---name<span class="o">=</span>&lt;name&gt;             application name
---scope<span class="o">=</span>&lt;local<span class="p">|</span>global&gt;    scope to load the configuration file
---conf_file<span class="o">=</span>&lt;name&gt;        name of the application configuration file
---ctnr_conf_file<span class="o">=</span>&lt;name&gt;   name of the container configuration file
+ For more information, find our manual at https://gmto.github.io/gmt_docs/
 </pre></div>
 </div>
 <p><strong>Options</strong></p>
-<p><code class="docutils literal"><span class="pre">--srv_conf_file</span></code></p>
+<p><code class="docutils literal"><span class="pre">--server_config</span></code></p>
 <blockquote>
-<div><p>This option specifices the name of the Server configuration file to be loaded during the
-Server startup. The configuration file defines the port configuration of each server.
+<div><p>This option specifices the name of the Server configuration to be loaded during the
+Server startup. The configuration defines the port configuration of each server.
 The following example shows the configuration of the Alarm Server. Configurations are
 stored in $GMT_LOCAL/etc/conf</p>
 <div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nv">module.exports =</span>
-   <span class="nv">properties:</span>
-      <span class="nv">uri: </span>        <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;uri&quot;</span><span class="p">,</span>         <span class="nv">default_value: </span><span class="s">&#39;gmt://127.0.0.1:12000/alarm_sys/alarm_srv_pkg/alarm_srv&#39;</span><span class="p">}</span>
-      <span class="nv">name: </span>       <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;name&quot;</span><span class="p">,</span>        <span class="nv">default_value: </span><span class="s">&#39;alarm_srv&#39;</span><span class="p">}</span>
-      <span class="nv">host: </span>       <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;host&quot;</span><span class="p">,</span>        <span class="nv">default_value: </span><span class="s">&#39;127.0.0.1&#39;</span><span class="p">}</span>
-      <span class="nv">port: </span>       <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;port&quot;</span><span class="p">,</span>        <span class="nv">default_value: </span><span class="s">&#39;12000&#39;</span><span class="p">}</span>
-      <span class="nv">scan_rate: </span>  <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;scan_rate&quot;</span><span class="p">,</span>   <span class="nv">default_value: </span><span class="mi">1</span><span class="p">}</span>
-      <span class="nv">acl: </span>        <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;acl&quot;</span><span class="p">,</span>         <span class="nv">default_value: </span><span class="s">&#39;PRIVATE&#39;</span><span class="p">}</span>
-      <span class="nv">db_uri: </span>     <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;db_uri&quot;</span><span class="p">,</span>      <span class="nv">default_value: </span><span class="s">&#39;mongodb://127.0.0.1:27017/&#39;</span><span class="p">}</span>
-      <span class="nv">collection: </span> <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;collection&quot;</span><span class="p">,</span>  <span class="nv">default_value: </span><span class="s">&#39;alarms&#39;</span><span class="p">}</span>
-      <span class="nv">database: </span>   <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;database&quot;</span><span class="p">,</span>    <span class="nv">default_value: </span><span class="s">&#39;gmt_alarm_1&#39;</span><span class="p">}</span>
-
-   <span class="nv">state_vars:</span>
-      <span class="nv">ops_state: </span> <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;ops_state&#39;</span><span class="p">,</span>    <span class="nv">default_value: </span><span class="s">&#39;OFF&#39;</span>  <span class="p">}</span>
-
-   <span class="nv">inputs:</span>
-      <span class="nv">conf_in: </span>        <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;conf_in&#39;</span><span class="p">,</span>         <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12000&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
-      <span class="nv">ops_state_goal: </span> <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;ops_state_goal&#39;</span><span class="p">,</span>  <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12010&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
-      <span class="nv">srv_port: </span>       <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;srv_port&#39;</span><span class="p">,</span>        <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12001&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
-      <span class="nv">query_port: </span>     <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;query_port&#39;</span><span class="p">,</span>      <span class="nv">port_type: </span><span class="s">&#39;rep&#39;</span><span class="p">,</span>   <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12002&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
-
-   <span class="nv">outputs:</span>
-      <span class="nv">ops_state_value: </span><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;ops_state_value&#39;</span><span class="p">,</span> <span class="nv">port_type: </span><span class="s">&#39;push&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12011&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
-      <span class="nv">heartbeat_out: </span>  <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;heartbeat_out&#39;</span><span class="p">,</span>   <span class="nv">port_type: </span><span class="s">&#39;push&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12012&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
-      <span class="nv">pub_port: </span>       <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;pub_port&#39;</span><span class="p">,</span>        <span class="nv">port_type: </span><span class="s">&#39;pub&#39;</span><span class="p">,</span>   <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12003&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
+    <span class="nv">properties:</span>
+        <span class="nv">uri: </span>        <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;uri&quot;</span><span class="p">,</span>         <span class="nv">storage: </span><span class="mi">0</span><span class="p">,</span>  <span class="nv">default_value: </span><span class="s">&#39;gmt://127.0.0.1:12000/alarm_sys/alarm_server&#39;</span><span class="p">}</span>
+        <span class="nv">name: </span>       <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;name&quot;</span><span class="p">,</span>        <span class="nv">storage: </span><span class="mi">0</span><span class="p">,</span>  <span class="nv">default_value: </span><span class="s">&#39;alarm_server&#39;</span><span class="p">}</span>
+        <span class="nv">host: </span>       <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;host&quot;</span><span class="p">,</span>        <span class="nv">storage: </span><span class="mi">0</span><span class="p">,</span>  <span class="nv">default_value: </span><span class="s">&#39;127.0.0.1&#39;</span><span class="p">}</span>
+        <span class="nv">port: </span>       <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;port&quot;</span><span class="p">,</span>        <span class="nv">storage: </span><span class="mi">0</span><span class="p">,</span>  <span class="nv">default_value: </span><span class="mi">12000</span><span class="p">}</span>
+        <span class="nv">scan_rate: </span>  <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;scan_rate&quot;</span><span class="p">,</span>   <span class="nv">storage: </span><span class="mi">0</span><span class="p">,</span>  <span class="nv">max_rate: </span><span class="mf">0.2</span><span class="p">,</span> <span class="nv">default_value: </span><span class="mi">1</span><span class="p">}</span>
+        <span class="nv">acl: </span>        <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;acl&quot;</span><span class="p">,</span>         <span class="nv">storage: </span><span class="mi">0</span><span class="p">,</span>  <span class="nv">default_value: </span><span class="s">&#39;PRIVATE&#39;</span><span class="p">}</span>
+        <span class="nv">db_uri: </span>     <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;db_uri&quot;</span><span class="p">,</span>      <span class="nv">storage: </span><span class="mi">0</span><span class="p">,</span>  <span class="nv">max_rate: </span><span class="mf">0.2</span><span class="p">,</span> <span class="nv">default_value: </span><span class="s">&#39;mongodb://127.0.0.1:27017/&#39;</span><span class="p">}</span>
+        <span class="nv">collection: </span> <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;collection&quot;</span><span class="p">,</span>  <span class="nv">storage: </span><span class="mi">0</span><span class="p">,</span>  <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span> <span class="nv">default_value: </span><span class="s">&#39;alarm_events&#39;</span><span class="p">}</span>
+        <span class="nv">database: </span>   <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;database&quot;</span><span class="p">,</span>    <span class="nv">storage: </span><span class="mi">0</span><span class="p">,</span>  <span class="nv">max_rate: </span><span class="mi">1</span><span class="p">,</span> <span class="nv">default_value: </span><span class="s">&#39;gmt_alarm_1&#39;</span><span class="p">}</span>
+    <span class="nv">inputs:</span>
+        <span class="nv">srv_port: </span>   <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;srv_port&#39;</span><span class="p">,</span>   <span class="nv">storage: </span><span class="mi">0</span><span class="p">,</span> <span class="nv">port_type: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12101&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
+        <span class="nv">query_port: </span> <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;query_port&#39;</span><span class="p">,</span> <span class="nv">storage: </span><span class="mi">0</span><span class="p">,</span> <span class="nv">port_type: </span><span class="s">&#39;rep&#39;</span><span class="p">,</span>   <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12102&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
+    <span class="nv">outputs:</span>
+        <span class="nv">pub_port: </span>   <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;pub_port&#39;</span><span class="p">,</span>   <span class="nv">storage: </span><span class="mi">0</span><span class="p">,</span> <span class="nv">port_type: </span><span class="s">&#39;pub&#39;</span><span class="p">,</span>   <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:12103&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">10</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">1</span> <span class="p">}</span>
+    <span class="nv">faults:</span>
+        <span class="nv">db_disconnected: </span><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;db_disconnected&#39;</span><span class="p">,</span> <span class="nv">level: </span><span class="s">&#39;CRITICAL&#39;</span><span class="p">,</span> <span class="nv">kind: </span><span class="s">&#39;primary&#39;</span><span class="p">,</span> <span class="nv">parent: </span><span class="kc">null</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -432,22 +426,22 @@ databases and collections.</p>
 <div>This option defines where the application should search for the <em>Server</em> and <em>Container</em>
 configuration file.  When set to <code class="docutils literal"><span class="pre">local</span></code> the file will be search in $GMT_LOCAL/etc/conf/&lt;service_dir&gt;/
 When set to <code class="docutils literal"><span class="pre">global</span></code> the file will be search in $GMT_GLOBAL/etc/conf/&lt;service_dir&gt;/</div></blockquote>
-<p><code class="docutils literal"><span class="pre">--conf_file=&lt;name&gt;</span></code></p>
+<p><code class="docutils literal"><span class="pre">--config=&lt;name&gt;</span></code></p>
 <blockquote>
-<div>This option defines the name of the <em>Application</em> configuration file.</div></blockquote>
-<p><code class="docutils literal"><span class="pre">--ctnr_conf_file=&lt;name&gt;</span></code></p>
+<div>This option defines the name of the <em>Application</em> configuration.</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--ctnr_config=&lt;name&gt;</span></code></p>
 <blockquote>
-<div><p>This option defines the name of the application <em>Container</em> configuration file.</p>
+<div><p>This option defines the name of the application <em>Container</em> configuration.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The options <code class="docutils literal"><span class="pre">--scope</span></code>, <code class="docutils literal"><span class="pre">--conf_file</span></code>, <code class="docutils literal"><span class="pre">--ctnr_conf_file</span></code>, <code class="docutils literal"><span class="pre">--srv_conf_file</span></code> are intended for
+<p class="last">The options <code class="docutils literal"><span class="pre">--scope</span></code>, <code class="docutils literal"><span class="pre">--config</span></code>, <code class="docutils literal"><span class="pre">--ctnr_config</span></code>, <code class="docutils literal"><span class="pre">--server_config</span></code> are intended for
 the testing of the core services and their deployment in different locations. It should
 not be necessary to modify them for normal operation of the SDK.</p>
 </div>
 </div></blockquote>
 </div>
 <div class="section" id="service-client-application">
-<h3>8.2.2. Service Client Application<a class="headerlink" href="#service-client-application" title="Permalink to this headline">¶</a></h3>
+<h3>9.2.2. Service Client Application<a class="headerlink" href="#service-client-application" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">&lt;service&gt;_client</span></code> command line application starts the service client.
 For the purposes of developing and testing software components with the SDK it is
@@ -469,28 +463,81 @@ Usage: alarm_client_app <span class="o">[</span>options<span class="o">]</span>
 
 If called without options alarm_client_app will use default values <span class="k">for</span> them
 
-Options:
+ Commands:
+ alarm_client_app query   queries the service database using the mongodb query syntax
+ alarm_client_app listen  Connects to the service server and subscribes to incoming
+                         messages
 
---save                    saves service stream to file
---query<span class="o">=</span>&lt;query_spec&gt;      querys the service database using the mongodb query syntax
-                        e.g.: srv_client --query <span class="s1">&#39;{source: &quot;component_name&quot;, level: &quot;error&quot;}&#39;</span>
---topic<span class="o">=</span>&lt;topic_name&gt;      filters service data frames matching the topic
---client_conf_file<span class="o">=</span>&lt;name&gt; name of the client configuration file
---help                    prints <span class="nb">help</span>
---logging<span class="o">=</span>&lt;level&gt;         logging level
---name<span class="o">=</span>&lt;name&gt;             application name
---scope<span class="o">=</span>&lt;local<span class="p">|</span>global&gt;    scope to load the configuration file
---conf_file<span class="o">=</span>&lt;name&gt;        name of the application configuration file
---ctnr_conf_file<span class="o">=</span>&lt;name&gt;   name of the container configuration file
+ Options:
+ --version        Show version number                                                        <span class="o">[</span>boolean<span class="o">]</span>
+ --name           name of the configurable entity               <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;alarm_client_app&quot;</span><span class="o">]</span>
+ --scope          scope to load the configuration file                    <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;global&quot;</span><span class="o">]</span>
+ --config         name of the component configuration to be applied      <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --auto_conf      load the configuration from file <span class="k">if</span> it exists              <span class="o">[</span>boolean<span class="o">]</span> <span class="o">[</span>default: true<span class="o">]</span>
+ --logging        logging level                                             <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;info&quot;</span><span class="o">]</span>
+ --ctnr_config    name of the container configuration file               <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --client_config  name of the client configuration file                  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --help           Show <span class="nb">help</span>                                                                  <span class="o">[</span>boolean<span class="o">]</span>
+
+ Examples:
+ alarm_client_app query -e <span class="s1">&#39;{src: &quot;test_cmp&quot;}&#39;</span>  -r <span class="m">20</span>
+ alarm_client_app query -e <span class="s1">&#39;{src: &quot;test_cmp&quot;}&#39;</span>  -r <span class="m">20</span> -s
+ alarm_client_app listen
+ alarm_client_app listen -s
+
+ For more information, find our manual at https://gmto.github.io/gmt_docs/
+</pre></div>
+</div>
+<p><strong>Commands</strong></p>
+<p><code class="docutils literal"><span class="pre">listen</span></code></p>
+<p>The following section shows the the help of the listen command  and the available options.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>λ alarm_client listen
+
+ Connects to the service server and subscribes to incoming messages
+
+ Options:
+ --version        Show version number                                                       <span class="o">[</span>boolean<span class="o">]</span>
+ --name           name of the configurable entity              <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;alarm_client_app&quot;</span><span class="o">]</span>
+ --scope          scope to load the configuration file                   <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;global&quot;</span><span class="o">]</span>
+ --config         name of the component configuration to be applied     <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --auto_conf      load the configuration from file <span class="k">if</span> it exists             <span class="o">[</span>boolean<span class="o">]</span> <span class="o">[</span>default: true<span class="o">]</span>
+ --logging        logging level                                            <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;info&quot;</span><span class="o">]</span>
+ --ctnr_config    name of the container configuration file              <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --client_config  name of the client configuration file                 <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --help           Show <span class="nb">help</span>                                                                 <span class="o">[</span>boolean<span class="o">]</span>
+ --topic, -t      filters service data frames matching the topic                             <span class="o">[</span>string<span class="o">]</span>
+ --save, -s       saves service output to a file                           <span class="o">[</span>boolean<span class="o">]</span> <span class="o">[</span>default: false<span class="o">]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">query</span></code></p>
+<p>The following section shows the the help of the query command  and the available options.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>λ alarm_client query
+
+ queries the service database using the mongodb query syntax
+
+ Options:
+ --version        Show version number                                                        <span class="o">[</span>boolean<span class="o">]</span>
+ --name           name of the configurable entity               <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;alarm_client_app&quot;</span><span class="o">]</span>
+ --scope          scope to load the configuration file                    <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;global&quot;</span><span class="o">]</span>
+ --config         name of the component configuration to be applied      <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --auto_conf      load the configuration from file <span class="k">if</span> it exists              <span class="o">[</span>boolean<span class="o">]</span> <span class="o">[</span>default: true<span class="o">]</span>
+ --logging        logging level                                             <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;info&quot;</span><span class="o">]</span>
+ --ctnr_config    name of the container configuration file               <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --client_config  name of the client configuration file                  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+ --help           Show <span class="nb">help</span>                                                                  <span class="o">[</span>boolean<span class="o">]</span>
+ --expr, -e       Query expression                                                            <span class="o">[</span>string<span class="o">]</span>
+ --records, -r    Maximum number of records to be <span class="k">return</span> by the query commands  <span class="o">[</span>number<span class="o">]</span> <span class="o">[</span>default: <span class="m">40</span><span class="o">]</span>
+ --save, -s       saves query to file                                       <span class="o">[</span>boolean<span class="o">]</span> <span class="o">[</span>default: false<span class="o">]</span>
 </pre></div>
 </div>
 <p><strong>Options</strong></p>
 <p><code class="docutils literal"><span class="pre">--save</span></code></p>
 <blockquote>
 <div><p>Saves service stream to file. The name of the files conforms to the following syntax:
+for the query command: <code class="docutils literal"><span class="pre">&lt;service_app&gt;_query_&lt;pid&gt;.csv</span></code> and for the listen command:
 <code class="docutils literal"><span class="pre">&lt;service_app&gt;_&lt;pid&gt;.csv</span></code> where pid is the process identifier during the execution
 of the application. The file is saved in the directory where the application was invoked.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>λ alarm_client --save
+<div class="highlight-bash"><div class="highlight"><pre><span></span>λ alarm_client listen --save
 
 <span class="c1"># -&gt; will create the file alarm_client_app_2457.csv</span>
 </pre></div>
@@ -503,11 +550,11 @@ will be saved to the file. The service client will still output it’s own loggi
 events to the standard output.</p>
 </div>
 </div></blockquote>
-<p><code class="docutils literal"><span class="pre">--query=&lt;query_spec&gt;</span></code></p>
+<p><code class="docutils literal"><span class="pre">--expr=&lt;query_spec&gt;</span></code></p>
 <blockquote>
 <div><p>Sends a query to the service server and returns the result. The query must be writen
 using the mongodb query syntax [<a class="reference external" href="https://docs.mongodb.com/manual/tutorial/query-documents/">https://docs.mongodb.com/manual/tutorial/query-documents/</a>]</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>λ log_client --query <span class="s1">&#39;{source: &quot;component_name&quot;, level: &quot;error&quot;}&#39;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>λ log_client --query <span class="s1">&#39;{src: &quot;component_name&quot;, level: &quot;error&quot;}&#39;</span>
 
 <span class="c1"># -&gt; will return the log events of the component &quot;component_name&quot; which level is &quot;error&quot;</span>
 </pre></div>
@@ -518,12 +565,50 @@ using the mongodb query syntax [<a class="reference external" href="https://docs
 basic testing purposes. A more advanced interface will be provided in the OCS UI.</p>
 </div>
 </div></blockquote>
+<p><code class="docutils literal"><span class="pre">--records=&lt;topic_name&gt;</span></code></p>
+<blockquote>
+<div>maximum number of records returned from the query command</div></blockquote>
 <p><code class="docutils literal"><span class="pre">--topic=&lt;topic_name&gt;</span></code></p>
 <blockquote>
-<div>filters service data frames matching the topic</div></blockquote>
-<p><code class="docutils literal"><span class="pre">--client_conf_file=&lt;name&gt;</span></code></p>
+<div><p>filters the service data frames in which the <code class="docutils literal"><span class="pre">src</span></code> field includes the topic</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>λ tele_client listen --topic<span class="o">=</span>alarm_server
+
+<span class="c1"># -&gt; will display the telemetry events that have the alarm_server as source</span>
+
+λ tele_client listen --topic<span class="o">=</span>alarm_server/s/op_state/value
+
+<span class="c1"># -&gt; will display the telemetry events corresponding to the op_state state variable of the</span>
+<span class="c1">#    alarm server</span>
+
+λ tele_client listen --topic<span class="o">=</span>alarm_server/s
+
+<span class="c1"># -&gt; will display the telemetry events corresponding to all the state variables of the</span>
+<span class="c1">#    alarm server</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>The core services use the following convention to identify the source of events:
+&lt;instance name&gt;/&lt;feature abbr&gt;/&lt;feature name&gt;/&lt;feature attribute&gt;, where:</p>
+<ul class="last simple">
+<li>instance name: Name of the component instance</li>
+<li>feature abbr:  Abbreviation that identifies the component feature. The following values are possible:<ul>
+<li>i: inputs</li>
+<li>o: outputs</li>
+<li>s: state variables</li>
+<li>p: properties</li>
+<li>f: faults</li>
+<li>a: alarms</li>
+</ul>
+</li>
+<li>feature name: The name of the specific feature (e.g. op_state state_variable)</li>
+<li>feature attribute: The attribute of the feature (e.g. value)</li>
+</ul>
+</div>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--client_config=&lt;name&gt;</span></code></p>
 <blockquote>
-<div>name of the container configuration file</div></blockquote>
+<div>name of the service client configuration</div></blockquote>
 <p><code class="docutils literal"><span class="pre">--help</span></code></p>
 <blockquote>
 <div>prints the description and options of the application</div></blockquote>
@@ -536,34 +621,144 @@ basic testing purposes. A more advanced interface will be provided in the OCS UI
 <p><code class="docutils literal"><span class="pre">--scope=&lt;local|global&gt;</span></code></p>
 <blockquote>
 <div>See the description of the <code class="docutils literal"><span class="pre">--scope</span></code> option in the server application above.</div></blockquote>
-<p><code class="docutils literal"><span class="pre">--conf_file=&lt;name&gt;</span></code></p>
+<p><code class="docutils literal"><span class="pre">--config=&lt;name&gt;</span></code></p>
 <blockquote>
-<div>See the description of the <code class="docutils literal"><span class="pre">--conf_file</span></code> option in the server application above.</div></blockquote>
-<p><code class="docutils literal"><span class="pre">--ctnr_conf_file=&lt;name&gt;</span></code></p>
+<div>See the description of the <code class="docutils literal"><span class="pre">--config</span></code> option in the server application above.</div></blockquote>
+<p><code class="docutils literal"><span class="pre">--ctnr_config=&lt;name&gt;</span></code></p>
 <blockquote>
-<div><p>See the description of the <code class="docutils literal"><span class="pre">--ctnr_conf_file</span></code> option in the server application above.</p>
+<div><p>See the description of the <code class="docutils literal"><span class="pre">--ctnr_config</span></code> option in the server application above.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The options <code class="docutils literal"><span class="pre">--scope</span></code>, <code class="docutils literal"><span class="pre">--conf_file</span></code>, <code class="docutils literal"><span class="pre">--ctnr_conf_file</span></code>, <code class="docutils literal"><span class="pre">--client_conf_file</span></code>
+<p class="last">The options <code class="docutils literal"><span class="pre">--scope</span></code>, <code class="docutils literal"><span class="pre">--config</span></code>, <code class="docutils literal"><span class="pre">--ctnr_config</span></code>, <code class="docutils literal"><span class="pre">--client_config</span></code>
 are intended for the testing of the core services and their deployment in different locations.
 It should not be necessary to modify them for normal operation of the SDK.</p>
 </div>
 </div></blockquote>
 </div>
+<div class="section" id="core-services-monitoring">
+<h3>9.2.3. Core Services Monitoring<a class="headerlink" href="#core-services-monitoring" title="Permalink to this headline">¶</a></h3>
+<p>It’s possible to monitor the execution of the core services by using the grs utility:</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>λ grs inspect -i <span class="s1">&#39;alarm_server&#39;</span>
+
+<span class="c1"># -&gt; will continuouslly display the following information</span>
+
+Timestamp:  Mon Jul <span class="m">01</span> <span class="m">2019</span> <span class="m">13</span>:05:28 GMT-0700 <span class="o">(</span>Pacific Daylight Time<span class="o">)</span> hb#:<span class="o">[</span><span class="m">0</span><span class="o">]</span> .........
+  <span class="o">{</span> properties:
+  <span class="o">{</span> name: <span class="s1">&#39;alarm_server&#39;</span>,
+      scope: <span class="s1">&#39;global&#39;</span>,
+      config: <span class="s1">&#39;default&#39;</span>,
+      auto_conf: true,
+      uri: <span class="s1">&#39;gmt://127.0.0.1:12000/alarm_sys/alarm_server&#39;</span>,
+      host: <span class="s1">&#39;127.0.0.1&#39;</span>,
+      port: <span class="m">12000</span>,
+      scan_rate: <span class="m">1</span>,
+      auto_start: false,
+      auto_init: false,
+      auto_halt: true,
+      auto_shutdown: true,
+      acl: <span class="s1">&#39;PRIVATE&#39;</span>,
+      db_uri: <span class="s1">&#39;mongodb://127.0.0.1:27017/&#39;</span>,
+      collection: <span class="s1">&#39;alarm_events&#39;</span>,
+      database: <span class="s1">&#39;gmt_alarm_1&#39;</span> <span class="o">}</span>,
+  state_vars: <span class="o">{</span> op_state: <span class="s1">&#39;FAULT&#39;</span> <span class="o">}</span>,
+  inputs: <span class="o">{</span> srv_port: null, query_port: null <span class="o">}</span>,
+  outputs: <span class="o">{</span> pub_port: null <span class="o">}</span>,
+  faults: <span class="o">{</span> db_disconnected: <span class="s1">&#39;ACTIVE&#39;</span> <span class="o">}</span>,
+  alarms: <span class="o">{}</span>,
+  connectors: <span class="o">{}</span>,
+  proxies: <span class="o">{}</span> <span class="o">}</span>
+  Enter &lt;CTRL-C&gt; to <span class="nb">exit</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The System Supervisor (sup_server) supervises the health and fault state of the other services.
+Two type of errors are detected</p>
+<blockquote>
+<div><blockquote>
+<div><p><code class="docutils literal"><span class="pre">&lt;server&gt;_not_responding</span></code></p>
+<blockquote>
+<div>This fault occurs when the system supervisor is unable to establish a connection with the
+corresponding server. This could be due to the server not been started or to a lack of
+consistency in the configuration files.</div></blockquote>
+<p><code class="docutils literal"><span class="pre">&lt;server&gt;_not_operational</span></code></p>
+<blockquote>
+<div>This fault occurs when the system supervisor is able to establish a connection with the
+corresponding server, but the server op_state state variable is not <cite>RUNNING</cite>. This could
+be due to the server losing connection with the database. In this case, inspecting the
+faulty server will should the db_disconnected error as ‘ACTIVE’</div></blockquote>
+</div></blockquote>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>λ grs inspect -i <span class="s1">&#39;sup_server&#39;</span>
+
+<span class="c1"># -&gt; will continuouslly display the following information</span>
+
+  Timestamp:  Mon Jul <span class="m">01</span> <span class="m">2019</span> <span class="m">13</span>:10:05 GMT-0700 <span class="o">(</span>Pacific Daylight Time<span class="o">)</span> hb#:<span class="o">[</span><span class="m">0</span><span class="o">]</span> .
+  <span class="o">{</span> properties:
+  <span class="o">{</span> name: <span class="s1">&#39;sup_server&#39;</span>,
+      scope: <span class="s1">&#39;global&#39;</span>,
+      config: <span class="s1">&#39;default&#39;</span>,
+      auto_conf: true,
+      uri: <span class="s1">&#39;gmt://127.0.0.1:16000/sup_sys/sup_server&#39;</span>,
+      host: <span class="s1">&#39;127.0.0.1&#39;</span>,
+      port: <span class="m">16000</span>,
+      scan_rate: <span class="m">1</span>,
+      auto_start: false,
+      auto_init: false,
+      auto_halt: true,
+      auto_shutdown: true,
+      acl: <span class="s1">&#39;PRIVATE&#39;</span>,
+      db_uri: <span class="s1">&#39;mongodb://127.0.0.1:27017/&#39;</span>,
+      collection: <span class="s1">&#39;super_events&#39;</span>,
+      database: <span class="s1">&#39;gmt_super_1&#39;</span> <span class="o">}</span>,
+  state_vars: <span class="o">{</span> op_state: <span class="s1">&#39;FAULT&#39;</span> <span class="o">}</span>,
+  inputs: <span class="o">{</span> srv_port: null, query_port: null <span class="o">}</span>,
+  outputs: <span class="o">{</span> pub_port: null <span class="o">}</span>,
+  faults:
+  <span class="o">{</span> services_not_available: <span class="s1">&#39;ACTIVE&#39;</span>,
+      db_disconnected: <span class="s1">&#39;ACTIVE&#39;</span>,
+      core_server_not_responding: <span class="s1">&#39;ACTIVE&#39;</span>,
+      core_server_not_operational: <span class="s1">&#39;ACTIVE&#39;</span>,
+      alarm_server_not_responding: <span class="s1">&#39;ACTIVE&#39;</span>,
+      alarm_server_not_operational: <span class="s1">&#39;ACTIVE&#39;</span>,
+      tele_server_not_responding: <span class="s1">&#39;ACTIVE&#39;</span>,
+      tele_server_not_operational: <span class="s1">&#39;ACTIVE&#39;</span>,
+      log_server_not_responding: <span class="s1">&#39;ACTIVE&#39;</span>,
+      log_server_not_operational: <span class="s1">&#39;ACTIVE&#39;</span>,
+      conf_server_not_responding: <span class="s1">&#39;ACTIVE&#39;</span>,
+      conf_server_not_operational: <span class="s1">&#39;ACTIVE&#39;</span> <span class="o">}</span>,
+  alarms: <span class="o">{</span> critical_fault_alarm: <span class="s1">&#39;NORM&#39;</span> <span class="o">}</span>,
+  connectors: <span class="o">{}</span>,
+  proxies: <span class="o">{}</span> <span class="o">}</span>
+  Enter &lt;CTRL-C&gt; to <span class="nb">exit</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In the case that a services has not been started the following error message will be displayed
+until the corresponding service is started.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>λ grs inspect -i <span class="s1">&#39;sup_server&#39;</span>
+
+<span class="c1"># -&gt; will continuouslly display the following information</span>
+
+  <span class="o">[</span>ERR<span class="o">]</span> <span class="m">2019</span>-07-01T20:10:52.311Z <span class="o">[</span>grs_5403<span class="o">]</span> Component <span class="o">[</span>sup_server<span class="o">]</span> disconnected
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 <div class="section" id="service-adapter">
-<h3>8.2.3. Service Adapter<a class="headerlink" href="#service-adapter" title="Permalink to this headline">¶</a></h3>
+<h3>9.2.4. Service Adapter<a class="headerlink" href="#service-adapter" title="Permalink to this headline">¶</a></h3>
 <p>The interface with each service is provided by the specific implementation of
-the Core Framework: cpp, python, nodejs. Each framework implementation user guide
+the Core Framework: cpp, python, nodeJS. Each framework implementation user guide
 describes the corresponding Service Adapter API. The following diagram shows
 an example of how the different parts of the Logging and Telemetry services interact
 with the rest of the system.</p>
 <div class="figure" id="id2">
 <img alt="../_images/context_isample_testing.png" src="../_images/context_isample_testing.png" />
-<p class="caption"><span class="caption-number">Fig. 8.13 </span><span class="caption-text">Service operation overview</span></p>
+<p class="caption"><span class="caption-number">Fig. 9.6 </span><span class="caption-text">Service operation overview</span></p>
 </div>
 </div>
 <div class="section" id="service-database">
-<h3>8.2.4. Service Database<a class="headerlink" href="#service-database" title="Permalink to this headline">¶</a></h3>
+<h3>9.2.5. Service Database<a class="headerlink" href="#service-database" title="Permalink to this headline">¶</a></h3>
 <p>The Services database is implemented in mongodb. The installation of mongodb is described
 in the SDK installation guide. Once the database is installed, the database daemon will
 be started automatically during the startup process of the hosting machine.
@@ -585,10 +780,10 @@ with the database. The user guide of the <strong>mongo</strong> shell utility is
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="isample_example.html" class="btn btn-neutral float-right" title="9. ISample Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="isample_example.html" class="btn btn-neutral float-right" title="10. ISample Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="test_guidelines.html" class="btn btn-neutral" title="7. OCS Test Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="test_guidelines.html" class="btn btn-neutral" title="8. OCS Test Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

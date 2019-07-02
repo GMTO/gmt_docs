@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7. OCS Test Guidelines &mdash; GMT Software And Controls documentation</title>
+  <title>8. OCS Test Guidelines &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -41,8 +41,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="8. Core Services user guide" href="core_services_user_guide.html"/>
-        <link rel="prev" title="6.1. Mapping between the Model Definition Files and C++ source code" href="model_language_mapping/mapping_model_to_cpp.html"/> 
+        <link rel="next" title="9. Core Services user guide" href="core_services_user_guide.html"/>
+        <link rel="prev" title="7.1. Mapping between the Model Definition Files and C++ source code" href="model_language_mapping/mapping_model_to_cpp.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -107,25 +107,26 @@
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gds_guide.html">4. gds documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">5. Model specification guide document</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">6. Model-language mapping</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">7. OCS Test Guidelines</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">7.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#types-of-tests">7.2. Types of tests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#types-of-elements-under-test">7.3. Types of elements under test</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-guidelines">7.4. General guidelines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#implementation">7.5. Implementation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#test-generation">7.5.1. Test Generation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#test-framework">7.5.2. Test Framework</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#test-execution">7.5.3. Test Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grs_guide.html">5. grs documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8. OCS Test Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">8.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types-of-tests">8.2. Types of tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types-of-elements-under-test">8.3. Types of elements under test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-guidelines">8.4. General guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementation">8.5. Implementation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#test-generation">8.5.1. Test Generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-framework">8.5.2. Test Framework</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test-execution">8.5.3. Test Execution</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">8. Core Services user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="isample_example.html">9. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">10. HDK example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ui_fwk.html">11. UI Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">9. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">10. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">11. HDK example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_fwk.html">12. UI Framework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -176,7 +177,7 @@
         
           <li><a href="index.html">Software Development</a> &raquo;</li>
         
-      <li>7. OCS Test Guidelines</li>
+      <li>8. OCS Test Guidelines</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -194,9 +195,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="ocs-test-guidelines">
-<span id="test-guidelines"></span><h1>7. OCS Test Guidelines<a class="headerlink" href="#ocs-test-guidelines" title="Permalink to this headline">¶</a></h1>
+<span id="test-guidelines"></span><h1>8. OCS Test Guidelines<a class="headerlink" href="#ocs-test-guidelines" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>7.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>8.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Each module of the OCS, like any other subsystem of the GMT is required to
 provide a method for the verification of it’s requirements. The most common
 methods of verification are demonstration, test, inspection and analysis.
@@ -244,7 +245,7 @@ systems requirements are also expresed as features or user stories.</p>
 </div></blockquote>
 </div>
 <div class="section" id="types-of-tests">
-<h2>7.2. Types of tests<a class="headerlink" href="#types-of-tests" title="Permalink to this headline">¶</a></h2>
+<h2>8.2. Types of tests<a class="headerlink" href="#types-of-tests" title="Permalink to this headline">¶</a></h2>
 <p>As mentioned above the test method involves the verification of functional, operational
 or performace capabilities of the element under test. For the purpose of the
 verification of the OCS system and its modules we defined three categories of tests:</p>
@@ -290,7 +291,7 @@ to be integrated with other elements. The interface tests must fulfill the follo
 </div></blockquote>
 </div>
 <div class="section" id="types-of-elements-under-test">
-<h2>7.3. Types of elements under test<a class="headerlink" href="#types-of-elements-under-test" title="Permalink to this headline">¶</a></h2>
+<h2>8.3. Types of elements under test<a class="headerlink" href="#types-of-elements-under-test" title="Permalink to this headline">¶</a></h2>
 <p>The OCS modules are built up from a hierarchical composition of <cite>Components</cite> and <cite>Packages</cite>.
 The test strategy is thus bottom-up, where elementary components are tested (analogous to unit testing)
 prior to being integrated in aggregated entities. The following guidelines shall be fulfilled by
@@ -337,7 +338,7 @@ an elementary capability of a Component, e.g. a property, a state variable, an a
 </div></blockquote>
 </div>
 <div class="section" id="general-guidelines">
-<h2>7.4. General guidelines<a class="headerlink" href="#general-guidelines" title="Permalink to this headline">¶</a></h2>
+<h2>8.4. General guidelines<a class="headerlink" href="#general-guidelines" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul>
 <li><p class="first">Every test (Feature, Component, Package, Subsystem) must include positive and
@@ -476,7 +477,7 @@ test).</td>
 </div></blockquote>
 </div>
 <div class="section" id="implementation">
-<h2>7.5. Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<h2>8.5. Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>The OCS development environment provides a set of tools to support the definition,
 creation and execution of tests.</p>
 <ul class="simple">
@@ -487,7 +488,7 @@ distributed tests.</li>
 <li>The <cite>gds test</cite> command allows the automatic execution of test.</li>
 </ul>
 <div class="section" id="test-generation">
-<h3>7.5.1. Test Generation<a class="headerlink" href="#test-generation" title="Permalink to this headline">¶</a></h3>
+<h3>8.5.1. Test Generation<a class="headerlink" href="#test-generation" title="Permalink to this headline">¶</a></h3>
 <p>The <cite>gds gen</cite> command is able to generate test skeletons based on the model definition
 of any model element. If the model element is an aggregate (e.g. Package, Subsystem)
 it will generate also the tests of the elements that are part of that model element.</p>
@@ -549,7 +550,7 @@ This is expected behavior.</p>
 </div>
 </div>
 <div class="section" id="test-framework">
-<h3>7.5.2. Test Framework<a class="headerlink" href="#test-framework" title="Permalink to this headline">¶</a></h3>
+<h3>8.5.2. Test Framework<a class="headerlink" href="#test-framework" title="Permalink to this headline">¶</a></h3>
 <p>The Test Framework provides several classes that facilitate the creation and execution
 of distributed test</p>
 <p>As can be seen in the example below, the skeleton includes the following:</p>
@@ -651,7 +652,7 @@ For example:</p>
 <cite>webpack</cite> in $GMT_LOCAL/ocs_hdk_dcs/test/coffee</p>
 </div>
 <div class="section" id="test-execution">
-<h3>7.5.3. Test Execution<a class="headerlink" href="#test-execution" title="Permalink to this headline">¶</a></h3>
+<h3>8.5.3. Test Execution<a class="headerlink" href="#test-execution" title="Permalink to this headline">¶</a></h3>
 <p>In order to execute the previous test we write:</p>
 <div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nx">gds</span> <span class="nx">test</span> <span class="nx">hdk_main_ctrl</span> <span class="o">--</span><span class="nx">type</span> <span class="nx">functional</span> <span class="o">--</span><span class="nx">number</span> <span class="mi">01</span>
 </pre></div>
@@ -670,10 +671,10 @@ For example:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="core_services_user_guide.html" class="btn btn-neutral float-right" title="8. Core Services user guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="core_services_user_guide.html" class="btn btn-neutral float-right" title="9. Core Services user guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="model_language_mapping/mapping_model_to_cpp.html" class="btn btn-neutral" title="6.1. Mapping between the Model Definition Files and C++ source code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="model_language_mapping/mapping_model_to_cpp.html" class="btn btn-neutral" title="7.1. Mapping between the Model Definition Files and C++ source code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
