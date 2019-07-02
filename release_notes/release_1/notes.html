@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.5
+                1.6
               </div>
             
           
@@ -101,6 +101,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Release Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Release 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-6-0">Contents of release 1.6.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-5-0">Contents of release 1.5.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-4-1">Contents of release 1.4.1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-4-0">Contents of release 1.4.0</a></li>
@@ -182,6 +183,123 @@
             
   <div class="section" id="release-1">
 <span id="id1"></span><h1>Release 1<a class="headerlink" href="#release-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contents-of-release-1-6-0">
+<h2>Contents of release 1.6.0<a class="headerlink" href="#contents-of-release-1-6-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Release distribution and installation<ul>
+<li>The Navigator application is now distributed as a binary instead of a tar file (Supported on MacOS).</li>
+</ul>
+</li>
+<li>Third-party libraries and Applications<ul>
+<li>Updated from Node 8 to Node 10</li>
+<li>Updated the following node modules to newer versions:<ul>
+<li>coffeescript 2.4</li>
+<li>mongodb 3.2</li>
+<li>nanomsg 4.0.2</li>
+<li>zeromq 5.1</li>
+</ul>
+</li>
+<li>Updated to msgpack version 3.1.1</li>
+<li>Updated to nanomsg (C++) version 1.1.5</li>
+</ul>
+</li>
+<li>Development Framework<ul>
+<li>Add Node.js code generation</li>
+<li>Code Generation updates on C++:<ul>
+<li>Update code generation to sync with Core and I/O Frameworks</li>
+<li>Change code preservation mechanism</li>
+<li>Add realtime-specific code generation</li>
+</ul>
+</li>
+<li>Fixed minor issues in “gds info” and “validate” commands</li>
+<li>Fixed issue where default values for State Variables were not generated in the config files</li>
+<li>Updated OPC-UA data model generator</li>
+</ul>
+</li>
+<li>Core Frameworks<ul>
+<li>Updated Node.js implementation of Core Framework:<ul>
+<li>Refactored Service Data Ports</li>
+<li>Added HealthSupervisory behavior</li>
+<li>Added Fault Management and propagation</li>
+<li>Fault Tree evaluation per Component</li>
+<li>Support of DataIO paths</li>
+<li>Implementation of connectors between DataIO paths</li>
+<li>Component to Component communication without dedicated ports</li>
+<li>Added Alarm Management and propagation</li>
+<li>Compilation and loading of configuration files from the file system</li>
+<li>Added new runtime tool to inspect and communicate with running components (grs)</li>
+<li>Added ComponentProxy to communicate with other components given their instance name</li>
+<li>Added Views for command line state visualization</li>
+<li>Added support for distributed goal sequencing</li>
+<li>Telemetry decimation</li>
+</ul>
+</li>
+<li>Refactored C++ Core Framework to sync with Node.js Core Framework:<ul>
+<li>Added Service Data Ports</li>
+<li>Added support for loading component configurations from file</li>
+<li>Added Asynchronous ports</li>
+<li>Added real-time support</li>
+<li>Telemetry decimation</li>
+<li>Command Line support for C++ applications</li>
+</ul>
+</li>
+<li>Updated C++ Control Framework to sync with Core Framework</li>
+<li>EtherCAT Hardware Adapter updates:<ul>
+<li>Support dynamic updates to PDO mapping during runtime</li>
+<li>EtherCAT ring topology support</li>
+<li>Read the slave state (OP, PREOP, SAFEOP, etc)</li>
+<li>Fixed issue found when etherCAT bus nominal rate was less than the component scan rate</li>
+<li>Fixed issue connecting IgH Master to EL7201-0010 and EL7211-0010 modules</li>
+</ul>
+</li>
+<li>Added basic Serial Communications Hardware Adapter (does not support Serial over EtherCAT yet)</li>
+<li>Persistence Framework updated to sync with Node.js Core Framework:<ul>
+<li>Added option to define the number of records to return on a query</li>
+<li>Added database connection and disconnection fault reporting</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Core Services<ul>
+<li>Refactored all core services to sync with Node.js Core Framework</li>
+<li>Update options to the core services command line tools (See updated documentation)</li>
+</ul>
+</li>
+<li>Navigator Application<ul>
+<li>Updated Look &amp; Feel</li>
+</ul>
+</li>
+<li>Implementation examples<ul>
+<li>The HDK example has been updated to sync with the new Core Frameworks<ul>
+<li>Configurations are read from file and the command line</li>
+<li>Realtime priorities added</li>
+<li>Changes in class layout (each Component has a Base with autogenerated code and a derived class with user-added code)</li>
+<li>Using CoreContainer and CoreApplication</li>
+</ul>
+</li>
+<li>The ISample example has been updated to sync with the new Core Frameworks<ul>
+<li>Model files have been cleaned up</li>
+<li>Removed Heartbeat dedicated port as this is now managed transparently by the component supervisor</li>
+<li>Removed unsupported components from the Model</li>
+<li>Changed async ports to sync</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Documentation: Software Development<ul>
+<li>New page <code class="docutils literal"><span class="pre">grs</span> <span class="pre">documentation</span></code>, contains a user guide for the new grs (GMT Runtime System) Tool. This utility allows interaction with running instances of remote components.</li>
+<li>Updated page <code class="docutils literal"><span class="pre">Core</span> <span class="pre">Services</span> <span class="pre">user</span> <span class="pre">guide</span></code>, to reflect recent changes to the Core Services Applications.</li>
+<li>Updated <code class="docutils literal"><span class="pre">ISample</span> <span class="pre">Example</span></code> and <code class="docutils literal"><span class="pre">HDK</span> <span class="pre">example</span></code> pages to reflect recent changes to the commands for interacting with the core service applications.</li>
+<li>Updated <code class="docutils literal"><span class="pre">UI</span> <span class="pre">Framework</span></code> page to simplify installation instructions for the Navigator application binary.</li>
+</ul>
+</li>
+<li>Known Issues:<ul>
+<li>Generating test skeletons with “gds gen -t test” does not currently work</li>
+<li>The UI Framework has not been updated to work with the new Core Frameworks yet. This updated functionality will be included in a 1.6.1 update, released in the next 2 months, along with more examples on creating User Interface panels.</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="contents-of-release-1-5-0">
 <h2>Contents of release 1.5.0<a class="headerlink" href="#contents-of-release-1-5-0" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -464,7 +582,7 @@ other information as the development progresses.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.5.0',
+            VERSION:'1.6.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
