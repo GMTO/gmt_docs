@@ -607,7 +607,7 @@ summary_interval <span class="m">6</span>
 </div>
 <div class="section" id="operations-workstation-configuration">
 <h2>1.3. Operations Workstation Configuration<a class="headerlink" href="#operations-workstation-configuration" title="Permalink to this headline">¶</a></h2>
-<p>The OCS User Interface needs to be run on a system with sufficient graphical rendering capability. At the moment, the Real-time kernel used for device control systems running EtherCAT does not contain the graphics modules necessary to support the user interface. It is recommended to run the user interface in a Mac, connected to the DCS via the network. Future releases will include support for Linux workstations (Fedora).</p>
+<p>The OCS User Interface needs to be run on a system with sufficient graphical rendering capability. At the moment, the Real-time kernel used for device control systems running EtherCAT does not contain the graphics modules necessary to support the user interface. It is recommended to run the user interface in a Mac, connected to the DCS via the network. Future releases will include support for Linux workstations.</p>
 <div class="section" id="id1">
 <h3>1.3.1. Operating System<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Apple Mac systems have the operating system already installed. The User Interface has been tested on the following versions of MacOS:</p>
@@ -661,27 +661,9 @@ summary_interval <span class="m">6</span>
 <div class="section" id="id2">
 <h3>1.3.4. Node Installation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Check whether <strong>Node version 8</strong> is installed</li>
+<li>Install Node</li>
 </ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ node --version
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>If Node is not installed or you are using a different version of Node, install <strong>nvm</strong> and use it to install <strong>Node 8</strong></li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ touch ~/.bash_profile
-$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh <span class="p">|</span> bash
-$ <span class="nb">source</span> ~/.bash_profile
-$ nvm install <span class="m">8</span>.12.0
-$ node --version
-v8.12.0
-</pre></div>
-</div>
-<p>More information can be found on the nvm GitHub site: &lt;<a class="reference external" href="https://github.com/creationix/nvm">https://github.com/creationix/nvm</a>&gt;</p>
-</div></blockquote>
+<p>Follow the instructions here <a class="reference external" href="https://nodesource.com/blog/installing-nodejs-tutorial-mac-os-x/">https://nodesource.com/blog/installing-nodejs-tutorial-mac-os-x/</a></p>
 </div>
 </div>
 <div class="section" id="software-development-kit-sdk">
@@ -692,21 +674,16 @@ v8.12.0
 <li>Download the latest SDK distribution:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.5.0.tar.gz
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.6.0.tar.gz
 </pre></div>
 </div>
-<p>for the server version of the SDK, or</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/macos/gmt-ui-1.5.0.tar.gz
-</pre></div>
-</div>
-<p>for the workstation version.</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li>Extract the TAR file in the /opt directory, into a new folder for the latest release:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt_release_1.5.0
-$ sudo tar -xzvf &lt;gmt-tar.gz&gt; -C /opt/gmt_release_1.5.0
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt_release_1.6.0
+$ sudo tar -xzvf &lt;gmt-tar.gz&gt; -C /opt/gmt_release_1.6.0
 </pre></div>
 </div>
 <p>where &lt;gmt-tar.gz&gt; is the file downloaded in step 1.</p>
@@ -715,7 +692,7 @@ $ sudo tar -xzvf &lt;gmt-tar.gz&gt; -C /opt/gmt_release_1.5.0
 <li>Create a symbolic link from the <strong>Global GMT Software Location</strong> to the latest release:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -sfn gmt_release_1.5.0 /opt/gmt
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -sfn gmt_release_1.6.0 /opt/gmt
 </pre></div>
 </div>
 </div></blockquote>
@@ -748,16 +725,11 @@ $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="7">
-<li>Install local Node Modules</li>
+<li>Install global Node Modules</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
-$ cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
-$ npm install
-</pre></div>
-</div>
-<p>Install global node modules for <cite>Webpack</cite> and <cite>Coffeescript</cite>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo npm install -g coffeescript webpack webpack-cli
+<div><p>Install global node modules for <cite>Webpack</cite> and <cite>Coffeescript</cite>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo npm install -g coffeescript webpack webpack-cli coffee-loader
 </pre></div>
 </div>
 </div></blockquote>
@@ -770,7 +742,7 @@ $ gds init
 </pre></div>
 </div>
 <p>The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.</p>
-<p>When running the User Interface, create a <strong>local javascript library folder</strong>.</p>
+<p>Create a <strong>local javascript library folder</strong> in order to create built bundles for your model files.  This folder is also used to install upgraded version of the library.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir -p <span class="nv">$GMT_LOCAL</span>/lib/js
 </pre></div>
 </div>

@@ -347,7 +347,7 @@ where ``[enp3s0]`` should be set to the interface to use for PTP.
 Operations Workstation Configuration
 ------------------------------------
 
-The OCS User Interface needs to be run on a system with sufficient graphical rendering capability. At the moment, the Real-time kernel used for device control systems running EtherCAT does not contain the graphics modules necessary to support the user interface. It is recommended to run the user interface in a Mac, connected to the DCS via the network. Future releases will include support for Linux workstations (Fedora). 
+The OCS User Interface needs to be run on a system with sufficient graphical rendering capability. At the moment, the Real-time kernel used for device control systems running EtherCAT does not contain the graphics modules necessary to support the user interface. It is recommended to run the user interface in a Mac, connected to the DCS via the network. Future releases will include support for Linux workstations. 
 
 Operating System
 ................
@@ -395,24 +395,9 @@ Python Installation
 Node Installation
 .................
 
-1. Check whether **Node version 8** is installed
+1. Install Node
 
-  .. code-block:: bash
-
-    $ node --version
-
-2. If Node is not installed or you are using a different version of Node, install **nvm** and use it to install **Node 8**
-
-  .. code-block:: bash
-
-    $ touch ~/.bash_profile
-    $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-    $ source ~/.bash_profile
-    $ nvm install 8.12.0
-    $ node --version
-    v8.12.0
-
-  More information can be found on the nvm GitHub site: <https://github.com/creationix/nvm>
+Follow the instructions here https://nodesource.com/blog/installing-nodejs-tutorial-mac-os-x/
 
 Software Development Kit (SDK)
 ------------------------------
@@ -425,22 +410,14 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
   .. code-block:: bash
 
-    $ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.5.0.tar.gz
-
-  for the server version of the SDK, or 
-
-  .. code-block:: bash
-
-    $ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/macos/gmt-ui-1.5.0.tar.gz
-
-  for the workstation version.
+    $ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.6.0.tar.gz
 
 2. Extract the TAR file in the /opt directory, into a new folder for the latest release:
 
   .. code-block:: bash
 
-    $ sudo mkdir /opt/gmt_release_1.5.0
-    $ sudo tar -xzvf <gmt-tar.gz> -C /opt/gmt_release_1.5.0
+    $ sudo mkdir /opt/gmt_release_1.6.0
+    $ sudo tar -xzvf <gmt-tar.gz> -C /opt/gmt_release_1.6.0
 
   where <gmt-tar.gz> is the file downloaded in step 1.
 
@@ -448,7 +425,7 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
   .. code-block:: bash
 
-    $ sudo ln -sfn gmt_release_1.5.0 /opt/gmt
+    $ sudo ln -sfn gmt_release_1.6.0 /opt/gmt
 
 4. Create a **Local Working Directory**
 
@@ -474,19 +451,13 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
     $ gmt_env
 
-7. Install local Node Modules
-
-  .. code-block:: bash
-
-    $ cd $GMT_LOCAL
-    $ cp $GMT_GLOBAL/package.json ./
-    $ npm install
+7. Install global Node Modules
 
   Install global node modules for `Webpack` and `Coffeescript`.
 
   .. code-block:: bash
 
-    $ sudo npm install -g coffeescript webpack webpack-cli
+    $ sudo npm install -g coffeescript webpack webpack-cli coffee-loader
 
 8. Initialize the Development Environment:
 
@@ -497,7 +468,7 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
   The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.  
 
-  When running the User Interface, create a **local javascript library folder**.
+  Create a **local javascript library folder** in order to create built bundles for your model files.  This folder is also used to install upgraded version of the library.
 
   .. code-block:: bash
 

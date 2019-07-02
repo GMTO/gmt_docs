@@ -115,16 +115,11 @@
 <li class="toctree-l2"><a class="reference internal" href="isample_example.html">10. ISample Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hdk_example.html">11. HDK example</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">12. UI Framework</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#engineering-app">12.1. Engineering App</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">12.2. Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#user-guide">12.3. User Guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#launching-custom-panels">12.4. Launching Custom Panels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-custom-panels">12.5. Creating Custom Panels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#updating-the-model">12.5.1. Updating the model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#simple-hello-world-panel">12.5.2. Simple ‘Hello World’ panel</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#complex-panel">12.5.3. Complex panel</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">12.1. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#engineering-app">12.2. Engineering App</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">12.3. Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-guide">12.4. User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launching-custom-panels">12.5. Launching Custom Panels</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting-guide">12.6. Troubleshooting Guide</a></li>
 </ul>
 </li>
@@ -205,261 +200,55 @@
 <ul class="simple">
 <li>Rendering (drawing) elements to the screen (DOM)</li>
 <li>Library of re-usable UI components that can be shared across the project</li>
-<li>An App that provides an interface to the OCS</li>
+<li>An Engineering App that provides an interface to the OCS</li>
 </ul>
-<div class="section" id="engineering-app">
-<h2>12.1. Engineering App<a class="headerlink" href="#engineering-app" title="Permalink to this headline">¶</a></h2>
-<p>The engineering application provides a GUI to the OCS model.  It is launched via the command line and it will spawn an OS window that renders the UI.</p>
-<p>The UI engineering app uses your local bundles from <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code> and allows you to see a visual representation of your model files’ input/output ports.  For now, the Engineering app needs to run in MacOS or a Linux Desktop.</p>
-<p>To launch the application, run this in the command line</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ navigator
-</pre></div>
+<div class="section" id="installation">
+<h2>12.1. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Download the UI library files</p>
+<ul class="simple">
+<li><a class="reference external" href="http://52.52.46.32/srv/gmt/releases/navigator/ocs_navigator_lib_1.6.0.zip">http://52.52.46.32/srv/gmt/releases/navigator/ocs_navigator_lib_1.6.0.zip</a></li>
+</ul>
+<p>Move the contents of the zip to <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code></p>
+<p>Download the Mac App</p>
+<ul class="simple">
+<li><a class="reference external" href="http://52.52.46.32/srv/gmt/releases/navigator/mac/ocs_navigator_app_1.6.0.zip">http://52.52.46.32/srv/gmt/releases/navigator/mac/ocs_navigator_app_1.6.0.zip</a></li>
+</ul>
+<p>You can unzip the app anywhere on your MacOS file system.  Double click on the icon to run.</p>
 </div>
-<p>This will launch the GUI as a child process of the CLI application.  To stop the GUI, stop the CLI app with <code class="docutils literal"><span class="pre">CTRL</span> <span class="pre">+</span> <span class="pre">C</span></code>.</p>
+<div class="section" id="engineering-app">
+<h2>12.2. Engineering App<a class="headerlink" href="#engineering-app" title="Permalink to this headline">¶</a></h2>
+<p>The engineering application provides a GUI to the OCS model.  It is a downloadble Mac app that you can run after installing the SDK on your Mac.</p>
+<p>The UI engineering app uses your local bundles from <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code> and allows you to see a visual representation of your model files’ input/output ports.  For now, the Engineering app runs in MacOS.</p>
+<p>To launch the application, double click on the app icon.</p>
 </div>
 <div class="section" id="configuration">
-<h2>12.2. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<h2>12.3. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>The User Interface needs to be configured to connect to the correct control components to receive data. Without proper configuration, the application may look like this:</p>
-<img alt="Navigator application - No connection to HDK components" class="align-center" src="../_images/Navigator_HDK_noconnection.png" />
+<img alt="Navigator application - No connection to HDK components" class="align-center" src="../_images/Navigator_HDK_first_open.png" />
 <p>Edit the appropriate config files in the <code class="docutils literal"><span class="pre">src/etc/conf</span></code> folder to point to the correct IP address for input and output ports. For example,</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/etc/conf/hdk_ctrl_pkg/hdk_main_ctrl/
-$ sed -i <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s/172.0.0.1/172.16.10.31/g&quot;</span> hdk_main_ctrl_config.coffee
+$ sed -i <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s/127.0.0.1/172.16.10.31/g&quot;</span> hdk_main_ctrl_config.coffee
 </pre></div>
 </div>
 <p>See the Troubleshooting section below for more help with connection issues.</p>
 <p>Restart the Navigator application for changes to take affect.</p>
 </div>
 <div class="section" id="user-guide">
-<h2>12.3. User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
-<img alt="Navigator application regions" class="align-center" src="../_images/Navigator_slices.png" />
-<p>The navigator application contains four regions.</p>
+<h2>12.4. User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
+<img alt="Navigator application regions" class="align-center" src="../_images/Navigator_HDK_connected.png" />
+<p>The navigator application contains two regions.</p>
 <ol class="arabic simple">
-<li><strong>Header</strong> The header contains timezone information, as well as a moon cycle representation.</li>
 <li><strong>Navigation</strong> This area contains the navigation tree.  The tree is a representation of your model and is built from information found in your local bundles.</li>
 <li><strong>Context</strong> Items selected in the tree will display here.  Currently, it will display a representation of your model’s input/output ports and state variables.</li>
-<li><strong>Developer tools</strong> This area is reserved for developer tools.  The <cite>Toggle Console</cite> button will show the developer console.</li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The <strong>Context</strong> area will optimistically render your model.  Not all model data can be currently rendered. Some items like <cite>properties</cite> and detailed port views are currently not supported.</p>
 </div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Input ports are rendered as data inputs based on the type data encoded in your model.  The <cite>StructType</cite> input is not yet supported.   When you press the <code class="docutils literal"><span class="pre">Send</span> <span class="pre">Value</span></code> button the app will attempt send the data in <em>all</em> the input fields to each respective port defined.</p>
-</div>
 </div>
 <div class="section" id="launching-custom-panels">
-<h2>12.4. Launching Custom Panels<a class="headerlink" href="#launching-custom-panels" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">navigator</span></code> application can also launch custom panels that are defined in a DCS’ <cite>*_vis_pkg</cite> folders.  When defined, it’s possible to launch standalone panels with the following parameters</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ navigator --panel emf_custom_weather_view --port <span class="m">9098</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal"><span class="pre">--panel</span></code> flag specifies an exported panel in some vis package.  The <code class="docutils literal"><span class="pre">--port</span></code> flag is currently required to avoid port collisions (for now).</p>
-<p>The engineering app reserves port <code class="docutils literal"><span class="pre">9199</span></code>.  Custom panel launches of the application need to specify a different port for each instance.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">When running a custom panel, only the <strong>Header</strong> and <strong>Context</strong> regions will be shown.  The panel content is rendered in the <strong>Context</strong> region.</p>
-</div>
-</div>
-<div class="section" id="creating-custom-panels">
-<h2>12.5. Creating Custom Panels<a class="headerlink" href="#creating-custom-panels" title="Permalink to this headline">¶</a></h2>
-<p>The following tutorial uses the HDK module to step through the process of creating a simple, and then a more complex custom UI panel. In some cases, the files and folders created in the tutorial already exist in the repository.</p>
-<div class="section" id="updating-the-model">
-<h3>12.5.1. Updating the model<a class="headerlink" href="#updating-the-model" title="Permalink to this headline">¶</a></h3>
-<p>The UI Framework needs to notified of the existence of custom UI panels when loading the model. This is currently achieved by adding a panel definition in the model and rebuilding it with <code class="docutils literal"><span class="pre">webpack</span></code>.</p>
-<p>To create a custom UI panel to load in the UI, a vis package is required.  We’ll first register this package in the model, then export the code that will be run by the UI framework.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/model
-$ mkdir hdk_vis_pkg
-$ touch hdk_custom_view.coffee
-</pre></div>
-</div>
-<p>Edit <code class="docutils literal"><span class="pre">hdk_custom_view.coffee</span></code>, and add the following code</p>
-<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nx">Panel</span> <span class="s">&quot;hdk_custom_view&quot;</span><span class="p">,</span>
-    <span class="nv">info: </span><span class="s">&#39;Example view for HDK&#39;</span>
-</pre></div>
-</div>
-<p>Now edit <code class="docutils literal"><span class="pre">$GMT_LOCAL/modules/ocs_hdk_dcs/model/hdk_dcs_def.coffee</span></code> with following</p>
-<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nv">module.exports =</span>
-    <span class="nv">elements:</span>
-        <span class="nv">hdk_ctrl_pkg:</span>
-        <span class="c1"># Leave unchanged.</span>
-
-        <span class="c1"># Add this</span>
-        <span class="nv">hdk_vis_pkg:</span>
-            <span class="nv">elements:</span>
-                <span class="nv">hdk_custom_view: </span> <span class="p">{</span> <span class="nv">language: </span><span class="p">[</span><span class="s">&#39;coffee&#39;</span><span class="p">],</span> <span class="nv">build: </span><span class="s">&#39;obj&#39;</span><span class="p">,</span> <span class="nv">deploy: </span><span class="s">&#39;dist&#39;</span><span class="p">,</span>    <span class="nv">codegen: </span><span class="kc">false</span><span class="p">,</span> <span class="nv">active: </span><span class="kc">true</span><span class="p">}</span>
-</pre></div>
-</div>
-<p>Finally edit <code class="docutils literal"><span class="pre">$GMT_LOCAL/modules/ocs_hdk_dcs/model/hdk_dcs_ld.coffee</span></code> to require the new vis package coffee file.</p>
-<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="p">...</span>
-<span class="nx">require</span> <span class="s">&#39;./hdk_vis_pkg/hdk_custom_view&#39;</span>
-
-<span class="nv">module.exports = </span><span class="nx">require</span> <span class="s">&#39;./hdk_dcs_def&#39;</span>
-</pre></div>
-</div>
-<p>This step is to register a vis package in the OCS model.  This package is only visible after you rebuild your model with <code class="docutils literal"><span class="pre">webpack</span></code> and re-launch the navigator app.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Future releases will make more use of these model definition files.  For now a single <cite>Panel</cite> definition is required for the vis_pkg to become visible to the UI framework.</p>
-</div>
-</div>
-<div class="section" id="simple-hello-world-panel">
-<h3>12.5.2. Simple ‘Hello World’ panel<a class="headerlink" href="#simple-hello-world-panel" title="Permalink to this headline">¶</a></h3>
-<p>Now that your vis package is visible to the model, you need to write some UI code.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/coffee
-$ mkdir hdk_vis_pkg
-$ touch hdk_vis_pkg.coffee
-</pre></div>
-</div>
-<p>The <code class="docutils literal"><span class="pre">$GMT_LOCAL/modules/ocs_hdk_dcs/src/coffee/hdk_vis_pkg/hdk_vis_pkg.coffee</span></code> file is imported by the Engineering application when you launch it with a <code class="docutils literal"><span class="pre">--panel</span></code> parameter.  There is nothing in that file yet, so we’ll first create a ‘Hello World’ example.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/coffee/hdk_vis_pkg
-$ touch hello.coffee
-</pre></div>
-</div>
-<p>Now edit the <code class="docutils literal"><span class="pre">hello.coffee</span></code> and add the following</p>
-<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nx">import</span> <span class="p">{</span> <span class="nx">Panel</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;ocs_ui_fwk/ui&#39;</span>
-
-<span class="nv">View = </span><span class="nf">() =&gt;</span>
-    <span class="o">&lt;</span><span class="nx">Panel</span><span class="o">&gt;</span>
-        <span class="nx">Hello</span> <span class="nx">World</span><span class="o">!</span>
-    <span class="o">&lt;/</span><span class="nx">Panel</span><span class="o">&gt;</span>
-
-<span class="nx">export</span> <span class="nx">default</span> <span class="nx">View</span>
-</pre></div>
-</div>
-<p>That effectively renders a ‘Hello World’ message in a UI panel.  This is still not visible the the Engineering app, for that you’ll need to export that <cite>View</cite> in the <code class="docutils literal"><span class="pre">hdk_vis_pkg.coffee</span></code> file</p>
-<p>Edit <code class="docutils literal"><span class="pre">$GMT_LOCAL/modules/ocs_hdk_dcs/src/coffee/hdk_vis_pkg/hdk_vis_pkg.coffee</span></code></p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">When you export <code class="docutils literal"><span class="pre">default</span></code> modules, the name you use to import does not matter.  This is why the declared <cite>View</cite> can be exported as <code class="docutils literal"><span class="pre">View</span></code> and imported as <code class="docutils literal"><span class="pre">HelloWorld</span></code>.</p>
-</div>
-<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nx">import</span> <span class="nx">HelloWorld</span> <span class="nx">from</span> <span class="s">&#39;./hello&#39;</span>
-
-<span class="nv">views = </span><span class="p">[</span>
-    <span class="nv">nav: </span><span class="s">&#39;hdk_dcs/hdk_hello_world_view&#39;</span>
-    <span class="nv">type: </span><span class="s">&#39;hdk_hello_world_view&#39;</span>
-    <span class="nv">Component: </span><span class="nx">HelloWorld</span>
-<span class="p">]</span>
-
-<span class="nx">export</span> <span class="nx">default</span> <span class="nx">views</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">type</span></code> key is used by the navigator app to locate your exported <cite>View</cite>.  The <code class="docutils literal"><span class="pre">--panel</span></code> parameter in the cli app needs to be the same as the <code class="docutils literal"><span class="pre">type</span></code> value.  The <code class="docutils literal"><span class="pre">nav</span></code> key provides a navigation tree hint that for the general engineering app.  This way your panel is exposed both as a custom panel, and is also read by the engineering app.</p>
-</div>
-<p>It should now be possible to see this view by running the <code class="docutils literal"><span class="pre">--panel</span></code> flag on the <code class="docutils literal"><span class="pre">navigator</span></code> cli app.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ navigator --panel hdk_hello_world_view --port <span class="m">9197</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="complex-panel">
-<h3>12.5.3. Complex panel<a class="headerlink" href="#complex-panel" title="Permalink to this headline">¶</a></h3>
-<p>That example is to get your feet wet, but you’ll want to render more complex views of your components.  The UI framework provides an abstraction that parallels the <cite>step</cite> function of your components.  This abstraction provides the data you expose through your output ports and state var values, and provides a way to send values to input ports and state var goals.</p>
-<p>First, let’s create the <cite>Step</cite> rendering function.  We will create a step function for the <code class="docutils literal"><span class="pre">hdk_main_ctrl</span></code> model.  The data that the step render function exposes comes from the <code class="docutils literal"><span class="pre">hdk_main_ctrl.coffee</span></code> model.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/coffee/hdk_vis_pkg
-$ touch hdk_main_ctrl_step.coffee
-</pre></div>
-</div>
-<p>Now edit <code class="docutils literal"><span class="pre">hdk_main_ctrl_step.coffee</span></code>, and add the following boilerplate code.  Note that if you decide to create a step render function for another component you’ll need to edit only a few lines of boilerplate.  Mainly the config path and the component name.</p>
-<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nx">import</span> <span class="p">{</span> <span class="nx">Store</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;ocs_ui_fwk/ui&#39;</span>
-
-<span class="nv">config = </span><span class="nx">require</span> <span class="s">&#39;../../etc/conf/hdk_ctrl_pkg/hdk_main_ctrl/hdk_main_ctrl_config&#39;</span>
-
-<span class="nv">dcs = </span><span class="s">&#39;hdk_dcs&#39;</span>
-<span class="nv">component = </span><span class="s">&#39;hdk_main_ctrl&#39;</span>
-
-<span class="c1"># Default options</span>
-<span class="nv">options =</span>
-    <span class="nv">type: </span><span class="s">&quot;@</span><span class="si">#{</span><span class="nx">dcs</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span><span class="si">}</span><span class="s">/</span><span class="si">#{</span><span class="nx">component</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span><span class="si">}</span><span class="s">&quot;</span>
-    <span class="nv">key: </span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">dcs</span><span class="si">}</span><span class="s">/</span><span class="si">#{</span><span class="nx">component</span><span class="si">}</span><span class="s">&quot;</span>
-
-<span class="c1"># Initialize ports to start data streams</span>
-<span class="nx">Store</span><span class="p">.</span><span class="nx">initPorts</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">options</span>
-
-<span class="c1"># Create step function view renderer</span>
-<span class="nv">Step =</span>
-    <span class="nv">Render: </span><span class="nx">Store</span><span class="p">.</span><span class="nx">renderStep</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">options</span>
-
-<span class="nx">export</span> <span class="nx">default</span> <span class="nx">Step</span>
-</pre></div>
-</div>
-<p>This creates the step render function, but you’ll need to write a separate view to render that content.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>This loads the configuration file that’s usually auto-generated when you build your model.  The configuration needs to have accessible url definitions.  In some cases that means having opened firewall ports when you’re component is running on a separate machine.  The navigator app reads those url’s to receive and render data.</p>
-<p class="last">To open a firewall port in Fedora, you can run <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">firewall-cmd</span> <span class="pre">--add-port=8122-8124/tcp</span></code> where <code class="docutils literal"><span class="pre">8122-8124</span></code> is a port range you want to open.</p>
-</div>
-<p>The <cite>Step.Render</cite> function maps the model declared in <cite>hdk_main_ctrl</cite> to a renderable <cite>View</cite>.  The function exposes <code class="docutils literal"><span class="pre">input_ports</span></code>, <code class="docutils literal"><span class="pre">output_ports</span></code> and <code class="docutils literal"><span class="pre">state_vars</span></code> declared in the model.  Note that a combination of the <code class="docutils literal"><span class="pre">hdk_main_ctrl_config</span></code> and <code class="docutils literal"><span class="pre">hdk_main_ctrl</span></code> model is used to generate this function.  To see an example of this in use, we’ll need to create a separate view.</p>
-<p>In this example, we’ll visualize the digital outputs to the control lights.  This is the <code class="docutils literal"><span class="pre">hmi_outputs</span></code> in the <code class="docutils literal"><span class="pre">hdk_main_ctrl</span></code> model.  <code class="docutils literal"><span class="pre">hmi_outputs</span></code> is defined as an output port of type <code class="docutils literal"><span class="pre">hdk_hmi_leds</span></code>.  In the DCS types, the <code class="docutils literal"><span class="pre">hdk_hmi_leds</span></code> type is a <code class="docutils literal"><span class="pre">StructType</span></code>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">hmi_outputs</span></code> url needs to be an accessible <cite>TCP</cite> port.  In most cases, you should define the URL explicity as the IP address of the machine.  So <code class="docutils literal"><span class="pre">url:</span> <span class="pre">'tcp://127.0.0.1:8104'</span></code> should be <code class="docutils literal"><span class="pre">url:</span> <span class="pre">'tcp://10.20.10.12:8104'</span></code> when your machine’s IP is <code class="docutils literal"><span class="pre">10.20.10.12</span></code>.  Additionally, the navigator app can only subscribe to <code class="docutils literal"><span class="pre">pub</span></code> protocols, so your port should be set to <code class="docutils literal"><span class="pre">protocol:</span> <span class="pre">'pub'</span></code>.  Reading telemetry from other protocols is planned for a future release.</p>
-</div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/coffee/hdk_vis_pkg
-$ touch hdk_main_ctrl_view.coffee
-</pre></div>
-</div>
-<p>Now edit <code class="docutils literal"><span class="pre">hdk_main_ctrl_view.coffee</span></code> with the following boilerplate:</p>
-<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nx">import</span> <span class="p">{</span> <span class="nx">Panel</span><span class="p">,</span> <span class="nx">Widget</span><span class="p">,</span> <span class="nx">Box</span> <span class="p">}</span> <span class="nx">from</span> <span class="s">&#39;ocs_ui_fwk/ui&#39;</span>
-<span class="nx">import</span> <span class="nx">HDKMain</span> <span class="nx">from</span> <span class="s">&#39;./hdk_main_ctrl_step&#39;</span>
-
-<span class="nv">View = </span><span class="nf">() =&gt;</span>
-    <span class="o">&lt;</span><span class="nx">Panel</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">HDKMain</span><span class="p">.</span><span class="nx">Render</span><span class="o">&gt;</span>
-            <span class="p">{</span><span class="nf">({state_vars}) =&gt;</span>
-                <span class="c1">#...rendered views go here</span>
-                <span class="o">&lt;</span><span class="nx">Panel</span><span class="o">&gt;</span><span class="nx">This</span> <span class="o">is</span> <span class="nx">rendered</span> <span class="nx">from</span> <span class="nx">the</span> <span class="nx">HDKMain</span><span class="p">.</span><span class="nx">Render</span> <span class="nx">step</span> <span class="nx">function</span><span class="o">&lt;/</span><span class="nx">Panel</span><span class="o">&gt;</span>
-            <span class="p">}</span>
-        <span class="o">&lt;/</span><span class="nx">HDKMain</span><span class="p">.</span><span class="nx">Render</span><span class="o">&gt;</span>
-    <span class="o">&lt;/</span><span class="nx">Panel</span><span class="o">&gt;</span>
-
-<span class="nx">export</span> <span class="nx">default</span> <span class="nx">View</span>
-</pre></div>
-</div>
-<p>In the above example, you get a <code class="docutils literal"><span class="pre">Render</span></code> function from the imported <code class="docutils literal"><span class="pre">hdk_main_ctrl_step</span></code> that we declared earlier.  The <code class="docutils literal"><span class="pre">Render</span></code> function gives you <code class="docutils literal"><span class="pre">state_vars</span></code> as an input, and expects a renderable <cite>View</cite> as an output.  The <code class="docutils literal"><span class="pre">state_vars</span></code> map directly to the model, so we can expect the <code class="docutils literal"><span class="pre">hmi</span></code> data to be included as part of the <code class="docutils literal"><span class="pre">state_vars</span></code> data.  For example, if we wanted to get the value of the pilot light, we can use the safe access operator <code class="docutils literal"><span class="pre">state_vars?.hmi?.output?.pilot</span></code> to retrieve that value.</p>
-<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nx">HDKMain</span><span class="p">.</span><span class="nx">Render</span><span class="o">&gt;</span>
-    <span class="p">{</span><span class="nf">({state_vars}) =&gt;</span>
-        <span class="c1">#...rendered views go here</span>
-        <span class="o">&lt;</span><span class="nx">Panel</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">Box</span><span class="o">&gt;</span><span class="nx">Pilot</span> <span class="nx">light</span><span class="o">&lt;/</span><span class="nx">Box</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">Box</span><span class="o">&gt;</span>
-                <span class="p">{</span><span class="nx">state_vars</span><span class="o">?</span><span class="p">.</span><span class="nx">hmi</span><span class="o">?</span><span class="p">.</span><span class="nx">output</span><span class="o">?</span><span class="p">.</span><span class="nx">pilot</span><span class="p">.</span><span class="nx">toString</span><span class="p">()}</span>
-            <span class="o">&lt;/</span><span class="nx">Box</span><span class="o">&gt;</span>
-        <span class="o">&lt;/</span><span class="nx">Panel</span><span class="o">&gt;</span>
-    <span class="p">}</span>
-<span class="o">&lt;/</span><span class="nx">HDKMain</span><span class="p">.</span><span class="nx">Render</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">We use the Coffeescript existential operator <code class="docutils literal"><span class="pre">?</span></code> so that we don’t access <code class="docutils literal"><span class="pre">undefined</span></code> values and crash.  This may be the case when there are errors in your model, or the data streams are not available to the UI.</p>
-</div>
-<p>You won’t be able to load this panel until you export it in <code class="docutils literal"><span class="pre">hdk_vis_pkg.coffee</span></code></p>
-<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nx">import</span> <span class="nx">HelloWorld</span> <span class="nx">from</span> <span class="s">&#39;./hello&#39;</span>
-<span class="nx">import</span> <span class="nx">HDKMainView</span> <span class="nx">from</span> <span class="s">&#39;./hdk_main_ctrl_view&#39;</span>
-
-<span class="nx">export</span> <span class="nx">default</span> <span class="p">[</span>
-    <span class="nv">nav: </span><span class="s">&#39;hdk_dcs/hdk_hello_world_view&#39;</span>
-    <span class="nv">type: </span><span class="s">&#39;hdk_hello_world_view&#39;</span>
-    <span class="nv">Component: </span><span class="nx">HelloWorld</span>
-<span class="p">,</span>
-    <span class="nv">nav: </span><span class="s">&#39;hdk_dcs/hdk_main_ctrl_view&#39;</span>
-    <span class="nv">type: </span><span class="s">&#39;hdk_main_ctrl_view&#39;</span>
-    <span class="nv">Component: </span><span class="nx">HDKMainView</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-<p>You can now run it with the <code class="docutils literal"><span class="pre">--panel</span></code> flag on the <code class="docutils literal"><span class="pre">navigator</span></code> cli app, with the type.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ navigator --panel hdk_main_ctrl_view --port <span class="m">9198</span>
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">The navigator app allows you to run instances of multiple panels at the same time.  However, you will need to specify a different <code class="docutils literal"><span class="pre">--port</span></code> for each instance to avoid port collision errors.  Also, note that the navigator app will reuse the internal data server for multiple instances, so if you close the initial instance, the data server may become unavailable for the other panels.</p>
-</div>
-<p>You should now see <cite>true</cite> or <cite>false</cite> string rendered on the screen indicating the pilot light status.  But the UI can render more than strings.  A more extensive example that shows the status of the motor and LED lights can be found in the HDK vis package <code class="docutils literal"><span class="pre">https://github.com/GMTO/ocs_hdk_dcs</span></code>.</p>
-</div>
+<h2>12.5. Launching Custom Panels<a class="headerlink" href="#launching-custom-panels" title="Permalink to this headline">¶</a></h2>
+<p>From the menu, select <code class="docutils literal"><span class="pre">Vis</span> <span class="pre">package</span></code> and select <code class="docutils literal"><span class="pre">Panel</span> <span class="pre">loader</span></code>.  This will launch a panel allowing you to select a custom vis package.</p>
 </div>
 <div class="section" id="troubleshooting-guide">
 <h2>12.6. Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permalink to this headline">¶</a></h2>
@@ -489,11 +278,7 @@ $ touch hdk_main_ctrl_view.coffee
 <p>Additionally, the UI can only read data from ports configured with the <code class="docutils literal"><span class="pre">pub</span></code> protocol.</p>
 <p>If you make changes to the config file, you will need to restart the command line app; you can do this by pressing <code class="docutils literal"><span class="pre">CTRL</span> <span class="pre">+</span> <span class="pre">C</span></code>.</p>
 <ul>
-<li><p class="first"><strong>MacOS - nvm command not found</strong>: If, after installing nvm, the command <code class="docutils literal"><span class="pre">nvm</span> <span class="pre">install</span></code> fails with the message, <code class="docutils literal"><span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code>, check the <code class="docutils literal"><span class="pre">~/.bash_profile</span></code> file to ensure that it contains a command for loading nvm. The .bash_profile file should contain the following lines:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">NVM_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.nvm&quot;</span>
-<span class="o">[</span> -s <span class="s2">&quot;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="se">\.</span> <span class="s2">&quot;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&quot;</span>  <span class="c1"># This loads nvm</span>
-</pre></div>
-</div>
+<li><p class="first"><strong>Incorrect NODE_MODULE_VERSION</strong>: In some cases, the <code class="docutils literal"><span class="pre">$GMT_GLOBAL/node_modules</span></code> will take precedent over the ones used by the App.  In this case, rename the <code class="docutils literal"><span class="pre">$GMT_GLOBAL/node_modules</span></code> to something like <code class="docutils literal"><span class="pre">$GMT_GLOBAL/node_modules.bak</span></code>.</p>
 </li>
 <li><p class="first"><strong>Unresponsive UI</strong>: in some case if the UI becomes unresponsive, press <code class="docutils literal"><span class="pre">CMD+R</span></code> to refresh.  If that fails to solve the problem, restart the CLI app.  You can stop the CLI app with <code class="docutils literal"><span class="pre">CTRL+C</span></code>.</p>
 </li>
