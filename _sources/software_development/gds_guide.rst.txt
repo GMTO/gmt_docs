@@ -665,7 +665,7 @@ Starting to use gds
    .. code-block:: bash
 
     > gds --help
-    > gds --env       # displays GMT environment variables
+    > gds env       # displays GMT environment variables
 
 5. Change to your local GMT development directory:
 

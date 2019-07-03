@@ -56,6 +56,10 @@ Install the Operating System using these instructions:
 
      dev_environment/fedora_server
 
+    .. warning::
+      If you plan to develop real-time components, the Linux kernel requires the root partition to be an **ext4** file system. Please ensure that this is configured correctly in the disk partitioning settings.
+
+
 
 Repository Configuration
 ........................
@@ -115,7 +119,7 @@ The following RPM packages should be installed by an Administrative user for use
 
   .. code-block:: bash
 
-    $ sudo dnf install -y autoconf automake cmake elfutils gcc gdb libtool
+    $ sudo dnf install -y autoconf automake cmake elfutils gcc gdb libtool make
     $ sudo dnf install -y cpp cscope ctags gc gcc-c++ gcc-gdb-plugin glibc-devel
     $ sudo dnf install -y glibc-headers kernel-headers libstdc++-devel
     $ sudo dnf install -y flex git libcurl-devel
@@ -130,10 +134,11 @@ The following RPM packages should be installed by an Administrative user for use
 Node Installation
 .................
 
-1. Download and install **Node version 8**
+1. Download and install **Node version 10**
 
   .. code-block:: bash
 
+    $ curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
     $ sudo dnf install -y nodejs
 
 2. Install necessary node packages:
@@ -217,6 +222,10 @@ EtherCAT is a high-speed fieldbus communication system used for real-time contro
   .. code-block:: bash
 
     $ sudo dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
+
+    .. warning::
+      This Linux kernel requires the root partition to be an **ext4** file system. Otherwise, your machine will not boot.
+
 
 2. Select the Ethernet interface to be used for EtherCAT communication (e.g. enp4s0) and edit the corresponding configuration file (e.g. ``/etc/sysconfig/network-scripts/ifcfg-enp4s0``) to set the following options:
 
@@ -451,7 +460,16 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
     $ gmt_env
 
-7. Install global Node Modules
+7. Install Node Modules
+
+  .. code-block:: bash
+
+    $ cd $GMT_GLOBAL
+    $ npm install
+
+    $ cd $GMT_LOCAL
+    $ cp $GMT_GLOBAL/package.json ./
+    $ npm install
 
   Install global node modules for `Webpack` and `Coffeescript`.
 

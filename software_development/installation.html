@@ -41,7 +41,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="1.2.2.1. Fedora 28 Server" href="dev_environment/fedora_server.html"/>
+        <link rel="next" title="1.2.4.1. User Authentication using LDAP" href="dev_environment/ldap_configuration.html"/>
         <link rel="prev" title="Software Development" href="index.html"/> 
 
   
@@ -260,9 +260,6 @@
 <p>Install the Operating System using these instructions:</p>
 <blockquote>
 <div><div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dev_environment/fedora_server.html">1.2.2.1. Fedora 28 Server</a></li>
-</ul>
 </div>
 </div></blockquote>
 </div>
@@ -327,7 +324,7 @@ $ sudo dnf install -y strace rpl bash-completion sed
 <li>Install Development Tools</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y autoconf automake cmake elfutils gcc gdb libtool
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y autoconf automake cmake elfutils gcc gdb libtool make
 $ sudo dnf install -y cpp cscope ctags gc gcc-c++ gcc-gdb-plugin glibc-devel
 $ sudo dnf install -y glibc-headers kernel-headers libstdc++-devel
 $ sudo dnf install -y flex git libcurl-devel
@@ -347,10 +344,11 @@ $ sudo dnf install -y python3-sphinx python3-sphinx_rtd_theme
 <div class="section" id="node-installation">
 <h3>1.2.6. Node Installation<a class="headerlink" href="#node-installation" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Download and install <strong>Node version 8</strong></li>
+<li>Download and install <strong>Node version 10</strong></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y nodejs
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sL https://rpm.nodesource.com/setup_10.x <span class="p">|</span> sudo bash -
+$ sudo dnf install -y nodejs
 </pre></div>
 </div>
 </div></blockquote>
@@ -450,6 +448,9 @@ $ sudo systemctl <span class="nb">enable</span> rdma
 </ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
+
+.. warning::
+  This Linux kernel requires the root partition to be an **ext4** file system. Otherwise, your machine will not boot.
 </pre></div>
 </div>
 </div></blockquote>
@@ -725,10 +726,18 @@ $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="7">
-<li>Install global Node Modules</li>
+<li>Install Node Modules</li>
 </ol>
 <blockquote>
-<div><p>Install global node modules for <cite>Webpack</cite> and <cite>Coffeescript</cite>.</p>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_GLOBAL</span>
+$ npm install
+
+$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+$ cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
+$ npm install
+</pre></div>
+</div>
+<p>Install global node modules for <cite>Webpack</cite> and <cite>Coffeescript</cite>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo npm install -g coffeescript webpack webpack-cli coffee-loader
 </pre></div>
 </div>
@@ -825,7 +834,7 @@ $ webpack
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dev_environment/fedora_server.html" class="btn btn-neutral float-right" title="1.2.2.1. Fedora 28 Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dev_environment/ldap_configuration.html" class="btn btn-neutral float-right" title="1.2.4.1. User Authentication using LDAP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Software Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

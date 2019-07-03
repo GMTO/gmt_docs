@@ -123,9 +123,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#clone-the-hdk-dcs-repository">11.3.1. Clone the hdk_dcs repository</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#model-files">11.3.2. Model files</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#code-generation">11.3.3. Code generation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#hdk-main-controller-behavior">11.3.4. HDK Main Controller Behavior</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#compilation">11.3.5. Compilation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#running-the-example">11.3.6. Running the Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compiling-configuration-files">11.3.4. Compiling Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hdk-main-controller-behavior">11.3.5. HDK Main Controller Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compilation">11.3.6. Compilation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-example">11.3.7. Running the Example</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#user-interface">11.4. User Interface</a><ul>
@@ -358,16 +359,6 @@ A single instance called <strong>hdk_hw1_adapter</strong> will be created.</dd>
 <h3>11.3.3. Code generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h3>
 <p>The hdk_dcs repository already has the source code of the HDK, so it is not
 necessary to generate it.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">If the source code is generated again using <em>gds</em>, all the source files
-will be overwritten, including the step function implementations. By default,
-<em>gds</em> will preserve the step function files by
-copying the the previous version of the <code class="docutils literal"><span class="pre">`&lt;component&gt;_step.cpp`</span></code> files to
-<code class="docutils literal"><span class="pre">`&lt;component&gt;_step.cpp.preserve`</span></code>. If compilation fails, check the file differences
-between the repository files and the generated files for manual changes that may have
-to be reapplied.</p>
-</div>
 <p>If the source code needs to be generated
 again (for example, if some feature to the components must be added), then
 it can be done using the standard procedure:</p>
@@ -378,8 +369,18 @@ $ gds gen hdk_dcs
 </div>
 <p>After re-generating code from the model, all manual changes will need to be re-applied.</p>
 </div>
+<div class="section" id="compiling-configuration-files">
+<h3>11.3.4. Compiling Configuration Files<a class="headerlink" href="#compiling-configuration-files" title="Permalink to this headline">¶</a></h3>
+<p>Configuration files should be compiled for the C++ controllers. This can be done with:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ gds install  # Copies the configuration file to $GMT_LOCAL/etc/conf/
+$ grs compile -i hdk_hw1_adapter
+$ grs compile -i hdk_main_ctrl
+$ grs compile --input $GMT_LOCAL/etc/conf/hdk_dcs/hdk_hw1_adapter_ethercat_default_conf.coffee --output $GMT_LOCAL/etc/conf/hdk_dcs/hdk_hw1_adapter_ethercat_default_conf.cfg
+</pre></div>
+</div>
+</div>
 <div class="section" id="hdk-main-controller-behavior">
-<h3>11.3.4. HDK Main Controller Behavior<a class="headerlink" href="#hdk-main-controller-behavior" title="Permalink to this headline">¶</a></h3>
+<h3>11.3.5. HDK Main Controller Behavior<a class="headerlink" href="#hdk-main-controller-behavior" title="Permalink to this headline">¶</a></h3>
 <p>The behavior of the HDK is defined in the <em>hdk_main_ctrl</em> component, and
 more specifically, in the step() function of this controller.</p>
 <p>The file that contains the HDK controller step function is <code class="docutils literal"><span class="pre">`hdk_main_ctrl_step.cpp`</span></code>.
@@ -468,7 +469,7 @@ $ vi hdk_main_ctrl_step.cpp
 <li>Heartbeat LED</li>
 </ol>
 <div class="section" id="step-function-emergency-button-section">
-<h4>11.3.4.1. Step function. Emergency button section<a class="headerlink" href="#step-function-emergency-button-section" title="Permalink to this headline">¶</a></h4>
+<h4>11.3.5.1. Step function. Emergency button section<a class="headerlink" href="#step-function-emergency-button-section" title="Permalink to this headline">¶</a></h4>
 <p>The first code block of the step function is</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">hmi_inputs</span><span class="p">.</span><span class="n">emergency_button</span><span class="p">)</span>
 <span class="p">{</span>
@@ -490,7 +491,7 @@ above code block disables the stepper motor and sets the velocity to
 if not.</p>
 </div>
 <div class="section" id="step-function-motor-control">
-<h4>11.3.4.2. Step function. Motor control<a class="headerlink" href="#step-function-motor-control" title="Permalink to this headline">¶</a></h4>
+<h4>11.3.5.2. Step function. Motor control<a class="headerlink" href="#step-function-motor-control" title="Permalink to this headline">¶</a></h4>
 <p>The next section of code implements the motor control:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">motor_state</span><span class="p">.</span><span class="n">enabled</span><span class="p">)</span>
 <span class="p">{</span>
@@ -526,7 +527,7 @@ will be decreased; and if the emergency button is pushed then the motor is
 disabled.</p>
 </div>
 <div class="section" id="step-function-leds-control">
-<h4>11.3.4.3. Step function. LEDs control<a class="headerlink" href="#step-function-leds-control" title="Permalink to this headline">¶</a></h4>
+<h4>11.3.5.3. Step function. LEDs control<a class="headerlink" href="#step-function-leds-control" title="Permalink to this headline">¶</a></h4>
 <p>The next code section takes care of the control of the LEDs:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">moving</span> <span class="o">=</span> <span class="n">motor_state</span><span class="p">.</span><span class="n">moving_positive</span> <span class="o">||</span> <span class="n">motor_state</span><span class="p">.</span><span class="n">moving_negative</span><span class="p">;</span>
 <span class="n">hmi_outputs</span><span class="p">.</span><span class="n">pilot</span> <span class="o">=</span> <span class="n">moving</span><span class="p">;</span> <span class="c1">// pilot on when moving</span>
@@ -539,7 +540,7 @@ line, we light the red led (<a class="reference internal" href="#hdk-emergency-b
 button is pushed.</p>
 </div>
 <div class="section" id="step-function-logs">
-<h4>11.3.4.4. Step function. Logs<a class="headerlink" href="#step-function-logs" title="Permalink to this headline">¶</a></h4>
+<h4>11.3.5.4. Step function. Logs<a class="headerlink" href="#step-function-logs" title="Permalink to this headline">¶</a></h4>
 <p>Once each second, the HDK application produces some logs to inform about
 the slaves readings:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>    <span class="c1">// every 100 steps = 1 second</span>
@@ -568,7 +569,7 @@ variables. The <code class="docutils literal"><span class="pre">`log_info`</span
 class, and it sends the given string to the Log Service.</p>
 </div>
 <div class="section" id="step-function-heartbeat-led">
-<h4>11.3.4.5. Step function. Heartbeat LED<a class="headerlink" href="#step-function-heartbeat-led" title="Permalink to this headline">¶</a></h4>
+<h4>11.3.5.5. Step function. Heartbeat LED<a class="headerlink" href="#step-function-heartbeat-led" title="Permalink to this headline">¶</a></h4>
 <p>Finally, the section</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">500</span><span class="p">))</span>  <span class="c1">// every 500 steps = 5 seconds</span>
 <span class="p">{</span>
@@ -583,7 +584,7 @@ change is visible in the LED array of the digital output EL2008 Ethercat slave.<
 </div>
 </div>
 <div class="section" id="compilation">
-<h3>11.3.5. Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h3>
+<h3>11.3.6. Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h3>
 <p>To compile the C++ Control Package code of the HDK, edit the module.mk file to
 contain the correct library definitions:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ vi <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/cpp/hdk_ctrl_pkg/module.mk
@@ -602,7 +603,7 @@ $ make
 </div>
 </div>
 <div class="section" id="running-the-example">
-<h3>11.3.6. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h3>
+<h3>11.3.7. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h3>
 <p>Start the logging and telemetry services:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_server <span class="p">&amp;</span>
 $ tele_server <span class="p">&amp;</span>
@@ -615,21 +616,21 @@ $ tele_server <span class="p">&amp;</span>
 <p>The application is running in the background and will not provide any console output.
 All output will be directed to the logging service after the components have been successfully set up.</p>
 <div class="section" id="log-client">
-<h4>11.3.6.1. Log client<a class="headerlink" href="#log-client" title="Permalink to this headline">¶</a></h4>
+<h4>11.3.7.1. Log client<a class="headerlink" href="#log-client" title="Permalink to this headline">¶</a></h4>
 <p>In a separate terminal (for example, <cite>tty2</cite>), <strong>start the logging service client</strong>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_client listen
 </pre></div>
 </div>
 </div>
 <div class="section" id="telemetry-client">
-<h4>11.3.6.2. Telemetry client<a class="headerlink" href="#telemetry-client" title="Permalink to this headline">¶</a></h4>
+<h4>11.3.7.2. Telemetry client<a class="headerlink" href="#telemetry-client" title="Permalink to this headline">¶</a></h4>
 <p>In a separate terminal (for example <cite>tty3</cite>), <strong>start the telemetry service client</strong>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ tele_client listen
 </pre></div>
 </div>
 </div>
 <div class="section" id="hdk-operation">
-<h4>11.3.6.3. HDK operation<a class="headerlink" href="#hdk-operation" title="Permalink to this headline">¶</a></h4>
+<h4>11.3.7.3. HDK operation<a class="headerlink" href="#hdk-operation" title="Permalink to this headline">¶</a></h4>
 <p>Now the HDK is available to be operated. The behaviour of the system
 will be the described one:</p>
 <ul class="simple">
