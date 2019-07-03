@@ -41,7 +41,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="1.2.4.1. User Authentication using LDAP" href="dev_environment/ldap_configuration.html"/>
+        <link rel="next" title="1.2.2.1. Fedora 28 Server" href="dev_environment/fedora_server.html"/>
         <link rel="prev" title="Software Development" href="index.html"/> 
 
   
@@ -109,24 +109,23 @@
 <li class="toctree-l4"><a class="reference internal" href="#required-hardware">1.2.1. Required Hardware</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#operating-system">1.2.2. Operating System</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#repository-configuration">1.2.3. Repository Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#advanced-system-configuration-optional">1.2.4. Advanced System Configuration (optional)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#package-list">1.2.5. Package List</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#node-installation">1.2.6. Node Installation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mongodb-configuration">1.2.7. MongoDB Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#infiniband-configuration-optional">1.2.8. Infiniband Configuration (optional)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ethercat-configuration">1.2.9. Ethercat Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#network-time-protocol-configuration">1.2.10. Network Time Protocol Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#precision-time-protocol-configuration-optional">1.2.11. Precision Time Protocol Configuration (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#package-list">1.2.4. Package List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#node-installation">1.2.5. Node Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mongodb-configuration">1.2.6. MongoDB Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ethercat-configuration">1.2.7. Ethercat Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#network-time-protocol-configuration">1.2.8. Network Time Protocol Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#precision-time-protocol-configuration-optional">1.2.9. Precision Time Protocol Configuration (optional)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#operations-workstation-configuration">1.3. Operations Workstation Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">1.3.1. Operating System</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#packages">1.3.2. Packages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#python-installation">1.3.3. Python Installation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">1.3.4. Node Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-development-kit-sdk">1.3. Software Development Kit (SDK)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operations-workstation-configuration-optional-macos-only">1.4. Operations Workstation Configuration (optional, MacOS only)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">1.4.1. Operating System</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#packages">1.4.2. Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-installation">1.4.3. Python Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">1.4.4. Node Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sdk-installation">1.4.5. SDK Installation</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#software-development-kit-sdk">1.4. Software Development Kit (SDK)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#next-steps">1.5. Next Steps</a></li>
 </ul>
 </li>
@@ -231,7 +230,7 @@
 </ul>
 </dd>
 </dl>
-<p>Future versions of the SDK could include support for CentOS, RHEL or Scientific Linux. Fedora has a very short release and support cycle (6 months and 18 months respectively), which is not ideal for a platform that requires significant stability over long periods of time.</p>
+<p>Future versions of the SDK will only support CentOS and MacOS (only for the UI framework). Fedora has a very short release and support cycle (6 months and 18 months respectively), which is not ideal for a platform that requires significant stability over long periods of time.</p>
 </div>
 <div class="section" id="server-configuration">
 <h2>1.2. Server Configuration<a class="headerlink" href="#server-configuration" title="Permalink to this headline">¶</a></h2>
@@ -260,8 +259,15 @@
 <p>Install the Operating System using these instructions:</p>
 <blockquote>
 <div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev_environment/fedora_server.html">1.2.2.1. Fedora 28 Server</a></li>
+</ul>
 </div>
 </div></blockquote>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If you plan to develop real-time components, the Linux kernel requires the root partition to be an <strong>ext4</strong> file system. Please ensure that this is configured correctly in the disk partitioning settings.</p>
+</div>
 </div>
 <div class="section" id="repository-configuration">
 <h3>1.2.3. Repository Configuration<a class="headerlink" href="#repository-configuration" title="Permalink to this headline">¶</a></h3>
@@ -292,24 +298,8 @@
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="advanced-system-configuration-optional">
-<h3>1.2.4. Advanced System Configuration (optional)<a class="headerlink" href="#advanced-system-configuration-optional" title="Permalink to this headline">¶</a></h3>
-<p>In a distributed computing environment, used by multiple developers, it is very convenient to use a centralized LDAP server for User Authentication and automatically mount /home directories from a network drive. The LDAP and NFS server configuration is network-dependent. The following instructions can be used as guidelines when configuring individual development machines to make use these services, if available.</p>
-<blockquote>
-<div><div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This configuration is currently optional. The alternative is to add users manually and manage permissions locally on each development machine.</p>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dev_environment/ldap_configuration.html">1.2.4.1. User Authentication using LDAP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dev_environment/nfs_configuration.html">1.2.4.2. Mounting Home Directories using NFS</a></li>
-</ul>
-</div>
-</div></blockquote>
-</div>
 <div class="section" id="package-list">
-<h3>1.2.5. Package List<a class="headerlink" href="#package-list" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.4. Package List<a class="headerlink" href="#package-list" title="Permalink to this headline">¶</a></h3>
 <p>The following RPM packages should be installed by an Administrative user for use in the development environment:</p>
 <ol class="arabic simple">
 <li>Install Common OS Utilities</li>
@@ -342,9 +332,9 @@ $ sudo dnf install -y python3-sphinx python3-sphinx_rtd_theme
 </div></blockquote>
 </div>
 <div class="section" id="node-installation">
-<h3>1.2.6. Node Installation<a class="headerlink" href="#node-installation" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.5. Node Installation<a class="headerlink" href="#node-installation" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Download and install <strong>Node version 10</strong></li>
+<li>Download and install <strong>Node version 10</strong>:</li>
 </ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sL https://rpm.nodesource.com/setup_10.x <span class="p">|</span> sudo bash -
@@ -362,7 +352,7 @@ $ sudo dnf install -y nodejs
 </div></blockquote>
 </div>
 <div class="section" id="mongodb-configuration">
-<h3>1.2.7. MongoDB Configuration<a class="headerlink" href="#mongodb-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.6. MongoDB Configuration<a class="headerlink" href="#mongodb-configuration" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Install the necessary packages:</li>
 </ol>
@@ -397,63 +387,21 @@ $ sudo systemctl start mongod
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="infiniband-configuration-optional">
-<h3>1.2.8. Infiniband Configuration (optional)<a class="headerlink" href="#infiniband-configuration-optional" title="Permalink to this headline">¶</a></h3>
-<p>Infiniband is a low-latency networking communications protocol that requires specialized hardware. The following configuration steps should be used as a guide when configuring Infiniband communications.</p>
-<ol class="arabic simple">
-<li>Install the neccessary packages</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y infiniband-diags opensm libmlx4
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Edit <code class="docutils literal"><span class="pre">/etc/rdma/mlx4.conf</span></code> and add the following line:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">01</span>:00.0 auto auto
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li>Find the interface used for Infiniband and edit the corresponding configuration file (for example <code class="docutils literal"><span class="pre">/etc/sysconfig/network-scripts/ifcfg-ib0</span></code>) to set the following options:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">DEVICE</span><span class="o">=</span>ib0
-<span class="nv">ONBOOT</span><span class="o">=</span>yes
-<span class="nv">TYPE</span><span class="o">=</span>Infiniband
-<span class="nv">BOOTPROTO</span><span class="o">=</span>none
-<span class="nv">IPADDR</span><span class="o">=</span>&lt;ib_ip_address&gt;
-<span class="nv">NETMASK</span><span class="o">=</span>&lt;ib_netmask&gt;
-</pre></div>
-</div>
-<p>where <code class="docutils literal"><span class="pre">&lt;ib_ip_address&gt;</span></code> is the static IP Address associated with the Infiniband network interface and <code class="docutils literal"><span class="pre">&lt;ib_netmask&gt;</span></code> is the netmask used for the infiniband subnet.</p>
-</div></blockquote>
-<ol class="arabic simple" start="4">
-<li>Enable Infiniband Services</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl <span class="nb">enable</span> opensm
-$ sudo systemctl <span class="nb">enable</span> rdma
-</pre></div>
-</div>
-</div></blockquote>
-</div>
 <div class="section" id="ethercat-configuration">
-<h3>1.2.9. Ethercat Configuration<a class="headerlink" href="#ethercat-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.7. Ethercat Configuration<a class="headerlink" href="#ethercat-configuration" title="Permalink to this headline">¶</a></h3>
 <p>EtherCAT is a high-speed fieldbus communication system used for real-time control. The following configuration steps should be used as a guide when configuring EtherCAT communications.</p>
 <ol class="arabic simple">
 <li>Install the real-time kernel and relevant packages</li>
 </ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
-
-.. warning::
-  This Linux kernel requires the root partition to be an **ext4** file system. Otherwise, your machine will not boot.
 </pre></div>
 </div>
 </div></blockquote>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This Linux kernel requires the root partition to be an <strong>ext4</strong> file system. Otherwise, your machine will not boot.</p>
+</div>
 <ol class="arabic simple" start="2">
 <li>Select the Ethernet interface to be used for EtherCAT communication (e.g. enp4s0) and edit the corresponding configuration file (e.g. <code class="docutils literal"><span class="pre">/etc/sysconfig/network-scripts/ifcfg-enp4s0</span></code>) to set the following options:</li>
 </ol>
@@ -479,7 +427,7 @@ $ sudo systemctl <span class="nb">enable</span> rdma
 <span class="nv">MASTER0_BACKUP</span><span class="o">=</span><span class="s2">&quot;&lt;mac_address_2&gt;&quot;</span>  <span class="c1"># optional line</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal"><span class="pre">&lt;mac_address_1&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;mac_address_2&gt;</span></code> are the two hardware addresses associated with the Ethercat network interface communicating with the Ethercat ring (redundant topology). If you you prefer using a linear topology (non redundant), comment or remove the second line (MASTER0_BACKUP=”&lt;mac_address_2&gt;”).</p>
+<p>where <code class="docutils literal"><span class="pre">&lt;mac_address_1&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;mac_address_2&gt;</span></code> are the two hardware addresses associated with the Ethercat network interface communicating with the Ethercat ring (redundant topology). If you you prefer using a linear topology (non redundant), comment or remove the second line (<code class="docutils literal"><span class="pre">MASTER0_BACKUP=&quot;&lt;mac_address_2&gt;&quot;</span></code>).</p>
 </div></blockquote>
 <ol class="arabic simple" start="5">
 <li>Edit <code class="docutils literal"><span class="pre">/usr/lib/systemd/system/ethercat.service</span></code> and uncomment the following line:</li>
@@ -529,7 +477,7 @@ $ ethercat slaves
 <p>If the “ethercat master” command does not produce the correct output, ensure that you’re currently running the real-time kernel. If the “ethercat slaves” command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
 </div>
 <div class="section" id="network-time-protocol-configuration">
-<h3>1.2.10. Network Time Protocol Configuration<a class="headerlink" href="#network-time-protocol-configuration" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.8. Network Time Protocol Configuration<a class="headerlink" href="#network-time-protocol-configuration" title="Permalink to this headline">¶</a></h3>
 <p>For general network timekeeping, use NTP, unless Precision Time Protocol is required.</p>
 <ol class="arabic simple">
 <li>Install the necessary packages:</li>
@@ -549,7 +497,7 @@ $ ethercat slaves
 </div></blockquote>
 </div>
 <div class="section" id="precision-time-protocol-configuration-optional">
-<h3>1.2.11. Precision Time Protocol Configuration (optional)<a class="headerlink" href="#precision-time-protocol-configuration-optional" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.9. Precision Time Protocol Configuration (optional)<a class="headerlink" href="#precision-time-protocol-configuration-optional" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Install the necessary packages:</li>
 </ol>
@@ -606,76 +554,15 @@ summary_interval <span class="m">6</span>
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="operations-workstation-configuration">
-<h2>1.3. Operations Workstation Configuration<a class="headerlink" href="#operations-workstation-configuration" title="Permalink to this headline">¶</a></h2>
-<p>The OCS User Interface needs to be run on a system with sufficient graphical rendering capability. At the moment, the Real-time kernel used for device control systems running EtherCAT does not contain the graphics modules necessary to support the user interface. It is recommended to run the user interface in a Mac, connected to the DCS via the network. Future releases will include support for Linux workstations.</p>
-<div class="section" id="id1">
-<h3>1.3.1. Operating System<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Apple Mac systems have the operating system already installed. The User Interface has been tested on the following versions of MacOS:</p>
-<blockquote>
-<div><ul class="simple">
-<li>MacOS High Sierra</li>
-<li>MacOS Mojave</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="packages">
-<h3>1.3.2. Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h3>
-<p>There are very few external packages that are not already installed in MacOS. The application Homebrew can be used to install these:</p>
-<ol class="arabic simple">
-<li>Install Homebrew</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ /usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
-</pre></div>
-</div>
-<p>More information can be found on the Homebrew website: &lt;<a class="reference external" href="https://brew.sh/">https://brew.sh/</a>&gt;</p>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Install common utilities</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ brew install wget
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="python-installation">
-<h3>1.3.3. Python Installation<a class="headerlink" href="#python-installation" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Check whether Python3 is installed</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ python3 --version
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Install Python3, if not already installed</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ brew install python3
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="id2">
-<h3>1.3.4. Node Installation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Install Node</li>
-</ol>
-<p>Follow the instructions here <a class="reference external" href="https://nodesource.com/blog/installing-nodejs-tutorial-mac-os-x/">https://nodesource.com/blog/installing-nodejs-tutorial-mac-os-x/</a></p>
-</div>
-</div>
 <div class="section" id="software-development-kit-sdk">
-<h2>1.4. Software Development Kit (SDK)<a class="headerlink" href="#software-development-kit-sdk" title="Permalink to this headline">¶</a></h2>
+<span id="sdk-install"></span><h2>1.3. Software Development Kit (SDK)<a class="headerlink" href="#software-development-kit-sdk" title="Permalink to this headline">¶</a></h2>
 <p>The Software Development Kit is distributed as a TAR file and can be downloaded from the GMTO release server.</p>
 <p>The SDK should be installed in a <strong>Global GMT Software Location</strong>, defined by the GMT_GLOBAL environment variable (default value: /opt/gmt). A <strong>Local Working Directory</strong>, defined by the GMT_LOCAL variable, is used as a unique workspace for individual developers. The local working directory typically resides underneath the /home/&lt;username&gt; directory.</p>
 <ol class="arabic simple">
 <li>Download the latest SDK distribution:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.6.0.tar.gz
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.6.0.tar.gz
 </pre></div>
 </div>
 </div></blockquote>
@@ -751,10 +638,6 @@ $ gds init
 </pre></div>
 </div>
 <p>The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.</p>
-<p>Create a <strong>local javascript library folder</strong> in order to create built bundles for your model files.  This folder is also used to install upgraded version of the library.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir -p <span class="nv">$GMT_LOCAL</span>/lib/js
-</pre></div>
-</div>
 </div></blockquote>
 <ol class="arabic simple" start="9">
 <li>Create a <strong>modules</strong> directory in $GMT_LOCAL</li>
@@ -766,19 +649,6 @@ $ mkdir modules
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="10">
-<li>Clone the HDK and isample modules</li>
-</ol>
-<blockquote>
-<div><p>This step is relevant for any module that the developer will be working on. It is recommended to fork the central repository in GitHub and cloning your personal fork, instead of working with the GMTO repositories. Any modifications should be submitted through a Pull Request, to be approved and merged after peer review.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules
-$ git clone https://github.com/&lt;username&gt;/ocs_hdk_dcs
-$ git clone https://github.com/&lt;username&gt;/ocs_isample_dcs
-</pre></div>
-</div>
-<p>Where &lt;username&gt; is your GitHub username, assuming you’ve forked from the GMTO repository.</p>
-<p>Alternatively, use <code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/GMTO/ocs_hdk_dcs</span></code> to clone from the central repository.</p>
-</div></blockquote>
-<ol class="arabic simple" start="11">
 <li>Create the <strong>bundles.coffee</strong> and <strong>ocs_local_bundle.coffee</strong> files, defining the local modules under development</li>
 </ol>
 <blockquote>
@@ -803,7 +673,99 @@ elements:
 </pre></div>
 </div>
 </div></blockquote>
-<ol class="arabic simple" start="12">
+<ol class="arabic simple" start="11">
+<li>Build all model files from modules in your ocs_local_bundles definition using webpack. For example:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/model
+$ webpack
+$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/model
+$ webpack
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="operations-workstation-configuration-optional-macos-only">
+<h2>1.4. Operations Workstation Configuration (optional, MacOS only)<a class="headerlink" href="#operations-workstation-configuration-optional-macos-only" title="Permalink to this headline">¶</a></h2>
+<p>The OCS User Interface needs to be run on a system with sufficient graphical rendering capability. At the moment, the Real-time kernel used for device control systems running EtherCAT does not contain the graphics modules necessary to support the user interface. It is recommended to run the user interface in a Mac, connected to the DCS via the network. Future releases will include support for Linux workstations.</p>
+<div class="section" id="id1">
+<h3>1.4.1. Operating System<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Apple Mac systems have the operating system already installed. The User Interface has been tested on the following versions of MacOS:</p>
+<blockquote>
+<div><ul class="simple">
+<li>MacOS High Sierra</li>
+<li>MacOS Mojave</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="packages">
+<h3>1.4.2. Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h3>
+<p>There are very few external packages that are not already installed in MacOS. The application Homebrew can be used to install these:</p>
+<ol class="arabic simple">
+<li>Install Homebrew</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ /usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>More information can be found on the Homebrew website: &lt;<a class="reference external" href="https://brew.sh/">https://brew.sh/</a>&gt;</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Install common utilities</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ brew install wget
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="python-installation">
+<h3>1.4.3. Python Installation<a class="headerlink" href="#python-installation" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Check whether Python3 is installed</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ python3 --version
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Install Python3, if not already installed</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ brew install python3
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h3>1.4.4. Node Installation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Install Node</li>
+</ol>
+<p>Follow the instructions here <a class="reference external" href="https://nodesource.com/blog/installing-nodejs-tutorial-mac-os-x/">https://nodesource.com/blog/installing-nodejs-tutorial-mac-os-x/</a></p>
+</div>
+<div class="section" id="sdk-installation">
+<h3>1.4.5. SDK Installation<a class="headerlink" href="#sdk-installation" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Follow steps on section <a class="reference internal" href="#sdk-install"><span class="std std-ref">Software Development Kit (SDK)</span></a> for installing the SDK.</li>
+</ol>
+<p>2. Create a <strong>local javascript library folder</strong> in order to create built bundles for your model files.
+This folder is also used to install upgraded version of the library.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir -p <span class="nv">$GMT_LOCAL</span>/lib/js
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Copy UI JavaScript lib files to $GMT_LOCAL/lib/js/</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ cp ocs_ui_fwk_elements.js ocs_ui_fwk_widgets.js ocs_ui_fwk.js <span class="nv">$GMT_LOCAL</span>/lib/js/
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
 <li>Systems that run the User Interface require compiled model files to be used by the Navigator application.</li>
 </ol>
 <blockquote>
@@ -815,6 +777,7 @@ $ webpack
 </pre></div>
 </div>
 </div></blockquote>
+</div>
 </div>
 <div class="section" id="next-steps">
 <h2>1.5. Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
@@ -834,7 +797,7 @@ $ webpack
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dev_environment/ldap_configuration.html" class="btn btn-neutral float-right" title="1.2.4.1. User Authentication using LDAP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dev_environment/fedora_server.html" class="btn btn-neutral float-right" title="1.2.2.1. Fedora 28 Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Software Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

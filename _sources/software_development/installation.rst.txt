@@ -22,7 +22,7 @@ For device control systems, the following operating systems are supported:
 For user interfaces, the following operating systems are supported:
     - MacOS
 
-Future versions of the SDK could include support for CentOS, RHEL or Scientific Linux. Fedora has a very short release and support cycle (6 months and 18 months respectively), which is not ideal for a platform that requires significant stability over long periods of time.
+Future versions of the SDK will only support CentOS and MacOS (only for the UI framework). Fedora has a very short release and support cycle (6 months and 18 months respectively), which is not ideal for a platform that requires significant stability over long periods of time.
 
 Server Configuration
 --------------------
@@ -56,8 +56,8 @@ Install the Operating System using these instructions:
 
      dev_environment/fedora_server
 
-    .. warning::
-      If you plan to develop real-time components, the Linux kernel requires the root partition to be an **ext4** file system. Please ensure that this is configured correctly in the disk partitioning settings.
+.. warning::
+  If you plan to develop real-time components, the Linux kernel requires the root partition to be an **ext4** file system. Please ensure that this is configured correctly in the disk partitioning settings.
 
 
 
@@ -88,20 +88,6 @@ To add the GMT repositories:
     gpgcheck=0
     enabled=1
 
-Advanced System Configuration (optional)
-........................................
-
-In a distributed computing environment, used by multiple developers, it is very convenient to use a centralized LDAP server for User Authentication and automatically mount /home directories from a network drive. The LDAP and NFS server configuration is network-dependent. The following instructions can be used as guidelines when configuring individual development machines to make use these services, if available.
-
-  .. note::
-
-    This configuration is currently optional. The alternative is to add users manually and manage permissions locally on each development machine.
-
-  .. toctree::
-     :maxdepth: 1
-
-     dev_environment/ldap_configuration
-     dev_environment/nfs_configuration
 
 Package List
 ............
@@ -134,7 +120,7 @@ The following RPM packages should be installed by an Administrative user for use
 Node Installation
 .................
 
-1. Download and install **Node version 10**
+1. Download and install **Node version 10**:
 
   .. code-block:: bash
 
@@ -175,42 +161,6 @@ MongoDB Configuration
 
     $ sudo systemctl status -l mongod
 
-Infiniband Configuration (optional)
-...................................
-
-Infiniband is a low-latency networking communications protocol that requires specialized hardware. The following configuration steps should be used as a guide when configuring Infiniband communications.
-
-1. Install the neccessary packages
-
-  .. code-block:: bash
-
-    $ sudo dnf install -y infiniband-diags opensm libmlx4
-
-2. Edit ``/etc/rdma/mlx4.conf`` and add the following line:
-
-  .. code-block:: bash
-
-    01:00.0 auto auto
-
-3. Find the interface used for Infiniband and edit the corresponding configuration file (for example ``/etc/sysconfig/network-scripts/ifcfg-ib0``) to set the following options:
-
-  .. code-block:: bash
-
-    DEVICE=ib0
-    ONBOOT=yes
-    TYPE=Infiniband
-    BOOTPROTO=none
-    IPADDR=<ib_ip_address>
-    NETMASK=<ib_netmask>
-
-  where ``<ib_ip_address>`` is the static IP Address associated with the Infiniband network interface and ``<ib_netmask>`` is the netmask used for the infiniband subnet.
-
-4. Enable Infiniband Services
-
-  .. code-block:: bash
-
-    $ sudo systemctl enable opensm
-    $ sudo systemctl enable rdma
 
 Ethercat Configuration
 ......................
@@ -223,8 +173,8 @@ EtherCAT is a high-speed fieldbus communication system used for real-time contro
 
     $ sudo dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
 
-    .. warning::
-      This Linux kernel requires the root partition to be an **ext4** file system. Otherwise, your machine will not boot.
+.. warning::
+  This Linux kernel requires the root partition to be an **ext4** file system. Otherwise, your machine will not boot.
 
 
 2. Select the Ethernet interface to be used for EtherCAT communication (e.g. enp4s0) and edit the corresponding configuration file (e.g. ``/etc/sysconfig/network-scripts/ifcfg-enp4s0``) to set the following options:
@@ -247,7 +197,7 @@ EtherCAT is a high-speed fieldbus communication system used for real-time contro
     MASTER0_DEVICE="<mac_address_1>"
     MASTER0_BACKUP="<mac_address_2>"  # optional line
 
-  where ``<mac_address_1>`` and ``<mac_address_2>`` are the two hardware addresses associated with the Ethercat network interface communicating with the Ethercat ring (redundant topology). If you you prefer using a linear topology (non redundant), comment or remove the second line (MASTER0_BACKUP="<mac_address_2>"). 
+  where ``<mac_address_1>`` and ``<mac_address_2>`` are the two hardware addresses associated with the Ethercat network interface communicating with the Ethercat ring (redundant topology). If you you prefer using a linear topology (non redundant), comment or remove the second line (``MASTER0_BACKUP="<mac_address_2>"``).
 
 5. Edit ``/usr/lib/systemd/system/ethercat.service`` and uncomment the following line:
 
@@ -352,61 +302,7 @@ where ``[enp3s0]`` should be set to the interface to use for PTP.
 
     $ sudo systemctl enable ptp4l
 
-
-Operations Workstation Configuration
-------------------------------------
-
-The OCS User Interface needs to be run on a system with sufficient graphical rendering capability. At the moment, the Real-time kernel used for device control systems running EtherCAT does not contain the graphics modules necessary to support the user interface. It is recommended to run the user interface in a Mac, connected to the DCS via the network. Future releases will include support for Linux workstations. 
-
-Operating System
-................
-
-Apple Mac systems have the operating system already installed. The User Interface has been tested on the following versions of MacOS:
-
-    - MacOS High Sierra
-    - MacOS Mojave
-
-Packages
-........
-
-There are very few external packages that are not already installed in MacOS. The application Homebrew can be used to install these:
-
-1. Install Homebrew
-
-  .. code-block:: bash
-
-    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-  More information can be found on the Homebrew website: <https://brew.sh/>
-
-2. Install common utilities
-
-  .. code-block:: bash
-
-    $ brew install wget
-
-
-Python Installation
-...................
-
-1. Check whether Python3 is installed
-
-  .. code-block:: bash
-
-    $ python3 --version
-
-2. Install Python3, if not already installed
-
-  .. code-block:: bash
-
-    $ brew install python3
-
-Node Installation
-.................
-
-1. Install Node
-
-Follow the instructions here https://nodesource.com/blog/installing-nodejs-tutorial-mac-os-x/
+.. _sdk_install:
 
 Software Development Kit (SDK)
 ------------------------------
@@ -419,7 +315,7 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
   .. code-block:: bash
 
-    $ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.6.0.tar.gz
+    $ wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.6.0.tar.gz
 
 2. Extract the TAR file in the /opt directory, into a new folder for the latest release:
 
@@ -486,12 +382,6 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
   The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.  
 
-  Create a **local javascript library folder** in order to create built bundles for your model files.  This folder is also used to install upgraded version of the library.
-
-  .. code-block:: bash
-
-    $ mkdir -p $GMT_LOCAL/lib/js
-
 9. Create a **modules** directory in $GMT_LOCAL
 
   .. code-block:: bash
@@ -499,21 +389,7 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
     $ cd $GMT_LOCAL
     $ mkdir modules
 
-10. Clone the HDK and isample modules
-
-  This step is relevant for any module that the developer will be working on. It is recommended to fork the central repository in GitHub and cloning your personal fork, instead of working with the GMTO repositories. Any modifications should be submitted through a Pull Request, to be approved and merged after peer review.
-
-  .. code-block:: bash
-
-    $ cd $GMT_LOCAL/modules
-    $ git clone https://github.com/<username>/ocs_hdk_dcs
-    $ git clone https://github.com/<username>/ocs_isample_dcs
-
-  Where <username> is your GitHub username, assuming you've forked from the GMTO repository. 
-
-  Alternatively, use ``git clone https://github.com/GMTO/ocs_hdk_dcs`` to clone from the central repository.
-
-11. Create the **bundles.coffee** and **ocs_local_bundle.coffee** files, defining the local modules under development 
+10. Create the **bundles.coffee** and **ocs_local_bundle.coffee** files, defining the local modules under development
 
   These files may be copied from $GMT_GLOBAL and then edited to reflect the developer's configuration.
 
@@ -541,7 +417,91 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
          isample_dcs: { active: true, test: false, developer: 'gmto', domain: 'idcs' }
          hdk_dcs:     { active: true, test: false, developer: 'gmto', domain: 'idcs' }
 
-12. Systems that run the User Interface require compiled model files to be used by the Navigator application.
+11. Build all model files from modules in your ocs_local_bundles definition using webpack. For example:
+
+  .. code-block:: bash
+
+    $ cd $GMT_LOCAL/modules/ocs_hdk_dcs/model
+    $ webpack
+    $ cd $GMT_LOCAL/modules/ocs_isample_dcs/model
+    $ webpack
+
+
+
+Operations Workstation Configuration (optional, MacOS only)
+-----------------------------------------------------------
+
+The OCS User Interface needs to be run on a system with sufficient graphical rendering capability. At the moment, the Real-time kernel used for device control systems running EtherCAT does not contain the graphics modules necessary to support the user interface. It is recommended to run the user interface in a Mac, connected to the DCS via the network. Future releases will include support for Linux workstations.
+
+Operating System
+................
+
+Apple Mac systems have the operating system already installed. The User Interface has been tested on the following versions of MacOS:
+
+    - MacOS High Sierra
+    - MacOS Mojave
+
+Packages
+........
+
+There are very few external packages that are not already installed in MacOS. The application Homebrew can be used to install these:
+
+1. Install Homebrew
+
+  .. code-block:: bash
+
+    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+  More information can be found on the Homebrew website: <https://brew.sh/>
+
+2. Install common utilities
+
+  .. code-block:: bash
+
+    $ brew install wget
+
+
+Python Installation
+...................
+
+1. Check whether Python3 is installed
+
+  .. code-block:: bash
+
+    $ python3 --version
+
+2. Install Python3, if not already installed
+
+  .. code-block:: bash
+
+    $ brew install python3
+
+Node Installation
+.................
+
+1. Install Node
+
+Follow the instructions here https://nodesource.com/blog/installing-nodejs-tutorial-mac-os-x/
+
+SDK Installation
+................
+
+1. Follow steps on section :ref:`sdk_install` for installing the SDK.
+
+2. Create a **local javascript library folder** in order to create built bundles for your model files.
+This folder is also used to install upgraded version of the library.
+
+  .. code-block:: bash
+
+    $ mkdir -p $GMT_LOCAL/lib/js
+
+3. Copy UI JavaScript lib files to $GMT_LOCAL/lib/js/
+
+  .. code-block:: bash
+
+    $ cp ocs_ui_fwk_elements.js ocs_ui_fwk_widgets.js ocs_ui_fwk.js $GMT_LOCAL/lib/js/
+
+4. Systems that run the User Interface require compiled model files to be used by the Navigator application.
 
   Build all model files from modules in your ocs_local_bundles definition using webpack. For example:
 
