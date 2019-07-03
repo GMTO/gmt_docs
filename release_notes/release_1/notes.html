@@ -249,7 +249,6 @@
 <li>EtherCAT ring topology support</li>
 <li>Read the slave state (OP, PREOP, SAFEOP, etc)</li>
 <li>Fixed issue found when etherCAT bus nominal rate was less than the component scan rate</li>
-<li>Fixed issue connecting IgH Master to EL7201-0010 and EL7211-0010 modules</li>
 </ul>
 </li>
 <li>Added basic Serial Communications Hardware Adapter (does not support Serial over EtherCAT yet)</li>
@@ -295,7 +294,9 @@
 </li>
 <li>Known Issues:<ul>
 <li>Generating test skeletons with “gds gen -t test” does not currently work</li>
-<li>The UI Framework has not been updated to work with the new Core Frameworks yet. This updated functionality will be included in a 1.6.1 update, released in the next 2 months, along with more examples on creating User Interface panels.</li>
+<li>The UI Framework has not been updated to work with the new Core Frameworks yet. This updated functionality will be included in an updated release in the next 2 months, along with more examples on creating User Interface panels.</li>
+<li>Functionality added to send SDOs during runtime using the EtherCAT Hardware Adapter does not work as expected. At this time, no SDOs can be sent to the slave, either during start-up or runtime. This will be fixed in a patch as soon possible.</li>
+<li>The issue connecting the IgH Master to EL7201-0010 and EL7211-0010 modules has been fixed, but the known issue with sending SDO values to the slave affects this functionality as well.</li>
 </ul>
 </li>
 </ul>

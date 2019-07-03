@@ -71,7 +71,6 @@ Contents of release 1.6.0
     - EtherCAT ring topology support
     - Read the slave state (OP, PREOP, SAFEOP, etc)
     - Fixed issue found when etherCAT bus nominal rate was less than the component scan rate
-    - Fixed issue connecting IgH Master to EL7201-0010 and EL7211-0010 modules
 
   - Added basic Serial Communications Hardware Adapter (does not support Serial over EtherCAT yet)
   - Persistence Framework updated to sync with Node.js Core Framework:
@@ -114,7 +113,9 @@ Contents of release 1.6.0
 - Known Issues:
 
   - Generating test skeletons with "gds gen -t test" does not currently work
-  - The UI Framework has not been updated to work with the new Core Frameworks yet. This updated functionality will be included in a 1.6.1 update, released in the next 2 months, along with more examples on creating User Interface panels.
+  - The UI Framework has not been updated to work with the new Core Frameworks yet. This updated functionality will be included in an updated release in the next 2 months, along with more examples on creating User Interface panels.
+  - Functionality added to send SDOs during runtime using the EtherCAT Hardware Adapter does not work as expected. At this time, no SDOs can be sent to the slave, either during start-up or runtime. This will be fixed in a patch as soon possible.
+  - The issue connecting the IgH Master to EL7201-0010 and EL7211-0010 modules has been fixed, but the known issue with sending SDO values to the slave affects this functionality as well.
 
 
 Contents of release 1.5.0

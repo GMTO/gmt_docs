@@ -383,80 +383,93 @@ $ grs compile --input $GMT_LOCAL/etc/conf/hdk_dcs/hdk_hw1_adapter_ethercat_defau
 <h3>11.3.5. HDK Main Controller Behavior<a class="headerlink" href="#hdk-main-controller-behavior" title="Permalink to this headline">¶</a></h3>
 <p>The behavior of the HDK is defined in the <em>hdk_main_ctrl</em> component, and
 more specifically, in the step() function of this controller.</p>
-<p>The file that contains the HDK controller step function is <code class="docutils literal"><span class="pre">`hdk_main_ctrl_step.cpp`</span></code>.
+<p>The file that contains the HDK controller step function is <code class="docutils literal"><span class="pre">`HdkMainCtrl.cpp`</span></code>.
 To visualize or edit it:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/cpp/
 $ <span class="nb">cd</span> hdk_ctrl_pkg/hdk_main_ctrl
-$ vi hdk_main_ctrl_step.cpp
+$ vi HdkMainCtrl.cpp
 </pre></div>
 </div>
 <p>The contents of the file is:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;hdk_main_ctrl.h&quot;</span><span class="cp"></span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;HdkMainCtrl.h&quot;</span><span class="cp"></span>
 
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">gmt</span><span class="p">;</span>
 
-<span class="kt">void</span> <span class="n">HdkMainCtrl</span><span class="o">::</span><span class="n">step</span><span class="p">(</span><span class="kt">bool</span> <span class="n">setup_ok</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">setup_ok</span><span class="p">)</span>
+<span class="n">HdkMainCtrl</span><span class="o">::</span><span class="n">HdkMainCtrl</span><span class="p">(</span>
+                        <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_uri</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_name</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_host</span><span class="p">,</span>
+                        <span class="kt">int</span> <span class="n">comp_port</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_acl</span><span class="p">,</span>
+                        <span class="kt">double</span> <span class="n">comp_scan_rate</span><span class="p">,</span>
+                        <span class="kt">int</span> <span class="n">comp_prio</span><span class="p">,</span>
+                        <span class="kt">int</span> <span class="n">comp_stack_size</span><span class="p">)</span>
+<span class="o">:</span> <span class="n">HdkMainCtrlBase</span><span class="p">(</span><span class="n">comp_uri</span><span class="p">,</span> <span class="n">comp_name</span><span class="p">,</span> <span class="n">comp_host</span><span class="p">,</span> <span class="n">comp_port</span><span class="p">,</span> <span class="n">comp_acl</span><span class="p">,</span> <span class="n">comp_scan_rate</span><span class="p">,</span> <span class="n">comp_prio</span><span class="p">,</span> <span class="n">comp_stack_size</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="n">HdkMainCtrl</span><span class="o">::~</span><span class="n">HdkMainCtrl</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">HdkMainCtrl</span><span class="o">::</span><span class="n">step</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">hmi_inputs_val</span><span class="p">.</span><span class="n">emergency_button</span><span class="p">)</span> <span class="p">{</span> <span class="n">motor_ctrl_req</span><span class="p">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">motor_ctrl_req</span><span class="p">.</span><span class="n">enable</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">motor_state_val</span><span class="p">.</span><span class="n">ready</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">motor_state_val</span><span class="p">.</span><span class="n">enabled</span><span class="p">)</span> <span class="p">{</span> <span class="n">motor_ctrl_req</span><span class="p">.</span><span class="n">enable</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// enable motor if not enabled</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">motor_state_val</span><span class="p">.</span><span class="n">enabled</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">hmi_inputs</span><span class="p">.</span><span class="n">emergency_button</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">motor_ctrl</span><span class="p">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="n">motor_ctrl</span><span class="p">.</span><span class="n">enable</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">motor_state</span><span class="p">.</span><span class="n">ready</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">motor_state</span><span class="p">.</span><span class="n">enabled</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="c1">// enable motor if not enabled</span>
-            <span class="n">motor_ctrl</span><span class="p">.</span><span class="n">enable</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="n">motor_state</span><span class="p">.</span><span class="n">enabled</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">hmi_inputs</span><span class="p">.</span><span class="n">green_push_button</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">motor_ctrl</span><span class="p">.</span><span class="n">velocity</span><span class="o">++</span><span class="p">;</span>
-            <span class="p">}</span>
-
-            <span class="k">if</span> <span class="p">(</span><span class="n">hmi_inputs</span><span class="p">.</span><span class="n">red_push_button</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">motor_ctrl</span><span class="p">.</span><span class="n">velocity</span><span class="o">--</span><span class="p">;</span>
-            <span class="p">}</span>
-
-            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">hmi_inputs</span><span class="p">.</span><span class="n">emergency_button</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">motor_ctrl</span><span class="p">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-                <span class="n">motor_ctrl</span><span class="p">.</span><span class="n">enable</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-
-        <span class="kt">bool</span> <span class="n">moving</span>                 <span class="o">=</span> <span class="n">motor_state</span><span class="p">.</span><span class="n">moving_positive</span> <span class="o">||</span> <span class="n">motor_state</span><span class="p">.</span><span class="n">moving_negative</span><span class="p">;</span>
-        <span class="n">hmi_outputs</span><span class="p">.</span><span class="n">pilot</span>           <span class="o">=</span> <span class="n">moving</span><span class="p">;</span> <span class="c1">// pilot on when moving</span>
-        <span class="n">hmi_outputs</span><span class="p">.</span><span class="n">emergency_light</span> <span class="o">=</span> <span class="o">!</span><span class="n">hmi_inputs</span><span class="p">.</span><span class="n">emergency_button</span><span class="p">;</span> <span class="c1">// ligth on when button pressed</span>
-
-        <span class="kt">float</span> <span class="n">estimated_temperature</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">.</span><span class="n">temp_sensor1</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">;</span>  <span class="c1">// 10.0 will be a property</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>    <span class="c1">// every 100 steps = 1 second</span>
-        <span class="p">{</span>
-            <span class="c1">// following values should go to user interface</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Green button = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">hmi_inputs</span><span class="p">.</span><span class="n">green_push_button</span><span class="p">));</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Red button   = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">hmi_inputs</span><span class="p">.</span><span class="n">red_push_button</span><span class="p">));</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Emergency    = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">hmi_inputs</span><span class="p">.</span><span class="n">emergency_button</span><span class="p">));</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Temperature  = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">estimated_temperature</span><span class="p">));</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Temperature1 = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">temperatures</span><span class="p">.</span><span class="n">temp_sensor1</span><span class="p">));</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Temperature2 = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">temperatures</span><span class="p">.</span><span class="n">temp_sensor2</span><span class="p">));</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Axis Ready   = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">motor_state</span><span class="p">.</span><span class="n">ready</span><span class="p">));</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Axis Enabled = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">motor_state</span><span class="p">.</span><span class="n">enabled</span><span class="p">));</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Axis Warning = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">motor_state</span><span class="p">.</span><span class="n">warning</span><span class="p">));</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Axis Error   = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">motor_state</span><span class="p">.</span><span class="n">error</span><span class="p">));</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Axis Moving+ = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">motor_state</span><span class="p">.</span><span class="n">moving_positive</span><span class="p">));</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Axis Moving- = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">motor_state</span><span class="p">.</span><span class="n">moving_negative</span><span class="p">));</span>
-        <span class="p">}</span>
-
-        <span class="k">if</span><span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">500</span><span class="p">))</span>  <span class="c1">// every 500 steps = 5 seconds</span>
-        <span class="p">{</span>
-            <span class="c1">// flip bit to indicate component is alive</span>
-            <span class="n">hmi_outputs</span><span class="p">.</span><span class="n">heartbeat</span> <span class="o">=</span> <span class="o">!</span><span class="n">hmi_outputs</span><span class="p">.</span><span class="n">heartbeat</span><span class="p">;</span>
-        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">hmi_inputs_val</span><span class="p">.</span><span class="n">green_push_button</span><span class="p">)</span> <span class="p">{</span> <span class="n">motor_ctrl_req</span><span class="p">.</span><span class="n">velocity</span><span class="o">++</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">hmi_inputs_val</span><span class="p">.</span><span class="n">red_push_button</span><span class="p">)</span>   <span class="p">{</span> <span class="n">motor_ctrl_req</span><span class="p">.</span><span class="n">velocity</span><span class="o">--</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">hmi_inputs_val</span><span class="p">.</span><span class="n">emergency_button</span><span class="p">)</span> <span class="p">{</span> <span class="n">motor_ctrl_req</span><span class="p">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">motor_ctrl_req</span><span class="p">.</span><span class="n">enable</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
     <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">moving</span>                     <span class="o">=</span> <span class="n">motor_state_val</span><span class="p">.</span><span class="n">moving_positive</span> <span class="o">||</span> <span class="n">motor_state_val</span><span class="p">.</span><span class="n">moving_negative</span><span class="p">;</span>
+    <span class="n">hmi_outputs_req</span><span class="p">.</span><span class="n">pilot</span>           <span class="o">=</span> <span class="n">moving</span><span class="p">;</span> <span class="c1">// pilot on when moving</span>
+    <span class="n">hmi_outputs_req</span><span class="p">.</span><span class="n">emergency_light</span> <span class="o">=</span> <span class="o">!</span><span class="n">hmi_inputs_val</span><span class="p">.</span><span class="n">emergency_button</span><span class="p">;</span> <span class="c1">// ligth on when button pressed</span>
+    <span class="kt">float</span> <span class="n">estimated_temperature</span> <span class="o">=</span> <span class="n">temperatures_val</span><span class="p">.</span><span class="n">temp_sensor1</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">;</span>  <span class="c1">// 10.0 will be a property</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>    <span class="c1">// every 1000 steps = 1 second</span>
+    <span class="p">{</span>
+
+        <span class="c1">// following values should go to user interface</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Green button = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">hmi_inputs_val</span><span class="p">.</span><span class="n">green_push_button</span><span class="p">));</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Red button   = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">hmi_inputs_val</span><span class="p">.</span><span class="n">red_push_button</span><span class="p">));</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Emergency    = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">hmi_inputs_val</span><span class="p">.</span><span class="n">emergency_button</span><span class="p">));</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Temperature  = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">estimated_temperature</span><span class="p">));</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Temperature1 = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">temperatures_val</span><span class="p">.</span><span class="n">temp_sensor1</span><span class="p">));</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Temperature2 = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">temperatures_val</span><span class="p">.</span><span class="n">temp_sensor2</span><span class="p">));</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Axis Ready   = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">motor_state_val</span><span class="p">.</span><span class="n">ready</span><span class="p">));</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Axis Enabled = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">motor_state_val</span><span class="p">.</span><span class="n">enabled</span><span class="p">));</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Axis Warning = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">motor_state_val</span><span class="p">.</span><span class="n">warning</span><span class="p">));</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Axis Error   = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">motor_state_val</span><span class="p">.</span><span class="n">error</span><span class="p">));</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Axis Moving+ = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">motor_state_val</span><span class="p">.</span><span class="n">moving_positive</span><span class="p">));</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s">&quot;Axis Moving- = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">motor_state_val</span><span class="p">.</span><span class="n">moving_negative</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">500</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">hmi_outputs_req</span><span class="p">.</span><span class="n">heartbeat</span> <span class="o">=</span> <span class="o">!</span><span class="n">hmi_outputs_req</span><span class="p">.</span><span class="n">heartbeat</span><span class="p">;</span> <span class="c1">// flip bit on each step to indicate component is alive</span>
+    <span class="p">}</span>
+
+    <span class="n">hmi</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">input</span> <span class="o">=</span> <span class="n">hmi_inputs_val</span><span class="p">;</span>
+    <span class="n">hmi</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">hmi_outputs_req</span><span class="p">;</span>
+    <span class="n">motor</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">motor_state_val</span><span class="p">;</span>
+    <span class="n">motor</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">command</span> <span class="o">=</span> <span class="n">motor_ctrl_req</span><span class="p">;</span>
+    <span class="n">temperatures</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">temperatures_val</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">HdkMainCtrl</span><span class="o">::</span><span class="n">setup</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">//setup async input handlers</span>
+
+    <span class="c1">//ex: new_async_input_handler (&quot;input_name&quot;, this, &amp;HdkMainCtrl::input_handler);</span>
+
+    <span class="c1">//add behaviors to features</span>
+
+    <span class="c1">//other initializations</span>
+
 <span class="p">}</span>
 </pre></div>
 </div>

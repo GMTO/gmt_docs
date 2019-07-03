@@ -118,15 +118,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#code-generation">10.3. Code Generation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#component-attributes">10.4. Component Attributes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#state-variables">10.4.1. State Variables</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#input-ports">10.4.2. Input Ports</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#output-ports">10.4.3. Output Ports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">10.4.2. Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">10.4.3. Outputs</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#optional-defining-component-behavior">10.5. (Optional) Defining component behavior</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#compilation">10.6. Compilation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#running-the-example">10.7. Running the Example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#log-service">10.7.1. Log Service</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#telemetry-service">10.7.2. Telemetry Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-the-configuration">10.7. Installing the configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-example">10.8. Running the Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#log-service">10.8.1. Log Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#telemetry-service">10.8.2. Telemetry Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interacting-with-a-component">10.8.3. Interacting with a component</a></li>
 </ul>
 </li>
 </ul>
@@ -351,24 +353,24 @@ $ ls -la
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>float</td>
-<td>position_sv</td>
+<td>position</td>
 <td>min: 5, max: 40</td>
 <td>20</td>
 </tr>
 <tr class="row-odd"><td>OperationalState</td>
-<td>ops_state_sv</td>
+<td>op_state</td>
 <td>OFF, STARTING, ON, INITIALIZING,
 RUN, HALTING, SHUTTING_DOWN,
 FAULT, RESETTING, DISABLED</td>
 <td>OFF</td>
 </tr>
 <tr class="row-even"><td>SimulationMode</td>
-<td>sim_mode_sv</td>
+<td>sim_mode</td>
 <td>SIMULATION, ON_LINE</td>
 <td>ON_LINE</td>
 </tr>
 <tr class="row-odd"><td>ControlMode</td>
-<td>control_mode_sv</td>
+<td>control_mode</td>
 <td>STANDALONE, INTEGRATED</td>
 <td>STANDALONE</td>
 </tr>
@@ -377,8 +379,8 @@ FAULT, RESETTING, DISABLED</td>
 </div></blockquote>
 <p><em>OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the “Range” column above.</em></p>
 </div>
-<div class="section" id="input-ports">
-<h3>10.4.2. Input Ports<a class="headerlink" href="#input-ports" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="inputs">
+<h3>10.4.2. Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -399,19 +401,19 @@ FAULT, RESETTING, DISABLED</td>
 </tr>
 <tr class="row-odd"><td>float</td>
 <td>position_goal</td>
-<td>position_sv.goal</td>
+<td>position.goal</td>
 </tr>
 <tr class="row-even"><td>OperationalState</td>
 <td>ops_state_goal</td>
-<td>ops_state_sv.goal</td>
+<td>ops_state.goal</td>
 </tr>
 <tr class="row-odd"><td>SimulationMode</td>
 <td>sim_mode_goal</td>
-<td>sim_mode_sv.goal</td>
+<td>sim_mode.goal</td>
 </tr>
 <tr class="row-even"><td>ControlMode</td>
 <td>control_mode_goal</td>
-<td>control_mode_sv.goal</td>
+<td>control_mode.goal</td>
 </tr>
 </tbody>
 </table>
@@ -431,8 +433,8 @@ FAULT, RESETTING, DISABLED</td>
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="output-ports">
-<h3>10.4.3. Output Ports<a class="headerlink" href="#output-ports" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="outputs">
+<h3>10.4.3. Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -451,25 +453,21 @@ FAULT, RESETTING, DISABLED</td>
 <td>motor_control</td>
 <td>motor_control</td>
 </tr>
-<tr class="row-odd"><td>HeartBeatEvent</td>
-<td>heartbeat_out</td>
-<td>heartbeat_out</td>
-</tr>
-<tr class="row-even"><td>float</td>
+<tr class="row-odd"><td>float</td>
 <td>position_value</td>
-<td>position_sv.value</td>
+<td>position.value</td>
 </tr>
-<tr class="row-odd"><td>OperationalState</td>
+<tr class="row-even"><td>OperationalState</td>
 <td>ops_state_value</td>
-<td>ops_state_sv.value</td>
+<td>ops_state.value</td>
 </tr>
-<tr class="row-even"><td>SimulationMode</td>
+<tr class="row-odd"><td>SimulationMode</td>
 <td>sim_mode_value</td>
-<td>sim_mode_sv.value</td>
+<td>sim_mode.value</td>
 </tr>
-<tr class="row-odd"><td>ControlMode</td>
+<tr class="row-even"><td>ControlMode</td>
 <td>control_mode_value</td>
-<td>control_mode_sv.value</td>
+<td>control_mode.value</td>
 </tr>
 </tbody>
 </table>
@@ -485,55 +483,52 @@ FAULT, RESETTING, DISABLED</td>
 </pre></div>
 </div>
 </div></blockquote>
-<p>and the struct <cite>HeartBeatEvent</cite> is defined as:</p>
-<blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">HeartBeatEvent</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="n">timeval</span>   <span class="n">timestamp</span><span class="p">;</span>               <span class="c1">// Time stamp</span>
-    <span class="n">MSGPACK_DEFINE_MAP</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-</div></blockquote>
 </div>
 </div>
 <div class="section" id="optional-defining-component-behavior">
 <h2>10.5. (Optional) Defining component behavior<a class="headerlink" href="#optional-defining-component-behavior" title="Permalink to this headline">¶</a></h2>
-<p>The core component behavior is specified in the *_step.cpp file. The component
+<p>The core component behavior is specified in the component cpp file. The component
 has a periodic thread that reads input from the input ports, runs the step
 function and then writes output to the output ports. Initially, the generated
 step function will check whether the component is correctly configured and if
 so, will log the current step counter value.</p>
 <p>In the following examples we will replace the basic step functionality with
 simulated controller behavior.</p>
-<p>To edit the <em>Filter Wheel Controller</em> step file:</p>
+<p>To edit the <em>Filter Wheel Controller</em> step function:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/src/cpp/
 $ <span class="nb">cd</span> isample_ctrl_pkg/isample_filter_wheel_ctrl
-$ vi isample_filter_wheel_ctrl_step.cpp
+$ vi IsampleFilterWheelCtrl.cpp
 </pre></div>
 </div>
 <p>The following example step function for the filter wheel controller validates
 positional input and immediately sets the position value to the new goal, if possible.</p>
 <blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">IsampleFilterWheelCtrl</span><span class="o">::</span><span class="n">step</span><span class="p">(</span><span class="kt">bool</span> <span class="n">setup_ok</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">setup_ok</span><span class="p">)</span> <span class="p">{</span>                     <span class="c1">// this will be executed only if port setup has been received</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">position_sv</span><span class="p">.</span><span class="n">goal</span> <span class="o">!=</span> <span class="n">position_sv</span><span class="p">.</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
-                <span class="c1">// check range</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">position_sv</span><span class="p">.</span><span class="n">goal</span> <span class="o">&gt;=</span> <span class="n">position_sv</span><span class="p">.</span><span class="n">max</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="n">log_warning</span><span class="p">(</span><span class="s">&quot;Position is at or exceeding maximum value: &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">position_sv</span><span class="p">.</span><span class="n">max</span><span class="p">));</span>
-                    <span class="c1">// prevent further movement</span>
-                    <span class="n">position_sv</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">position_sv</span><span class="p">.</span><span class="n">max</span><span class="p">;</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">position_sv</span><span class="p">.</span><span class="n">goal</span> <span class="o">&lt;=</span> <span class="n">position_sv</span><span class="p">.</span><span class="n">min</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="n">log_warning</span><span class="p">(</span><span class="s">&quot;Position is at or exceeding minimum value: &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">position_sv</span><span class="p">.</span><span class="n">min</span><span class="p">));</span>
-                    <span class="c1">// prevent further movement</span>
-                    <span class="n">position_sv</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">position_sv</span><span class="p">.</span><span class="n">min</span><span class="p">;</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="c1">// achieve target position immediately</span>
-                    <span class="n">position_sv</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">position_sv</span><span class="p">.</span><span class="n">goal</span><span class="p">;</span>
-                <span class="p">}</span>
-                <span class="c1">// report value</span>
-                <span class="n">log_info</span><span class="p">(</span><span class="n">position_sv</span><span class="p">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot; = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">position_sv</span><span class="p">.</span><span class="n">value</span><span class="p">));</span>
+<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">IsampleFilterWheelCtrl</span><span class="o">::</span><span class="n">step</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">goal</span> <span class="o">!=</span> <span class="n">position</span><span class="p">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// check range</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">goal</span> <span class="o">&gt;=</span> <span class="n">position</span><span class="p">.</span><span class="n">max</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">log_warning</span><span class="p">(</span><span class="s">&quot;Position is at or exceeding maximum value: &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">max</span><span class="p">));</span>
+                <span class="c1">// prevent further movement</span>
+                <span class="n">position</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">position</span><span class="p">.</span><span class="n">max</span><span class="p">;</span>
             <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">goal</span> <span class="o">&lt;=</span> <span class="n">position</span><span class="p">.</span><span class="n">min</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">log_warning</span><span class="p">(</span><span class="s">&quot;Position is at or exceeding minimum value: &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">min</span><span class="p">));</span>
+                <span class="c1">// prevent further movement</span>
+                <span class="n">position</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">position</span><span class="p">.</span><span class="n">min</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="c1">// achieve target position immediately</span>
+                <span class="n">position</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">position</span><span class="p">.</span><span class="n">goal</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="c1">// report value</span>
+            <span class="n">log_info</span><span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot; = &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">value</span><span class="p">));</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -549,8 +544,7 @@ positional input and immediately sets the position value to the new goal, if pos
 </div>
 <p>Ensure that the following lines are defined:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Add in this file the compile flags for the package, eg:</span>
-<span class="nv">MOD_BUILD_LDFLAGS</span> <span class="o">+=</span> -lcore_core_pkg -lio_core_pkg -lctrl_core_pkg -lio_ethercat_pkg
-<span class="nv">MOD_BUILD_LDFLAGS</span> <span class="o">+=</span> -lethercat
+<span class="nv">MOD_BUILD_LDFLAGS</span> <span class="o">+=</span> -lcore_core_pkg -lio_core_pkg -lctrl_core_pkg
 </pre></div>
 </div>
 <p>Run <strong>make</strong> to compile the code:</p>
@@ -559,8 +553,25 @@ $ make
 </pre></div>
 </div>
 </div>
+<div class="section" id="installing-the-configuration">
+<h2>10.7. Installing the configuration<a class="headerlink" href="#installing-the-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The configuration files are autogenerated in the <cite>$GMT_LOCAL/modules/ocs_isample_dcs/src/etc/conf</cite> directory,
+but they need to be installed to <cite>$GMT_LOCAL/etc/conf</cite> in order to be used by
+the application.</p>
+<p>To install the configuration files, execute the following commands:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds install isample_dcs
+$ grs compile -i isample_cryo_external_temp_ctrl
+$ grs compile -i isample_cryo_internal_temp_ctrl
+$ grs compile -i isample_ctrl_super
+$ grs compile -i isample_focus1_ctrl
+$ grs compile -i isample_fw1_ctrl
+$ grs compile -i isample_fw2_ctrl
+$ grs compile -i isample_hw1_adapter
+</pre></div>
+</div>
+</div>
 <div class="section" id="running-the-example">
-<h2>10.7. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h2>
+<h2>10.8. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h2>
 <p>Start the logging and telemetry services:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_server <span class="p">&amp;</span>
 $ tele_server <span class="p">&amp;</span>
@@ -573,14 +584,14 @@ $ tele_server <span class="p">&amp;</span>
 <p>The application is running in the background and will not provide any console output.
 All output will be directed to the logging service after the components have been successfully set up.</p>
 <div class="section" id="log-service">
-<h3>10.7.1. Log Service<a class="headerlink" href="#log-service" title="Permalink to this headline">¶</a></h3>
+<h3>10.8.1. Log Service<a class="headerlink" href="#log-service" title="Permalink to this headline">¶</a></h3>
 <p>In a separate terminal (for example, <cite>tty2</cite>), <strong>start the logging service client</strong>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_client listen
 </pre></div>
 </div>
 </div>
 <div class="section" id="telemetry-service">
-<h3>10.7.2. Telemetry Service<a class="headerlink" href="#telemetry-service" title="Permalink to this headline">¶</a></h3>
+<h3>10.8.2. Telemetry Service<a class="headerlink" href="#telemetry-service" title="Permalink to this headline">¶</a></h3>
 <p>In a separate terminal (for example <cite>tty3</cite>), <strong>start the telemetry service client</strong>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ tele_client listen
 </pre></div>
@@ -589,10 +600,44 @@ All output will be directed to the logging service after the components have bee
 The output can be filtered on substrings of the monitor name by specifying the
 topic to be a specific component type (<code class="docutils literal"><span class="pre">filter_wheel_ctrl</span></code>) or an output port
 name, such as <code class="docutils literal"><span class="pre">position</span></code> or <code class="docutils literal"><span class="pre">heartbeat</span></code>. For example,</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>tele_client listen --topic<span class="o">=</span>gmt://isample_dcs/isample_focus_ctrl/isample_focus1_ctrl/hmi_outputs
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ tele_client listen --topic<span class="o">=</span>isample_focus1_ctrl/hmi_outputs
 </pre></div>
 </div>
 <p>will show only the values of the <code class="docutils literal"><span class="pre">hmi_outputs</span></code> monitor from <code class="docutils literal"><span class="pre">isample_focus1_ctrl</span></code>.</p>
+</div>
+<div class="section" id="interacting-with-a-component">
+<h3>10.8.3. Interacting with a component<a class="headerlink" href="#interacting-with-a-component" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>grs</cite> command line application can be used to interact with Components.
+Some of the functionalities provided by this application are querying the
+current value of a given Component feature (property, state variable, input
+or output), setting a value or inspecting the whole Component state.</p>
+<p>The <cite>grs get</cite> subcommand allows to query the current value of a feature. The
+syntax is</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs get -i &lt;instance&gt; -f &lt;feature&gt;
+</pre></div>
+</div>
+<p>For example, to read the value of the <cite>position</cite> state variable of the
+<cite>isample_fw1_ctrl</cite> instance, execute:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs get -i isample_fw1_ctrl -f state_vars/position/value
+</pre></div>
+</div>
+<p>To set a value, the <cite>grs set</cite> subcommand can be used:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs <span class="nb">set</span> -i &lt;instance&gt; -f &lt;feature&gt; -v &lt;value&gt;
+</pre></div>
+</div>
+<p>For example, to set the goal of the <cite>position</cite> state variable of the
+<cite>isample_fw1_ctrl</cite> instance, execute:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs <span class="nb">set</span> -i isample_fw1_ctrl -f state_vars/position/goal -v <span class="m">2</span>.0
+</pre></div>
+</div>
+<p>Finally, to inspect the whole state, use the <cite>grs inspect</cite> command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs inspect -i &lt;instance&gt;
+</pre></div>
+</div>
+<p>As before, to inspect the state of the <cite>isample_fw1_ctrl</cite> instance, execute:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs inspect -i isample_fw1_ctrl
+</pre></div>
+</div>
 <p><a class="reference internal" href="#isample-example"><span class="std std-ref">[back to top]</span></a></p>
 </div>
 </div>

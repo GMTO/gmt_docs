@@ -165,20 +165,20 @@ State Variables
   +------------------+-----------------+--------------------------------------+------------+
   | Type             | Name            | Range                                | Default    |
   +==================+=================+======================================+============+
-  | float            | position_sv     | min: 5, max: 40                      | 20         |
+  | float            | position        | min: 5, max: 40                      | 20         |
   +------------------+-----------------+--------------------------------------+------------+
-  | OperationalState | ops_state_sv    |   OFF, STARTING, ON, INITIALIZING,   | OFF        |
+  | OperationalState | op_state        |   OFF, STARTING, ON, INITIALIZING,   | OFF        |
   |                  |                 |   RUN, HALTING, SHUTTING_DOWN,       |            |
   |                  |                 |   FAULT, RESETTING, DISABLED         |            |
   +------------------+-----------------+--------------------------------------+------------+
-  | SimulationMode   | sim_mode_sv     | SIMULATION, ON_LINE                  | ON_LINE    |
+  | SimulationMode   | sim_mode        | SIMULATION, ON_LINE                  | ON_LINE    |
   +------------------+-----------------+--------------------------------------+------------+
-  | ControlMode      | control_mode_sv | STANDALONE, INTEGRATED               | STANDALONE |
+  | ControlMode      | control_mode    | STANDALONE, INTEGRATED               | STANDALONE |
   +------------------+-----------------+--------------------------------------+------------+
 
 *OperationalState, SimulationMode and ControlMode are enums with their respective values shown in the "Range" column above.*
 
-Input Ports
+Inputs
 ~~~~~~~~~~~
 
   +----------------------+-------------------+----------------------+
@@ -186,13 +186,13 @@ Input Ports
   +======================+===================+======================+
   | isample_motor_status | motor_state       | motor_state          |
   +----------------------+-------------------+----------------------+
-  | float                | position_goal     | position_sv.goal     |
+  | float                | position_goal     | position.goal        |
   +----------------------+-------------------+----------------------+
-  | OperationalState     | ops_state_goal    | ops_state_sv.goal    |
+  | OperationalState     | ops_state_goal    | ops_state.goal       |
   +----------------------+-------------------+----------------------+
-  | SimulationMode       | sim_mode_goal     | sim_mode_sv.goal     |
+  | SimulationMode       | sim_mode_goal     | sim_mode.goal        |
   +----------------------+-------------------+----------------------+
-  | ControlMode          | control_mode_goal | control_mode_sv.goal |
+  | ControlMode          | control_mode_goal | control_mode.goal    |
   +----------------------+-------------------+----------------------+
 
 where the struct `isample_motor_status` is defined as:
@@ -209,7 +209,7 @@ where the struct `isample_motor_status` is defined as:
         MSGPACK_DEFINE_MAP(ready, enabled, warning, error, moving_positive, moving_negative)
     };
 
-Output Ports
+Outputs
 ~~~~~~~~~~~~
 
     +-----------------------+--------------------+-----------------------+
@@ -217,15 +217,13 @@ Output Ports
     +=======================+====================+=======================+
     | isample_motor_control | motor_control      | motor_control         |
     +-----------------------+--------------------+-----------------------+
-    | HeartBeatEvent        | heartbeat_out      | heartbeat_out         |
+    | float                 | position_value     | position.value        |
     +-----------------------+--------------------+-----------------------+
-    | float                 | position_value     | position_sv.value     |
+    | OperationalState      | ops_state_value    | ops_state.value       |
     +-----------------------+--------------------+-----------------------+
-    | OperationalState      | ops_state_value    | ops_state_sv.value    |
+    | SimulationMode        | sim_mode_value     | sim_mode.value        |
     +-----------------------+--------------------+-----------------------+
-    | SimulationMode        | sim_mode_value     | sim_mode_sv.value     |
-    +-----------------------+--------------------+-----------------------+
-    | ControlMode           | control_mode_value | control_mode_sv.value |
+    | ControlMode           | control_mode_value | control_mode.value    |
     +-----------------------+--------------------+-----------------------+
 
 where the struct `isample_motor_control` is defined as:
@@ -239,18 +237,10 @@ where the struct `isample_motor_control` is defined as:
           MSGPACK_DEFINE_MAP(enable, reset, velocity)
       };
 
-and the struct `HeartBeatEvent` is defined as:
-
-    .. code-block:: cpp
-
-      struct HeartBeatEvent {
-          struct timeval   timestamp;               // Time stamp
-          MSGPACK_DEFINE_MAP(timestamp)
-      };
 
 (Optional) Defining component behavior
 --------------------------------------
-The core component behavior is specified in the \*_step.cpp file. The component
+The core component behavior is specified in the component cpp file. The component
 has a periodic thread that reads input from the input ports, runs the step
 function and then writes output to the output ports. Initially, the generated
 step function will check whether the component is correctly configured and if
@@ -259,39 +249,45 @@ so, will log the current step counter value.
 In the following examples we will replace the basic step functionality with
 simulated controller behavior.
 
-To edit the *Filter Wheel Controller* step file:
+To edit the *Filter Wheel Controller* step function:
 
 .. code-block:: bash
 
    $ cd $GMT_LOCAL/modules/ocs_isample_dcs/src/cpp/
    $ cd isample_ctrl_pkg/isample_filter_wheel_ctrl
-   $ vi isample_filter_wheel_ctrl_step.cpp
+   $ vi IsampleFilterWheelCtrl.cpp
 
 The following example step function for the filter wheel controller validates
 positional input and immediately sets the position value to the new goal, if possible.
 
    .. code-block:: cpp
 
-    void IsampleFilterWheelCtrl::step(bool setup_ok) {
-        if(setup_ok) {                     // this will be executed only if port setup has been received
-            if (is_step_rate(1000)) {
-                if (position_sv.goal != position_sv.value) {
-                    // check range
-                    if (position_sv.goal >= position_sv.max) {
-                        log_warning("Position is at or exceeding maximum value: " + std::to_string(position_sv.max));
-                        // prevent further movement
-                        position_sv.value = position_sv.max;
-                    } else if (position_sv.goal <= position_sv.min) {
-                        log_warning("Position is at or exceeding minimum value: " + std::to_string(position_sv.min));
-                        // prevent further movement
-                        position_sv.value = position_sv.min;
-                    } else {
-                        // achieve target position immediately
-                        position_sv.value = position_sv.goal;
-                    }
-                    // report value
-                    log_info(position_sv.name + " = " + std::to_string(position_sv.value));
+    void IsampleFilterWheelCtrl::step()
+    {
+        if (is_step_rate(1000))
+        {
+            if (position.goal != position.value)
+            {
+                // check range
+                if (position.goal >= position.max)
+                {
+                    log_warning("Position is at or exceeding maximum value: " + std::to_string(position.max));
+                    // prevent further movement
+                    position.value = position.max;
                 }
+                else if (position.goal <= position.min)
+                {
+                    log_warning("Position is at or exceeding minimum value: " + std::to_string(position.min));
+                    // prevent further movement
+                    position.value = position.min;
+                }
+                else
+                {
+                    // achieve target position immediately
+                    position.value = position.goal;
+                }
+                // report value
+                log_info(position.name + " = " + std::to_string(position.value));
             }
         }
     }
@@ -310,8 +306,7 @@ Ensure that the following lines are defined:
 .. code-block:: bash
 
    # Add in this file the compile flags for the package, eg:
-   MOD_BUILD_LDFLAGS += -lcore_core_pkg -lio_core_pkg -lctrl_core_pkg -lio_ethercat_pkg
-   MOD_BUILD_LDFLAGS += -lethercat 
+   MOD_BUILD_LDFLAGS += -lcore_core_pkg -lio_core_pkg -lctrl_core_pkg
 
 Run **make** to compile the code:
 
@@ -319,6 +314,27 @@ Run **make** to compile the code:
 
    $ cd $GMT_LOCAL/modules/ocs_isample_dcs/src/cpp
    $ make
+
+Installing the configuration
+----------------------------
+
+The configuration files are autogenerated in the `$GMT_LOCAL/modules/ocs_isample_dcs/src/etc/conf` directory,
+but they need to be installed to `$GMT_LOCAL/etc/conf` in order to be used by
+the application.
+
+To install the configuration files, execute the following commands:
+
+.. code-block:: bash
+
+   $ gds install isample_dcs
+   $ grs compile -i isample_cryo_external_temp_ctrl
+   $ grs compile -i isample_cryo_internal_temp_ctrl
+   $ grs compile -i isample_ctrl_super
+   $ grs compile -i isample_focus1_ctrl
+   $ grs compile -i isample_fw1_ctrl
+   $ grs compile -i isample_fw2_ctrl
+   $ grs compile -i isample_hw1_adapter
+
 
 Running the Example
 -------------------
@@ -364,10 +380,55 @@ name, such as ``position`` or ``heartbeat``. For example,
 
 .. code-block:: bash
 
-    tele_client listen --topic=gmt://isample_dcs/isample_focus_ctrl/isample_focus1_ctrl/hmi_outputs
+    $ tele_client listen --topic=isample_focus1_ctrl/hmi_outputs
 
 will show only the values of the ``hmi_outputs`` monitor from ``isample_focus1_ctrl``.
 
+Interacting with a component
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The `grs` command line application can be used to interact with Components.
+Some of the functionalities provided by this application are querying the
+current value of a given Component feature (property, state variable, input
+or output), setting a value or inspecting the whole Component state.
+
+The `grs get` subcommand allows to query the current value of a feature. The
+syntax is
+
+.. code-block:: bash
+
+    $ grs get -i <instance> -f <feature>
+
+For example, to read the value of the `position` state variable of the
+`isample_fw1_ctrl` instance, execute:
+
+.. code-block:: bash
+
+    $ grs get -i isample_fw1_ctrl -f state_vars/position/value
+
+To set a value, the `grs set` subcommand can be used:
+
+.. code-block:: bash
+
+    $ grs set -i <instance> -f <feature> -v <value>
+
+For example, to set the goal of the `position` state variable of the
+`isample_fw1_ctrl` instance, execute:
+
+.. code-block:: bash
+
+    $ grs set -i isample_fw1_ctrl -f state_vars/position/goal -v 2.0
+
+Finally, to inspect the whole state, use the `grs inspect` command:
+
+.. code-block:: bash
+
+    $ grs inspect -i <instance>
+
+As before, to inspect the state of the `isample_fw1_ctrl` instance, execute:
+
+.. code-block:: bash
+
+    $ grs inspect -i isample_fw1_ctrl
 
 :ref:`[back to top] <isample_example>`

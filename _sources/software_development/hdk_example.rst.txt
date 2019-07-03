@@ -225,85 +225,98 @@ HDK Main Controller Behavior
 The behavior of the HDK is defined in the *hdk_main_ctrl* component, and
 more specifically, in the step() function of this controller.
 
-The file that contains the HDK controller step function is ```hdk_main_ctrl_step.cpp```.
+The file that contains the HDK controller step function is ```HdkMainCtrl.cpp```.
 To visualize or edit it:
 
 .. code-block:: bash
 
     $ cd $GMT_LOCAL/modules/ocs_hdk_dcs/src/cpp/
     $ cd hdk_ctrl_pkg/hdk_main_ctrl
-    $ vi hdk_main_ctrl_step.cpp
+    $ vi HdkMainCtrl.cpp
 
 The contents of the file is:
 
 .. code-block:: cpp
 
-    #include "hdk_main_ctrl.h"
+    #include "HdkMainCtrl.h"
 
+    using namespace std;
     using namespace gmt;
 
-    void HdkMainCtrl::step(bool setup_ok) {
-        if (setup_ok)
+    HdkMainCtrl::HdkMainCtrl(
+                            const string& comp_uri,
+                            const string& comp_name,
+                            const string& comp_host,
+                            int comp_port,
+                            const string& comp_acl,
+                            double comp_scan_rate,
+                            int comp_prio,
+                            int comp_stack_size)
+    : HdkMainCtrlBase(comp_uri, comp_name, comp_host, comp_port, comp_acl, comp_scan_rate, comp_prio, comp_stack_size)
+    {
+    }
+
+    HdkMainCtrl::~HdkMainCtrl()
+    {
+    }
+
+    void HdkMainCtrl::step()
+    {
+        if (!hmi_inputs_val.emergency_button) { motor_ctrl_req.velocity = 0; motor_ctrl_req.enable = false; }
+        else if (motor_state_val.ready && !motor_state_val.enabled) { motor_ctrl_req.enable = true; } // enable motor if not enabled
+
+        if (motor_state_val.enabled)
         {
-            if (!hmi_inputs.emergency_button)
-            {
-                motor_ctrl.velocity = 0;
-                motor_ctrl.enable = false;
-            }
-            else if (motor_state.ready && !motor_state.enabled)
-            {
-                // enable motor if not enabled
-                motor_ctrl.enable = true;
-            }
-
-            if (motor_state.enabled)
-            {
-                if (hmi_inputs.green_push_button)
-                {
-                    motor_ctrl.velocity++;
-                }
-
-                if (hmi_inputs.red_push_button)
-                {
-                    motor_ctrl.velocity--;
-                }
-
-                if (!hmi_inputs.emergency_button)
-                {
-                    motor_ctrl.velocity = 0;
-                    motor_ctrl.enable = false;
-                }
-            }
-
-            bool moving                 = motor_state.moving_positive || motor_state.moving_negative;
-            hmi_outputs.pilot           = moving; // pilot on when moving
-            hmi_outputs.emergency_light = !hmi_inputs.emergency_button; // ligth on when button pressed
-
-            float estimated_temperature = temperatures.temp_sensor1 / 10.0;  // 10.0 will be a property
-
-            if (is_step_rate(100))    // every 100 steps = 1 second
-            {
-                // following values should go to user interface
-                log_info("Green button = " + std::to_string(hmi_inputs.green_push_button));
-                log_info("Red button   = " + std::to_string(hmi_inputs.red_push_button));
-                log_info("Emergency    = " + std::to_string(hmi_inputs.emergency_button));
-                log_info("Temperature  = " + std::to_string(estimated_temperature));
-                log_info("Temperature1 = " + std::to_string(temperatures.temp_sensor1));
-                log_info("Temperature2 = " + std::to_string(temperatures.temp_sensor2));
-                log_info("Axis Ready   = " + std::to_string(motor_state.ready));
-                log_info("Axis Enabled = " + std::to_string(motor_state.enabled));
-                log_info("Axis Warning = " + std::to_string(motor_state.warning));
-                log_info("Axis Error   = " + std::to_string(motor_state.error));
-                log_info("Axis Moving+ = " + std::to_string(motor_state.moving_positive));
-                log_info("Axis Moving- = " + std::to_string(motor_state.moving_negative));
-            }
-
-            if(is_step_rate(500))  // every 500 steps = 5 seconds
-            {
-                // flip bit to indicate component is alive
-                hmi_outputs.heartbeat = !hmi_outputs.heartbeat;
-            }
+            if (hmi_inputs_val.green_push_button) { motor_ctrl_req.velocity++; }
+            if (hmi_inputs_val.red_push_button)   { motor_ctrl_req.velocity--; }
+            if (!hmi_inputs_val.emergency_button) { motor_ctrl_req.velocity = 0; motor_ctrl_req.enable = false; }
         }
+
+        bool moving                     = motor_state_val.moving_positive || motor_state_val.moving_negative;
+        hmi_outputs_req.pilot           = moving; // pilot on when moving
+        hmi_outputs_req.emergency_light = !hmi_inputs_val.emergency_button; // ligth on when button pressed
+        float estimated_temperature = temperatures_val.temp_sensor1 / 10.0;  // 10.0 will be a property
+
+        if (is_step_rate(100))    // every 1000 steps = 1 second
+        {
+
+            // following values should go to user interface
+            log_info("Green button = " + std::to_string(hmi_inputs_val.green_push_button));
+            log_info("Red button   = " + std::to_string(hmi_inputs_val.red_push_button));
+            log_info("Emergency    = " + std::to_string(hmi_inputs_val.emergency_button));
+            log_info("Temperature  = " + std::to_string(estimated_temperature));
+            log_info("Temperature1 = " + std::to_string(temperatures_val.temp_sensor1));
+            log_info("Temperature2 = " + std::to_string(temperatures_val.temp_sensor2));
+            log_info("Axis Ready   = " + std::to_string(motor_state_val.ready));
+            log_info("Axis Enabled = " + std::to_string(motor_state_val.enabled));
+            log_info("Axis Warning = " + std::to_string(motor_state_val.warning));
+            log_info("Axis Error   = " + std::to_string(motor_state_val.error));
+            log_info("Axis Moving+ = " + std::to_string(motor_state_val.moving_positive));
+            log_info("Axis Moving- = " + std::to_string(motor_state_val.moving_negative));
+        }
+
+        if(is_step_rate(500))
+        {
+            hmi_outputs_req.heartbeat = !hmi_outputs_req.heartbeat; // flip bit on each step to indicate component is alive
+        }
+
+        hmi.value.input = hmi_inputs_val;
+        hmi.value.output = hmi_outputs_req;
+        motor.value.state = motor_state_val;
+        motor.value.command = motor_ctrl_req;
+        temperatures.value = temperatures_val;
+    }
+
+    void HdkMainCtrl::setup()
+    {
+        //setup async input handlers
+
+        //ex: new_async_input_handler ("input_name", this, &HdkMainCtrl::input_handler);
+
+        //add behaviors to features
+
+        //other initializations
+
     }
 
 This step function has 5 parts:
@@ -532,13 +545,13 @@ User Interface
 The Navigator application displays the Engineering user interface as well as any
 custom panels defined in the subsystem's Visualization Package. Engineering panels
 are automatically generated from the Model files, whereas custom panels need to
-be created manually. 
+be created manually.
 
 .. image:: navigator_images/Navigator_HDK_first_open.png
   :align: center
   :alt: Navigator application
 
-The HDK DCS contains basic examples of these user interface panels with limited functionality. 
+The HDK DCS contains basic examples of these user interface panels with limited functionality.
 More detailed examples will be added in the future as the UI Framework matures.
 
 .. note::
@@ -578,12 +591,12 @@ The following screenshot shows that the configuration is correct, but the remote
 Running the Engineering UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Engineering UI uses your local bundles file (found in ``$GMT_LOCAL/etc/bundles``) to automatically create 
-a visual representation of the modules being worked on by loading the input/output port definitions 
-in the relevant Model files.  
+The Engineering UI uses your local bundles file (found in ``$GMT_LOCAL/etc/bundles``) to automatically create
+a visual representation of the modules being worked on by loading the input/output port definitions
+in the relevant Model files.
 
-For now, the Engineering application needs to run in MacOS. Ensure that it has been configured correctly 
-using the :ref:`Installation Guide document <installation>`. 
+For now, the Engineering application needs to run in MacOS. Ensure that it has been configured correctly
+using the :ref:`Installation Guide document <installation>`.
 
 To launch the Navigator application, run this in the command line
 
