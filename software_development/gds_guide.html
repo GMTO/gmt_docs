@@ -120,7 +120,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#gds-install-options-module">4.4.7. gds install [options] [module]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gds-clone-options-module">4.4.8. gds clone [options] [module]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gds-test-options-module">4.4.9. gds test [options] [module]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-options">4.4.10. gds options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-validate-options-module">4.4.10. gds validate [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-options">4.4.11. gds options</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#starting-to-use-gds">4.5. Starting to use gds</a></li>
@@ -403,7 +404,7 @@ files with the extension <em>.as_is</em></dd>
 <p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">env</span></code> command displays the values of the environment variables used by gds.</p>
 </div>
 <div class="section" id="gds-gen-options-element">
-<h3>4.4.4. gds gen [options] [element]<a class="headerlink" href="#gds-gen-options-element" title="Permalink to this headline">¶</a></h3>
+<span id="gds-gen"></span><h3>4.4.4. gds gen [options] [element]<a class="headerlink" href="#gds-gen-options-element" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">gen</span></code> command implements a set of generators that use as an input the model
 specifications and applies to them different transformations. The output of this transformations
@@ -740,8 +741,26 @@ tests after unit tests).</dd>
 <dd>The command will search for tests in the specified scope. The default value is <em>global</em></dd>
 </dl>
 </div>
+<div class="section" id="gds-validate-options-module">
+<h3>4.4.10. gds validate [options] [module]<a class="headerlink" href="#gds-validate-options-module" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">validate</span></code> performs a series of validations on model specifications.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds validate --help
+
+Usage: validate <span class="o">[</span>element<span class="o">]</span>
+
+Validates the model element
+
+Options:
+
+   -h, --help              output usage information
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 <div class="section" id="gds-options">
-<h3>4.4.10. gds options<a class="headerlink" href="#gds-options" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.11. gds options<a class="headerlink" href="#gds-options" title="Permalink to this headline">¶</a></h3>
 <p>The following options can be used in combination with the previous commands</p>
 <dl class="docutils">
 <dt><code class="docutils literal"><span class="pre">-V,</span> <span class="pre">--version</span></code></dt>

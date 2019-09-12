@@ -347,7 +347,7 @@ The following section shows the the help of the query command  and the available
       basic testing purposes. A more advanced interface will be provided in the OCS UI.
 
 
-``--records=<topic_name>``
+``--records=<integer>``
 
    maximum number of records returned from the query command
 

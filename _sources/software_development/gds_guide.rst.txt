@@ -226,6 +226,8 @@ gds env
 The ``gds env`` command displays the values of the environment variables used by gds.
 
 
+.. _gds_gen:
+
 gds gen [options] [element]
 ...........................
 
@@ -593,6 +595,26 @@ The following code shows an example of executing a functional test.
 
 ``recursive``
    The command will search for tests in the specified scope. The default value is *global*
+
+
+gds validate [options] [module]
+...............................
+
+**Description**
+
+The ``gds validate`` performs a series of validations on model specifications.
+
+   .. code-block:: bash
+
+     > gds validate --help
+
+     Usage: validate [element]
+
+     Validates the model element
+
+     Options:
+
+        -h, --help              output usage information
 
 
 gds options

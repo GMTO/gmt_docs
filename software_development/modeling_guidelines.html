@@ -499,10 +499,6 @@ following features:</p>
 <dt><code class="docutils literal"><span class="pre">nom_rate</span></code></dt>
 <dd>The nominal rate of the connection (with must be lower than the maximum rate of the connected ports).
 If the <code class="docutils literal"><span class="pre">nom_rate</span></code> is 0 it’s behavior is considered episodic.</dd>
-<dt><code class="docutils literal"><span class="pre">on_fault</span></code></dt>
-<dd>Policy in case of dropped frames (TBD)</dd>
-<dt><code class="docutils literal"><span class="pre">conversion</span></code></dt>
-<dd>Data conversion specification (TBD)</dd>
 </dl>
 <p>See the next fragment of code for an example of Module specification</p>
 <blockquote>
@@ -524,26 +520,27 @@ If the <code class="docutils literal"><span class="pre">nom_rate</span></code> i
       <span class="s">&quot;ocs_ctrl_fwk&quot;</span>
    <span class="p">]</span>
 
-   <span class="nv">connectors: </span><span class="p">[</span>
+   <span class="nv">connectors:</span>
 
-      <span class="nv">id: </span><span class="mi">8101</span>
-      <span class="nv">from: </span>       <span class="p">{</span> <span class="nv">element: </span><span class="s">&quot;isample_ctrl_super&quot;</span><span class="p">,</span> <span class="nv">port: </span><span class="s">&quot;heartbeat_out&quot;</span><span class="p">}</span>
-      <span class="nv">to: </span>         <span class="p">{</span> <span class="nv">element: </span><span class="s">&quot;isample_dcs_super&quot;</span><span class="p">,</span> <span class="nv">port: </span><span class="s">&quot;heartbeat_in&quot;</span><span class="p">}</span>
-      <span class="nv">max_latency: </span><span class="mf">0.5</span>
-      <span class="nv">nom_rate: </span>   <span class="mi">100</span>
-      <span class="nv">on_fault: </span>   <span class="s">&quot;&quot;</span>
-      <span class="nv">conversion: </span> <span class="s">&quot;&quot;</span>
+      <span class="nv">c1:</span>
+          <span class="nv">id: </span>         <span class="mi">8101</span>
+          <span class="nv">from: </span>       <span class="p">{</span> <span class="nv">element: </span><span class="s">&quot;isample_ctrl_super&quot;</span><span class="p">,</span> <span class="nv">port: </span><span class="s">&quot;heartbeat_out&quot;</span><span class="p">}</span>
+          <span class="nv">to: </span>         <span class="p">{</span> <span class="nv">element: </span><span class="s">&quot;isample_dcs_super&quot;</span><span class="p">,</span> <span class="nv">port: </span><span class="s">&quot;heartbeat_in&quot;</span><span class="p">}</span>
+          <span class="nv">max_latency: </span><span class="mf">0.5</span>
+          <span class="nv">nom_rate: </span>   <span class="mi">100</span>
+          <span class="nv">on_fault: </span>   <span class="s">&quot;&quot;</span>
+          <span class="nv">conversion: </span> <span class="s">&quot;&quot;</span>
 
-      <span class="nv">id: </span><span class="mi">8101</span>
-      <span class="nv">from: </span>       <span class="p">{</span> <span class="nv">element: </span><span class="s">&quot;isample_vis_super&quot;</span><span class="p">,</span>  <span class="nv">port: </span><span class="s">&quot;heartbeat_out&quot;</span><span class="p">}</span>
-      <span class="nv">to: </span>         <span class="p">{</span> <span class="nv">element: </span><span class="s">&quot;isample_dcs_super&quot;</span><span class="p">,</span> <span class="nv">port: </span><span class="s">&quot;heartbeat_in&quot;</span><span class="p">}</span>
-      <span class="nv">max_latency: </span><span class="mf">0.5</span>
-      <span class="nv">nom_rate: </span>   <span class="mi">100</span>
-      <span class="nv">on_fault: </span>   <span class="s">&quot;&quot;</span>
-      <span class="nv">conversion: </span> <span class="s">&quot;&quot;</span>
+      <span class="nv">c2:</span>
+          <span class="nv">id: </span>         <span class="mi">8101</span>
+          <span class="nv">from: </span>       <span class="p">{</span> <span class="nv">element: </span><span class="s">&quot;isample_vis_super&quot;</span><span class="p">,</span>  <span class="nv">port: </span><span class="s">&quot;heartbeat_out&quot;</span><span class="p">}</span>
+          <span class="nv">to: </span>         <span class="p">{</span> <span class="nv">element: </span><span class="s">&quot;isample_dcs_super&quot;</span><span class="p">,</span> <span class="nv">port: </span><span class="s">&quot;heartbeat_in&quot;</span><span class="p">}</span>
+          <span class="nv">max_latency: </span><span class="mf">0.5</span>
+          <span class="nv">nom_rate: </span>   <span class="mi">100</span>
+          <span class="nv">on_fault: </span>   <span class="s">&quot;&quot;</span>
+          <span class="nv">conversion: </span> <span class="s">&quot;&quot;</span>
 
       <span class="p">...</span>
-   <span class="p">]</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -875,16 +872,16 @@ component metaclass. The OCS metamodel defines a set of Component subtypes:
 specialitation of a class of Components</p>
 </div>
 <div class="section" id="component-features">
-<h3>6.7.3. Component Features<a class="headerlink" href="#component-features" title="Permalink to this headline">¶</a></h3>
+<span id="component"></span><h3>6.7.3. Component Features<a class="headerlink" href="#component-features" title="Permalink to this headline">¶</a></h3>
 <p>The following diagrams shows the basic structure of a <em>Component</em> and it’s building blocks.</p>
-<div class="figure" id="id9">
-<img alt="../_images/base_component.png" src="../_images/base_component.png" />
+<div class="figure align-center" id="id9">
+<a class="reference internal image-reference" href="../_images/base_component.png"><img alt="../_images/base_component.png" src="../_images/base_component.png" style="width: 445.2px; height: 770.4px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 6.13 </span><span class="caption-text">Component model metaclasses</span></p>
 </div>
 <p>The <em>Component</em> metaclass extends <em>SCI</em> (Software Configuration Item), which also extends
 <em>Classifier</em> and <em>PBE</em>. Therefore, in addition to the features of a <em>Classifier</em> and
 a <em>PBE</em>, a <em>Component</em> has the following features:</p>
-<dl class="docutils">
+<dl class="docutils" id="properties">
 <dt><code class="docutils literal"><span class="pre">properties</span></code></dt>
 <dd><p class="first">The <code class="docutils literal"><span class="pre">properties</span></code> feature is a containment of <em>Property</em> that defines the data of
 a <em>Component</em> that can be changed for each <em>Component</em> intance or that can be changed
@@ -898,14 +895,20 @@ features of a <em>ValueClassifier</em> a <em>Property</em> has the following fea
 will be recorded as part of the telemetry stream.</dd>
 </dl>
 </dd>
+</dl>
+<dl class="docutils" id="inputs">
 <dt><code class="docutils literal"><span class="pre">input_ports</span></code></dt>
 <dd>The <code class="docutils literal"><span class="pre">input_ports</span></code> feature is a containment of <em>DataPort</em> that defines the data that must be
 accepted by the <em>Component</em>. Each element of the <code class="docutils literal"><span class="pre">input_ports</span></code> containment has the features
 of a <em>DataPort</em>.</dd>
+</dl>
+<dl class="docutils" id="outputs">
 <dt><code class="docutils literal"><span class="pre">output_ports</span></code></dt>
 <dd>The <code class="docutils literal"><span class="pre">output_ports</span></code> feature is a containment of <em>DataPort</em> that defines the data that can be
 produced by the <em>Component</em>. Each element of the <code class="docutils literal"><span class="pre">output_ports</span></code> containment has the features
 of a <em>DataPort</em>.</dd>
+</dl>
+<dl class="docutils" id="state-vars">
 <dt><code class="docutils literal"><span class="pre">state_vars</span></code></dt>
 <dd><p class="first">The <code class="docutils literal"><span class="pre">state_vars</span></code> feature is a containment of <em>StateVariable</em>.
 A state variable is one of the set of variables that are used to describe
@@ -933,13 +936,117 @@ to implement behavior that is dependent on their state by setting goals monitors
 <dd>This feature is an attribute that defines the control deadband of the <em>StateVariable</em></dd>
 </dl>
 </dd>
-<dt><code class="docutils literal"><span class="pre">alarms</span></code></dt>
-<dd><p class="first">The <code class="docutils literal"><span class="pre">alarms</span></code> feature is a containment of <em>Alarm</em>. In addition to the
-features of <em>DataPort</em> and <em>Classifier</em>, <em>Alarm</em> has the following feature:</p>
+</dl>
+<dl class="docutils" id="faults">
+<dt><code class="docutils literal"><span class="pre">faults</span></code></dt>
+<dd><p class="first">The <code class="docutils literal"><span class="pre">faults</span></code> feature is a containment of <em>Fault</em>. The main purpuse of a <em>Fault</em> is to
+detect and if possible handle non-nominal operating conditions. Faults are organized
+in a simplified Fault Tree similar to the ones used Fault Tree Analysis (FTA).
+In addition to the features of <em>StateVariable</em>, <em>Fault</em> has the following features:</p>
 <dl class="last docutils">
-<dt><code class="docutils literal"><span class="pre">actions</span></code></dt>
-<dd>The <code class="docutils literal"><span class="pre">actions</span></code> feature is a containment of <em>String</em>. Each <em>String</em> defines
-the recomended actions an operator must take in the ocurrence of the alarm.</dd>
+<dt><code class="docutils literal"><span class="pre">kind</span></code></dt>
+<dd><p class="first">The <code class="docutils literal"><span class="pre">kind</span></code> feature is a <em>String</em> attribute with the following possible values:</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Node Kind</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>primary</td>
+<td>Primary faults detect the occurence of a fault condition</td>
+</tr>
+<tr class="row-odd"><td>secondary</td>
+<td>Represent a transfer from another fault tree</td>
+</tr>
+<tr class="row-even"><td>or</td>
+<td>OR gate. The fault occurs if any of the children faults occurs</td>
+</tr>
+<tr class="row-odd"><td>and</td>
+<td>AND gate. The fault occurs if all of the children faults occur</td>
+</tr>
+<tr class="row-even"><td>xor</td>
+<td>The fault occurs if only one of the children faults occurs</td>
+</tr>
+<tr class="row-odd"><td>count</td>
+<td>The fault occurs if at least <em>count</em> number of the children faults occurs</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="docutils literal"><span class="pre">parent</span></code></dt>
+<dd>The <code class="docutils literal"><span class="pre">parent</span></code> feature is an attribute that contains the name of the parent
+fault in the fault tree. If the fault is the root of the fault tree the value
+shall be the empty string. Root nodes can be used to connect with other fault trees
+secondary (transfer in) nodes.</dd>
+<dt><code class="docutils literal"><span class="pre">level</span></code></dt>
+<dd>The <code class="docutils literal"><span class="pre">level</span></code> of severity of the <em>fault</em>. Severity levels are TBD</dd>
+<dt><code class="docutils literal"><span class="pre">rate</span></code></dt>
+<dd>The <code class="docutils literal"><span class="pre">rate</span></code> feature is an attribute that defines the frecuency at which the
+alarm condition is evaluated.</dd>
+<dt><code class="docutils literal"><span class="pre">threshold</span></code></dt>
+<dd>The <code class="docutils literal"><span class="pre">threshold</span></code> feature is an attribute that defines the number of cycles
+in which the alarm condition occurs before the <em>alarm</em> becomes active.</dd>
+<dt><code class="docutils literal"><span class="pre">count</span></code></dt>
+<dd>The <code class="docutils literal"><span class="pre">count</span></code> feature is an attribute that defines the number of children
+alarms when the <em>alarm</em> is of <code class="docutils literal"><span class="pre">kind</span></code> <code class="docutils literal"><span class="pre">count</span></code>.</dd>
+</dl>
+</dd>
+</dl>
+<dl class="docutils" id="alarms">
+<dt><code class="docutils literal"><span class="pre">alarms</span></code></dt>
+<dd><p class="first">The <code class="docutils literal"><span class="pre">alarms</span></code> feature is a containment of <em>Alarm</em>. Alarms can be grouped and
+organized in a similar way to Fault Trees. The purpose of an <em>Alarm</em> is the identification
+and notification of operating conditions that require operator attention.
+In addition to the features of <em>StateVariable</em>, <em>Alarm</em> has the following features:</p>
+<dl class="last docutils">
+<dt><code class="docutils literal"><span class="pre">level</span></code></dt>
+<dd>The <code class="docutils literal"><span class="pre">level</span></code> feature is an attribute that defines the severity of the alarm.
+Severity levels are TBD</dd>
+<dt><code class="docutils literal"><span class="pre">rate</span></code></dt>
+<dd>The <code class="docutils literal"><span class="pre">rate</span></code> feature is an attribute that defines the frecuency at which the
+alarm condition is evaluated.</dd>
+<dt><code class="docutils literal"><span class="pre">threshold</span></code></dt>
+<dd>The <code class="docutils literal"><span class="pre">threshold</span></code> feature is an attribute that defines the number of cycles
+in which the fault condition occurs before the fault becomes active.</dd>
+<dt><code class="docutils literal"><span class="pre">kind</span></code></dt>
+<dd><p class="first">The <code class="docutils literal"><span class="pre">kind</span></code> feature is a <em>String</em> attribute with the following possible values:</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Node Kind</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>primary</td>
+<td>Must evaluate to</td>
+</tr>
+<tr class="row-odd"><td>secondary</td>
+<td>Represent a transfer from another fault tree</td>
+</tr>
+<tr class="row-even"><td>or</td>
+<td>OR gate. The fault occurs if any of the children faults occurs</td>
+</tr>
+<tr class="row-odd"><td>and</td>
+<td>AND gate. The fault occurs if all of the children faults occur</td>
+</tr>
+<tr class="row-even"><td>xor</td>
+<td>The fault occurs if only one of the children faults occurs</td>
+</tr>
+<tr class="row-odd"><td>count</td>
+<td>The fault occurs if at least <em>count</em> number of the children faults occurs</td>
+</tr>
+</tbody>
+</table>
+</dd>
 </dl>
 </dd>
 <dt><code class="docutils literal"><span class="pre">version</span></code></dt>

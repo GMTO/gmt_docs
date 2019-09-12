@@ -308,11 +308,6 @@ following features:
    The nominal rate of the connection (with must be lower than the maximum rate of the connected ports).
    If the ``nom_rate`` is 0 it's behavior is considered episodic.
 
-``on_fault``
-   Policy in case of dropped frames (TBD)
-
-``conversion``
-   Data conversion specification (TBD)
 
 See the next fragment of code for an example of Module specification
 
@@ -337,26 +332,27 @@ See the next fragment of code for an example of Module specification
             "ocs_ctrl_fwk"
          ]
 
-         connectors: [
+         connectors:
 
-            id: 8101
-            from:        { element: "isample_ctrl_super", port: "heartbeat_out"}
-            to:          { element: "isample_dcs_super", port: "heartbeat_in"}
-            max_latency: 0.5
-            nom_rate:    100
-            on_fault:    ""
-            conversion:  ""
+            c1:
+                id:          8101
+                from:        { element: "isample_ctrl_super", port: "heartbeat_out"}
+                to:          { element: "isample_dcs_super", port: "heartbeat_in"}
+                max_latency: 0.5
+                nom_rate:    100
+                on_fault:    ""
+                conversion:  ""
 
-            id: 8101
-            from:        { element: "isample_vis_super",  port: "heartbeat_out"}
-            to:          { element: "isample_dcs_super", port: "heartbeat_in"}
-            max_latency: 0.5
-            nom_rate:    100
-            on_fault:    ""
-            conversion:  ""
+            c2:
+                id:          8101
+                from:        { element: "isample_vis_super",  port: "heartbeat_out"}
+                to:          { element: "isample_dcs_super", port: "heartbeat_in"}
+                max_latency: 0.5
+                nom_rate:    100
+                on_fault:    ""
+                conversion:  ""
 
             ...
-         ]
 
 
 Module Loader File
@@ -591,7 +587,6 @@ Component Specification
 -----------------------
 
 
-
 Introduction
 ............
 
@@ -630,18 +625,24 @@ component metaclass. The OCS metamodel defines a set of Component subtypes:
 (e.g. Controller, Pipeline, Adapter). After chosing the Componet metaclass  class in case is an
 specialitation of a class of Components
 
+.. _component:
+
 Component Features
 ..................
 
 The following diagrams shows the basic structure of a *Component* and it's building blocks.
 
 .. figure:: _static/base_component.png
+  :align: center
+  :scale: 60%
 
-   Component model metaclasses
+  Component model metaclasses
 
 The *Component* metaclass extends *SCI* (Software Configuration Item), which also extends
 *Classifier* and *PBE*. Therefore, in addition to the features of a *Classifier* and
 a *PBE*, a *Component* has the following features:
+
+.. _properties:
 
 ``properties``
    The ``properties`` feature is a containment of *Property* that defines the data of
@@ -656,15 +657,21 @@ a *PBE*, a *Component* has the following features:
       This feature is an boolean attribute. When *true* the changes of the property value
       will be recorded as part of the telemetry stream.
 
+.. _inputs:
+
 ``input_ports``
    The ``input_ports`` feature is a containment of *DataPort* that defines the data that must be
    accepted by the *Component*. Each element of the ``input_ports`` containment has the features
    of a *DataPort*.
 
+.. _outputs:
+
 ``output_ports``
    The ``output_ports`` feature is a containment of *DataPort* that defines the data that can be
    produced by the *Component*. Each element of the ``output_ports`` containment has the features
    of a *DataPort*.
+
+.. _state_vars:
 
 ``state_vars``
    The ``state_vars`` feature is a containment of *StateVariable*.
@@ -697,13 +704,83 @@ a *PBE*, a *Component* has the following features:
    ``control_deadband``
       This feature is an attribute that defines the control deadband of the *StateVariable*
 
-``alarms``
-   The ``alarms`` feature is a containment of *Alarm*. In addition to the
-   features of *DataPort* and *Classifier*, *Alarm* has the following feature:
+.. _faults:
 
-   ``actions``
-      The ``actions`` feature is a containment of *String*. Each *String* defines
-      the recomended actions an operator must take in the ocurrence of the alarm.
+``faults``
+   The ``faults`` feature is a containment of *Fault*. The main purpuse of a *Fault* is to
+   detect and if possible handle non-nominal operating conditions. Faults are organized
+   in a simplified Fault Tree similar to the ones used Fault Tree Analysis (FTA).
+   In addition to the features of *StateVariable*, *Fault* has the following features:
+
+   ``kind``
+      The ``kind`` feature is a *String* attribute with the following possible values:
+
+      ==============  =========================================================================
+      Node Kind       Description
+      ==============  =========================================================================
+      primary         Primary faults detect the occurence of a fault condition
+      secondary       Represent a transfer from another fault tree
+      or              OR gate. The fault occurs if any of the children faults occurs
+      and             AND gate. The fault occurs if all of the children faults occur
+      xor             The fault occurs if only one of the children faults occurs
+      count           The fault occurs if at least *count* number of the children faults occurs
+      ==============  =========================================================================
+
+   ``parent``
+      The ``parent`` feature is an attribute that contains the name of the parent
+      fault in the fault tree. If the fault is the root of the fault tree the value
+      shall be the empty string. Root nodes can be used to connect with other fault trees
+      secondary (transfer in) nodes.
+
+   ``level``
+      The ``level`` of severity of the *fault*. Severity levels are TBD
+
+   ``rate``
+      The ``rate`` feature is an attribute that defines the frecuency at which the
+      alarm condition is evaluated.
+
+   ``threshold``
+      The ``threshold`` feature is an attribute that defines the number of cycles
+      in which the alarm condition occurs before the *alarm* becomes active.
+
+   ``count``
+      The ``count`` feature is an attribute that defines the number of children
+      alarms when the *alarm* is of ``kind`` ``count``.
+
+.. _alarms:
+
+``alarms``
+   The ``alarms`` feature is a containment of *Alarm*. Alarms can be grouped and
+   organized in a similar way to Fault Trees. The purpose of an *Alarm* is the identification
+   and notification of operating conditions that require operator attention.
+   In addition to the features of *StateVariable*, *Alarm* has the following features:
+
+   ``level``
+      The ``level`` feature is an attribute that defines the severity of the alarm.
+      Severity levels are TBD
+
+   ``rate``
+      The ``rate`` feature is an attribute that defines the frecuency at which the
+      alarm condition is evaluated.
+
+   ``threshold``
+      The ``threshold`` feature is an attribute that defines the number of cycles
+      in which the fault condition occurs before the fault becomes active.
+
+   ``kind``
+      The ``kind`` feature is a *String* attribute with the following possible values:
+
+      ==============  =========================================================================
+      Node Kind       Description
+      ==============  =========================================================================
+      primary         Must evaluate to
+      secondary       Represent a transfer from another fault tree
+      or              OR gate. The fault occurs if any of the children faults occurs
+      and             AND gate. The fault occurs if all of the children faults occur
+      xor             The fault occurs if only one of the children faults occurs
+      count           The fault occurs if at least *count* number of the children faults occurs
+      ==============  =========================================================================
+
 
 ``version``
    From SCI

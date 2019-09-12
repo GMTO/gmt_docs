@@ -54,6 +54,8 @@ The ``grs`` help command provides a brief description of the utility:
     For more information, find our manual at https://gmto.github.io/gmt_docs/
 
 
+.. _grs_send:
+
 grs send
 ........
 
@@ -136,6 +138,8 @@ The help options displays an overview of the send command:
 
     # send command using the url endpoint specification
 
+.. _grs_listen:
+
 grs listen
 ..........
 
@@ -174,6 +178,7 @@ remote port
 ``--conf, -c``
    the name of the configuration of the remote component
 
+.. _grs_compile:
 
 grs compile
 ...........
@@ -207,6 +212,7 @@ The compiled configuration is saved in the same location as the configuration fi
 ``--conf, -c``
    the name of the configuration of the component intance
 
+.. _grs_info:
 
 grs info
 ........
@@ -331,6 +337,8 @@ what features are defined. This information can be used in the ``get``, ``set`` 
     sd_rep_in: 'tcp://127.0.0.1:12202' }
 
 
+.. _grs_get:
+
 grs get
 .......
 
@@ -397,6 +405,8 @@ feature is specified it will display all the features of the component.
     # will display the goal of the x_ctrl position state variable
 
 
+.. _grs_set:
+
 grs set
 .......
 
@@ -444,6 +454,8 @@ The ``set`` command sets the value of a feature in a remote component
    - array:  '[1, 2, 3, [4, 5]]'
    - struct: '{one: 1, two: "two", three: [1, 2, 3]}'
    - number: 10
+
+.. _grs_inspect:
 
 grs inspect
 ...........
@@ -528,6 +540,8 @@ The following options can be used in combination with the previous commands
 
 ``-V, --version``
    The ``grs`` command will print the version number
+
+.. _loggin_levels:
 
 ``-l, --logging <level>``
    Activates <level> logging. The following table describes the different values available for the ``logging`` option

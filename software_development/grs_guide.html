@@ -246,7 +246,7 @@ The <code class="docutils literal"><span class="pre">grs</span></code> help comm
 </div>
 </div></blockquote>
 <div class="section" id="grs-send">
-<h3>5.2.1. grs send<a class="headerlink" href="#grs-send" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3>5.2.1. grs send<a class="headerlink" href="#grs-send" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">send</span></code> command sends messages to a running component instance. The receiver endpoint
 can be specified in two ways:</p>
@@ -311,7 +311,7 @@ can be specified in two ways:</p>
 <div></div></blockquote>
 </div>
 <div class="section" id="grs-listen">
-<h3>5.2.2. grs listen<a class="headerlink" href="#grs-listen" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>5.2.2. grs listen<a class="headerlink" href="#grs-listen" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">listen</span></code> command listens to messages from a running component instance
 Like in the <code class="docutils literal"><span class="pre">send</span></code> command is possible to address a remote endpoint by
@@ -345,7 +345,7 @@ remote port</p>
 </dl>
 </div>
 <div class="section" id="grs-compile">
-<h3>5.2.3. grs compile<a class="headerlink" href="#grs-compile" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>5.2.3. grs compile<a class="headerlink" href="#grs-compile" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">compile</span></code> commands process the configuration file of a given component so it’s ready
 to be consumed during the start up of a component. This removes the need for sending
@@ -374,7 +374,7 @@ The compiled configuration is saved in the same location as the configuration fi
 </dl>
 </div>
 <div class="section" id="grs-info">
-<h3>5.2.4. grs info<a class="headerlink" href="#grs-info" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3>5.2.4. grs info<a class="headerlink" href="#grs-info" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">info</span></code> command displays the configuration information of a component instance, showing
 what features are defined. This information can be used in the <code class="docutils literal"><span class="pre">get</span></code>, <code class="docutils literal"><span class="pre">set</span></code> commands.</p>
@@ -494,7 +494,7 @@ what features are defined. This information can be used in the <code class="docu
 </div></blockquote>
 </div>
 <div class="section" id="grs-get">
-<h3>5.2.5. grs get<a class="headerlink" href="#grs-get" title="Permalink to this headline">¶</a></h3>
+<span id="id5"></span><h3>5.2.5. grs get<a class="headerlink" href="#grs-get" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">get</span></code> command retrieves information about the state of a component. If not
 feature is specified it will display all the features of the component.</p>
@@ -557,7 +557,7 @@ $ grs get -i x_ctrl -f state_vars/position/goal
 </div></blockquote>
 </div>
 <div class="section" id="grs-set">
-<h3>5.2.6. grs set<a class="headerlink" href="#grs-set" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h3>5.2.6. grs set<a class="headerlink" href="#grs-set" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">set</span></code> command sets the value of a feature in a remote component</p>
 <blockquote>
@@ -601,7 +601,7 @@ $ grs get -i x_ctrl -f state_vars/position/goal
 </dl>
 </div>
 <div class="section" id="grs-inspect">
-<h3>5.2.7. grs inspect<a class="headerlink" href="#grs-inspect" title="Permalink to this headline">¶</a></h3>
+<span id="id7"></span><h3>5.2.7. grs inspect<a class="headerlink" href="#grs-inspect" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">inspect</span></code> continuously retrieve the values of all the features of a remote component instance</p>
 <blockquote>
@@ -677,6 +677,8 @@ $ grs get -i x_ctrl -f state_vars/position/goal
 <dl class="docutils">
 <dt><code class="docutils literal"><span class="pre">-V,</span> <span class="pre">--version</span></code></dt>
 <dd>The <code class="docutils literal"><span class="pre">grs</span></code> command will print the version number</dd>
+</dl>
+<dl class="docutils" id="loggin-levels">
 <dt><code class="docutils literal"><span class="pre">-l,</span> <span class="pre">--logging</span> <span class="pre">&lt;level&gt;</span></code></dt>
 <dd><p class="first">Activates &lt;level&gt; logging. The following table describes the different values available for the <code class="docutils literal"><span class="pre">logging</span></code> option</p>
 <table border="1" class="last docutils">

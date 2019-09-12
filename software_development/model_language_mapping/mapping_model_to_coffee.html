@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Mapping between the Model Definition Files and Coffee Script source code &mdash; GMT Software And Controls documentation</title>
+  <title>7.2. Mapping between the Model Definition Files and Coffeescript source code &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -39,7 +39,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/> 
+    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
+        <link rel="up" title="7. Model-language mapping" href="index.html"/>
+        <link rel="next" title="8. OCS Test Guidelines" href="../test_guidelines.html"/>
+        <link rel="prev" title="7.1. Mapping between the Model Definition Files and C++ source code" href="mapping_model_to_cpp.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -95,11 +98,41 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../release_notes/index.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../SWC_architecture/index.html">Architecture and Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../SWC_standards/index.html">Software and Controls Standards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Software Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Software Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">1. Installing the SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade.html">2. Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gds_guide.html">4. gds documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grs_guide.html">5. grs documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">7. Model-language mapping</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="mapping_model_to_cpp.html">7.1. Mapping between the Model Definition Files and C++ source code</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">7.2. Mapping between the Model Definition Files and Coffeescript source code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">7.2.1. Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nodejs-file-tree-structure">7.2.2. NodeJS file tree structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-types-mapping">7.2.3. Data Types Mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-features">7.2.4. Component Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#communication-between-components">7.2.5. Communication between Components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-behaviors">7.2.6. Component Behaviors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#state-machines">7.2.7. State Machines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#applications">7.2.8. Applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#core-service-adapter-api">7.2.9. Core Service adapter API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#development-example">7.2.10. Development Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../test_guidelines.html">8. OCS Test Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core_services_user_guide.html">9. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../isample_example.html">10. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hdk_example.html">11. HDK example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_fwk.html">12. UI Framework</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../data_products/index.html">Data Products</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../glossary/swc_sys_glossary.html">Software and Controls Acronyms and Definitions</a></li>
 </ul>
@@ -146,7 +179,11 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Mapping between the Model Definition Files and Coffee Script source code</li>
+          <li><a href="../index.html">Software Development</a> &raquo;</li>
+        
+          <li><a href="index.html">7. Model-language mapping</a> &raquo;</li>
+        
+      <li>7.2. Mapping between the Model Definition Files and Coffeescript source code</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,9 +200,691 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="mapping-between-the-model-definition-files-and-coffee-script-source-code">
-<span id="mapping-model-to-coffee"></span><h1>Mapping between the Model Definition Files and Coffee Script source code<a class="headerlink" href="#mapping-between-the-model-definition-files-and-coffee-script-source-code" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="mapping-between-the-model-definition-files-and-coffeescript-source-code">
+<span id="mapping-model-to-coffee"></span><h1>7.2. Mapping between the Model Definition Files and Coffeescript source code<a class="headerlink" href="#mapping-between-the-model-definition-files-and-coffeescript-source-code" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>7.2.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The following guide describes how the model definitions are mapped into a
+<a class="reference external" href="https://coffeescript.org">Coffeescript programming language</a> implementation that executes in the
+<a class="reference external" href="https://nodejs.org">nodejs</a> platform. The OCS SDK provides a code generator (as part of the
+<a class="reference internal" href="../gds_guide.html#gds-guide"><span class="std std-ref">gds</span></a> tool that thansforms the model specification into a set of
+programs that take advantage of the core framework API to
+access the OCS distributed infrastructure as well as the OCS Core Services.
+In addition to execute in the nodejs runtime, the generated programs
+run also in the electron-js environment as long as the core framework API is used on the node side.</p>
+<p>The nodejs <strong>OCS Core Framework</strong> takes advantage of the nodejs
+asynchronous event loop and is well suited for
+(a) components that required distributed asynchronous communication (e.g.
+the <a class="reference internal" href="../core_services_user_guide.html#core-services-usr-guide"><span class="std std-ref">OCS Core Services</span></a> are implemented this way); (b) components
+that are part of the OCS user interface that runs in the electron platform;
+(c) applications that don’t require high performace computations or communications and
+that will benefit from an implementation in a dynamic typed language.</p>
+<p>The mapping between the model definition of a Component and its implementation in the
+nodejs/Coffeescript platform is the most direct transformation of the platforms
+supported by the OCS development system (nodejs, cpp, python). Most of the modeling concepts
+have a one to one correspondace in the Core Framework. The cases where there are discrepancies are noted
+in this document.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The use of nodejs allows access to a rich ecosystem of node modules, however
+any node module not distributed as part of the OCS SDK should require
+approval from the GMT PO.</p>
+</div>
+</div>
+<div class="section" id="nodejs-file-tree-structure">
+<h2>7.2.2. NodeJS file tree structure<a class="headerlink" href="#nodejs-file-tree-structure" title="Permalink to this headline">¶</a></h2>
+<p>As described in the <a class="reference internal" href="../gds_guide.html#gds-gen"><span class="std std-ref">gds gen command</span></a> a coffeescript implementation
+for those components whose target list contains <code class="docutils literal"><span class="pre">coffee</span></code> in its target attribute
+is generated.  The source files generated are created under
+the <code class="code docutils literal"><span class="pre">&lt;MODULE_DIR&gt;/src/coffee</span></code> directory, which has the following structure:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">MODULE_DIR</span><span class="o">&gt;/</span>
+   <span class="o">|--</span> <span class="o">...</span>
+   <span class="o">|--</span> <span class="n">src</span><span class="o">/</span>
+         <span class="o">|--</span> <span class="o">...</span>
+         <span class="o">|--</span> <span class="nb">bin</span><span class="o">/</span>
+         <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">app_1</span><span class="o">&gt;</span>
+         <span class="o">|</span>    <span class="o">|--</span> <span class="o">...</span>
+         <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">app_n</span><span class="o">&gt;</span>
+         <span class="o">|</span>
+         <span class="o">|--</span> <span class="n">coffee</span><span class="o">/</span>
+         <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">pk_1_pkg</span><span class="o">&gt;/</span>
+         <span class="o">|</span>    <span class="o">|--</span> <span class="o">...</span>
+         <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">pk_n_pkg</span><span class="o">&gt;/</span>
+         <span class="o">|</span>    <span class="o">|</span>
+         <span class="o">|</span>    <span class="o">|--</span> <span class="n">Makefile</span>
+         <span class="o">|</span>    <span class="o">|--</span> <span class="n">webpack</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">coffee</span>
+         <span class="o">|--</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span>
+         <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">pk_1_pkg</span><span class="o">&gt;/</span>
+         <span class="o">|</span>    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">module_name</span><span class="o">&gt;</span><span class="n">_ld</span><span class="o">.</span><span class="n">coffee</span>
+</pre></div>
+</div>
+<p>Model elements are processed differently depending on the value of their
+<code class="docutils literal"><span class="pre">build</span></code> attribute and on the model element class.</p>
+<ul class="simple">
+<li>When then model element class is <code class="docutils literal"><span class="pre">Application</span></code> and the <code class="docutils literal"><span class="pre">build</span></code> attribute value is <code class="docutils literal"><span class="pre">app</span></code>
+an application bootstrap file will be created in <code class="docutils literal"><span class="pre">&lt;MODULE_DIR&gt;/src/bin</span></code> and an application
+skeleton file will be created in the corresponding package directory <code class="docutils literal"><span class="pre">&lt;MODULE_DIR&gt;/src/coffee/&lt;pkg&gt;</span></code>.
+By default, the application skeleton creates an instance of every Component in the package.
+The section <a class="reference internal" href="#application"><span class="std std-ref">Applications</span></a> includes an example of a generated application.</li>
+<li>When the model element class or superclass is <code class="docutils literal"><span class="pre">Component</span></code> and the <code class="docutils literal"><span class="pre">build</span></code> attribute value is
+<code class="docutils literal"><span class="pre">dist</span></code> two files will be created in <code class="docutils literal"><span class="pre">&lt;MODULE_DIR&gt;/src/coffee/&lt;pkg&gt;/&lt;component&gt;</span></code>:<ul>
+<li>A <em>Component</em> source file with an skeleton of the component implementation</li>
+<li>A demo <em>Application</em> that creates an instance of the component and that
+allows to start and test the component. Section <a class="reference internal" href="../modeling_guidelines.html#component"><span class="std std-numref">Section 6.7.3</span></a>
+includes an example of a generated component.</li>
+</ul>
+</li>
+<li>When the model element class or superclass is <code class="docutils literal"><span class="pre">Component</span></code> and the <code class="docutils literal"><span class="pre">build</span></code> attribute value is
+<code class="docutils literal"><span class="pre">test</span></code> two files will be created in <code class="docutils literal"><span class="pre">&lt;MODULE_DIR&gt;/src/coffee/&lt;pkg&gt;/&lt;component&gt;</span></code>:<ul>
+<li>A <em>Component</em> source file with an skeleton of the component implementation</li>
+<li>A demo <em>Application</em> that creates an instance of the component and that
+allows to start and test the component. Section <a class="reference internal" href="../modeling_guidelines.html#component"><span class="std std-numref">Section 6.7.3</span></a> includes
+an example of a generated component. <em>TODO</em></li>
+</ul>
+</li>
+<li>When the model element class or superclass is <code class="docutils literal"><span class="pre">Component</span></code> and the <code class="docutils literal"><span class="pre">build</span></code> attribute value is
+<code class="docutils literal"><span class="pre">example</span></code> two files will be created in <code class="docutils literal"><span class="pre">&lt;MODULE_DIR&gt;/src/coffee/&lt;pkg&gt;/&lt;component&gt;</span></code>:<ul>
+<li>A <em>Component</em> source file with an skeleton of the component implementation</li>
+<li>A demo <em>Application</em> that creates an instance of the component and that
+allows to start and test the component. Section <a class="reference internal" href="../modeling_guidelines.html#component"><span class="std std-numref">Section 6.7.3</span></a> includes
+an example of a generated component. <em>TODO</em></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="webpack-files">
+<h3>7.2.2.1. Webpack files<a class="headerlink" href="#webpack-files" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://webpack.js.org">Webpack</a> is used to process and optimize Coffeescript files.
+The behavior of the webpack tool is taylored by means of a configuration file: <em>webpack.config.coffee</em>
+that is created by the code generator. The webpack configuration file works in the following way:</p>
+<ul class="simple">
+<li>A library is created for each <em>Package</em> and installed in <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code></li>
+<li>An application executable is created for each <em>Application</em> and is installed in <code class="docutils literal"><span class="pre">$GMT_LOCAL/bin</span></code></li>
+<li>Tests defined in the directory <code class="docutils literal"><span class="pre">&lt;module_name&gt;/test</span></code> are installed in <code class="docutils literal"><span class="pre">GMT_LOCAL/test/&lt;module_name&gt;</span></code></li>
+</ul>
+<p>The following code shows an example of the webpack configuration file</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nv">path          = </span><span class="nx">require</span> <span class="s">&#39;path&#39;</span>
+<span class="nv">_             = </span><span class="nx">require</span> <span class="s">&#39;lodash&#39;</span>
+
+<span class="nv">local_path    = </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GMT_LOCAL</span>
+<span class="nv">global_path   = </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GMT_GLOBAL</span>
+
+<span class="p">[</span><span class="nx">base_config</span><span class="p">]</span> <span class="o">=</span> <span class="nx">require</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">global_path</span><span class="si">}</span><span class="s">/etc/webpack/webpack.base&quot;</span>
+<span class="nv">project_name  = </span><span class="s">&quot;ocs&quot;</span>
+<span class="nx">module</span> <span class="nv">_name   = </span><span class="s">&quot;isample_dcs&quot;</span>
+
+<span class="nv">lib_config =</span>
+    <span class="nv">name: </span>  <span class="s">&quot;lib&quot;</span>
+    <span class="nv">entry:</span>
+        <span class="nv">isample_ctrl_pkg: </span>       <span class="s">&quot;./isample_ctrl_pkg/isample_ctrl_pkg.coffee&quot;</span>
+    <span class="nv">output:</span>
+        <span class="nv">filename: </span>         <span class="s">&quot;</span><span class="si">#{</span><span class="nx">project_name</span><span class="si">}</span><span class="s">_</span><span class="si">#{</span><span class="nx">module_name</span><span class="si">}</span><span class="s">_lib.js&quot;</span>
+        <span class="nv">path: </span>             <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span> <span class="nx">local_path</span><span class="p">,</span> <span class="s">&#39;lib/js&#39;</span>
+        <span class="nv">libraryTarget: </span>    <span class="s">&#39;umd&#39;</span>
+        <span class="nv">library: </span>          <span class="nx">module_name</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">extend</span> <span class="nx">lib_config</span><span class="p">,</span>  <span class="nx">base_config</span>
+
+<span class="nv">app_config =</span>
+    <span class="nv">name: </span>  <span class="s">&quot;app&quot;</span>
+    <span class="nv">entry:</span>
+        <span class="nv">isample_main_app: </span>       <span class="s">&quot;./isample_ctrl_pkg/IsampleMainApp.coffee&quot;</span>
+    <span class="nv">output:</span>
+        <span class="nv">filename: </span>        <span class="s">&quot;[name]_lib.js&quot;</span>
+        <span class="nv">path: </span>            <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span> <span class="nx">local_path</span><span class="p">,</span> <span class="s">&#39;lib/js&#39;</span>
+
+<span class="nx">_</span><span class="p">.</span><span class="nx">extend</span> <span class="nx">app_config</span><span class="p">,</span>  <span class="nx">base_config</span>
+
+<span class="nv">module.exports = </span><span class="p">[</span><span class="nx">lib_config</span><span class="p">,</span> <span class="nx">app_config</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="data-types-mapping">
+<h2>7.2.3. Data Types Mapping<a class="headerlink" href="#data-types-mapping" title="Permalink to this headline">¶</a></h2>
+<p>Coffeescript is a dynamically typed language that doesn’t provide type
+declarations. Primitive Types are the same ones as the Javascript language.
+<em>StructType</em> types defined in the model could be implemented as object literals or as a class.
+The code generator doesn’t make a choice and <em>StructType</em> class declarations are
+not generated. For those <em>Component</em> features whose model type is <em>StateMachine</em>
+the code generator creates an skeleton of the <em>StateMachine</em> implementation.</p>
+</div>
+<div class="section" id="component-features">
+<h2>7.2.4. Component Features<a class="headerlink" href="#component-features" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../../SWC_standards/reference_architecture/dcs_reference_architecture.html#dcs-component-architecture"><span class="std std-ref">Components</span></a> are the main building block of the OCS architecture.
+The following diagram shows an overall view of the Core Framework main classes.</p>
+<div class="figure" id="id1">
+<img alt="../../_images/core_fwk_BDD.png" src="../../_images/core_fwk_BDD.png" />
+<p class="caption"><span class="caption-number">Fig. 7.9 </span><span class="caption-text">Core Framework main classess</span></p>
+</div>
+<p>A Component has the following features:</p>
+<ul class="simple">
+<li>Properties: Collection of Properties. See the <a class="reference internal" href="../modeling_guidelines.html#properties"><span class="std std-ref">properties section</span></a> in the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of a <em>Property</em></li>
+<li>Inputs: Collection of DataIO. See the <a class="reference internal" href="../modeling_guidelines.html#inputs"><span class="std std-ref">input ports section</span></a> in the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of an <em>Input</em></li>
+<li>Outputs: Collection of DataIO. See the <a class="reference internal" href="../modeling_guidelines.html#outputs"><span class="std std-ref">output ports section</span></a> in the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of an <em>Output</em></li>
+<li>State Variables: Collection of State variables. See the <a class="reference internal" href="../modeling_guidelines.html#state-vars"><span class="std std-ref">state variables section</span></a> in the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of a <em>StateVariable</em></li>
+<li>Faults: Collection of Faults. See the <a class="reference internal" href="../modeling_guidelines.html#faults"><span class="std std-ref">faults section</span></a> in the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of a <em>Fault</em></li>
+<li>Alarms: Collection of Alarms. See the <a class="reference internal" href="../modeling_guidelines.html#alarms"><span class="std std-ref">alarms section</span></a> in the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of an <em>Alarm</em></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that <code class="docutils literal"><span class="pre">input_ports</span></code> and <code class="docutils literal"><span class="pre">ouput_ports</span></code> from the Model
+are mapped into <code class="docutils literal"><span class="pre">inputs</span></code> and <code class="docutils literal"><span class="pre">ouputs</span></code> in the Core Framework</p>
+</div>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/Data_IO.png"><img alt="Data inputs and outputs" src="../../_images/Data_IO.png" style="width: 316.8px; height: 346.8px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7.10 </span><span class="caption-text">Data inputs and outputs</span></p>
+</div>
+<p>Each Component implementation class inherits from the Core Framework
+<em>Component</em> class. Each of the features is implemented as a <em>Collection</em>.
+(see diagram). All the collections include partially applied functions
+to manipulate each collection. The following fragment of code shows some
+examples.</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="c1"># prints the name of all the inputs</span>
+<span class="nx">@inputs</span><span class="p">.</span><span class="nx">each</span> <span class="nf">(i) -&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="nx">i</span><span class="p">.</span><span class="nx">name</span>
+
+<span class="c1"># returns an array with the names of all the state variables that are controllable</span>
+<span class="nx">@state_vars</span>
+    <span class="p">.</span><span class="nx">filter</span> <span class="nf">(s) -&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">is_controllable</span>
+    <span class="p">.</span><span class="nx">map</span>    <span class="nf">(s) -&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">name</span>
+
+<span class="c1"># returns true if there is at least one fault active, otherwise returns false</span>
+<span class="nx">@faults</span>
+    <span class="p">.</span><span class="nx">some</span>   <span class="nf">(f) -&gt;</span> <span class="nx">f</span><span class="p">.</span><span class="nx">is_active</span>
+</pre></div>
+</div>
+<p>The implementation of these methods is based on the <a class="reference external" href="https://lodash.com">lodash</a> library
+and includes the most common methods to support functional programming.</p>
+</div>
+<div class="section" id="communication-between-components">
+<h2>7.2.5. Communication between Components<a class="headerlink" href="#communication-between-components" title="Permalink to this headline">¶</a></h2>
+<p><em>Components</em> can communicate with each other by means of <a class="reference internal" href="../modeling_guidelines.html#data-connector-def"><span class="std std-ref">Connectors</span></a>.
+A <em>Connector</em> specification includes the definition of the <em>Connector</em> endpoints (<em>to</em> and <em>from</em>).</p>
+<p>If the <code class="docutils literal"><span class="pre">blocking_mode</span></code> of a port is <em>‘sync’</em> the information will be transmitted from
+the <code class="docutils literal"><span class="pre">from</span></code> endpoint to the <code class="docutils literal"><span class="pre">to</span></code> endpoint at the rate specified by the <code class="docutils literal"><span class="pre">nom_rate</span></code> attribute of
+the connector.</p>
+<p>In case no <code class="docutils literal"><span class="pre">url</span></code> attribute is defined in the port specification the communication
+between components will be implemented using service ports. <em>Service ports</em> are created
+by default for every <em>Component</em> and allow to exchange information with it. The <a class="reference internal" href="../grs_guide.html#grs-set"><span class="std std-ref">grs set</span></a>, <a class="reference internal" href="../grs_guide.html#grs-get"><span class="std std-ref">grs get</span></a> and
+<a class="reference internal" href="../grs_guide.html#grs-inspect"><span class="std std-ref">grs inspect</span></a> commands use <em>Service Ports</em> to access the information of a running <em>Component</em>.</p>
+<p>If the <code class="docutils literal"><span class="pre">blocking_mode</span></code> of a port is <em>‘async’</em> the Core Framework provides the <em>ComponentProxy</em> class to
+allow communicating with a remote <em>Component</em>. The following segment of code demonstrates the use
+of the <em>ComponentProxy</em> methods.</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="c1"># Imports ComponentProxy from the core framework</span>
+<span class="p">{</span><span class="nx">ComponentProxy</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span> <span class="s">&#39;ocs_core_fwk&#39;</span>
+
+<span class="nv">proxy = </span><span class="k">new</span> <span class="nx">ComponentProxy</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;position_ctrl&#39;</span><span class="p">}</span>
+
+<span class="nv">position = </span><span class="nx">proxy</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;state_vars/position/value&#39;</span>
+
+<span class="nx">proxy</span><span class="p">.</span><span class="nx">set</span> <span class="s">&#39;state_vars/position/goal&#39;</span><span class="p">,</span> <span class="mi">200</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="component-behaviors">
+<h2>7.2.6. Component Behaviors<a class="headerlink" href="#component-behaviors" title="Permalink to this headline">¶</a></h2>
+<p><em>Components</em> implement their control, monitoring and supervisory
+functions by specializing their <a class="reference internal" href="../../SWC_standards/specifications/dcs_specifications.html#step-std"><span class="std std-ref">step</span></a> function.
+The step function can be considered as a non side effect function <code class="docutils literal"><span class="pre">fstep:</span> <span class="pre">(I,</span> <span class="pre">S)</span> <span class="pre">-&gt;</span> <span class="pre">O</span></code>
+taking the current <em>inputs</em> and state (as represented by <em>state variables</em>)
+of a <em>Component</em> and generating a new set of <em>outputs</em> that produce
+an effect on the context of a <em>Component</em> (e.g. other connected
+components or the system under control via the hardware adapters).</p>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../../_images/Behaviors.png"><img alt="Component default behaviors" src="../../_images/Behaviors.png" style="width: 916.2px; height: 381.6px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7.11 </span><span class="caption-text">Component default behaviors</span></p>
+</div>
+<p>In many cases the step function may be enough to implement all the functions allocated
+to a <em>Component</em>. However, in some cases it may be useful to organize
+the functions of a <em>Component</em> in a modular way, specially if the
+functions are complex. A <em>Behavior</em> is the modular functional unit
+to organize the complexity of a <em>Component</em>. <em>Behaviors</em> must implement
+an <code class="docutils literal"><span class="pre">apply</span></code> function. The <code class="docutils literal"><span class="pre">apply</span></code> function is invoked by the
+Core Framework at the scan rate of the <em>Component</em> (as defined by the <code class="docutils literal"><span class="pre">scan_rate</span></code>
+property. In case the <em>Behavior</em> requires to be executed at a different rate from the scan rate
+the <em>PeriodicBehavior</em> class can be used, in which case a rate attribute
+can be defined when created an instance (see following example).</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="c1"># Imports Behavior from the core framework</span>
+<span class="p">{</span><span class="nx">Behavior</span><span class="p">,</span> <span class="nx">PeriodicBehavior</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span> <span class="s">&#39;ocs_core_fwk&#39;</span>
+
+<span class="k">class</span> <span class="nx">NewBehavior</span> <span class="k">extends</span> <span class="nx">Behavior</span>
+
+    <span class="nv">apply: </span><span class="nf">(d, dt) -&gt;</span>
+        <span class="c1"># Behavior function</span>
+
+<span class="k">class</span> <span class="nx">NewPeriodicBehavior</span> <span class="k">extends</span> <span class="nx">PeriodicBehavior</span>
+
+    <span class="nv">apply: </span><span class="nf">(d, dt) -&gt;</span>
+        <span class="c1"># Behavior function</span>
+
+<span class="nv">bh = </span><span class="k">new</span> <span class="nx">NewBehavior</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;behavior_name&#39;</span><span class="p">}</span>
+<span class="nv">bhp = </span><span class="k">new</span> <span class="nx">NewPeriodicBehavior</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;behavior_name&#39;</span><span class="p">,</span> <span class="nv">rate: </span><span class="mi">10</span><span class="p">}</span>
+
+<span class="nx">@state_vars</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">behaviors</span><span class="p">.</span><span class="nx">add</span> <span class="nx">bh</span>
+<span class="nx">@state_vars</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">behaviors</span><span class="p">.</span><span class="nx">add</span> <span class="nx">bhp</span>
+
+<span class="nx">bh</span><span class="p">.</span><span class="nx">setup</span><span class="p">()</span>
+<span class="nx">bhp</span><span class="p">.</span><span class="nx">setup</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>It’s possible to define input and output parameters as part of a behavior
+specification. This allows to compose them following the
+structure that suits the decomposition of the problem by connecting
+the <em>Behaviors</em> inputs and outputs. A common structure is
+a control or supervisory hierarchy.</p>
+<p><em>Behaviors</em> can be attached to the <em>Component</em> context or to any
+of the <em>Component</em> features (e.g. state variable, faults, alarms).
+The control functions may be of discrete (e.g. a state machine)
+or continuous nature (e.g. a PID loop). In hybrid control systems
+both types of functions are present.</p>
+<p>Continuous functions will often involve the application of a set
+of mathematical operations and are mostly specific to the application’
+domain.</p>
+</div>
+<div class="section" id="state-machines">
+<h2>7.2.7. State Machines<a class="headerlink" href="#state-machines" title="Permalink to this headline">¶</a></h2>
+<p>In case of discrete functions that could be modeled as an state machine,
+the core framework includes a <em>StateMachine</em> class with the following characteristics:</p>
+<ul class="simple">
+<li>Supports Moore and Mealy machines</li>
+<li>Reactive evaluation like other Component Behaviors</li>
+<li>Full access to <em>Component</em> state and <em>Core Services</em> through <code class="docutils literal"><span class="pre">&#64;ctx</span></code> reference</li>
+<li>Can be composed to create arbitrary large hierarchical and parallel machines (StateCharts)</li>
+<li>Allow each individual State Machine to be tested individually</li>
+<li>Arbitrary composition of hybrid control architectures (continuous and discrete behavior) inside each component</li>
+</ul>
+<p>State Machines can be defined by specializing the <em>StateMachine</em> class from
+the core framework by the following means:</p>
+<ul class="simple">
+<li>Defining a transition function <code class="docutils literal"><span class="pre">ft:</span> <span class="pre">(I,S)</span> <span class="pre">-&gt;</span> <span class="pre">S</span></code> that takes as arguments
+the inputs and current state and determines the next state</li>
+<li>Defining an ouput function <code class="docutils literal"><span class="pre">fo:</span> <span class="pre">(I,S)</span> <span class="pre">-&gt;</span> <span class="pre">O</span></code> that takes as arguments the
+inputs and current state and updated the output of the <em>StateMachine</em></li>
+<li>Defining the following functions for each of the states:<ul>
+<li>An <code class="docutils literal"><span class="pre">entry</span></code> function that is executed when the state is entered</li>
+<li>An <code class="docutils literal"><span class="pre">exit</span></code> function that is executed when the state is exited</li>
+<li>An <code class="docutils literal"><span class="pre">on</span></code> function that is executed every time the <em>StateMachine</em> is
+evaluated and is in the present state</li>
+</ul>
+</li>
+</ul>
+<p>The following diagram shows some of the core framework builtin state machines.</p>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../../_images/FSM.png"><img alt="Core framework builtin state machines" src="../../_images/FSM.png" style="width: 535.2px; height: 279.6px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7.12 </span><span class="caption-text">Core framework builtin state machines</span></p>
+</div>
+<div class="section" id="fault-management">
+<h3>7.2.7.1. Fault management<a class="headerlink" href="#fault-management" title="Permalink to this headline">¶</a></h3>
+<p>The previous section describes some strategies to implement the control, monitoring
+and supervisory functions of a <em>Component</em>. In addition to these functions
+control systems that require to exhibit robustness and reliability must address
+the detection and management of non-nominal operating conditions. Often
+the strategy for addressing fault management doesn’t necessary follows the structure
+of the control function, in which case it is convenient to have an independant
+implementation.</p>
+<p>The Core Framework allows the definition of the faults that a <em>Component</em> may
+handle. For each <em>Fault</em> an <code class="docutils literal"><span class="pre">eval</span></code> function can be defined to detect if the
+fault condition is active. Additionally, in cases in which an strategy can be
+establised to handle the fault condition a <code class="docutils literal"><span class="pre">recover</span></code> function can be defined.
+Each <em>Fault</em> is associated by default with a fault state machine (<code class="docutils literal"><span class="pre">FaultFSM</span></code>)
+that governs the transitions between fault states as described
+in the following diagraman.</p>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="../../_images/FaultFSM.png"><img alt="Fault State Machine" src="../../_images/FaultFSM.png" style="width: 580.5px; height: 361.5px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7.13 </span><span class="caption-text">Fault State Machine</span></p>
+</div>
+<p>As described in the <a class="reference internal" href="../modeling_guidelines.html#faults"><span class="std std-ref">*Faults*</span></a> section of
+the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> <em>Faults</em>
+can be organized as a fault tree to model more complex fault states.
+The next segment of code shows an example of a fault specification.</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="c1"># prints the name of all the inputs</span>
+
+<span class="nv">faults:</span>
+    <span class="nv">axis_fault:</span>
+        <span class="nv">name: </span>         <span class="s">&#39;axis_fault&#39;</span>
+        <span class="nv">kind: </span>         <span class="s">&#39;or&#39;</span>
+        <span class="nv">parent: </span>       <span class="s">&quot;&quot;</span>
+        <span class="nv">level: </span>        <span class="s">&#39;CRITICAL&#39;</span>
+        <span class="nv">default_value: </span><span class="s">&#39;NOT_ACTIVE&#39;</span>
+        <span class="nv">desc: </span>         <span class="s">&#39;Axis Controller not operational&#39;</span><span class="p">}</span>
+        <span class="nv">detection_latency: </span><span class="mi">1</span>
+
+    <span class="nv">motor_over_heat:</span>
+        <span class="nv">name: </span>         <span class="s">&#39;motor_over_heat&#39;</span>
+        <span class="nv">kind: </span>         <span class="s">&#39;primary&#39;</span>
+        <span class="nv">parent: </span>       <span class="s">&#39;axis_fault&#39;</span>
+        <span class="nv">level: </span>        <span class="s">&#39;CRITICAL&#39;</span>
+        <span class="nv">default_value: </span><span class="s">&#39;NOT_ACTIVE&#39;</span>
+        <span class="nv">desc: </span>         <span class="s">&#39;Motor Overheat&#39;</span>
+        <span class="nv">detection_latency: </span><span class="mi">1</span>
+
+    <span class="nv">encoder_fault:</span>
+        <span class="nv">name: </span>         <span class="s">&#39;encoder_fault&#39;</span>
+        <span class="nv">kind: </span>         <span class="s">&#39;primary&#39;</span>
+        <span class="nv">level: </span>        <span class="s">&#39;CRITICAL&#39;</span>
+        <span class="nv">parent: </span>       <span class="s">&#39;axis_fault&#39;</span>
+        <span class="nv">default_value: </span><span class="s">&#39;NOT_ACTIVE&#39;</span>
+        <span class="nv">desc: </span>         <span class="s">&#39;Encoder not responding&#39;</span>
+        <span class="nv">detection_latency: </span><span class="mi">1</span>
+
+    <span class="nv">motor_fault:</span>
+        <span class="nv">name: </span>         <span class="s">&#39;motor_fault&#39;</span>
+        <span class="nv">kind: </span>         <span class="s">&#39;primary&#39;</span>
+        <span class="nv">level: </span>        <span class="s">&#39;CRITICAL&#39;</span>
+        <span class="nv">parent: </span>       <span class="s">&#39;axis_fault&#39;</span>
+        <span class="nv">default_value: </span><span class="s">&#39;NOT_ACTIVE&#39;</span>
+        <span class="nv">desc: </span>         <span class="s">&#39;Motor not responding&#39;</span>
+        <span class="nv">detection_latency: </span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="alarm-management">
+<h3>7.2.7.2. Alarm management<a class="headerlink" href="#alarm-management" title="Permalink to this headline">¶</a></h3>
+<p><em>Alarms</em> are used to notify operators of operating conditions that
+require their attention. The Core Framework allows to define which
+<em>Alarms</em> are associated with a <em>Component</em>. For each <em>Alarm</em> an
+<code class="docutils literal"><span class="pre">eval</span></code> function has to be defined to determine if an alarm condition
+is active. As described in the <a class="reference internal" href="../modeling_guidelines.html#alarms"><span class="std std-ref">*Alarms*</span></a> section
+of the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> <em>Alarms</em>
+can be arranged, grouped and connected in a similar way to fault trees.</p>
+<p>Although the implementation mechanism is similar, <em>Faults</em> and <em>Alarms</em> have
+different functions are their logic is independed, although in some
+cases the occurence of a <em>Fault</em> condition of the inability to
+recover from a <em>Fault</em> condition may require the activation of
+an <em>Alarm</em> condition. Once an <em>Alarm</em> condition occurs the alarm
+follows a life-cycle similar to the one defined in the <a class="reference external" href="https://en.wikipedia.org/wiki/IEC_62682">IEC62682
+*Management of alarm system for the process industries*
+standard</a>.</p>
+<p>In the Core Framework the life-cycle of an alarm is implemented
+in the <em>AlarmFSM</em> state machine as described in the following diagram.</p>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="../../_images/AlarmFSM.png"><img alt="Alarm State Machine" src="../../_images/AlarmFSM.png" style="width: 727.5px; height: 445.5px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7.14 </span><span class="caption-text">Alarm State Machine</span></p>
+</div>
+</div>
+<div class="section" id="component-operational-state">
+<h3>7.2.7.3. Component Operational State<a class="headerlink" href="#component-operational-state" title="Permalink to this headline">¶</a></h3>
+<p><em>Components</em> include an operational state <em>StateVariable</em> that governs
+the life-cycle of each <em>Component</em>. This life-cycle is implemented in the
+<em>StateMachine</em> <em>Behavior</em> <code class="docutils literal"><span class="pre">OpStateFSM</span></code> as described in the following diagram:</p>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="../../_images/OpStateFSM.png"><img alt="Operational State State Machine" src="../../_images/OpStateFSM.png" style="width: 553.2px; height: 457.2px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7.15 </span><span class="caption-text">Operational State State Machine</span></p>
+</div>
+<p>The following table describes the behavior of the <em>Component</em> in each
+possible state.</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>OFF</td>
+<td>Initial state</td>
+</tr>
+<tr class="row-odd"><td>STARTING</td>
+<td>Auto transition to ON if auto_start is true</td>
+</tr>
+<tr class="row-even"><td>ON</td>
+<td>Enables input and output behaviors</td>
+</tr>
+<tr class="row-odd"><td>INITIALIZING</td>
+<td>Enables property, state_var, alarms and fault behaviors</td>
+</tr>
+<tr class="row-even"><td>RUNNING</td>
+<td>Set state variables following_mode to ‘FOLLOWING’</td>
+</tr>
+<tr class="row-odd"><td>HALTING</td>
+<td>Set state variables following_mode to ‘NOT_FOLLOWING’</td>
+</tr>
+<tr class="row-even"><td>SHUTTING_DOWN</td>
+<td>Disables input and output behaviors</td>
+</tr>
+<tr class="row-odd"><td>FAULT</td>
+<td>State variables are set to ‘NOT_FOLLOWING’</td>
+</tr>
+<tr class="row-even"><td>HALTING</td>
+<td>Disables property, state_var, alarms and fault behaviors</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="component-health-supervision">
+<h3>7.2.7.4. Component Health Supervision<a class="headerlink" href="#component-health-supervision" title="Permalink to this headline">¶</a></h3>
+<p>The core framework includes a default health supervisory behavior
+<em>HealthSupervisingBehavior</em> that implements a basic supervisory function
+which allows:</p>
+<ul class="simple">
+<li>Detecting if a supervised <em>Component</em> is able to respond to a <code class="docutils literal"><span class="pre">ping</span></code> message, otherwise
+it will assert the fault <code class="docutils literal"><span class="pre">&lt;supervisee&gt;_not_responding</span></code></li>
+<li>Detecting if a supervised <em>Component</em> <code class="docutils literal"><span class="pre">op_state</span></code> state variable is <code class="docutils literal"><span class="pre">RUNNING</span></code>, otherwise
+it will assert the fault <code class="docutils literal"><span class="pre">&lt;supervisee&gt;_not_operational</span></code></li>
+</ul>
+<p>The following segment of code shows an example of how to define a health supervisory behavior</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="c1"># Example of HealthSupervisingBehavior declaration</span>
+
+<span class="nx">stage_sup</span><span class="p">.</span><span class="nx">behaviors</span><span class="p">.</span><span class="nx">add</span> <span class="k">new</span> <span class="nx">HealthSupervisingBehavior</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;sup_bh&#39;</span><span class="p">}</span>
+
+<span class="nx">stage_sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;x_ctrl&#39;</span><span class="p">,</span>         <span class="nv">conf: </span><span class="nx">x_ctrl</span><span class="p">.</span><span class="nx">file_conf</span><span class="p">}</span>
+<span class="nx">stage_sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;y_ctrl&#39;</span><span class="p">,</span>         <span class="nv">conf: </span><span class="nx">y_ctrl</span><span class="p">.</span><span class="nx">file_conf</span><span class="p">}</span>
+<span class="nx">stage_sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;z_ctrl&#39;</span><span class="p">,</span>         <span class="nv">conf: </span><span class="nx">z_ctrl</span><span class="p">.</span><span class="nx">file_conf</span><span class="p">}</span>
+<span class="nx">stage_sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;cartesian_ctrl&#39;</span><span class="p">,</span> <span class="nv">conf: </span><span class="nx">cartesian_ctrl</span><span class="p">.</span><span class="nx">file_conf</span><span class="p">}</span>
+<span class="nx">stage_sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;thermal_ctrl&#39;</span><span class="p">,</span>   <span class="nv">conf: </span><span class="nx">thermal_ctrl</span><span class="p">.</span><span class="nx">file_conf</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="applications">
+<span id="application"></span><h2>7.2.8. Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
+<p>The Core Framework allows implementing end applications, which
+eventually will be transformed in an executable using the <em>CoreApplication</em>
+class. The <em>CoreApplication</em> class has the following characteristics:</p>
+<ul class="simple">
+<li>Instantiates a <em>CoreContainer</em> that allows the <em>Component</em> to use
+the OCS Core Services</li>
+<li>Instantiates the indicated <em>Component</em> instances</li>
+<li>The <em>CoreCLIApplication</em> class in addition allows the management of
+command line options.</li>
+</ul>
+<p>The following code shows an example of an application as produced by the
+code generator.</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nx">CoreContainer</span>
+<span class="nx">Supervisor</span>
+<span class="nx">HealthSupervisingBehavior</span>
+<span class="nx">CoreCLIApplication</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span> <span class="s">&#39;ocs_core_fwk&#39;</span>
+<span class="p">{</span><span class="nx">IsampleCtrlSuper</span><span class="p">}</span>   <span class="o">=</span> <span class="nx">require</span> <span class="s">&#39;./isample_ctrl_super/IsampleCtrlSuper&#39;</span>
+<span class="p">{</span><span class="nx">IsampleTempCtrl</span><span class="p">}</span>    <span class="o">=</span> <span class="nx">require</span> <span class="s">&#39;./isample_temp_ctrl/IsampleTempCtrl&#39;</span>
+<span class="p">{</span><span class="nx">IsampleFocusCtrl</span><span class="p">}</span>   <span class="o">=</span> <span class="nx">require</span> <span class="s">&#39;./isample_focus_ctrl/IsampleFocusCtrl&#39;</span>
+<span class="p">{</span><span class="nx">IsampleFilterWheelCtrl</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span> <span class="s">&#39;./isample_filter_wheel_ctrl/IsampleFilterWheelCtrl&#39;</span>
+<span class="p">{</span><span class="nx">IsampleHwAdapter</span><span class="p">}</span>   <span class="o">=</span> <span class="nx">require</span> <span class="s">&#39;./isample_hw_adapter/IsampleHwAdapter&#39;</span>
+
+
+<span class="k">class</span> <span class="nx">IsampleCtrlPkgApp</span> <span class="k">extends</span> <span class="nx">CoreCLIApplication</span>
+
+    <span class="nv">setup: </span><span class="nf">-&gt;</span>
+        <span class="vi">@ctnr = </span><span class="k">new</span> <span class="nx">CoreContainer</span> <span class="nx">@</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nv">name: </span>   <span class="s">&quot;isample_ctrl_pkg_app_container&quot;</span>
+            <span class="nv">scope: </span>  <span class="nx">@properties</span><span class="p">.</span><span class="nx">scope</span><span class="p">.</span><span class="nx">value</span>
+            <span class="nv">logging: </span><span class="nx">@properties</span><span class="p">.</span><span class="nx">logging</span><span class="p">.</span><span class="nx">value</span>
+
+        <span class="nx">@ctnr</span><span class="p">.</span><span class="nx">create_adapters</span><span class="p">()</span>
+
+        <span class="vi">@isample_ctrl_super = </span><span class="k">new</span> <span class="nx">IsampleCtrlSuper</span> <span class="nx">@ctnr</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nv">name: </span>   <span class="s">&#39;isample_ctrl_super&#39;</span>
+            <span class="nv">scope: </span>  <span class="nx">@properties</span><span class="p">.</span><span class="nx">scope</span><span class="p">.</span><span class="nx">value</span>
+            <span class="nv">logging: </span><span class="nx">@properties</span><span class="p">.</span><span class="nx">logging</span><span class="p">.</span><span class="nx">value</span>
+
+        <span class="vi">@isample_cryo_internal_temp_ctrl = </span><span class="k">new</span> <span class="nx">IsampleTempCtrl</span> <span class="nx">@ctnr</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nv">name: </span>   <span class="s">&#39;isample_cryo_internal_temp_ctrl&#39;</span>
+            <span class="nv">scope: </span>  <span class="nx">@properties</span><span class="p">.</span><span class="nx">scope</span><span class="p">.</span><span class="nx">value</span>
+            <span class="nv">logging: </span><span class="nx">@properties</span><span class="p">.</span><span class="nx">logging</span><span class="p">.</span><span class="nx">value</span>
+
+        <span class="vi">@isample_cryo_external_temp_ctrl = </span><span class="k">new</span> <span class="nx">IsampleTempCtrl</span> <span class="nx">@ctnr</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nv">name: </span>   <span class="s">&#39;isample_cryo_external_temp_ctrl&#39;</span>
+            <span class="nv">scope: </span>  <span class="nx">@properties</span><span class="p">.</span><span class="nx">scope</span><span class="p">.</span><span class="nx">value</span>
+            <span class="nv">logging: </span><span class="nx">@properties</span><span class="p">.</span><span class="nx">logging</span><span class="p">.</span><span class="nx">value</span>
+
+        <span class="vi">@isample_focus1_ctrl = </span><span class="k">new</span> <span class="nx">IsampleFocusCtrl</span> <span class="nx">@ctnr</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nv">name: </span>   <span class="s">&#39;isample_focus1_ctrl&#39;</span>
+            <span class="nv">scope: </span>  <span class="nx">@properties</span><span class="p">.</span><span class="nx">scope</span><span class="p">.</span><span class="nx">value</span>
+            <span class="nv">logging: </span><span class="nx">@properties</span><span class="p">.</span><span class="nx">logging</span><span class="p">.</span><span class="nx">value</span>
+
+        <span class="vi">@isample_fw1_ctrl = </span><span class="k">new</span> <span class="nx">IsampleFilterWheelCtrl</span> <span class="nx">@ctnr</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nv">name: </span>   <span class="s">&#39;isample_fw1_ctrl&#39;</span>
+            <span class="nv">scope: </span>  <span class="nx">@properties</span><span class="p">.</span><span class="nx">scope</span><span class="p">.</span><span class="nx">value</span>
+            <span class="nv">logging: </span><span class="nx">@properties</span><span class="p">.</span><span class="nx">logging</span><span class="p">.</span><span class="nx">value</span>
+
+        <span class="vi">@isample_fw2_ctrl = </span><span class="k">new</span> <span class="nx">IsampleFilterWheelCtrl</span> <span class="nx">@ctnr</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nv">name: </span>   <span class="s">&#39;isample_fw2_ctrl&#39;</span>
+            <span class="nv">scope: </span>  <span class="nx">@properties</span><span class="p">.</span><span class="nx">scope</span><span class="p">.</span><span class="nx">value</span>
+            <span class="nv">logging: </span><span class="nx">@properties</span><span class="p">.</span><span class="nx">logging</span><span class="p">.</span><span class="nx">value</span>
+
+        <span class="vi">@isample_hw1_adapter = </span><span class="k">new</span> <span class="nx">IsampleHwAdapter</span> <span class="nx">@ctnr</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nv">name: </span>   <span class="s">&#39;isample_hw1_adapter&#39;</span>
+            <span class="nv">scope: </span>  <span class="nx">@properties</span><span class="p">.</span><span class="nx">scope</span><span class="p">.</span><span class="nx">value</span>
+            <span class="nv">logging: </span><span class="nx">@properties</span><span class="p">.</span><span class="nx">logging</span><span class="p">.</span><span class="nx">value</span>
+
+        <span class="vi">@sup = </span><span class="k">new</span> <span class="nx">Supervisor</span> <span class="nx">@ctnr</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&quot;isample_ctrl_pkg_super&quot;</span><span class="p">}</span>  <span class="c1"># Default supervisor, substitute by pkg supervisor</span>
+
+        <span class="nx">@sup</span><span class="p">.</span><span class="nx">behaviors</span><span class="p">.</span><span class="nx">add</span> <span class="k">new</span> <span class="nx">HealthSupervisingBehavior</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;sup_bh&#39;</span><span class="p">}</span>
+
+        <span class="nx">@sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;isample_ctrl_super&#39;</span><span class="p">}</span>
+        <span class="nx">@sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;isample_cryo_internal_temp_ctrl&#39;</span><span class="p">}</span>
+        <span class="nx">@sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;isample_cryo_external_temp_ctrl&#39;</span><span class="p">}</span>
+        <span class="nx">@sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;isample_focus1_ctrl&#39;</span><span class="p">}</span>
+        <span class="nx">@sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;isample_fw1_ctrl&#39;</span><span class="p">}</span>
+        <span class="nx">@sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;isample_fw2_ctrl&#39;</span><span class="p">}</span>
+        <span class="nx">@sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;isample_hw1_adapter&#39;</span><span class="p">}</span>
+
+        <span class="k">super</span><span class="p">()</span> <span class="k">if</span> <span class="k">super</span><span class="p">.</span><span class="nx">setup</span>
+
+<span class="nv">app = </span><span class="k">new</span> <span class="nx">IsampleCtrlPkgApp</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nv">name: </span>   <span class="s">&quot;isample_ctrl_pkg_app&quot;</span>
+    <span class="nv">scope: </span>  <span class="s">&quot;local&quot;</span>
+    <span class="nv">logging: </span><span class="s">&quot;info&quot;</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">setup</span><span class="p">()</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="command-line-options">
+<h3>7.2.8.1. Command line options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h3>
+<p>The Core Framework makes every property of a <em>Component</em> available
+as a command line option. The following example shows an example
+in which the <code class="docutils literal"><span class="pre">logging</span></code> property of an application is propagated
+to other instances created by the application.</p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nx">TestApp</span> <span class="k">extends</span> <span class="nx">CoreCLIApplication</span>
+
+    <span class="nv">setup: </span><span class="nf">-&gt;</span>
+        <span class="vi">@ctnr = </span><span class="k">new</span> <span class="nx">CoreContainer</span> <span class="nx">@</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nv">name: </span>   <span class="s">&quot;test_app_container&quot;</span>
+            <span class="nv">scope: </span>  <span class="nx">@properties</span><span class="p">.</span><span class="nx">scope</span><span class="p">.</span><span class="nx">value</span>
+            <span class="nv">logging: </span><span class="nx">@properties</span><span class="p">.</span><span class="nx">logging</span><span class="p">.</span><span class="nx">value</span>
+
+        <span class="nx">@ctnr</span><span class="p">.</span><span class="nx">create_adapters</span><span class="p">()</span>
+
+        <span class="vi">@comp = </span><span class="k">new</span> <span class="nx">Component</span> <span class="nx">@ctnr</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+            <span class="nv">name: </span>   <span class="s">&#39;my_component&#39;</span>
+            <span class="nv">scope: </span>  <span class="nx">@properties</span><span class="p">.</span><span class="nx">scope</span><span class="p">.</span><span class="nx">value</span>
+            <span class="nv">logging: </span><span class="nx">@properties</span><span class="p">.</span><span class="nx">logging</span><span class="p">.</span><span class="nx">value</span>
+
+        <span class="vi">@sup = </span><span class="k">new</span> <span class="nx">Supervisor</span> <span class="nx">@ctnr</span><span class="p">,</span> <span class="nx">test_sup_conf</span><span class="p">,</span>
+            <span class="nv">name: </span>   <span class="s">&quot;my_super&quot;</span>
+            <span class="nv">scope: </span>  <span class="nx">@properties</span><span class="p">.</span><span class="nx">scope</span><span class="p">.</span><span class="nx">value</span>
+            <span class="nv">logging: </span><span class="nx">@properties</span><span class="p">.</span><span class="nx">logging</span><span class="p">.</span><span class="nx">value</span>
+
+        <span class="nx">@sup</span><span class="p">.</span><span class="nx">behaviors</span><span class="p">.</span><span class="nx">add</span> <span class="k">new</span> <span class="nx">HealthSupervisingBehavior</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;super_sup_bh&#39;</span><span class="p">}</span>
+
+        <span class="nx">@sup</span><span class="p">.</span><span class="nx">add_supervisee</span> <span class="p">{</span><span class="nv">name: </span><span class="s">&#39;my_component&#39;</span><span class="p">}</span>
+
+        <span class="k">super</span><span class="p">()</span> <span class="k">if</span> <span class="k">super</span><span class="p">.</span><span class="nx">setup</span>
+
+<span class="nv">app = </span><span class="k">new</span> <span class="nx">TestApp</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nv">name: </span>   <span class="s">&quot;test_app&quot;</span>
+    <span class="nv">scope: </span>  <span class="s">&quot;global&quot;</span>
+    <span class="nv">logging: </span><span class="s">&quot;metric&quot;</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">setup</span><span class="p">()</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># when invoking the application we will enter in the shell:</span>
+&gt; my_app --logging debug
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="core-service-adapter-api">
+<h2>7.2.9. Core Service adapter API<a class="headerlink" href="#core-service-adapter-api" title="Permalink to this headline">¶</a></h2>
+<p><em>Components</em> run inside a container that manages their life-cycle
+and provides access to the interface with the Core Services.
+The Core Framework includes two default container classes:</p>
+<ul>
+<li><p class="first"><em>CoreContainer</em>: Implements the complete interfaces with the Core Services, but
+instead of sending the information to the Core Service servers it is directed to the
+terminal standar ouput. This is useful for quick feedback on the developement of a
+<em>Component</em> as there is no need to have an instance of the Core Services running</p>
+</li>
+<li><p class="first"><em>CoreServiceContainer</em>: Implements the complete interface with the Core Services and
+integrates the information generated by the <em>Component</em> with them.</p>
+</li>
+<li><p class="first">The interface with the Core Services is implemented by means of a set of
+service adapters</p>
+<blockquote>
+<div></div></blockquote>
+</li>
+</ul>
+<p>Although all services can be accesed from a component (e.g. <code class="docutils literal"><span class="pre">&#64;log</span></code>, <code class="docutils literal"><span class="pre">&#64;tele</span></code>).
+The most common use cases are already implemented by the defatul behaviors of
+the Core Framework:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <em>SamplingBehavior</em> samples the <em>Component</em> features at the defined rate
+and sends the information to the Telemetry Service</li>
+<li>The FaultFSM and AlarmFSM state machines send information to the corresponding
+services when the associated <em>Fault</em> and <em>Alarm</em> state variables transition
+from one state to another.</li>
+<li>The <em>Configuration Service</em> adapter sends a configuration event message
+when properties change once the execution of a <em>Component</em> has started.</li>
+</ul>
+</div></blockquote>
+<p>The Logging Service is the most likely beeing used by the developer when
+implementing the functions of a component</p>
+<div class="section" id="logging-service-adapter">
+<h3>7.2.9.1. Logging Service Adapter<a class="headerlink" href="#logging-service-adapter" title="Permalink to this headline">¶</a></h3>
+<p>The following segment of code demonstrate the use of the
+Logging Service adapter interface. The logging functions
+are consisten with the <span class="xref std std-ref">logging levels</span> as defined
+in the grs command.</p>
+<p>The syntax of the loggin API is:</p>
+<p><code class="docutils literal"><span class="pre">&lt;log_adapter_reference&gt;.&lt;logging</span> <span class="pre">function&gt;</span>&#160;&#160; <span class="pre">&lt;contex&gt;,</span> <span class="pre">&lt;message&gt;</span></code></p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="c1"># Log adapter info example</span>
+<span class="nx">@log</span><span class="p">.</span><span class="nx">fatal</span>   <span class="nx">@</span><span class="p">,</span> <span class="s">&quot;Fatal log message&quot;</span>
+<span class="nx">@log</span><span class="p">.</span><span class="nx">error</span>   <span class="nx">@</span><span class="p">,</span> <span class="s">&quot;Error log message&quot;</span>
+<span class="nx">@log</span><span class="p">.</span><span class="nx">warning</span> <span class="nx">@</span><span class="p">,</span> <span class="s">&quot;Warning log message&quot;</span>
+<span class="nx">@log</span><span class="p">.</span><span class="nx">info</span>    <span class="nx">@</span><span class="p">,</span> <span class="s">&quot;Informative log message&quot;</span>
+<span class="nx">@log</span><span class="p">.</span><span class="nx">debug</span>   <span class="nx">@</span><span class="p">,</span> <span class="s">&quot;Debug log message&quot;</span>
+<span class="nx">@log</span><span class="p">.</span><span class="nx">trace</span>   <span class="nx">@</span><span class="p">,</span> <span class="s">&quot;Trace log message&quot;</span>
+<span class="nx">@log</span><span class="p">.</span><span class="nx">metric</span>  <span class="nx">@</span><span class="p">,</span> <span class="s">&quot;Metric log message&quot;</span>
+</pre></div>
+</div>
+<p>When setting the <code class="docutils literal"><span class="pre">logging</span></code> property of a <em>Component</em> only
+those messages whose level of detail is the same or lower will
+be directed to the Logging Service. For example if <code class="docutils literal"><span class="pre">logging</span> <span class="pre">=</span> <span class="pre">'info'</span></code>
+only messages of type <code class="docutils literal"><span class="pre">fatal</span></code>, <code class="docutils literal"><span class="pre">error</span></code>, <code class="docutils literal"><span class="pre">warning</span></code> and info
+will be send.</p>
+</div>
+</div>
+<div class="section" id="development-example">
+<h2>7.2.10. Development Example<a class="headerlink" href="#development-example" title="Permalink to this headline">¶</a></h2>
 <p>TBD</p>
+</div>
 </div>
 
 
@@ -175,6 +894,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../test_guidelines.html" class="btn btn-neutral float-right" title="8. OCS Test Guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mapping_model_to_cpp.html" class="btn btn-neutral" title="7.1. Mapping between the Model Definition Files and C++ source code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
