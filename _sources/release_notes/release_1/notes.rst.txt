@@ -3,6 +3,82 @@
 Release 1
 =========
 
+Contents of release 1.6.1
+-------------------------
+
+- Core Frameworks:
+
+  - Development Framework:
+
+    - Improved component configuration generation
+    - Fixed type generation case in which no types are defined
+    - Fixed names of inputs and outputs in config file
+    - Added generation of connectors in config file
+    - Preserving StateMachine and Component generated files
+    - Preserving module.mk when generating code
+    - Improved codegen for Node.js applications
+    - Fixed dependency linking in Makefile for compiling apps, examples and tests with parallel option (-j)
+
+  - Core Framework (Node.js):
+
+    - Updated State Machine implementation 
+    - Updated Tree validation and improved validation rules
+    - Improved Fault and Alarm State Machines
+    - Added state elapsed time and timeout functionality
+
+  - Core Framework (C++):
+
+    - Improved compilation time due to external template declaration and explicit template instantiation
+    - Restructured Service Data code to reduce compilation time
+    - Removed unused Data I/O (i.e.: heartbeat, etc)
+
+  - Control Framework:
+    - Improved compilation time due to external template declaration and explicit template instantiation
+
+  - UI Framework:
+
+    - Updated to work with the latest Core Frameworks (Service Data Ports)
+
+  - Test Framework:
+
+    - Performance and Functionality improvements
+
+- Core Services:
+
+  - Log, Alarm, Telemetry and Configuration Services:
+
+    - Fixed empty parent specification in fault section of the configuration files 
+
+- OCS Application System:
+
+  - Added preview of Core Service Server improvements
+
+- OCS Supervisory System:
+
+  - Updated Fault and Alarm Tree specifications
+
+- OCS Sequencing System:
+
+  - Initial implementation and examples for the OCS Sequencer
+
+- Documentation: Software Development
+
+  - Added description of the mapping between the Model Definition Files and Coffeescript source code (:ref:`mapping_model_to_coffee`).
+  - Updated page ``gds documentation`` to add section on ``gds validate`` command
+  - Updated page ``Core Services user guide`` to use fix argument description for ``--records`` command.
+  - Updated page ``Model specification guide document``, section ``Component Specification``, to update ``faults`` and ``alarms`` descriptions.
+
+- Implementation Examples:
+
+  - Updated ISample connector specification
+
+- Known Issues:
+
+  - Generating test skeletons with "gds gen -t test" does not currently work
+  - Functionality added to send SDOs during runtime using the EtherCAT Hardware Adapter does not work as expected. At this time, no SDOs can be sent to the slave, either during start-up or runtime.
+  - The issue connecting the IgH Master to EL7201-0010 and EL7211-0010 modules has been fixed, but the known issue with sending SDO values to the slave affects this functionality as well.
+
+
 Contents of release 1.6.0
 -------------------------
 
