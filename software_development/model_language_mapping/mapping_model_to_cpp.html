@@ -119,11 +119,12 @@
 <li class="toctree-l3"><a class="reference internal" href="mapping_model_to_coffee.html">7.2. Mapping between the Model Definition Files and Coffeescript source code</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../test_guidelines.html">8. OCS Test Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core_services_user_guide.html">9. Core Services user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../isample_example.html">10. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../hdk_example.html">11. HDK example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ui_fwk.html">12. UI Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sdk_1_6_migration_guide.html">8. Migration guide to SDK 1.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test_guidelines.html">9. OCS Test Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core_services_user_guide.html">10. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../isample_example.html">11. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hdk_example.html">12. HDK example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ui_fwk.html">13. UI Framework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../data_products/index.html">Data Products</a></li>
@@ -479,22 +480,45 @@ directory will have the following contents:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pk_i_pkg</span><span class="o">&gt;/</span>
    <span class="o">|--</span> <span class="o">...</span>
    <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;</span>
-         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;.</span><span class="n">h</span>
-         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;.</span><span class="n">cpp</span>
-         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;</span><span class="n">_step</span><span class="o">.</span><span class="n">cpp</span>
-         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;</span><span class="n">_setup</span><span class="o">.</span><span class="n">cpp</span>
-         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;</span><span class="n">_msgpack</span><span class="o">.</span><span class="n">h</span>
+         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">ComponentName</span><span class="o">&gt;.</span><span class="n">h</span>
+         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">ComponentName</span><span class="o">&gt;.</span><span class="n">cpp</span>
+         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">ComponentName</span><span class="o">&gt;</span><span class="n">Base</span><span class="o">.</span><span class="n">h</span>
+         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">ComponentName</span><span class="o">&gt;</span><span class="n">Base</span><span class="o">.</span><span class="n">cpp</span>
+         <span class="o">|--</span> <span class="o">&lt;</span><span class="n">ComponentName</span><span class="o">&gt;</span><span class="n">Setup</span><span class="o">.</span><span class="n">cpp</span>
          <span class="o">|--</span> <span class="o">&lt;</span><span class="n">component_name</span><span class="o">&gt;</span><span class="n">_app</span><span class="o">.</span><span class="n">cpp</span>
 </pre></div>
 </div>
 <p>The name of the Component directory and the prefix of all the generated
 source files inside it is equal to the Component name.</p>
-<div class="section" id="component-header-file">
-<span id="map-cpp-model-example"></span><h3>7.1.3.1. Component header file<a class="headerlink" href="#component-header-file" title="Permalink to this headline">¶</a></h3>
-<p>The C++ class definition of the component is located in the <code class="docutils literal"><span class="pre">`&lt;component_name&gt;.h`</span></code>
-file. The name of the class is set as the name defined in the model file, but
-in CamelCase. For example, a component named <code class="docutils literal"><span class="pre">`my_component`</span></code> in the
-model files would be mapped as a class named <code class="docutils literal"><span class="pre">`MyComponent`</span></code>.</p>
+<div class="section" id="component-classes">
+<span id="map-cpp-model-example"></span><h3>7.1.3.1. Component classes<a class="headerlink" href="#component-classes" title="Permalink to this headline">¶</a></h3>
+<p>There are two classes per each Component, plus a struct that holds the
+configuration:</p>
+<ul class="simple">
+<li><strong>&lt;ComponentName&gt;Base</strong>:
+This class contains the communications infrastructure for the Component,
+as well as the declarations of all the member variables related to the
+Component features (properties, inputs, outputs, etc.). It is fully
+autogenerated by the <code class="docutils literal"><span class="pre">gds</span> <span class="pre">gen</span></code> command and it is not supposed to be
+modified by the user. Any modification will be overwritten by <code class="docutils literal"><span class="pre">gds</span></code>.</li>
+<li><strong>&lt;ComponentName&gt;</strong>:
+This is a class derived from <code class="docutils literal"><span class="pre">&lt;ComponentName&gt;Base</span></code> that will have
+the behavior for the Component, specifically
+the step function and the custom initialization. The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">gen</span></code> command
+will provide an initial skeleton of the class, but then the user must
+modify it to add the Component functionality. Further executions of
+<code class="docutils literal"><span class="pre">gds</span> <span class="pre">gen</span></code> will never overwrite its contents.</li>
+<li><strong>&lt;ComponentName&gt;Setup</strong>:
+This is a struct that will be used to read the configuration from the
+config files.</li>
+</ul>
+<div class="section" id="component-base-class-files">
+<h4>7.1.3.1.1. Component base class files<a class="headerlink" href="#component-base-class-files" title="Permalink to this headline">¶</a></h4>
+<p>The C++ class definition of the base class for the component is located
+in the <code class="docutils literal"><span class="pre">`&lt;ComponentName&gt;Base.h`</span></code> file. The name of the class is
+set as the name defined in the model file, but in CamelCase and with the
+Base suffix. For example, a component named <code class="docutils literal"><span class="pre">`my_component`</span></code> in the
+model files would have a base class named <code class="docutils literal"><span class="pre">`MyComponentBase`</span></code>.</p>
 <p>The generated class will inherit from the C++ version of the superclasses listed
 in the <code class="docutils literal"><span class="pre">`extends`</span></code> list of the component model. In the following table
 there is the list of the mapping between the most common model superclasses and
@@ -576,39 +600,63 @@ the corresponding C++ base classes:</p>
 </pre></div>
 </div>
 <p>then the generated C++ class would be:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#ifndef _my_component_h_</span>
-<span class="cp">#define _my_component_h_</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#ifndef _MyComponentBase_h_</span>
+<span class="cp">#define _MyComponentBase_h_</span>
 
-<span class="cp">#include</span> <span class="cpf">&quot;ocs_core_fwk.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;ocs_ctrl_fwk.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;../../include/my_subsystem_port_types.h&quot;</span><span class="cp"></span>
+<span class="c1">// GMT AUTO GENERATED CODE</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;ocs_core_fwk.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;ocs_ctrl_fwk.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../../include/my_dcs_port_types.h&quot;</span><span class="cp"></span>
 
 <span class="k">class</span> <span class="nc">MyComponentSetup</span><span class="p">;</span>
 
 <span class="k">namespace</span> <span class="n">gmt</span>
 <span class="p">{</span>
 
-<span class="k">class</span> <span class="nc">MyComponent</span> <span class="o">:</span> <span class="k">public</span> <span class="n">BaseComponent</span>
+<span class="k">class</span> <span class="nc">MyComponentBase</span> <span class="o">:</span> <span class="k">public</span> <span class="n">BaseController</span>
 <span class="p">{</span>
     <span class="k">public</span><span class="o">:</span>
-        <span class="n">MyComponent</span><span class="p">(</span>
-            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_uri</span><span class="p">,</span>
-            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_name</span><span class="p">,</span>
-            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_host</span><span class="p">,</span>
-            <span class="kt">int</span> <span class="n">comp_port</span><span class="p">,</span>
-            <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_acl</span><span class="p">,</span>
-            <span class="kt">float</span> <span class="n">comp_scan_rate</span><span class="p">);</span>
+        <span class="n">MyComponentBase</span><span class="p">(</span>
+                        <span class="k">const</span>  <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_uri</span><span class="p">,</span>
+                        <span class="k">const</span>  <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_name</span><span class="p">,</span>
+                        <span class="k">const</span>  <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_host</span><span class="p">,</span>
+                        <span class="kt">int</span>    <span class="n">comp_port</span><span class="p">,</span>
+                        <span class="k">const</span>  <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_acl</span><span class="p">,</span>
+                        <span class="kt">double</span> <span class="n">comp_scan_rate</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+                        <span class="kt">int</span> <span class="n">comp_prio</span> <span class="o">=</span> <span class="n">GMT_THREAD_DEFAULT_PRIO</span><span class="p">,</span>
+                        <span class="kt">int</span> <span class="n">comp_stack_size</span> <span class="o">=</span> <span class="n">GMT_DEFAULT_STACK_SIZE</span><span class="p">);</span>
 
-        <span class="k">virtual</span> <span class="o">~</span><span class="n">MyComponent</span><span class="p">();</span>
-
-        <span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
-        <span class="kt">void</span> <span class="nf">step</span><span class="p">(</span><span class="kt">bool</span> <span class="n">setup_ok</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+        <span class="k">virtual</span> <span class="o">~</span><span class="n">MyComponentBase</span><span class="p">();</span>
 
     <span class="k">protected</span><span class="o">:</span>
 
         <span class="k">typedef</span> <span class="n">MyComponentSetup</span> <span class="n">Setup</span><span class="p">;</span>
+        <span class="k">typedef</span> <span class="n">BaseController</span> <span class="n">Base</span><span class="p">;</span>
 
-        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">create_config</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+        <span class="cm">/**</span>
+<span class="cm">        * Creates the state of the Component, i.e., state variables,</span>
+<span class="cm">        * inputs, outputs, properties, alarms and faults</span>
+<span class="cm">        * Overriden from the Component class</span>
+<span class="cm">        */</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">create_state</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="cm">/**</span>
+<span class="cm">        * Uses the given Component::Setup parameter to configure all the</span>
+<span class="cm">        * Component interface features (state vars, inputs, outputs, properties, ...)</span>
+<span class="cm">        * Overriden from the Component class</span>
+<span class="cm">        */</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">setup_state</span> <span class="p">(</span><span class="n">ComponentSetup</span><span class="o">&amp;</span> <span class="n">conf</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+        <span class="cm">/**</span>
+<span class="cm">        * Configure the object from a file. The classes that derive from Component</span>
+<span class="cm">        * must reimplement this method, in order to unpack the binary contents of</span>
+<span class="cm">        * the configuration file with their Setup structure.</span>
+<span class="cm">        * Overriden from the Component class</span>
+<span class="cm">        */</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">configure_from_file</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">fname</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="k">protected</span><span class="o">:</span>
 
         <span class="c1">// Create state variables</span>
         <span class="n">StateVar</span><span class="o">&lt;</span><span class="n">my_custom_type</span><span class="o">&gt;</span> <span class="n">my_state1_sv</span><span class="p">;</span>
@@ -625,14 +673,15 @@ the corresponding C++ base classes:</p>
 
 <span class="p">}</span> <span class="c1">// namespace gmt</span>
 
-<span class="cp">#endif   </span><span class="c1">// _my_component_h_</span>
+<span class="cp">#endif   </span><span class="c1">// _MyComponentBase_h_</span>
 </pre></div>
 </div>
 <p>As we can see, the contents of the class definition are: the overridden methods from the base class,
-the <em>State Variables</em> definition, the <em>Input Ports</em> definition, the <em>Output Ports</em>
+the <em>State Variables</em> definition, the <em>Inputs</em> definition, the <em>Outputs</em>
 definition and the <em>Properties</em> definition.</p>
 <p>In the class definition there will be only
-the State Variables, Properties and Ports from the model that are owned (first defined by) by
+the State Variables, Properties and Data IO (Inputs or Outputs) from the model
+that are owned (first defined by) by
 this class. Please note that there is a set of other class members that will be
 inherited from the base classes. The list of class members inherited from the most
 common superclasses are listed in the following table:</p>
@@ -654,43 +703,39 @@ common superclasses are listed in the following table:</p>
 <td>state_vars</td>
 <td>Component</td>
 </tr>
-<tr class="row-odd"><td>heartbeat_out</td>
-<td>output_ports</td>
-<td>Component</td>
-</tr>
-<tr class="row-even"><td>uri</td>
+<tr class="row-odd"><td>uri</td>
 <td>properties</td>
 <td>Component</td>
 </tr>
-<tr class="row-odd"><td>name</td>
+<tr class="row-even"><td>name</td>
 <td>properties</td>
 <td>Component</td>
 </tr>
-<tr class="row-even"><td>host</td>
+<tr class="row-odd"><td>host</td>
 <td>properties</td>
 <td>Component</td>
 </tr>
-<tr class="row-odd"><td>port</td>
+<tr class="row-even"><td>port</td>
 <td>properties</td>
 <td>Component</td>
 </tr>
-<tr class="row-even"><td>acl</td>
+<tr class="row-odd"><td>acl</td>
 <td>properties</td>
 <td>Component</td>
 </tr>
-<tr class="row-odd"><td>scan_rate</td>
+<tr class="row-even"><td>scan_rate</td>
 <td>properties</td>
 <td>Component</td>
 </tr>
-<tr class="row-even"><td>ecat_bus</td>
+<tr class="row-odd"><td>ecat_cfg_name</td>
 <td>input_ports</td>
 <td>EthercatAdapter</td>
 </tr>
-<tr class="row-odd"><td>sim_mode</td>
+<tr class="row-even"><td>sim_mode</td>
 <td>state_vars</td>
 <td>BaseController</td>
 </tr>
-<tr class="row-even"><td>control_mode</td>
+<tr class="row-odd"><td>control_mode</td>
 <td>state_vars</td>
 <td>BaseController</td>
 </tr>
@@ -719,27 +764,22 @@ is in the <code class="docutils literal"><span class="pre">`my_component.cpp`</s
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>step() method:</dt>
-<dd>The <code class="code docutils literal"><span class="pre">step()</span></code> method is one of the most important methods of any
-component. This is the place where the developer must insert the code
-for the component step function, which implements the main functionality
-of the component. A basic version of this method is generated in the
-<code class="docutils literal"><span class="pre">`my_component_step.cpp`</span></code> source file, which must be updated by the
-module developer to add the component specific code.</dd>
+<dt>create_state() method:</dt>
+<dd>Creates the internal data structures for the component features, and
+initializes them with a default value.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>setup() method:</dt>
+<dt>setup_state() method:</dt>
 <dd>Contains the code that handles the component configuration, and that
 creates the links between class member variables and the corresponding
-ports, state variables or properties. The definition of the <code class="code docutils literal"><span class="pre">setup()</span></code>
-method is generated in the <code class="docutils literal"><span class="pre">`my_component_setup.cpp`</span></code> source file.</dd>
+inputs, outputs, state variables or properties.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>create_config():</dt>
-<dd>This is an auxiliary method called by <code class="code docutils literal"><span class="pre">my_component::setup()</span></code> in
-order to polymorphically create the configuration member variable.</dd>
+<dt>configure_from_file():</dt>
+<dd>This polymorphic method will read the configuration file with the
+appropriate Setup type.</dd>
 </dl>
 </li>
 </ul>
@@ -763,10 +803,10 @@ Variable is mapped to the C++ equivalent one, if needed.</p>
 <p>Therefore, the goal and the current value of the <code class="code docutils literal"><span class="pre">my_statevar_sv</span></code>
 State Variable are accessible by means of <code class="code docutils literal"><span class="pre">my_statevar_sv.goal</span></code>
 and <code class="code docutils literal"><span class="pre">my_statevar_sv.value</span></code>.</p>
-<p><strong>Input Ports</strong></p>
-<p>The Input Port definition section is marked with the comment
+<p><strong>Inputs</strong></p>
+<p>The Inputs definition section is marked with the comment
 <code class="docutils literal"><span class="pre">//</span> <span class="pre">Input</span> <span class="pre">port</span> <span class="pre">declaration</span></code>. A class member variable will be generated
-for each Input Port defined in the model. For example, if the component
+for each Input defined in the model. For example, if the component
 model file contains</p>
 <div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nv">input_ports:</span>
     <span class="nv">my_input_port:</span>
@@ -781,37 +821,19 @@ model file contains</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">my_type</span>   <span class="n">my_input_port</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>The type of the port declared in the model file is mapped to its C++ equivalent,
+<p>The type of the DataIO declared in the model file is mapped to its C++ equivalent,
 if needed.</p>
-<p>In addition, the <code class="docutils literal"><span class="pre">`Commponent`</span></code> base class provides an <code class="docutils literal"><span class="pre">`inputs`</span></code> member variable,
-which has the collection of all the inputs ports. This collection can be
-indexed by the port name, for example <code class="code docutils literal"><span class="pre">inputs[&quot;my_input_port&quot;]</span></code>.
-The object returned contains the actual structure that supports
-the port functionality. In particular, the port parameters (nominal rate, etc)
-are stored in the <code class="docutils literal"><span class="pre">`config`</span></code> field (e.g.: <code class="code docutils literal"><span class="pre">inputs[&quot;my_input_port&quot;].config</span></code>),
-of type <code class="code docutils literal"><span class="pre">PortConfig</span></code>:</p>
-<blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Port_config</span>
-<span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">protocol</span><span class="p">;</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">url</span><span class="p">;</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">blocking_mode</span><span class="p">;</span>
-    <span class="kt">float</span> <span class="n">max_rate</span><span class="p">;</span>
-    <span class="kt">float</span> <span class="n">nom_rate</span><span class="p">;</span>
-    <span class="n">Transport_config_ifce</span><span class="o">&amp;</span> <span class="n">transport_config</span><span class="p">;</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p><strong>Output Ports</strong></p>
+<p>In addition, the <code class="docutils literal"><span class="pre">`Component`</span></code> base class provides an <code class="docutils literal"><span class="pre">`inputs`</span></code> member variable,
+which has the collection of all the inputs. This collection can be
+indexed by the input name, for example <code class="code docutils literal"><span class="pre">inputs[&quot;my_input_port&quot;]</span></code>.</p>
+<p><strong>Outputs</strong></p>
 <p>The Output Port definition section is marked with the comment
 <code class="docutils literal"><span class="pre">//</span> <span class="pre">Output</span> <span class="pre">port</span> <span class="pre">declaration</span></code>. A class member variable will be generated
-for each Output Port defined in the model. For example, if the component
+for each Output defined in the model. For example, if the component
 model file contains</p>
 <div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nv">output_ports:</span>
     <span class="nv">my_output_port:</span>
-        <span class="nv">desc: </span>           <span class="s">&#39;One output port&#39;</span>
+        <span class="nv">desc: </span>           <span class="s">&#39;One output&#39;</span>
         <span class="nv">type: </span>           <span class="s">&#39;my_type&#39;</span>
         <span class="nv">protocol: </span>       <span class="s">&#39;push&#39;</span>
         <span class="nv">max_rate: </span>       <span class="mi">1000</span>
@@ -822,9 +844,9 @@ model file contains</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">my_type</span>   <span class="n">my_output_port</span><span class="p">;</span>  <span class="c1">// One output port</span>
 </pre></div>
 </div>
-<p>The type of the port declared in the model file is mapped to its C++ equivalent,
+<p>The type of the DataIO declared in the model file is mapped to its C++ equivalent,
 if needed.</p>
-<p>Similarly to the Input Ports case, the Output Ports can be navigated using the
+<p>Similarly to the Inputs case, the Outputs can be navigated using the
 <code class="docutils literal"><span class="pre">`outputs`</span></code> member variable, which is inherited from the <code class="docutils literal"><span class="pre">`Component`</span></code> base class.</p>
 <p><strong>Configuration Properties</strong></p>
 <p>The Configuration Properties section is marked with the comment
@@ -837,31 +859,31 @@ model type.</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">float</span>   <span class="n">my_prop1</span><span class="p">;</span>  <span class="c1">// One property</span>
 </pre></div>
 </div>
-<p>The type of the port declared in the model file is mapped to its C++ equivalent,
+<p>The type of the DataIO declared in the model file is mapped to its C++ equivalent,
 if needed.</p>
 <p>The Properties of a component are also navigable, using the <code class="docutils literal"><span class="pre">`properties`</span></code>
 member variable, which is inherited from the base class.</p>
 </div>
 <div class="section" id="component-setup-class-header-file">
-<h3>7.1.3.2. Component setup class header file<a class="headerlink" href="#component-setup-class-header-file" title="Permalink to this headline">¶</a></h3>
+<h4>7.1.3.1.2. Component setup class header file<a class="headerlink" href="#component-setup-class-header-file" title="Permalink to this headline">¶</a></h4>
 <p>The configuration of any component (values of the properties and setup
-information for the state variables and ports) is stored in a class
+information for the state variables and DataIO) is stored in a class
 named <code class="docutils literal"><span class="pre">`&lt;ComponentName&gt;Setup`</span></code>, and as stated above, the component
 class has an alias for this setup class which always has the name
 <code class="code docutils literal"><span class="pre">&lt;ComponentName&gt;::Setup</span></code>.</p>
 <p>The <code class="docutils literal"><span class="pre">`&lt;ComponentName&gt;Setup`</span></code> inherits from the base class Setup class.
 The root of the setup classes hierarchy is the <code class="code docutils literal"><span class="pre">BaseComponent::Setup</span></code>
 class.</p>
-<p>The Setup class definition is generated in the file <code class="docutils literal"><span class="pre">`&lt;component_name&gt;_msgpack.h`</span></code>.
+<p>The Setup class definition is generated in the file <code class="docutils literal"><span class="pre">`&lt;ComponentName&gt;Setup.h`</span></code>.
 The generated code for the example component of <a class="reference internal" href="#map-cpp-model-example"><span class="std std-numref">Section 7.1.3.1</span></a>
-would be in the file <code class="docutils literal"><span class="pre">`my_component_msgpack.h`</span></code>, with the following content:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#ifndef _my_component_msgpack_h_</span>
-<span class="cp">#define _my_component_msgpack_h_</span>
+would be in the file <code class="docutils literal"><span class="pre">`MyComponentSetup.h`</span></code>, with the following content:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#ifndef _MyComponentSetup_h_</span>
+<span class="cp">#define _MyComponentSetup_h_</span>
 
 <span class="cp">#include</span> <span class="cpf">&lt;msgpack.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;ocs_core_fwk.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;ocs_ctrl_fwk.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;../../include/hdk_dcs_port_types.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;../../include/my_dcs_port_types.h&quot;</span><span class="cp"></span>
 
 <span class="k">struct</span> <span class="nl">MyComponentSetup</span> <span class="p">:</span> <span class="k">public</span>  <span class="n">BaseComponentSetup</span> <span class="p">{</span>
 
@@ -876,15 +898,15 @@ would be in the file <code class="docutils literal"><span class="pre">`my_compon
     <span class="p">};</span>
 
     <span class="k">struct</span> <span class="nl">InputPortConf</span> <span class="p">:</span> <span class="k">public</span> <span class="n">BaseComponentSetup</span><span class="o">::</span><span class="n">InputPortConf</span> <span class="p">{</span>
-        <span class="n">PortDef</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span>                   <span class="n">my_input_port1</span><span class="p">;</span>
-        <span class="n">PortDef</span><span class="o">&lt;</span><span class="n">my_custom_type</span><span class="o">&gt;</span>        <span class="n">my_state1_goal</span><span class="p">;</span>
+        <span class="n">DataIODef</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span>                   <span class="n">my_input_port1</span><span class="p">;</span>
+        <span class="n">DataIODef</span><span class="o">&lt;</span><span class="n">my_custom_type</span><span class="o">&gt;</span>        <span class="n">my_state1_goal</span><span class="p">;</span>
         <span class="n">MSGPACK_DEFINE_MAP</span><span class="p">(</span><span class="n">my_input_port1</span><span class="p">,</span> <span class="n">my_state1_goal</span><span class="p">,</span> <span class="n">ops_state_goal</span><span class="p">)</span>
     <span class="p">};</span>
 
     <span class="k">struct</span> <span class="nl">OutputPortConf</span> <span class="p">:</span> <span class="k">public</span> <span class="n">BaseComponentSetup</span><span class="o">::</span><span class="n">OutputPortConf</span> <span class="p">{</span>
-        <span class="n">PortDef</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span>                <span class="n">my_output_port1</span><span class="p">;</span>
-        <span class="n">PortDef</span><span class="o">&lt;</span><span class="n">my_custom_type</span><span class="o">&gt;</span>        <span class="n">my_state1_value</span><span class="p">;</span>
-        <span class="n">MSGPACK_DEFINE_MAP</span><span class="p">(</span><span class="n">my_output_port1</span><span class="p">,</span> <span class="n">heartbeat_out</span><span class="p">,</span> <span class="n">my_state1_value</span><span class="p">,</span> <span class="n">ops_state_value</span><span class="p">)</span>
+        <span class="n">DataIODef</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span>                <span class="n">my_output_port1</span><span class="p">;</span>
+        <span class="n">DataIODef</span><span class="o">&lt;</span><span class="n">my_custom_type</span><span class="o">&gt;</span>        <span class="n">my_state1_value</span><span class="p">;</span>
+        <span class="n">MSGPACK_DEFINE_MAP</span><span class="p">(</span><span class="n">my_output_port1</span><span class="p">,</span> <span class="n">my_state1_value</span><span class="p">,</span> <span class="n">ops_state_value</span><span class="p">)</span>
     <span class="p">};</span>
 
     <span class="n">PropertyConf</span>     <span class="n">properties</span><span class="p">;</span>
@@ -895,7 +917,7 @@ would be in the file <code class="docutils literal"><span class="pre">`my_compon
     <span class="n">MSGPACK_DEFINE_MAP</span><span class="p">(</span><span class="n">properties</span><span class="p">,</span> <span class="n">state_vars</span><span class="p">,</span> <span class="n">input_ports</span><span class="p">,</span> <span class="n">output_ports</span><span class="p">)</span>
 <span class="p">};</span>
 
-<span class="cp">#endif </span><span class="c1">// _my_component_msgpack_h_</span>
+<span class="cp">#endif </span><span class="c1">// _MyComponentSetup_h_</span>
 </pre></div>
 </div>
 <p>Here we can see 5 main blocks:</p>
@@ -918,26 +940,26 @@ automatically by msgpack. Note that although the state variables defined in the
 base class are inherited from <code class="code docutils literal"><span class="pre">BaseComponentSetup::StateVarConf</span></code> and,
 therefore, they are not re-defined here, they are explicitly listed in
 the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> directive.</dd>
-<dt><code class="code docutils literal"><span class="pre">struct</span> <span class="pre">InputPortConf</span></code> definition:</dt>
-<dd>This is the definition for the inner struct where all the input ports
-meta-information will be stored. There is one entry <code class="code docutils literal"><span class="pre">PortDef&lt;type&gt;</span> <span class="pre">port</span></code>
-for each input port defined in the component model, and also one entry for
+<dt><code class="code docutils literal"><span class="pre">struct</span> <span class="pre">InputConf</span></code> definition:</dt>
+<dd>This is the definition for the inner struct where all the inputs
+meta-information will be stored. There is one entry <code class="code docutils literal"><span class="pre">DataIODef&lt;type&gt;</span> <span class="pre">port</span></code>
+for each input defined in the component model, and also one entry for
 the goal of each state variable. The suffix <code class="docutils literal"><span class="pre">`_goal`</span></code> is added automatically
 to the state variable names. In addition,
 there is the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> clause that allows the struct to be serialized
 automatically by msgpack. Note that although the input ports defined in the
-base class are inherited from <code class="code docutils literal"><span class="pre">BaseComponentSetup::InputPortConf</span></code> and,
+base class are inherited from <code class="code docutils literal"><span class="pre">BaseComponentSetup::InputConf</span></code> and,
 therefore, they are not re-defined here, they are explicitly listed in
 the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> directive.</dd>
-<dt><code class="code docutils literal"><span class="pre">struct</span> <span class="pre">OutputPortConf</span></code> definition:</dt>
-<dd>This is the definition for the inner struct where all the output ports
-meta-information will be stored. There is one entry <code class="code docutils literal"><span class="pre">PortDef&lt;type&gt;</span> <span class="pre">port</span></code>
-for each output port defined in the component model, and also one entry for
+<dt><code class="code docutils literal"><span class="pre">struct</span> <span class="pre">OutputConf</span></code> definition:</dt>
+<dd>This is the definition for the inner struct where all the outputs
+meta-information will be stored. There is one entry <code class="code docutils literal"><span class="pre">DataIODef&lt;type&gt;</span> <span class="pre">port</span></code>
+for each output defined in the component model, and also one entry for
 the value of each state variable. The suffix <code class="docutils literal"><span class="pre">`_value`</span></code> is added automatically
 to the state variable names. In addition,
 there is the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> clause that allows the struct to be serialized
-automatically by msgpack. Note that although the output ports defined in the
-base class are inherited from <code class="code docutils literal"><span class="pre">BaseComponentSetup::OutputPortConf</span></code> and,
+automatically by msgpack. Note that although the outputs defined in the
+base class are inherited from <code class="code docutils literal"><span class="pre">BaseComponentSetup::OutputConf</span></code> and,
 therefore, they are not re-defined here, they are explicitly listed in
 the <code class="code docutils literal"><span class="pre">MSGPACK</span></code> directive.</dd>
 <dt>Setup class fields definition:</dt>
@@ -947,8 +969,8 @@ the following setup class member variables are defined:</p>
 <div><ul class="simple">
 <li>The <code class="docutils literal"><span class="pre">`properties`</span></code> member variable, of type <code class="docutils literal"><span class="pre">`PropertyConf`</span></code></li>
 <li>The <code class="docutils literal"><span class="pre">`state_vars`</span></code> member variable, of type <code class="docutils literal"><span class="pre">`StateVarConf`</span></code></li>
-<li>The <code class="docutils literal"><span class="pre">`input_ports`</span></code> member variable, of type <code class="docutils literal"><span class="pre">`InputPortConf`</span></code></li>
-<li>The <code class="docutils literal"><span class="pre">`output_ports`</span></code> member variable, of type <code class="docutils literal"><span class="pre">`OutputPortConf`</span></code></li>
+<li>The <code class="docutils literal"><span class="pre">`inputs`</span></code> member variable, of type <code class="docutils literal"><span class="pre">`InputConf`</span></code></li>
+<li>The <code class="docutils literal"><span class="pre">`outputs`</span></code> member variable, of type <code class="docutils literal"><span class="pre">`OutputConf`</span></code></li>
 </ul>
 </div></blockquote>
 <p class="last">Analogously to the previous sections, the <code class="docutils literal"><span class="pre">`MSGPACK`</span></code> directive
@@ -956,26 +978,115 @@ allows the component Setup class to be serialized automatically.</p>
 </dd>
 </dl>
 </div>
-<div class="section" id="component-setup-method-definition-file">
-<h3>7.1.3.3. Component setup method definition file<a class="headerlink" href="#component-setup-method-definition-file" title="Permalink to this headline">¶</a></h3>
-<p>The code for the <code class="code docutils literal"><span class="pre">&lt;component_name&gt;::setup()</span></code> and <code class="code docutils literal"><span class="pre">&lt;component_name&gt;::create_config()</span></code>
-methods is automatically generated from the model to the file <code class="docutils literal"><span class="pre">`&lt;component_name&gt;_setup.cpp`</span></code>.</p>
-<p>The code generated for the <code class="code docutils literal"><span class="pre">create_config()</span></code> method
-creates polymorphically the <code class="docutils literal"><span class="pre">`config`</span></code> pointer.</p>
-<p>The code generated for the <code class="code docutils literal"><span class="pre">setup()</span></code> method creates the structures for the input ports,
-output ports and properties, initializes them and creates the links between the
-ports and properties to the actual member variables of the component class.</p>
+<div class="section" id="component-implementation-class">
+<h4>7.1.3.1.3. Component implementation class<a class="headerlink" href="#component-implementation-class" title="Permalink to this headline">¶</a></h4>
+<p>The C++ class definition of the class for the component is located
+in the <code class="docutils literal"><span class="pre">`&lt;ComponentName&gt;.h`</span></code> file. The name of the class is
+set as the name defined in the model file, but in CamelCase.
+For example, a component named <code class="docutils literal"><span class="pre">`my_component`</span></code> in the
+model files would have a base class named <code class="docutils literal"><span class="pre">`MyComponent`</span></code>. The implementation
+of the class is in the <code class="docutils literal"><span class="pre">`&lt;ComponentName&gt;.cpp`</span></code> file.
+These two files will be initially generated with <code class="docutils literal"><span class="pre">gds</span> <span class="pre">gen</span></code>, but then the
+user must add its own implementation details. When the file already exist,
+<code class="docutils literal"><span class="pre">`gds</span> <span class="pre">gen`</span></code> will not overwrite them.</p>
+<p>The contents of the generated header file will be:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#ifndef _MyComponent_h_</span>
+<span class="cp">#define _MyComponent_h_</span>
+
+
+<span class="cp">#include</span> <span class="cpf">&quot;MyComponentBase.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">gmt</span>
+<span class="p">{</span>
+
+<span class="k">class</span> <span class="nc">MyComponent</span> <span class="o">:</span> <span class="k">public</span> <span class="n">MyComponentCtrlBase</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">MyComponent</span><span class="p">(</span>
+                    <span class="k">const</span>  <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_uri</span><span class="p">,</span>
+                    <span class="k">const</span>  <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_name</span><span class="p">,</span>
+                    <span class="k">const</span>  <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_host</span><span class="p">,</span>
+                    <span class="kt">int</span>    <span class="n">comp_port</span><span class="p">,</span>
+                    <span class="k">const</span>  <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_acl</span><span class="p">,</span>
+                    <span class="kt">double</span> <span class="n">comp_scan_rate</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+                    <span class="kt">int</span> <span class="n">comp_prio</span> <span class="o">=</span> <span class="n">GMT_THREAD_DEFAULT_PRIO</span><span class="p">,</span>
+                    <span class="kt">int</span> <span class="n">comp_stack_size</span> <span class="o">=</span> <span class="n">GMT_DEFAULT_STACK_SIZE</span><span class="p">);</span>
+
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">MyComponent</span><span class="p">();</span>
+
+    <span class="c1">//XXX add your public methods here</span>
+
+<span class="k">protected</span><span class="o">:</span>
+
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">step</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="c1">//XXX add your protected class members here</span>
+
+<span class="k">private</span><span class="o">:</span>
+
+    <span class="c1">//XXX add your private class members here</span>
+<span class="p">};</span>
+
+<span class="p">}</span> <span class="c1">// namespace gmt</span>
+
+<span class="cp">#endif   </span><span class="c1">// _MyComponent_h_</span>
+</pre></div>
 </div>
-<div class="section" id="component-step-method-definition-file">
-<h3>7.1.3.4. Component step method definition file<a class="headerlink" href="#component-step-method-definition-file" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="code docutils literal"><span class="pre">&lt;component_name&gt;::step()</span></code> method is the one that defines the
-behavior of the component. Hence, it is one of the most important methods
-of any component, and the only one from the auto-generated methods that
-the user should change.</p>
-<p>The code of the <cite>step</cite> method is in the  <code class="docutils literal"><span class="pre">`&lt;component_name&gt;_step.cpp`</span></code>
-file. When the component code is auto-generated from the model, the code
-generator places a skeleton of the <cite>step</cite> method in this file. The developer
-must overwrite it with the actual implementation for the current component.</p>
+<p>If needed, the user can add more member variables or methods to this class.</p>
+<p>The contents of the cpp file will be:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;ocs_core_fwk.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;MyComponent.h&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">gmt</span><span class="p">;</span>
+
+<span class="n">MyComponent</span><span class="o">::</span><span class="n">MyComponent</span><span class="p">(</span>
+                        <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_uri</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_name</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_host</span><span class="p">,</span>
+                        <span class="kt">int</span> <span class="n">comp_port</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">comp_acl</span><span class="p">,</span>
+                        <span class="kt">double</span> <span class="n">comp_scan_rate</span><span class="p">,</span>
+                        <span class="kt">int</span> <span class="n">comp_prio</span><span class="p">,</span>
+                        <span class="kt">int</span> <span class="n">comp_stack_size</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">MyComponentBase</span><span class="p">(</span><span class="n">comp_uri</span><span class="p">,</span> <span class="n">comp_name</span><span class="p">,</span> <span class="n">comp_host</span><span class="p">,</span> <span class="n">comp_port</span><span class="p">,</span> <span class="n">comp_acl</span><span class="p">,</span> <span class="n">comp_scan_rate</span><span class="p">,</span> <span class="n">comp_prio</span><span class="p">,</span> <span class="n">comp_stack_size</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="n">MyComponent</span><span class="o">::~</span><span class="n">MyComponent</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">MyComponent</span><span class="o">::</span><span class="n">step</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">//XXX add your code here</span>
+
+    <span class="cm">/*if (is_step_rate(100))</span>
+<span class="cm">    {</span>
+<span class="cm">        // this will be executed every 100 steps</span>
+<span class="cm">        log_info(&quot;step  = &quot; + std::to_string(step_counter));</span>
+<span class="cm">    }*/</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">MyComponent</span><span class="o">::</span><span class="n">setup</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">//setup async input handlers</span>
+
+    <span class="c1">//ex: new_async_input_handler (&quot;my_input_name&quot;, this, &amp;MyComponent::my_input_handler);</span>
+
+    <span class="c1">//add behaviors to features</span>
+
+    <span class="c1">//other initializations</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The user must add the specific step function implementation to
+<code class="docutils literal"><span class="pre">MyComponent::step()</span></code> and, of course, the implementation of any other
+method that has been added to the class.</p>
+</div>
 </div>
 </div>
 </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>12. UI Framework &mdash; GMT Software And Controls documentation</title>
+  <title>13. UI Framework &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -42,7 +42,7 @@
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
         <link rel="next" title="Data Products" href="../data_products/index.html"/>
-        <link rel="prev" title="11. HDK example" href="hdk_example.html"/> 
+        <link rel="prev" title="12. HDK example" href="hdk_example.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -110,17 +110,18 @@
 <li class="toctree-l2"><a class="reference internal" href="grs_guide.html">5. grs documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">8. OCS Test Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">9. Core Services user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="isample_example.html">10. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">11. HDK example</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">12. UI Framework</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#installation">12.1. Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#engineering-app">12.2. Engineering App</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">12.3. Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#user-guide">12.4. User Guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#launching-custom-panels">12.5. Launching Custom Panels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-guide">12.6. Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk_1_6_migration_guide.html">8. Migration guide to SDK 1.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">9. OCS Test Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">10. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">11. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">12. HDK example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">13. UI Framework</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">13.1. Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#engineering-app">13.2. Engineering App</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">13.3. Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-guide">13.4. User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launching-custom-panels">13.5. Launching Custom Panels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-guide">13.6. Troubleshooting Guide</a></li>
 </ul>
 </li>
 </ul>
@@ -173,7 +174,7 @@
         
           <li><a href="index.html">Software Development</a> &raquo;</li>
         
-      <li>12. UI Framework</li>
+      <li>13. UI Framework</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -191,7 +192,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="ui-framework">
-<span id="ui-fwk"></span><h1>12. UI Framework<a class="headerlink" href="#ui-framework" title="Permalink to this headline">¶</a></h1>
+<span id="ui-fwk"></span><h1>13. UI Framework<a class="headerlink" href="#ui-framework" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The UI framework is currently only supported on MacOS.  Linux support will be available in future releases.</p>
@@ -203,7 +204,7 @@
 <li>An Engineering App that provides an interface to the OCS</li>
 </ul>
 <div class="section" id="installation">
-<h2>12.1. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h2>13.1. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>Download the UI library files</p>
 <ul class="simple">
 <li><a class="reference external" href="http://52.52.46.32/srv/gmt/releases/navigator/ocs_navigator_lib_1.6.0.zip">http://52.52.46.32/srv/gmt/releases/navigator/ocs_navigator_lib_1.6.0.zip</a></li>
@@ -216,13 +217,13 @@
 <p>You can unzip the app anywhere on your MacOS file system.  Double click on the icon to run.</p>
 </div>
 <div class="section" id="engineering-app">
-<h2>12.2. Engineering App<a class="headerlink" href="#engineering-app" title="Permalink to this headline">¶</a></h2>
+<h2>13.2. Engineering App<a class="headerlink" href="#engineering-app" title="Permalink to this headline">¶</a></h2>
 <p>The engineering application provides a GUI to the OCS model.  It is a downloadble Mac app that you can run after installing the SDK on your Mac.</p>
 <p>The UI engineering app uses your local bundles from <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code> and allows you to see a visual representation of your model files’ input/output ports.  For now, the Engineering app runs in MacOS.</p>
 <p>To launch the application, double click on the app icon.</p>
 </div>
 <div class="section" id="configuration">
-<h2>12.3. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<h2>13.3. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>The User Interface needs to be configured to connect to the correct control components to receive data. Without proper configuration, the application may look like this:</p>
 <img alt="Navigator application - No connection to HDK components" class="align-center" src="../_images/Navigator_HDK_first_open.png" />
 <p>Edit the appropriate config files in the <code class="docutils literal"><span class="pre">src/etc/conf</span></code> folder to point to the correct IP address for input and output ports. For example,</p>
@@ -234,7 +235,7 @@ $ sed -i <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s/127.0.0.1/1
 <p>Restart the Navigator application for changes to take affect.</p>
 </div>
 <div class="section" id="user-guide">
-<h2>12.4. User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
+<h2>13.4. User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
 <img alt="Navigator application regions" class="align-center" src="../_images/Navigator_HDK_connected.png" />
 <p>The navigator application contains two regions.</p>
 <ol class="arabic simple">
@@ -247,11 +248,11 @@ $ sed -i <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s/127.0.0.1/1
 </div>
 </div>
 <div class="section" id="launching-custom-panels">
-<h2>12.5. Launching Custom Panels<a class="headerlink" href="#launching-custom-panels" title="Permalink to this headline">¶</a></h2>
+<h2>13.5. Launching Custom Panels<a class="headerlink" href="#launching-custom-panels" title="Permalink to this headline">¶</a></h2>
 <p>From the menu, select <code class="docutils literal"><span class="pre">Vis</span> <span class="pre">package</span></code> and select <code class="docutils literal"><span class="pre">Panel</span> <span class="pre">loader</span></code>.  This will launch a panel allowing you to select a custom vis package.</p>
 </div>
 <div class="section" id="troubleshooting-guide">
-<h2>12.6. Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permalink to this headline">¶</a></h2>
+<h2>13.6. Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permalink to this headline">¶</a></h2>
 <p>The engineering app loads the local bundles defined in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code>.  It currently uses the model generated config files to read data for your package.  Those config files are created in <code class="docutils literal"><span class="pre">$GMT_LOCAL/modules/&lt;your_module&gt;/src/etc/conf/&lt;your_package&gt;_pkg/&lt;component&gt;_config.coffee</span></code>; it’s useful to see what’s in those configs when troubleshooting data availability issues.  The availability of data to the UI largely depends on those config files.  The values generated will depend on how you write your model, but a sample of a config file might look like</p>
 <blockquote>
 <div><div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nv">module.exports =</span>
@@ -306,7 +307,7 @@ $ sed -i <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s/127.0.0.1/1
         <a href="../data_products/index.html" class="btn btn-neutral float-right" title="Data Products" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="hdk_example.html" class="btn btn-neutral" title="11. HDK example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="hdk_example.html" class="btn btn-neutral" title="12. HDK example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

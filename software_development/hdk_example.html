@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>11. HDK example &mdash; GMT Software And Controls documentation</title>
+  <title>12. HDK example &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -41,8 +41,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="12. UI Framework" href="ui_fwk.html"/>
-        <link rel="prev" title="10. ISample Example" href="isample_example.html"/> 
+        <link rel="next" title="13. UI Framework" href="ui_fwk.html"/>
+        <link rel="prev" title="11. ISample Example" href="isample_example.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -110,34 +110,35 @@
 <li class="toctree-l2"><a class="reference internal" href="grs_guide.html">5. grs documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">8. OCS Test Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">9. Core Services user guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="isample_example.html">10. ISample Example</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">11. HDK example</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">11.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hdk-hardware">11.2. HDK Hardware</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#connection-to-the-dcc">11.2.1. Connection to the DCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk_1_6_migration_guide.html">8. Migration guide to SDK 1.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">9. OCS Test Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="core_services_user_guide.html">10. Core Services user guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">11. ISample Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">12. HDK example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">12.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hdk-hardware">12.2. HDK Hardware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#connection-to-the-dcc">12.2.1. Connection to the DCC</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#hdk-software">11.3. HDK Software</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#clone-the-hdk-dcs-repository">11.3.1. Clone the hdk_dcs repository</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#model-files">11.3.2. Model files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#code-generation">11.3.3. Code generation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#compiling-configuration-files">11.3.4. Compiling Configuration Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#hdk-main-controller-behavior">11.3.5. HDK Main Controller Behavior</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#compilation">11.3.6. Compilation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#running-the-example">11.3.7. Running the Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hdk-software">12.3. HDK Software</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#clone-the-hdk-dcs-repository">12.3.1. Clone the hdk_dcs repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model-files">12.3.2. Model files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#code-generation">12.3.3. Code generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compiling-configuration-files">12.3.4. Compiling Configuration Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hdk-main-controller-behavior">12.3.5. HDK Main Controller Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compilation">12.3.6. Compilation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-example">12.3.7. Running the Example</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#user-interface">11.4. User Interface</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#configuration">11.4.1. Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#running-the-engineering-ui">11.4.2. Running the Engineering UI</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#displaying-a-custom-ui-panel">11.4.3. Displaying a custom UI Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-interface">12.4. User Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">12.4.1. Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-engineering-ui">12.4.2. Running the Engineering UI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#displaying-a-custom-ui-panel">12.4.3. Displaying a custom UI Panel</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ui_fwk.html">12. UI Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_fwk.html">13. UI Framework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -188,7 +189,7 @@
         
           <li><a href="index.html">Software Development</a> &raquo;</li>
         
-      <li>11. HDK example</li>
+      <li>12. HDK example</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -206,49 +207,49 @@
            <div itemprop="articleBody">
             
   <div class="section" id="hdk-example">
-<span id="id1"></span><h1>11. HDK example<a class="headerlink" href="#hdk-example" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>12. HDK example<a class="headerlink" href="#hdk-example" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>11.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>12.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>The HDK (Hardware Development Kit) is a tool which has the purpose of
 serving as a template to facilitate the development of Device Control
 Systems (DCS).</p>
 </div>
 <div class="section" id="hdk-hardware">
-<h2>11.2. HDK Hardware<a class="headerlink" href="#hdk-hardware" title="Permalink to this headline">¶</a></h2>
+<h2>12.2. HDK Hardware<a class="headerlink" href="#hdk-hardware" title="Permalink to this headline">¶</a></h2>
 <p>The main hardware component of the HDK is the control panel, displayed
-in <a class="reference internal" href="#hdk-main-panel"><span class="std std-numref">Fig. 11.1</span></a>:</p>
+in <a class="reference internal" href="#hdk-main-panel"><span class="std std-numref">Fig. 12.1</span></a>:</p>
 <div class="figure" id="id2">
 <span id="hdk-main-panel"></span><img alt="../_images/hdk_hw_panel.png" src="../_images/hdk_hw_panel.png" />
-<p class="caption"><span class="caption-number">Fig. 11.1 </span><span class="caption-text">HDK Hardware Control Panel</span></p>
+<p class="caption"><span class="caption-number">Fig. 12.1 </span><span class="caption-text">HDK Hardware Control Panel</span></p>
 </div>
 <p>The panel has two DIN rails with all the necessary components. The top rail
 contains the power section on the left, an embedded PC in the central part,
-and the Ethercat I/O modules on the right (<a class="reference internal" href="#hdk-io-modules"><span class="std std-numref">Fig. 11.2</span></a>),
-as well as an emergency button (<a class="reference internal" href="#hdk-emergency-button"><span class="std std-numref">Fig. 11.3</span></a>).
+and the Ethercat I/O modules on the right (<a class="reference internal" href="#hdk-io-modules"><span class="std std-numref">Fig. 12.2</span></a>),
+as well as an emergency button (<a class="reference internal" href="#hdk-emergency-button"><span class="std std-numref">Fig. 12.3</span></a>).
 The lower rail contains a stepper motor on the left with a
-temperature probe (<a class="reference internal" href="#hdk-stepper"><span class="std std-numref">Fig. 11.4</span></a>), the terminal blocks interface
+temperature probe (<a class="reference internal" href="#hdk-stepper"><span class="std std-numref">Fig. 12.4</span></a>), the terminal blocks interface
 and a couple of push buttons with a led on the
-right side (<a class="reference internal" href="#hdk-pushbuttons"><span class="std std-numref">Fig. 11.5</span></a>).</p>
+right side (<a class="reference internal" href="#hdk-pushbuttons"><span class="std std-numref">Fig. 12.5</span></a>).</p>
 <div class="figure" id="id3">
 <span id="hdk-io-modules"></span><img alt="../_images/hdk_io_modules.png" src="../_images/hdk_io_modules.png" />
-<p class="caption"><span class="caption-number">Fig. 11.2 </span><span class="caption-text">HDK I/O modules</span></p>
+<p class="caption"><span class="caption-number">Fig. 12.2 </span><span class="caption-text">HDK I/O modules</span></p>
 </div>
 <div class="figure" id="id4">
 <span id="hdk-emergency-button"></span><img alt="../_images/hdk_emergency_button.png" src="../_images/hdk_emergency_button.png" />
-<p class="caption"><span class="caption-number">Fig. 11.3 </span><span class="caption-text">HDK emergency button</span></p>
+<p class="caption"><span class="caption-number">Fig. 12.3 </span><span class="caption-text">HDK emergency button</span></p>
 </div>
 <div class="figure" id="id5">
 <span id="hdk-stepper"></span><img alt="../_images/hdk_stepper.png" src="../_images/hdk_stepper.png" />
-<p class="caption"><span class="caption-number">Fig. 11.4 </span><span class="caption-text">HDK stepper motor</span></p>
+<p class="caption"><span class="caption-number">Fig. 12.4 </span><span class="caption-text">HDK stepper motor</span></p>
 </div>
 <div class="figure" id="id6">
 <span id="hdk-pushbuttons"></span><img alt="../_images/hdk_pushbuttons.png" src="../_images/hdk_pushbuttons.png" />
-<p class="caption"><span class="caption-number">Fig. 11.5 </span><span class="caption-text">HDK pushbuttons</span></p>
+<p class="caption"><span class="caption-number">Fig. 12.5 </span><span class="caption-text">HDK pushbuttons</span></p>
 </div>
 <p>For more details on the HDK
 hardware architecture, refer to GMT document GMT-SWC-DOC-00710.</p>
 <div class="section" id="connection-to-the-dcc">
-<h3>11.2.1. Connection to the DCC<a class="headerlink" href="#connection-to-the-dcc" title="Permalink to this headline">¶</a></h3>
+<h3>12.2.1. Connection to the DCC<a class="headerlink" href="#connection-to-the-dcc" title="Permalink to this headline">¶</a></h3>
 <p>The HDK can be controlled using its embedded PC, or using a Real Time
 Linux DCC. In this example we will use the latter option.</p>
 <div class="admonition note">
@@ -258,12 +259,12 @@ and the Ethercat drivers have been installed in the DCC, according
 to the instructions in the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation Guide document</span></a>.</p>
 </div>
 <p>The EtherCAT bus must be connected to the RJ-45 connector that is located
-to the left of the I/O modules block (see <a class="reference internal" href="#hdk-ethercat-bus"><span class="std std-numref">Fig. 11.6</span></a>). The other
+to the left of the I/O modules block (see <a class="reference internal" href="#hdk-ethercat-bus"><span class="std std-numref">Fig. 12.6</span></a>). The other
 end of the bus must be connected to the EtherCAT port of the Real Time Linux
 DCC.</p>
 <div class="figure" id="id7">
 <span id="hdk-ethercat-bus"></span><img alt="../_images/hdk_ethercat_conn.png" src="../_images/hdk_ethercat_conn.png" />
-<p class="caption"><span class="caption-number">Fig. 11.6 </span><span class="caption-text">HDK panel EtherCAT bus connection</span></p>
+<p class="caption"><span class="caption-number">Fig. 12.6 </span><span class="caption-text">HDK panel EtherCAT bus connection</span></p>
 </div>
 <p>We can check that the installation has been done correctly using the
 <code class="docutils literal"><span class="pre">`ethercat`</span></code> command in the Linux machine. If we execute:</p>
@@ -286,9 +287,9 @@ DCC.</p>
 </div>
 </div>
 <div class="section" id="hdk-software">
-<h2>11.3. HDK Software<a class="headerlink" href="#hdk-software" title="Permalink to this headline">¶</a></h2>
+<h2>12.3. HDK Software<a class="headerlink" href="#hdk-software" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="clone-the-hdk-dcs-repository">
-<h3>11.3.1. Clone the hdk_dcs repository<a class="headerlink" href="#clone-the-hdk-dcs-repository" title="Permalink to this headline">¶</a></h3>
+<h3>12.3.1. Clone the hdk_dcs repository<a class="headerlink" href="#clone-the-hdk-dcs-repository" title="Permalink to this headline">¶</a></h3>
 <p>On the real-time DCC, clone the repository in the development folder:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules
 $ gds clone hdk_dcs -d gmto
@@ -308,7 +309,7 @@ Resolving deltas: <span class="m">100</span>% <span class="o">(</span><span clas
 </div>
 </div>
 <div class="section" id="model-files">
-<h3>11.3.2. Model files<a class="headerlink" href="#model-files" title="Permalink to this headline">¶</a></h3>
+<h3>12.3.2. Model files<a class="headerlink" href="#model-files" title="Permalink to this headline">¶</a></h3>
 <p>The model files can be found in the <strong>$GMT_LOCAL/modules/ocs_hdk_dcs/model/</strong> folder.</p>
 <dl class="docutils">
 <dt>webpack.config.coffee</dt>
@@ -356,7 +357,7 @@ A single instance called <strong>hdk_hw1_adapter</strong> will be created.</dd>
 </div>
 </div>
 <div class="section" id="code-generation">
-<h3>11.3.3. Code generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h3>
+<h3>12.3.3. Code generation<a class="headerlink" href="#code-generation" title="Permalink to this headline">¶</a></h3>
 <p>The hdk_dcs repository already has the source code of the HDK, so it is not
 necessary to generate it.</p>
 <p>If the source code needs to be generated
@@ -370,7 +371,7 @@ $ gds gen hdk_dcs
 <p>After re-generating code from the model, all manual changes will need to be re-applied.</p>
 </div>
 <div class="section" id="compiling-configuration-files">
-<h3>11.3.4. Compiling Configuration Files<a class="headerlink" href="#compiling-configuration-files" title="Permalink to this headline">¶</a></h3>
+<h3>12.3.4. Compiling Configuration Files<a class="headerlink" href="#compiling-configuration-files" title="Permalink to this headline">¶</a></h3>
 <p>Configuration files should be compiled for the C++ controllers. This can be done with:</p>
 <div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ gds install  # Copies the configuration file to $GMT_LOCAL/etc/conf/
 $ grs compile -i hdk_hw1_adapter
@@ -380,7 +381,7 @@ $ grs compile --input $GMT_LOCAL/etc/conf/hdk_dcs/hdk_hw1_adapter_ethercat_defau
 </div>
 </div>
 <div class="section" id="hdk-main-controller-behavior">
-<h3>11.3.5. HDK Main Controller Behavior<a class="headerlink" href="#hdk-main-controller-behavior" title="Permalink to this headline">¶</a></h3>
+<h3>12.3.5. HDK Main Controller Behavior<a class="headerlink" href="#hdk-main-controller-behavior" title="Permalink to this headline">¶</a></h3>
 <p>The behavior of the HDK is defined in the <em>hdk_main_ctrl</em> component, and
 more specifically, in the step() function of this controller.</p>
 <p>The file that contains the HDK controller step function is <code class="docutils literal"><span class="pre">`HdkMainCtrl.cpp`</span></code>.
@@ -482,7 +483,7 @@ $ vi HdkMainCtrl.cpp
 <li>Heartbeat LED</li>
 </ol>
 <div class="section" id="step-function-emergency-button-section">
-<h4>11.3.5.1. Step function. Emergency button section<a class="headerlink" href="#step-function-emergency-button-section" title="Permalink to this headline">¶</a></h4>
+<h4>12.3.5.1. Step function. Emergency button section<a class="headerlink" href="#step-function-emergency-button-section" title="Permalink to this headline">¶</a></h4>
 <p>The first code block of the step function is</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">hmi_inputs</span><span class="p">.</span><span class="n">emergency_button</span><span class="p">)</span>
 <span class="p">{</span>
@@ -504,7 +505,7 @@ above code block disables the stepper motor and sets the velocity to
 if not.</p>
 </div>
 <div class="section" id="step-function-motor-control">
-<h4>11.3.5.2. Step function. Motor control<a class="headerlink" href="#step-function-motor-control" title="Permalink to this headline">¶</a></h4>
+<h4>12.3.5.2. Step function. Motor control<a class="headerlink" href="#step-function-motor-control" title="Permalink to this headline">¶</a></h4>
 <p>The next section of code implements the motor control:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">motor_state</span><span class="p">.</span><span class="n">enabled</span><span class="p">)</span>
 <span class="p">{</span>
@@ -529,7 +530,7 @@ if not.</p>
 <p>In the <code class="docutils literal"><span class="pre">`green_push_button`</span></code> field of the <code class="docutils literal"><span class="pre">`hmi_inputs`</span></code> input
 port we have the state of the green push button of the HDK panel (<code class="docutils literal"><span class="pre">True</span></code>
 when pushed, <code class="docutils literal"><span class="pre">False</span></code> when not) and in the field <code class="docutils literal"><span class="pre">`red_push_button`</span></code>
-we have the state of the red button (see <a class="reference internal" href="#hdk-pushbuttons"><span class="std std-numref">Fig. 11.5</span></a>).</p>
+we have the state of the red button (see <a class="reference internal" href="#hdk-pushbuttons"><span class="std std-numref">Fig. 12.5</span></a>).</p>
 <p>The <code class="docutils literal"><span class="pre">`motor_ctrl`</span></code> output port has 3 fields: the <code class="docutils literal"><span class="pre">`velocity`</span></code> field,
 which will be forwarded to the stepper motor as the velocity set point; the
 <code class="docutils literal"><span class="pre">`enable`</span></code>, which will control if the motor is enabled or not; and the
@@ -540,7 +541,7 @@ will be decreased; and if the emergency button is pushed then the motor is
 disabled.</p>
 </div>
 <div class="section" id="step-function-leds-control">
-<h4>11.3.5.3. Step function. LEDs control<a class="headerlink" href="#step-function-leds-control" title="Permalink to this headline">¶</a></h4>
+<h4>12.3.5.3. Step function. LEDs control<a class="headerlink" href="#step-function-leds-control" title="Permalink to this headline">¶</a></h4>
 <p>The next code section takes care of the control of the LEDs:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">moving</span> <span class="o">=</span> <span class="n">motor_state</span><span class="p">.</span><span class="n">moving_positive</span> <span class="o">||</span> <span class="n">motor_state</span><span class="p">.</span><span class="n">moving_negative</span><span class="p">;</span>
 <span class="n">hmi_outputs</span><span class="p">.</span><span class="n">pilot</span> <span class="o">=</span> <span class="n">moving</span><span class="p">;</span> <span class="c1">// pilot on when moving</span>
@@ -548,12 +549,12 @@ disabled.</p>
 </pre></div>
 </div>
 <p>In the fist line we read the motion state of the stepper motor, and in the
-second line we light the white led (see <a class="reference internal" href="#hdk-pushbuttons"><span class="std std-numref">Fig. 11.5</span></a>) if the motor is moving. In the third
-line, we light the red led (<a class="reference internal" href="#hdk-emergency-button"><span class="std std-numref">Fig. 11.3</span></a>) if the emergency
+second line we light the white led (see <a class="reference internal" href="#hdk-pushbuttons"><span class="std std-numref">Fig. 12.5</span></a>) if the motor is moving. In the third
+line, we light the red led (<a class="reference internal" href="#hdk-emergency-button"><span class="std std-numref">Fig. 12.3</span></a>) if the emergency
 button is pushed.</p>
 </div>
 <div class="section" id="step-function-logs">
-<h4>11.3.5.4. Step function. Logs<a class="headerlink" href="#step-function-logs" title="Permalink to this headline">¶</a></h4>
+<h4>12.3.5.4. Step function. Logs<a class="headerlink" href="#step-function-logs" title="Permalink to this headline">¶</a></h4>
 <p>Once each second, the HDK application produces some logs to inform about
 the slaves readings:</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>    <span class="c1">// every 100 steps = 1 second</span>
@@ -582,7 +583,7 @@ variables. The <code class="docutils literal"><span class="pre">`log_info`</span
 class, and it sends the given string to the Log Service.</p>
 </div>
 <div class="section" id="step-function-heartbeat-led">
-<h4>11.3.5.5. Step function. Heartbeat LED<a class="headerlink" href="#step-function-heartbeat-led" title="Permalink to this headline">¶</a></h4>
+<h4>12.3.5.5. Step function. Heartbeat LED<a class="headerlink" href="#step-function-heartbeat-led" title="Permalink to this headline">¶</a></h4>
 <p>Finally, the section</p>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">is_step_rate</span><span class="p">(</span><span class="mi">500</span><span class="p">))</span>  <span class="c1">// every 500 steps = 5 seconds</span>
 <span class="p">{</span>
@@ -597,7 +598,7 @@ change is visible in the LED array of the digital output EL2008 Ethercat slave.<
 </div>
 </div>
 <div class="section" id="compilation">
-<h3>11.3.6. Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h3>
+<h3>12.3.6. Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h3>
 <p>To compile the C++ Control Package code of the HDK, edit the module.mk file to
 contain the correct library definitions:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ vi <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/cpp/hdk_ctrl_pkg/module.mk
@@ -616,7 +617,7 @@ $ make
 </div>
 </div>
 <div class="section" id="running-the-example">
-<h3>11.3.7. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h3>
+<h3>12.3.7. Running the Example<a class="headerlink" href="#running-the-example" title="Permalink to this headline">¶</a></h3>
 <p>Start the logging and telemetry services:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_server <span class="p">&amp;</span>
 $ tele_server <span class="p">&amp;</span>
@@ -629,21 +630,21 @@ $ tele_server <span class="p">&amp;</span>
 <p>The application is running in the background and will not provide any console output.
 All output will be directed to the logging service after the components have been successfully set up.</p>
 <div class="section" id="log-client">
-<h4>11.3.7.1. Log client<a class="headerlink" href="#log-client" title="Permalink to this headline">¶</a></h4>
+<h4>12.3.7.1. Log client<a class="headerlink" href="#log-client" title="Permalink to this headline">¶</a></h4>
 <p>In a separate terminal (for example, <cite>tty2</cite>), <strong>start the logging service client</strong>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ log_client listen
 </pre></div>
 </div>
 </div>
 <div class="section" id="telemetry-client">
-<h4>11.3.7.2. Telemetry client<a class="headerlink" href="#telemetry-client" title="Permalink to this headline">¶</a></h4>
+<h4>12.3.7.2. Telemetry client<a class="headerlink" href="#telemetry-client" title="Permalink to this headline">¶</a></h4>
 <p>In a separate terminal (for example <cite>tty3</cite>), <strong>start the telemetry service client</strong>.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ tele_client listen
 </pre></div>
 </div>
 </div>
 <div class="section" id="hdk-operation">
-<h4>11.3.7.3. HDK operation<a class="headerlink" href="#hdk-operation" title="Permalink to this headline">¶</a></h4>
+<h4>12.3.7.3. HDK operation<a class="headerlink" href="#hdk-operation" title="Permalink to this headline">¶</a></h4>
 <p>Now the HDK is available to be operated. The behaviour of the system
 will be the described one:</p>
 <ul class="simple">
@@ -662,7 +663,7 @@ be on.</li>
 </div>
 </div>
 <div class="section" id="user-interface">
-<h2>11.4. User Interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
+<h2>12.4. User Interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
 <p>The Navigator application displays the Engineering user interface as well as any
 custom panels defined in the subsystem’s Visualization Package. Engineering panels
 are automatically generated from the Model files, whereas custom panels need to
@@ -675,7 +676,7 @@ More detailed examples will be added in the future as the UI Framework matures.<
 <p class="last">The UI framework is currently only supported on MacOS.  Linux support will be available in future releases.</p>
 </div>
 <div class="section" id="configuration">
-<h3>11.4.1. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<h3>12.4.1. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
 <p>In order to receive data, the User Interface needs to be configured with the correct URIs for connecting to control components that may be running on a different machine. The UI will display the message “Waiting for data” for components it cannot connect to.</p>
 <img alt="Navigator application - No connection to HDK components" class="align-center" src="../_images/Navigator_HDK_noconnection.png" />
 <p>Edit the appropriate config files in the <code class="docutils literal"><span class="pre">src/etc/conf</span></code> folder to point to the correct IP address for input and output ports. For example,</p>
@@ -694,7 +695,7 @@ $ sed -i <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s/172.0.0.1/1
 <img alt="Navigator application" class="align-center" src="../_images/Navigator_HDK_nodata.png" />
 </div>
 <div class="section" id="running-the-engineering-ui">
-<h3>11.4.2. Running the Engineering UI<a class="headerlink" href="#running-the-engineering-ui" title="Permalink to this headline">¶</a></h3>
+<h3>12.4.2. Running the Engineering UI<a class="headerlink" href="#running-the-engineering-ui" title="Permalink to this headline">¶</a></h3>
 <p>The Engineering UI uses your local bundles file (found in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code>) to automatically create
 a visual representation of the modules being worked on by loading the input/output port definitions
 in the relevant Model files.</p>
@@ -718,7 +719,7 @@ using the <a class="reference internal" href="installation.html#installation"><s
 </div>
 </div>
 <div class="section" id="displaying-a-custom-ui-panel">
-<h3>11.4.3. Displaying a custom UI Panel<a class="headerlink" href="#displaying-a-custom-ui-panel" title="Permalink to this headline">¶</a></h3>
+<h3>12.4.3. Displaying a custom UI Panel<a class="headerlink" href="#displaying-a-custom-ui-panel" title="Permalink to this headline">¶</a></h3>
 <p>The UI Framework allows the definition of custom UI panels for visualization of data using special UI components (for example, <cite>panels</cite> and <cite>widgets</cite>). Custom panels are defined in the Visualization Package of the Device Control System.</p>
 <p>The Navigator application can launch standalone panels with the <code class="docutils literal"><span class="pre">--panel</span></code> option to only focus in on the custom HDK panel:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ navigator --panel hdk_main_ctrl_view --port <span class="m">9198</span>
@@ -745,10 +746,10 @@ using the <a class="reference internal" href="installation.html#installation"><s
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ui_fwk.html" class="btn btn-neutral float-right" title="12. UI Framework" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ui_fwk.html" class="btn btn-neutral float-right" title="13. UI Framework" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="isample_example.html" class="btn btn-neutral" title="10. ISample Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="isample_example.html" class="btn btn-neutral" title="11. ISample Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

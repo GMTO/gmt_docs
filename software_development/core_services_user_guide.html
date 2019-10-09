@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>9. Core Services user guide &mdash; GMT Software And Controls documentation</title>
+  <title>10. Core Services user guide &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -41,8 +41,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="10. ISample Example" href="isample_example.html"/>
-        <link rel="prev" title="8. OCS Test Guidelines" href="test_guidelines.html"/> 
+        <link rel="next" title="11. ISample Example" href="isample_example.html"/>
+        <link rel="prev" title="9. OCS Test Guidelines" href="test_guidelines.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -110,22 +110,23 @@
 <li class="toctree-l2"><a class="reference internal" href="grs_guide.html">5. grs documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">8. OCS Test Guidelines</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">9. Core Services user guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">9.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#service-usage">9.2. Service Usage</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#service-server-application">9.2.1. Service Server Application</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#service-client-application">9.2.2. Service Client Application</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#core-services-monitoring">9.2.3. Core Services Monitoring</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#service-adapter">9.2.4. Service Adapter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#service-database">9.2.5. Service Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdk_1_6_migration_guide.html">8. Migration guide to SDK 1.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">9. OCS Test Guidelines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10. Core Services user guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">10.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-usage">10.2. Service Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#service-server-application">10.2.1. Service Server Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service-client-application">10.2.2. Service Client Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#core-services-monitoring">10.2.3. Core Services Monitoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service-adapter">10.2.4. Service Adapter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#service-database">10.2.5. Service Database</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="isample_example.html">10. ISample Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">11. HDK example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ui_fwk.html">12. UI Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="isample_example.html">11. ISample Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hdk_example.html">12. HDK example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui_fwk.html">13. UI Framework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../data_products/index.html">Data Products</a></li>
@@ -176,7 +177,7 @@
         
           <li><a href="index.html">Software Development</a> &raquo;</li>
         
-      <li>9. Core Services user guide</li>
+      <li>10. Core Services user guide</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -194,9 +195,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="core-services-user-guide">
-<span id="core-services-usr-guide"></span><h1>9. Core Services user guide<a class="headerlink" href="#core-services-user-guide" title="Permalink to this headline">¶</a></h1>
+<span id="core-services-usr-guide"></span><h1>10. Core Services user guide<a class="headerlink" href="#core-services-user-guide" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>9.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>10.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>This documents describes the use of the GMT OCS Core Services. The OCS Architecture Documment [ref]
 describes the overall design of the OCS and provides a description of the function and
 architecture of the OCS Core Services. In short the Core Services are part of the OCS distributed
@@ -204,7 +205,7 @@ architecture and provides services that the OCS distributed Components can use t
 function. The following diagram shows the OCS Core Services in the context of the overall OCS.</p>
 <div class="figure" id="id1">
 <img alt="../_images/core_systems_core_services.png" src="../_images/core_systems_core_services.png" />
-<p class="caption"><span class="caption-number">Fig. 9.5 </span><span class="caption-text">Core Services in the context of the OCS</span></p>
+<p class="caption"><span class="caption-number">Fig. 10.1 </span><span class="caption-text">Core Services in the context of the OCS</span></p>
 </div>
 <p>The Core Services that are available in the latest release are:</p>
 <blockquote>
@@ -237,7 +238,7 @@ each Service from the command line.</li>
 </div></blockquote>
 </div>
 <div class="section" id="service-usage">
-<h2>9.2. Service Usage<a class="headerlink" href="#service-usage" title="Permalink to this headline">¶</a></h2>
+<h2>10.2. Service Usage<a class="headerlink" href="#service-usage" title="Permalink to this headline">¶</a></h2>
 <p>This section describes the usage of the different components of each service. As all the services
 support the same options and operate in a similar way, examples of the usage of different
 services are included in the descriptions. The following command line application are installed as
@@ -288,7 +289,7 @@ part of the SDK:</p>
 </table>
 </div></blockquote>
 <div class="section" id="service-server-application">
-<h3>9.2.1. Service Server Application<a class="headerlink" href="#service-server-application" title="Permalink to this headline">¶</a></h3>
+<h3>10.2.1. Service Server Application<a class="headerlink" href="#service-server-application" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">&lt;service&gt;_server</span></code> command line application starts the alarm service server.
 For the purposes of developing and testing software components with the SDK it is
@@ -441,7 +442,7 @@ not be necessary to modify them for normal operation of the SDK.</p>
 </div></blockquote>
 </div>
 <div class="section" id="service-client-application">
-<h3>9.2.2. Service Client Application<a class="headerlink" href="#service-client-application" title="Permalink to this headline">¶</a></h3>
+<h3>10.2.2. Service Client Application<a class="headerlink" href="#service-client-application" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">&lt;service&gt;_client</span></code> command line application starts the service client.
 For the purposes of developing and testing software components with the SDK it is
@@ -636,7 +637,7 @@ It should not be necessary to modify them for normal operation of the SDK.</p>
 </div></blockquote>
 </div>
 <div class="section" id="core-services-monitoring">
-<h3>9.2.3. Core Services Monitoring<a class="headerlink" href="#core-services-monitoring" title="Permalink to this headline">¶</a></h3>
+<h3>10.2.3. Core Services Monitoring<a class="headerlink" href="#core-services-monitoring" title="Permalink to this headline">¶</a></h3>
 <p>It’s possible to monitor the execution of the core services by using the grs utility:</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>λ grs inspect -i <span class="s1">&#39;alarm_server&#39;</span>
@@ -746,7 +747,7 @@ until the corresponding service is started.</p>
 </div></blockquote>
 </div>
 <div class="section" id="service-adapter">
-<h3>9.2.4. Service Adapter<a class="headerlink" href="#service-adapter" title="Permalink to this headline">¶</a></h3>
+<h3>10.2.4. Service Adapter<a class="headerlink" href="#service-adapter" title="Permalink to this headline">¶</a></h3>
 <p>The interface with each service is provided by the specific implementation of
 the Core Framework: cpp, python, nodeJS. Each framework implementation user guide
 describes the corresponding Service Adapter API. The following diagram shows
@@ -754,11 +755,11 @@ an example of how the different parts of the Logging and Telemetry services inte
 with the rest of the system.</p>
 <div class="figure" id="id2">
 <img alt="../_images/context_isample_testing.png" src="../_images/context_isample_testing.png" />
-<p class="caption"><span class="caption-number">Fig. 9.6 </span><span class="caption-text">Service operation overview</span></p>
+<p class="caption"><span class="caption-number">Fig. 10.2 </span><span class="caption-text">Service operation overview</span></p>
 </div>
 </div>
 <div class="section" id="service-database">
-<h3>9.2.5. Service Database<a class="headerlink" href="#service-database" title="Permalink to this headline">¶</a></h3>
+<h3>10.2.5. Service Database<a class="headerlink" href="#service-database" title="Permalink to this headline">¶</a></h3>
 <p>The Services database is implemented in mongodb. The installation of mongodb is described
 in the SDK installation guide. Once the database is installed, the database daemon will
 be started automatically during the startup process of the hosting machine.
@@ -780,10 +781,10 @@ with the database. The user guide of the <strong>mongo</strong> shell utility is
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="isample_example.html" class="btn btn-neutral float-right" title="10. ISample Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="isample_example.html" class="btn btn-neutral float-right" title="11. ISample Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="test_guidelines.html" class="btn btn-neutral" title="8. OCS Test Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="test_guidelines.html" class="btn btn-neutral" title="9. OCS Test Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
