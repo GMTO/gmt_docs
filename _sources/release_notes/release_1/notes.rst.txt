@@ -13,7 +13,6 @@ Contents of release 1.6.1
     - Improved component configuration generation
     - Fixed type generation case in which no types are defined
     - Fixed names of inputs and outputs in config file
-    - Added generation of connectors in config file
     - Preserving StateMachine and Component generated files
     - Preserving module.mk when generating code
     - Improved codegen for Node.js applications
@@ -34,10 +33,6 @@ Contents of release 1.6.1
 
   - Control Framework:
     - Improved compilation time due to external template declaration and explicit template instantiation
-
-  - UI Framework:
-
-    - Updated to work with the latest Core Frameworks (Service Data Ports)
 
   - Test Framework:
 
@@ -64,6 +59,7 @@ Contents of release 1.6.1
 - Documentation: Software Development
 
   - Added description of the mapping between the Model Definition Files and Coffeescript source code (:ref:`mapping_model_to_coffee`).
+  - Added Version 1.5 to Version 1.6 migration guide
   - Updated page ``gds documentation`` to add section on ``gds validate`` command
   - Updated page ``Core Services user guide`` to use fix argument description for ``--records`` command.
   - Updated page ``Model specification guide document``, section ``Component Specification``, to update ``faults`` and ``alarms`` descriptions.
@@ -71,12 +67,6 @@ Contents of release 1.6.1
 - Implementation Examples:
 
   - Updated ISample connector specification
-
-- Known Issues:
-
-  - Generating test skeletons with "gds gen -t test" does not currently work
-  - Functionality added to send SDOs during runtime using the EtherCAT Hardware Adapter does not work as expected. At this time, no SDOs can be sent to the slave, either during start-up or runtime.
-  - The issue connecting the IgH Master to EL7201-0010 and EL7211-0010 modules has been fixed, but the known issue with sending SDO values to the slave affects this functionality as well.
 
 
 Contents of release 1.6.0
