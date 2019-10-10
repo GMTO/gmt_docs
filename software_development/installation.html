@@ -563,7 +563,7 @@ summary_interval <span class="m">6</span>
 <li>Download the latest SDK distribution:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.6.0.tar.gz
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk.tar.gz
 </pre></div>
 </div>
 </div></blockquote>
@@ -571,17 +571,16 @@ summary_interval <span class="m">6</span>
 <li>Extract the TAR file in the /opt directory, into a new folder for the latest release:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt_release_1.6.0
-$ sudo tar -xzvf &lt;gmt-tar.gz&gt; -C /opt/gmt_release_1.6.0
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt_release_1.6.1
+$ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.6.1
 </pre></div>
 </div>
-<p>where &lt;gmt-tar.gz&gt; is the file downloaded in step 1.</p>
 </div></blockquote>
 <ol class="arabic simple" start="3">
 <li>Create a symbolic link from the <strong>Global GMT Software Location</strong> to the latest release:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -sfn gmt_release_1.6.0 /opt/gmt
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -sfn gmt_release_1.6.1 /opt/gmt
 </pre></div>
 </div>
 </div></blockquote>

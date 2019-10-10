@@ -14,7 +14,7 @@ Benefits of this approach, versus distributing the complete ISO, include the abi
 
    At GMTO, these instructions are formalized using Kickstart files and installed via the network using tools such as Cobbler. The GMTO DevOps team can provide assistance in setting up a similar system for development at partner institutions, if required.
 
-The Observatory Control System (OCS) is designed to be a distributed system with device control components running on real-time computers, connected to common services and user interface components via the control network. 
+The Observatory Control System (OCS) is designed to be a distributed system with device control components running on real-time computers, connected to common services and user interface components via the control network.
 
 For device control systems, the following operating systems are supported:
     - Fedora server
@@ -27,7 +27,7 @@ Future versions of the SDK will only support CentOS and MacOS (only for the UI f
 Server Configuration
 --------------------
 
-Servers are used for developing, running and testing device control software and core services. When real-time communication with hardware is required, the real-time kernel should be installed and configured. The following guidelines for creating a server should be tailored according to its intended purpose. 
+Servers are used for developing, running and testing device control software and core services. When real-time communication with hardware is required, the real-time kernel should be installed and configured. The following guidelines for creating a server should be tailored according to its intended purpose.
 
 Required Hardware
 .................
@@ -48,9 +48,9 @@ Typical GMT OCS development machine specs:
 Operating System
 ................
 
-Install the Operating System using these instructions: 
+Install the Operating System using these instructions:
 
- 
+
   .. toctree::
      :maxdepth: 1
 
@@ -315,22 +315,20 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
   .. code-block:: bash
 
-    $ wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.6.0.tar.gz
+    $ wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk.tar.gz
 
 2. Extract the TAR file in the /opt directory, into a new folder for the latest release:
 
   .. code-block:: bash
 
-    $ sudo mkdir /opt/gmt_release_1.6.0
-    $ sudo tar -xzvf <gmt-tar.gz> -C /opt/gmt_release_1.6.0
-
-  where <gmt-tar.gz> is the file downloaded in step 1.
+    $ sudo mkdir /opt/gmt_release_1.6.1
+    $ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.6.1
 
 3. Create a symbolic link from the **Global GMT Software Location** to the latest release:
 
   .. code-block:: bash
 
-    $ sudo ln -sfn gmt_release_1.6.0 /opt/gmt
+    $ sudo ln -sfn gmt_release_1.6.1 /opt/gmt
 
 4. Create a **Local Working Directory**
 
@@ -380,7 +378,7 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
     $ cd $GMT_LOCAL
     $ gds init
 
-  The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.  
+  The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.
 
 9. Create a **modules** directory in $GMT_LOCAL
 

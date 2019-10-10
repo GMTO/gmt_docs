@@ -11,8 +11,9 @@ C++ DCS mapping. Some of the most relevant changes are:
 
 - There are two classes per Component instead of two: a base
   class, with all the auto-generated code (i.e.: declaration of the State
-  Variables, Inputs, Outputs, the ``setup`` method, etc), a class that derives from it that
-  contains the user code, and finally the struct with the configuration.
+  Variables, Inputs, Outputs, the ``setup`` method, etc), a class that derives
+  from it that contains the user code, and finally the struct with the
+  configuration.
 - The file names are capitalized in CamelCase
 - The signature of the methods called inside the ``setup`` are slightly
   changed
@@ -86,7 +87,8 @@ As an example, this is an excerpt from the HDK HwAdapter model:
 Update the connectors
 ~~~~~~~~~~~~~~~~~~~~~
 
-In the new SDK, the connectors that are defined in the model must have the following format (extracted from `ocs_isample_dcs/model/isample_ctrl_pkg/isample_ctrl_pkg.coffee`):
+In the new SDK, the connectors that are defined in the model must have the
+following format (extracted from `ocs_isample_dcs/model/isample_ctrl_pkg/isample_ctrl_pkg.coffee`):
 
 .. code-block:: coffeescript
 
@@ -95,7 +97,9 @@ In the new SDK, the connectors that are defined in the model must have the follo
             c9001: { id: 9001, from: { element: "isample_hw1_adapter",  port: "cryo_internal_temp"}, to: { element: "isample_cryo_internal_temp_ctrl", port: "temperatures"},        max_latency: 0.5, nom_rate: 100, on_fault: "", conversion: "", bus: "" }
             c9002: { id: 9002, from: { element: "isample_hw1_adapter",  port: "cryo_external_temp"}, to: { element: "isample_cryo_external_temp_ctrl", port: "temperatures"},        max_latency: 0.5, nom_rate: 100, on_fault: "", conversion: "", bus: "" }
 
-As can be seen in the previous example, the previous vector of connectors must be transformed to a dictionary, where the key is a unique identifier for the connector.
+As can be seen in the previous example, the previous vector of connectors must
+be transformed to a dictionary, where the key is a unique identifier for
+the connector.
 
 Recompile model files
 ~~~~~~~~~~~~~~~~~~~~~
@@ -134,8 +138,8 @@ Update the source files
 #. **Add the step function**. The derived class, contained in the file
     ``MyComponent.h`` is the one that now implements the ``step`` function.
     The contents of the old step function, that are in the ``my_component_step.cpp``
-    file under the appropriate subdirectory of ``src/cpp.refactor`` must be copied
-    to the ``MyComponent::step()`` function in ``MyComponent.cpp``.
+    file under the appropriate subdirectory of ``src/cpp.refactor`` backup must
+    be copied to the ``MyComponent::step()`` function in ``MyComponent.cpp``.
 
 #. **Add the user declarations to the derived class**. Any member variable or
     method that were added by the developer in the component class, must be

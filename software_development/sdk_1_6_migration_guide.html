@@ -204,8 +204,9 @@ C++ DCS mapping. Some of the most relevant changes are:</p>
 <ul class="simple">
 <li>There are two classes per Component instead of two: a base
 class, with all the auto-generated code (i.e.: declaration of the State
-Variables, Inputs, Outputs, the <code class="docutils literal"><span class="pre">setup</span></code> method, etc), a class that derives from it that
-contains the user code, and finally the struct with the configuration.</li>
+Variables, Inputs, Outputs, the <code class="docutils literal"><span class="pre">setup</span></code> method, etc), a class that derives
+from it that contains the user code, and finally the struct with the
+configuration.</li>
 <li>The file names are capitalized in CamelCase</li>
 <li>The signature of the methods called inside the <code class="docutils literal"><span class="pre">setup</span></code> are slightly
 changed</li>
@@ -270,14 +271,17 @@ of each port.</p>
 </div>
 <div class="section" id="update-the-connectors">
 <h3>8.2.3. Update the connectors<a class="headerlink" href="#update-the-connectors" title="Permalink to this headline">¶</a></h3>
-<p>In the new SDK, the connectors that are defined in the model must have the following format (extracted from <cite>ocs_isample_dcs/model/isample_ctrl_pkg/isample_ctrl_pkg.coffee</cite>):</p>
+<p>In the new SDK, the connectors that are defined in the model must have the
+following format (extracted from <cite>ocs_isample_dcs/model/isample_ctrl_pkg/isample_ctrl_pkg.coffee</cite>):</p>
 <div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="nv">connectors:</span>
         <span class="c1"># Connectors from hardware adapter</span>
         <span class="nv">c9001: </span><span class="p">{</span> <span class="nv">id: </span><span class="mi">9001</span><span class="p">,</span> <span class="nv">from: </span><span class="p">{</span> <span class="nv">element: </span><span class="s">&quot;isample_hw1_adapter&quot;</span><span class="p">,</span>  <span class="nv">port: </span><span class="s">&quot;cryo_internal_temp&quot;</span><span class="p">},</span> <span class="nv">to: </span><span class="p">{</span> <span class="nv">element: </span><span class="s">&quot;isample_cryo_internal_temp_ctrl&quot;</span><span class="p">,</span> <span class="nv">port: </span><span class="s">&quot;temperatures&quot;</span><span class="p">},</span>        <span class="nv">max_latency: </span><span class="mf">0.5</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">100</span><span class="p">,</span> <span class="nv">on_fault: </span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nv">conversion: </span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nv">bus: </span><span class="s">&quot;&quot;</span> <span class="p">}</span>
         <span class="nv">c9002: </span><span class="p">{</span> <span class="nv">id: </span><span class="mi">9002</span><span class="p">,</span> <span class="nv">from: </span><span class="p">{</span> <span class="nv">element: </span><span class="s">&quot;isample_hw1_adapter&quot;</span><span class="p">,</span>  <span class="nv">port: </span><span class="s">&quot;cryo_external_temp&quot;</span><span class="p">},</span> <span class="nv">to: </span><span class="p">{</span> <span class="nv">element: </span><span class="s">&quot;isample_cryo_external_temp_ctrl&quot;</span><span class="p">,</span> <span class="nv">port: </span><span class="s">&quot;temperatures&quot;</span><span class="p">},</span>        <span class="nv">max_latency: </span><span class="mf">0.5</span><span class="p">,</span> <span class="nv">nom_rate: </span><span class="mi">100</span><span class="p">,</span> <span class="nv">on_fault: </span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nv">conversion: </span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nv">bus: </span><span class="s">&quot;&quot;</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>As can be seen in the previous example, the previous vector of connectors must be transformed to a dictionary, where the key is a unique identifier for the connector.</p>
+<p>As can be seen in the previous example, the previous vector of connectors must
+be transformed to a dictionary, where the key is a unique identifier for
+the connector.</p>
 </div>
 <div class="section" id="recompile-model-files">
 <h3>8.2.4. Recompile model files<a class="headerlink" href="#recompile-model-files" title="Permalink to this headline">¶</a></h3>
@@ -316,8 +320,8 @@ specific code.</p>
 <dt><strong>Add the step function</strong>. The derived class, contained in the file</dt>
 <dd><p class="first last"><code class="docutils literal"><span class="pre">MyComponent.h</span></code> is the one that now implements the <code class="docutils literal"><span class="pre">step</span></code> function.
 The contents of the old step function, that are in the <code class="docutils literal"><span class="pre">my_component_step.cpp</span></code>
-file under the appropriate subdirectory of <code class="docutils literal"><span class="pre">src/cpp.refactor</span></code> must be copied
-to the <code class="docutils literal"><span class="pre">MyComponent::step()</span></code> function in <code class="docutils literal"><span class="pre">MyComponent.cpp</span></code>.</p>
+file under the appropriate subdirectory of <code class="docutils literal"><span class="pre">src/cpp.refactor</span></code> backup must
+be copied to the <code class="docutils literal"><span class="pre">MyComponent::step()</span></code> function in <code class="docutils literal"><span class="pre">MyComponent.cpp</span></code>.</p>
 </dd>
 </dl>
 </li>

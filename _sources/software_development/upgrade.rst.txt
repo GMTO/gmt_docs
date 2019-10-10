@@ -3,6 +3,55 @@
 Upgrade
 =======
 
+Upgrading from v1.5 to v1.6.1
+-----------------------------
+
+Multiple versions of the SDK software may be installed on the same system, with
+the version currently in use reflected by the $GMT_GLOBAL environment variable.
+
+1. Download the latest SDK distribution:
+
+  .. code-block:: bash
+
+    $ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk.tar.gz
+
+  for the server version of the SDK, or
+
+  .. code-block:: bash
+
+    $ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/macos/gmt-ui.tar.gz
+
+  for the workstation version.
+
+2. Extract the TAR file in the /opt directory, into a new folder for the latest release:
+
+  .. code-block:: bash
+
+    $ sudo mkdir /opt/gmt_release_1.6.1
+    $ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.6.1
+
+3. Update the symbolic link from the **Global GMT Software Location** to the latest release:
+
+  .. code-block:: bash
+
+    $ sudo ln -sfn gmt_release_1.6.1 /opt/gmt
+
+4. Check all applicable environment variables
+
+  .. code-block:: bash
+
+    $ gmt_env
+
+To create the user working development environment, please
+follow the instructions on the :ref:`installation <installation>` page. If
+the user working development environment (i.e., $GMT_LOCAL) has already
+been created and contains modules with code generated using the previous
+version of the SDK, please follow the instructions on the :ref:`SDK 1.6 migration guide <sdk_1_6_migration_guide>`
+page in order to migrate the code and the structure of the modules to the
+new formats.
+
+
+
 Upgrading from v1.4 to v1.5
 ---------------------------
 
@@ -141,7 +190,7 @@ The Software Development Kit is distributed as a TAR file and can be downloaded 
 
 The SDK should be installed in a **Global GMT Software Location**, defined by the GMT_GLOBAL environment variable (default value: /opt/gmt). A **Local Working Directory**, unique for each individual developer (GMT_LOCAL). The local working directory typically resides underneath the /home/<username> directory.
 
-1. Create the **Global GMT Software Location** 
+1. Create the **Global GMT Software Location**
 
   .. code-block:: bash
 
