@@ -3,6 +3,16 @@
 Release 1
 =========
 
+Contents of release 1.6.2
+-------------------------
+
+- Bug Fixes:
+  
+  - Fixed issue with connectors in Node.js where components incorrectly determined whether a connection is active/inactive
+  - Unable to reproduce issue in v1.6.0 with generating test skeletons using "gds gen -t test". Marking as fixed.
+  - Fixed issue in v1.6.0 with sending SDOs during runtime using the EtherCAT Hardware Adapter.
+
+
 Contents of release 1.6.1
 -------------------------
 

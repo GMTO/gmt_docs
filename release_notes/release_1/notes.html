@@ -101,6 +101,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Release Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Release 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-6-2">Contents of release 1.6.2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-6-1">Contents of release 1.6.1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-6-0">Contents of release 1.6.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-5-0">Contents of release 1.5.0</a></li>
@@ -184,6 +185,17 @@
             
   <div class="section" id="release-1">
 <span id="id1"></span><h1>Release 1<a class="headerlink" href="#release-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contents-of-release-1-6-2">
+<h2>Contents of release 1.6.2<a class="headerlink" href="#contents-of-release-1-6-2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Bug Fixes:<ul>
+<li>Fixed issue with connectors in Node.js where components incorrectly determined whether a connection is active/inactive</li>
+<li>Unable to reproduce issue in v1.6.0 with generating test skeletons using “gds gen -t test”. Marking as fixed.</li>
+<li>Fixed issue in v1.6.0 with sending SDOs during runtime using the EtherCAT Hardware Adapter.</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="contents-of-release-1-6-1">
 <h2>Contents of release 1.6.1<a class="headerlink" href="#contents-of-release-1-6-1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -652,7 +664,7 @@ other information as the development progresses.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.6.1',
+            VERSION:'1.6.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
