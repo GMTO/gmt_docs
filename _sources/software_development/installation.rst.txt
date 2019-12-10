@@ -14,20 +14,18 @@ Benefits of this approach, versus distributing the complete ISO, include the abi
 
    At GMTO, these instructions are formalized using Kickstart files and installed via the network using tools such as Cobbler. The GMTO DevOps team can provide assistance in setting up a similar system for development at partner institutions, if required.
 
-The Observatory Control System (OCS) is designed to be a distributed system with device control components running on real-time computers, connected to common services and user interface components via the control network.
+The Observatory Control System (OCS) is designed to be a distributed system with device control components running on real-time computers, connected to common services and user interface components via the control network. 
 
 For device control systems, the following operating systems are supported:
-    - Fedora server
+    - CentOS 8
 
 For user interfaces, the following operating systems are supported:
     - MacOS
 
-Future versions of the SDK will only support CentOS and MacOS (only for the UI framework). Fedora has a very short release and support cycle (6 months and 18 months respectively), which is not ideal for a platform that requires significant stability over long periods of time.
-
 Server Configuration
 --------------------
 
-Servers are used for developing, running and testing device control software and core services. When real-time communication with hardware is required, the real-time kernel should be installed and configured. The following guidelines for creating a server should be tailored according to its intended purpose.
+Servers are used for developing, running and testing device control software and core services. When real-time communication with hardware is required, the real-time kernel should be installed and configured. The following guidelines for creating a server should be tailored according to its intended purpose. 
 
 Required Hardware
 .................
@@ -48,13 +46,7 @@ Typical GMT OCS development machine specs:
 Operating System
 ................
 
-Install the Operating System using these instructions:
-
-
-  .. toctree::
-     :maxdepth: 1
-
-     dev_environment/fedora_server
+Install the Centos 8 Operating System. Change the partitions filesystem to ext4 if using the realtime kernel.
 
 .. warning::
   If you plan to develop real-time components, the Linux kernel requires the root partition to be an **ext4** file system. Please ensure that this is configured correctly in the disk partitioning settings.
@@ -109,7 +101,7 @@ The following RPM packages should be installed by an Administrative user for use
     $ sudo dnf install -y cpp cscope ctags gc gcc-c++ gcc-gdb-plugin glibc-devel
     $ sudo dnf install -y glibc-headers kernel-headers libstdc++-devel
     $ sudo dnf install -y flex git libcurl-devel
-    $ sudo dnf install -y python3-sphinx python3-sphinx_rtd_theme
+    $ sudo dnf install -y python3
 
 3. Install OCS Dependencies
 
@@ -120,14 +112,21 @@ The following RPM packages should be installed by an Administrative user for use
 Node Installation
 .................
 
-1. Download and install **Node version 10**:
+1. Install Python 2 and set is a default interpreter. It is necessary for the node package manager.
 
   .. code-block:: bash
 
-    $ curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
-    $ sudo dnf install -y nodejs
+    $ sudo dnf install -y python2
+    $ sudo alternatives --set python /usr/bin/python2
 
-2. Install necessary node packages:
+
+2. Install **Node version 10**:
+
+  .. code-block:: bash
+
+    $ sudo dnf module install -y nodejs:10
+
+3. Install necessary node packages:
 
   .. code-block:: bash
 
@@ -136,26 +135,43 @@ Node Installation
 MongoDB Configuration
 .....................
 
-1. Install the necessary packages:
+1. Add the file ``/etc/yum.repos.d/mongodb-org-4.repo`` with the following content:
 
   .. code-block:: bash
 
-    $ sudo dnf install -y mongodb mongodb-server
+     [mongodb-org-4]
+     name=MongoDB Repository
+     baseurl=https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.2/x86_64/
+     gpgcheck=1
+     enabled=1
+     gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc
 
-2. Configure the firewall
+2. Install the necessary packages:
+
+  .. code-block:: bash
+
+    $ sudo dnf -y install mongodb-org
+
+3. Create the database files directory
+
+  .. code-block:: bash
+
+    $ sudo mkdir -p /data/db
+
+4. Configure the firewall
 
   .. code-block:: bash
 
     $ sudo firewall-offline-cmd --direct --add-rule ipv4 filter INPUT 0 -p tcp --dport 27017 -j ACCEPT
 
-2. Enable the MongoDB service
+5. Enable the MongoDB service
 
   .. code-block:: bash
 
     $ sudo systemctl enable mongod
     $ sudo systemctl start mongod
 
-3. Check that the MongoDB service is up
+6. Check that the MongoDB service is up
 
   .. code-block:: bash
 
@@ -321,14 +337,16 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
   .. code-block:: bash
 
-    $ sudo mkdir /opt/gmt_release_1.6.1
-    $ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.6.1
+    $ sudo mkdir /opt/gmt_release_1.7.0
+    $ sudo tar -xzvf <gmt-tar.gz> -C /opt/gmt_release_1.7.0
+
+  where <gmt-tar.gz> is the file downloaded in step 1.
 
 3. Create a symbolic link from the **Global GMT Software Location** to the latest release:
 
   .. code-block:: bash
 
-    $ sudo ln -sfn gmt_release_1.6.1 /opt/gmt
+    $ sudo ln -sfn gmt_release_1.7.0 /opt/gmt
 
 4. Create a **Local Working Directory**
 
@@ -378,7 +396,7 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
     $ cd $GMT_LOCAL
     $ gds init
 
-  The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.
+  The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.  
 
 9. Create a **modules** directory in $GMT_LOCAL
 
@@ -424,97 +442,3 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
     $ cd $GMT_LOCAL/modules/ocs_isample_dcs/model
     $ webpack
 
-
-
-Operations Workstation Configuration (optional, MacOS only)
------------------------------------------------------------
-
-The OCS User Interface needs to be run on a system with sufficient graphical rendering capability. At the moment, the Real-time kernel used for device control systems running EtherCAT does not contain the graphics modules necessary to support the user interface. It is recommended to run the user interface in a Mac, connected to the DCS via the network. Future releases will include support for Linux workstations.
-
-Operating System
-................
-
-Apple Mac systems have the operating system already installed. The User Interface has been tested on the following versions of MacOS:
-
-    - MacOS High Sierra
-    - MacOS Mojave
-
-Packages
-........
-
-There are very few external packages that are not already installed in MacOS. The application Homebrew can be used to install these:
-
-1. Install Homebrew
-
-  .. code-block:: bash
-
-    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-  More information can be found on the Homebrew website: <https://brew.sh/>
-
-2. Install common utilities
-
-  .. code-block:: bash
-
-    $ brew install wget
-
-
-Python Installation
-...................
-
-1. Check whether Python3 is installed
-
-  .. code-block:: bash
-
-    $ python3 --version
-
-2. Install Python3, if not already installed
-
-  .. code-block:: bash
-
-    $ brew install python3
-
-Node Installation
-.................
-
-1. Install Node
-
-Follow the instructions here https://nodesource.com/blog/installing-nodejs-tutorial-mac-os-x/
-
-SDK Installation
-................
-
-1. Follow steps on section :ref:`sdk_install` for installing the SDK.
-
-2. Create a **local javascript library folder** in order to create built bundles for your model files.
-This folder is also used to install upgraded version of the library.
-
-  .. code-block:: bash
-
-    $ mkdir -p $GMT_LOCAL/lib/js
-
-3. Copy UI JavaScript lib files to $GMT_LOCAL/lib/js/
-
-  .. code-block:: bash
-
-    $ cp ocs_ui_fwk_elements.js ocs_ui_fwk_widgets.js ocs_ui_fwk.js $GMT_LOCAL/lib/js/
-
-4. Systems that run the User Interface require compiled model files to be used by the Navigator application.
-
-  Build all model files from modules in your ocs_local_bundles definition using webpack. For example:
-
-  .. code-block:: bash
-
-    $ cd $GMT_LOCAL/modules/ocs_hdk_dcs/model
-    $ webpack
-    $ cd $GMT_LOCAL/modules/ocs_isample_dcs/model
-    $ webpack
-
-
-Next Steps
-----------
-To start using the SDK with the Hardware Development Kit (HDK), instructions can be found here: :ref:`hdk_example`.
-
-To run the Navigator application and start using the UI framework, see the UI Framework guide: :ref:`ui_fwk`.
-
-:ref:`[back to top] <installation>`

@@ -41,7 +41,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="1.2.2.1. Fedora 28 Server" href="dev_environment/fedora_server.html"/>
+        <link rel="next" title="2. Upgrade" href="upgrade.html"/>
         <link rel="prev" title="Software Development" href="index.html"/> 
 
   
@@ -118,15 +118,6 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#software-development-kit-sdk">1.3. Software Development Kit (SDK)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#operations-workstation-configuration-optional-macos-only">1.4. Operations Workstation Configuration (optional, MacOS only)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">1.4.1. Operating System</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#packages">1.4.2. Packages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#python-installation">1.4.3. Python Installation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">1.4.4. Node Installation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sdk-installation">1.4.5. SDK Installation</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#next-steps">1.5. Next Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade.html">2. Upgrade</a></li>
@@ -222,7 +213,7 @@
 <dl class="docutils">
 <dt>For device control systems, the following operating systems are supported:</dt>
 <dd><ul class="first last simple">
-<li>Fedora server</li>
+<li>CentOS 8</li>
 </ul>
 </dd>
 <dt>For user interfaces, the following operating systems are supported:</dt>
@@ -231,7 +222,6 @@
 </ul>
 </dd>
 </dl>
-<p>Future versions of the SDK will only support CentOS and MacOS (only for the UI framework). Fedora has a very short release and support cycle (6 months and 18 months respectively), which is not ideal for a platform that requires significant stability over long periods of time.</p>
 </div>
 <div class="section" id="server-configuration">
 <h2>1.2. Server Configuration<a class="headerlink" href="#server-configuration" title="Permalink to this headline">¶</a></h2>
@@ -257,14 +247,7 @@
 </div>
 <div class="section" id="operating-system">
 <h3>1.2.2. Operating System<a class="headerlink" href="#operating-system" title="Permalink to this headline">¶</a></h3>
-<p>Install the Operating System using these instructions:</p>
-<blockquote>
-<div><div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dev_environment/fedora_server.html">1.2.2.1. Fedora 28 Server</a></li>
-</ul>
-</div>
-</div></blockquote>
+<p>Install the Centos 8 Operating System. Change the partitions filesystem to ext4 if using the realtime kernel.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">If you plan to develop real-time components, the Linux kernel requires the root partition to be an <strong>ext4</strong> file system. Please ensure that this is configured correctly in the disk partitioning settings.</p>
@@ -319,7 +302,7 @@ $ sudo dnf install -y strace rpl bash-completion sed
 $ sudo dnf install -y cpp cscope ctags gc gcc-c++ gcc-gdb-plugin glibc-devel
 $ sudo dnf install -y glibc-headers kernel-headers libstdc++-devel
 $ sudo dnf install -y flex git libcurl-devel
-$ sudo dnf install -y python3-sphinx python3-sphinx_rtd_theme
+$ sudo dnf install -y python3
 </pre></div>
 </div>
 </div></blockquote>
@@ -335,15 +318,23 @@ $ sudo dnf install -y python3-sphinx python3-sphinx_rtd_theme
 <div class="section" id="node-installation">
 <h3>1.2.5. Node Installation<a class="headerlink" href="#node-installation" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Download and install <strong>Node version 10</strong>:</li>
+<li>Install Python 2 and set is a default interpreter. It is necessary for the node package manager.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sL https://rpm.nodesource.com/setup_10.x <span class="p">|</span> sudo bash -
-$ sudo dnf install -y nodejs
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y python2
+$ sudo alternatives --set python /usr/bin/python2
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
+<li>Install <strong>Node version 10</strong>:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf module install -y nodejs:10
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
 <li>Install necessary node packages:</li>
 </ol>
 <blockquote>
@@ -355,14 +346,35 @@ $ sudo dnf install -y nodejs
 <div class="section" id="mongodb-configuration">
 <h3>1.2.6. MongoDB Configuration<a class="headerlink" href="#mongodb-configuration" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Install the necessary packages:</li>
+<li>Add the file <code class="docutils literal"><span class="pre">/etc/yum.repos.d/mongodb-org-4.repo</span></code> with the following content:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y mongodb mongodb-server
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>mongodb-org-4<span class="o">]</span>
+<span class="nv">name</span><span class="o">=</span>MongoDB Repository
+<span class="nv">baseurl</span><span class="o">=</span>https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.2/x86_64/
+<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">gpgkey</span><span class="o">=</span>https://www.mongodb.org/static/pgp/server-4.2.asc
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
+<li>Install the necessary packages:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf -y install mongodb-org
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Create the database files directory</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir -p /data/db
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
 <li>Configure the firewall</li>
 </ol>
 <blockquote>
@@ -370,7 +382,7 @@ $ sudo dnf install -y nodejs
 </pre></div>
 </div>
 </div></blockquote>
-<ol class="arabic simple" start="2">
+<ol class="arabic simple" start="5">
 <li>Enable the MongoDB service</li>
 </ol>
 <blockquote>
@@ -379,7 +391,7 @@ $ sudo systemctl start mongod
 </pre></div>
 </div>
 </div></blockquote>
-<ol class="arabic simple" start="3">
+<ol class="arabic simple" start="6">
 <li>Check that the MongoDB service is up</li>
 </ol>
 <blockquote>
@@ -571,16 +583,17 @@ summary_interval <span class="m">6</span>
 <li>Extract the TAR file in the /opt directory, into a new folder for the latest release:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt_release_1.6.1
-$ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.6.1
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt_release_1.7.0
+$ sudo tar -xzvf &lt;gmt-tar.gz&gt; -C /opt/gmt_release_1.7.0
 </pre></div>
 </div>
+<p>where &lt;gmt-tar.gz&gt; is the file downloaded in step 1.</p>
 </div></blockquote>
 <ol class="arabic simple" start="3">
 <li>Create a symbolic link from the <strong>Global GMT Software Location</strong> to the latest release:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -sfn gmt_release_1.6.1 /opt/gmt
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -sfn gmt_release_1.7.0 /opt/gmt
 </pre></div>
 </div>
 </div></blockquote>
@@ -685,106 +698,6 @@ $ webpack
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="operations-workstation-configuration-optional-macos-only">
-<h2>1.4. Operations Workstation Configuration (optional, MacOS only)<a class="headerlink" href="#operations-workstation-configuration-optional-macos-only" title="Permalink to this headline">¶</a></h2>
-<p>The OCS User Interface needs to be run on a system with sufficient graphical rendering capability. At the moment, the Real-time kernel used for device control systems running EtherCAT does not contain the graphics modules necessary to support the user interface. It is recommended to run the user interface in a Mac, connected to the DCS via the network. Future releases will include support for Linux workstations.</p>
-<div class="section" id="id1">
-<h3>1.4.1. Operating System<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Apple Mac systems have the operating system already installed. The User Interface has been tested on the following versions of MacOS:</p>
-<blockquote>
-<div><ul class="simple">
-<li>MacOS High Sierra</li>
-<li>MacOS Mojave</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="packages">
-<h3>1.4.2. Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h3>
-<p>There are very few external packages that are not already installed in MacOS. The application Homebrew can be used to install these:</p>
-<ol class="arabic simple">
-<li>Install Homebrew</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ /usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
-</pre></div>
-</div>
-<p>More information can be found on the Homebrew website: &lt;<a class="reference external" href="https://brew.sh/">https://brew.sh/</a>&gt;</p>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Install common utilities</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ brew install wget
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="python-installation">
-<h3>1.4.3. Python Installation<a class="headerlink" href="#python-installation" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Check whether Python3 is installed</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ python3 --version
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Install Python3, if not already installed</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ brew install python3
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="id2">
-<h3>1.4.4. Node Installation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Install Node</li>
-</ol>
-<p>Follow the instructions here <a class="reference external" href="https://nodesource.com/blog/installing-nodejs-tutorial-mac-os-x/">https://nodesource.com/blog/installing-nodejs-tutorial-mac-os-x/</a></p>
-</div>
-<div class="section" id="sdk-installation">
-<h3>1.4.5. SDK Installation<a class="headerlink" href="#sdk-installation" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Follow steps on section <a class="reference internal" href="#sdk-install"><span class="std std-ref">Software Development Kit (SDK)</span></a> for installing the SDK.</li>
-</ol>
-<p>2. Create a <strong>local javascript library folder</strong> in order to create built bundles for your model files.
-This folder is also used to install upgraded version of the library.</p>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir -p <span class="nv">$GMT_LOCAL</span>/lib/js
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li>Copy UI JavaScript lib files to $GMT_LOCAL/lib/js/</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ cp ocs_ui_fwk_elements.js ocs_ui_fwk_widgets.js ocs_ui_fwk.js <span class="nv">$GMT_LOCAL</span>/lib/js/
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="4">
-<li>Systems that run the User Interface require compiled model files to be used by the Navigator application.</li>
-</ol>
-<blockquote>
-<div><p>Build all model files from modules in your ocs_local_bundles definition using webpack. For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/model
-$ webpack
-$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/model
-$ webpack
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-</div>
-<div class="section" id="next-steps">
-<h2>1.5. Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
-<p>To start using the SDK with the Hardware Development Kit (HDK), instructions can be found here: <a class="reference internal" href="hdk_example.html#hdk-example"><span class="std std-ref">HDK example</span></a>.</p>
-<p>To run the Navigator application and start using the UI framework, see the UI Framework guide: <a class="reference internal" href="ui_fwk.html#ui-fwk"><span class="std std-ref">UI Framework</span></a>.</p>
-<p><a class="reference internal" href="#installation"><span class="std std-ref">[back to top]</span></a></p>
-</div>
 </div>
 
 
@@ -797,7 +710,7 @@ $ webpack
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dev_environment/fedora_server.html" class="btn btn-neutral float-right" title="1.2.2.1. Fedora 28 Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="upgrade.html" class="btn btn-neutral float-right" title="2. Upgrade" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Software Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
