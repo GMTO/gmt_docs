@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.6
+                1.7
               </div>
             
           
@@ -101,6 +101,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Release Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Release 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-7-0">Contents of release 1.7.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-6-2">Contents of release 1.6.2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-6-1">Contents of release 1.6.1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-6-0">Contents of release 1.6.0</a></li>
@@ -185,6 +186,61 @@
             
   <div class="section" id="release-1">
 <span id="id1"></span><h1>Release 1<a class="headerlink" href="#release-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contents-of-release-1-7-0">
+<h2>Contents of release 1.7.0<a class="headerlink" href="#contents-of-release-1-7-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Release distribution and installation:<ul>
+<li>Support added for CentOS 8</li>
+<li>Updated mechanism for packaging and distributing the Navigator application for MacOS and Linux</li>
+</ul>
+</li>
+<li>Core Frameworks:<ul>
+<li>Development Framework:<ul>
+<li>Added C++17 support</li>
+<li>Added SerialAdapter compiler flags to module.mk</li>
+<li>Working on ensuring make parallelizes the build correctly</li>
+</ul>
+</li>
+<li>Core Framework (Node.js):<ul>
+<li>Fixed issue where a scan rate &lt; 1 caused an issue in periodic execution (#152)</li>
+</ul>
+</li>
+<li>Core Framework (C++):<ul>
+<li>Added StateMachine implementation</li>
+<li>Implemented Operational State Machine</li>
+</ul>
+</li>
+<li>I/O Framework:<ul>
+<li>Updated query mechanism for EtherCAT slave state</li>
+<li>Alias addressing on the EtherCAT bus</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Navigator Application:<ul>
+<li>Complete integration with latest version of the Node.js frameworks, including Service Data Ports</li>
+<li>Added a basic log viewer UI Element with filtering capability</li>
+<li>Added a basic telemetry viewer UI Element</li>
+<li>Added ability to get and set state variables, inputs and outputs via the user interface</li>
+<li>Updated packaging and distribution for MacOS and Linux</li>
+</ul>
+</li>
+<li>Documentation: Software Development<ul>
+<li>Updated instructions for installing and running the Navigator application in MacOS and Linux</li>
+<li>Updated installation/upgrade instructions for CentOS 8</li>
+<li>Developer Guide for UI Framework</li>
+</ul>
+</li>
+<li>Implementation Examples:<ul>
+<li>Updated version of the HDK with Visualization Package</li>
+</ul>
+</li>
+<li>Known Issues:<ul>
+<li>In C++ controllers, auto-generated configuration files need to be updated by hand to define the correct inputs and outputs for the goals and values of the state variables</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="contents-of-release-1-6-2">
 <h2>Contents of release 1.6.2<a class="headerlink" href="#contents-of-release-1-6-2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -664,7 +720,7 @@ other information as the development progresses.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.6.2',
+            VERSION:'1.7.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

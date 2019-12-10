@@ -3,6 +3,59 @@
 Release 1
 =========
 
+Contents of release 1.7.0
+-------------------------
+
+- Release distribution and installation:
+
+  - Support added for CentOS 8
+  - Updated mechanism for packaging and distributing the Navigator application for MacOS and Linux
+
+- Core Frameworks:
+
+  - Development Framework:
+
+    - Added C++17 support
+    - Added SerialAdapter compiler flags to module.mk
+    - Working on ensuring make parallelizes the build correctly
+
+  - Core Framework (Node.js):
+
+    - Fixed issue where a scan rate < 1 caused an issue in periodic execution (#152)
+
+  - Core Framework (C++):
+
+    - Added StateMachine implementation
+    - Implemented Operational State Machine
+
+  - I/O Framework:
+
+    - Updated query mechanism for EtherCAT slave state
+    - Alias addressing on the EtherCAT bus
+
+- Navigator Application:
+
+  - Complete integration with latest version of the Node.js frameworks, including Service Data Ports
+  - Added a basic log viewer UI Element with filtering capability
+  - Added a basic telemetry viewer UI Element
+  - Added ability to get and set state variables, inputs and outputs via the user interface
+  - Updated packaging and distribution for MacOS and Linux
+
+- Documentation: Software Development
+
+  - Updated instructions for installing and running the Navigator application in MacOS and Linux
+  - Updated installation/upgrade instructions for CentOS 8
+  - Developer Guide for UI Framework
+
+- Implementation Examples:
+
+  - Updated version of the HDK with Visualization Package
+
+- Known Issues:
+
+  - In C++ controllers, auto-generated configuration files need to be updated by hand to define the correct inputs and outputs for the goals and values of the state variables
+
+
 Contents of release 1.6.2
 -------------------------
 
