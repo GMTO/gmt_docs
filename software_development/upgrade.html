@@ -105,16 +105,9 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Software Development</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">1. Installing the SDK</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">2. Upgrade</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#upgrading-from-v1-5-to-v1-6-1">2.1. Upgrading from v1.5 to v1.6.1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#upgrading-from-v1-4-to-v1-5">2.2. Upgrading from v1.4 to v1.5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#upgrading-from-v1-3-to-1-4">2.3. Upgrading from v1.3 to 1.4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#uninstall-old-gmt-packages">2.3.1. Uninstall Old GMT packages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#repository-configuration">2.3.2. Repository Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#package-list">2.3.3. Package List</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#node-installation">2.3.4. Node Installation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#software-development-kit-sdk">2.3.5. Software Development Kit (SDK)</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-from-v1-5-to-v1-6">2.1. Upgrading from v1.5 to v1.6+</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.2. Upgrading from v1.5 to v1.6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-from-v1-4-to-v1-5">2.3. Upgrading from v1.4 to v1.5</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
@@ -197,8 +190,8 @@
             
   <div class="section" id="upgrade">
 <span id="id1"></span><h1>2. Upgrade<a class="headerlink" href="#upgrade" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="upgrading-from-v1-5-to-v1-6-1">
-<h2>2.1. Upgrading from v1.5 to v1.6.1<a class="headerlink" href="#upgrading-from-v1-5-to-v1-6-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="upgrading-from-v1-5-to-v1-6">
+<h2>2.1. Upgrading from v1.5 to v1.6+<a class="headerlink" href="#upgrading-from-v1-5-to-v1-6" title="Permalink to this headline">¶</a></h2>
 <p>Multiple versions of the SDK software may be installed on the same system, with
 the version currently in use reflected by the $GMT_GLOBAL environment variable.</p>
 <ol class="arabic simple">
@@ -218,8 +211,8 @@ the version currently in use reflected by the $GMT_GLOBAL environment variable.<
 <li>Extract the TAR file in the /opt directory, into a new folder for the latest release:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt_release_1.6.1
-$ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.6.1
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt_release_1.7.0
+$ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.7.0
 </pre></div>
 </div>
 </div></blockquote>
@@ -227,7 +220,7 @@ $ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.6.1
 <li>Update the symbolic link from the <strong>Global GMT Software Location</strong> to the latest release:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -sfn gmt_release_1.6.1 /opt/gmt
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -sfn gmt_release_1.7.0 /opt/gmt
 </pre></div>
 </div>
 </div></blockquote>
@@ -240,15 +233,14 @@ $ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.6.1
 </div>
 </div></blockquote>
 <p>To create the user working development environment, please
-follow the instructions on the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">installation</span></a> page. If
-the user working development environment (i.e., $GMT_LOCAL) has already
-been created and contains modules with code generated using the previous
-version of the SDK, please follow the instructions on the <a class="reference internal" href="sdk_1_6_migration_guide.html#sdk-1-6-migration-guide"><span class="std std-ref">SDK 1.6 migration guide</span></a>
-page in order to migrate the code and the structure of the modules to the
-new formats.</p>
+follow the instructions on the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">installation</span></a> page.</p>
+</div>
+<div class="section" id="id2">
+<h2>2.2. Upgrading from v1.5 to v1.6<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Please follow the instructions on the <a class="reference internal" href="sdk_1_6_migration_guide.html#sdk-1-6-migration-guide"><span class="std std-ref">SDK 1.6 migration guide</span></a> page in order to migrate the code and the structure of the modules to the new formats.</p>
 </div>
 <div class="section" id="upgrading-from-v1-4-to-v1-5">
-<h2>2.2. Upgrading from v1.4 to v1.5<a class="headerlink" href="#upgrading-from-v1-4-to-v1-5" title="Permalink to this headline">¶</a></h2>
+<h2>2.3. Upgrading from v1.4 to v1.5<a class="headerlink" href="#upgrading-from-v1-4-to-v1-5" title="Permalink to this headline">¶</a></h2>
 <p>Because version 1.5 is built for Fedora 28, upgraded from Fedora 26, it is recommended to use the instructions on the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installing the SDK</span></a> page to install on a clean system.</p>
 <p>Multiple versions of the SDK software may be installed on the same system, with the version currently in use reflected by the $GMT_GLOBAL environment variable.</p>
 <ol class="arabic simple">
@@ -291,166 +283,7 @@ $ sudo tar -xzvf &lt;gmt-tar.gz&gt; -C /opt/gmt_release_1.5.0
 </div>
 </div></blockquote>
 <p>These instructions assume that a working development environment has been set up before. To follow all steps for creating a new development environment, please follow the instructions on the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installing the SDK</span></a> page.</p>
-</div>
-<div class="section" id="upgrading-from-v1-3-to-1-4">
-<h2>2.3. Upgrading from v1.3 to 1.4<a class="headerlink" href="#upgrading-from-v1-3-to-1-4" title="Permalink to this headline">¶</a></h2>
-<p>As an alternative to installing the Operating System and associated packages from scratch, tho following procedure can be followed to upgrade an existing version 1.3 system to version 1.4. Please refer to the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installing the SDK</span></a> page for help in configuring individual services.</p>
-<div class="section" id="uninstall-old-gmt-packages">
-<h3>2.3.1. Uninstall Old GMT packages<a class="headerlink" href="#uninstall-old-gmt-packages" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Uninstall existing GMT packages and all their dependencies</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf remove -y gmt* gmtx*
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="repository-configuration">
-<h3>2.3.2. Repository Configuration<a class="headerlink" href="#repository-configuration" title="Permalink to this headline">¶</a></h3>
-<p>Some required RPMs are built by GMTO and need to be downloaded from the GMTO Yum Repository, currently hosted on Amazon Web Services.</p>
-<p>Ensure that the GMT repositories are correctly configured:</p>
-<ol class="arabic simple">
-<li>Add the file <code class="docutils literal"><span class="pre">/etc/yum.repos.d/gmt.repo</span></code> with the following content:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>gmt<span class="o">]</span>
-<span class="nv">name</span><span class="o">=</span>GMT <span class="nv">$releasever</span> - <span class="nv">$basearch</span>
-<span class="nv">baseurl</span><span class="o">=</span>http://52.52.46.32/srv/gmt/yum/stable/<span class="nv">$releasever</span>/
-<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">0</span>
-<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Add the file <code class="docutils literal"><span class="pre">/etc/yum.repos.d/gmt-updates.repo</span></code> with the following content:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>gmt-updates<span class="o">]</span>
-<span class="nv">name</span><span class="o">=</span>GMT <span class="nv">$releasever</span> - <span class="nv">$basearch</span> - Updates
-<span class="nv">baseurl</span><span class="o">=</span>http://52.52.46.32/srv/gmt/yum/updates/<span class="nv">$releasever</span>/
-<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">0</span>
-<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="package-list">
-<h3>2.3.3. Package List<a class="headerlink" href="#package-list" title="Permalink to this headline">¶</a></h3>
-<p>The following RPM packages should be installed by an Administrative user for use in the development environment:</p>
-<ol class="arabic simple">
-<li>Install Common OS Utilities</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y xorg-x11-xauth urw-fonts wget net-tools pciutils
-$ sudo dnf install -y strace rpl bash-completion sed
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Install Development Tools</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y autoconf automake cmake elfutils gcc gdb libtool
-$ sudo dnf install -y cpp cscope ctags gc gcc-c++ gcc-gdb-plugin glibc-devel
-$ sudo dnf install -y glibc-headers kernel-headers libstdc++-devel
-$ sudo dnf install -y flex git libcurl-devel
-$ sudo dnf install -y python3-sphinx python3-sphinx_rtd_theme
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li>Install OCS Dependencies</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y rdma librdmacm-devel
-$ sudo dnf install -y boost-devel freeopcua freeopcua-devel
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="node-installation">
-<h3>2.3.4. Node Installation<a class="headerlink" href="#node-installation" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Download and install <strong>Node version 8</strong></li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -sL https://rpm.nodesource.com/setup_8.x <span class="p">|</span> sudo bash -
-$ dnf install -y nodejs
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Install necessary node packages:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ npm install -g coffeescript webpack webpack-cli raw-loader
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="software-development-kit-sdk">
-<h3>2.3.5. Software Development Kit (SDK)<a class="headerlink" href="#software-development-kit-sdk" title="Permalink to this headline">¶</a></h3>
-<p>The Software Development Kit is distributed as a TAR file and can be downloaded from the GMTO release server.</p>
-<p>The SDK should be installed in a <strong>Global GMT Software Location</strong>, defined by the GMT_GLOBAL environment variable (default value: /opt/gmt). A <strong>Local Working Directory</strong>, unique for each individual developer (GMT_LOCAL). The local working directory typically resides underneath the /home/&lt;username&gt; directory.</p>
-<ol class="arabic simple">
-<li>Create the <strong>Global GMT Software Location</strong></li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir /opt/gmt
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Download the latest SDK distribution and install in the <strong>Global GMT Software Location</strong>:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget -P /opt/gmt http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk-1.4-0.tar.gz
-$ <span class="nb">cd</span> /opt/gmt
-$ sudo tar -xvzf gmt-sdk-1.4.0.tar.gz
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li>Create a <strong>Local Working Directory</strong></li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir &lt;local_working_dir&gt;
-</pre></div>
-</div>
-</div></blockquote>
-<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, typically /home/&lt;username&gt;/&lt;path_to_working_dir&gt;. The GMT software modules developed by the user are created in this folder.</p>
-<ol class="arabic simple" start="4">
-<li>Add the following lines to your .profile (or .kshrc or .bashrc depending on your preferred shell)</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">GMT_GLOBAL</span><span class="o">=</span>/opt/gmt
-$ <span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>&lt;local_working_dir&gt;
-$ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env.sh
-</pre></div>
-</div>
-</div></blockquote>
-<p>This will ensure that the environment variables are correctly configured when opening a new terminal. Please log out and back in for the changes to take effect. To configure the environment for the current shell, run the commands manually.</p>
-<ol class="arabic simple" start="5">
-<li>Check the values of the environment variables:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ gmt_env
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="6">
-<li>Initialize the Development Environment:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
-$ gds init
-</pre></div>
-</div>
-</div></blockquote>
-<p>The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.</p>
 <p><a class="reference internal" href="#upgrade"><span class="std std-ref">[back to top]</span></a></p>
-</div>
 </div>
 </div>
 

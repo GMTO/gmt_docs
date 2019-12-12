@@ -17,7 +17,7 @@ Contents of release 1.7.0
 
     - Added C++17 support
     - Added SerialAdapter compiler flags to module.mk
-    - Working on ensuring make parallelizes the build correctly
+    - Fixed issue where make did not parallelize the build correctly (#139)
 
   - Core Framework (Node.js):
 
@@ -44,7 +44,8 @@ Contents of release 1.7.0
 - Documentation: Software Development
 
   - Updated instructions for installing and running the Navigator application in MacOS and Linux
-  - Updated installation/upgrade instructions for CentOS 8
+  - Updated installation and upgrade instructions for CentOS 8
+  - Update Virtual Machine installation guide for CentOS 8
   - Developer Guide for UI Framework
 
 - Implementation Examples:
@@ -54,7 +55,7 @@ Contents of release 1.7.0
 - Known Issues:
 
   - In C++ controllers, auto-generated configuration files need to be updated by hand to define the correct inputs and outputs for the goals and values of the state variables
-
+  - System reboot may be needed after losing connection to EtherCAT modules
 
 Contents of release 1.6.2
 -------------------------

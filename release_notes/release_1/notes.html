@@ -198,7 +198,7 @@
 <li>Development Framework:<ul>
 <li>Added C++17 support</li>
 <li>Added SerialAdapter compiler flags to module.mk</li>
-<li>Working on ensuring make parallelizes the build correctly</li>
+<li>Fixed issue where make did not parallelize the build correctly (#139)</li>
 </ul>
 </li>
 <li>Core Framework (Node.js):<ul>
@@ -227,7 +227,8 @@
 </li>
 <li>Documentation: Software Development<ul>
 <li>Updated instructions for installing and running the Navigator application in MacOS and Linux</li>
-<li>Updated installation/upgrade instructions for CentOS 8</li>
+<li>Updated installation and upgrade instructions for CentOS 8</li>
+<li>Update Virtual Machine installation guide for CentOS 8</li>
 <li>Developer Guide for UI Framework</li>
 </ul>
 </li>
@@ -237,6 +238,7 @@
 </li>
 <li>Known Issues:<ul>
 <li>In C++ controllers, auto-generated configuration files need to be updated by hand to define the correct inputs and outputs for the goals and values of the state variables</li>
+<li>System reboot may be needed after losing connection to EtherCAT modules</li>
 </ul>
 </li>
 </ul>

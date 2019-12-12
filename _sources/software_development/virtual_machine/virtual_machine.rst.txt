@@ -66,7 +66,7 @@ Select *New*
   :alt: Name and Operating System
 
 Choose a descriptive **Name** for the Virtual Machine and select the **Type**
-as *Linux* and the **Version** as *Fedora (64-bit)*.
+as *Linux* and the **Version** as *Red Hat (64-bit)*.
 
 Select *Continue* to proceed.
 
@@ -195,10 +195,10 @@ be possible to do the same with other hosts.
 Download the iso image
 ----------------------
 
-Before running the virtual machine for the first time, use the instructions in
-:ref:`installation` to download the iso image that will be used to install the
-Fedora operating system. Instead of creating a bootable USB drive, the iso image
-will be directly loaded into the Virtual Optical Drive for installation.
+Before running the virtual machine for the first time, use the instructions in 
+download the iso image that will be used to install the operating system. 
+Instead of creating a bootable USB drive, the iso image will be directly loaded 
+into the Virtual Optical Drive for installation.
 
 Run the Virtual Machine
 -----------------------
@@ -219,8 +219,7 @@ device.
   :scale: 70 %
   :alt: First Run Install Menu
 
-Select *Install Fedora* and follow the instructions in :ref:`fedora_server` to install
-the operating system. Ensure that the boot partition is set to File System *ext4* for the RT kernel
+Select *Install CentOS*. Ensure that the boot partition is set to File System *ext4* for the RT kernel
 to work.
 
 .. image:: images/ss26_partition_ext4.png
@@ -327,7 +326,6 @@ First, we need to update the kernel and existing packages
 
 Log out and shut down the virtual machine.
 Restart the virtual machine and boot with the latest kernel
-*(for example Fedora 4.8.13-100.fc23.x86_64)*
 
 .. image:: images/ss22_kernel_update.png
   :align: center
