@@ -117,11 +117,9 @@
 <li class="toctree-l2"><a class="reference internal" href="hdk_example.html">12. HDK example</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">13. UI Framework</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installation">13.1. Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#engineering-app">13.2. Engineering App</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">13.3. Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#user-guide">13.4. User Guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#launching-custom-panels">13.5. Launching Custom Panels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-guide">13.6. Troubleshooting Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-guide">13.2. User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launching-custom-panels">13.3. Launching Custom Panels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-guide">13.4. Troubleshooting Guide</a></li>
 </ul>
 </li>
 </ul>
@@ -195,7 +193,7 @@
 <span id="ui-fwk"></span><h1>13. UI Framework<a class="headerlink" href="#ui-framework" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The UI framework is currently only supported on MacOS.  Linux support will be available in future releases.</p>
+<p class="last">The UI framework is currently supported on MacOS and Linux.</p>
 </div>
 <p>The UI Framework introduces a set of libraries and a windowed application that provides a GUI for the OCS.  The framework handles three primary concerns</p>
 <ul class="simple">
@@ -205,80 +203,91 @@
 </ul>
 <div class="section" id="installation">
 <h2>13.1. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>Download the Mac App</p>
+<p>The UI engineering app uses the local bundles defined in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code> to create a visual representation of your model files’ input/output ports.  If the Navigator app runs in a computer separate from where you run your components, you will need to create a minimal <code class="docutils literal"><span class="pre">$GMT_LOCAL</span></code> environment so that Navigator can boostrap your model and configuration files from your computer.  By convention it should be a directory in your home folder.  Once you create an <code class="docutils literal"><span class="pre">&lt;ocs_local&gt;</span></code> folder, in your shell environment file, add the following to your shell.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For bash, you’ll need to edit the <code class="docutils literal"><span class="pre">~\.bash_profile</span></code>. For zsh you’ll need to edit <code class="docutils literal"><span class="pre">~\.zshrc</span></code>.</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># GMT Environment</span>
+<span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>/Users/&lt;user&gt;/&lt;ocs_local&gt;
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">&lt;user&gt;</span></code> is your home folder and <code class="docutils literal"><span class="pre">&lt;ocs_local&gt;</span></code> is the designated OCS local folder. For example, my environment contains</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># GMT Environment</span>
+<span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>/Users/aroman/ocs/
+</pre></div>
+</div>
+<p>In the <code class="docutils literal"><span class="pre">&lt;ocs_local&gt;</span></code> directory, you’ll need to create this folder structure and two files.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="p">|</span>-- etc
+<span class="p">|</span>   <span class="p">|</span>-- bundles
+<span class="p">|</span>   <span class="p">|</span>   <span class="p">|</span>-- bundles.coffee
+<span class="p">|</span>   <span class="p">|</span>   <span class="p">|</span>-- ocs_local_bundle.coffee
+<span class="p">|</span>   <span class="p">|</span>-- conf
+<span class="p">|</span>-- lib
+<span class="p">|</span>-- modules
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">bundles.coffee</span></code> should have</p>
+<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nv">module.exports =</span>
+    <span class="nv">ocs_local_bundle: </span>  <span class="p">{</span><span class="nv">scope: </span><span class="s">&quot;local&quot;</span><span class="p">,</span>  <span class="nv">desc: </span><span class="s">&quot;GMT OCS SDK bundle&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">ocs_local_bundle.coffee</span></code> should look like</p>
+<div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nv">module.exports =</span>
+    <span class="nv">name: </span>     <span class="s">&quot;local&quot;</span>
+    <span class="nv">desc: </span>     <span class="s">&quot;List of local development modules&quot;</span>
+    <span class="nv">elements: </span> <span class="p">{}</span>
+</pre></div>
+</div>
+<p>This will give you the base parameters to load the local environment. The <code class="docutils literal"><span class="pre">elements</span></code> key in this example is intentionally empty. This will change as you add OCS bundles.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The bundles you define need to have corresponding webpack model files in <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code>.  You will need to copy these files on your own.</p>
+</div>
+<p>After you’ve done this, download the Mac App</p>
 <ul class="simple">
 <li><a class="reference external" href="http://52.52.46.32/srv/gmt/releases/navigator/mac/ocs_navigator_app_1.7.0.zip">http://52.52.46.32/srv/gmt/releases/navigator/mac/ocs_navigator_app_1.7.0.zip</a></li>
 </ul>
 <p>You can unzip the app anywhere on your MacOS file system.  Double click on the icon to run.</p>
-</div>
-<div class="section" id="engineering-app">
-<h2>13.2. Engineering App<a class="headerlink" href="#engineering-app" title="Permalink to this headline">¶</a></h2>
-<p>The engineering application provides a GUI to the OCS model.  It is a downloadble Mac app that you can run after installing the SDK on your Mac.</p>
-<p>The UI engineering app uses your local bundles from <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code> and allows you to see a visual representation of your model files’ input/output ports.  For now, the Engineering app runs in MacOS.</p>
-<p>To launch the application, double click on the app icon.</p>
-</div>
-<div class="section" id="configuration">
-<h2>13.3. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
-<p>The User Interface needs to be configured to connect to the correct control components to receive data. Without proper configuration, the application may look like this:</p>
-<img alt="Navigator application - No connection to HDK components" class="align-center" src="../_images/Navigator_HDK_first_open.png" />
-<p>Edit the appropriate config files in the <code class="docutils literal"><span class="pre">src/etc/conf</span></code> folder to point to the correct IP address for input and output ports. For example,</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/etc/conf/hdk_ctrl_pkg/hdk_main_ctrl/
-$ sed -i <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s/127.0.0.1/172.16.10.31/g&quot;</span> hdk_main_ctrl_config.coffee
-</pre></div>
-</div>
-<p>See the Troubleshooting section below for more help with connection issues.</p>
-<p>Restart the Navigator application for changes to take affect.</p>
+<img alt="Navigator application at startup" class="align-center" src="../_images/navigator_first_run.png" />
 </div>
 <div class="section" id="user-guide">
-<h2>13.4. User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
-<img alt="Navigator application regions" class="align-center" src="../_images/Navigator_HDK_connected.png" />
-<p>The navigator application contains two regions.</p>
+<h2>13.2. User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
+<img alt="Navigator with inspect." class="align-center" src="../_images/navigator_inspect.png" />
+<p>The navigator application contains three regions.</p>
 <ol class="arabic simple">
 <li><strong>Navigation</strong> This area contains the navigation tree.  The tree is a representation of your model and is built from information found in your local bundles.</li>
-<li><strong>Context</strong> Items selected in the tree will display here.  Currently, it will display a representation of your model’s input/output ports and state variables.</li>
+<li><strong>Tabs</strong> This area displays content in tabs.  Visualization panels will open in new tabs.</li>
+<li><strong>Tools</strong> This area presents context sensitive tools.  The tools are activated when you select an element in a tab.</li>
 </ol>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The <strong>Context</strong> area will optimistically render your model.  Not all model data can be currently rendered. Some items like <cite>properties</cite> and detailed port views are currently not supported.</p>
-</div>
+<p>From the navigation menu you can visually explore your model, inspect or send data to your connected instances.</p>
+<img alt="Navigator with inspect." class="align-center" src="../_images/navigator_guide.png" />
+<p>You can drag models and inputs/outputs/properties/state vars into tabs.  You can create new tabs by double-clicking the empty tab area.  You can drag and re-order tabs.  Elements dragged into the tabs can also be re-ordered by dragging the title bar and resized by dragging the bottom right corner.</p>
 </div>
 <div class="section" id="launching-custom-panels">
-<h2>13.5. Launching Custom Panels<a class="headerlink" href="#launching-custom-panels" title="Permalink to this headline">¶</a></h2>
-<p>From the menu, select <code class="docutils literal"><span class="pre">Vis</span> <span class="pre">package</span></code> and select <code class="docutils literal"><span class="pre">Panel</span> <span class="pre">loader</span></code>.  This will launch a panel allowing you to select a custom vis package.</p>
+<h2>13.3. Launching Custom Panels<a class="headerlink" href="#launching-custom-panels" title="Permalink to this headline">¶</a></h2>
+<p>From the model navigation menu, select the <code class="docutils literal"><span class="pre">Vis</span> <span class="pre">package</span></code> you want to run and the Navigator app will open a new tab showing the panel.</p>
 </div>
 <div class="section" id="troubleshooting-guide">
-<h2>13.6. Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permalink to this headline">¶</a></h2>
-<p>The engineering app loads the local bundles defined in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code>.  It currently uses the model generated config files to read data for your package.  Those config files are created in <code class="docutils literal"><span class="pre">$GMT_LOCAL/modules/&lt;your_module&gt;/src/etc/conf/&lt;your_package&gt;_pkg/&lt;component&gt;_config.coffee</span></code>; it’s useful to see what’s in those configs when troubleshooting data availability issues.  The availability of data to the UI largely depends on those config files.  The values generated will depend on how you write your model, but a sample of a config file might look like</p>
-<blockquote>
-<div><div class="highlight-coffee"><div class="highlight"><pre><span></span><span class="nv">module.exports =</span>
-    <span class="nv">properties:</span>
-        <span class="nv">uri: </span><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;uri&#39;</span><span class="p">,</span> <span class="nv">default_value: </span><span class="s">&#39;gmt://hdk_dcs/hdk_main_ctrl/hdk_main_ctrl&#39;</span> <span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;String&#39;</span><span class="p">,</span> <span class="nv">desc: </span><span class="s">&#39;Uri path for the component&#39;</span> <span class="p">}</span>
-        <span class="c1"># other fields ommited</span>
-
-    <span class="nv">state_vars:</span>
-        <span class="nv">hmi: </span><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;hmi&#39;</span><span class="p">,</span>   <span class="p">}</span>
-        <span class="nv">motor: </span><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;motor&#39;</span><span class="p">,</span>   <span class="p">}</span>
-
-    <span class="nv">input_ports:</span>
-        <span class="nv">hmi_goal: </span>           <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;hmi_goal&#39;</span><span class="p">,</span>              <span class="nv">protocol: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8116&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1000</span><span class="p">,</span>  <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
-        <span class="nv">motor_goal: </span>         <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;motor_goal&#39;</span><span class="p">,</span>            <span class="nv">protocol: </span><span class="s">&#39;pull&#39;</span><span class="p">,</span>  <span class="nv">url: </span><span class="s">&#39;tcp://172.16.10.31:8117&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1000</span><span class="p">,</span>  <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
-
-    <span class="nv">output_ports:</span>
-        <span class="nv">hmi_value: </span>          <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;hmi_value&#39;</span><span class="p">,</span>             <span class="nv">protocol: </span><span class="s">&#39;pub&#39;</span><span class="p">,</span>   <span class="nv">url: </span><span class="s">&#39;tcp://127.0.0.1:8122&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1000</span><span class="p">,</span>  <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
-        <span class="nv">motor_value: </span>        <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;motor_value&#39;</span><span class="p">,</span>           <span class="nv">protocol: </span><span class="s">&#39;pub&#39;</span><span class="p">,</span>   <span class="nv">url: </span><span class="s">&#39;tcp://172.16.10.31:8123&#39;</span><span class="p">,</span> <span class="nv">blocking_mode: </span><span class="s">&#39;async&#39;</span><span class="p">,</span> <span class="nv">max_rate: </span><span class="mi">1000</span><span class="p">,</span>  <span class="nv">nom_rate: </span><span class="mi">1</span>     <span class="p">}</span>
+<h2>13.4. Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permalink to this headline">¶</a></h2>
+<p>The engineering app loads the local bundles defined in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code> and the webpack model files in <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code>.  If you enable bundles, but no corresponding model lib file exists, the UI might end up an incosistent or ‘blank’ state.</p>
+<ul class="simple">
+<li><strong>No navigation tree</strong>: the navigation tree is rendered from the local bundles enabled in <code class="docutils literal"><span class="pre">$GMT_LOCAL\etc\bundles</span></code>.  The bundles defined there need to exist in your <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code> folder.  You can create these by running <code class="docutils literal"><span class="pre">webpack</span></code> on your model.</li>
+<li><strong>Incositent Navigation tree</strong>: If you don’t see a newly added (or still see a deleted element in the tree) it’s because Navigator persists your menu state, so when you make changes to your bundles or edit your model files you need to manually clear the application cache.  Press <code class="docutils literal"><span class="pre">CMD+,</span></code> to see the Navigator preferences.  Find the <cite>Reset application state</cite> button and press it.  If this works, your menu will have been rebuilt and should be consistent again.</li>
+<li><strong>Blank screen</strong>: If the UI starts with a blank screen, it’s likely there’s an incosistent configuration, for example, you defined a bundle, but there is no webpack version of the model in <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code>.  Open the Developer console and check the error message.</li>
+</ul>
+<p>In some cases the cached data might have caused an error.  There are three possible ways to fix this in order of severity:</p>
+<p>Open the app development console by selecting from the OS menu <code class="docutils literal"><span class="pre">Developer</span> <span class="pre">&gt;</span> <span class="pre">Toggle</span> <span class="pre">developer</span> <span class="pre">tools</span></code>.  In the developer console type <code class="docutils literal"><span class="pre">persistor.purge()</span></code> press <cite>Enter</cite> and restart the app.</p>
+<p>If that fails,</p>
+<p>Delete the app, and reinstall.</p>
+<p>If that also fails, try deleting the cache directly from your disk</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>rm -fr ~/.config/Electron
+rm -fr ~/.config/ocs_navigator
 </pre></div>
 </div>
-</div></blockquote>
-<p>When troubleshooting it’s important to note the <cite>protocol</cite> and the <cite>url</cite> keys for a given port.  For example the <code class="docutils literal"><span class="pre">hmi_value.url</span></code> value is <code class="docutils literal"><span class="pre">tcp://127.0.0.1:8122</span></code> this means you’re trying to connect to port number <code class="docutils literal"><span class="pre">8122</span></code> on the address <code class="docutils literal"><span class="pre">127.0.0.1</span></code> (which is typically your local machine).  Whereas the <code class="docutils literal"><span class="pre">motor_value.url</span></code> is trying to connect to a different computer with an IP address <code class="docutils literal"><span class="pre">172.16.10.31</span></code> on port number <code class="docutils literal"><span class="pre">8123</span></code>.</p>
-<p>If the computer at <code class="docutils literal"><span class="pre">172.16.10.31</span></code> is firewalled and not allowing connections to port <code class="docutils literal"><span class="pre">8123</span></code>, you will not be able to see data.  You will need to allow incoming connections to that port.  Likewise, if your component is running at the computer at <code class="docutils literal"><span class="pre">172.16.10.31</span></code> and you are trying to read data from <code class="docutils literal"><span class="pre">127.0.0.1</span></code>, you will not see any data.  You will need to change the IP to match the computer where your component is running.</p>
-<p>Additionally, the UI can only read data from ports configured with the <code class="docutils literal"><span class="pre">pub</span></code> protocol.</p>
-<p>If you make changes to the config file, you will need to restart the command line app; you can do this by pressing <code class="docutils literal"><span class="pre">CTRL</span> <span class="pre">+</span> <span class="pre">C</span></code>.</p>
+<p>If this does not fix your problem, it’s possible that your bundle and your modules are inconsistent.  Check that what you define in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code> has a corresponding webpack file in <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code>.</p>
 <ul>
-<li><p class="first"><strong>Incorrect NODE_MODULE_VERSION</strong>: In some cases, the <code class="docutils literal"><span class="pre">$GMT_GLOBAL/node_modules</span></code> will take precedent over the ones used by the App.  In this case, rename the <code class="docutils literal"><span class="pre">$GMT_GLOBAL/node_modules</span></code> to something like <code class="docutils literal"><span class="pre">$GMT_GLOBAL/node_modules.bak</span></code>.</p>
-</li>
-<li><p class="first"><strong>Unresponsive UI</strong>: in some case if the UI becomes unresponsive, press <code class="docutils literal"><span class="pre">CMD+R</span></code> to refresh.  If that fails to solve the problem, restart the CLI app.  You can stop the CLI app with <code class="docutils literal"><span class="pre">CTRL+C</span></code>.</p>
-</li>
-<li><p class="first"><strong>No navigation tree</strong>: the navigation tree is rendered off the local bundles in <code class="docutils literal"><span class="pre">$GMT_LOCAL\etc\bundles</span></code>.  The bundles described there need to have been built with webpack.</p>
+<li><p class="first"><strong>Unresponsive UI</strong>: in some case if the UI becomes unresponsive, press <code class="docutils literal"><span class="pre">CMD+R</span></code> to refresh.  If that fails to solve the problem, restart the CLI app.</p>
 </li>
 <li><p class="first"><strong>No data</strong>: Ensure that the ports used by the controllers to publish data are accessible through the firewall. The following command should be used on the Device Control Computer to open the applicable range of ports (8122 - 8124):</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo firewall-cmd --add-port<span class="o">=</span><span class="m">8122</span>-8124/tcp

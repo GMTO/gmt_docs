@@ -4,7 +4,7 @@ UI Framework
 ============
 
 .. note::
-    The UI framework is currently only supported on MacOS.  Linux support will be available in future releases.
+    The UI framework is currently supported on MacOS and Linux.
 
 The UI Framework introduces a set of libraries and a windowed application that provides a GUI for the OCS.  The framework handles three primary concerns
 
@@ -14,98 +14,121 @@ The UI Framework introduces a set of libraries and a windowed application that p
 
 Installation
 ------------
-Download the Mac App
+
+The UI engineering app uses the local bundles defined in ``$GMT_LOCAL/etc/bundles`` to create a visual representation of your model files' input/output ports.  If the Navigator app runs in a computer separate from where you run your components, you will need to create a minimal ``$GMT_LOCAL`` environment so that Navigator can boostrap your model and configuration files from your computer.  By convention it should be a directory in your home folder.  Once you create an ``<ocs_local>`` folder, in your shell environment file, add the following to your shell. 
+
+.. note::
+    For bash, you'll need to edit the ``~\.bash_profile``. For zsh you'll need to edit ``~\.zshrc``.
+
+.. code-block:: bash
+
+    # GMT Environment
+    export GMT_LOCAL=/Users/<user>/<ocs_local>
+
+where ``<user>`` is your home folder and ``<ocs_local>`` is the designated OCS local folder. For example, my environment contains
+
+.. code-block:: bash
+
+    # GMT Environment
+    export GMT_LOCAL=/Users/aroman/ocs/
+
+In the ``<ocs_local>`` directory, you'll need to create this folder structure and two files.
+
+.. code-block:: bash
+
+    |-- etc
+    |   |-- bundles
+    |   |   |-- bundles.coffee
+    |   |   |-- ocs_local_bundle.coffee
+    |   |-- conf
+    |-- lib
+    |-- modules
+
+The ``bundles.coffee`` should have
+
+.. code-block:: coffee
+
+    module.exports =
+        ocs_local_bundle:   {scope: "local",  desc: "GMT OCS SDK bundle"}
+
+The ``ocs_local_bundle.coffee`` should look like
+
+.. code-block:: coffee
+
+    module.exports =
+        name:      "local"
+        desc:      "List of local development modules"
+        elements:  {}
+
+This will give you the base parameters to load the local environment. The ``elements`` key in this example is intentionally empty. This will change as you add OCS bundles.
+
+.. note::
+    
+    The bundles you define need to have corresponding webpack model files in ``$GMT_LOCAL/lib/js``.  You will need to copy these files on your own.
+
+After you've done this, download the Mac App
 
 * http://52.52.46.32/srv/gmt/releases/navigator/mac/ocs_navigator_app_1.7.0.zip
 
 You can unzip the app anywhere on your MacOS file system.  Double click on the icon to run.
 
-Engineering App
----------------
-
-The engineering application provides a GUI to the OCS model.  It is a downloadble Mac app that you can run after installing the SDK on your Mac.
-
-The UI engineering app uses your local bundles from ``$GMT_LOCAL/etc/bundles`` and allows you to see a visual representation of your model files' input/output ports.  For now, the Engineering app runs in MacOS. 
-
-To launch the application, double click on the app icon.
-
-Configuration
--------------
-
-The User Interface needs to be configured to connect to the correct control components to receive data. Without proper configuration, the application may look like this:
-
-.. image:: navigator_images/Navigator_HDK_first_open.png
+.. image:: navigator_images/navigator_first_run.png
   :align: center
-  :alt: Navigator application - No connection to HDK components
-
-Edit the appropriate config files in the ``src/etc/conf`` folder to point to the correct IP address for input and output ports. For example,
-
-.. code-block:: bash
-
-    $ cd $GMT_LOCAL/modules/ocs_hdk_dcs/src/etc/conf/hdk_ctrl_pkg/hdk_main_ctrl/
-    $ sed -i '' "s/127.0.0.1/172.16.10.31/g" hdk_main_ctrl_config.coffee
-
-See the Troubleshooting section below for more help with connection issues.
-
-Restart the Navigator application for changes to take affect.
+  :alt: Navigator application at startup
 
 User Guide
 ----------
 
-.. image:: navigator_images/Navigator_HDK_connected.png
+.. image:: navigator_images/navigator_inspect.png
   :align: center
-  :alt: Navigator application regions
+  :alt: Navigator with inspect.
 
-The navigator application contains two regions.
+The navigator application contains three regions.
 
 1. **Navigation** This area contains the navigation tree.  The tree is a representation of your model and is built from information found in your local bundles.
-2. **Context** Items selected in the tree will display here.  Currently, it will display a representation of your model's input/output ports and state variables.  
+2. **Tabs** This area displays content in tabs.  Visualization panels will open in new tabs.
+3. **Tools** This area presents context sensitive tools.  The tools are activated when you select an element in a tab.
 
-.. note::
-    The **Context** area will optimistically render your model.  Not all model data can be currently rendered. Some items like `properties` and detailed port views are currently not supported.
+From the navigation menu you can visually explore your model, inspect or send data to your connected instances.  
+
+.. image:: navigator_images/navigator_guide.png
+  :align: center
+  :alt: Navigator with inspect.
+
+You can drag models and inputs/outputs/properties/state vars into tabs.  You can create new tabs by double-clicking the empty tab area.  You can drag and re-order tabs.  Elements dragged into the tabs can also be re-ordered by dragging the title bar and resized by dragging the bottom right corner.
 
 Launching Custom Panels
 -----------------------
 
-From the menu, select ``Vis package`` and select ``Panel loader``.  This will launch a panel allowing you to select a custom vis package. 
-
+From the model navigation menu, select the ``Vis package`` you want to run and the Navigator app will open a new tab showing the panel.
 
 Troubleshooting Guide
 ---------------------
 
-The engineering app loads the local bundles defined in ``$GMT_LOCAL/etc/bundles``.  It currently uses the model generated config files to read data for your package.  Those config files are created in ``$GMT_LOCAL/modules/<your_module>/src/etc/conf/<your_package>_pkg/<component>_config.coffee``; it's useful to see what's in those configs when troubleshooting data availability issues.  The availability of data to the UI largely depends on those config files.  The values generated will depend on how you write your model, but a sample of a config file might look like 
+The engineering app loads the local bundles defined in ``$GMT_LOCAL/etc/bundles`` and the webpack model files in ``$GMT_LOCAL/lib/js``.  If you enable bundles, but no corresponding model lib file exists, the UI might end up an incosistent or 'blank' state.
 
-    .. code-block:: coffee
+* **No navigation tree**: the navigation tree is rendered from the local bundles enabled in ``$GMT_LOCAL\etc\bundles``.  The bundles defined there need to exist in your ``$GMT_LOCAL/lib/js`` folder.  You can create these by running ``webpack`` on your model.
+* **Incositent Navigation tree**: If you don't see a newly added (or still see a deleted element in the tree) it's because Navigator persists your menu state, so when you make changes to your bundles or edit your model files you need to manually clear the application cache.  Press ``CMD+,`` to see the Navigator preferences.  Find the `Reset application state` button and press it.  If this works, your menu will have been rebuilt and should be consistent again.
+* **Blank screen**: If the UI starts with a blank screen, it's likely there's an incosistent configuration, for example, you defined a bundle, but there is no webpack version of the model in ``$GMT_LOCAL/lib/js``.  Open the Developer console and check the error message.
 
-        module.exports =
-            properties:
-                uri: { name: 'uri', default_value: 'gmt://hdk_dcs/hdk_main_ctrl/hdk_main_ctrl' , type: 'String', desc: 'Uri path for the component' }
-                # other fields ommited
+In some cases the cached data might have caused an error.  There are three possible ways to fix this in order of severity:
 
-            state_vars:
-                hmi: { name: 'hmi',   }
-                motor: { name: 'motor',   }
+Open the app development console by selecting from the OS menu ``Developer > Toggle developer tools``.  In the developer console type ``persistor.purge()`` press `Enter` and restart the app.
 
-            input_ports:
-                hmi_goal:            { name: 'hmi_goal',              protocol: 'pull',  url: 'tcp://127.0.0.1:8116', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
-                motor_goal:          { name: 'motor_goal',            protocol: 'pull',  url: 'tcp://172.16.10.31:8117', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+If that fails,
 
-            output_ports:
-                hmi_value:           { name: 'hmi_value',             protocol: 'pub',   url: 'tcp://127.0.0.1:8122', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
-                motor_value:         { name: 'motor_value',           protocol: 'pub',   url: 'tcp://172.16.10.31:8123', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
+Delete the app, and reinstall.
 
+If that also fails, try deleting the cache directly from your disk
 
-When troubleshooting it's important to note the `protocol` and the `url` keys for a given port.  For example the ``hmi_value.url`` value is ``tcp://127.0.0.1:8122`` this means you're trying to connect to port number ``8122`` on the address ``127.0.0.1`` (which is typically your local machine).  Whereas the ``motor_value.url`` is trying to connect to a different computer with an IP address ``172.16.10.31`` on port number ``8123``. 
+.. code-block:: bash
 
-If the computer at ``172.16.10.31`` is firewalled and not allowing connections to port ``8123``, you will not be able to see data.  You will need to allow incoming connections to that port.  Likewise, if your component is running at the computer at ``172.16.10.31`` and you are trying to read data from ``127.0.0.1``, you will not see any data.  You will need to change the IP to match the computer where your component is running.
+    rm -fr ~/.config/Electron 
+    rm -fr ~/.config/ocs_navigator
 
-Additionally, the UI can only read data from ports configured with the ``pub`` protocol.
+If this does not fix your problem, it's possible that your bundle and your modules are inconsistent.  Check that what you define in ``$GMT_LOCAL/etc/bundles`` has a corresponding webpack file in ``$GMT_LOCAL/lib/js``.
 
-If you make changes to the config file, you will need to restart the command line app; you can do this by pressing ``CTRL + C``.
-
-* **Incorrect NODE_MODULE_VERSION**: In some cases, the ``$GMT_GLOBAL/node_modules`` will take precedent over the ones used by the App.  In this case, rename the ``$GMT_GLOBAL/node_modules`` to something like ``$GMT_GLOBAL/node_modules.bak``.
-* **Unresponsive UI**: in some case if the UI becomes unresponsive, press ``CMD+R`` to refresh.  If that fails to solve the problem, restart the CLI app.  You can stop the CLI app with ``CTRL+C``.
-* **No navigation tree**: the navigation tree is rendered off the local bundles in ``$GMT_LOCAL\etc\bundles``.  The bundles described there need to have been built with webpack.
+* **Unresponsive UI**: in some case if the UI becomes unresponsive, press ``CMD+R`` to refresh.  If that fails to solve the problem, restart the CLI app.
 * **No data**: Ensure that the ports used by the controllers to publish data are accessible through the firewall. The following command should be used on the Device Control Computer to open the applicable range of ports (8122 - 8124):
 
   .. code-block:: bash

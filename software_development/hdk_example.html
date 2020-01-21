@@ -133,7 +133,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#user-interface">12.4. User Interface</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#configuration">12.4.1. Configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#running-the-engineering-ui">12.4.2. Running the Engineering UI</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#displaying-a-custom-ui-panel">12.4.3. Displaying a custom UI Panel</a></li>
 </ul>
 </li>
 </ul>
@@ -665,73 +664,37 @@ be on.</li>
 <div class="section" id="user-interface">
 <h2>12.4. User Interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
 <p>The Navigator application displays the Engineering user interface as well as any
-custom panels defined in the subsystem’s Visualization Package. Engineering panels
-are automatically generated from the Model files, whereas custom panels need to
-be created manually.</p>
-<img alt="Navigator application" class="align-center" src="../_images/Navigator_HDK_first_open.png" />
-<p>The HDK DCS contains basic examples of these user interface panels with limited functionality.
+custom panels defined in the subsystem’s Visualization Package.</p>
+<img alt="HDK screenshot" class="align-center" src="../_images/hdk_screenshot.png" />
+<p>The above image shows the HDK DCS’ UI contained in the visualization package.
+This is a basic example of what’s possible to do in a visualization package.
 More detailed examples will be added in the future as the UI Framework matures.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The UI framework is currently only supported on MacOS.  Linux support will be available in future releases.</p>
-</div>
 <div class="section" id="configuration">
 <h3>12.4.1. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
-<p>In order to receive data, the User Interface needs to be configured with the correct URIs for connecting to control components that may be running on a different machine. The UI will display the message “Waiting for data” for components it cannot connect to.</p>
-<img alt="Navigator application - No connection to HDK components" class="align-center" src="../_images/Navigator_HDK_noconnection.png" />
-<p>Edit the appropriate config files in the <code class="docutils literal"><span class="pre">src/etc/conf</span></code> folder to point to the correct IP address for input and output ports. For example,</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/src/etc/conf/hdk_ctrl_pkg/hdk_main_ctrl/
+<p>The Navigator app uses your bundles and configuration to connect to your DCS components.  If your component instance is running on a different machine, you will need to update your configuration files in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/conf</span></code> to point to the IP address of the target computer. You can quickly udpate all your config IPs like so:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/etc/conf/hdk_ctrl_pkg/hdk_main_ctrl/
 $ sed -i <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s/172.0.0.1/172.16.10.31/g&quot;</span> hdk_main_ctrl_config.coffee
 </pre></div>
 </div>
-<p>Also note that the firewall on the machine running the control components need to be configured to allow data through the input/output ports that the UI is trying to connect to. Use <code class="docutils literal"><span class="pre">firewall-cmd</span></code> to open the applicable ports (for example, the range from 8122 to 8124):</p>
+<p>Also note that the firewall on the target machine will need to be configured to allow data through port range used by your component instance.  You can use the <code class="docutils literal"><span class="pre">firewall-cmd</span></code> to open the applicable ports (for example, the range from 8122 to 8124):</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo firewall-cmd --add-port<span class="o">=</span><span class="m">8122</span>-8124/tcp
 </pre></div>
 </div>
 </div></blockquote>
 <p>See the Troubleshooting section in the <a class="reference internal" href="ui_fwk.html#ui-fwk"><span class="std std-ref">UI Framework Guidelines document</span></a> for more help with connection issues.</p>
-<p>The following screenshot shows that the configuration is correct, but the remote control components are not running.</p>
-<img alt="Navigator application" class="align-center" src="../_images/Navigator_HDK_nodata.png" />
 </div>
 <div class="section" id="running-the-engineering-ui">
 <h3>12.4.2. Running the Engineering UI<a class="headerlink" href="#running-the-engineering-ui" title="Permalink to this headline">¶</a></h3>
-<p>The Engineering UI uses your local bundles file (found in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code>) to automatically create
-a visual representation of the modules being worked on by loading the input/output port definitions
-in the relevant Model files.</p>
-<p>For now, the Engineering application needs to run in MacOS. Ensure that it has been configured correctly
-using the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation Guide document</span></a>.</p>
-<p>To launch the Navigator application, run this in the command line</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ navigator
-</pre></div>
-</div>
-<p>This will launch the GUI as a child process of the CLI application.  To stop the GUI, stop the CLI app with <code class="docutils literal"><span class="pre">CTRL</span> <span class="pre">+</span> <span class="pre">C</span></code>.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Some users have noted an issue when running this command from $GMT_LOCAL. If the UI doesn’t load properly, try running it from a different location.</p>
-</div>
-<p>If necessary, see the Troubleshooting section in the <a class="reference internal" href="ui_fwk.html#ui-fwk"><span class="std std-ref">UI Framework Guidelines document</span></a>.</p>
-<p>On the left-hand side of the UI, use the tree structure to navigate to the HDK components. Selecting the appropriate component will provide a panel in the <cite>Context</cite> area with the input/output ports and state variables defined in the Model.</p>
-<img alt="Navigator application - HDK Engineering UI Context" class="align-center" src="../_images/Navigator_HDK_connected.png" />
+<p>The Navigator app uses your local bundles file (found in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code>) to automatically create
+a visual representation of your model.</p>
+<img alt="Navigator application with HKD vis panel" class="align-center" src="../_images/navigator_hdk_panel.png" />
+<p>The model is shown as a navigation tree.  In the above image, the <code class="docutils literal"><span class="pre">hdk_custom_view</span></code> panel shown.  For more information on creating custom UI panels, see the <a class="reference internal" href="ui_fwk.html#ui-fwk"><span class="std std-ref">UI Framework Guidelines document</span></a>.</p>
+<p>To launch the visualization panel, find the <cite>&gt; Hdk Visualization Package &gt; Example view for HDK</cite> visualization panel in the menu and select it.  This will create a new tab in Navigator showing the panel.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <strong>Context</strong> area will optimistically render your model.  Not all model data can be rendered by the current version of the software. Some items like <cite>properties</cite> and detailed port views are currently not supported.</p>
+<p class="last">The HDK UI package needs to exist in your <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code> folder in order for Navigator to load it.  This might be a separate download.</p>
 </div>
-</div>
-<div class="section" id="displaying-a-custom-ui-panel">
-<h3>12.4.3. Displaying a custom UI Panel<a class="headerlink" href="#displaying-a-custom-ui-panel" title="Permalink to this headline">¶</a></h3>
-<p>The UI Framework allows the definition of custom UI panels for visualization of data using special UI components (for example, <cite>panels</cite> and <cite>widgets</cite>). Custom panels are defined in the Visualization Package of the Device Control System.</p>
-<p>The Navigator application can launch standalone panels with the <code class="docutils literal"><span class="pre">--panel</span></code> option to only focus in on the custom HDK panel:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ navigator --panel hdk_main_ctrl_view --port <span class="m">9198</span>
-</pre></div>
-</div>
-<p>The entire screen is now dedicated to displaying the custom UI panel.</p>
-<img alt="Navigator application - HDK Custom UI Panel" class="align-center" src="../_images/Navigator_HDK_custom_panel.png" />
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The engineering app reserves port <code class="docutils literal"><span class="pre">9199</span></code>.  Custom panel launches of the application need to specify a different port for each instance. The navigator app allows you to run instances of multiple panels at the same time.  However, you will need to specify a different <code class="docutils literal"><span class="pre">--port</span></code> for each instance to avoid port collision errors.  Also, note that the navigator app will reuse the internal data server for multiple instances, so if you close the initial instance, the data server may become unavailable for the other panels.</p>
-</div>
-<p>For more information on creating custom UI panels, see the <a class="reference internal" href="ui_fwk.html#ui-fwk"><span class="std std-ref">UI Framework Guidelines document</span></a>.</p>
 </div>
 </div>
 </div>

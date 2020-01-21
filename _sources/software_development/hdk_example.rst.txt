@@ -543,37 +543,27 @@ User Interface
 --------------
 
 The Navigator application displays the Engineering user interface as well as any
-custom panels defined in the subsystem's Visualization Package. Engineering panels
-are automatically generated from the Model files, whereas custom panels need to
-be created manually.
+custom panels defined in the subsystem's Visualization Package. 
 
-.. image:: navigator_images/Navigator_HDK_first_open.png
+.. image:: navigator_images/hdk_screenshot.png
   :align: center
-  :alt: Navigator application
+  :alt: HDK screenshot
 
-The HDK DCS contains basic examples of these user interface panels with limited functionality.
+The above image shows the HDK DCS' UI contained in the visualization package.  
+This is a basic example of what's possible to do in a visualization package.
 More detailed examples will be added in the future as the UI Framework matures.
-
-.. note::
-    The UI framework is currently only supported on MacOS.  Linux support will be available in future releases.
 
 Configuration
 ^^^^^^^^^^^^^
 
-In order to receive data, the User Interface needs to be configured with the correct URIs for connecting to control components that may be running on a different machine. The UI will display the message "Waiting for data" for components it cannot connect to.
-
-.. image:: navigator_images/Navigator_HDK_noconnection.png
-  :align: center
-  :alt: Navigator application - No connection to HDK components
-
-Edit the appropriate config files in the ``src/etc/conf`` folder to point to the correct IP address for input and output ports. For example,
+The Navigator app uses your bundles and configuration to connect to your DCS components.  If your component instance is running on a different machine, you will need to update your configuration files in ``$GMT_LOCAL/etc/conf`` to point to the IP address of the target computer. You can quickly udpate all your config IPs like so:
 
 .. code-block:: bash
 
-    $ cd $GMT_LOCAL/modules/ocs_hdk_dcs/src/etc/conf/hdk_ctrl_pkg/hdk_main_ctrl/
+    $ cd $GMT_LOCAL/etc/conf/hdk_ctrl_pkg/hdk_main_ctrl/
     $ sed -i '' "s/172.0.0.1/172.16.10.31/g" hdk_main_ctrl_config.coffee
 
-Also note that the firewall on the machine running the control components need to be configured to allow data through the input/output ports that the UI is trying to connect to. Use ``firewall-cmd`` to open the applicable ports (for example, the range from 8122 to 8124):
+Also note that the firewall on the target machine will need to be configured to allow data through port range used by your component instance.  You can use the ``firewall-cmd`` to open the applicable ports (for example, the range from 8122 to 8124):
 
   .. code-block:: bash
 
@@ -581,65 +571,20 @@ Also note that the firewall on the machine running the control components need t
 
 See the Troubleshooting section in the :ref:`UI Framework Guidelines document <ui_fwk>` for more help with connection issues.
 
-The following screenshot shows that the configuration is correct, but the remote control components are not running.
-
-.. image:: navigator_images/Navigator_HDK_nodata.png
-  :align: center
-  :alt: Navigator application
-
-
 Running the Engineering UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Engineering UI uses your local bundles file (found in ``$GMT_LOCAL/etc/bundles``) to automatically create
-a visual representation of the modules being worked on by loading the input/output port definitions
-in the relevant Model files.
+The Navigator app uses your local bundles file (found in ``$GMT_LOCAL/etc/bundles``) to automatically create
+a visual representation of your model.  
 
-For now, the Engineering application needs to run in MacOS. Ensure that it has been configured correctly
-using the :ref:`Installation Guide document <installation>`.
-
-To launch the Navigator application, run this in the command line
-
-.. code-block:: bash
-
-    $ navigator
-
-This will launch the GUI as a child process of the CLI application.  To stop the GUI, stop the CLI app with ``CTRL + C``.
-
-.. warning::
-    Some users have noted an issue when running this command from $GMT_LOCAL. If the UI doesn't load properly, try running it from a different location.
-
-If necessary, see the Troubleshooting section in the :ref:`UI Framework Guidelines document <ui_fwk>`.
-
-On the left-hand side of the UI, use the tree structure to navigate to the HDK components. Selecting the appropriate component will provide a panel in the `Context` area with the input/output ports and state variables defined in the Model.
-
-.. image:: navigator_images/Navigator_HDK_connected.png
+.. image:: navigator_images/navigator_hdk_panel.png
   :align: center
-  :alt: Navigator application - HDK Engineering UI Context
+  :alt: Navigator application with HKD vis panel
+
+The model is shown as a navigation tree.  In the above image, the ``hdk_custom_view`` panel shown.  For more information on creating custom UI panels, see the :ref:`UI Framework Guidelines document <ui_fwk>`.
+
+To launch the visualization panel, find the `> Hdk Visualization Package > Example view for HDK` visualization panel in the menu and select it.  This will create a new tab in Navigator showing the panel. 
 
 .. note::
-    The **Context** area will optimistically render your model.  Not all model data can be rendered by the current version of the software. Some items like `properties` and detailed port views are currently not supported.
-
-
-Displaying a custom UI Panel
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The UI Framework allows the definition of custom UI panels for visualization of data using special UI components (for example, `panels` and `widgets`). Custom panels are defined in the Visualization Package of the Device Control System.
-
-The Navigator application can launch standalone panels with the ``--panel`` option to only focus in on the custom HDK panel:
-
-.. code-block:: bash
-
-    $ navigator --panel hdk_main_ctrl_view --port 9198
-
-The entire screen is now dedicated to displaying the custom UI panel.
-
-.. image:: navigator_images/Navigator_HDK_custom_panel.png
-  :align: center
-  :alt: Navigator application - HDK Custom UI Panel
-
-.. note::
-
-    The engineering app reserves port ``9199``.  Custom panel launches of the application need to specify a different port for each instance. The navigator app allows you to run instances of multiple panels at the same time.  However, you will need to specify a different ``--port`` for each instance to avoid port collision errors.  Also, note that the navigator app will reuse the internal data server for multiple instances, so if you close the initial instance, the data server may become unavailable for the other panels.
-
-For more information on creating custom UI panels, see the :ref:`UI Framework Guidelines document <ui_fwk>`.
+    
+    The HDK UI package needs to exist in your ``$GMT_LOCAL/lib/js`` folder in order for Navigator to load it.  This might be a separate download.
