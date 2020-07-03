@@ -91,7 +91,7 @@ The following RPM packages should be installed by an Administrative user for use
   .. code-block:: bash
 
     $ sudo dnf install -y xorg-x11-xauth urw-fonts wget net-tools pciutils
-    $ sudo dnf install -y strace rpl bash-completion sed
+    $ sudo dnf install -y strace bash-completion sed
 
 2. Install Development Tools
 
