@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.7
+                1.8
               </div>
             
           
@@ -101,6 +101,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Release Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Release 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-8-0">Contents of release 1.8.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-7-0">Contents of release 1.7.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-6-2">Contents of release 1.6.2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-6-1">Contents of release 1.6.1</a></li>
@@ -186,12 +187,143 @@
             
   <div class="section" id="release-1">
 <span id="id1"></span><h1>Release 1<a class="headerlink" href="#release-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contents-of-release-1-8-0">
+<h2>Contents of release 1.8.0<a class="headerlink" href="#contents-of-release-1-8-0" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Release distribution and installation:</p>
+<ul class="simple">
+<li>Updated mechanism for packaging and distributing the Navigator application for MacOS and Linux</li>
+</ul>
+</li>
+<li><p class="first">Third-party libraries and Applications</p>
+<ul class="simple">
+<li>Updated to Node 12.16.1</li>
+<li>Updated the following node modules to newer versions:<ul>
+<li>coffeescript 2.5.1</li>
+<li>mongodb 4.2</li>
+<li>nanomsg 4.1.0</li>
+<li>zeromq 5.2.0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">Development Framework</p>
+<ul class="simple">
+<li>New Data I/O and Connector definitions implemented on Node.js and C++</li>
+<li>Update ICD model and docgen templates for generating ICD documents</li>
+<li>Add generation of automated interface tests</li>
+<li>Code Generation updates on Node.js:<ul>
+<li>Update code generation for the new Data I/O and connector model definitions</li>
+<li>Add code generation for StateMachine and StructType data types</li>
+<li>Add code generation for Enums (#178)</li>
+<li>Fixed issue where code generation created duplicate “require” statements (#177)</li>
+<li>Fixed issue in code generation where components were included in an application that did not match the target language (#175)</li>
+</ul>
+</li>
+<li>Code Generation updates on C++:<ul>
+<li>Update code generation for the new Data I/O and connector definitions</li>
+<li>Update code generation for Faults and Alarms</li>
+<li>Updated code generation of HW Adapter to allow having data objects that are primitive types or array elements instead of structs when the “field” parameter of a data object in the data_object_map collection is left empty (#169)</li>
+<li>Fixed issue in C++ code generation of default values for arrays of state machines (#156)</li>
+<li>Fixed issue in C++ code generation of path values for data types (#163)</li>
+<li>Fixed issue in C++ code generation of default values for data types defined in the IO Framework (#164)</li>
+<li>Fixed issue in C++ code generation where the dimensions of a 2D array was reversed (#167)</li>
+<li>Removed GMT namespace from I/O Framework state machines (#172)</li>
+<li>Fixed issue where enums in C++ were not properly initialized (#176)</li>
+</ul>
+</li>
+<li>Configuration files:<ul>
+<li>Updated generation of configuration files for new Data I/O and connector definitions</li>
+<li>Fixed issue in generation of port numbers in configuration files (#157)</li>
+<li>Fixed issue in generation of state variable ports in configuration files (#165)</li>
+<li>Fixed issue in generation of large default values in configuration files (#168)</li>
+</ul>
+</li>
+<li>Improved error handling in ‘grs compile’ when the URI has not been specified properly in the model (#143)</li>
+<li>Update ‘grs compile’ to compile all the configuration files of a module</li>
+<li>Added check option in ‘grs compile’ to check the consistency of the compiled files</li>
+</ul>
+</li>
+<li><p class="first">Core Frameworks</p>
+<ul class="simple">
+<li>Updated Node.js implementation of Core Framework:<ul>
+<li>New implementation of Data I/O and Connector strategy</li>
+<li>Added timeout option to grs get, set and inspect commands</li>
+<li>Added monitoring of computing resources, such as CPU and memory</li>
+<li>CPU and memory performance optimizations</li>
+<li>Updated model definition and implementation of Enum data types</li>
+<li>Updated control_mode_sv state machine implementation</li>
+<li>Updated OpStateFSM, AlarmFSM and FaultFSM model representation to match current implementation</li>
+<li>Added performance metrics for Component Behaviors (step execution average, jitter, etc)</li>
+<li>Added Query API to service adapters</li>
+</ul>
+</li>
+<li>Updated C++ implementation of Core Framework:<ul>
+<li>New implementation of Data I/O and Connector strategy, updated to match Node.js Core Framework</li>
+<li>Added Fault Management</li>
+<li>Added Alarm Management</li>
+<li>Component distributed asynchronous communication</li>
+<li>Updated op_state_sv state machine implementation</li>
+<li>Updated Component Service Access (container) handling of alarm, fault and configuration events</li>
+</ul>
+</li>
+<li>Added Node.js implementation of OPC-UA Adapter with client and server implementation examples</li>
+<li>Added new database command to the <cite>grs</cite> tool to query and update the Core Services databases</li>
+<li>EtherCAT Hardware Adapter updates:<ul>
+<li>Support the ability to set any EtherCAT slave state from the master (including OFF, PREOP, OP, SAFEOP, INIT and BOOT)</li>
+<li>Added ability to update slave firmware from the master</li>
+<li>Support definition of domains with different data rates</li>
+<li>Fixed PDO mapping</li>
+</ul>
+</li>
+<li>Control Framework updated to sync with Node.js Core Framework</li>
+<li>Updated Persistence Framework:<ul>
+<li>Updated mongodb driver</li>
+<li>Added database connection monitoring</li>
+</ul>
+</li>
+<li>Test Framework updated to sync with Node.js Core Framework</li>
+<li>UI Framework implementation:<ul>
+<li>Abstraction of UI framework components from the Navigator application</li>
+<li>Updated data connectors to synchronize with Core Frameworks</li>
+<li>Added basic 2-D Plot widget for time-series display</li>
+<li>Data Caching for widgets that are temporarily not visible</li>
+<li>Added a basic Telemetry Viewer UI Element with filtering capability</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">Core Services</p>
+<blockquote>
+<div><ul class="simple">
+<li>Add support for Query API to Core Service Servers</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Implementation examples</p>
+<ul class="simple">
+<li>The HDK example has been updated to sync with the new Core Frameworks</li>
+<li>The ISample example has been updated to sync with the new Core Frameworks</li>
+</ul>
+</li>
+<li><p class="first">Documentation: Software Development</p>
+<ul class="simple">
+<li>Minor updates to the <code class="docutils literal"><span class="pre">Installing</span> <span class="pre">the</span> <span class="pre">SDK</span></code> and <code class="docutils literal"><span class="pre">Upgrade</span></code> pages</li>
+<li>Replaced the online version of the Software and Controls Standards with a download link for the released version of Rev.A</li>
+</ul>
+</li>
+<li><p class="first">Known Issues:</p>
+<ul class="simple">
+<li>Validate command has not been updated yet to correctly validate the new Connector implementation</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="contents-of-release-1-7-0">
 <h2>Contents of release 1.7.0<a class="headerlink" href="#contents-of-release-1-7-0" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Release distribution and installation:<ul>
 <li>Support added for CentOS 8</li>
-<li>Updated mechanism for packaging and distributing the Navigator application for MacOS and Linux</li>
 </ul>
 </li>
 <li>Core Frameworks:<ul>
@@ -700,7 +832,7 @@ other information as the development progresses.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, contributors.
+        &copy; Copyright 2020, contributors.
 
     </p>
   </div>
@@ -722,7 +854,7 @@ other information as the development progresses.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.7.0',
+            VERSION:'1.8.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

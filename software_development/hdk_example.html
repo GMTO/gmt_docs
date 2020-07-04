@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.7
+                1.8
               </div>
             
           
@@ -373,9 +373,7 @@ $ gds gen hdk_dcs
 <h3>12.3.4. Compiling Configuration Files<a class="headerlink" href="#compiling-configuration-files" title="Permalink to this headline">¶</a></h3>
 <p>Configuration files should be compiled for the C++ controllers. This can be done with:</p>
 <div class="code bash highlight-default"><div class="highlight"><pre><span></span>$ gds install  # Copies the configuration file to $GMT_LOCAL/etc/conf/
-$ grs compile -i hdk_hw1_adapter
-$ grs compile -i hdk_main_ctrl
-$ grs compile --input $GMT_LOCAL/etc/conf/hdk_dcs/hdk_hw1_adapter_ethercat_default_conf.coffee --output $GMT_LOCAL/etc/conf/hdk_dcs/hdk_hw1_adapter_ethercat_default_conf.cfg
+$ grs compile hdk_dcs
 </pre></div>
 </div>
 </div>
@@ -721,7 +719,7 @@ a visual representation of your model.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, contributors.
+        &copy; Copyright 2020, contributors.
 
     </p>
   </div>
@@ -743,7 +741,7 @@ a visual representation of your model.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.7.0',
+            VERSION:'1.8.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

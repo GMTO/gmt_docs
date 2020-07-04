@@ -4,18 +4,5 @@
 Software and Controls Standards
 -------------------------------
 
-.. toctree::
+:download:`GMT-REF-00029 GMT Software and Controls Standards Rev.A<gmt_ref_00029_swc_standards_revA.pdf>`
 
-   revision_log
-
-.. toctree::
-   :maxdepth: 1
-   :numbered:
-
-   introduction/introduction
-   references/references
-   reference_architecture/dcs_reference_architecture
-   lifecycle/dcs_lifecycle
-   specifications/dcs_specifications
-   non_conformances/non_conformances
-   appendix/appendix

@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.7
+                1.8
               </div>
             
           
@@ -107,14 +107,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#development-platform">1.1. Development Platform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#server-configuration">1.2. Server Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#required-hardware">1.2.1. Required Hardware</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#operating-system">1.2.2. Operating System</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">1.2.2. Operating System</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#repository-configuration">1.2.3. Repository Configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#package-list">1.2.4. Package List</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#node-installation">1.2.5. Node Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mongodb-configuration">1.2.6. MongoDB Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ethercat-configuration">1.2.7. Ethercat Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ethercat-configuration">1.2.7. EtherCAT Configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#network-time-protocol-configuration">1.2.8. Network Time Protocol Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#precision-time-protocol-configuration-optional">1.2.9. Precision Time Protocol Configuration (optional)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#software-development-kit-sdk">1.3. Software Development Kit (SDK)</a></li>
@@ -203,11 +202,11 @@
 <span id="installation"></span><h1>1. Installing the SDK<a class="headerlink" href="#installing-the-sdk" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="development-platform">
 <h2>1.1. Development Platform<a class="headerlink" href="#development-platform" title="Permalink to this headline">¶</a></h2>
-<p>The development platform is no longer distributed as a standalone ISO file. Instead, the following guide is provided to assist with hardware, operating system and third-party software configuration required for running the OCS SDK. Some key areas, such as disk partitioning, user authentication and NFS mounting of home directories, depend on individual factors at each partner institution and should therefore be considered examples only.</p>
+<p>The development platform is no longer distributed as a standalone ISO file. Instead, the following guide is provided to assist with hardware, operating system and third-party software configuration required for running the OCS SDK. Some key areas, such as disk partitioning, user authentication and NFS mounting of home directories, depending on individual factors at each partner institution and should, therefore, be considered examples only.</p>
 <p>Benefits of this approach, versus distributing the complete ISO, include the ability to support different network, hardware and software platforms used for software development by different partner institutions, as well as allowing for separate upgrade schedules for the Development Platform and Software Development Kit without affecting ongoing subsystem software development.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">At GMTO, these instructions are formalized using Kickstart files and installed via the network using tools such as Cobbler. The GMTO DevOps team can provide assistance in setting up a similar system for development at partner institutions, if required.</p>
+<p class="last">At GMTO, these instructions are formalized using Kickstart files and installed via the network using tools such as Cobbler. The GMTO DevOps team can provide assistance in setting up a similar system for development at partner institutions if required.</p>
 </div>
 <p>The Observatory Control System (OCS) is designed to be a distributed system with device control components running on real-time computers, connected to common services and user interface components via the control network.</p>
 <dl class="docutils">
@@ -219,6 +218,7 @@
 <dt>For user interfaces, the following operating systems are supported:</dt>
 <dd><ul class="first last simple">
 <li>MacOS</li>
+<li>CentOS 8</li>
 </ul>
 </dd>
 </dl>
@@ -245,12 +245,35 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="operating-system">
-<h3>1.2.2. Operating System<a class="headerlink" href="#operating-system" title="Permalink to this headline">¶</a></h3>
-<p>Install the Centos 8 Operating System. Change the partitions filesystem to ext4 if using the realtime kernel.</p>
+<div class="section" id="id1">
+<h3>1.2.2. Operating System<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Install the Centos 8 Operating System. A <cite>minimal</cite> server installation is sufficient for the use of the GMT SDK.
+Change the filesystem of the partitions to ext4 if using the real-time kernel.</li>
+</ol>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">If you plan to develop real-time components, the Linux kernel requires the root partition to be an <strong>ext4</strong> file system. Please ensure that this is configured correctly in the disk partitioning settings.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Due to a <a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1812120">bug</a>, openssh-server should temporarily not be
+upgraded to any version greater than 8.0p1-3.el8. To fix the openssh-server version, run this command right after the
+Operating System installation:</p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Disable firewall</li>
+</ol>
+<blockquote>
+<div></div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Disable SELinux</li>
+</ol>
+<blockquote>
+<div></div></blockquote>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Make sure an external firewall protects your server</p>
 </div>
 </div>
 <div class="section" id="repository-configuration">
@@ -284,7 +307,7 @@
 </div>
 <div class="section" id="package-list">
 <h3>1.2.4. Package List<a class="headerlink" href="#package-list" title="Permalink to this headline">¶</a></h3>
-<p>The following RPM packages should be installed by an Administrative user for use in the development environment:</p>
+<p>An Administrative user should install the following RPM packages for use in the development environment:</p>
 <ol class="arabic simple">
 <li>Install Common OS Utilities</li>
 </ol>
@@ -327,10 +350,10 @@ $ sudo alternatives --set python /usr/bin/python2
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Install <strong>Node version 10</strong>:</li>
+<li>Install <strong>Node version 12</strong>:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf module install -y nodejs:10
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf module install -y nodejs:12
 </pre></div>
 </div>
 </div></blockquote>
@@ -375,14 +398,6 @@ $ sudo alternatives --set python /usr/bin/python2
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>Configure the firewall</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo firewall-offline-cmd --direct --add-rule ipv4 filter INPUT <span class="m">0</span> -p tcp --dport <span class="m">27017</span> -j ACCEPT
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="5">
 <li>Enable the MongoDB service</li>
 </ol>
 <blockquote>
@@ -391,7 +406,7 @@ $ sudo systemctl start mongod
 </pre></div>
 </div>
 </div></blockquote>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple" start="5">
 <li>Check that the MongoDB service is up</li>
 </ol>
 <blockquote>
@@ -401,8 +416,8 @@ $ sudo systemctl start mongod
 </div></blockquote>
 </div>
 <div class="section" id="ethercat-configuration">
-<h3>1.2.7. Ethercat Configuration<a class="headerlink" href="#ethercat-configuration" title="Permalink to this headline">¶</a></h3>
-<p>EtherCAT is a high-speed fieldbus communication system used for real-time control. The following configuration steps should be used as a guide when configuring EtherCAT communications.</p>
+<h3>1.2.7. EtherCAT Configuration<a class="headerlink" href="#ethercat-configuration" title="Permalink to this headline">¶</a></h3>
+<p>EtherCAT is a high-speed Fieldbus communication system used for real-time control. The following configuration steps should be used as a guide when configuring EtherCAT communications.</p>
 <ol class="arabic simple">
 <li>Install the real-time kernel and relevant packages</li>
 </ol>
@@ -413,7 +428,7 @@ $ sudo systemctl start mongod
 </div></blockquote>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This Linux kernel requires the root partition to be an <strong>ext4</strong> file system. Otherwise, your machine will not boot.</p>
+<p class="last">Before installing the RT kernel, check restrictions on <span class="xref std std-ref">Operating System</span> warnings.</p>
 </div>
 <ol class="arabic simple" start="2">
 <li>Select the Ethernet interface to be used for EtherCAT communication (e.g. enp4s0) and edit the corresponding configuration file (e.g. <code class="docutils literal"><span class="pre">/etc/sysconfig/network-scripts/ifcfg-enp4s0</span></code>) to set the following options:</li>
@@ -425,7 +440,7 @@ $ sudo systemctl start mongod
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Check the Hardware Address of the selected EtherCAT network interface</li>
+<li>Check the Hardware Address (MAC) of the selected EtherCAT network interface</li>
 </ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ ifconfig
@@ -440,7 +455,7 @@ $ sudo systemctl start mongod
 <span class="nv">MASTER0_BACKUP</span><span class="o">=</span><span class="s2">&quot;&lt;mac_address_2&gt;&quot;</span>  <span class="c1"># optional line</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal"><span class="pre">&lt;mac_address_1&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;mac_address_2&gt;</span></code> are the two hardware addresses associated with the Ethercat network interface communicating with the Ethercat ring (redundant topology). If you you prefer using a linear topology (non redundant), comment or remove the second line (<code class="docutils literal"><span class="pre">MASTER0_BACKUP=&quot;&lt;mac_address_2&gt;&quot;</span></code>).</p>
+<p>Where <code class="docutils literal"><span class="pre">&lt;mac_address_1&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;mac_address_2&gt;</span></code> are the two hardware addresses associated with the Ethercat network interface communicating with the Ethercat ring (redundant topology). If you prefer using a linear topology (non-redundant), comment or remove the second line (<code class="docutils literal"><span class="pre">MASTER0_BACKUP=&quot;&lt;mac_address_2&gt;&quot;</span></code>).</p>
 </div></blockquote>
 <ol class="arabic simple" start="5">
 <li>Edit <code class="docutils literal"><span class="pre">/usr/lib/systemd/system/ethercat.service</span></code> and uncomment the following line:</li>
@@ -473,8 +488,8 @@ $ sudo systemctl start ethercat
 <li>Add a new group and add the “gmto” user to it.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo groupadd -f -g <span class="m">2001</span> realtime
-$ sudo usermod --groups realtime gmto
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo groupadd -f -g <span class="m">2001</span> real-time
+$ sudo usermod --groups real-time gmto
 </pre></div>
 </div>
 </div></blockquote>
@@ -487,7 +502,7 @@ $ ethercat slaves
 </pre></div>
 </div>
 </div></blockquote>
-<p>If the “ethercat master” command does not produce the correct output, ensure that you’re currently running the real-time kernel. If the “ethercat slaves” command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
+<p>If the <code class="docutils literal"><span class="pre">ethercat</span> <span class="pre">master</span></code> command does not produce the correct output, ensure that you’re currently running the real-time kernel. If the <code class="docutils literal"><span class="pre">ethercat</span> <span class="pre">slaves</span></code> command produces no output, check that the ethernet cable is connected to the correct port as configured above.</p>
 </div>
 <div class="section" id="network-time-protocol-configuration">
 <h3>1.2.8. Network Time Protocol Configuration<a class="headerlink" href="#network-time-protocol-configuration" title="Permalink to this headline">¶</a></h3>
@@ -508,67 +523,18 @@ $ ethercat slaves
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="precision-time-protocol-configuration-optional">
-<h3>1.2.9. Precision Time Protocol Configuration (optional)<a class="headerlink" href="#precision-time-protocol-configuration-optional" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Install the necessary packages:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y linuxptp
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Edit <code class="docutils literal"><span class="pre">/etc/ptp4l.conf</span></code> and add the following options:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>global<span class="o">]</span>
-slaveOnly       <span class="m">1</span>
-verbose         <span class="m">1</span>
-time_stamping   software
-summary_interval <span class="m">6</span>
-<span class="o">[</span>enp3s0<span class="o">]</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p>where <code class="docutils literal"><span class="pre">[enp3s0]</span></code> should be set to the interface to use for PTP.</p>
 <ol class="arabic simple" start="3">
-<li>Edit <code class="docutils literal"><span class="pre">/etc/sysconfig/phc2sys</span></code> and add the following options:</li>
+<li>Check date/time servers</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">OPTIONS</span><span class="o">=</span><span class="s2">&quot;-a -r -u 60&quot;</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="4">
-<li>Edit <code class="docutils literal"><span class="pre">/etc/sysconfig/ptp4l</span></code> and add the following options:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">OPTIONS</span><span class="o">=</span><span class="s2">&quot;-f /etc/ptp4l.conf -i enp3s0&quot;</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="5">
-<li>Configure access through the firewall</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo firewall-offline-cmd --direct --add-rule ipv4 filter INPUT <span class="m">0</span> -p udp --dport <span class="m">319</span>:320 -j ACCEPT
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="6">
-<li>Enable the ptp service</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl <span class="nb">enable</span> ptp4l
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo chronyc sources
 </pre></div>
 </div>
 </div></blockquote>
 </div>
 </div>
 <div class="section" id="software-development-kit-sdk">
-<span id="sdk-install"></span><h2>1.3. Software Development Kit (SDK)<a class="headerlink" href="#software-development-kit-sdk" title="Permalink to this headline">¶</a></h2>
+<h2>1.3. Software Development Kit (SDK)<a class="headerlink" href="#software-development-kit-sdk" title="Permalink to this headline">¶</a></h2>
 <p>The Software Development Kit is distributed as a TAR file and can be downloaded from the GMTO release server.</p>
 <p>The SDK should be installed in a <strong>Global GMT Software Location</strong>, defined by the GMT_GLOBAL environment variable (default value: /opt/gmt). A <strong>Local Working Directory</strong>, defined by the GMT_LOCAL variable, is used as a unique workspace for individual developers. The local working directory typically resides underneath the /home/&lt;username&gt; directory.</p>
 <ol class="arabic simple">
@@ -583,17 +549,17 @@ summary_interval <span class="m">6</span>
 <li>Extract the TAR file in the /opt directory, into a new folder for the latest release:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt_release_1.7.0
-$ sudo tar -xzvf &lt;gmt-tar.gz&gt; -C /opt/gmt_release_1.7.0
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt_release_1.8.0
+$ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.8.0
 </pre></div>
 </div>
-<p>where &lt;gmt-tar.gz&gt; is the file downloaded in step 1.</p>
+<p>where gmt-sdk.tar.gz is the file downloaded in step 1.</p>
 </div></blockquote>
 <ol class="arabic simple" start="3">
 <li>Create a symbolic link from the <strong>Global GMT Software Location</strong> to the latest release:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -sfn gmt_release_1.7.0 /opt/gmt
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -sfn /opt/gmt_release_1.8.0 /opt/gmt
 </pre></div>
 </div>
 </div></blockquote>
@@ -604,7 +570,7 @@ $ sudo tar -xzvf &lt;gmt-tar.gz&gt; -C /opt/gmt_release_1.7.0
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir &lt;local_working_dir&gt;
 </pre></div>
 </div>
-<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, for example ~/work. The GMT software modules developed by the user are created in this folder.</p>
+<p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, for example, ~/work. The GMT software modules developed by the user are created in this folder.</p>
 </div></blockquote>
 <ol class="arabic simple" start="5">
 <li>Add the following lines to your .bash_profile (or .kshrc or .bashrc depending on your preferred shell)</li>
@@ -676,7 +642,7 @@ $ cp <span class="nv">$GMT_GLOBAL</span>/etc/bundles/ocs_local_bundle.coffee <sp
     ocs_local_bundle:   <span class="o">{</span>scope: <span class="s2">&quot;local&quot;</span>,  desc: <span class="s2">&quot;GMT iSample and HDK bundle&quot;</span><span class="o">}</span>
 </pre></div>
 </div>
-<p>Edit <strong>ocs_local_bundle.coffee</strong> to include the isample and HDK modules, or other modules that you are working on</p>
+<p>Edit <strong>ocs_local_bundle.coffee</strong> to include the ISample and HDK modules, or other modules that you are working on</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>module.exports <span class="o">=</span>
 name:      <span class="s2">&quot;local&quot;</span>
 desc:      <span class="s2">&quot;List of local development modules&quot;</span>
@@ -722,7 +688,7 @@ $ webpack
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, contributors.
+        &copy; Copyright 2020, contributors.
 
     </p>
   </div>
@@ -744,7 +710,7 @@ $ webpack
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.7.0',
+            VERSION:'1.8.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

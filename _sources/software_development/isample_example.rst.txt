@@ -9,6 +9,18 @@ a template that instrument developers can use as a model.
 .. note::
   The following instructions assume that the SDK has been installed and the Development Environment configured correctly according to the instructions in :ref:`installation` or :ref:`upgrade`.
 
+Configure git to access GMTO's repositories
+-------------------------------------------
+
+In order to access private repositories on Github, an account with access permissions should be set up.
+
+1. Log in in github and check if your user has access to the ISample repository: https://github.com/GMTO/ocs_isample_dcs
+   If a 404 error is shown when entering the ISample webpage, please contact us to solve the permission issues.
+
+   https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh
+2. Configure your GitHub account to access using a ssh a token:
+   https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+
 Clone the isample_dcs repository
 --------------------------------
 
@@ -24,13 +36,24 @@ will be:
 
 .. code-block:: bash
 
-  [WRN] [hdk_dcs] Module lib [hdk_dcs] not found, trying to load from source
-  [ERR] [hdk_dcs] model definition for module hdk_dcs not found
-  [ERR] [gds] module isample_dcs not defined in bundle ocs_sdk_bundle
-  [INF] [gds] clone module isample_dcs
-  [INF] [isample_dcs] Cloning module: isample_dcs
+  $ gds clone isample_dcs -d gmto
+    Cloning into 'ocs_isample_dcs'...
+    Username for 'https://github.com': <insert your github username here>
+    Password for 'https://<user>@github.com': <insert your github token here>
+    remote: Enumerating objects: 4, done.
+    remote: Counting objects: 100% (4/4), done.
+    remote: Compressing objects: 100% (4/4), done.
+    remote: Total 949 (delta 1), reused 0 (delta 0), pack-reused 945
+    Receiving objects: 100% (949/949), 143.21 KiB | 1.52 MiB/s, done.
+    Resolving deltas: 100% (565/565), done.
+    [WRN] [isample_dcs] Module lib [isample_dcs] not found, trying to load from source
+    [ERR] [isample_dcs] model definition for module isample_dcs not found
+    [WRN] [hdk_dcs] Module lib [hdk_dcs] not found, trying to load from source
+    [ERR] [hdk_dcs] model definition for module hdk_dcs not found
+    [INF] [gds] clone module isample_dcs
+    [INF] [isample_dcs] Cloning module: isample_dcs
 
-These warning are normal, the first two are because the hdk module is not installed yet,
+These warnings are normal, and the first two are because the hdk module is not installed yet,
 and the other one is generated because the isample_dcs is not defined in the SDK
 bundle. As it is included in the local bundle, the module is cloned successfully,
 as the two latest messages inform us.
@@ -40,14 +63,11 @@ Model Files
 -----------
 The model files can be found in the **$GMT_LOCAL/modules/ocs_isample_dcs/model/** folder.
 
-isample_core_if.coffee
-  Lists the connectors between the isample and GMT core systems
-
 isample_dcs.coffee
-  Lists the connectors between the supervisor layer and the component layer. For this example, these are limited to monitoring the heartbeat of each component.
+  Lists the connectors between the supervisor layer and the component layer, also lists the types to be generated during code generation.
 
 isample_dcs_def.coffee
-  High-level definition file, representing the WBS for the submodule. It lists the components and how many instances of each are required.
+  High-level definition file, representing the WBS for the submodule. It lists the components and how the code will be generated.
 
 isample_dcs_types.coffee
   Definitions of structs and data types used by the isample components.
@@ -56,7 +76,7 @@ isample_ctrl_pkg/isample_ctrl_fb.coffee
   Fieldbus definitions for the isample control package.
 
 isample_ctrl_pkg/isample_ctrl_pkg.coffee
-  Lists the connectors between components.
+  Describes the control package and lists the connectors between components of the package.
 
 isample_ctrl_pkg/isample_ctrl_super.coffee
   Definition of the *Control Supervisor* component. State variables, input and output ports are specified here. A single instance called **isample_ctrl_super** will be created.
@@ -65,10 +85,10 @@ isample_ctrl_pkg/isample_filter_wheel_ctrl.coffee
   Definition of the *Filter Wheel Controller* component. State variables, input and output ports are specified here. Two instances, called **isample_fw1_ctrl** and **isample_fw2_ctrl** will be created.
 
 isample_ctrl_pkg/isample_focus_ctrl.coffee
-  Definition of the *Focus Controller* component. State variables, input and output ports are specified here. A single instance called **isample_focus_ctrl** will be created.
+  Definition of the *Focus Controller* component. State variables, input and output ports are specified here. A single instance called **isample_focus1_ctrl** will be created.
 
 isample_ctrl_pkg/isample_hw_adapter.coffee
-  Definition of the *Hardware Adapter* component, used to interface with the isample Actuators and Sensors. State variables, input and output ports are specified here. A single instance called **isample_hw_ctrl** will be created.
+  Definition of the *Hardware Adapter* component used to interface with the isample Actuators and Sensors. State variables, input and output ports are specified here. A single instance called **isample_hw1_adapter** will be created.
 
 isample_ctrl_pkg/isample_temp_ctrl.coffee
   Definition of the *Temperature Controller* component. State variables, input and output ports are specified here. Two instances, called **isample_cryo_internal_temp_ctrl** and **isample_cryo_external_temp_ctrl** will be created.
@@ -78,7 +98,7 @@ isample_ctrl_pkg/isample_temp_ctrl.coffee
         Control                   Internal                     Hardware
        Supervisor               Temp Control                    Adapter
       +--------------+         +-------------+             +---------------+
-      |              |<--------|heartbeat    |             |               |
+      |              |<--------|             |             |               |
       |              |         |             |             |               |
       |              |         |  temperature|<------------|int temp       |
       |              |         +-------------+             |               |
@@ -86,7 +106,7 @@ isample_ctrl_pkg/isample_temp_ctrl.coffee
       |              |             External                |               |
       |              |           Temp Control              |               |
       |              |         +-------------+             |               |
-      |              |<--------|heartbeat    |             |               |
+      |              |<--------|             |             |               |
       |              |         |             |             |               |
       |              |         |  temperature|<------------|ext temp       |
       |              |         +-------------+             |               |
@@ -96,7 +116,7 @@ isample_ctrl_pkg/isample_temp_ctrl.coffee
       |              |           Filter Wheel              |               |
       |              |            Control 1                |               |
       |              |         +--------------+            |               |
-      |              |<--------|heartbeat     |            |               |
+      |              |<--------|              |            |               |
       |              |         |              |            |               |
       |              |         | motor control|----------->|fw1 control    |
       |              |         |   motor state|<-----------|fw1 state      |
@@ -105,7 +125,7 @@ isample_ctrl_pkg/isample_temp_ctrl.coffee
       |              |           Filter Wheel              |               |
       |              |            Control 2                |               |
       |              |         +--------------+            |               |
-      |              |<--------|heartbeat     |            |               |
+      |              |<--------|              |            |               |
       |              |         |              |            |               |
       |              |         | motor control|----------->|fw2 control    |
       |              |         |   motor state|<-----------|fw2 state      |
@@ -115,7 +135,7 @@ isample_ctrl_pkg/isample_temp_ctrl.coffee
       |              |                                     |               |
       |              |           Focus Control             |               |
       |              |         +--------------+            |               |
-      |              |<--------|heartbeat     |            |               |
+      |              |<--------|              |            |               |
       |              |         |              |            |               |
       |              |         |    hmi output|----------->|LEDs           |
       |              |         | motor control|----------->|focus control  |
@@ -123,7 +143,7 @@ isample_ctrl_pkg/isample_temp_ctrl.coffee
       |              |         |   motor state|<-----------|focus state    |
       |              |         +--------------+            |               |
       |              |                                     |               |
-      |              |<------------------------------------|heartbeat      |
+      |              |                                     |               |
       +--------------+                                     +---------------+
 
 
@@ -140,8 +160,7 @@ To generate the code skeleton from the model files, execute:
    $ gds gen isample_dcs
 
 This will generate the basic framework of source code and configuration files for each component.
-The generated source files will be located in the `src/` folder. It is possible that gds
-outputs some warning because there are missing modules which are defined in the
+The generated source files will be located in the `src/` folder. Gds may output some warnings because there are missing modules which are defined in the
 local bundle (in particular, the hdk). This is
 not a problem, and the code will be successfully generated.
 
@@ -243,10 +262,10 @@ where the struct `isample_motor_control` is defined as:
 The core component behavior is specified in the component cpp file. The component
 has a periodic thread that reads input from the input ports, runs the step
 function and then writes output to the output ports. Initially, the generated
-step function will check whether the component is correctly configured and if
+step function will check whether the component is correctly configured and, if
 so, will log the current step counter value.
 
-In the following examples we will replace the basic step functionality with
+In the following examples, we will replace the basic step functionality with
 simulated controller behavior.
 
 To edit the *Filter Wheel Controller* step function:
@@ -321,7 +340,7 @@ Installing the configuration
 .. _compil_config:
 
 The configuration files are autogenerated in the `$GMT_LOCAL/modules/ocs_isample_dcs/src/etc/conf` directory,
-but they need to be installed to `$GMT_LOCAL/etc/conf` in order to be used by
+but they need to be installed to `$GMT_LOCAL/etc/conf` to be used by
 the application.
 
 To install the configuration files, execute the following commands:
@@ -329,14 +348,7 @@ To install the configuration files, execute the following commands:
 .. code-block:: bash
 
    $ gds install isample_dcs
-   $ grs compile -i isample_cryo_external_temp_ctrl
-   $ grs compile -i isample_cryo_internal_temp_ctrl
-   $ grs compile -i isample_ctrl_super
-   $ grs compile -i isample_focus1_ctrl
-   $ grs compile -i isample_fw1_ctrl
-   $ grs compile -i isample_fw2_ctrl
-   $ grs compile -i isample_hw1_adapter
-
+   $ grs compile isample_dcs
 
 Running the Example
 -------------------
@@ -347,7 +359,7 @@ Start the logging and telemetry services:
    $ log_server &
    $ tele_server &
 
-Start the ISample Control Package application in the background
+Start the ISample Control Package application in the background.
 
 .. code-block:: bash
 
@@ -369,16 +381,16 @@ In a separate terminal (for example, `tty2`), **start the logging service client
 Telemetry Service
 ~~~~~~~~~~~~~~~~~
 
-In a separate terminal (for example `tty3`), **start the telemetry service client**.
+In a separate terminal, **start the telemetry service client**.
 
 .. code-block:: bash
 
    $ tele_client listen
 
-In this example, we don't filter, to show data for all monitors.
+In this example, we don't filter to show data for all monitors.
 The output can be filtered on substrings of the monitor name by specifying the
 topic to be a specific component type (``filter_wheel_ctrl``) or an output port
-name, such as ``position`` or ``heartbeat``. For example,
+name, such as ``position``. For example,
 
 .. code-block:: bash
 
@@ -389,12 +401,12 @@ will show only the values of the ``hmi_outputs`` monitor from ``isample_focus1_c
 Interacting with a component
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The `grs` command line application can be used to interact with Components.
+The `grs` command-line application can be used to interact with Components.
 Some of the functionalities provided by this application are querying the
 current value of a given Component feature (property, state variable, input
 or output), setting a value or inspecting the whole Component state.
 
-The `grs get` subcommand allows to query the current value of a feature. The
+The `grs get` subcommand allows us to query the current value of a feature. The
 syntax is
 
 .. code-block:: bash

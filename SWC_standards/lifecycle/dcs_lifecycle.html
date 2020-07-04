@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>4. DCS Life Cycle &mdash; GMT Software And Controls documentation</title>
+  <title>DCS Life Cycle &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -39,10 +39,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
-        <link rel="up" title="Software and Controls Standards" href="../index.html"/>
-        <link rel="next" title="5. DCS Specifications" href="../specifications/dcs_specifications.html"/>
-        <link rel="prev" title="3. DCS Reference Architecture" href="../reference_architecture/dcs_reference_architecture.html"/> 
+    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -74,7 +71,7 @@
             
             
               <div class="version">
-                1.7
+                1.8
               </div>
             
           
@@ -98,29 +95,10 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../release_notes/index.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../SWC_architecture/index.html">Architecture and Design</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Software and Controls Standards</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../revision_log.html">Revision Log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../introduction/introduction.html">1. Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../references/references.html">2. References</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reference_architecture/dcs_reference_architecture.html">3. DCS Reference Architecture</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4. DCS Life Cycle</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#system-life-cycle-view">4.1. System Life Cycle View</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#phasing-of-systems-and-software-reviews-draft">4.2. Phasing of Systems and Software Reviews (draft)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#life-cycle-activities">4.3. Life Cycle Activities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dcs-development">4.4. DCS Development</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gsc-simulator">4.5. GSC Simulator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#life-cycle-requirements">4.6. Life-Cycle Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#system-definition-files">4.7. System Definition Files</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../specifications/dcs_specifications.html">5. DCS Specifications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../non_conformances/non_conformances.html">6. Non-Conformances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../appendix/appendix.html">7. Appendix</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Software and Controls Standards</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../software_development/index.html">Software Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../data_products/index.html">Data Products</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../glossary/swc_sys_glossary.html">Software and Controls Acronyms and Definitions</a></li>
@@ -168,9 +146,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../index.html">Software and Controls Standards</a> &raquo;</li>
-        
-      <li>4. DCS Life Cycle</li>
+      <li>DCS Life Cycle</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -188,17 +164,17 @@
            <div itemprop="articleBody">
             
   <div class="section" id="dcs-life-cycle">
-<span id="lifecycle"></span><h1>4. DCS Life Cycle<a class="headerlink" href="#dcs-life-cycle" title="Permalink to this headline">¶</a></h1>
+<span id="lifecycle"></span><h1>DCS Life Cycle<a class="headerlink" href="#dcs-life-cycle" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="system-life-cycle-view">
-<h2>4.1. System Life Cycle View<a class="headerlink" href="#system-life-cycle-view" title="Permalink to this headline">¶</a></h2>
+<h2>System Life Cycle View<a class="headerlink" href="#system-life-cycle-view" title="Permalink to this headline">¶</a></h2>
 <p>This chapter specifies the DCS life cycle and development process. The DCS
-lifecycle is divided in four main phases as illustrated in <a class="reference internal" href="#lifecycle-phases"><span class="std std-numref">Figure 4.19</span></a>. Each phase is characterized by the definition of its inputs
+lifecycle is divided in four main phases as illustrated in <code class="xref std std-numref docutils literal"><span class="pre">Figure</span> <span class="pre">%s</span></code>. Each phase is characterized by the definition of its inputs
 and outputs. The outputs for one phase are used as inputs to the next phase with
 the addition of other applicable GMTO documents. These phases shall be connected
 with the controlled plant milestones.</p>
 <div class="figure" id="id3">
 <span id="lifecycle-phases"></span><img alt="../../_images/lifecycle_phases.png" src="../../_images/lifecycle_phases.png" />
-<p class="caption"><span class="caption-number">Fig. 4.19 </span><span class="caption-text">Lifecycle Phases</span></p>
+<p class="caption"><span class="caption-text">Lifecycle Phases</span></p>
 </div>
 <p>The life cycle phases are:</p>
 <blockquote>
@@ -233,7 +209,7 @@ and integrated commissioning.</li>
 </div></blockquote>
 </div>
 <div class="section" id="phasing-of-systems-and-software-reviews-draft">
-<h2>4.2. Phasing of Systems and Software Reviews (draft)<a class="headerlink" href="#phasing-of-systems-and-software-reviews-draft" title="Permalink to this headline">¶</a></h2>
+<h2>Phasing of Systems and Software Reviews (draft)<a class="headerlink" href="#phasing-of-systems-and-software-reviews-draft" title="Permalink to this headline">¶</a></h2>
 <p>The  ESA Software Engineering Handbook ECSS-E-HB-40A issued in December 2013,
 identifies the relations between system and the software reviews:</p>
 <p>“The SWRR is a non-mandatory review anticipating the Software PDR addressing the
@@ -247,15 +223,15 @@ infrastructure based on a reference architecture, the SRR and the QR are not
 always conducted.”</p>
 <div class="figure" id="id4">
 <img alt="../../_images/reviews_stages1.png" src="../../_images/reviews_stages1.png" />
-<p class="caption"><span class="caption-number">Fig. 4.20 </span><span class="caption-text">Review Stages: Relation between Ground Segment and Ground Software Reviews</span></p>
+<p class="caption"><span class="caption-text">Review Stages: Relation between Ground Segment and Ground Software Reviews</span></p>
 </div>
 <div class="figure" id="id5">
 <img alt="../../_images/reviews_stages2.png" src="../../_images/reviews_stages2.png" />
-<p class="caption"><span class="caption-number">Fig. 4.21 </span><span class="caption-text">Review Stages: Relation between System and Flight Software Reviews</span></p>
+<p class="caption"><span class="caption-text">Review Stages: Relation between System and Flight Software Reviews</span></p>
 </div>
 </div>
 <div class="section" id="life-cycle-activities">
-<h2>4.3. Life Cycle Activities<a class="headerlink" href="#life-cycle-activities" title="Permalink to this headline">¶</a></h2>
+<h2>Life Cycle Activities<a class="headerlink" href="#life-cycle-activities" title="Permalink to this headline">¶</a></h2>
 <p>The following activities shall be performed for all the DCS Components:</p>
 <blockquote>
 <div><ul class="simple">
@@ -286,7 +262,7 @@ Mealy state machine.</li>
 </div></blockquote>
 </div>
 <div class="section" id="dcs-development">
-<span id="id1"></span><h2>4.4. DCS Development<a class="headerlink" href="#dcs-development" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>DCS Development<a class="headerlink" href="#dcs-development" title="Permalink to this headline">¶</a></h2>
 <p>Operation support functions are provided by components that implement a
 specialized plugin interface. (e.g. observing tool plugins or quality monitoring
 plugins). The GMT Observatory Frameworks are intended to be used by specializing
@@ -295,7 +271,7 @@ skeleton o a component implementation from the specification of its interface.</
 <p>Table 4‑1 describes three common framework use cases and the functionality
 provided by the frameworks involved.</p>
 <table border="1" class="docutils" id="id6">
-<span id="framework-use-cases"></span><caption><span class="caption-number">Table 4.9 </span><span class="caption-text">Framework Typical Use Cases</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<span id="framework-use-cases"></span><caption><span class="caption-text">Framework Typical Use Cases</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="20%" />
 <col width="22%" />
@@ -369,7 +345,7 @@ visualization components</td>
 </table>
 </div>
 <div class="section" id="gsc-simulator">
-<h2>4.5. GSC Simulator<a class="headerlink" href="#gsc-simulator" title="Permalink to this headline">¶</a></h2>
+<h2>GSC Simulator<a class="headerlink" href="#gsc-simulator" title="Permalink to this headline">¶</a></h2>
 <p>The GCS Simulator is a system supplied by GMTO as part of the development kit in
 order to provide the DCS with a subset of the GMT Software and Controls Core
 Subsystems before the CSS is integrated into the GMT system on-site. The subset
@@ -395,7 +371,7 @@ GCS system.</li>
 </div></blockquote>
 </div>
 <div class="section" id="life-cycle-requirements">
-<h2>4.6. Life-Cycle Requirements<a class="headerlink" href="#life-cycle-requirements" title="Permalink to this headline">¶</a></h2>
+<h2>Life-Cycle Requirements<a class="headerlink" href="#life-cycle-requirements" title="Permalink to this headline">¶</a></h2>
 <p>GMTO follows an Agile development process with emphasis in early continuous integration of DCS software. DCS software shall be delivered regularly to the GMTO Software Repository. The following requirements define the integration strategy for DCS components.</p>
 <p><strong>SWC-DCS-0001: DCS release plan</strong></p>
 <blockquote>
@@ -466,7 +442,7 @@ document (GMT-SE-DOC-00003)</div></blockquote>
 documentation shall be delivered.</div></blockquote>
 </div>
 <div class="section" id="system-definition-files">
-<span id="id2"></span><h2>4.7. System Definition Files<a class="headerlink" href="#system-definition-files" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>System Definition Files<a class="headerlink" href="#system-definition-files" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../../SWC_architecture/process/software_development_process.html#subsystem-specification-and-modeling"><span class="std std-ref">System Definition Files</span></a> (SDF) capture
 the formal specification of a DCS. SDF are writen in a Domain Specific Language.
 The GMT Software and Controls documenation contains an <a class="reference internal" href="../../software_development/development/specification/specification.html#dcs-spec-example"><span class="std std-ref">example</span></a>
@@ -476,7 +452,7 @@ of a DCS specification.</p>
 <div>The following diagram describes the DCS implementation strategy:</div></blockquote>
 <div class="figure" id="id7">
 <img alt="../../_images/dcs_implementation_strategy.png" src="../../_images/dcs_implementation_strategy.png" />
-<p class="caption"><span class="caption-number">Fig. 4.22 </span><span class="caption-text">DCS Implementation Strategy</span></p>
+<p class="caption"><span class="caption-text">DCS Implementation Strategy</span></p>
 </div>
 </div>
 </div>
@@ -489,21 +465,12 @@ of a DCS specification.</p>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../specifications/dcs_specifications.html" class="btn btn-neutral float-right" title="5. DCS Specifications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../reference_architecture/dcs_reference_architecture.html" class="btn btn-neutral" title="3. DCS Reference Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, contributors.
+        &copy; Copyright 2020, contributors.
 
     </p>
   </div>
@@ -525,7 +492,7 @@ of a DCS specification.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.7.0',
+            VERSION:'1.8.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -3,13 +3,135 @@
 Release 1
 =========
 
+Contents of release 1.8.0
+-------------------------
+
+- Release distribution and installation:
+
+  - Updated mechanism for packaging and distributing the Navigator application for MacOS and Linux
+
+- Third-party libraries and Applications
+
+  - Updated to Node 12.16.1
+  - Updated the following node modules to newer versions:
+
+    - coffeescript 2.5.1
+    - mongodb 4.2
+    - nanomsg 4.1.0
+    - zeromq 5.2.0
+
+- Development Framework
+
+  - New Data I/O and Connector definitions implemented on Node.js and C++
+  - Update ICD model and docgen templates for generating ICD documents
+  - Add generation of automated interface tests
+
+  - Code Generation updates on Node.js:
+ 
+    - Update code generation for the new Data I/O and connector model definitions
+    - Add code generation for StateMachine and StructType data types
+    - Add code generation for Enums (#178)
+    - Fixed issue where code generation created duplicate “require” statements (#177)
+    - Fixed issue in code generation where components were included in an application that did not match the target language (#175)
+
+  - Code Generation updates on C++:
+
+    - Update code generation for the new Data I/O and connector definitions
+    - Update code generation for Faults and Alarms
+    - Updated code generation of HW Adapter to allow having data objects that are primitive types or array elements instead of structs when the "field" parameter of a data object in the data_object_map collection is left empty (#169)
+    - Fixed issue in C++ code generation of default values for arrays of state machines (#156)
+    - Fixed issue in C++ code generation of path values for data types (#163)
+    - Fixed issue in C++ code generation of default values for data types defined in the IO Framework (#164)
+    - Fixed issue in C++ code generation where the dimensions of a 2D array was reversed (#167)
+    - Removed GMT namespace from I/O Framework state machines (#172)
+    - Fixed issue where enums in C++ were not properly initialized (#176)
+
+  - Configuration files:
+
+    - Updated generation of configuration files for new Data I/O and connector definitions
+    - Fixed issue in generation of port numbers in configuration files (#157)
+    - Fixed issue in generation of state variable ports in configuration files (#165)
+    - Fixed issue in generation of large default values in configuration files (#168)
+ 
+  - Improved error handling in ‘grs compile’ when the URI has not been specified properly in the model (#143)
+  - Update ‘grs compile’ to compile all the configuration files of a module
+  - Added check option in ‘grs compile’ to check the consistency of the compiled files
+
+- Core Frameworks
+
+  - Updated Node.js implementation of Core Framework:
+
+    - New implementation of Data I/O and Connector strategy
+    - Added timeout option to grs get, set and inspect commands
+    - Added monitoring of computing resources, such as CPU and memory
+    - CPU and memory performance optimizations
+    - Updated model definition and implementation of Enum data types
+    - Updated control_mode_sv state machine implementation
+    - Updated OpStateFSM, AlarmFSM and FaultFSM model representation to match current implementation
+    - Added performance metrics for Component Behaviors (step execution average, jitter, etc)
+    - Added Query API to service adapters
+
+  - Updated C++ implementation of Core Framework:
+
+    - New implementation of Data I/O and Connector strategy, updated to match Node.js Core Framework
+    - Added Fault Management
+    - Added Alarm Management
+    - Component distributed asynchronous communication
+    - Updated op_state_sv state machine implementation
+    - Updated Component Service Access (container) handling of alarm, fault and configuration events
+
+  - Added Node.js implementation of OPC-UA Adapter with client and server implementation examples 
+  - Added new database command to the `grs` tool to query and update the Core Services databases
+
+  - EtherCAT Hardware Adapter updates:
+
+    - Support the ability to set any EtherCAT slave state from the master (including OFF, PREOP, OP, SAFEOP, INIT and BOOT)
+    - Added ability to update slave firmware from the master
+    - Support definition of domains with different data rates 
+    - Fixed PDO mapping
+
+  - Control Framework updated to sync with Node.js Core Framework
+
+  - Updated Persistence Framework:
+
+    - Updated mongodb driver
+    - Added database connection monitoring
+
+  - Test Framework updated to sync with Node.js Core Framework
+
+  - UI Framework implementation:
+
+    - Abstraction of UI framework components from the Navigator application
+    - Updated data connectors to synchronize with Core Frameworks
+    - Added basic 2-D Plot widget for time-series display
+    - Data Caching for widgets that are temporarily not visible
+    - Added a basic Telemetry Viewer UI Element with filtering capability
+
+- Core Services
+
+    - Add support for Query API to Core Service Servers
+
+- Implementation examples
+
+  - The HDK example has been updated to sync with the new Core Frameworks
+  - The ISample example has been updated to sync with the new Core Frameworks
+
+- Documentation: Software Development
+
+  - Minor updates to the ``Installing the SDK`` and ``Upgrade`` pages
+  - Replaced the online version of the Software and Controls Standards with a download link for the released version of Rev.A
+
+- Known Issues:
+
+  - Validate command has not been updated yet to correctly validate the new Connector implementation
+
+
 Contents of release 1.7.0
 -------------------------
 
 - Release distribution and installation:
 
   - Support added for CentOS 8
-  - Updated mechanism for packaging and distributing the Navigator application for MacOS and Linux
 
 - Core Frameworks:
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3. DCS Reference Architecture &mdash; GMT Software And Controls documentation</title>
+  <title>DCS Reference Architecture &mdash; GMT Software And Controls documentation</title>
   
 
   
@@ -39,10 +39,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/>
-        <link rel="up" title="Software and Controls Standards" href="../index.html"/>
-        <link rel="next" title="4. DCS Life Cycle" href="../lifecycle/dcs_lifecycle.html"/>
-        <link rel="prev" title="2. References" href="../references/references.html"/> 
+    <link rel="top" title="GMT Software And Controls documentation" href="../../index.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -74,7 +71,7 @@
             
             
               <div class="version">
-                1.7
+                1.8
               </div>
             
           
@@ -98,27 +95,10 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../release_notes/index.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../SWC_architecture/index.html">Architecture and Design</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Software and Controls Standards</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../revision_log.html">Revision Log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../introduction/introduction.html">1. Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../references/references.html">2. References</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3. DCS Reference Architecture</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#context">3.1. Context</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#component-architecture">3.2. Component Architecture</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dcs-product-structure-modeling">3.3. DCS Product Structure Modeling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#instrument-software-and-controls-integration">3.4. Instrument Software and Controls Integration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dcs-deployment">3.5. DCS Deployment</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../lifecycle/dcs_lifecycle.html">4. DCS Life Cycle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../specifications/dcs_specifications.html">5. DCS Specifications</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../non_conformances/non_conformances.html">6. Non-Conformances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../appendix/appendix.html">7. Appendix</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Software and Controls Standards</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../software_development/index.html">Software Development</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../data_products/index.html">Data Products</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../glossary/swc_sys_glossary.html">Software and Controls Acronyms and Definitions</a></li>
@@ -166,9 +146,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../index.html">Software and Controls Standards</a> &raquo;</li>
-        
-      <li>3. DCS Reference Architecture</li>
+      <li>DCS Reference Architecture</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -186,7 +164,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="dcs-reference-architecture">
-<span id="id1"></span><h1>3. DCS Reference Architecture<a class="headerlink" href="#dcs-reference-architecture" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>DCS Reference Architecture<a class="headerlink" href="#dcs-reference-architecture" title="Permalink to this headline">¶</a></h1>
 <p>This chapter gives a description of the GMT Device Control Subsystems (DCS)
 terminology and architecture, its design philosophy and its main functions.  The
 <a class="reference internal" href="../../SWC_architecture/index.html#slpdr"><span class="std std-ref">Software and Controls Architecture and Design</span></a> provides an
@@ -216,12 +194,12 @@ non-nominal scenarios.</li>
 </ul>
 </div></blockquote>
 <div class="section" id="context">
-<span id="dcs-context"></span><h2>3.1. Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h2>
+<span id="dcs-context"></span><h2>Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h2>
 <p>The following diagram extends the previous one to include the DCS components in
 the context of the overall GMT software:</p>
 <div class="figure" id="id4">
 <span id="figure-dcs-context"></span><img alt="../../_images/dcs_context.png" src="../../_images/dcs_context.png" />
-<p class="caption"><span class="caption-number">Fig. 3.11 </span><span class="caption-text">DCS Context</span></p>
+<p class="caption"><span class="caption-text">DCS Context</span></p>
 </div>
 <p>The DCS Reference Architecture elements:</p>
 <blockquote>
@@ -275,11 +253,11 @@ Science Instruments.</li>
 </div></blockquote>
 <div class="figure" id="id5">
 <img alt="../../_images/dcs_reference_architecture.png" src="../../_images/dcs_reference_architecture.png" />
-<p class="caption"><span class="caption-number">Fig. 3.12 </span><span class="caption-text">Device Control Subsystem Reference Architecture</span></p>
+<p class="caption"><span class="caption-text">Device Control Subsystem Reference Architecture</span></p>
 </div>
 </div>
 <div class="section" id="component-architecture">
-<span id="dcs-component-architecture"></span><h2>3.2. Component Architecture<a class="headerlink" href="#component-architecture" title="Permalink to this headline">¶</a></h2>
+<span id="dcs-component-architecture"></span><h2>Component Architecture<a class="headerlink" href="#component-architecture" title="Permalink to this headline">¶</a></h2>
 <p>The design of the GMT software and controls system is based on a distributed
 component architecture. Components represent the most elementary unit for the
 purpose of development, testing, integration and reuse. Groups of components can
@@ -293,7 +271,7 @@ making any assumption of the underlying middleware used by the platform-specific
 implementation.</p>
 <div class="figure" id="id6">
 <img alt="../../_images/component_port_connector.png" src="../../_images/component_port_connector.png" />
-<p class="caption"><span class="caption-number">Fig. 3.13 </span><span class="caption-text">Component, Port, and Connector</span></p>
+<p class="caption"><span class="caption-text">Component, Port, and Connector</span></p>
 </div>
 <p>Components, Ports and Connectors are used to model both physical and logical
 systems. SysML internal block diagrams (<em>ibd</em>) are used to represent how
@@ -308,7 +286,7 @@ component configuration, subsystem robustness, component life cycle and
 subsystem modal transitions amongst other functions.</p>
 </div>
 <div class="section" id="dcs-product-structure-modeling">
-<span id="id2"></span><h2>3.3. DCS Product Structure Modeling<a class="headerlink" href="#dcs-product-structure-modeling" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>DCS Product Structure Modeling<a class="headerlink" href="#dcs-product-structure-modeling" title="Permalink to this headline">¶</a></h2>
 <p>Each DCS is made up of components organized into packages according to their
 functional affinity or relationships. Examples of packages and their components
 are shown in the Table below.</p>
@@ -333,7 +311,7 @@ control subsystems.</li>
 </div></blockquote>
 </div></blockquote>
 <table border="1" class="docutils" id="id7">
-<caption><span class="caption-number">Table 3.3 </span><span class="caption-text">SWC Functional Packages:  Device Control</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">SWC Functional Packages:  Device Control</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="22%" />
 <col width="58%" />
@@ -378,7 +356,7 @@ I/O Module</td>
 </tbody>
 </table>
 <table border="1" class="docutils" id="id8">
-<caption><span class="caption-number">Table 3.4 </span><span class="caption-text">SWC Functional Packages:  Operation Support</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">SWC Functional Packages:  Operation Support</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="22%" />
 <col width="58%" />
@@ -483,7 +461,7 @@ Workflow</td>
 </div></blockquote>
 </div>
 <div class="section" id="instrument-software-and-controls-integration">
-<span id="dcs-instrument-swcs-integration"></span><h2>3.4. Instrument Software and Controls Integration<a class="headerlink" href="#instrument-software-and-controls-integration" title="Permalink to this headline">¶</a></h2>
+<span id="dcs-instrument-swcs-integration"></span><h2>Instrument Software and Controls Integration<a class="headerlink" href="#instrument-software-and-controls-integration" title="Permalink to this headline">¶</a></h2>
 <p>The GMT instruments software and controls follow the same architectural design
 as other device control subsystems. Typically an Instrument Device Control
 Subsystem will include most of the packages described in the <a class="reference internal" href="#figure-dcs-context"><span class="std std-ref">Figure on DCS
@@ -499,13 +477,13 @@ tools are integrated in the OPS to ensure consistent and seamless implementation
 of observatory workflows.</p>
 </div>
 <div class="section" id="dcs-deployment">
-<span id="id3"></span><h2>3.5. DCS Deployment<a class="headerlink" href="#dcs-deployment" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>DCS Deployment<a class="headerlink" href="#dcs-deployment" title="Permalink to this headline">¶</a></h2>
 <p>The DCS reference architecture defines a generic design that shall be refined
 and adapted to the specific CSS. The Figure below gives three examples of
 possible DCS physical architectures.</p>
 <div class="figure" id="id9">
 <img alt="../../_images/dcp_reference_architecture.png" src="../../_images/dcp_reference_architecture.png" />
-<p class="caption"><span class="caption-number">Fig. 3.14 </span><span class="caption-text">DCP Reference Architecture</span></p>
+<p class="caption"><span class="caption-text">DCP Reference Architecture</span></p>
 </div>
 <p>A DCS consists on a set of Device Control Packages (DCP) and a set of Operation
 Support Packages (OSP).</p>
@@ -533,21 +511,12 @@ order to meet this architecture.</p>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../lifecycle/dcs_lifecycle.html" class="btn btn-neutral float-right" title="4. DCS Life Cycle" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../references/references.html" class="btn btn-neutral" title="2. References" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, contributors.
+        &copy; Copyright 2020, contributors.
 
     </p>
   </div>
@@ -569,7 +538,7 @@ order to meet this architecture.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.7.0',
+            VERSION:'1.8.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

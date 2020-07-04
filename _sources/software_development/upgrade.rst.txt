@@ -3,8 +3,60 @@
 Upgrade
 =======
 
-Upgrading from v1.5 to v1.6+
-----------------------------
+Upgrading from v1.7 to v1.8
+---------------------------
+
+Multiple versions of the SDK software may be installed on the same system, with
+the version currently in use reflected by the $GMT_GLOBAL environment variable.
+
+1. Upgrade NodeJS from version 10 (used on SDK < v1.7) to version 12.
+
+  .. code-block:: bash
+
+    $ dnf remove -y nodejs
+    $ dnf module reset -y nodejs
+    $ dnf module enable -y nodejs:12
+    $ dnf install -y nodejs
+
+2. If you are using the RT kernel, temporarily remove ssh from the list of update packages
+   (see :ref:`installation <installation>` page for more info)
+
+  .. code-block:: bash
+    $ sudo echo "exclude=openssh* libssh*" >> /etc/dnf/dnf.conf
+
+
+3. Download the latest SDK distribution:
+
+  .. code-block:: bash
+
+    $ sudo wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk.tar.gz
+
+
+4. Extract the TAR file in the /opt directory, into a new folder for the latest release:
+
+  .. code-block:: bash
+
+    $ sudo mkdir /opt/gmt_release_1.8.0
+    $ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.8.0
+
+5. Update the symbolic link from the **Global GMT Software Location** to the latest release:
+
+  .. code-block:: bash
+
+    $ sudo ln -sfn gmt_release_1.8.0 /opt/gmt
+
+6. Check all applicable environment variables
+
+  .. code-block:: bash
+
+    $ gmt_env
+
+To create the user working development environment, please
+follow the instructions on the :ref:`installation <installation>` page.
+
+
+Upgrading from v1.5 to v1.6 and v1.7
+------------------------------------
 
 Multiple versions of the SDK software may be installed on the same system, with
 the version currently in use reflected by the $GMT_GLOBAL environment variable.

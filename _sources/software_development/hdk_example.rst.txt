@@ -214,10 +214,7 @@ Configuration files should be compiled for the C++ controllers. This can be done
 .. code:: bash
 
     $ gds install  # Copies the configuration file to $GMT_LOCAL/etc/conf/
-    $ grs compile -i hdk_hw1_adapter
-    $ grs compile -i hdk_main_ctrl
-    $ grs compile --input $GMT_LOCAL/etc/conf/hdk_dcs/hdk_hw1_adapter_ethercat_default_conf.coffee --output $GMT_LOCAL/etc/conf/hdk_dcs/hdk_hw1_adapter_ethercat_default_conf.cfg
-
+    $ grs compile hdk_dcs
 
 HDK Main Controller Behavior
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
