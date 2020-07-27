@@ -204,10 +204,6 @@
 <h2>1.1. Development Platform<a class="headerlink" href="#development-platform" title="Permalink to this headline">¶</a></h2>
 <p>The development platform is no longer distributed as a standalone ISO file. Instead, the following guide is provided to assist with hardware, operating system and third-party software configuration required for running the OCS SDK. Some key areas, such as disk partitioning, user authentication and NFS mounting of home directories, depending on individual factors at each partner institution and should, therefore, be considered examples only.</p>
 <p>Benefits of this approach, versus distributing the complete ISO, include the ability to support different network, hardware and software platforms used for software development by different partner institutions, as well as allowing for separate upgrade schedules for the Development Platform and Software Development Kit without affecting ongoing subsystem software development.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">At GMTO, these instructions are formalized using Kickstart files and installed via the network using tools such as Cobbler. The GMTO DevOps team can provide assistance in setting up a similar system for development at partner institutions if required.</p>
-</div>
 <p>The Observatory Control System (OCS) is designed to be a distributed system with device control components running on real-time computers, connected to common services and user interface components via the control network.</p>
 <dl class="docutils">
 <dt>For device control systems, the following operating systems are supported:</dt>
@@ -365,6 +361,12 @@ $ sudo alternatives --set python /usr/bin/python2
 </pre></div>
 </div>
 </div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you encounter problems installing nodejs 12, you probably have the node module v10 activated.
+To change it to v12, run:
+<cite>sudo dnf remove -y nodejs &amp;&amp; sudo dnf module reset -y nodejs &amp;&amp; sudo dnf module enable -y nodejs:12</cite></p>
+</div>
 </div>
 <div class="section" id="mongodb-configuration">
 <h3>1.2.6. MongoDB Configuration<a class="headerlink" href="#mongodb-configuration" title="Permalink to this headline">¶</a></h3>
@@ -390,14 +392,6 @@ $ sudo alternatives --set python /usr/bin/python2
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Create the database files directory</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir -p /data/db
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="4">
 <li>Enable the MongoDB service</li>
 </ol>
 <blockquote>
@@ -406,7 +400,7 @@ $ sudo systemctl start mongod
 </pre></div>
 </div>
 </div></blockquote>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="4">
 <li>Check that the MongoDB service is up</li>
 </ol>
 <blockquote>
@@ -488,8 +482,8 @@ $ sudo systemctl start ethercat
 <li>Add a new group and add the “gmto” user to it.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo groupadd -f -g <span class="m">2001</span> real-time
-$ sudo usermod --groups real-time gmto
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo groupadd -f -g <span class="m">2001</span> realtime
+$ sudo usermod --groups realtime gmto
 </pre></div>
 </div>
 </div></blockquote>
@@ -596,15 +590,11 @@ $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env
 </ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_GLOBAL</span>
-$ npm install
+$ sudo npm install
 
 $ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
 $ cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
 $ npm install
-</pre></div>
-</div>
-<p>Install global node modules for <cite>Webpack</cite> and <cite>Coffeescript</cite>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo npm install -g coffeescript webpack webpack-cli coffee-loader
 </pre></div>
 </div>
 </div></blockquote>

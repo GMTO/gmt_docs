@@ -153,41 +153,54 @@ Struct types
 ^^^^^^^^^^^^^
 
 The data types defined in the model files as ```StructType``` are
-mapped to C++ struct types. The C++ definition is generated to a
+mapped to C++ struct types. The convention in the model files syntax is to define
+the types in snake_case, but in C++ they are mapped in CamelCase. In addition,
+as the user-defined types are shared in the gmt namespace (because types are
+part of the interface between modules), the convention is to prefix the name
+of the module to the type name.
+
+The C++ definition is generated to a
 header file inside the ```include/``` directory, with its name
-equal to the user-defined type name.
+equal to the user-defined type name, in CamelCase.
 
 For example, one structured type defined in the model as
 
 .. code-block:: coffeescript
 
-    StructType "my_struct",
+    StructType "mymod_my_struct",
         desc: "Struct type example"
         elements:
             data_field1: {type: "String", desc: "This is field 1"}
             data_field2: {type: "Integer", desc: "This is field 2"}
-            data_field3: {type: "my_other_struct", desc: "This is field 3"}
+            data_field3: {type: "mymod_my_other_struct", desc: "This is field 3"}
             data_field4: {type: "float[4]", desc: "This is field 4"}
+            data_field5: {type: "uint16[]", desc: "This is field 5"}
 
 will have its C++ representation in the ```include/my_struct.h``` file,
 with the following contents:
 
 .. code-block:: cpp
 
-    #pragma once
+    #ifndef _mymod_my_struct_h_
+    #define _mymod_my_struct_h_
+
     #include <msgpack.hpp>
     #include <string>
     #include <array>
     #include <vector>
 
-    struct my_struct {
-        std::string          data_field1;    // This is field 1
-        int                  data_field2;    // This is field 2
-        my_other_struct      data_field3;    // This is field 3
-        std::array<float,4>  data_field4;    // This is field 4
+    struct MyModMyStruct
+    {
+        std::string           data_field1;    // This is field 1
+        int                   data_field2;    // This is field 2
+        MyModMyOtherStruct    data_field3;    // This is field 3
+        std::array<float,4>   data_field4;    // This is field 4
+        std::vector<unit16_t> data_field5;    // This is field 5
 
-        MSGPACK_DEFINE_MAP(data_field1, data_field2, data_field3)
+        MSGPACK_DEFINE_MAP(data_field1, data_field2, data_field3, data_field4, data_field5)
     };
+
+    #endif // _mymod_my_struct_h_
 
 As it can be seen in the example, the types of the fields can either be
 primitive types, user-defined types and arrays or sequences.
@@ -213,7 +226,7 @@ As an example, if we have the following enumerated type in the
 
 .. code-block:: coffeescript
 
-    Enum "my_enum_type",
+    Enum "mymod_my_enum_type",
     desc: "An enumerated type"
     literals:
         THE_FIRST_LABEL:     {desc: "First label of the enumerate"}
@@ -225,15 +238,22 @@ its contents will be:
 
 .. code-block:: cpp
 
-    #pragma once
+    #ifndef _mymod_my_enum_type_
+    #define _mymod_my_enum_type_
 
-    enum class my_enum_type : std::uint8_t { THE_FIRST_LABEL=0,
-                                             THE_SECOND_LABEL=1,
-                                             THE_THIRD_LABEL=2};
-    MSGPACK_ADD_ENUM(my_enum_type)
+    #include <msgpack.hpp>
+    #include <ocs_core_fwk/GmtMsgpackAdaptors.h>
 
-As in the Struct Type mapping, the ```MSGPACK_ADD_ENUM``` directive allows
-the variables of this type to be automatically serialized by msgpack.
+    enum class MyModMyEnumType : std::uint8_t { THE_FIRST_LABEL=0,
+                                                THE_SECOND_LABEL=1,
+                                                THE_THIRD_LABEL=2};
+
+    GMT_ADD_ENUM(MyModMyEnumType, "THE_FIRST_LABEL", "THE_SECOND_LABEL", "THE_THIRD_LABEL")
+
+    #endif   // _mymod_my_enum_type_
+
+As in the Struct Type mapping, the ```GMT_ADD_ENUM``` directive allows
+the variables of this type to be automatically serialized.
 
 .. _map-cpp-map-component:
 
@@ -326,30 +346,50 @@ As an example, if we have the following component in the model definition:
                 desc:               'One State Var'
                 type:               'my_custom_type'
                 max_rate:           1000
-                blocking_mode:      'async'
                 is_controllable:    true
 
-        input_ports:
+        inputs:
             my_input_port1:
                 desc:            'One input port'
                 type:            'Integer'
-                protocol:        'pull'
                 max_rate:        1000
-                blocking_mode:   'async'
 
-        output_ports:
+        outputs:
             my_output_port1:
                 desc:            'One output port'
                 type:            'float64'
-                protocol:        'push'
                 max_rate:        1000
-                blocking_mode:   'async'
 
         properties:
             my_prop1:
                 desc:     'One property'
                 type:     'float32'
                 default:  30.0
+
+        faults:
+            f0:
+                default: 'NOT_ACTIVE'
+                type: "FaultState"
+                parent: ''
+                kind: 'or'
+            f1:
+                default: 'NOT_ACTIVE'
+                type: "FaultState"
+                parent: 'f0'
+                kind: 'primary'
+
+        alarms:
+            a0:
+                default: 'NORM'
+                type: "AlarmState"
+                parent: ''
+                kind: 'or'
+            a1:
+                default: 'NORM'
+                type: "AlarmState"
+                parent: 'a0'
+                kind: 'primary'
+
 
 then the generated C++ class would be:
 
@@ -362,14 +402,14 @@ then the generated C++ class would be:
 
     #include <ocs_core_fwk.h>
     #include <ocs_ctrl_fwk.h>
-    #include "../../include/my_dcs_port_types.h"
+    #include "../../include/isample_dcs_port_types.h"
 
     class MyComponentSetup;
 
     namespace gmt
     {
 
-    class MyComponentBase : public BaseController
+    class MyComponentBase : public BaseComponent
     {
         public:
             MyComponentBase(
@@ -387,21 +427,21 @@ then the generated C++ class would be:
         protected:
 
             typedef MyComponentSetup Setup;
-            typedef BaseController Base;
+            typedef BaseComponent Base;
 
             /**
             * Creates the state of the Component, i.e., state variables,
             * inputs, outputs, properties, alarms and faults
             * Overriden from the Component class
             */
-            virtual void create_state() override;
+            void create_state() override;
 
             /**
             * Uses the given Component::Setup parameter to configure all the
             * Component interface features (state vars, inputs, outputs, properties, ...)
             * Overriden from the Component class
             */
-            virtual void setup_state (ComponentSetup& conf) override;
+            void setup_state (const ComponentSetup& conf) override;
 
             /**
             * Configure the object from a file. The classes that derive from Component
@@ -409,21 +449,29 @@ then the generated C++ class would be:
             * the configuration file with their Setup structure.
             * Overriden from the Component class
             */
-            virtual void configure_from_file (const std::string& fname) override;
+            void configure_from_file (const std::string& fname) override;
 
         protected:
 
-            // Create state variables
-            StateVar<my_custom_type> my_state1_sv;
+            // State variables declaration
+            StateVar<MyCustomType>         my_state1;  ///< One State Var
 
-            // Input port declaration
-            int   my_input_port1;     // One input port
+            // Inputs declaration
+            DataIO<int>                    my_input_port1;  ///< One input port
 
-            // Output port declaration
-            double my_output_port1;   // One output port
+            // Outputs declaration
+            DataIO<double>                 my_output_port1;  ///< One output port
 
-            // Configuration properties
-            float  my_prop1;          // One property
+            // Configuration properties declaration
+            Property<float>                my_prop1;  ///< One property
+
+            // Faults declaration
+            Fault                          f0;
+            Fault                          f1;
+
+            // Alarms declaration
+            Alarm                          a0;
+            Alarm                          a1;
     };
 
     } // namespace gmt
@@ -431,9 +479,12 @@ then the generated C++ class would be:
     #endif   // _MyComponentBase_h_
 
 
+
+
 As we can see, the contents of the class definition are: the overridden methods from the base class,
 the *State Variables* definition, the *Inputs* definition, the *Outputs*
-definition and the *Properties* definition.
+definition and the *Properties* definition. The types that are custom defined
+in the model have been translated to CamelCase.
 
 In the class definition there will be only
 the State Variables, Properties and Data IO (Inputs or Outputs) from the model
@@ -445,14 +496,13 @@ common superclasses are listed in the following table:
     ===============  ============  ==================
     Class member     Kind          Inherited from
     ===============  ============  ==================
-    ops_state        state_vars    Component
+    op_state         state_vars    Component
     uri              properties    Component
     name             properties    Component
     host             properties    Component
     port             properties    Component
     acl              properties    Component
     scan_rate        properties    Component
-    ecat_cfg_name    input_ports   EthercatAdapter
     sim_mode         state_vars    BaseController
     control_mode     state_vars    BaseController
     ===============  ============  ==================
@@ -477,114 +527,144 @@ The  class definition contains the declarations of the constructor and
 the overridden methods from the base class:
 
 * Constructor and destructor:
-    Constructor and virtual destructor for the class. The definition
-    is in the ```my_component.cpp``` source file.
+    Constructor and virtual destructor for the class
 
 * create_state() method:
     Creates the internal data structures for the component features, and
     initializes them with a default value.
 
 * setup_state() method:
-    Contains the code that handles the component configuration, and that
-    creates the links between class member variables and the corresponding
-    inputs, outputs, state variables or properties.
+    Contains the code that handles the component configuration.
 
 * configure_from_file():
     This polymorphic method will read the configuration file with the
     appropriate Setup type.
+
+**Inputs**
+
+The Inputs definition section is marked with the comment
+``// Inputs declaration``. A class member variable will be generated
+for each Input defined in the model. For example, if the component
+model file contains
+
+.. code-block:: coffeescript
+
+    inputs:
+        my_input:
+            desc:            'One input'
+            type:            'my_type'
+            max_rate:        1000
+
+then the C++ counterpart will be a member variable defined as:
+
+.. code-block:: cpp
+
+    DataIO<MyType>   my_input;
+
+Here we can see that the type of the ```my_input``` member variable is a
+specialization of the ```DataIO``` templated struct. The template parameter
+is the input type, converted to the appropriate representation for C++.
+
+The ```DataIO<T>``` struct contains the following fields, that correspond
+one to one to the fields of an Input in the model files specification:
+
+===============  ============  ============================================================
+Field            Type          Description
+===============  ============  ============================================================
+name             string        Name of the DataIO
+value            T             The actual value of the DataIO
+info             string        Brief description
+desc             string        Detailed Description
+type             string        Type of the DataIO
+units            string        The units that must be used to interpret the value
+min              T             The minimum value that can be assigned to the DataIO
+max              T             The maximum value that can be assigned to the DataIO
+default_value    T             The value read from the configuration
+regexp           string        Regular expression that has to be matched by the value
+max_rate         double        Maximum rate allowed for this DataIO
+sampling_rate    double        Sampling rate inherent to the current magnitude
+storage          uint32        Decimation factor (against the sampling rate) for telemetry
+===============  ============  ============================================================
+
+In addition, the ```Component``` base class provides an ```inputs``` member variable,
+which has the collection of all the inputs. This collection can be
+indexed by the input name, for example :code:`inputs["my_input"]`.
+
+**Outputs**
+
+The Outputs definition section is marked with the comment
+``// Outputs declaration``. A class member variable will be generated
+for each Output defined in the model. Analogously as the Inputs, the type of the generated
+member variables for the Outputs will be ```DataIO<T>```, where ```T``` is the specific
+type of the output.
+
+.. code-block:: coffeescript
+
+    output_ports:
+        my_output:
+            desc:            'One output'
+            type:            'my_type'
+            max_rate:        1000
+
+then the C++ counterpart will be a member variable defined as:
+
+.. code-block:: cpp
+
+    DataIO<MyType>   my_output;  // One output port
+
+The type of the parameter of the DataIO template is mapped to its C++ equivalent,
+if needed.
+
+Similarly to the Inputs case, the Outputs can be navigated using the
+```outputs``` member variable, which is inherited from the ```Component``` base class.
 
 **State Variables**
 
 The start of the State Variables section is marked by
 the comment ``// Create state variables``. For each component State Variable
 :code:`my_statevar` of :code:`my_type`, a class member variable will be created, with
-the form :code:`StateVar<my_type> my_statevar_sv;` (note that  the
-suffix ```_sv``` has been added to the variable name). The type of the State
-Variable is mapped to the C++ equivalent one, if needed.
+the form :code:`StateVar<MyType> my_statevar;`.
 
 The
-```StateVar<my_type>``` template is a struct that contains the fields
+```StateVar<MyType>``` template inherits from ```DataIO```, and it adds the following
+fields:
 
-.. code-block:: cpp
+===============  ============  ============================================================
+Field            Type          Description
+===============  ============  ============================================================
+goal             T             The setpoint for the StateVar
+is_controllable  bool          True if a goal can be defined for this StateVar
+control_rate     double        Control rate
+===============  ============  ============================================================
 
-        std::string  name;
-        bool         is_controlable;
-        my_type      value;
-        my_type      goal;
-        my_type      max;
-        my_type      min;
-
-
-Therefore, the goal and the current value of the :code:`my_statevar_sv`
-State Variable are accessible by means of :code:`my_statevar_sv.goal`
-and :code:`my_statevar_sv.value`.
-
-**Inputs**
-
-The Inputs definition section is marked with the comment
-``// Input port declaration``. A class member variable will be generated
-for each Input defined in the model. For example, if the component
-model file contains
-
-.. code-block:: coffeescript
-
-    input_ports:
-        my_input_port:
-            desc:            'One input port'
-            type:            'my_type'
-            protocol:        'pull'
-            max_rate:        1000
-            blocking_mode:   'async'
-
-then the C++ counterpart will be a member variable defined as:
-
-.. code-block:: cpp
-
-    my_type   my_input_port;
-
-The type of the DataIO declared in the model file is mapped to its C++ equivalent,
-if needed.
-
-In addition, the ```Component``` base class provides an ```inputs``` member variable,
-which has the collection of all the inputs. This collection can be
-indexed by the input name, for example :code:`inputs["my_input_port"]`.
-
-**Outputs**
-
-The Output Port definition section is marked with the comment
-``// Output port declaration``. A class member variable will be generated
-for each Output defined in the model. For example, if the component
-model file contains
-
-.. code-block:: coffeescript
-
-    output_ports:
-        my_output_port:
-            desc:            'One output'
-            type:            'my_type'
-            protocol:        'push'
-            max_rate:        1000
-            blocking_mode:   'async'
-
-then the C++ counterpart will be a member variable defined as:
-
-.. code-block:: cpp
-
-    my_type   my_output_port;  // One output port
-
-The type of the DataIO declared in the model file is mapped to its C++ equivalent,
-if needed.
-
-Similarly to the Inputs case, the Outputs can be navigated using the
-```outputs``` member variable, which is inherited from the ```Component``` base class.
+The State Variables can be navigated using the
+```state_vars``` member variable, which is inherited from the ```Component``` base class.
 
 **Configuration Properties**
 
 The Configuration Properties section is marked with the comment
-``// Configuration properties``. A class member variable will be generated
-for each Property defined in the model. As the previous cases, the type
-of the properties member variables will be the C++ mapping of the Property
-model type.
+``// Configuration properties declaration``. A class member variable will be generated
+for each Property defined in the model. The type of the generated member variables
+will be ```Property<T>```, where ```T``` is the C++ mapping of the type declared
+in the model.
+
+The ```Property<T>``` struct contains the following fields, that correspond
+one to one to the fields of an Property in the model files specification:
+
+===============  ============  ============================================================
+Field            Type          Description
+===============  ============  ============================================================
+name             string        Name of the Property
+value            T             The actual value of the Property
+info             string        Brief description
+desc             string        Detailed Description
+type             string        Type of the Property
+units            string        The units that must be used to interpret the value
+min              T             The minimum value that can be assigned to the Property
+max              T             The maximum value that can be assigned to the Property
+default_value    T             The value read from the configuration
+regexp           string        Regular expression that has to be matched by the value
+===============  ============  ============================================================
 
 As an example, if the component model file contains
 
@@ -600,10 +680,7 @@ then the C++ class will have:
 
 .. code-block:: cpp
 
-    float   my_prop1;  // One property
-
-The type of the DataIO declared in the model file is mapped to its C++ equivalent,
-if needed.
+    Property<float>                my_prop1;  ///< One property
 
 The Properties of a component are also navigable, using the ```properties```
 member variable, which is inherited from the base class.
@@ -630,60 +707,77 @@ would be in the file ```MyComponentSetup.h```, with the following content:
     #ifndef _MyComponentSetup_h_
     #define _MyComponentSetup_h_
 
+    #include <ocs_core_fwk.h>
+
     #include <msgpack.hpp>
-    #include "ocs_core_fwk.h"
-    #include "ocs_ctrl_fwk.h"
-    #include "../../include/my_dcs_port_types.h"
+    #include <ocs_core_fwk.h>
+    #include <ocs_ctrl_fwk.h>
+    #include "../../include/isample_dcs_port_types.h"
 
-    struct MyComponentSetup : public  BaseComponentSetup {
+    namespace gmt
+    {
 
-        struct PropertyConf : public  BaseComponentSetup::PropertyConf {
-            PropertyDef<float>             my_prop1;
-            MSGPACK_DEFINE_MAP(my_prop1, uri, name, host, port, acl, scan_rate)
+    struct MyComponentSetup : public BaseComponentSetup
+    {
+
+        struct StateVarConf : public  BaseComponentSetup::StateVarConf
+        {
+            StateVar<MyCustomType>         my_state1;
+            MSGPACK_DEFINE_MAP(my_state1, op_state)
         };
 
-        struct StateVarConf : public  BaseComponentSetup::StateVarConf {
-            StateVarDef<my_custom_type>    my_state1;
-            MSGPACK_DEFINE_MAP(my_state1, ops_state)
+        struct InputConf : public BaseComponentSetup::InputConf
+        {
+            DataIO<int>                    my_input_port1;
+            MSGPACK_DEFINE_MAP(my_input_port1)
         };
 
-        struct InputPortConf : public BaseComponentSetup::InputPortConf {
-            DataIODef<int>                   my_input_port1;
-            DataIODef<my_custom_type>        my_state1_goal;
-            MSGPACK_DEFINE_MAP(my_input_port1, my_state1_goal, ops_state_goal)
+        struct OutputConf : public BaseComponentSetup::OutputConf
+        {
+            DataIO<double>                 my_output_port1;
+            MSGPACK_DEFINE_MAP(my_output_port1)
         };
 
-        struct OutputPortConf : public BaseComponentSetup::OutputPortConf {
-            DataIODef<double>                my_output_port1;
-            DataIODef<my_custom_type>        my_state1_value;
-            MSGPACK_DEFINE_MAP(my_output_port1, my_state1_value, ops_state_value)
+        struct PropertyConf : public  BaseComponentSetup::PropertyConf
+        {
+            Property<float>                my_prop1;
+            MSGPACK_DEFINE_MAP(my_prop1, uri, name, host, port, acl, scan_rate, priority)
         };
 
-        PropertyConf     properties;
-        StateVarConf     state_vars;
-        InputPortConf    input_ports;
-        OutputPortConf   output_ports;
+        struct FaultConf : public BaseComponentSetup::FaultConf
+        {
+            Fault f0;
+            Fault f1;
+            MSGPACK_DEFINE_MAP(f0, f1)
+        };
 
-        MSGPACK_DEFINE_MAP(properties, state_vars, input_ports, output_ports)
+        struct AlarmConf : public BaseComponentSetup::AlarmConf
+        {
+            Alarm a0;
+            Alarm a1;
+            MSGPACK_DEFINE_MAP(a0, a1)
+        };
+
+        StateVarConf    state_vars;
+        InputConf       inputs;
+        OutputConf      outputs;
+        PropertyConf    properties;
+        FaultConf       faults;
+        AlarmConf       alarms;
+
+        MSGPACK_DEFINE_MAP(properties, state_vars, inputs, outputs, faults, alarms, connectors)
     };
+
+    } //namespace gmt
 
     #endif // _MyComponentSetup_h_
 
-Here we can see 5 main blocks:
 
-:code:`struct PropertyConf` definition:
-    This is the definition for the inner struct where all the configuration
-    properties will be stored. There is one entry :code:`PropertyDef<type> prop`
-    for each configuration property defined in the component model. In addition,
-    there is the :code:`MSGPACK` clause that allows the struct to be serialized
-    automatically by msgpack. Note that although the properties defined in the
-    base class are inherited from :code:`BaseComponentSetup::PropertyConf` and,
-    therefore, they are not re-defined here, they are explicitly listed in
-    the :code:`MSGPACK` directive.
+Here we can see 7 main blocks:
 
 :code:`struct StateVarConf` definition:
     This is the definition for the inner struct where all the state variables
-    meta-information will be stored. There is one entry :code:`StateVarDef<type> state_var`
+    meta-information will be stored. There is one entry :code:`StateVar<type> state_var`
     for each state variable defined in the component model. In addition,
     there is the :code:`MSGPACK` clause that allows the struct to be serialized
     automatically by msgpack. Note that although the state variables defined in the
@@ -693,25 +787,51 @@ Here we can see 5 main blocks:
 
 :code:`struct InputConf` definition:
     This is the definition for the inner struct where all the inputs
-    meta-information will be stored. There is one entry :code:`DataIODef<type> port`
-    for each input defined in the component model, and also one entry for
-    the goal of each state variable. The suffix ```_goal``` is added automatically
-    to the state variable names. In addition,
+    meta-information will be stored. There is one entry :code:`DataIO<type> inp`
+    for each input defined in the component model. In addition,
     there is the :code:`MSGPACK` clause that allows the struct to be serialized
-    automatically by msgpack. Note that although the input ports defined in the
+    automatically by msgpack. Note that although the inputs defined in the
     base class are inherited from :code:`BaseComponentSetup::InputConf` and,
     therefore, they are not re-defined here, they are explicitly listed in
     the :code:`MSGPACK` directive.
 
 :code:`struct OutputConf` definition:
     This is the definition for the inner struct where all the outputs
-    meta-information will be stored. There is one entry :code:`DataIODef<type> port`
-    for each output defined in the component model, and also one entry for
-    the value of each state variable. The suffix ```_value``` is added automatically
-    to the state variable names. In addition,
+    meta-information will be stored. There is one entry :code:`DataIO<type> outp`
+    for each output defined in the component model. In addition,
     there is the :code:`MSGPACK` clause that allows the struct to be serialized
     automatically by msgpack. Note that although the outputs defined in the
     base class are inherited from :code:`BaseComponentSetup::OutputConf` and,
+    therefore, they are not re-defined here, they are explicitly listed in
+    the :code:`MSGPACK` directive.
+
+:code:`struct PropertyConf` definition:
+    This is the definition for the inner struct where all the configuration
+    properties will be stored. There is one entry :code:`Property<type> prop`
+    for each configuration property defined in the component model. In addition,
+    there is the :code:`MSGPACK` clause that allows the struct to be serialized
+    automatically by msgpack. Note that although the properties defined in the
+    base class are inherited from :code:`BaseComponentSetup::PropertyConf` and,
+    therefore, they are not re-defined here, they are explicitly listed in
+    the :code:`MSGPACK` directive.
+
+:code:`struct FaultConf` definition:
+    This is the definition for the inner struct where all the faults
+    meta-information will be stored. There is one entry :code:`Fault f`
+    for each fault defined in the component model. In addition,
+    there is the :code:`MSGPACK` clause that allows the struct to be serialized
+    automatically by msgpack. Note that although the faults defined in the
+    base class (if any) are inherited from :code:`BaseComponentSetup::FaultConf` and,
+    therefore, they are not re-defined here, they are explicitly listed in
+    the :code:`MSGPACK` directive.
+
+:code:`struct AlarmConf` definition:
+    This is the definition for the inner struct where all the alarms
+    meta-information will be stored. There is one entry :code:`Alarm a`
+    for each alarm defined in the component model. In addition,
+    there is the :code:`MSGPACK` clause that allows the struct to be serialized
+    automatically by msgpack. Note that although the alarm defined in the
+    base class (if any) are inherited from :code:`BaseComponentSetup::AlarmConf` and,
     therefore, they are not re-defined here, they are explicitly listed in
     the :code:`MSGPACK` directive.
 
@@ -719,10 +839,16 @@ Setup class fields definition:
     The previous sections were only type definitions. After these sections,
     the following setup class member variables are defined:
 
-        * The ```properties``` member variable, of type ```PropertyConf```
         * The ```state_vars``` member variable, of type ```StateVarConf```
         * The ```inputs``` member variable, of type ```InputConf```
         * The ```outputs``` member variable, of type ```OutputConf```
+        * The ```properties``` member variable, of type ```PropertyConf```
+        * The ```faults``` member variable, of type ```FaultConf```
+        * The ```alarms``` member variable, of type ```AlarmConf```
+
+    In addition, there is an aditional field, inherited from the base class:
+        * The ```connectors``` member variable, of type ```ConnectorConf```,
+          that contains the list of connectors for the current Component
 
     Analogously to the previous sections, the ```MSGPACK``` directive
     allows the component Setup class to be serialized automatically.
@@ -773,8 +899,8 @@ The contents of the generated header file will be:
 
     protected:
 
-        virtual void step() override;
-        virtual void setup() override;
+        void step() override;
+        void setup() override;
 
         //XXX add your protected class members here
 
@@ -830,11 +956,22 @@ The contents of the cpp file will be:
 
     void MyComponent::setup()
     {
+        //setup the base class
+        Base::setup();
+
         //setup async input handlers
 
         //ex: new_async_input_handler ("my_input_name", this, &MyComponent::my_input_handler);
 
         //add behaviors to features
+
+        //setup fault evaluation functions
+        set_fault_eval_func ("f0", [this](FaultFSM& fsm){return true;}); //TODO change the "return true" to the specific evaluation of the fault
+        set_fault_eval_func ("f1", [this](FaultFSM& fsm){return true;}); //TODO change the "return true" to the specific evaluation of the fault
+
+        //setup alarm evaluation functions
+        set_alarm_eval_func ("a0", [this](AlarmFSM& fsm){return true;}); //TODO change the "return true" to the specific evaluation of the fault
+        set_alarm_eval_func ("a1", [this](AlarmFSM& fsm){return true;}); //TODO change the "return true" to the specific evaluation of the fault
 
         //other initializations
 
@@ -843,3 +980,6 @@ The contents of the cpp file will be:
 The user must add the specific step function implementation to
 ``MyComponent::step()`` and, of course, the implementation of any other
 method that has been added to the class.
+
+**Note:** the call to ```Base::setup()``` in the ```setup()``` method is important
+for the initialization of the base classes structures, and must not be removed.

@@ -13,10 +13,10 @@ the version currently in use reflected by the $GMT_GLOBAL environment variable.
 
   .. code-block:: bash
 
-    $ dnf remove -y nodejs
-    $ dnf module reset -y nodejs
-    $ dnf module enable -y nodejs:12
-    $ dnf install -y nodejs
+    $ sudo dnf remove -y nodejs
+    $ sudo dnf module reset -y nodejs
+    $ sudo dnf module enable -y nodejs:12
+    $ sudo dnf install -y nodejs
 
 2. If you are using the RT kernel, temporarily remove ssh from the list of update packages
    (see :ref:`installation <installation>` page for more info)
