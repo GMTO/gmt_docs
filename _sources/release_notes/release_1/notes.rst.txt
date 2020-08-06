@@ -3,6 +3,112 @@
 Release 1
 =========
 
+Contents of release 1.8.1
+-------------------------
+
+- Core Frameworks
+
+  - Updated UI Framework
+
+    - Added React framework library, allowing vis panel developers to use the same library used by Navigator.
+    - Consolidated CSS styles, allowing vis panels to inherit Navigator's look and feel
+    - Added new developer tools to support realtime vis panel rendering during development
+
+- Navigator Application
+
+  - Updated data rendering
+  
+    - better representation of on/off states
+    - distinct colors for data types
+    - fixed rendering issues for complex data types
+    - cleaner and more consistent design
+    - fail gracefully on unknown types
+
+  - Updated data controls
+
+    - allow selection between connecting to service data ports or sockets
+    - play/stop interface to start and stop data streaming from components
+    - show errors on connection failure
+
+  - Improved interface for sending values to component features
+
+    - notification on successfully sending a value
+    - allow storing and editing a list of commonly used values per feature
+    - auto saves last value sent to list of commonly used values
+
+  - Improved toolboxes
+
+    - selecting enums and state machines will show all possible values
+    - selecting structs will show properties and types
+
+  - Auto-generated intance tabs
+
+    - selecting an instance now opens a more comprehensive view with inputs/outputs/state_vars
+
+  - Preliminary plots
+
+    - 2D plot view of a single scalar value
+
+  - New window tiling system with improved panel editor
+
+    - add/remove new panels to the grid
+    - resize and re-order panels
+    - Add panels from different component instances to the same view
+
+  - Camera views
+
+    - GMT site cameras included in the list of pre-defined camera feeds that can be added from the panel menu
+
+  - Vis panel developer tools
+
+    - allows switching between production and development modes
+    - allows mock data to be received by the UI, simulating a component
+    - realtime vis panel rendering during development
+
+  - Improved error displays when failing to render
+
+    - provide full stacktrace for better debugging
+    - automated attempts to recover from error
+
+  - Performance improvements
+
+    - threaded component proxy instances
+    - rendering improvements
+    - more memoization, more fun 
+
+- Implementation Examples
+
+  - The HDK example has been updated to be synchronized with Core Frameworks version 1.8
+
+- Documentation: Software Development
+
+  - Updated :ref:`gds_guide`
+
+    - Removed support for "gds clone" command. Developers are requested to use the "git clone" command directly.
+
+  - Updated :ref:`grs_guide`
+
+    - Added description of "grs db" command for Database operations when the instance implements a database server
+    - Added more examples of grs commands
+
+  - Updated :ref:`mapping_model_to_coffee`
+
+    - Updated diagrams for Fault FSM and Alarm FSM
+    - Updated description for StructType, Enum and StateMachine Data Types
+    - Updated description of communication between components to be consistent with Core Frameworks version 1.8
+    - Added section describing the ComponentProxy
+
+  - Updated :ref:`modeling_guidelines`
+
+    - Updated to be consistent with Core Frameworks version 1.8
+    - New examples and diagrams
+
+  - Updated :ref:`test_guidelines`
+
+    - Updated examples to use “op_state_value” instead of “ops_state_value” to be consistent with the version 1.8 of the core frameworks
+
+  - Updated :ref:`ui_fwk` documentation
+
 Contents of release 1.8.0
 -------------------------
 

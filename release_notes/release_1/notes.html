@@ -101,6 +101,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Release Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Release 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-8-1">Contents of release 1.8.1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-8-0">Contents of release 1.8.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-7-0">Contents of release 1.7.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-6-2">Contents of release 1.6.2</a></li>
@@ -187,6 +188,116 @@
             
   <div class="section" id="release-1">
 <span id="id1"></span><h1>Release 1<a class="headerlink" href="#release-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contents-of-release-1-8-1">
+<h2>Contents of release 1.8.1<a class="headerlink" href="#contents-of-release-1-8-1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Core Frameworks<ul>
+<li>Updated UI Framework<ul>
+<li>Added React framework library, allowing vis panel developers to use the same library used by Navigator.</li>
+<li>Consolidated CSS styles, allowing vis panels to inherit Navigator’s look and feel</li>
+<li>Added new developer tools to support realtime vis panel rendering during development</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Navigator Application<ul>
+<li>Updated data rendering<ul>
+<li>better representation of on/off states</li>
+<li>distinct colors for data types</li>
+<li>fixed rendering issues for complex data types</li>
+<li>cleaner and more consistent design</li>
+<li>fail gracefully on unknown types</li>
+</ul>
+</li>
+<li>Updated data controls<ul>
+<li>allow selection between connecting to service data ports or sockets</li>
+<li>play/stop interface to start and stop data streaming from components</li>
+<li>show errors on connection failure</li>
+</ul>
+</li>
+<li>Improved interface for sending values to component features<ul>
+<li>notification on successfully sending a value</li>
+<li>allow storing and editing a list of commonly used values per feature</li>
+<li>auto saves last value sent to list of commonly used values</li>
+</ul>
+</li>
+<li>Improved toolboxes<ul>
+<li>selecting enums and state machines will show all possible values</li>
+<li>selecting structs will show properties and types</li>
+</ul>
+</li>
+<li>Auto-generated intance tabs<ul>
+<li>selecting an instance now opens a more comprehensive view with inputs/outputs/state_vars</li>
+</ul>
+</li>
+<li>Preliminary plots<ul>
+<li>2D plot view of a single scalar value</li>
+</ul>
+</li>
+<li>New window tiling system with improved panel editor<ul>
+<li>add/remove new panels to the grid</li>
+<li>resize and re-order panels</li>
+<li>Add panels from different component instances to the same view</li>
+</ul>
+</li>
+<li>Camera views<ul>
+<li>GMT site cameras included in the list of pre-defined camera feeds that can be added from the panel menu</li>
+</ul>
+</li>
+<li>Vis panel developer tools<ul>
+<li>allows switching between production and development modes</li>
+<li>allows mock data to be received by the UI, simulating a component</li>
+<li>realtime vis panel rendering during development</li>
+</ul>
+</li>
+<li>Improved error displays when failing to render<ul>
+<li>provide full stacktrace for better debugging</li>
+<li>automated attempts to recover from error</li>
+</ul>
+</li>
+<li>Performance improvements<ul>
+<li>threaded component proxy instances</li>
+<li>rendering improvements</li>
+<li>more memoization, more fun</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Implementation Examples<ul>
+<li>The HDK example has been updated to be synchronized with Core Frameworks version 1.8</li>
+</ul>
+</li>
+<li>Documentation: Software Development<ul>
+<li>Updated <a class="reference internal" href="../../software_development/gds_guide.html#gds-guide"><span class="std std-ref">gds documentation</span></a><ul>
+<li>Removed support for “gds clone” command. Developers are requested to use the “git clone” command directly.</li>
+</ul>
+</li>
+<li>Updated <a class="reference internal" href="../../software_development/grs_guide.html#grs-guide"><span class="std std-ref">grs documentation</span></a><ul>
+<li>Added description of “grs db” command for Database operations when the instance implements a database server</li>
+<li>Added more examples of grs commands</li>
+</ul>
+</li>
+<li>Updated <a class="reference internal" href="../../software_development/model_language_mapping/mapping_model_to_coffee.html#mapping-model-to-coffee"><span class="std std-ref">Mapping between the Model Definition Files and Coffeescript source code</span></a><ul>
+<li>Updated diagrams for Fault FSM and Alarm FSM</li>
+<li>Updated description for StructType, Enum and StateMachine Data Types</li>
+<li>Updated description of communication between components to be consistent with Core Frameworks version 1.8</li>
+<li>Added section describing the ComponentProxy</li>
+</ul>
+</li>
+<li>Updated <a class="reference internal" href="../../software_development/modeling_guide/modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">Model specification guide document</span></a><ul>
+<li>Updated to be consistent with Core Frameworks version 1.8</li>
+<li>New examples and diagrams</li>
+</ul>
+</li>
+<li>Updated <a class="reference internal" href="../../software_development/test_guidelines.html#test-guidelines"><span class="std std-ref">OCS Test Guidelines</span></a><ul>
+<li>Updated examples to use “op_state_value” instead of “ops_state_value” to be consistent with the version 1.8 of the core frameworks</li>
+</ul>
+</li>
+<li>Updated <a class="reference internal" href="../../software_development/ui_fwk.html#ui-fwk"><span class="std std-ref">UI Framework</span></a> documentation</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="contents-of-release-1-8-0">
 <h2>Contents of release 1.8.0<a class="headerlink" href="#contents-of-release-1-8-0" title="Permalink to this headline">¶</a></h2>
 <ul>
@@ -854,7 +965,7 @@ other information as the development progresses.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.8.0',
+            VERSION:'1.8.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
