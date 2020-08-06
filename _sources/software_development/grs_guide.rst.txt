@@ -24,32 +24,53 @@ The ``grs`` help command provides a brief description of the utility:
 
   .. code-block:: bash
 
-   $ grs --help
-
+    $ grs --help
     grs [command]
 
     Commands:
-    grs send [instance]         send a message to a port of a remote instance   [aliases: push]
-    grs listen [instance]       listen to messages from a port of the instance
-    grs compile [instance]      compile the configuration of an instance. Compiled files are
-                                saved in $GMT_LOCAL
-    grs info [instance]         displays configuration information for a given instance
-    grs get [instance]          displays the value of a feature of a remote Component instance
-    grs set [instance]          sets the value of a feature in a remote Component instance
-    grs inspect [instance]      continuously display the values of all the features of a remote
-                                Component instance
+    grs send [instance]            Send a message to the port of the instance[aliases: push]
+    grs listen [instance]          Listen to messages from the port of the instance
+    grs compile [module]           Compiles the configuration of a module or compile the
+                                    input file passed as argument
+    grs info <instance>            displays configuration information for a given instance
+    grs get <instance>             Obtains the value of a feature of a remote Component
+                                    instance
+    grs set <instance>             Sets the value of a feature in a remote Component
+                                    instance
+    grs db <operation> <instance>  Database operations when the instance implements a
+                                    database server
+    grs inspect <instance>         scans the values of all the features of a remote
+                                    Component instance
 
     Options:
-    --version    show version number                                                    [boolean]
-    --name       name of the configurable entity                        [string] [default: "grs"]
-    --scope      scope to load the configuration file                      [string] [default: ""]
-    --config     name of the component configuration to be applied  [string] [default: "default"]
-    --auto_conf  load the configuration from file if it exists          [boolean] [default: true]
-    --logging    logging level                                         [string] [default: "info"]
-    --help       show help                                                              [boolean]
+    --version    Show version number                                               [boolean]
+    --name       name of the configurable entity              [string] [default: "grs_7074"]
+    --scope      scope to load the configuration file                 [string] [default: ""]
+    --config     name of the component configuration to be applied
+                                                                [string] [default: "default"]
+    --auto_conf  load the configuration from file if it exists     [boolean] [default: true]
+    --logging    logging level                                    [string] [default: "info"]
+    --help       Show help                                                         [boolean]
 
     Examples:
-    grs send -i x_ctrl -p position -m 25.01
+    grs send -i x_ctrl -p position_goal -m 1
+    grs send -i x_ctrl -p position_goal -m 1 2.4 3 -d 100
+    grs listen --url 'tcp://127.0.0.1:14103'
+    grs listen tele_server --port 'pub_port'
+    grs compile <instance_name>
+    grs compile --input <absolute_file_path> --output <file_path>
+    grs get x_ctrl -f state_vars
+    grs get x_ctrl -f state_vars/position
+    grs get x_ctrl -f state_vars/position/goal
+    grs set x_ctrl -f state_vars/position/goal -v 1.5
+    grs db query  alarm_srv -e '{src: "alarm_srv"}'
+    grs db query  alarm_srv -e '{src: {$regex: /alarm_srv/}' --limit 10
+    grs db insert alarm_srv -r '{src: "test_client"}'
+    grs db update alarm_srv -e '{src: {$regex: /alarm_srv/}' -u '{ $set: {counter: 1} }'
+    grs db delete alarm_srv -e '{state: "ON" }'
+    grs inspect alarm_server
+    grs inspect alarm_server -f properties
+    grs inspect alarm_server -f state_vars -s goal
 
     For more information, find our manual at https://gmto.github.io/gmt_docs/
 
@@ -531,6 +552,91 @@ The following example shows the ouput of the inspect command for a component imp
     connectors: { },
     proxies: { x_ctrl: null, y_ctrl: null, z_ctrl: null } }
     Enter <CTRL-C> to exit
+
+
+grs db
+......
+
+**Description**
+
+The ``db`` allows to interact with a Component that implements the ServerProxy API.
+
+  .. code-block:: bash
+
+    $ grs db --help
+    grs db <operation> <instance>
+
+    Database operations when the instance implements a database server
+
+    Options:
+    --instance     name of the instance                                             [string]
+    --conf, -c     name of the configuration                   [string] [default: "default"]
+    --operation    name of the database operation
+                                    [string] [choices: "query", "insert", "update", "delete"]
+    --output, -o   output format of the database result operation
+    [string] [choices: "raw", "payload", "console", "json", "json_raw"] [default: "console"]
+    --expr, -e     the expresion of the query in MongoDB format       [string] [default: ""]
+    --record, -r   the record to insert in the database               [string] [default: ""]
+    --update, -u   update to apply to the query record                [string] [default: ""]
+    --limit, -l    the maximum number of records to return from the query
+                                                                        [number] [default: 40]
+    --timeout, -t  timeout for the get command                       [number] [default: 400]
+
+
+**Options**
+
+``--operation``
+   the name of the database operation. The choices are:
+
+    - ``query``: Sends a query to the service server and returns the result. The query must be writen using the mongodb query syntax [https://docs.mongodb.com/manual/tutorial/query-documents/]
+
+    - ``insert``: Inserts a new record in the database
+
+    - ``update``: Updates the record(s) defined by the --expr option with the update expresion. The --update and --expr options follow the MongoDB syntax
+
+    - ``delete``: Deletes the record(s) defined by the --expr option.
+
+``--instance``
+   the name of the remote component instance.
+
+``--conf, -c``
+   the name of the configuration of the remote component
+
+``--output, -o``
+   the ouput format of the database result operation. The possible choices are:
+
+    - ``raw``: Writes to the standard output the query result as generated by the MongoDB database. It includes additional information related to the database organization
+
+    - ``payload``: Writes to the standard output the data part of the query result.
+
+    - ``console``: Similar with payload but with console formatting.
+
+    - ``json``: Creates a file in the current directory with the data part of the query result.
+
+    - ``json_raw``: Creates a file in the current directory with the query result as generated by the MongoDB database.
+
+``--expr, -e``
+   the query expresion used for the query, update and delete operations. The query expression follows
+   the MongoDB systax
+
+``--record, -r``
+   the record to be inserted in the database
+
+``--update, -u``
+   the update expresion for the update operation. The update expression follows the MongoDB syntax
+
+``--limit, -l``
+   the maximum number of records returned by the database query operation
+
+The following examples show different db commands
+
+  .. code-block:: bash
+
+   $ grs db query  alarm_srv -e '{src: "alarm_srv"}'
+   $ grs db query  alarm_srv -e '{src: {$regex: /alarm_srv/}' --limit 10
+   $ grs db insert alarm_srv -r '{src: "test_client"}'
+   $ grs db update alarm_srv -e '{src: {$regex: /alarm_srv/}' -u '{ $set: {counter: 1} }'
+   $ grs db delete alarm_srv -e '{state: "ON" }'
 
 
 grs options

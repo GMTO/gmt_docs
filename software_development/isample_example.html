@@ -108,7 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gds_guide.html">4. gds documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grs_guide.html">5. grs documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guide/modeling_guidelines.html">6. Model specification guide document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk_1_6_migration_guide.html">8. Migration guide to SDK 1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">9. OCS Test Guidelines</a></li>
@@ -630,29 +630,29 @@ current value of a given Component feature (property, state variable, input
 or output), setting a value or inspecting the whole Component state.</p>
 <p>The <cite>grs get</cite> subcommand allows us to query the current value of a feature. The
 syntax is</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs get -i &lt;instance&gt; -f &lt;feature&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs get &lt;instance&gt; -f &lt;feature&gt;
 </pre></div>
 </div>
 <p>For example, to read the value of the <cite>position</cite> state variable of the
 <cite>isample_fw1_ctrl</cite> instance, execute:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs get -i isample_fw1_ctrl -f state_vars/position/value
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs get isample_fw1_ctrl -f state_vars/position/value
 </pre></div>
 </div>
 <p>To set a value, the <cite>grs set</cite> subcommand can be used:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs <span class="nb">set</span> -i &lt;instance&gt; -f &lt;feature&gt; -v &lt;value&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs <span class="nb">set</span> &lt;instance&gt; -f &lt;feature&gt; -v &lt;value&gt;
 </pre></div>
 </div>
 <p>For example, to set the goal of the <cite>position</cite> state variable of the
 <cite>isample_fw1_ctrl</cite> instance, execute:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs <span class="nb">set</span> -i isample_fw1_ctrl -f state_vars/position/goal -v <span class="m">2</span>.0
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs <span class="nb">set</span> isample_fw1_ctrl -f state_vars/position/goal -v <span class="m">2</span>.0
 </pre></div>
 </div>
 <p>Finally, to inspect the whole state, use the <cite>grs inspect</cite> command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs inspect -i &lt;instance&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs inspect &lt;instance&gt;
 </pre></div>
 </div>
 <p>As before, to inspect the state of the <cite>isample_fw1_ctrl</cite> instance, execute:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs inspect -i isample_fw1_ctrl
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs inspect isample_fw1_ctrl
 </pre></div>
 </div>
 <p><a class="reference internal" href="#isample-example"><span class="std std-ref">[back to top]</span></a></p>

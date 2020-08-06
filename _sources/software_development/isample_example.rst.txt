@@ -411,38 +411,38 @@ syntax is
 
 .. code-block:: bash
 
-    $ grs get -i <instance> -f <feature>
+    $ grs get <instance> -f <feature>
 
 For example, to read the value of the `position` state variable of the
 `isample_fw1_ctrl` instance, execute:
 
 .. code-block:: bash
 
-    $ grs get -i isample_fw1_ctrl -f state_vars/position/value
+    $ grs get isample_fw1_ctrl -f state_vars/position/value
 
 To set a value, the `grs set` subcommand can be used:
 
 .. code-block:: bash
 
-    $ grs set -i <instance> -f <feature> -v <value>
+    $ grs set <instance> -f <feature> -v <value>
 
 For example, to set the goal of the `position` state variable of the
 `isample_fw1_ctrl` instance, execute:
 
 .. code-block:: bash
 
-    $ grs set -i isample_fw1_ctrl -f state_vars/position/goal -v 2.0
+    $ grs set isample_fw1_ctrl -f state_vars/position/goal -v 2.0
 
 Finally, to inspect the whole state, use the `grs inspect` command:
 
 .. code-block:: bash
 
-    $ grs inspect -i <instance>
+    $ grs inspect <instance>
 
 As before, to inspect the state of the `isample_fw1_ctrl` instance, execute:
 
 .. code-block:: bash
 
-    $ grs inspect -i isample_fw1_ctrl
+    $ grs inspect isample_fw1_ctrl
 
 :ref:`[back to top] <isample_example>`

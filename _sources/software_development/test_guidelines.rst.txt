@@ -15,7 +15,6 @@ only apply to the verification of requirements that involve software components.
 Following is a brief description  of the verification methods `[SEBoK] <https://www.sebokwiki.org/wiki/Guide_to_the_Systems_Engineering_Body_of_Knowledge_(SEBoK)>`_ :
 
 
-
    - Inspection: Technique based on visual or dimensional examination of an element. Inspection
      is generally non-destructive, and typically includes the use of sight, hearing or simple
      physical manipulation. No stimuli (tests) are necessary. In the case of the OCS
@@ -352,7 +351,7 @@ As can be seen in the example below, the skeleton includes the following:
             hmi_value:           { name: 'hmi_value',             port_type: 'pull',  url: 'tcp://127.0.0.1:8122', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
             motor_value:         { name: 'motor_value',           port_type: 'pull',  url: 'tcp://127.0.0.1:8123', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
             temperatures_value:  { name: 'temperatures_value',    port_type: 'pull',  url: 'tcp://127.0.0.1:8124', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
-            ops_state_value:     { name: 'ops_state_value',       port_type: 'pull',  url: 'tcp://127.0.0.1:8119', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
+            op_state_value:      { name: 'op_state_value',        port_type: 'pull',  url: 'tcp://127.0.0.1:8119', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
             sim_mode_value:      { name: 'sim_mode_value',        port_type: 'pull',  url: 'tcp://127.0.0.1:8120', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
             control_mode_value:  { name: 'control_mode_value',    port_type: 'pull',  url: 'tcp://127.0.0.1:8121', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
          outputs:
@@ -362,7 +361,7 @@ As can be seen in the example below, the skeleton includes the following:
             hmi_goal:            { name: 'hmi_goal',              port_type: 'push',  url: 'tcp://127.0.0.1:8116', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
             motor_goal:          { name: 'motor_goal',            port_type: 'push',  url: 'tcp://127.0.0.1:8117', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
             temperatures_goal:   { name: 'temperatures_goal',     port_type: 'push',  url: 'tcp://127.0.0.1:8118', blocking_mode: 'async', max_rate: 1000,  nom_rate: 1     }
-            ops_state_goal:      { name: 'ops_state_goal',        port_type: 'push',  url: 'tcp://127.0.0.1:8113', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
+            op_state_goal:       { name: 'op_state_goal',         port_type: 'push',  url: 'tcp://127.0.0.1:8113', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
             sim_mode_goal:       { name: 'sim_mode_goal',         port_type: 'push',  url: 'tcp://127.0.0.1:8114', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
             control_mode_goal:   { name: 'control_mode_goal',     port_type: 'push',  url: 'tcp://127.0.0.1:8115', blocking_mode: 'async', max_rate: 1,     nom_rate: 1     }
 

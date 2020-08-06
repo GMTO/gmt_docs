@@ -118,17 +118,16 @@
 <li class="toctree-l4"><a class="reference internal" href="#gds-info-options">4.4.5. gds info [options]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gds-build-options-module">4.4.6. gds build [options] [module]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gds-install-options-module">4.4.7. gds install [options] [module]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-clone-options-module">4.4.8. gds clone [options] [module]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-test-options-module">4.4.9. gds test [options] [module]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-validate-options-module">4.4.10. gds validate [options] [module]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gds-options">4.4.11. gds options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-test-options-module">4.4.8. gds test [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-validate-options-module">4.4.9. gds validate [options] [module]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gds-options">4.4.10. gds options</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#starting-to-use-gds">4.5. Starting to use gds</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="grs_guide.html">5. grs documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guide/modeling_guidelines.html">6. Model specification guide document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk_1_6_migration_guide.html">8. Migration guide to SDK 1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">9. OCS Test Guidelines</a></li>
@@ -298,7 +297,6 @@ Commands:
   info <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>      List information of the <span class="nb">local</span> bundles or the optional module
   build <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>     Builds the <span class="nb">local</span> bundles or the optional module
   install <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>   Installs the <span class="nb">local</span> bundle modules or the optional module
-  clone <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>     Clones the <span class="nb">local</span> bundle modules or the optional module
   <span class="nb">test</span> <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>      Run the <span class="nb">test</span> of the <span class="nb">local</span> bundle modules or the optional module
   validate <span class="o">[</span>element<span class="o">]</span>           Validates the model element
 </pre></div>
@@ -370,7 +368,7 @@ Each module is mapped into the file system using the following structure:</p>
    <span class="o">|--</span> <span class="n">docs</span><span class="o">/</span>
 </pre></div>
 </div>
-<p>See the <a class="reference internal" href="modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">Model Specification Guide Document</span></a> for a description
+<p>See the <a class="reference internal" href="modeling_guide/modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">Model Specification Guide Document</span></a> for a description
 of the <code class="docutils literal"><span class="pre">model</span></code> file structure. The <code class="docutils literal"><span class="pre">src</span></code> file structure depends on the target programming
 language. The details of each language mapping are described in the corresponding document.</p>
 <blockquote>
@@ -665,38 +663,8 @@ Options:
 be performed as part of the invocation of the make command.</p>
 </div>
 </div>
-<div class="section" id="gds-clone-options-module">
-<h3>4.4.8. gds clone [options] [module]<a class="headerlink" href="#gds-clone-options-module" title="Permalink to this headline">¶</a></h3>
-<p><strong>Description</strong></p>
-<p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">clone</span></code> command will clone the Github repositories corresponding to the
-specified module. The option <code class="docutils literal"><span class="pre">--developer</span></code> is used to determine which Github account
-is to be used as upstream repository. If no argument is passed all the modules of
-the local bundle will be cloned.</p>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>&gt; gds clone --help
-
-Usage: clone <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>module<span class="o">]</span>
-
-Clones the <span class="nb">local</span> bundle modules or the optional module
-
-Options:
-
-  -b, --bundle    &lt;name&gt;  uses the bundle &lt;name&gt; instead of the <span class="nb">local</span> bundles <span class="o">(</span>default: <span class="o">)</span>
-  -d, --developer &lt;name&gt;  overrides the developer defined in the bundle file <span class="o">(</span>default: <span class="o">)</span>
-  -h, --help              output usage information
-</pre></div>
-</div>
-</div></blockquote>
-<p><strong>Options</strong></p>
-<dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">bundle</span></code></dt>
-<dd>The command will clone the modules contained in the specified bundle.</dd>
-<dt><code class="docutils literal"><span class="pre">developer</span></code></dt>
-<dd>The name of the Github repository account.</dd>
-</dl>
-</div>
 <div class="section" id="gds-test-options-module">
-<h3>4.4.9. gds test [options] [module]<a class="headerlink" href="#gds-test-options-module" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.8. gds test [options] [module]<a class="headerlink" href="#gds-test-options-module" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">test</span></code> allows the automated execution of module tests. Module tests
 are created in the corresponding module test directory. The name of the files
@@ -743,7 +711,7 @@ tests after unit tests).</dd>
 </dl>
 </div>
 <div class="section" id="gds-validate-options-module">
-<h3>4.4.10. gds validate [options] [module]<a class="headerlink" href="#gds-validate-options-module" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.9. gds validate [options] [module]<a class="headerlink" href="#gds-validate-options-module" title="Permalink to this headline">¶</a></h3>
 <p><strong>Description</strong></p>
 <p>The <code class="docutils literal"><span class="pre">gds</span> <span class="pre">validate</span></code> performs a series of validations on model specifications.</p>
 <blockquote>
@@ -761,7 +729,7 @@ Options:
 </div></blockquote>
 </div>
 <div class="section" id="gds-options">
-<h3>4.4.11. gds options<a class="headerlink" href="#gds-options" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.10. gds options<a class="headerlink" href="#gds-options" title="Permalink to this headline">¶</a></h3>
 <p>The following options can be used in combination with the previous commands</p>
 <dl class="docutils">
 <dt><code class="docutils literal"><span class="pre">-V,</span> <span class="pre">--version</span></code></dt>

@@ -108,7 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gds_guide.html">4. gds documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grs_guide.html">5. grs documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guide/modeling_guidelines.html">6. Model specification guide document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk_1_6_migration_guide.html">8. Migration guide to SDK 1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">9. OCS Test Guidelines</a></li>
@@ -116,9 +116,16 @@
 <li class="toctree-l2"><a class="reference internal" href="isample_example.html">11. ISample Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hdk_example.html">12. HDK example</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">13. UI Framework</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#installation">13.1. Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#user-guide">13.2. User Guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#launching-custom-panels">13.3. Launching Custom Panels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">13.1. Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-your-enviornment">13.1.1. Setting up your enviornment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#seeing-data-with-navigator">13.2. Seeing Data With Navigator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#server">13.2.1. Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#client">13.2.2. Client</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#navigator-overview">13.3. Navigator Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting-guide">13.4. Troubleshooting Guide</a></li>
 </ul>
 </li>
@@ -191,33 +198,25 @@
             
   <div class="section" id="ui-framework">
 <span id="ui-fwk"></span><h1>13. UI Framework<a class="headerlink" href="#ui-framework" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The UI framework is currently supported on MacOS and Linux.</p>
-</div>
-<p>The UI Framework introduces a set of libraries and a windowed application that provides a GUI for the OCS.  The framework handles three primary concerns</p>
-<ul class="simple">
-<li>Rendering (drawing) elements to the screen (DOM)</li>
-<li>Library of re-usable UI components that can be shared across the project</li>
-<li>An Engineering App that provides an interface to the OCS</li>
-</ul>
+<p>The UI Framework provides a GUI toolkit for the OCS.  One of the GUI apps is called Navigator, and sometimes referred to as the “Engineering UI”, as it allows you to visualize models built with OCS SDK.  You can use the Engineering UI to see the data produced and consumed by your controllers.</p>
+<p>Navigator can run on MacOS or a Linux Desktop environment.  macOS Mojave, Catalina and CentOS 8 Desktop have been verified.</p>
 <div class="section" id="installation">
 <h2>13.1. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>The UI engineering app uses the local bundles defined in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code> to create a visual representation of your model files’ input/output ports.  If the Navigator app runs in a computer separate from where you run your components, you will need to create a minimal <code class="docutils literal"><span class="pre">$GMT_LOCAL</span></code> environment so that Navigator can boostrap your model and configuration files from your computer.  By convention it should be a directory in your home folder.  Once you create an <code class="docutils literal"><span class="pre">&lt;ocs_local&gt;</span></code> folder, in your shell environment file, add the following to your shell.</p>
+<p>To install Navigator you will need to donwload the packaged app and set up your local environment.  Downloads are available for macOS and centOS.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>wget http://52.52.46.32/srv/gmt/releases/navigator/centos8/ocs_navigator.AppImage
+wget http://52.52.46.32/srv/gmt/releases/navigator/macos/ocs_navigator.zip
+</pre></div>
+</div>
+<p>This is a packaged binary app that you can run after you have set up your environment.</p>
+<div class="section" id="setting-up-your-enviornment">
+<h3>13.1.1. Setting up your enviornment<a class="headerlink" href="#setting-up-your-enviornment" title="Permalink to this headline">¶</a></h3>
+<p>The Engineering UI uses the <code class="docutils literal"><span class="pre">gmt_env</span></code> if you have set that up.  If you don’t have that, you’ll need to set up a <code class="docutils literal"><span class="pre">$GMT_LOCAL</span></code> environment.  This is very similar to setting up the SDK.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">For bash, you’ll need to edit the <code class="docutils literal"><span class="pre">~\.bash_profile</span></code>. For zsh you’ll need to edit <code class="docutils literal"><span class="pre">~\.zshrc</span></code>.</p>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># GMT Environment</span>
-<span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>/Users/&lt;user&gt;/&lt;ocs_local&gt;
-</pre></div>
-</div>
-<p>where <code class="docutils literal"><span class="pre">&lt;user&gt;</span></code> is your home folder and <code class="docutils literal"><span class="pre">&lt;ocs_local&gt;</span></code> is the designated OCS local folder. For example, my environment contains</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># GMT Environment</span>
-<span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>/Users/aroman/ocs/
-</pre></div>
-</div>
-<p>In the <code class="docutils literal"><span class="pre">&lt;ocs_local&gt;</span></code> directory, you’ll need to create this folder structure and two files.</p>
+<p>To set up a <code class="docutils literal"><span class="pre">$GMT_LOCAL</span></code> environment, first designate a directory and set your <code class="docutils literal"><span class="pre">~\.bash_profile</span></code> or <code class="docutils literal"><span class="pre">~\.zshrc</span></code> environment variables.  Asumming the path is <code class="docutils literal"><span class="pre">/home/gmto/working_dir</span></code>, then your export should look like</p>
+<p>Create the following folder structure in your <code class="docutils literal"><span class="pre">$GMT_LOCAL</span></code> directory</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="p">|</span>-- etc
 <span class="p">|</span>   <span class="p">|</span>-- bundles
 <span class="p">|</span>   <span class="p">|</span>   <span class="p">|</span>-- bundles.coffee
@@ -239,34 +238,38 @@
     <span class="nv">elements: </span> <span class="p">{}</span>
 </pre></div>
 </div>
-<p>This will give you the base parameters to load the local environment. The <code class="docutils literal"><span class="pre">elements</span></code> key in this example is intentionally empty. This will change as you add OCS bundles.</p>
+<p>This will give you the base parameters to load the local environment. The <code class="docutils literal"><span class="pre">elements</span></code> key in this example is intentionally empty. This will change as you add OCS bundles.  You will need to have corresponding model files for the bundles you define.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The bundles you define need to have corresponding webpack model files in <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code>.  You will need to copy these files on your own.</p>
 </div>
-<p>After you’ve done this, download the Mac App</p>
-<ul class="simple">
-<li><a class="reference external" href="http://52.52.46.32/srv/gmt/releases/navigator/mac/ocs_navigator_app_1.7.0.zip">http://52.52.46.32/srv/gmt/releases/navigator/mac/ocs_navigator_app_1.7.0.zip</a></li>
-</ul>
-<p>You can unzip the app anywhere on your MacOS file system.  Double click on the icon to run.</p>
-<img alt="Navigator application at startup" class="align-center" src="../_images/navigator_first_run.png" />
+<p>Now you can star the Navigator app by double clicking on the icon.  If you have done all of the above correctly you will see the starfield animation.</p>
+<img alt="Navigator on first launch." class="align-center" src="../_images/navigator_first_run.png" />
 </div>
-<div class="section" id="user-guide">
-<h2>13.2. User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
-<img alt="Navigator with inspect." class="align-center" src="../_images/navigator_inspect.png" />
-<p>The navigator application contains three regions.</p>
-<ol class="arabic simple">
-<li><strong>Navigation</strong> This area contains the navigation tree.  The tree is a representation of your model and is built from information found in your local bundles.</li>
-<li><strong>Tabs</strong> This area displays content in tabs.  Visualization panels will open in new tabs.</li>
-<li><strong>Tools</strong> This area presents context sensitive tools.  The tools are activated when you select an element in a tab.</li>
-</ol>
-<p>From the navigation menu you can visually explore your model, inspect or send data to your connected instances.</p>
-<img alt="Navigator with inspect." class="align-center" src="../_images/navigator_guide.png" />
-<p>You can drag models and inputs/outputs/properties/state vars into tabs.  You can create new tabs by double-clicking the empty tab area.  You can drag and re-order tabs.  Elements dragged into the tabs can also be re-ordered by dragging the title bar and resized by dragging the bottom right corner.</p>
 </div>
-<div class="section" id="launching-custom-panels">
-<h2>13.3. Launching Custom Panels<a class="headerlink" href="#launching-custom-panels" title="Permalink to this headline">¶</a></h2>
-<p>From the model navigation menu, select the <code class="docutils literal"><span class="pre">Vis</span> <span class="pre">package</span></code> you want to run and the Navigator app will open a new tab showing the panel.</p>
+<div class="section" id="seeing-data-with-navigator">
+<h2>13.2. Seeing Data With Navigator<a class="headerlink" href="#seeing-data-with-navigator" title="Permalink to this headline">¶</a></h2>
+<p>The Navigator app has some parallels with server/client model.  This is an inexact comparison, however, it’s a useful analogy to explain the configuration required to see your data.  The <code class="docutils literal"><span class="pre">server</span></code> in this case is the environment that runs your OCS controllers, adapters, services, etc.  The <code class="docutils literal"><span class="pre">client</span></code> is the Navigator UI which will most likely run on a separate Linux machine with full desktop graphics support or macOS.</p>
+<p>To see data, both your client and server need to have identical models and corresponding configuration files.  While a model might describe multiple components and their relationships, a configuration file is defined for a single component at a time.</p>
+<p>The easiest thing to do is to copy the files you have in <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js/*_model.js</span></code> and <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/conf</span></code> on your server to your client.  Navigator uses the same paths to discover your files.  You will then need to modify your config files as follows.</p>
+<div class="section" id="server">
+<h3>13.2.1. Server<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h3>
+<p>On the machine where your components run, you will have to edit your configuration file so that it publishes data as a server.  In a configuration file the field you need to edit is <code class="docutils literal"><span class="pre">properties.host.default_value</span></code> with the value of <cite>0.0.0.0</cite> and not the loopback or server address.  In some cases this will require that you recompile your config files.</p>
+<p>Your server should not have the firewall enabled.  To disable the firewall <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">stop</span> <span class="pre">firewalld</span></code>.</p>
+</div>
+<div class="section" id="client">
+<h3>13.2.2. Client<a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h3>
+<p>Likewise, edit the the configuration on your client so that it points to the server IP where you’re trying to see data.  You can view this address with the <code class="docutils literal"><span class="pre">ifconfig</span></code> command on your server.  This config will live in the <code class="docutils literal"><span class="pre">$GMT_LOCAl/etc/conf</span></code> directory.  Set the <code class="docutils literal"><span class="pre">properties.host.default_value</span></code> of the corresponding config to the valid IP of the server you’re trying to connect to.</p>
+</div>
+</div>
+<div class="section" id="navigator-overview">
+<h2>13.3. Navigator Overview<a class="headerlink" href="#navigator-overview" title="Permalink to this headline">¶</a></h2>
+<a class="reference external image-reference" href="../_images/navigator_overview.png"><img alt="Navigator overview." class="align-center" src="../_images/navigator_overview.png" /></a>
+<p>You can inspect data on any part of your component the same way you do on the command line.</p>
+<a class="reference external image-reference" href="../_images/navigator_data1.png"><img alt="Navigator with inspect." class="align-center" src="../_images/navigator_data1.png" /></a>
+<a class="reference external image-reference" href="../_images/navigator_data2.png"><img alt="Navigator  inspect." class="align-center" src="../_images/navigator_data2.png" /></a>
+<p>You can also send data.</p>
+<a class="reference external image-reference" href="../_images/navigator_send.png"><img alt="Navigator send." class="align-center" src="../_images/navigator_send.png" /></a>
 </div>
 <div class="section" id="troubleshooting-guide">
 <h2>13.4. Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permalink to this headline">¶</a></h2>
@@ -289,8 +292,8 @@ rm -fr ~/.config/ocs_navigator
 <ul>
 <li><p class="first"><strong>Unresponsive UI</strong>: in some case if the UI becomes unresponsive, press <code class="docutils literal"><span class="pre">CMD+R</span></code> to refresh.  If that fails to solve the problem, restart the CLI app.</p>
 </li>
-<li><p class="first"><strong>No data</strong>: Ensure that the ports used by the controllers to publish data are accessible through the firewall. The following command should be used on the Device Control Computer to open the applicable range of ports (8122 - 8124):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo firewall-cmd --add-port<span class="o">=</span><span class="m">8122</span>-8124/tcp
+<li><p class="first"><strong>No data</strong>: Ensure that the ports used by the controllers to publish data are accessible through the firewall. The following will disable the firewall on CentOS:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl stop firewalld
 </pre></div>
 </div>
 </li>

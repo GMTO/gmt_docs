@@ -109,7 +109,6 @@ The GMT SDK includes the gds tool to assist in the development of GMT software.
        info [options] [module]      List information of the local bundles or the optional module
        build [options] [module]     Builds the local bundles or the optional module
        install [options] [module]   Installs the local bundle modules or the optional module
-       clone [options] [module]     Clones the local bundle modules or the optional module
        test [options] [module]      Run the test of the local bundle modules or the optional module
        validate [element]           Validates the model element
 
@@ -510,38 +509,6 @@ If no argument is passed it will install the artifacts of the modules in the loc
 .. warning::
    In the latest release the use of the ``install`` command is not recommended as the installation will
    be performed as part of the invocation of the make command.
-
-gds clone [options] [module]
-............................
-
-**Description**
-
-The ``gds clone`` command will clone the Github repositories corresponding to the
-specified module. The option ``--developer`` is used to determine which Github account
-is to be used as upstream repository. If no argument is passed all the modules of
-the local bundle will be cloned.
-
-    .. code-block:: bash
-
-     > gds clone --help
-
-     Usage: clone [options] [module]
-
-     Clones the local bundle modules or the optional module
-
-     Options:
-
-       -b, --bundle    <name>  uses the bundle <name> instead of the local bundles (default: )
-       -d, --developer <name>  overrides the developer defined in the bundle file (default: )
-       -h, --help              output usage information
-
-**Options**
-
-``bundle``
-   The command will clone the modules contained in the specified bundle.
-
-``developer``
-   The name of the Github repository account.
 
 
 gds test [options] [module]

@@ -108,7 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../virtual_machine/virtual_machine.html">3. Installing a Virtual Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gds_guide.html">4. gds documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../grs_guide.html">5. grs documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling_guide/modeling_guidelines.html">6. Model specification guide document</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">7. Model-language mapping</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="mapping_model_to_cpp.html">7.1. Mapping between the Model Definition Files and C++ source code</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">7.2. Mapping between the Model Definition Files and Coffeescript source code</a><ul>
@@ -117,11 +117,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#data-types-mapping">7.2.3. Data Types Mapping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#component-features">7.2.4. Component Features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#communication-between-components">7.2.5. Communication between Components</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#component-behaviors">7.2.6. Component Behaviors</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#state-machines">7.2.7. State Machines</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#applications">7.2.8. Applications</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#core-service-adapter-api">7.2.9. Core Service adapter API</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#development-example">7.2.10. Development Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#componentproxy">7.2.6. ComponentProxy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#component-behaviors">7.2.7. Component Behaviors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#state-machines">7.2.8. State Machines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#applications">7.2.9. Applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#core-service-adapter-api">7.2.10. Core Service adapter API</a></li>
 </ul>
 </li>
 </ul>
@@ -271,7 +271,7 @@ The section <a class="reference internal" href="#application"><span class="std s
 <code class="docutils literal"><span class="pre">dist</span></code> two files will be created in <code class="docutils literal"><span class="pre">&lt;MODULE_DIR&gt;/src/coffee/&lt;pkg&gt;/&lt;component&gt;</span></code>:<ul>
 <li>A <em>Component</em> source file with an skeleton of the component implementation</li>
 <li>A demo <em>Application</em> that creates an instance of the component and that
-allows to start and test the component. Section <a class="reference internal" href="../modeling_guidelines.html#component"><span class="std std-numref">Section 6.7.3</span></a>
+allows to start and test the component. Section <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#component"><span class="std std-numref">Section 6.7.3</span></a>
 includes an example of a generated component.</li>
 </ul>
 </li>
@@ -279,7 +279,7 @@ includes an example of a generated component.</li>
 <code class="docutils literal"><span class="pre">test</span></code> two files will be created in <code class="docutils literal"><span class="pre">&lt;MODULE_DIR&gt;/src/coffee/&lt;pkg&gt;/&lt;component&gt;</span></code>:<ul>
 <li>A <em>Component</em> source file with an skeleton of the component implementation</li>
 <li>A demo <em>Application</em> that creates an instance of the component and that
-allows to start and test the component. Section <a class="reference internal" href="../modeling_guidelines.html#component"><span class="std std-numref">Section 6.7.3</span></a> includes
+allows to start and test the component. Section <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#component"><span class="std std-numref">Section 6.7.3</span></a> includes
 an example of a generated component. <em>TODO</em></li>
 </ul>
 </li>
@@ -287,7 +287,7 @@ an example of a generated component. <em>TODO</em></li>
 <code class="docutils literal"><span class="pre">example</span></code> two files will be created in <code class="docutils literal"><span class="pre">&lt;MODULE_DIR&gt;/src/coffee/&lt;pkg&gt;/&lt;component&gt;</span></code>:<ul>
 <li>A <em>Component</em> source file with an skeleton of the component implementation</li>
 <li>A demo <em>Application</em> that creates an instance of the component and that
-allows to start and test the component. Section <a class="reference internal" href="../modeling_guidelines.html#component"><span class="std std-numref">Section 6.7.3</span></a> includes
+allows to start and test the component. Section <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#component"><span class="std std-numref">Section 6.7.3</span></a> includes
 an example of a generated component. <em>TODO</em></li>
 </ul>
 </li>
@@ -344,10 +344,32 @@ that is created by the code generator. The webpack configuration file works in t
 <h2>7.2.3. Data Types Mapping<a class="headerlink" href="#data-types-mapping" title="Permalink to this headline">¶</a></h2>
 <p>Coffeescript is a dynamically typed language that doesn’t provide type
 declarations. Primitive Types are the same ones as the Javascript language.
-<em>StructType</em> types defined in the model could be implemented as object literals or as a class.
-The code generator doesn’t make a choice and <em>StructType</em> class declarations are
-not generated. For those <em>Component</em> features whose model type is <em>StateMachine</em>
-the code generator creates an skeleton of the <em>StateMachine</em> implementation.</p>
+The code generator creates an skeleton for the following data types:</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>StructType</em> types in the model are mapped into a class. An individual file is created
+for each <em>StructType</em> and it is saved in the <code class="docutils literal"><span class="pre">DataTypes</span></code> folder.</li>
+<li><em>Enum</em> types in the model are mapped into a class. An individual file is created
+for each <em>Enum</em> and it is saved in the <code class="docutils literal"><span class="pre">DataTypes</span></code> folder.</li>
+<li>For those <em>Component</em> features whose model type is <em>StateMachine</em> the code generator
+creates an skeleton of the <em>StateMachine</em> implementation. An individual file is created
+for each <em>StateMachine</em> and it is saved in the <code class="docutils literal"><span class="pre">Behaviors</span></code> folder.</li>
+</ul>
+</div></blockquote>
+<p>The following code shows an example of a generated <em>StructType</em></p>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nx">IsampleHmiLeds</span>
+
+    <span class="nv">constructor: </span><span class="nf">(def = {}) -&gt;</span>
+        <span class="p">{</span>
+        <span class="vi">@pilot = </span><span class="kc">null</span>
+        <span class="vi">@emergency_light = </span><span class="kc">null</span>
+        <span class="vi">@heartbeat = </span><span class="kc">null</span>
+        <span class="vi">@counter = </span><span class="kc">null</span>
+        <span class="p">}</span> <span class="o">=</span> <span class="nx">def</span>
+
+<span class="nv">module.exports = </span><span class="p">{</span> <span class="nx">IsampleHmiLeds</span> <span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="component-features">
 <h2>7.2.4. Component Features<a class="headerlink" href="#component-features" title="Permalink to this headline">¶</a></h2>
@@ -359,18 +381,13 @@ The following diagram shows an overall view of the Core Framework main classes.<
 </div>
 <p>A Component has the following features:</p>
 <ul class="simple">
-<li>Properties: Collection of Properties. See the <a class="reference internal" href="../modeling_guidelines.html#properties"><span class="std std-ref">properties section</span></a> in the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of a <em>Property</em></li>
-<li>Inputs: Collection of DataIO. See the <a class="reference internal" href="../modeling_guidelines.html#inputs"><span class="std std-ref">input ports section</span></a> in the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of an <em>Input</em></li>
-<li>Outputs: Collection of DataIO. See the <a class="reference internal" href="../modeling_guidelines.html#outputs"><span class="std std-ref">output ports section</span></a> in the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of an <em>Output</em></li>
-<li>State Variables: Collection of State variables. See the <a class="reference internal" href="../modeling_guidelines.html#state-vars"><span class="std std-ref">state variables section</span></a> in the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of a <em>StateVariable</em></li>
-<li>Faults: Collection of Faults. See the <a class="reference internal" href="../modeling_guidelines.html#faults"><span class="std std-ref">faults section</span></a> in the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of a <em>Fault</em></li>
-<li>Alarms: Collection of Alarms. See the <a class="reference internal" href="../modeling_guidelines.html#alarms"><span class="std std-ref">alarms section</span></a> in the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of an <em>Alarm</em></li>
+<li>Properties: Collection of Properties. See the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#properties"><span class="std std-ref">properties section</span></a> in the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of a <em>Property</em></li>
+<li>Inputs: Collection of DataIO. See the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#inputs"><span class="std std-ref">input section</span></a> in the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of an <em>Input</em></li>
+<li>Outputs: Collection of DataIO. See the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#outputs"><span class="std std-ref">output section</span></a> in the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of an <em>Output</em></li>
+<li>State Variables: Collection of State variables. See the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#state-vars"><span class="std std-ref">state variables section</span></a> in the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of a <em>StateVariable</em></li>
+<li>Faults: Collection of Faults. See the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#faults"><span class="std std-ref">faults section</span></a> in the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of a <em>Fault</em></li>
+<li>Alarms: Collection of Alarms. See the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#alarms"><span class="std std-ref">alarms section</span></a> in the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> for the attributes of an <em>Alarm</em></li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Note that <code class="docutils literal"><span class="pre">input_ports</span></code> and <code class="docutils literal"><span class="pre">ouput_ports</span></code> from the Model
-are mapped into <code class="docutils literal"><span class="pre">inputs</span></code> and <code class="docutils literal"><span class="pre">ouputs</span></code> in the Core Framework</p>
-</div>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="../../_images/Data_IO.png"><img alt="Data inputs and outputs" src="../../_images/Data_IO.png" style="width: 316.8px; height: 346.8px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 7.10 </span><span class="caption-text">Data inputs and outputs</span></p>
@@ -398,14 +415,14 @@ and includes the most common methods to support functional programming.</p>
 </div>
 <div class="section" id="communication-between-components">
 <h2>7.2.5. Communication between Components<a class="headerlink" href="#communication-between-components" title="Permalink to this headline">¶</a></h2>
-<p><em>Components</em> can communicate with each other by means of <a class="reference internal" href="../modeling_guidelines.html#data-connector-def"><span class="std std-ref">Connectors</span></a>.
-A <em>Connector</em> specification includes the definition of the <em>Connector</em> endpoints (<em>to</em> and <em>from</em>).</p>
-<p>If the <code class="docutils literal"><span class="pre">blocking_mode</span></code> of a port is <em>‘sync’</em> the information will be transmitted from
-the <code class="docutils literal"><span class="pre">from</span></code> endpoint to the <code class="docutils literal"><span class="pre">to</span></code> endpoint at the rate specified by the <code class="docutils literal"><span class="pre">nom_rate</span></code> attribute of
+<p><em>Components</em> can communicate with each other by means of <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#data-connector-def"><span class="std std-ref">Connectors</span></a>.
+A <em>Connector</em> specification includes the definition of the <em>Connector</em> endpoints.</p>
+<p>If the <code class="docutils literal"><span class="pre">blocking_mode</span></code> of a Connector is <em>‘sync’</em> the information will be transmitted from
+the one endpoint to the other endpoint at the rate specified by the <code class="docutils literal"><span class="pre">nom_rate</span></code> attribute of
 the connector.</p>
-<p>In case no <code class="docutils literal"><span class="pre">url</span></code> attribute is defined in the port specification the communication
-between components will be implemented using service ports. <em>Service ports</em> are created
-by default for every <em>Component</em> and allow to exchange information with it. The <a class="reference internal" href="../grs_guide.html#grs-set"><span class="std std-ref">grs set</span></a>, <a class="reference internal" href="../grs_guide.html#grs-get"><span class="std std-ref">grs get</span></a> and
+<p>In case no Connectors are defined that involve a given Component instance is still possible to communicate
+such a Component using service ports. <em>Service ports</em> are created by default for every <em>Component</em> and
+allow to exchange information with it. The <a class="reference internal" href="../grs_guide.html#grs-set"><span class="std std-ref">grs set</span></a>, <a class="reference internal" href="../grs_guide.html#grs-get"><span class="std std-ref">grs get</span></a> and
 <a class="reference internal" href="../grs_guide.html#grs-inspect"><span class="std std-ref">grs inspect</span></a> commands use <em>Service Ports</em> to access the information of a running <em>Component</em>.</p>
 <p>If the <code class="docutils literal"><span class="pre">blocking_mode</span></code> of a port is <em>‘async’</em> the Core Framework provides the <em>ComponentProxy</em> class to
 allow communicating with a remote <em>Component</em>. The following segment of code demonstrates the use
@@ -421,8 +438,30 @@ of the <em>ComponentProxy</em> methods.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="componentproxy">
+<h2>7.2.6. ComponentProxy<a class="headerlink" href="#componentproxy" title="Permalink to this headline">¶</a></h2>
+<p>The core framework includes a <em>ComponentProxy</em> class that allows comunicating with other Components:
+The <em>ComponentProxy</em> constructor:</p>
+<p>The <em>ComponentProxy</em> exports the following methods:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">ping:</span> <span class="pre">(timeout)</span></code></dt>
+<dd>Sends a ping message to the remote object and returns a <em>Promise</em>. If the <em>Promise</em> is
+resolved the ping method returns an object with the transaction timestamps.
+If the <em>Promise</em> is rejected an timeour error is generated.
+If <code class="docutils literal"><span class="pre">timeout</span></code> is omitted the default value is 400 ms</dd>
+<dt><code class="docutils literal"><span class="pre">set:</span> <span class="pre">(path,</span> <span class="pre">data)</span></code></dt>
+<dd>Sends a message to change the feature of the remote object defined by <code class="docutils literal"><span class="pre">path</span></code> with the <code class="docutils literal"><span class="pre">data</span></code> value</dd>
+<dt><code class="docutils literal"><span class="pre">get:</span> <span class="pre">(path</span> <span class="pre">=</span> <span class="pre">&quot;&quot;,</span> <span class="pre">slice</span> <span class="pre">=</span> <span class="pre">&quot;value&quot;,</span> <span class="pre">timeout)</span></code></dt>
+<dd>Returns a <em>Promise</em> with the <code class="docutils literal"><span class="pre">slice</span></code> of the feature of the remote object defined by <code class="docutils literal"><span class="pre">path</span></code>. By default the value
+of the <code class="docutils literal"><span class="pre">slice</span></code> is the attribute <em>value</em>. Other possibilities are <em>desc</em>, <em>units</em>,…
+If the <em>Promise</em> is resolved before the timeout it returns the value of the remote feature, otherwise
+generates a timeout error. If <code class="docutils literal"><span class="pre">timeout</span></code> is omitted the default value is 400 ms</dd>
+</dl>
+</div></blockquote>
+</div>
 <div class="section" id="component-behaviors">
-<h2>7.2.6. Component Behaviors<a class="headerlink" href="#component-behaviors" title="Permalink to this headline">¶</a></h2>
+<h2>7.2.7. Component Behaviors<a class="headerlink" href="#component-behaviors" title="Permalink to this headline">¶</a></h2>
 <p><em>Components</em> implement their control, monitoring and supervisory
 functions by specializing their <a class="reference internal" href="../../SWC_standards/specifications/dcs_specifications.html#step-std"><span class="std std-ref">step</span></a> function.
 The step function can be considered as a non side effect function <code class="docutils literal"><span class="pre">fstep:</span> <span class="pre">(I,</span> <span class="pre">S)</span> <span class="pre">-&gt;</span> <span class="pre">O</span></code>
@@ -482,7 +521,7 @@ of mathematical operations and are mostly specific to the application’
 domain.</p>
 </div>
 <div class="section" id="state-machines">
-<h2>7.2.7. State Machines<a class="headerlink" href="#state-machines" title="Permalink to this headline">¶</a></h2>
+<h2>7.2.8. State Machines<a class="headerlink" href="#state-machines" title="Permalink to this headline">¶</a></h2>
 <p>In case of discrete functions that could be modeled as an state machine,
 the core framework includes a <em>StateMachine</em> class with the following characteristics:</p>
 <ul class="simple">
@@ -493,7 +532,8 @@ the core framework includes a <em>StateMachine</em> class with the following cha
 <li>Allow each individual State Machine to be tested individually</li>
 <li>Arbitrary composition of hybrid control architectures (continuous and discrete behavior) inside each component</li>
 </ul>
-<p>State Machines can be defined by specializing the <em>StateMachine</em> class from
+<p>The <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#state-machine"><span class="std std-ref">StateMachine section</span></a> in the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a>
+describes how to define an StateMachine in the model. State Machines can be implemented by specializing the <em>StateMachine</em> class from
 the core framework by the following means:</p>
 <ul class="simple">
 <li>Defining a transition function <code class="docutils literal"><span class="pre">ft:</span> <span class="pre">(I,S)</span> <span class="pre">-&gt;</span> <span class="pre">S</span></code> that takes as arguments
@@ -514,7 +554,7 @@ evaluated and is in the present state</li>
 <p class="caption"><span class="caption-number">Fig. 7.12 </span><span class="caption-text">Core framework builtin state machines</span></p>
 </div>
 <div class="section" id="fault-management">
-<h3>7.2.7.1. Fault management<a class="headerlink" href="#fault-management" title="Permalink to this headline">¶</a></h3>
+<h3>7.2.8.1. Fault management<a class="headerlink" href="#fault-management" title="Permalink to this headline">¶</a></h3>
 <p>The previous section describes some strategies to implement the control, monitoring
 and supervisory functions of a <em>Component</em>. In addition to these functions
 control systems that require to exhibit robustness and reliability must address
@@ -530,11 +570,11 @@ Each <em>Fault</em> is associated by default with a fault state machine (<code c
 that governs the transitions between fault states as described
 in the following diagraman.</p>
 <div class="figure align-center" id="id5">
-<a class="reference internal image-reference" href="../../_images/FaultFSM.png"><img alt="Fault State Machine" src="../../_images/FaultFSM.png" style="width: 580.5px; height: 361.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/FaultFSM.png"><img alt="Fault State Machine" src="../../_images/FaultFSM.png" style="width: 559.5px; height: 361.5px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 7.13 </span><span class="caption-text">Fault State Machine</span></p>
 </div>
-<p>As described in the <a class="reference internal" href="../modeling_guidelines.html#faults"><span class="std std-ref">*Faults*</span></a> section of
-the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> <em>Faults</em>
+<p>As described in the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#faults"><span class="std std-ref">Faults</span></a> section of
+the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> <em>Faults</em>
 can be organized as a fault tree to model more complex fault states.
 The next segment of code shows an example of a fault specification.</p>
 <div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="c1"># prints the name of all the inputs</span>
@@ -579,13 +619,13 @@ The next segment of code shows an example of a fault specification.</p>
 </div>
 </div>
 <div class="section" id="alarm-management">
-<h3>7.2.7.2. Alarm management<a class="headerlink" href="#alarm-management" title="Permalink to this headline">¶</a></h3>
+<h3>7.2.8.2. Alarm management<a class="headerlink" href="#alarm-management" title="Permalink to this headline">¶</a></h3>
 <p><em>Alarms</em> are used to notify operators of operating conditions that
 require their attention. The Core Framework allows to define which
 <em>Alarms</em> are associated with a <em>Component</em>. For each <em>Alarm</em> an
 <code class="docutils literal"><span class="pre">eval</span></code> function has to be defined to determine if an alarm condition
-is active. As described in the <a class="reference internal" href="../modeling_guidelines.html#alarms"><span class="std std-ref">*Alarms*</span></a> section
-of the <a class="reference internal" href="../modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> <em>Alarms</em>
+is active. As described in the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#alarms"><span class="std std-ref">Alarms</span></a> section
+of the <a class="reference internal" href="../modeling_guide/modeling_guidelines.html#modeling-guidelines"><span class="std std-ref">model specification guide</span></a> <em>Alarms</em>
 can be arranged, grouped and connected in a similar way to fault trees.</p>
 <p>Although the implementation mechanism is similar, <em>Faults</em> and <em>Alarms</em> have
 different functions are their logic is independed, although in some
@@ -603,7 +643,7 @@ in the <em>AlarmFSM</em> state machine as described in the following diagram.</p
 </div>
 </div>
 <div class="section" id="component-operational-state">
-<h3>7.2.7.3. Component Operational State<a class="headerlink" href="#component-operational-state" title="Permalink to this headline">¶</a></h3>
+<h3>7.2.8.3. Component Operational State<a class="headerlink" href="#component-operational-state" title="Permalink to this headline">¶</a></h3>
 <p><em>Components</em> include an operational state <em>StateVariable</em> that governs
 the life-cycle of each <em>Component</em>. This life-cycle is implemented in the
 <em>StateMachine</em> <em>Behavior</em> <code class="docutils literal"><span class="pre">OpStateFSM</span></code> as described in the following diagram:</p>
@@ -657,7 +697,7 @@ possible state.</p>
 </div></blockquote>
 </div>
 <div class="section" id="component-health-supervision">
-<h3>7.2.7.4. Component Health Supervision<a class="headerlink" href="#component-health-supervision" title="Permalink to this headline">¶</a></h3>
+<h3>7.2.8.4. Component Health Supervision<a class="headerlink" href="#component-health-supervision" title="Permalink to this headline">¶</a></h3>
 <p>The core framework includes a default health supervisory behavior
 <em>HealthSupervisingBehavior</em> that implements a basic supervisory function
 which allows:</p>
@@ -682,7 +722,7 @@ it will assert the fault <code class="docutils literal"><span class="pre">&lt;su
 </div>
 </div>
 <div class="section" id="applications">
-<span id="application"></span><h2>7.2.8. Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
+<span id="application"></span><h2>7.2.9. Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
 <p>The Core Framework allows implementing end applications, which
 eventually will be transformed in an executable using the <em>CoreApplication</em>
 class. The <em>CoreApplication</em> class has the following characteristics:</p>
@@ -775,12 +815,31 @@ code generator.</p>
 </pre></div>
 </div>
 <div class="section" id="command-line-options">
-<h3>7.2.8.1. Command line options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h3>
+<h3>7.2.9.1. Command line options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h3>
 <p>The Core Framework makes every property of a <em>Component</em> available
 as a command line option. The following example shows an example
 in which the <code class="docutils literal"><span class="pre">logging</span></code> property of an application is propagated
 to other instances created by the application.</p>
-<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nx">TestApp</span> <span class="k">extends</span> <span class="nx">CoreCLIApplication</span>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nx">Component</span>
+<span class="nx">CoreContainer</span>
+<span class="nx">Supervisor</span>
+<span class="nx">HealthSupervisingBehavior</span>
+<span class="nx">CoreCLIApplication</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span> <span class="s">&#39;ocs_core_fwk&#39;</span>
+
+<span class="nv">test_sup_conf =</span>
+    <span class="nv">properties:</span>
+        <span class="nv">uri: </span>      <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;uri&#39;</span><span class="p">,</span>       <span class="nv">default_value: </span><span class="s">&#39;gmt://127.0.0.1:12100/core_fwk/tests/test_supervisor&#39;</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;string&#39;</span><span class="p">,</span> <span class="nv">desc: </span><span class="s">&quot;&quot;</span><span class="p">}</span>
+        <span class="nv">name: </span>     <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;name&#39;</span><span class="p">,</span>      <span class="nv">default_value: </span><span class="s">&#39;test_supervisor&#39;</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;string&#39;</span><span class="p">,</span>  <span class="nv">desc: </span><span class="s">&quot;&quot;</span><span class="p">}</span>
+        <span class="nv">host: </span>     <span class="p">{</span> <span class="nv">name: </span><span class="s">&quot;host&quot;</span><span class="p">,</span>      <span class="nv">default_value: </span><span class="s">&#39;127.0.0.1&#39;</span><span class="p">,</span>       <span class="nv">type: </span><span class="s">&#39;string&#39;</span><span class="p">,</span>  <span class="nv">desc: </span><span class="s">&quot;&quot;</span><span class="p">}</span>
+        <span class="nv">port: </span>     <span class="p">{</span> <span class="nv">name: </span><span class="s">&quot;port&quot;</span><span class="p">,</span>      <span class="nv">default_value: </span><span class="mi">12100</span><span class="p">,</span>             <span class="nv">type: </span><span class="s">&#39;integer&#39;</span><span class="p">,</span> <span class="nv">desc: </span><span class="s">&quot;&quot;</span><span class="p">}</span>
+        <span class="nv">scan_rate: </span><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;scan_rate&#39;</span><span class="p">,</span> <span class="nv">default_value: </span><span class="mi">1</span><span class="p">,</span>                 <span class="nv">type: </span><span class="s">&#39;integer&#39;</span><span class="p">,</span> <span class="nv">desc: </span><span class="s">&quot;&quot;</span><span class="p">}</span>
+        <span class="nv">acl: </span>      <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;acl&#39;</span><span class="p">,</span>       <span class="nv">default_value: </span><span class="p">{</span><span class="nv">users: </span><span class="p">[</span><span class="s">&#39;*&#39;</span><span class="p">]},</span>    <span class="nv">type: </span><span class="s">&#39;ACL&#39;</span><span class="p">,</span>     <span class="nv">desc: </span><span class="s">&quot;&quot;</span><span class="p">}</span>
+    <span class="nv">faults:</span>
+        <span class="nv">not_operational: </span>             <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;not_operational&#39;</span><span class="p">,</span>              <span class="nv">default_value: </span><span class="s">&#39;NOT_ACTIVE&#39;</span><span class="p">,</span> <span class="nv">level: </span><span class="s">&#39;CRITICAL&#39;</span><span class="p">,</span> <span class="nv">detection_latency: </span><span class="mi">1</span><span class="p">,</span> <span class="nv">kind: </span><span class="s">&#39;or&#39;</span><span class="p">,</span>      <span class="nv">parent: </span><span class="s">&quot;&quot;</span> <span class="p">}</span>
+        <span class="nv">my_component_not_responding: </span> <span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;my_component_not_responding&#39;</span><span class="p">,</span>  <span class="nv">default_value: </span><span class="s">&#39;NOT_ACTIVE&#39;</span><span class="p">,</span> <span class="nv">level: </span><span class="s">&#39;CRITICAL&#39;</span><span class="p">,</span> <span class="nv">detection_latency: </span><span class="mi">1</span><span class="p">,</span> <span class="nv">kind: </span><span class="s">&#39;primary&#39;</span><span class="p">,</span> <span class="nv">parent: </span><span class="s">&#39;not_operational&#39;</span> <span class="p">}</span>
+        <span class="nv">my_component_not_operational: </span><span class="p">{</span> <span class="nv">name: </span><span class="s">&#39;my_component_not_operational&#39;</span><span class="p">,</span> <span class="nv">default_value: </span><span class="s">&#39;NOT_ACTIVE&#39;</span><span class="p">,</span> <span class="nv">level: </span><span class="s">&#39;CRITICAL&#39;</span><span class="p">,</span> <span class="nv">detection_latency: </span><span class="mi">1</span><span class="p">,</span> <span class="nv">kind: </span><span class="s">&#39;primary&#39;</span><span class="p">,</span> <span class="nv">parent: </span><span class="s">&#39;not_operational&#39;</span> <span class="p">}</span>
+
+<span class="k">class</span> <span class="nx">TestApp</span> <span class="k">extends</span> <span class="nx">CoreCLIApplication</span>
 
     <span class="nv">setup: </span><span class="nf">-&gt;</span>
         <span class="vi">@ctnr = </span><span class="k">new</span> <span class="nx">CoreContainer</span> <span class="nx">@</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
@@ -822,7 +881,7 @@ to other instances created by the application.</p>
 </div>
 </div>
 <div class="section" id="core-service-adapter-api">
-<h2>7.2.9. Core Service adapter API<a class="headerlink" href="#core-service-adapter-api" title="Permalink to this headline">¶</a></h2>
+<h2>7.2.10. Core Service adapter API<a class="headerlink" href="#core-service-adapter-api" title="Permalink to this headline">¶</a></h2>
 <p><em>Components</em> run inside a container that manages their life-cycle
 and provides access to the interface with the Core Services.
 The Core Framework includes two default container classes:</p>
@@ -858,7 +917,7 @@ when properties change once the execution of a <em>Component</em> has started.</
 <p>The Logging Service is the most likely beeing used by the developer when
 implementing the functions of a component</p>
 <div class="section" id="logging-service-adapter">
-<h3>7.2.9.1. Logging Service Adapter<a class="headerlink" href="#logging-service-adapter" title="Permalink to this headline">¶</a></h3>
+<h3>7.2.10.1. Logging Service Adapter<a class="headerlink" href="#logging-service-adapter" title="Permalink to this headline">¶</a></h3>
 <p>The following segment of code demonstrate the use of the
 Logging Service adapter interface. The logging functions
 are consisten with the <span class="xref std std-ref">logging levels</span> as defined
@@ -881,10 +940,6 @@ be directed to the Logging Service. For example if <code class="docutils literal
 only messages of type <code class="docutils literal"><span class="pre">fatal</span></code>, <code class="docutils literal"><span class="pre">error</span></code>, <code class="docutils literal"><span class="pre">warning</span></code> and info
 will be send.</p>
 </div>
-</div>
-<div class="section" id="development-example">
-<h2>7.2.10. Development Example<a class="headerlink" href="#development-example" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
 </div>
 </div>
 

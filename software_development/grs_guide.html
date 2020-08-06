@@ -41,7 +41,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GMT Software And Controls documentation" href="../index.html"/>
         <link rel="up" title="Software Development" href="index.html"/>
-        <link rel="next" title="6. Model specification guide document" href="modeling_guidelines.html"/>
+        <link rel="next" title="6. Model specification guide document" href="modeling_guide/modeling_guidelines.html"/>
         <link rel="prev" title="4. gds documentation" href="gds_guide.html"/> 
 
   
@@ -117,12 +117,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#grs-get">5.2.5. grs get</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#grs-set">5.2.6. grs set</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#grs-inspect">5.2.7. grs inspect</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#grs-options">5.2.8. grs options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grs-db">5.2.8. grs db</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grs-options">5.2.9. grs options</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="modeling_guidelines.html">6. Model specification guide document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_guide/modeling_guidelines.html">6. Model specification guide document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_language_mapping/index.html">7. Model-language mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sdk_1_6_migration_guide.html">8. Migration guide to SDK 1.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="test_guidelines.html">9. OCS Test Guidelines</a></li>
@@ -216,33 +217,54 @@ the configuration of a component to the configuration port after starting the co
 The <code class="docutils literal"><span class="pre">grs</span></code> help command provides a brief description of the utility:</p>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs --help
+grs <span class="o">[</span>command<span class="o">]</span>
 
- grs <span class="o">[</span>command<span class="o">]</span>
+Commands:
+grs send <span class="o">[</span>instance<span class="o">]</span>            Send a message to the port of the instance<span class="o">[</span>aliases: push<span class="o">]</span>
+grs listen <span class="o">[</span>instance<span class="o">]</span>          Listen to messages from the port of the instance
+grs compile <span class="o">[</span>module<span class="o">]</span>           Compiles the configuration of a module or compile the
+                                input file passed as argument
+grs info &lt;instance&gt;            displays configuration information <span class="k">for</span> a given instance
+grs get &lt;instance&gt;             Obtains the value of a feature of a remote Component
+                                instance
+grs <span class="nb">set</span> &lt;instance&gt;             Sets the value of a feature in a remote Component
+                                instance
+grs db &lt;operation&gt; &lt;instance&gt;  Database operations when the instance implements a
+                                database server
+grs inspect &lt;instance&gt;         scans the values of all the features of a remote
+                                Component instance
 
- Commands:
- grs send <span class="o">[</span>instance<span class="o">]</span>         send a message to a port of a remote instance   <span class="o">[</span>aliases: push<span class="o">]</span>
- grs listen <span class="o">[</span>instance<span class="o">]</span>       listen to messages from a port of the instance
- grs compile <span class="o">[</span>instance<span class="o">]</span>      compile the configuration of an instance. Compiled files are
-                             saved in <span class="nv">$GMT_LOCAL</span>
- grs info <span class="o">[</span>instance<span class="o">]</span>         displays configuration information <span class="k">for</span> a given instance
- grs get <span class="o">[</span>instance<span class="o">]</span>          displays the value of a feature of a remote Component instance
- grs <span class="nb">set</span> <span class="o">[</span>instance<span class="o">]</span>          sets the value of a feature in a remote Component instance
- grs inspect <span class="o">[</span>instance<span class="o">]</span>      continuously display the values of all the features of a remote
-                             Component instance
+Options:
+--version    Show version number                                               <span class="o">[</span>boolean<span class="o">]</span>
+--name       name of the configurable entity              <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;grs_7074&quot;</span><span class="o">]</span>
+--scope      scope to load the configuration file                 <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;&quot;</span><span class="o">]</span>
+--config     name of the component configuration to be applied
+                                                            <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+--auto_conf  load the configuration from file <span class="k">if</span> it exists     <span class="o">[</span>boolean<span class="o">]</span> <span class="o">[</span>default: true<span class="o">]</span>
+--logging    logging level                                    <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;info&quot;</span><span class="o">]</span>
+--help       Show <span class="nb">help</span>                                                         <span class="o">[</span>boolean<span class="o">]</span>
 
- Options:
- --version    show version number                                                    <span class="o">[</span>boolean<span class="o">]</span>
- --name       name of the configurable entity                        <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;grs&quot;</span><span class="o">]</span>
- --scope      scope to load the configuration file                      <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;&quot;</span><span class="o">]</span>
- --config     name of the component configuration to be applied  <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
- --auto_conf  load the configuration from file <span class="k">if</span> it exists          <span class="o">[</span>boolean<span class="o">]</span> <span class="o">[</span>default: true<span class="o">]</span>
- --logging    logging level                                         <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;info&quot;</span><span class="o">]</span>
- --help       show <span class="nb">help</span>                                                              <span class="o">[</span>boolean<span class="o">]</span>
+Examples:
+grs send -i x_ctrl -p position_goal -m <span class="m">1</span>
+grs send -i x_ctrl -p position_goal -m <span class="m">1</span> <span class="m">2</span>.4 <span class="m">3</span> -d <span class="m">100</span>
+grs listen --url <span class="s1">&#39;tcp://127.0.0.1:14103&#39;</span>
+grs listen tele_server --port <span class="s1">&#39;pub_port&#39;</span>
+grs compile &lt;instance_name&gt;
+grs compile --input &lt;absolute_file_path&gt; --output &lt;file_path&gt;
+grs get x_ctrl -f state_vars
+grs get x_ctrl -f state_vars/position
+grs get x_ctrl -f state_vars/position/goal
+grs <span class="nb">set</span> x_ctrl -f state_vars/position/goal -v <span class="m">1</span>.5
+grs db query  alarm_srv -e <span class="s1">&#39;{src: &quot;alarm_srv&quot;}&#39;</span>
+grs db query  alarm_srv -e <span class="s1">&#39;{src: {$regex: /alarm_srv/}&#39;</span> --limit <span class="m">10</span>
+grs db insert alarm_srv -r <span class="s1">&#39;{src: &quot;test_client&quot;}&#39;</span>
+grs db update alarm_srv -e <span class="s1">&#39;{src: {$regex: /alarm_srv/}&#39;</span> -u <span class="s1">&#39;{ $set: {counter: 1} }&#39;</span>
+grs db delete alarm_srv -e <span class="s1">&#39;{state: &quot;ON&quot; }&#39;</span>
+grs inspect alarm_server
+grs inspect alarm_server -f properties
+grs inspect alarm_server -f state_vars -s goal
 
- Examples:
- grs send -i x_ctrl -p position -m <span class="m">25</span>.01
-
- For more information, find our manual at https://gmto.github.io/gmt_docs/
+For more information, find our manual at https://gmto.github.io/gmt_docs/
 </pre></div>
 </div>
 </div></blockquote>
@@ -672,8 +694,84 @@ $ grs get -i x_ctrl -f state_vars/position/goal
 </div>
 </div></blockquote>
 </div>
+<div class="section" id="grs-db">
+<h3>5.2.8. grs db<a class="headerlink" href="#grs-db" title="Permalink to this headline">¶</a></h3>
+<p><strong>Description</strong></p>
+<p>The <code class="docutils literal"><span class="pre">db</span></code> allows to interact with a Component that implements the ServerProxy API.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs db --help
+grs db &lt;operation&gt; &lt;instance&gt;
+
+Database operations when the instance implements a database server
+
+Options:
+--instance     name of the instance                                             <span class="o">[</span>string<span class="o">]</span>
+--conf, -c     name of the configuration                   <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;default&quot;</span><span class="o">]</span>
+--operation    name of the database operation
+                                <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>choices: <span class="s2">&quot;query&quot;</span>, <span class="s2">&quot;insert&quot;</span>, <span class="s2">&quot;update&quot;</span>, <span class="s2">&quot;delete&quot;</span><span class="o">]</span>
+--output, -o   output format of the database result operation
+<span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>choices: <span class="s2">&quot;raw&quot;</span>, <span class="s2">&quot;payload&quot;</span>, <span class="s2">&quot;console&quot;</span>, <span class="s2">&quot;json&quot;</span>, <span class="s2">&quot;json_raw&quot;</span><span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;console&quot;</span><span class="o">]</span>
+--expr, -e     the expresion of the query in MongoDB format       <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;&quot;</span><span class="o">]</span>
+--record, -r   the record to insert in the database               <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;&quot;</span><span class="o">]</span>
+--update, -u   update to apply to the query record                <span class="o">[</span>string<span class="o">]</span> <span class="o">[</span>default: <span class="s2">&quot;&quot;</span><span class="o">]</span>
+--limit, -l    the maximum number of records to <span class="k">return</span> from the query
+                                                                    <span class="o">[</span>number<span class="o">]</span> <span class="o">[</span>default: <span class="m">40</span><span class="o">]</span>
+--timeout, -t  timeout <span class="k">for</span> the get <span class="nb">command</span>                       <span class="o">[</span>number<span class="o">]</span> <span class="o">[</span>default: <span class="m">400</span><span class="o">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Options</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">--operation</span></code></dt>
+<dd><p class="first">the name of the database operation. The choices are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">query</span></code>: Sends a query to the service server and returns the result. The query must be writen using the mongodb query syntax [<a class="reference external" href="https://docs.mongodb.com/manual/tutorial/query-documents/">https://docs.mongodb.com/manual/tutorial/query-documents/</a>]</li>
+<li><code class="docutils literal"><span class="pre">insert</span></code>: Inserts a new record in the database</li>
+<li><code class="docutils literal"><span class="pre">update</span></code>: Updates the record(s) defined by the –expr option with the update expresion. The –update and –expr options follow the MongoDB syntax</li>
+<li><code class="docutils literal"><span class="pre">delete</span></code>: Deletes the record(s) defined by the –expr option.</li>
+</ul>
+</div></blockquote>
+</dd>
+<dt><code class="docutils literal"><span class="pre">--instance</span></code></dt>
+<dd>the name of the remote component instance.</dd>
+<dt><code class="docutils literal"><span class="pre">--conf,</span> <span class="pre">-c</span></code></dt>
+<dd>the name of the configuration of the remote component</dd>
+<dt><code class="docutils literal"><span class="pre">--output,</span> <span class="pre">-o</span></code></dt>
+<dd><p class="first">the ouput format of the database result operation. The possible choices are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">raw</span></code>: Writes to the standard output the query result as generated by the MongoDB database. It includes additional information related to the database organization</li>
+<li><code class="docutils literal"><span class="pre">payload</span></code>: Writes to the standard output the data part of the query result.</li>
+<li><code class="docutils literal"><span class="pre">console</span></code>: Similar with payload but with console formatting.</li>
+<li><code class="docutils literal"><span class="pre">json</span></code>: Creates a file in the current directory with the data part of the query result.</li>
+<li><code class="docutils literal"><span class="pre">json_raw</span></code>: Creates a file in the current directory with the query result as generated by the MongoDB database.</li>
+</ul>
+</div></blockquote>
+</dd>
+<dt><code class="docutils literal"><span class="pre">--expr,</span> <span class="pre">-e</span></code></dt>
+<dd>the query expresion used for the query, update and delete operations. The query expression follows
+the MongoDB systax</dd>
+<dt><code class="docutils literal"><span class="pre">--record,</span> <span class="pre">-r</span></code></dt>
+<dd>the record to be inserted in the database</dd>
+<dt><code class="docutils literal"><span class="pre">--update,</span> <span class="pre">-u</span></code></dt>
+<dd>the update expresion for the update operation. The update expression follows the MongoDB syntax</dd>
+<dt><code class="docutils literal"><span class="pre">--limit,</span> <span class="pre">-l</span></code></dt>
+<dd>the maximum number of records returned by the database query operation</dd>
+</dl>
+<p>The following examples show different db commands</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ grs db query  alarm_srv -e <span class="s1">&#39;{src: &quot;alarm_srv&quot;}&#39;</span>
+$ grs db query  alarm_srv -e <span class="s1">&#39;{src: {$regex: /alarm_srv/}&#39;</span> --limit <span class="m">10</span>
+$ grs db insert alarm_srv -r <span class="s1">&#39;{src: &quot;test_client&quot;}&#39;</span>
+$ grs db update alarm_srv -e <span class="s1">&#39;{src: {$regex: /alarm_srv/}&#39;</span> -u <span class="s1">&#39;{ $set: {counter: 1} }&#39;</span>
+$ grs db delete alarm_srv -e <span class="s1">&#39;{state: &quot;ON&quot; }&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 <div class="section" id="grs-options">
-<h3>5.2.8. grs options<a class="headerlink" href="#grs-options" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.9. grs options<a class="headerlink" href="#grs-options" title="Permalink to this headline">¶</a></h3>
 <p>The following options can be used in combination with the previous commands</p>
 <dl class="docutils">
 <dt><code class="docutils literal"><span class="pre">-V,</span> <span class="pre">--version</span></code></dt>
@@ -749,7 +847,7 @@ $ grs get -i x_ctrl -f state_vars/position/goal
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="modeling_guidelines.html" class="btn btn-neutral float-right" title="6. Model specification guide document" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="modeling_guide/modeling_guidelines.html" class="btn btn-neutral float-right" title="6. Model specification guide document" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="gds_guide.html" class="btn btn-neutral" title="4. gds documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

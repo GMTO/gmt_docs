@@ -154,10 +154,31 @@ Data Types Mapping
 
 Coffeescript is a dynamically typed language that doesn't provide type
 declarations. Primitive Types are the same ones as the Javascript language.
-*StructType* types defined in the model could be implemented as object literals or as a class.
-The code generator doesn't make a choice and *StructType* class declarations are
-not generated. For those *Component* features whose model type is *StateMachine*
-the code generator creates an skeleton of the *StateMachine* implementation.
+The code generator creates an skeleton for the following data types:
+
+    - *StructType* types in the model are mapped into a class. An individual file is created
+      for each *StructType* and it is saved in the ``DataTypes`` folder.
+    - *Enum* types in the model are mapped into a class. An individual file is created
+      for each *Enum* and it is saved in the ``DataTypes`` folder.
+    - For those *Component* features whose model type is *StateMachine* the code generator
+      creates an skeleton of the *StateMachine* implementation. An individual file is created
+      for each *StateMachine* and it is saved in the ``Behaviors`` folder.
+
+The following code shows an example of a generated *StructType*
+
+.. code-block:: coffeescript
+
+        class IsampleHmiLeds
+
+            constructor: (def = {}) ->
+                {
+                @pilot = null
+                @emergency_light = null
+                @heartbeat = null
+                @counter = null
+                } = def
+
+        module.exports = { IsampleHmiLeds }
 
 
 Component Features
@@ -174,17 +195,11 @@ The following diagram shows an overall view of the Core Framework main classes.
 A Component has the following features:
 
 - Properties: Collection of Properties. See the :ref:`properties section <properties>` in the :ref:`model specification guide <modeling_guidelines>` for the attributes of a *Property*
-- Inputs: Collection of DataIO. See the :ref:`input ports section <inputs>` in the :ref:`model specification guide <modeling_guidelines>` for the attributes of an *Input*
-- Outputs: Collection of DataIO. See the :ref:`output ports section <outputs>` in the :ref:`model specification guide <modeling_guidelines>` for the attributes of an *Output*
+- Inputs: Collection of DataIO. See the :ref:`input section <inputs>` in the :ref:`model specification guide <modeling_guidelines>` for the attributes of an *Input*
+- Outputs: Collection of DataIO. See the :ref:`output section <outputs>` in the :ref:`model specification guide <modeling_guidelines>` for the attributes of an *Output*
 - State Variables: Collection of State variables. See the :ref:`state variables section <state_vars>` in the :ref:`model specification guide <modeling_guidelines>` for the attributes of a *StateVariable*
 - Faults: Collection of Faults. See the :ref:`faults section <faults>` in the :ref:`model specification guide <modeling_guidelines>` for the attributes of a *Fault*
 - Alarms: Collection of Alarms. See the :ref:`alarms section <alarms>` in the :ref:`model specification guide <modeling_guidelines>` for the attributes of an *Alarm*
-
-
-.. note::
-
-    Note that ``input_ports`` and ``ouput_ports`` from the Model
-    are mapped into ``inputs`` and ``ouputs`` in the Core Framework
 
 
 .. figure:: _static/Data_IO.png
@@ -222,15 +237,15 @@ Communication between Components
 ................................
 
 *Components* can communicate with each other by means of :ref:`Connectors <data_connector_def>`.
-A *Connector* specification includes the definition of the *Connector* endpoints (*to* and *from*).
+A *Connector* specification includes the definition of the *Connector* endpoints.
 
-If the ``blocking_mode`` of a port is *'sync'* the information will be transmitted from
-the ``from`` endpoint to the ``to`` endpoint at the rate specified by the ``nom_rate`` attribute of
+If the ``blocking_mode`` of a Connector is *'sync'* the information will be transmitted from
+the one endpoint to the other endpoint at the rate specified by the ``nom_rate`` attribute of
 the connector.
 
-In case no ``url`` attribute is defined in the port specification the communication 
-between components will be implemented using service ports. *Service ports* are created
-by default for every *Component* and allow to exchange information with it. The :ref:`grs set <grs_set>`, :ref:`grs get <grs_get>` and
+In case no Connectors are defined that involve a given Component instance is still possible to communicate
+such a Component using service ports. *Service ports* are created by default for every *Component* and
+allow to exchange information with it. The :ref:`grs set <grs_set>`, :ref:`grs get <grs_get>` and
 :ref:`grs inspect <grs_inspect>` commands use *Service Ports* to access the information of a running *Component*.
 
 If the ``blocking_mode`` of a port is *'async'* the Core Framework provides the *ComponentProxy* class to
@@ -248,6 +263,30 @@ of the *ComponentProxy* methods.
     position = proxy.get 'state_vars/position/value'
 
     proxy.set 'state_vars/position/goal', 200
+
+
+ComponentProxy
+..............
+
+The core framework includes a *ComponentProxy* class that allows comunicating with other Components:
+The *ComponentProxy* constructor:
+
+The *ComponentProxy* exports the following methods:
+
+    ``ping: (timeout)``
+        Sends a ping message to the remote object and returns a *Promise*. If the *Promise* is
+        resolved the ping method returns an object with the transaction timestamps.
+        If the *Promise* is rejected an timeour error is generated.
+        If ``timeout`` is omitted the default value is 400 ms
+
+    ``set: (path, data)``
+        Sends a message to change the feature of the remote object defined by ``path`` with the ``data`` value
+
+    ``get: (path = "", slice = "value", timeout)``
+        Returns a *Promise* with the ``slice`` of the feature of the remote object defined by ``path``. By default the value
+        of the ``slice`` is the attribute *value*. Other possibilities are *desc*, *units*,...
+        If the *Promise* is resolved before the timeout it returns the value of the remote feature, otherwise
+        generates a timeout error. If ``timeout`` is omitted the default value is 400 ms
 
 
 Component Behaviors
@@ -334,7 +373,8 @@ the core framework includes a *StateMachine* class with the following characteri
 - Allow each individual State Machine to be tested individually
 - Arbitrary composition of hybrid control architectures (continuous and discrete behavior) inside each component
 
-State Machines can be defined by specializing the *StateMachine* class from
+The :ref:`StateMachine section <state_machine>` in the :ref:`model specification guide <modeling_guidelines>`
+describes how to define an StateMachine in the model. State Machines can be implemented by specializing the *StateMachine* class from
 the core framework by the following means:
 
 - Defining a transition function ``ft: (I,S) -> S`` that takes as arguments
@@ -384,7 +424,7 @@ in the following diagraman.
 
   Fault State Machine
 
-As described in the :ref:`*Faults* <faults>` section of
+As described in the :ref:`Faults <faults>` section of
 the :ref:`model specification guide <modeling_guidelines>` *Faults*
 can be organized as a fault tree to model more complex fault states.
 The next segment of code shows an example of a fault specification.
@@ -439,7 +479,7 @@ Alarm management
 require their attention. The Core Framework allows to define which
 *Alarms* are associated with a *Component*. For each *Alarm* an
 ``eval`` function has to be defined to determine if an alarm condition
-is active. As described in the :ref:`*Alarms* <alarms>` section
+is active. As described in the :ref:`Alarms <alarms>` section
 of the :ref:`model specification guide <modeling_guidelines>` *Alarms*
 can be arranged, grouped and connected in a similar way to fault trees.
 
@@ -631,6 +671,25 @@ to other instances created by the application.
 
 .. code-block:: coffeescript
 
+        { Component
+        CoreContainer
+        Supervisor
+        HealthSupervisingBehavior
+        CoreCLIApplication } = require 'ocs_core_fwk'
+
+        test_sup_conf =
+            properties:
+                uri:       { name: 'uri',       default_value: 'gmt://127.0.0.1:12100/core_fwk/tests/test_supervisor', type: 'string', desc: ""}
+                name:      { name: 'name',      default_value: 'test_supervisor', type: 'string',  desc: ""}
+                host:      { name: "host",      default_value: '127.0.0.1',       type: 'string',  desc: ""}
+                port:      { name: "port",      default_value: 12100,             type: 'integer', desc: ""}
+                scan_rate: { name: 'scan_rate', default_value: 1,                 type: 'integer', desc: ""}
+                acl:       { name: 'acl',       default_value: {users: ['*']},    type: 'ACL',     desc: ""}
+            faults:
+                not_operational:              { name: 'not_operational',              default_value: 'NOT_ACTIVE', level: 'CRITICAL', detection_latency: 1, kind: 'or',      parent: "" }
+                my_component_not_responding:  { name: 'my_component_not_responding',  default_value: 'NOT_ACTIVE', level: 'CRITICAL', detection_latency: 1, kind: 'primary', parent: 'not_operational' }
+                my_component_not_operational: { name: 'my_component_not_operational', default_value: 'NOT_ACTIVE', level: 'CRITICAL', detection_latency: 1, kind: 'primary', parent: 'not_operational' }
+
         class TestApp extends CoreCLIApplication
 
             setup: ->
@@ -744,7 +803,3 @@ be directed to the Logging Service. For example if ``logging = 'info'``
 only messages of type ``fatal``, ``error``, ``warning`` and info
 will be send.
 
-Development Example
-...................
-
-TBD

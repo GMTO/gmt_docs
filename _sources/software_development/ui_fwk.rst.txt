@@ -3,36 +3,36 @@
 UI Framework
 ============
 
-.. note::
-    The UI framework is currently supported on MacOS and Linux.
+The UI Framework provides a GUI toolkit for the OCS.  One of the GUI apps is called Navigator, and sometimes referred to as the "Engineering UI", as it allows you to visualize models built with OCS SDK.  You can use the Engineering UI to see the data produced and consumed by your controllers.
 
-The UI Framework introduces a set of libraries and a windowed application that provides a GUI for the OCS.  The framework handles three primary concerns
-
-* Rendering (drawing) elements to the screen (DOM) 
-* Library of re-usable UI components that can be shared across the project
-* An Engineering App that provides an interface to the OCS
+Navigator can run on MacOS or a Linux Desktop environment.  macOS Mojave, Catalina and CentOS 8 Desktop have been verified.
 
 Installation
 ------------
 
-The UI engineering app uses the local bundles defined in ``$GMT_LOCAL/etc/bundles`` to create a visual representation of your model files' input/output ports.  If the Navigator app runs in a computer separate from where you run your components, you will need to create a minimal ``$GMT_LOCAL`` environment so that Navigator can boostrap your model and configuration files from your computer.  By convention it should be a directory in your home folder.  Once you create an ``<ocs_local>`` folder, in your shell environment file, add the following to your shell. 
+To install Navigator you will need to donwload the packaged app and set up your local environment.  Downloads are available for macOS and centOS.
+
+.. code-block:: bash
+
+    wget http://52.52.46.32/srv/gmt/releases/navigator/centos8/ocs_navigator.AppImage
+    wget http://52.52.46.32/srv/gmt/releases/navigator/macos/ocs_navigator.zip
+
+This is a packaged binary app that you can run after you have set up your environment.
+
+Setting up your enviornment
+###########################
+
+The Engineering UI uses the ``gmt_env`` if you have set that up.  If you don't have that, you'll need to set up a ``$GMT_LOCAL`` environment.  This is very similar to setting up the SDK.  
 
 .. note::
     For bash, you'll need to edit the ``~\.bash_profile``. For zsh you'll need to edit ``~\.zshrc``.
 
-.. code-block:: bash
-
-    # GMT Environment
-    export GMT_LOCAL=/Users/<user>/<ocs_local>
-
-where ``<user>`` is your home folder and ``<ocs_local>`` is the designated OCS local folder. For example, my environment contains
+To set up a ``$GMT_LOCAL`` environment, first designate a directory and set your ``~\.bash_profile`` or ``~\.zshrc`` environment variables.  Asumming the path is ``/home/gmto/working_dir``, then your export should look like
 
 .. code-block:: bash
+  export GMT_LOCAL=/home/gmto/working_dir
 
-    # GMT Environment
-    export GMT_LOCAL=/Users/aroman/ocs/
-
-In the ``<ocs_local>`` directory, you'll need to create this folder structure and two files.
+Create the following folder structure in your ``$GMT_LOCAL`` directory
 
 .. code-block:: bash
 
@@ -60,47 +60,68 @@ The ``ocs_local_bundle.coffee`` should look like
         desc:      "List of local development modules"
         elements:  {}
 
-This will give you the base parameters to load the local environment. The ``elements`` key in this example is intentionally empty. This will change as you add OCS bundles.
+This will give you the base parameters to load the local environment. The ``elements`` key in this example is intentionally empty. This will change as you add OCS bundles.  You will need to have corresponding model files for the bundles you define.
 
 .. note::
     
     The bundles you define need to have corresponding webpack model files in ``$GMT_LOCAL/lib/js``.  You will need to copy these files on your own.
 
-After you've done this, download the Mac App
-
-* http://52.52.46.32/srv/gmt/releases/navigator/mac/ocs_navigator_app_1.7.0.zip
-
-You can unzip the app anywhere on your MacOS file system.  Double click on the icon to run.
+Now you can star the Navigator app by double clicking on the icon.  If you have done all of the above correctly you will see the starfield animation.
 
 .. image:: navigator_images/navigator_first_run.png
   :align: center
-  :alt: Navigator application at startup
+  :alt: Navigator on first launch.
 
-User Guide
+Seeing Data With Navigator
 ----------
 
-.. image:: navigator_images/navigator_inspect.png
+The Navigator app has some parallels with server/client model.  This is an inexact comparison, however, it's a useful analogy to explain the configuration required to see your data.  The ``server`` in this case is the environment that runs your OCS controllers, adapters, services, etc.  The ``client`` is the Navigator UI which will most likely run on a separate Linux machine with full desktop graphics support or macOS.
+
+To see data, both your client and server need to have identical models and corresponding configuration files.  While a model might describe multiple components and their relationships, a configuration file is defined for a single component at a time.  
+
+The easiest thing to do is to copy the files you have in ``$GMT_LOCAL/lib/js/*_model.js`` and ``$GMT_LOCAL/etc/conf`` on your server to your client.  Navigator uses the same paths to discover your files.  You will then need to modify your config files as follows.
+
+Server
+######
+
+On the machine where your components run, you will have to edit your configuration file so that it publishes data as a server.  In a configuration file the field you need to edit is ``properties.host.default_value`` with the value of `0.0.0.0` and not the loopback or server address.  In some cases this will require that you recompile your config files.
+
+Your server should not have the firewall enabled.  To disable the firewall ``sudo systemctl stop firewalld``.
+
+Client
+######
+
+Likewise, edit the the configuration on your client so that it points to the server IP where you're trying to see data.  You can view this address with the ``ifconfig`` command on your server.  This config will live in the ``$GMT_LOCAl/etc/conf`` directory.  Set the ``properties.host.default_value`` of the corresponding config to the valid IP of the server you're trying to connect to.
+
+
+Navigator Overview
+----------
+
+
+.. image:: navigator_images/navigator_overview.png
   :align: center
+  :target: ../_images/navigator_overview.png
+  :alt: Navigator overview.
+
+You can inspect data on any part of your component the same way you do on the command line.
+
+.. image:: navigator_images/navigator_data1.png
+  :align: center
+  :target: ../_images/navigator_data1.png
   :alt: Navigator with inspect.
 
-The navigator application contains three regions.
-
-1. **Navigation** This area contains the navigation tree.  The tree is a representation of your model and is built from information found in your local bundles.
-2. **Tabs** This area displays content in tabs.  Visualization panels will open in new tabs.
-3. **Tools** This area presents context sensitive tools.  The tools are activated when you select an element in a tab.
-
-From the navigation menu you can visually explore your model, inspect or send data to your connected instances.  
-
-.. image:: navigator_images/navigator_guide.png
+.. image:: navigator_images/navigator_data2.png
   :align: center
-  :alt: Navigator with inspect.
+  :target: ../_images/navigator_data2.png
+  :alt: Navigator  inspect.
 
-You can drag models and inputs/outputs/properties/state vars into tabs.  You can create new tabs by double-clicking the empty tab area.  You can drag and re-order tabs.  Elements dragged into the tabs can also be re-ordered by dragging the title bar and resized by dragging the bottom right corner.
+You can also send data.
 
-Launching Custom Panels
------------------------
+.. image:: navigator_images/navigator_send.png
+  :align: center
+  :target: ../_images/navigator_send.png
+  :alt: Navigator send.
 
-From the model navigation menu, select the ``Vis package`` you want to run and the Navigator app will open a new tab showing the panel.
 
 Troubleshooting Guide
 ---------------------
@@ -129,9 +150,9 @@ If that also fails, try deleting the cache directly from your disk
 If this does not fix your problem, it's possible that your bundle and your modules are inconsistent.  Check that what you define in ``$GMT_LOCAL/etc/bundles`` has a corresponding webpack file in ``$GMT_LOCAL/lib/js``.
 
 * **Unresponsive UI**: in some case if the UI becomes unresponsive, press ``CMD+R`` to refresh.  If that fails to solve the problem, restart the CLI app.
-* **No data**: Ensure that the ports used by the controllers to publish data are accessible through the firewall. The following command should be used on the Device Control Computer to open the applicable range of ports (8122 - 8124):
+* **No data**: Ensure that the ports used by the controllers to publish data are accessible through the firewall. The following will disable the firewall on CentOS:
 
   .. code-block:: bash
 
-     $ sudo firewall-cmd --add-port=8122-8124/tcp
+     $ sudo systemctl stop firewalld
  
