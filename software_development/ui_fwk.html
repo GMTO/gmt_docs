@@ -207,15 +207,22 @@
 wget http://52.52.46.32/srv/gmt/releases/navigator/macos/ocs_navigator.zip
 </pre></div>
 </div>
-<p>This is a packaged binary app that you can run after you have set up your environment.</p>
+<p>This is a packaged binary app that you can run after you have set up your environment.  For CentOS you will need additional dependencies:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>dnf -y install fuse clang dbus-devel gtk3-devel libnotify-devel <span class="se">\</span>
+           xorg-x11-server-utils libcap-devel <span class="se">\</span>
+           cups-devel libXtst-devel alsa-lib-devel libXrandr-devel <span class="se">\</span>
+           nss-devel <span class="se">\</span>
+     libXScrnSaver
+</pre></div>
+</div>
 <div class="section" id="setting-up-your-enviornment">
 <h3>13.1.1. Setting up your enviornment<a class="headerlink" href="#setting-up-your-enviornment" title="Permalink to this headline">¶</a></h3>
 <p>The Engineering UI uses the <code class="docutils literal"><span class="pre">gmt_env</span></code> if you have set that up.  If you don’t have that, you’ll need to set up a <code class="docutils literal"><span class="pre">$GMT_LOCAL</span></code> environment.  This is very similar to setting up the SDK.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For bash, you’ll need to edit the <code class="docutils literal"><span class="pre">~\.bash_profile</span></code>. For zsh you’ll need to edit <code class="docutils literal"><span class="pre">~\.zshrc</span></code>.</p>
+<p class="last">For bash, you’ll need to edit the <code class="docutils literal"><span class="pre">~/.bash_profile</span></code>. For zsh you’ll need to edit <code class="docutils literal"><span class="pre">~/.zshrc</span></code>.</p>
 </div>
-<p>To set up a <code class="docutils literal"><span class="pre">$GMT_LOCAL</span></code> environment, first designate a directory and set your <code class="docutils literal"><span class="pre">~\.bash_profile</span></code> or <code class="docutils literal"><span class="pre">~\.zshrc</span></code> environment variables.  Asumming the path is <code class="docutils literal"><span class="pre">/home/gmto/working_dir</span></code>, then your export should look like</p>
+<p>To set up a <code class="docutils literal"><span class="pre">$GMT_LOCAL</span></code> environment, first designate a directory and set your <code class="docutils literal"><span class="pre">~/.bash_profile</span></code> or <code class="docutils literal"><span class="pre">~/.zshrc</span></code> environment variables.  Asumming the path is <code class="docutils literal"><span class="pre">/home/gmto/working_dir</span></code>, then your export should look like</p>
 <p>Create the following folder structure in your <code class="docutils literal"><span class="pre">$GMT_LOCAL</span></code> directory</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="p">|</span>-- etc
 <span class="p">|</span>   <span class="p">|</span>-- bundles
@@ -275,7 +282,7 @@ wget http://52.52.46.32/srv/gmt/releases/navigator/macos/ocs_navigator.zip
 <h2>13.4. Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permalink to this headline">¶</a></h2>
 <p>The engineering app loads the local bundles defined in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code> and the webpack model files in <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code>.  If you enable bundles, but no corresponding model lib file exists, the UI might end up an incosistent or ‘blank’ state.</p>
 <ul class="simple">
-<li><strong>No navigation tree</strong>: the navigation tree is rendered from the local bundles enabled in <code class="docutils literal"><span class="pre">$GMT_LOCAL\etc\bundles</span></code>.  The bundles defined there need to exist in your <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code> folder.  You can create these by running <code class="docutils literal"><span class="pre">webpack</span></code> on your model.</li>
+<li><strong>No navigation tree</strong>: the navigation tree is rendered from the local bundles enabled in <code class="docutils literal"><span class="pre">$GMT_LOCAL/etc/bundles</span></code>.  The bundles defined there need to exist in your <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code> folder.  You can create these by running <code class="docutils literal"><span class="pre">webpack</span></code> on your model.</li>
 <li><strong>Incositent Navigation tree</strong>: If you don’t see a newly added (or still see a deleted element in the tree) it’s because Navigator persists your menu state, so when you make changes to your bundles or edit your model files you need to manually clear the application cache.  Press <code class="docutils literal"><span class="pre">CMD+,</span></code> to see the Navigator preferences.  Find the <cite>Reset application state</cite> button and press it.  If this works, your menu will have been rebuilt and should be consistent again.</li>
 <li><strong>Blank screen</strong>: If the UI starts with a blank screen, it’s likely there’s an incosistent configuration, for example, you defined a bundle, but there is no webpack version of the model in <code class="docutils literal"><span class="pre">$GMT_LOCAL/lib/js</span></code>.  Open the Developer console and check the error message.</li>
 </ul>

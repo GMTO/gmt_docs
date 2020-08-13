@@ -17,7 +17,16 @@ To install Navigator you will need to donwload the packaged app and set up your 
     wget http://52.52.46.32/srv/gmt/releases/navigator/centos8/ocs_navigator.AppImage
     wget http://52.52.46.32/srv/gmt/releases/navigator/macos/ocs_navigator.zip
 
-This is a packaged binary app that you can run after you have set up your environment.
+This is a packaged binary app that you can run after you have set up your environment.  For CentOS you will need additional dependencies:
+
+.. code-block:: bash
+
+    dnf -y install fuse clang dbus-devel gtk3-devel libnotify-devel \
+               xorg-x11-server-utils libcap-devel \
+               cups-devel libXtst-devel alsa-lib-devel libXrandr-devel \
+               nss-devel \
+         libXScrnSaver
+
 
 Setting up your enviornment
 ###########################
@@ -25,9 +34,9 @@ Setting up your enviornment
 The Engineering UI uses the ``gmt_env`` if you have set that up.  If you don't have that, you'll need to set up a ``$GMT_LOCAL`` environment.  This is very similar to setting up the SDK.  
 
 .. note::
-    For bash, you'll need to edit the ``~\.bash_profile``. For zsh you'll need to edit ``~\.zshrc``.
+    For bash, you'll need to edit the ``~/.bash_profile``. For zsh you'll need to edit ``~/.zshrc``.
 
-To set up a ``$GMT_LOCAL`` environment, first designate a directory and set your ``~\.bash_profile`` or ``~\.zshrc`` environment variables.  Asumming the path is ``/home/gmto/working_dir``, then your export should look like
+To set up a ``$GMT_LOCAL`` environment, first designate a directory and set your ``~/.bash_profile`` or ``~/.zshrc`` environment variables.  Asumming the path is ``/home/gmto/working_dir``, then your export should look like
 
 .. code-block:: bash
   export GMT_LOCAL=/home/gmto/working_dir
@@ -128,7 +137,7 @@ Troubleshooting Guide
 
 The engineering app loads the local bundles defined in ``$GMT_LOCAL/etc/bundles`` and the webpack model files in ``$GMT_LOCAL/lib/js``.  If you enable bundles, but no corresponding model lib file exists, the UI might end up an incosistent or 'blank' state.
 
-* **No navigation tree**: the navigation tree is rendered from the local bundles enabled in ``$GMT_LOCAL\etc\bundles``.  The bundles defined there need to exist in your ``$GMT_LOCAL/lib/js`` folder.  You can create these by running ``webpack`` on your model.
+* **No navigation tree**: the navigation tree is rendered from the local bundles enabled in ``$GMT_LOCAL/etc/bundles``.  The bundles defined there need to exist in your ``$GMT_LOCAL/lib/js`` folder.  You can create these by running ``webpack`` on your model.
 * **Incositent Navigation tree**: If you don't see a newly added (or still see a deleted element in the tree) it's because Navigator persists your menu state, so when you make changes to your bundles or edit your model files you need to manually clear the application cache.  Press ``CMD+,`` to see the Navigator preferences.  Find the `Reset application state` button and press it.  If this works, your menu will have been rebuilt and should be consistent again.
 * **Blank screen**: If the UI starts with a blank screen, it's likely there's an incosistent configuration, for example, you defined a bundle, but there is no webpack version of the model in ``$GMT_LOCAL/lib/js``.  Open the Developer console and check the error message.
 
