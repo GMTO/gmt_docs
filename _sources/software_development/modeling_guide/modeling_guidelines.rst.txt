@@ -943,7 +943,7 @@ The possible values of an *alarm* are:
     The *alarm* is in ``NORM`` state when the alarm condition is not true.
 
 ``UNACK``
-    The *alarm* is in ``UNACK`` state when the alarm condition is false.
+    The *alarm* is in ``UNACK`` state when the alarm condition is true.
 
 ``ACKED``
     The *alarm* is in ``ACKED`` state when it has been acknowledged by the operator.
