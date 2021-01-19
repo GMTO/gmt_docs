@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.8
+                1.9
               </div>
             
           
@@ -101,6 +101,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Release Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Release 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-9-0">Contents of release 1.9.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-8-1">Contents of release 1.8.1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-8-0">Contents of release 1.8.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-7-0">Contents of release 1.7.0</a></li>
@@ -188,6 +189,113 @@
             
   <div class="section" id="release-1">
 <span id="id1"></span><h1>Release 1<a class="headerlink" href="#release-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contents-of-release-1-9-0">
+<h2>Contents of release 1.9.0<a class="headerlink" href="#contents-of-release-1-9-0" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Core Frameworks</p>
+<ul class="simple">
+<li>Updated Core Framework<ul>
+<li>Implemented Python Component life-cycle, including
+- Resource allocation/deallocation
+- op_state_sv state machine compliance</li>
+<li>Implemented Python Component Distributed Communication, including
+- Reading and writing remote data
+- Asynchronous communication
+- Pseudo synchronous communication
+- Publishing and receiving data streams</li>
+<li>Implemented Python Component Behaviors, including
+- Periodic behavior
+- Dynamic behavior
+- Reusable behaviors
+- OpState behavior</li>
+<li>Implemented Python Component Service Access (Container), including
+- Log events
+- Telemetry
+- Local logging</li>
+<li>Fixed minor issues in the service data ports</li>
+</ul>
+</li>
+<li>Updated IO Framework<ul>
+<li>Fixed small issues in EtherCAT hardware adapter<ul>
+<li>Vendor_id type changed from uint8 to uint32</li>
+<li>Updated support for addressing slaves by alias</li>
+<li>Set slave to PRE_OP after firmware update</li>
+<li>Re-read SDOs on slave when transitioning from IDLE to RUNNING</li>
+<li>Added an error log when the master goes into ERROR state</li>
+<li>#116: Removed erroneous “Failed to get slave info: invalid argument” error message on hw_adapter_app start-up</li>
+<li>#124: Added slave type info to get_ethercat_slave_info functions</li>
+<li>#125: Added exception checking in get_ethercat_slave_info functions for invalid values (slave does not exist)</li>
+<li>#126: Prevent application from crashing if booting without no slaves connected on the bus (but defined in the config)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Updated Development Framework<ul>
+<li>Added OCS Module code generation in Python</li>
+<li>Added OCS Module building support for Python platform</li>
+<li>Implemented Model definition mapping to Python</li>
+</ul>
+</li>
+<li>Updated UI Framework<ul>
+<li>Split framework into separate libraries with separate concerns to make future development easier</li>
+<li>Visualization Package development with dynamic rendering<ul>
+<li>visualization packages can be run as standalone apps using Navigator as the launcher</li>
+<li>single source of modules in GMT_LOCAL/node_modules</li>
+<li>visualization packages can register data with Navigator context</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>React library implementation<ul>
+<li>provides a simple and systematic way to retrieve and display connector data</li>
+<li>provides interaction primitives that can be used to build complex visualization packages</li>
+</ul>
+</li>
+<li>UI Styles update<ul>
+<li>unified look and feel through CSS styling</li>
+<li>updated widgets for buttons and data structures</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">Navigator Application</p>
+<blockquote>
+<div><ul class="simple">
+<li>Stability and performance improvements</li>
+<li>Updated tab system<ul>
+<li>drag &amp; drop support</li>
+<li>tab groups</li>
+<li>complex layouts</li>
+<li>faster tab switching/rendering</li>
+</ul>
+</li>
+<li>Create new inspect instances by pasting comands grs inspect commands</li>
+<li>Load standalone vis packages</li>
+<li>Develop vis packages with live-reload</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Documentation: Software Development</p>
+<ul class="simple">
+<li>Updated <a class="reference internal" href="../../software_development/installation.html#installation"><span class="std std-ref">Installing the SDK</span></a><ul>
+<li>Fixed commandline examples</li>
+<li>Added installation instructions for Python and related libraries</li>
+</ul>
+</li>
+<li>Updated <a class="reference internal" href="../../software_development/upgrade.html#upgrade"><span class="std std-ref">Upgrade</span></a><ul>
+<li>Added instructions for upgrading from v1.8 to v1.9</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">Known issues</p>
+<ul class="simple">
+<li>Missing documentation for Python model-language mapping</li>
+<li>Missing documentatino for updated widget library</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="contents-of-release-1-8-1">
 <h2>Contents of release 1.8.1<a class="headerlink" href="#contents-of-release-1-8-1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -965,7 +1073,7 @@ other information as the development progresses.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.8.1',
+            VERSION:'1.9.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -3,6 +3,106 @@
 Release 1
 =========
 
+Contents of release 1.9.0
+-------------------------
+
+- Core Frameworks
+
+  - Updated Core Framework
+
+    - Implemented Python Component life-cycle, including 
+      - Resource allocation/deallocation
+      - op_state_sv state machine compliance
+    - Implemented Python Component Distributed Communication, including
+      - Reading and writing remote data
+      - Asynchronous communication
+      - Pseudo synchronous communication
+      - Publishing and receiving data streams
+    - Implemented Python Component Behaviors, including
+      - Periodic behavior
+      - Dynamic behavior
+      - Reusable behaviors
+      - OpState behavior
+    - Implemented Python Component Service Access (Container), including
+      - Log events
+      - Telemetry
+      - Local logging
+    - Fixed minor issues in the service data ports
+
+  - Updated IO Framework
+
+    - Fixed small issues in EtherCAT hardware adapter
+
+      - Vendor_id type changed from uint8 to uint32
+      - Updated support for addressing slaves by alias
+      - Set slave to PRE_OP after firmware update
+      - Re-read SDOs on slave when transitioning from IDLE to RUNNING
+      - Added an error log when the master goes into ERROR state
+      - #116: Removed erroneous "Failed to get slave info: invalid argument" error message on hw_adapter_app start-up
+      - #124: Added slave type info to get_ethercat_slave_info functions
+      - #125: Added exception checking in get_ethercat_slave_info functions for invalid values (slave does not exist) 
+      - #126: Prevent application from crashing if booting without no slaves connected on the bus (but defined in the config) 
+
+  - Updated Development Framework
+
+    - Added OCS Module code generation in Python
+    - Added OCS Module building support for Python platform
+    - Implemented Model definition mapping to Python
+
+  - Updated UI Framework
+
+    - Split framework into separate libraries with separate concerns to make future development easier
+
+    - Visualization Package development with dynamic rendering
+  
+      - visualization packages can be run as standalone apps using Navigator as the launcher
+      - single source of modules in GMT_LOCAL/node_modules
+      - visualization packages can register data with Navigator context
+      
+  - React library implementation
+
+    - provides a simple and systematic way to retrieve and display connector data
+    - provides interaction primitives that can be used to build complex visualization packages
+
+  - UI Styles update
+
+    - unified look and feel through CSS styling
+    - updated widgets for buttons and data structures
+
+- Navigator Application
+    
+    - Stability and performance improvements
+    
+    - Updated tab system
+      
+      - drag & drop support
+      - tab groups
+      - complex layouts
+      - faster tab switching/rendering
+    
+    - Create new inspect instances by pasting comands grs inspect commands
+    
+    - Load standalone vis packages
+    
+    - Develop vis packages with live-reload
+
+- Documentation: Software Development
+
+  - Updated :ref:`installation`
+
+    - Fixed commandline examples
+    - Added installation instructions for Python and related libraries
+
+  - Updated :ref:`upgrade`
+
+    - Added instructions for upgrading from v1.8 to v1.9
+
+- Known issues
+
+  - Missing documentation for Python model-language mapping
+  - Missing documentatino for updated widget library
+
+
 Contents of release 1.8.1
 -------------------------
 
