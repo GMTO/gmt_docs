@@ -3,6 +3,41 @@
 Upgrade
 =======
 
+Upgrading from v1.8 to v1.9
+---------------------------
+
+1. Download the latest SDK distribution:
+
+  .. code-block:: bash
+
+    sudo wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk.tar.gz
+
+
+2. Extract the TAR file in the /opt directory, into a new folder for the latest release:
+
+  .. code-block:: bash
+
+    sudo mkdir /opt/gmt_release_1.9.0
+    sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.9.0
+
+5. Update the symbolic link from the **Global GMT Software Location** to the latest release:
+
+  .. code-block:: bash
+
+    sudo ln -sfn gmt_release_1.9.0 /opt/gmt
+
+6. Check all applicable environment variables
+
+  .. code-block:: bash
+
+    gmt_env
+
+7. Optional: Install the Python Frameworks following items 12 to 15 on the :ref:`installation <installation>` page.
+
+To create the user working development environment, please
+follow the instructions on the :ref:`installation <installation>` page.
+
+
 Upgrading from v1.7 to v1.8
 ---------------------------
 
@@ -22,6 +57,7 @@ the version currently in use reflected by the $GMT_GLOBAL environment variable.
    (see :ref:`installation <installation>` page for more info)
 
   .. code-block:: bash
+
     $ sudo echo "exclude=openssh* libssh*" >> /etc/dnf/dnf.conf
 
 

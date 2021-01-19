@@ -253,20 +253,31 @@ Change the filesystem of the partitions to ext4 if using the real-time kernel.</
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Due to a <a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1812120">bug</a>, openssh-server should temporarily not be
+<p>Due to a <a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1812120">bug</a>, openssh-server should temporarily not be
 upgraded to any version greater than 8.0p1-3.el8. To fix the openssh-server version, run this command right after the
 Operating System installation:</p>
+<div class="last highlight-bash"><div class="highlight"><pre><span></span>sudo <span class="nb">echo</span> <span class="s2">&quot;exclude=openssh* libssh*&quot;</span> &gt;&gt; /etc/dnf/dnf.conf
+</pre></div>
+</div>
 </div>
 <ol class="arabic simple" start="2">
 <li>Disable firewall</li>
 </ol>
 <blockquote>
-<div></div></blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>systemctl disable firewalld
+systemctl stop firewalld
+</pre></div>
+</div>
+</div></blockquote>
 <ol class="arabic simple" start="3">
 <li>Disable SELinux</li>
 </ol>
 <blockquote>
-<div></div></blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sed -i <span class="s1">&#39;s/SELINUX=enforcing/SELINUX=disabled/g&#39;</span> /etc/selinux/config
+setenforce <span class="m">0</span>
+</pre></div>
+</div>
+</div></blockquote>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">Make sure an external firewall protects your server</p>
@@ -308,8 +319,8 @@ Operating System installation:</p>
 <li>Install Common OS Utilities</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y xorg-x11-xauth urw-fonts wget net-tools pciutils
-$ sudo dnf install -y strace bash-completion sed
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo dnf install -y xorg-x11-xauth urw-fonts wget net-tools pciutils
+sudo dnf install -y strace bash-completion sed
 </pre></div>
 </div>
 </div></blockquote>
@@ -317,11 +328,10 @@ $ sudo dnf install -y strace bash-completion sed
 <li>Install Development Tools</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y autoconf automake cmake elfutils gcc gdb libtool make
-$ sudo dnf install -y cpp cscope ctags gc gcc-c++ gcc-gdb-plugin glibc-devel
-$ sudo dnf install -y glibc-headers kernel-headers libstdc++-devel
-$ sudo dnf install -y flex git libcurl-devel
-$ sudo dnf install -y python3
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo dnf install -y autoconf automake cmake elfutils gcc gdb libtool make
+sudo dnf install -y cpp cscope ctags gc gcc-c++ gcc-gdb-plugin glibc-devel
+sudo dnf install -y glibc-headers kernel-headers libstdc++-devel
+sudo dnf install -y flex git libcurl-devel
 </pre></div>
 </div>
 </div></blockquote>
@@ -329,7 +339,7 @@ $ sudo dnf install -y python3
 <li>Install OCS Dependencies</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y rdma librdmacm-devel boost-devel
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo dnf install -y rdma librdmacm-devel boost-devel
 </pre></div>
 </div>
 </div></blockquote>
@@ -337,27 +347,18 @@ $ sudo dnf install -y python3
 <div class="section" id="node-installation">
 <h3>1.2.5. Node Installation<a class="headerlink" href="#node-installation" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Install Python 2 and set is a default interpreter. It is necessary for the node package manager.</li>
+<li>Install <strong>Node version 12</strong>:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y python2
-$ sudo alternatives --set python /usr/bin/python2
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo dnf module install -y nodejs:12
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Install <strong>Node version 12</strong>:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf module install -y nodejs:12
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="3">
 <li>Install necessary node packages:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo npm install -g coffeescript webpack webpack-cli raw-loader
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo npm install -g coffeescript webpack webpack-cli raw-loader
 </pre></div>
 </div>
 </div></blockquote>
@@ -387,24 +388,32 @@ To change it to v12, run:
 <li>Install the necessary packages:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf -y install mongodb-org
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo dnf -y install mongodb-org
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Enable the MongoDB service</li>
+<li>Create the database files directory</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl <span class="nb">enable</span> mongod
-$ sudo systemctl start mongod
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo mkdir -p /data/db
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
+<li>Enable the MongoDB service</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo systemctl <span class="nb">enable</span> mongod
+sudo systemctl start mongod
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="5">
 <li>Check that the MongoDB service is up</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl status -l mongod
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo systemctl status -l mongod
 </pre></div>
 </div>
 </div></blockquote>
@@ -416,7 +425,7 @@ $ sudo systemctl start mongod
 <li>Install the real-time kernel and relevant packages</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo dnf install -y --nogpgcheck kernel-3.14.73-rt78.x86_64 ethercat-devel
 </pre></div>
 </div>
 </div></blockquote>
@@ -437,7 +446,7 @@ $ sudo systemctl start mongod
 <li>Check the Hardware Address (MAC) of the selected EtherCAT network interface</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ ifconfig
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>ifconfig
 </pre></div>
 </div>
 </div></blockquote>
@@ -464,8 +473,8 @@ $ sudo systemctl start mongod
 <li>Enable the Ethercat service</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl <span class="nb">enable</span> ethercat
-$ sudo systemctl start ethercat
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo systemctl <span class="nb">enable</span> ethercat
+sudo systemctl start ethercat
 </pre></div>
 </div>
 </div></blockquote>
@@ -491,8 +500,8 @@ $ sudo usermod --groups realtime gmto
 <li>Test the Ethercat configuration</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ ethercat master
-$ ethercat slaves
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>ethercat master
+ethercat slaves
 </pre></div>
 </div>
 </div></blockquote>
@@ -505,7 +514,7 @@ $ ethercat slaves
 <li>Install the necessary packages:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo dnf install -y chrony
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo dnf install -y chrony
 </pre></div>
 </div>
 </div></blockquote>
@@ -513,7 +522,7 @@ $ ethercat slaves
 <li>Enable the NTP Service</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo systemctl <span class="nb">enable</span> chronyd
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo systemctl <span class="nb">enable</span> chronyd
 </pre></div>
 </div>
 </div></blockquote>
@@ -521,7 +530,7 @@ $ ethercat slaves
 <li>Check date/time servers</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo chronyc sources
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo chronyc sources
 </pre></div>
 </div>
 </div></blockquote>
@@ -535,7 +544,7 @@ $ ethercat slaves
 <li>Download the latest SDK distribution:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk.tar.gz
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk.tar.gz
 </pre></div>
 </div>
 </div></blockquote>
@@ -543,8 +552,8 @@ $ ethercat slaves
 <li>Extract the TAR file in the /opt directory, into a new folder for the latest release:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/gmt_release_1.8.0
-$ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.8.0
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo mkdir /opt/gmt_release_1.8.0
+sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.8.0
 </pre></div>
 </div>
 <p>where gmt-sdk.tar.gz is the file downloaded in step 1.</p>
@@ -553,7 +562,7 @@ $ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.8.0
 <li>Create a symbolic link from the <strong>Global GMT Software Location</strong> to the latest release:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo ln -sfn /opt/gmt_release_1.8.0 /opt/gmt
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo ln -sfn /opt/gmt_release_1.8.0 /opt/gmt
 </pre></div>
 </div>
 </div></blockquote>
@@ -561,7 +570,7 @@ $ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.8.0
 <li>Create a <strong>Local Working Directory</strong></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir &lt;local_working_dir&gt;
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir &lt;local_working_dir&gt;
 </pre></div>
 </div>
 <p>where <code class="docutils literal"><span class="pre">&lt;local_working_dir&gt;</span></code> is in the current users’ home directory, for example, ~/work. The GMT software modules developed by the user are created in this folder.</p>
@@ -570,9 +579,9 @@ $ sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.8.0
 <li>Add the following lines to your .bash_profile (or .kshrc or .bashrc depending on your preferred shell)</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">GMT_GLOBAL</span><span class="o">=</span>/opt/gmt
-$ <span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>&lt;local_working_dir&gt;
-$ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env.sh
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">GMT_GLOBAL</span><span class="o">=</span>/opt/gmt
+<span class="nb">export</span> <span class="nv">GMT_LOCAL</span><span class="o">=</span>&lt;local_working_dir&gt;
+<span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env.sh
 </pre></div>
 </div>
 <p>This will ensure that the environment variables are correctly configured when opening a new terminal. Please log out and back in for the changes to take effect. To configure the environment for the current shell, run the commands manually.</p>
@@ -581,7 +590,7 @@ $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env
 <li>Check the values of the environment variables:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ gmt_env
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>gmt_env
 </pre></div>
 </div>
 </div></blockquote>
@@ -589,12 +598,16 @@ $ <span class="nb">source</span> <span class="nv">$GMT_GLOBAL</span>/bin/gmt_env
 <li>Install Node Modules</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_GLOBAL</span>
-$ sudo npm install
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$GMT_GLOBAL</span>
+npm install
 
-$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
-$ cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
-$ npm install
+<span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+cp <span class="nv">$GMT_GLOBAL</span>/package.json ./
+npm install
+</pre></div>
+</div>
+<p>Install global node modules for <cite>Webpack</cite> and <cite>Coffeescript</cite>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo npm install -g coffeescript webpack webpack-cli coffee-loader
 </pre></div>
 </div>
 </div></blockquote>
@@ -602,8 +615,8 @@ $ npm install
 <li>Initialize the Development Environment:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
-$ gds init
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+gds init
 </pre></div>
 </div>
 <p>The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.</p>
@@ -612,8 +625,8 @@ $ gds init
 <li>Create a <strong>modules</strong> directory in $GMT_LOCAL</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
-$ mkdir modules
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>
+mkdir modules
 </pre></div>
 </div>
 </div></blockquote>
@@ -622,9 +635,9 @@ $ mkdir modules
 </ol>
 <blockquote>
 <div><p>These files may be copied from $GMT_GLOBAL and then edited to reflect the developer’s configuration.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir <span class="nv">$GMT_LOCAL</span>/etc/bundles
-$ cp <span class="nv">$GMT_GLOBAL</span>/etc/bundles/bundles.coffee <span class="nv">$GMT_LOCAL</span>/etc/bundles/
-$ cp <span class="nv">$GMT_GLOBAL</span>/etc/bundles/ocs_local_bundle.coffee <span class="nv">$GMT_LOCAL</span>/etc/bundles/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir <span class="nv">$GMT_LOCAL</span>/etc/bundles
+cp <span class="nv">$GMT_GLOBAL</span>/etc/bundles/bundles.coffee <span class="nv">$GMT_LOCAL</span>/etc/bundles/
+cp <span class="nv">$GMT_GLOBAL</span>/etc/bundles/ocs_local_bundle.coffee <span class="nv">$GMT_LOCAL</span>/etc/bundles/
 </pre></div>
 </div>
 <p>Edit <strong>bundles.coffee</strong> to point to the ocs_local_bundle.coffee file</p>
@@ -646,10 +659,46 @@ elements:
 <li>Build all model files from modules in your ocs_local_bundles definition using webpack. For example:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/model
-$ webpack
-$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/model
-$ webpack
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_hdk_dcs/model
+webpack
+<span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules/ocs_isample_dcs/model
+webpack
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="12">
+<li>Python frameworks installation: Install Miniconda (or Anaconda)</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
+eval &quot;$($HOME/miniconda/bin/conda shell.bash hook)&quot;&#39; &gt;&gt; /home/gmto/.bashrc
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="13">
+<li>Create a conda environment (optional)</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>conda create -y -n gmt <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
+conda activate gmt
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="14">
+<li>Install dependencies</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>conda install -y conda-build msgpack-python<span class="o">=</span><span class="m">0</span>.6.1
+pip install -U cson
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="15">
+<li>Link frameworks dir to Anaconda’s paths</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>conda develop <span class="s2">&quot;</span><span class="nv">$GMT_GLOBAL</span><span class="s2">/lib/py/&quot;</span>
 </pre></div>
 </div>
 </div></blockquote>
