@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.9
+                1.10
               </div>
             
           
@@ -101,6 +101,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Release Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Release 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-10-0">Contents of release 1.10.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-9-0">Contents of release 1.9.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-8-1">Contents of release 1.8.1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-8-0">Contents of release 1.8.0</a></li>
@@ -189,6 +190,52 @@
             
   <div class="section" id="release-1">
 <span id="id1"></span><h1>Release 1<a class="headerlink" href="#release-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contents-of-release-1-10-0">
+<h2>Contents of release 1.10.0<a class="headerlink" href="#contents-of-release-1-10-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Core Frameworks<ul>
+<li>Updated C/C++ Core Framework<ul>
+<li>Added timers to the step function to assess performance</li>
+<li>Fixed adding scan_rate in the properties declaration</li>
+<li>Fixed issue with telemetry sampling rate that caused erroneous sampling rates in some cases</li>
+</ul>
+</li>
+<li>Updated Development Framework<ul>
+<li>Fixed issue #212: Type ‘float’ is now mapped to ‘double’ in C++, per modeling guidelines</li>
+<li>Removed stale zeromq dependency</li>
+</ul>
+</li>
+<li>Updated C/C++ IO Framework<ul>
+<li>EtherCAT HW Adapter refactoring<ul>
+<li>Fixed names, namespaces and includes</li>
+<li>Improved robustness of several data structures and decision trees</li>
+<li>Updated to follow code formatting guidelines</li>
+<li>Improved encapsulation of etherlab library method calls</li>
+<li>Fixed errors and typos in type name identifiers and descriptions</li>
+</ul>
+</li>
+<li>EtherCAT HW Adapter updates<ul>
+<li>EtherCAT bus configuration is now loaded and applied during the setup, before the step loop starts</li>
+<li>The state machine of the EtherCAT master has been changed to a StateMachine Behavior</li>
+<li>The SDO read/write mechanisms have been changed, as the previous strategy led to non-deterministic errors on sdo read or write. Now the framework provides:<ul>
+<li>Methods to read/write SDO during the setup execution, before starting the RT process. These methods are blocking and ensure that all read/write operations are executed before the step</li>
+<li>Methods to read/write SDO during the step execution. These methods are non-blocking. The operations will take more than one cycle to be completed; upon completion, a user-provided callback is executed</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Updated UI Framework<ul>
+<li>Improved build environment for continuous integration and dependencies on other modules</li>
+<li>Improved error logging</li>
+<li>Fixed issue with multi-dimensional array parsing</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="contents-of-release-1-9-0">
 <h2>Contents of release 1.9.0<a class="headerlink" href="#contents-of-release-1-9-0" title="Permalink to this headline">¶</a></h2>
 <ul>
@@ -1073,7 +1120,7 @@ other information as the development progresses.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.1',
+            VERSION:'1.10.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

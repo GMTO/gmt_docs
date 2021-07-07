@@ -3,6 +3,48 @@
 Release 1
 =========
 
+Contents of release 1.10.0
+--------------------------
+
+- Core Frameworks
+
+  - Updated C/C++ Core Framework
+
+    - Added timers to the step function to assess performance
+    - Fixed adding scan_rate in the properties declaration
+    - Fixed issue with telemetry sampling rate that caused erroneous sampling rates in some cases
+
+  - Updated Development Framework
+
+    - Fixed issue #212: Type ‘float’ is now mapped to ‘double’ in C++, per modeling guidelines
+    - Removed stale zeromq dependency
+
+  - Updated C/C++ IO Framework
+
+    - EtherCAT HW Adapter refactoring
+
+      - Fixed names, namespaces and includes
+      - Improved robustness of several data structures and decision trees
+      - Updated to follow code formatting guidelines
+      - Improved encapsulation of etherlab library method calls
+      - Fixed errors and typos in type name identifiers and descriptions
+
+    - EtherCAT HW Adapter updates
+
+      - EtherCAT bus configuration is now loaded and applied during the setup, before the step loop starts
+      - The state machine of the EtherCAT master has been changed to a StateMachine Behavior
+      - The SDO read/write mechanisms have been changed, as the previous strategy led to non-deterministic errors on sdo read or write. Now the framework provides:
+
+        - Methods to read/write SDO during the setup execution, before starting the RT process. These methods are blocking and ensure that all read/write operations are executed before the step
+        - Methods to read/write SDO during the step execution. These methods are non-blocking. The operations will take more than one cycle to be completed; upon completion, a user-provided callback is executed
+
+  - Updated UI Framework
+
+    - Improved build environment for continuous integration and dependencies on other modules
+    - Improved error logging
+    - Fixed issue with multi-dimensional array parsing
+
+
 Contents of release 1.9.0
 -------------------------
 
