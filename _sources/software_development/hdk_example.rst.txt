@@ -259,49 +259,55 @@ The contents of the file is:
 
     void HdkMainCtrl::step()
     {
-        if (!hmi_inputs_val.emergency_button) { motor_ctrl_req.velocity = 0; motor_ctrl_req.enable = false; }
-        else if (motor_state_val.ready && !motor_state_val.enabled) { motor_ctrl_req.enable = true; } // enable motor if not enabled
-
-        if (motor_state_val.enabled)
+        if (!hmi_inputs_val.value.emergency_button)
         {
-            if (hmi_inputs_val.green_push_button) { motor_ctrl_req.velocity++; }
-            if (hmi_inputs_val.red_push_button)   { motor_ctrl_req.velocity--; }
-            if (!hmi_inputs_val.emergency_button) { motor_ctrl_req.velocity = 0; motor_ctrl_req.enable = false; }
+            motor_ctrl_req.value.velocity = 0;
+            motor_ctrl_req.value.enable = false;
+        }
+        else if (motor_state_val.value.ready && !motor_state_val.value.enabled)
+        {
+            motor_ctrl_req.value.enable = true; // enable motor if not enabled
         }
 
-        bool moving                     = motor_state_val.moving_positive || motor_state_val.moving_negative;
-        hmi_outputs_req.pilot           = moving; // pilot on when moving
-        hmi_outputs_req.emergency_light = !hmi_inputs_val.emergency_button; // ligth on when button pressed
-        float estimated_temperature = temperatures_val.temp_sensor1 / 10.0;  // 10.0 will be a property
-
-        if (is_step_rate(100))    // every 1000 steps = 1 second
+        if (motor_state_val.value.enabled)
         {
+            if (hmi_inputs_val.value.green_push_button)
+                motor_ctrl_req.value.velocity++;
+            if (hmi_inputs_val.value.red_push_button)
+                motor_ctrl_req.value.velocity--;
+            if (!hmi_inputs_val.value.emergency_button)
+            {
+                motor_ctrl_req.value.velocity = 0;
+                motor_ctrl_req.value.enable = false;
+            }
+        }
 
-            // following values should go to user interface
-            log_info("Green button = " + std::to_string(hmi_inputs_val.green_push_button));
-            log_info("Red button   = " + std::to_string(hmi_inputs_val.red_push_button));
-            log_info("Emergency    = " + std::to_string(hmi_inputs_val.emergency_button));
+        bool moving = motor_state_val.value.moving_positive || motor_state_val.value.moving_negative;
+        hmi_outputs_req.value.pilot = moving; // pilot on when moving
+        hmi_outputs_req.value.emergency_light = !hmi_inputs_val.value.emergency_button; // ligth on when button pressed
+        float estimated_temperature = temperatures_val.value.temp_sensor1 / 10.0;  // 10.0 will be a property
+
+        if (is_step_rate(100))    // every 100 steps = 1 second
+        {
+            log_info("Green button = " + std::to_string(hmi_inputs_val.value.green_push_button));
+            log_info("Red button   = " + std::to_string(hmi_inputs_val.value.red_push_button));
+            log_info("Emergency    = " + std::to_string(hmi_inputs_val.value.emergency_button));
             log_info("Temperature  = " + std::to_string(estimated_temperature));
-            log_info("Temperature1 = " + std::to_string(temperatures_val.temp_sensor1));
-            log_info("Temperature2 = " + std::to_string(temperatures_val.temp_sensor2));
-            log_info("Axis Ready   = " + std::to_string(motor_state_val.ready));
-            log_info("Axis Enabled = " + std::to_string(motor_state_val.enabled));
-            log_info("Axis Warning = " + std::to_string(motor_state_val.warning));
-            log_info("Axis Error   = " + std::to_string(motor_state_val.error));
-            log_info("Axis Moving+ = " + std::to_string(motor_state_val.moving_positive));
-            log_info("Axis Moving- = " + std::to_string(motor_state_val.moving_negative));
+            log_info("Temperature1 = " + std::to_string(temperatures_val.value.temp_sensor1));
+            log_info("Temperature2 = " + std::to_string(temperatures_val.value.temp_sensor2));
+            log_info("Axis Ready   = " + std::to_string(motor_state_val.value.ready));
+            log_info("Axis Enabled = " + std::to_string(motor_state_val.value.enabled));
+            log_info("Axis Warning = " + std::to_string(motor_state_val.value.warning));
+            log_info("Axis Error   = " + std::to_string(motor_state_val.value.error));
+            log_info("Axis Moving+ = " + std::to_string(motor_state_val.value.moving_positive));
+            log_info("Axis Moving- = " + std::to_string(motor_state_val.value.moving_negative));
         }
 
-        if(is_step_rate(500))
-        {
-            hmi_outputs_req.heartbeat = !hmi_outputs_req.heartbeat; // flip bit on each step to indicate component is alive
-        }
-
-        hmi.value.input = hmi_inputs_val;
-        hmi.value.output = hmi_outputs_req;
-        motor.value.state = motor_state_val;
-        motor.value.command = motor_ctrl_req;
-        temperatures.value = temperatures_val;
+        hmi.value.input = hmi_inputs_val.value;
+        hmi.value.output = hmi_outputs_req.value;
+        motor.value.state = motor_state_val.value;
+        motor.value.command = motor_ctrl_req.value;
+        temperatures.value = temperatures_val.value;
     }
 
     void HdkMainCtrl::setup()
@@ -540,13 +546,13 @@ User Interface
 --------------
 
 The Navigator application displays the Engineering user interface as well as any
-custom panels defined in the subsystem's Visualization Package. 
+custom panels defined in the subsystem's Visualization Package.
 
 .. image:: navigator_images/hdk_screenshot.png
   :align: center
   :alt: HDK screenshot
 
-The above image shows the HDK DCS' UI contained in the visualization package.  
+The above image shows the HDK DCS' UI contained in the visualization package.
 This is a basic example of what's possible to do in a visualization package.
 More detailed examples will be added in the future as the UI Framework matures.
 
@@ -572,7 +578,7 @@ Running the Engineering UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Navigator app uses your local bundles file (found in ``$GMT_LOCAL/etc/bundles``) to automatically create
-a visual representation of your model.  
+a visual representation of your model.
 
 .. image:: navigator_images/navigator_hdk_panel.png
   :align: center
@@ -580,8 +586,8 @@ a visual representation of your model.
 
 The model is shown as a navigation tree.  In the above image, the ``hdk_custom_view`` panel shown.  For more information on creating custom UI panels, see the :ref:`UI Framework Guidelines document <ui_fwk>`.
 
-To launch the visualization panel, find the `> Hdk Visualization Package > Example view for HDK` visualization panel in the menu and select it.  This will create a new tab in Navigator showing the panel. 
+To launch the visualization panel, find the `> Hdk Visualization Package > Example view for HDK` visualization panel in the menu and select it.  This will create a new tab in Navigator showing the panel.
 
 .. note::
-    
+
     The HDK UI package needs to exist in your ``$GMT_LOCAL/lib/js`` folder in order for Navigator to load it.  This might be a separate download.

@@ -312,8 +312,8 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
   .. code-block:: bash
 
-    sudo mkdir /opt/gmt_release_1.8.0
-    sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.8.0
+    sudo mkdir /opt/gmt_release_1.10.0
+    sudo tar -xzvf gmt-sdk.tar.gz -C /opt/gmt_release_1.10.0
 
   where gmt-sdk.tar.gz is the file downloaded in step 1.
 
@@ -321,7 +321,7 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
   .. code-block:: bash
 
-    sudo ln -sfn /opt/gmt_release_1.8.0 /opt/gmt
+    sudo ln -sfn /opt/gmt_release_1.10.0 /opt/gmt
 
 4. Create a **Local Working Directory**
 
