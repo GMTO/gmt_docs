@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.10
+                1.11
               </div>
             
           
@@ -101,6 +101,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Release Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Release 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-11-0">Contents of release 1.11.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-10-0">Contents of release 1.10.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-9-0">Contents of release 1.9.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-8-1">Contents of release 1.8.1</a></li>
@@ -190,6 +191,30 @@
             
   <div class="section" id="release-1">
 <span id="id1"></span><h1>Release 1<a class="headerlink" href="#release-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contents-of-release-1-11-0">
+<h2>Contents of release 1.11.0<a class="headerlink" href="#contents-of-release-1-11-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Core Frameworks<ul>
+<li>Updated C/C++ Core Framework<ul>
+<li>Added a forwarding asynchronous handler. This handler will automatically copy the data of an async readable feature to a writeable feature. Optionally, it will trigger an async send of the recipient feature.</li>
+<li>Telemetry time stamps are now stored per step instead of individually for each telemetry value. This change optimizes space usage in the database and synchronizes timestamps for data collected within the same step.</li>
+</ul>
+</li>
+<li>Updated Python Core Framework<ul>
+<li>Minor bug fixes and example updates.</li>
+<li>Added send() method to dataio implementation</li>
+<li>Updates to preliminary Test Framework implementation, including the ability to skip certain tests and specifying a host runner.</li>
+<li>Fixed issue with python ComponentProxy not working with C++ components (fixes GMTO/gmt_issues#227)</li>
+</ul>
+</li>
+<li>Updated C/C++ I/O Framework<ul>
+<li>Fixed minor issue in EtherCAT where the first PDO (ID 0) was not being sent correctly</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="contents-of-release-1-10-0">
 <h2>Contents of release 1.10.0<a class="headerlink" href="#contents-of-release-1-10-0" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -1098,7 +1123,7 @@ other information as the development progresses.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, contributors.
+        &copy; Copyright 2022, contributors.
 
     </p>
   </div>
@@ -1120,7 +1145,7 @@ other information as the development progresses.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.10.0',
+            VERSION:'1.11.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

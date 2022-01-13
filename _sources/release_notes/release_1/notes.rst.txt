@@ -3,6 +3,28 @@
 Release 1
 =========
 
+Contents of release 1.11.0
+--------------------------
+
+- Core Frameworks
+
+  - Updated C/C++ Core Framework
+
+    - Added a forwarding asynchronous handler. This handler will automatically copy the data of an async readable feature to a writeable feature. Optionally, it will trigger an async send of the recipient feature.
+    - Telemetry time stamps are now stored per step instead of individually for each telemetry value. This change optimizes space usage in the database and synchronizes timestamps for data collected within the same step.
+
+  - Updated Python Core Framework
+
+    - Minor bug fixes and example updates.
+    - Added send() method to dataio implementation
+    - Updates to preliminary Test Framework implementation, including the ability to skip certain tests and specifying a host runner.
+    - Fixed issue with python ComponentProxy not working with C++ components (fixes GMTO/gmt_issues#227)
+
+  - Updated C/C++ I/O Framework
+
+    - Fixed minor issue in EtherCAT where the first PDO (ID 0) was not being sent correctly
+
+
 Contents of release 1.10.0
 --------------------------
 
