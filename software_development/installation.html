@@ -347,10 +347,10 @@ sudo dnf install -y flex git libcurl-devel
 <div class="section" id="node-installation">
 <h3>1.2.5. Node Installation<a class="headerlink" href="#node-installation" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Install <strong>Node version 12</strong>:</li>
+<li>Install <strong>Node version 16</strong>:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo dnf module install -y nodejs:12
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo dnf module install -y nodejs:16
 </pre></div>
 </div>
 </div></blockquote>
@@ -364,9 +364,9 @@ sudo dnf install -y flex git libcurl-devel
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If you encounter problems installing nodejs 12, you probably have the node module v10 activated.
-To change it to v12, run:
-<cite>sudo dnf remove -y nodejs &amp;&amp; sudo dnf module reset -y nodejs &amp;&amp; sudo dnf module enable -y nodejs:12</cite></p>
+<p class="last">If you encounter problems installing nodejs, you probably have an older node version activated.
+To change it, run:
+<cite>sudo dnf remove -y nodejs &amp;&amp; sudo dnf module reset -y nodejs &amp;&amp; sudo dnf module enable -y nodejs:16</cite></p>
 </div>
 </div>
 <div class="section" id="mongodb-configuration">
@@ -377,7 +377,7 @@ To change it to v12, run:
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>mongodb-org-4<span class="o">]</span>
 <span class="nv">name</span><span class="o">=</span>MongoDB Repository
-<span class="nv">baseurl</span><span class="o">=</span>https://repo.mongodb.org/yum/redhat/7/mongodb-org/4.2/x86_64/
+<span class="nv">baseurl</span><span class="o">=</span>https://repo.mongodb.org/yum/redhat/<span class="nv">$releasever</span>/mongodb-org/4.2/x86_64/
 <span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
 <span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
 <span class="nv">gpgkey</span><span class="o">=</span>https://www.mongodb.org/static/pgp/server-4.2.asc
@@ -671,8 +671,8 @@ webpack
 </ol>
 <blockquote>
 <div><div class="highlight-bash"><div class="highlight"><pre><span></span>wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
-eval &quot;$($HOME/miniconda/bin/conda shell.bash hook)&quot;&#39; &gt;&gt; /home/gmto/.bashrc
+bash Miniconda3-latest-Linux-x86_64.sh -b -p <span class="nv">$HOME</span>/miniconda
+<span class="nb">echo</span> <span class="s1">&#39;eval &quot;$($HOME/miniconda/bin/conda shell.bash hook)&quot;&#39;</span> &gt;&gt; <span class="nv">$HOME</span>/.bashrc
 </pre></div>
 </div>
 </div></blockquote>
