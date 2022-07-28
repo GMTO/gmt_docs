@@ -3,6 +3,36 @@
 Release 1
 =========
 
+Contents of release 1.12.0
+--------------------------
+
+- Core Frameworks
+  
+  - Updated C/C++ Core Framework
+
+    - Added support for log messages containing formatted strings with parameters.
+    - Added a class hierarchy to compute several kinds of moving averages.
+    - Added convenience methods to the TimingAnalyzer class for getting measured start and end times.
+    - Added an optional start-time delay in PeriodicThread class.
+    - Fixed a minor issue with incoming Fault connectors.
+
+  - Updated Python Core Framework
+
+    - Improved error handling.
+ 
+  - Updated C/C++ Development Framework
+
+    - Fixed a code generation issue caused by a limitation in MsgPack macros when a struct had too many fields.
+    - Code generation of Hardware Adapters now generate a parameter for DataIO during data objects creation, allowing the use of an async forward handler to automatically write SDOs. 
+    - Fixed gmt_issues #218: C++ applications are now only created for C++ components.
+    - Fixed gmt_issues #181: The module.mk file will no longer be overwritten.
+    - Fixed gmt_issues #195: Corrected CaMeLiZation of variables and methods for inherited packages.
+
+  - Updated Python Development Framework
+
+    - Fixed issue where code generation did not call the Component setup method at the appropriate time.
+
+
 Contents of release 1.11.0
 --------------------------
 

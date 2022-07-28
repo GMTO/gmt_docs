@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.11
+                1.12
               </div>
             
           
@@ -101,6 +101,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Release Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Release 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-12-0">Contents of release 1.12.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-11-0">Contents of release 1.11.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-10-0">Contents of release 1.10.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-9-0">Contents of release 1.9.0</a></li>
@@ -191,6 +192,38 @@
             
   <div class="section" id="release-1">
 <span id="id1"></span><h1>Release 1<a class="headerlink" href="#release-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contents-of-release-1-12-0">
+<h2>Contents of release 1.12.0<a class="headerlink" href="#contents-of-release-1-12-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Core Frameworks<ul>
+<li>Updated C/C++ Core Framework<ul>
+<li>Added support for log messages containing formatted strings with parameters.</li>
+<li>Added a class hierarchy to compute several kinds of moving averages.</li>
+<li>Added convenience methods to the TimingAnalyzer class for getting measured start and end times.</li>
+<li>Added an optional start-time delay in PeriodicThread class.</li>
+<li>Fixed a minor issue with incoming Fault connectors.</li>
+</ul>
+</li>
+<li>Updated Python Core Framework<ul>
+<li>Improved error handling.</li>
+</ul>
+</li>
+<li>Updated C/C++ Development Framework<ul>
+<li>Fixed a code generation issue caused by a limitation in MsgPack macros when a struct had too many fields.</li>
+<li>Code generation of Hardware Adapters now generate a parameter for DataIO during data objects creation, allowing the use of an async forward handler to automatically write SDOs.</li>
+<li>Fixed gmt_issues #218: C++ applications are now only created for C++ components.</li>
+<li>Fixed gmt_issues #181: The module.mk file will no longer be overwritten.</li>
+<li>Fixed gmt_issues #195: Corrected CaMeLiZation of variables and methods for inherited packages.</li>
+</ul>
+</li>
+<li>Updated Python Development Framework<ul>
+<li>Fixed issue where code generation did not call the Component setup method at the appropriate time.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="contents-of-release-1-11-0">
 <h2>Contents of release 1.11.0<a class="headerlink" href="#contents-of-release-1-11-0" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -1145,7 +1178,7 @@ other information as the development progresses.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.11.0',
+            VERSION:'1.12.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
