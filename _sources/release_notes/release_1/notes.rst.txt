@@ -3,6 +3,34 @@
 Release 1
 =========
 
+Contents of release 1.13.0
+--------------------------
+
+- Core Frameworks
+  
+  - Updated C/C++ Core Framework
+
+    - DataIOs now are part of collection fields. For example, to access the property `acl` now, one should use `properties->acl->value`. Same thing for inputs, outputs, state_vars, alarms, etc...
+    - Added all the remaining core adapters to the C++ frameworks: conf, data, job, etc...
+    - Added HealthSupervisingBehavior
+    - Changed telemetry field from `data` to `value` to be consistent with other services
+
+  - Updated Coffee Core Framework
+
+    - Added initial support to the UI framework WebSockets
+
+  - Updated Python Core Framework
+
+    - Added `new_async_input_handler` method to Python DataIOs.
+    - Added `is_step_counter` method to PeriodicThreads and, therefore, Components
+    - Changed telemetry field from `data` to `value` to be consistent with other services
+    - Bugfixes in the Periodic Behavior
+
+  - Updated Development Framework
+
+    - Fixed `gds info` command
+
+
 Contents of release 1.12.0
 --------------------------
 

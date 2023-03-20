@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.12
+                1.13
               </div>
             
           
@@ -229,33 +229,21 @@ If a 404 error is shown when entering the ISample webpage, please contact us to 
 <h2>11.2. Clone the isample_dcs repository<a class="headerlink" href="#clone-the-isample-dcs-repository" title="Permalink to this headline">¶</a></h2>
 <p>On the development machine, clone the repository in the development folder:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$GMT_LOCAL</span>/modules
-$ gds clone isample_dcs -d gmto
+$ git clone git@github.com:GMTO/ocs_isample_dcs.git
 </pre></div>
 </div>
 <p>where the <code class="docutils literal"><span class="pre">-d</span> <span class="pre">option</span></code> defines the git repository owner. The output from the command
 will be:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ gds clone isample_dcs -d gmto
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone git@github.com:GMTO/ocs_isample_dcs.git
   Cloning into <span class="s1">&#39;ocs_isample_dcs&#39;</span>...
-  Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: &lt;insert your github username here&gt;
-  Password <span class="k">for</span> <span class="s1">&#39;https://&lt;user&gt;@github.com&#39;</span>: &lt;insert your github token here&gt;
-  remote: Enumerating objects: <span class="m">4</span>, <span class="k">done</span>.
-  remote: Counting objects: <span class="m">100</span>% <span class="o">(</span><span class="m">4</span>/4<span class="o">)</span>, <span class="k">done</span>.
-  remote: Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">4</span>/4<span class="o">)</span>, <span class="k">done</span>.
-  remote: Total <span class="m">949</span> <span class="o">(</span>delta <span class="m">1</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, pack-reused <span class="m">945</span>
-  Receiving objects: <span class="m">100</span>% <span class="o">(</span><span class="m">949</span>/949<span class="o">)</span>, <span class="m">143</span>.21 KiB <span class="p">|</span> <span class="m">1</span>.52 MiB/s, <span class="k">done</span>.
-  Resolving deltas: <span class="m">100</span>% <span class="o">(</span><span class="m">565</span>/565<span class="o">)</span>, <span class="k">done</span>.
-  <span class="o">[</span>WRN<span class="o">]</span> <span class="o">[</span>isample_dcs<span class="o">]</span> Module lib <span class="o">[</span>isample_dcs<span class="o">]</span> not found, trying to load from <span class="nb">source</span>
-  <span class="o">[</span>ERR<span class="o">]</span> <span class="o">[</span>isample_dcs<span class="o">]</span> model definition <span class="k">for</span> module isample_dcs not found
-  <span class="o">[</span>WRN<span class="o">]</span> <span class="o">[</span>hdk_dcs<span class="o">]</span> Module lib <span class="o">[</span>hdk_dcs<span class="o">]</span> not found, trying to load from <span class="nb">source</span>
-  <span class="o">[</span>ERR<span class="o">]</span> <span class="o">[</span>hdk_dcs<span class="o">]</span> model definition <span class="k">for</span> module hdk_dcs not found
-  <span class="o">[</span>INF<span class="o">]</span> <span class="o">[</span>gds<span class="o">]</span> clone module isample_dcs
-  <span class="o">[</span>INF<span class="o">]</span> <span class="o">[</span>isample_dcs<span class="o">]</span> Cloning module: isample_dcs
+  remote: Enumerating objects: <span class="m">1049</span>, <span class="k">done</span>.
+  remote: Counting objects: <span class="m">100</span>% <span class="o">(</span><span class="m">100</span>/100<span class="o">)</span>, <span class="k">done</span>.
+  remote: Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">60</span>/60<span class="o">)</span>, <span class="k">done</span>.
+  remote: Total <span class="m">1049</span> <span class="o">(</span>delta <span class="m">53</span><span class="o">)</span>, reused <span class="m">78</span> <span class="o">(</span>delta <span class="m">37</span><span class="o">)</span>, pack-reused <span class="m">949</span>
+  Receiving objects: <span class="m">100</span>% <span class="o">(</span><span class="m">1049</span>/1049<span class="o">)</span>, <span class="m">166</span>.06 KiB <span class="p">|</span> <span class="m">1</span>.14 MiB/s, <span class="k">done</span>.
+  Resolving deltas: <span class="m">100</span>% <span class="o">(</span><span class="m">620</span>/620<span class="o">)</span>, <span class="k">done</span>.
 </pre></div>
 </div>
-<p>These warnings are normal, and the first two are because the hdk module is not installed yet,
-and the other one is generated because the isample_dcs is not defined in the SDK
-bundle. As it is included in the local bundle, the module is cloned successfully,
-as the two latest messages inform us.</p>
 </div>
 <div class="section" id="model-files">
 <h2>11.3. Model Files<a class="headerlink" href="#model-files" title="Permalink to this headline">¶</a></h2>
@@ -704,7 +692,7 @@ syntax is</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.12.0',
+            VERSION:'1.13.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

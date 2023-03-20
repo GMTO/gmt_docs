@@ -29,34 +29,21 @@ On the development machine, clone the repository in the development folder:
 .. code-block:: bash
 
   $ cd $GMT_LOCAL/modules
-  $ gds clone isample_dcs -d gmto
+  $ git clone git@github.com:GMTO/ocs_isample_dcs.git
 
 where the ``-d option`` defines the git repository owner. The output from the command
 will be:
 
 .. code-block:: bash
 
-  $ gds clone isample_dcs -d gmto
+  $ git clone git@github.com:GMTO/ocs_isample_dcs.git
     Cloning into 'ocs_isample_dcs'...
-    Username for 'https://github.com': <insert your github username here>
-    Password for 'https://<user>@github.com': <insert your github token here>
-    remote: Enumerating objects: 4, done.
-    remote: Counting objects: 100% (4/4), done.
-    remote: Compressing objects: 100% (4/4), done.
-    remote: Total 949 (delta 1), reused 0 (delta 0), pack-reused 945
-    Receiving objects: 100% (949/949), 143.21 KiB | 1.52 MiB/s, done.
-    Resolving deltas: 100% (565/565), done.
-    [WRN] [isample_dcs] Module lib [isample_dcs] not found, trying to load from source
-    [ERR] [isample_dcs] model definition for module isample_dcs not found
-    [WRN] [hdk_dcs] Module lib [hdk_dcs] not found, trying to load from source
-    [ERR] [hdk_dcs] model definition for module hdk_dcs not found
-    [INF] [gds] clone module isample_dcs
-    [INF] [isample_dcs] Cloning module: isample_dcs
-
-These warnings are normal, and the first two are because the hdk module is not installed yet,
-and the other one is generated because the isample_dcs is not defined in the SDK
-bundle. As it is included in the local bundle, the module is cloned successfully,
-as the two latest messages inform us.
+    remote: Enumerating objects: 1049, done.
+    remote: Counting objects: 100% (100/100), done.
+    remote: Compressing objects: 100% (60/60), done.
+    remote: Total 1049 (delta 53), reused 78 (delta 37), pack-reused 949
+    Receiving objects: 100% (1049/1049), 166.06 KiB | 1.14 MiB/s, done.
+    Resolving deltas: 100% (620/620), done.
 
 
 Model Files

@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.12
+                1.13
               </div>
             
           
@@ -347,10 +347,10 @@ sudo dnf install -y flex git libcurl-devel
 <div class="section" id="node-installation">
 <h3>1.2.5. Node Installation<a class="headerlink" href="#node-installation" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Install <strong>Node version 16</strong>:</li>
+<li>Install <strong>Node version 18</strong>:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo dnf module install -y nodejs:16
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo dnf install -y nodejs
 </pre></div>
 </div>
 </div></blockquote>
@@ -366,7 +366,7 @@ sudo dnf install -y flex git libcurl-devel
 <p class="first admonition-title">Note</p>
 <p class="last">If you encounter problems installing nodejs, you probably have an older node version activated.
 To change it, run:
-<cite>sudo dnf remove -y nodejs &amp;&amp; sudo dnf module reset -y nodejs &amp;&amp; sudo dnf module enable -y nodejs:16</cite></p>
+<cite>sudo dnf remove -y nodejs &amp;&amp; sudo dnf module reset -y nodejs &amp;&amp; sudo dnf module enable -y nodejs:18</cite></p>
 </div>
 </div>
 <div class="section" id="mongodb-configuration">
@@ -749,7 +749,7 @@ pip install -U cson
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.12.0',
+            VERSION:'1.13.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

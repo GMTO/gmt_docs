@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                1.12
+                1.13
               </div>
             
           
@@ -101,6 +101,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Release Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Release 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-13-0">Contents of release 1.13.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-12-0">Contents of release 1.12.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-11-0">Contents of release 1.11.0</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contents-of-release-1-10-0">Contents of release 1.10.0</a></li>
@@ -192,6 +193,36 @@
             
   <div class="section" id="release-1">
 <span id="id1"></span><h1>Release 1<a class="headerlink" href="#release-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="contents-of-release-1-13-0">
+<h2>Contents of release 1.13.0<a class="headerlink" href="#contents-of-release-1-13-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Core Frameworks<ul>
+<li>Updated C/C++ Core Framework<ul>
+<li>DataIOs now are part of collection fields. For example, to access the property <cite>acl</cite> now, one should use <cite>properties-&gt;acl-&gt;value</cite>. Same thing for inputs, outputs, state_vars, alarms, etc…</li>
+<li>Added all the remaining core adapters to the C++ frameworks: conf, data, job, etc…</li>
+<li>Added HealthSupervisingBehavior</li>
+<li>Changed telemetry field from <cite>data</cite> to <cite>value</cite> to be consistent with other services</li>
+</ul>
+</li>
+<li>Updated Coffee Core Framework<ul>
+<li>Added initial support to the UI framework WebSockets</li>
+</ul>
+</li>
+<li>Updated Python Core Framework<ul>
+<li>Added <cite>new_async_input_handler</cite> method to Python DataIOs.</li>
+<li>Added <cite>is_step_counter</cite> method to PeriodicThreads and, therefore, Components</li>
+<li>Changed telemetry field from <cite>data</cite> to <cite>value</cite> to be consistent with other services</li>
+<li>Bugfixes in the Periodic Behavior</li>
+</ul>
+</li>
+<li>Updated Development Framework<ul>
+<li>Fixed <cite>gds info</cite> command</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="contents-of-release-1-12-0">
 <h2>Contents of release 1.12.0<a class="headerlink" href="#contents-of-release-1-12-0" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -1178,7 +1209,7 @@ other information as the development progresses.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.12.0',
+            VERSION:'1.13.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
