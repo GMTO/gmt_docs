@@ -15,4 +15,4 @@ Files to each one of these languages is described.
 
    mapping_model_to_cpp
    mapping_model_to_coffee
-   .. mapping_model_to_python
+   mapping_model_to_python

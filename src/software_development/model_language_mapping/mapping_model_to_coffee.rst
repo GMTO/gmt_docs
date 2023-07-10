@@ -20,7 +20,7 @@ asynchronous event loop and is well suited for
 (a) components that required distributed asynchronous communication (e.g.
 the :ref:`OCS Core Services <core_services_usr_guide>` are implemented this way); (b) components
 that are part of the OCS user interface that runs in the electron platform;
-(c) applications that don't require high performace computations or communications and
+(c) applications that don't require high performance computations or communications and
 that will benefit from an implementation in a dynamic typed language.
 
 The mapping between the model definition of a Component and its implementation in the 
