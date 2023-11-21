@@ -436,7 +436,7 @@ The SDK should be installed in a **Global GMT Software Location**, defined by th
 
   .. code-block:: bash
 
-    conda install -y conda-build msgpack-python=0.6.1
+    conda install -y conda-build msgpack-python
     pip install -U cson
 
 15. Link frameworks dir to Anaconda's paths
