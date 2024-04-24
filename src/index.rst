@@ -17,7 +17,7 @@ Here you will find the latest :ref:`release notes <release_1>` for the
 Some of these sections are still a work in progress, we will continue to
 add more information as it becomes available.
 
-Test.
+Test 2.
 
 .. toctree::
    :maxdepth: 1
