@@ -164,6 +164,8 @@ With the above mentioned settings, a continuous data transfer rate of: • 50[1/
 can be achieved.
 The next lower baud rate is 9600 baud. Accordingly, continuous transfer at a maximum baud rate of 9600 can be secured with a cycle time of 10 ms.
 
+Therefore, for a maximum baud rate of 115200bps, the EtherCAT hardware adapter must be configured with a frequency of at least 1050 Hz.
+
 
 SDOS
 ----

@@ -46,6 +46,12 @@ A `minimal` server installation is sufficient for the use of the GMT SDK.
 .. warning::
   Make sure an external firewall protects your server
 
+4. Install minimal development tools
+
+  .. code-block:: bash
+
+    sudo dnf install --enablerepo=crb -y git make cmake ninja-build gcc gcc-c++ gdb clang llvm-toolset lldb elfutils autoconf automake libtool
+
 
 Real-Time Kernel (Optional)
 ...........................
@@ -72,19 +78,13 @@ Development Tools Package List (Recommended)
 A development environment requires a set of tools to build and test software. The following list of packages are
 recommended for installation:
 
-1. Install Development Tools
-
-  .. code-block:: bash
-
-    sudo dnf install -y git make cmake ninja-build gcc gcc-c++ gdb clang llvm-toolset lldb elfutils autoconf automake libtool
-
-2. Install Some Testing Tools
+1. Install Some Testing Tools
 
   .. code-block:: bash
 
     sudo dnf install -y realtime-tests stress-ng perf valgrind
 
-3. Install Other Development Tools
+2. Install Other Development Tools
 
   .. code-block:: bash
 
@@ -108,6 +108,13 @@ Node Installation
   .. code-block:: bash
 
     sudo npm install -g coffeescript webpack webpack-cli raw-loader
+
+. note::
+
+   If you encounter problems installing nodejs, you probably have an older node version activated.
+   To change it, run:
+   `sudo dnf remove -y nodejs && sudo dnf module reset -y nodejs && sudo dnf module enable -y nodejs:20`
+    and then install nodejs again.
 
 
 MongoDB Configuration (for the core services)
