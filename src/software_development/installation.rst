@@ -152,54 +152,6 @@ MongoDB Configuration (for the core services)
     sudo systemctl status -l mongod
 
 
-EtherCAT Configuration (Optional)
-.................................
-
-EtherCAT is a high-speed Fieldbus communication system used for real-time control. The following configuration steps
-should be used as a guide when configuring EtherCAT communications.
-
-A real-time kernel is required for EtherCAT communication. The real-time kernel installation steps are provided above.
-
-For the installation example below, we use the following network interfaces:
-
-  * enp4s0 - EtherCAT Master (Primary)
-  * enp5s0 - EtherCAT Master (Backup - Optional, used for redundant topology)
-
-1. Disable the network manager for it:
-
-  .. code-block:: bash
-
-    nmcli connection delete id enp4s0
-    nmcli connection reload
-
-
-2. Edit ``/etc/ethercat.conf`` and set the following configuration options:
-
-  .. code-block:: bash
-
-    MASTER0_DEVICE="enp4s0"
-    MASTER0_BACKUP="enp5s0"  # optional, for redundant topology
-
-3. Reboot into the RT Kernel, if you're not in it already.
-
-4. Enable the EtherCAT service
-
-  .. code-block:: bash
-
-    sudo systemctl enable ethercat
-    sudo systemctl start ethercat
-
-8. Test the EtherCAT configuration (once the EtherCAT slaves are connected):
-
-  .. code-block:: bash
-
-    ethercat master
-    ethercat slaves
-
-If the ``ethercat master`` command does not produce the correct output, ensure that you're currently running the real-time kernel.
-If the ``ethercat slaves`` command produces no output, check that the ethernet cable is connected to the correct port as configured above.
-
-
 Network Time Protocol Configuration
 ...................................
 
@@ -340,3 +292,42 @@ To configure the environment for the current shell, run the commands manually.
     ./build
     cd $GMT_LOCAL/modules/ocs_isample_dcs/model
     ./build
+
+EtherCAT Configuration (Optional)
+.................................
+
+EtherCAT is a high-speed Fieldbus communication system used for real-time control. The following configuration steps
+should be used as a guide when configuring EtherCAT communications.
+
+A real-time kernel is required for EtherCAT communication. The real-time kernel installation steps are provided above.
+
+For the installation example below, we use the following network interfaces:
+
+  * enp4s0 - EtherCAT Master (Primary)
+  * enp5s0 - EtherCAT Master (Backup - Optional, used for redundant topology)
+
+1. Run the etherlab_install.sh script that comes with the GMT SDK:
+
+  .. code-block:: bash
+
+    cd $GMT_GLOBAL/bin/
+    sudo -E bash ./etherlab_install.sh enp4s0
+
+2. Edit ``/etc/ethercat.conf`` and set the following configuration options:
+
+  .. code-block:: bash
+
+    MASTER0_DEVICE="enp4s0"
+    MASTER0_BACKUP="enp5s0"  # optional, for redundant topology
+
+3. Reboot into the RT Kernel, if you're not in it already.
+
+4. Test the EtherCAT configuration (once the EtherCAT slaves are connected):
+
+  .. code-block:: bash
+
+    ethercat master
+    ethercat slaves
+
+If the ``ethercat master`` command does not produce the correct output, ensure that you're currently running the real-time kernel.
+If the ``ethercat slaves`` command produces no output, check that the ethernet cable is connected to the correct port as configured above.
