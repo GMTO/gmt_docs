@@ -88,6 +88,7 @@ recommended for installation:
 
   .. code-block:: bash
 
+    sudo dnf install -y epel-release
     sudo dnf install -y vim tmux screen tig htop rsync wget net-tools pciutils hwloc strace ltrace lsof
 
 Node Installation
@@ -97,7 +98,7 @@ Node Installation
 
   .. code-block:: bash
 
-    sudo curl -sL https://rpm.nodesource.com/setup_20.x | bash -
+    sudo curl -sL https://rpm.nodesource.com/setup_20.x | sudo bash -
 
   .. code-block:: bash
 
@@ -274,19 +275,20 @@ To configure the environment for the current shell, run the commands manually.
   .. code-block:: bash
 
     cd $GMT_GLOBAL
-    npm install
+    sudo npm install
 
     cd $GMT_LOCAL
     cp $GMT_GLOBAL/package.json ./
     npm install
 
-  Install global node modules for `Webpack` and `Coffeescript`.
+8. Install Python requirements
 
   .. code-block:: bash
 
-    sudo npm install -g coffeescript webpack webpack-cli coffee-loader
+    cd $GMT_GLOBAL
+    pip install -r requirements.txt
 
-8. Initialize the Development Environment:
+9. Initialize the Development Environment:
 
   .. code-block:: bash
 
@@ -295,14 +297,14 @@ To configure the environment for the current shell, run the commands manually.
 
   The correct folders will be created in the $GMT_LOCAL directory for use when compiling and running modules.
 
-9. Create a **modules** directory in $GMT_LOCAL
+10. Create a **modules** directory in $GMT_LOCAL
 
   .. code-block:: bash
 
     cd $GMT_LOCAL
     mkdir modules
 
-10. Create the **bundles.coffee** and **ocs_local_bundle.coffee** files, defining the local modules under development
+11. Create the **bundles.coffee** and **ocs_local_bundle.coffee** files, defining the local modules under development
 
   These files may be copied from $GMT_GLOBAL and then edited to reflect the developer's configuration.
 
@@ -330,39 +332,11 @@ To configure the environment for the current shell, run the commands manually.
          isample_dcs: { active: true, test: false, developer: 'gmto', domain: 'idcs' }
          hdk_dcs:     { active: true, test: false, developer: 'gmto', domain: 'idcs' }
 
-11. Build all model files from modules in your ocs_local_bundles definition using webpack. For example:
+12. Build all model files from modules in your ocs_local_bundles definition. For example:
 
   .. code-block:: bash
 
     cd $GMT_LOCAL/modules/ocs_hdk_dcs/model
-    webpack
+    ./build
     cd $GMT_LOCAL/modules/ocs_isample_dcs/model
-    webpack
-
-12. Python frameworks installation: Install Miniconda (or Anaconda)
-
-  .. code-block:: bash
-
-    wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
-    echo 'eval "$($HOME/miniconda/bin/conda shell.bash hook)"' >> $HOME/.bashrc
-
-13. Create a conda environment (optional)
-
-  .. code-block:: bash
-
-    conda create -y -n gmt python=3
-    conda activate gmt
-
-14. Install dependencies
-
-  .. code-block:: bash
-
-    conda install -y conda-build msgpack-python
-    pip install -U cson
-
-15. Link frameworks dir to Anaconda's paths
-
-  .. code-block:: bash
-
-    conda develop "$GMT_GLOBAL/lib/py/"
+    ./build

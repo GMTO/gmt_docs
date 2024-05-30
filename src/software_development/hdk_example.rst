@@ -566,28 +566,3 @@ The Navigator app uses your bundles and configuration to connect to your DCS com
     $ cd $GMT_LOCAL/etc/conf/hdk_ctrl_pkg/hdk_main_ctrl/
     $ sed -i '' "s/172.0.0.1/172.16.10.31/g" hdk_main_ctrl_config.coffee
 
-Also note that the firewall on the target machine will need to be configured to allow data through port range used by your component instance.  You can use the ``firewall-cmd`` to open the applicable ports (for example, the range from 8122 to 8124):
-
-  .. code-block:: bash
-
-     $ sudo firewall-cmd --add-port=8122-8124/tcp
-
-See the Troubleshooting section in the :ref:`UI Framework Guidelines document <ui_fwk>` for more help with connection issues.
-
-Running the Engineering UI
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The Navigator app uses your local bundles file (found in ``$GMT_LOCAL/etc/bundles``) to automatically create
-a visual representation of your model.
-
-.. image:: navigator_images/navigator_hdk_panel.png
-  :align: center
-  :alt: Navigator application with HKD vis panel
-
-The model is shown as a navigation tree.  In the above image, the ``hdk_custom_view`` panel shown.  For more information on creating custom UI panels, see the :ref:`UI Framework Guidelines document <ui_fwk>`.
-
-To launch the visualization panel, find the `> Hdk Visualization Package > Example view for HDK` visualization panel in the menu and select it.  This will create a new tab in Navigator showing the panel.
-
-.. note::
-
-    The HDK UI package needs to exist in your ``$GMT_LOCAL/lib/js`` folder in order for Navigator to load it.  This might be a separate download.
