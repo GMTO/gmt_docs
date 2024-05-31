@@ -32,6 +32,8 @@ Contents of release 2.0.0
 
              - A SD GET of the State Variables, Faults or Alarms collection will return the value, goal and following mode 
 
+        - core_core_pkg.so library has been renamed as core_lib_pkg.so
+
  
 
   - Updated Python Core Frameworks 
