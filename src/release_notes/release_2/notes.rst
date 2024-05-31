@@ -40,6 +40,8 @@ Contents of release 2.0.0
 
          - Added the management for Faults, FaultTree, Alarms and AlarmTree
 
+         - Python core package is now called `core_lib_pkg`.
+
   - Updated C/C++ I/O Framework
 
     - Added Serial-over-EtherCAT (SoE) support. See the new SoE example in the HDK DCS example.
