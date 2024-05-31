@@ -3,7 +3,7 @@
 Release 2
 =========
 
-Contents of release 1.14.0
+Contents of release 2.0.0
 -------------------------- 
 
 - Dev Framework
