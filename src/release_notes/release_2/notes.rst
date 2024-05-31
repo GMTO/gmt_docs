@@ -10,11 +10,11 @@ Contents of release 2.0.0
 
   - New build systems
 
-     - CoffeeScript now uses `esbuild <https://esbuild.github.io>`
+     - CoffeeScript now uses `esbuild <https://esbuild.github.io>`_
 
-     - C++ uses `Make <https://cmake.org>`
+     - C++ uses `Make <https://cmake.org>`_
 
-     - Python uses `setuptools/pip <https://setuptools.pypa.io/`
+     - Python uses `setuptools/pip <https://setuptools.pypa.io/`_
 
   - `gds build` support for building C++, Coffee and Python using the new build systems.
 
@@ -44,7 +44,7 @@ Contents of release 2.0.0
 
         - Build migrated to CMake.
       
-        - Tests migrated to use `GoogleTest <https://github.com/google/googletest>` library.
+        - Tests migrated to use `GoogleTest <https://github.com/google/googletest>`_ library.
 
   - Updated CoffeeScript Core Frameworks
 
