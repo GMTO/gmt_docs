@@ -12,8 +12,8 @@
 
 project = 'GMT Software And Controls'
 copyright = '2024, contributors'
-version = '1.14'
-release = '1.14'
+version = '2.0.0'
+release = '2.0.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

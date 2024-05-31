@@ -1,18 +1,25 @@
-.. _release_2: 
+.. _release_2:
 
-  
+Release 2
+=========
 
-Release 2 
-
-========= 
-
-  
-
-Contents of release 2.0.0 
-
+Contents of release 1.14.0
 -------------------------- 
 
-  
+- Dev Framework
+
+  - New build systems
+
+     - CoffeeScript now uses [esbuild](https://esbuild.github.io/)
+
+     - C++ uses [CMake](https://cmake.org)
+
+     - Python uses [setuptools/pip](https://setuptools.pypa.io/)
+
+  - `gds build` support for building C++, Coffee and Python using the new build systems.
+
+  - `gds test` improved support for running and collecting code coverage for all the supported languages.
+
 
 - Core Frameworks 
 
@@ -34,13 +41,29 @@ Contents of release 2.0.0
 
         - core_core_pkg.so library has been renamed as core_lib_pkg.so
 
- 
+        - Build migrated to [CMake](https://cmake.org).
+      
+        - Tests migrated to use [GoogleTest](https://github.com/google/googletest) library.
+
+  - Updated CoffeeScript Core Frameworks
+
+      - CoffeeScript build migrated to esbuild.
+
+      - CoffeeScript tests migrate to node:test library.
+
 
   - Updated Python Core Frameworks 
 
          - Added the management for Faults, FaultTree, Alarms and AlarmTree
 
          - Python core package is now called `core_lib_pkg`.
+
+         - Python build now uses setuptools and pip.
+
+         - Python 3.12 is now bundled within the SDK.
+
+         - Python tests migrated to pytest.
+
 
   - Updated C/C++ I/O Framework
 
