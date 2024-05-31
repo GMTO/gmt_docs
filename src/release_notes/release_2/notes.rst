@@ -10,15 +10,16 @@ Contents of release 1.14.0
 
   - New build systems
 
-     - CoffeeScript now uses [esbuild](https://esbuild.github.io/)
+     - CoffeeScript now uses `esbuild <https://esbuild.github.io>`
 
-     - C++ uses [CMake](https://cmake.org)
+     - C++ uses `Make <https://cmake.org>`
 
-     - Python uses [setuptools/pip](https://setuptools.pypa.io/)
+     - Python uses `setuptools/pip <https://setuptools.pypa.io/`
 
   - `gds build` support for building C++, Coffee and Python using the new build systems.
 
   - `gds test` improved support for running and collecting code coverage for all the supported languages.
+
 
 
 - Core Frameworks 
@@ -41,9 +42,9 @@ Contents of release 1.14.0
 
         - core_core_pkg.so library has been renamed as core_lib_pkg.so
 
-        - Build migrated to [CMake](https://cmake.org).
+        - Build migrated to CMake.
       
-        - Tests migrated to use [GoogleTest](https://github.com/google/googletest) library.
+        - Tests migrated to use `GoogleTest <https://github.com/google/googletest>` library.
 
   - Updated CoffeeScript Core Frameworks
 
