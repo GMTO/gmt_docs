@@ -10,7 +10,7 @@ Contents of release 2.0.0
 
   - New build systems
 
-     - CoffeeScript now uses `esbuild <https://esbuild.github.io>`_
+     - NodeJS now uses `esbuild <https://esbuild.github.io>`_
 
      - C++ uses `Make <https://cmake.org>`_
 
@@ -46,11 +46,13 @@ Contents of release 2.0.0
       
         - Tests migrated to use `GoogleTest <https://github.com/google/googletest>`_ library.
 
-  - Updated CoffeeScript Core Frameworks
+  - Updated Nodejs Core Frameworks
 
-      - CoffeeScript build migrated to esbuild.
+        - Nodejs build migrated to esbuild.
 
-      - CoffeeScript tests migrate to node:test library.
+        - Tests migrated to node:test library.
+
+        - Add support for decimation on server for WebSocket publishers
 
 
   - Updated Python Core Frameworks 
@@ -79,5 +81,25 @@ Contents of release 2.0.0
     - Created an etherlab installation script
 
     - Created a global configuration files folder for the EtherCAT I/O modules
+
+  - Added UI Framework
+
+    - The UI framework allows developing user interfaces using the Web Components standard.
+    
+    - Uses WebSockets to:
+
+          - Comunicate to GMT distributed Components.
+
+          - Subscribe/unsubscribe to events published by Core Services
+
+          - Perform database operations on Core Services
+
+    - Provides default Widgets for rendering of Data IO, Components, Core Service Streams.
+
+    - Uses Carbon Web Components as a fundation Design systems.
+
+    - Support the creation of Data Visualization using Carbon Charts.
+
+    - Includes the Navigator app that allows the integrating of Visualization Plugins from other GMT Software and Control Subsystems.
 
     
