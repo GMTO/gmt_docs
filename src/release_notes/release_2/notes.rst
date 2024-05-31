@@ -37,3 +37,19 @@ Contents of release 2.0.0
   - Updated Python Core Frameworks 
 
          - Added the management for Faults, FaultTree, Alarms and AlarmTree
+
+  - Updated C/C++ I/O Framework
+
+    - Added Serial-over-EtherCAT (SoE) support. See the new SoE example in the HDK DCS example.
+
+    - Added support for the new sampling policies and sampling mode.
+
+    - Added step groups to the EtherCAT state machine.
+
+    - Updated etherlab installation to the latest version with a newer RT kernel
+
+    - Created an etherlab installation script
+
+    - Created a global configuration files folder for the EtherCAT I/O modules
+
+    
