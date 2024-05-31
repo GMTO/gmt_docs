@@ -14,7 +14,7 @@ Contents of release 2.0.0
 
      - C++ uses `Make <https://cmake.org>`_
 
-     - Python uses `setuptools/pip <https://setuptools.pypa.io/`_
+     - Python uses `setuptools/pip <https://setuptools.pypa.io/>`_
 
   - `gds build` support for building C++, Coffee and Python using the new build systems.
 
