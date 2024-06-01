@@ -84,7 +84,7 @@ Contents of release 2.0.0
 
   - Added UI Framework
 
-    - The UI framework allows developing user interface elements using the `Web Components https://developer.mozilla.org/en-US/docs/Web/API/Web_components`_ standard.
+    - The UI framework allows developing user interface elements using the `Web Components <https://developer.mozilla.org/en-US/docs/Web/API/Web_components>`_ standard.
     
     - Uses WebSockets to:
 
@@ -96,9 +96,9 @@ Contents of release 2.0.0
 
     - Provides default Widgets for rendering of Data IO's, Components, Core Service Streams.
 
-    - Uses `Carbon Web Components https://web-components.carbondesignsystem.com/?path=/story/introduction-welcome--page`_ as a fundation Design System.
+    - Uses `Carbon Web Components <https://web-components.carbondesignsystem.com/?path=/story/introduction-welcome--page>`_ as a fundation Design System.
 
-    - Support the creation of Data Visualizations using `Carbon Charts https://charts.carbondesignsystem.com/?path=/story/docs--welcome`_
+    - Support the creation of Data Visualizations using `Carbon Charts <https://charts.carbondesignsystem.com/?path=/story/docs--welcome>`_
 
     - Includes the Navigator app that allows the integration of Visualization Plugins from other GMT Software and Control Subsystems.
 
