@@ -238,7 +238,7 @@ To configure the environment for the current shell, run the commands manually.
   .. code-block:: bash
 
     cd $GMT_GLOBAL
-    pip install -r requirements.txt
+    sudo -E $GMT_GLOBAL/ext/bin/pip install -r requirements.txt
 
 9. Initialize the Development Environment:
 
