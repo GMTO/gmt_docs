@@ -33,15 +33,15 @@ A `minimal` server installation is sufficient for the use of the GMT SDK.
 
   .. code-block:: bash
 
-    systemctl disable firewalld
-    systemctl stop firewalld
+    sudo systemctl disable firewalld
+    sudo systemctl stop firewalld
 
 3. Disable SELinux
 
   .. code-block:: bash
 
-    sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
-    setenforce 0
+    sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+    sudo setenforce 0
 
 .. warning::
   Make sure an external firewall protects your server
@@ -63,13 +63,19 @@ The following steps should be taken to install the real-time kernel:
 
   .. code-block:: bash
 
-    KERNEL_RT_VERSION="5.14.0-362.13.1.el9_3" && dnf install -y kernel-rt-${KERNEL_RT_VERSION} kernel-rt-devel-${KERNEL_RT_VERSION}
+    KERNEL_RT_VERSION="5.14.0-362.13.1.el9_3" && sudo dnf install -y kernel-rt-${KERNEL_RT_VERSION} kernel-rt-devel-${KERNEL_RT_VERSION}
 
 2. Add users to the **realtime** group, to allow access to the real-time kernel, for example:
 
   .. code-block:: bash
 
     sudo usermod -a -G realtime gmto
+
+3. Set the real-time kernel as the default kernel
+
+  .. code-block:: bash
+
+    sudo grubby --set-default /boot/vmlinuz-${KERNEL_RT_VERSION}.x86_64+rt
 
 
 Development Tools Package List (Recommended)
@@ -125,12 +131,14 @@ MongoDB Configuration (for the core services)
 
   .. code-block:: bash
 
+     sudo cat << EOF > /etc/yum.repos.d/mongodb-org-7.repo
      [mongodb-org-7.0]
      name=MongoDB Repository
      baseurl=https://repo.mongodb.org/yum/redhat/8/mongodb-org/7.0/x86_64/
      gpgcheck=1
      enabled=1
      gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc
+     EOF
 
 2. Install the necessary packages:
 
@@ -238,7 +246,7 @@ To configure the environment for the current shell, run the commands manually.
   .. code-block:: bash
 
     cd $GMT_GLOBAL
-    pip install -r requirements.txt
+    sudo -E $GMT_GLOBAL/ext/bin/pip install -r requirements.txt
 
 9. Initialize the Development Environment:
 
@@ -288,10 +296,8 @@ To configure the environment for the current shell, run the commands manually.
 
   .. code-block:: bash
 
-    cd $GMT_LOCAL/modules/ocs_hdk_dcs/model
-    ./build
-    cd $GMT_LOCAL/modules/ocs_isample_dcs/model
-    ./build
+    gds build -t model hdk_dcs
+    gds build -t model isample_dcs
 
 EtherCAT Configuration (Optional)
 .................................
@@ -310,7 +316,7 @@ For the installation example below, we use the following network interfaces:
 
   .. code-block:: bash
 
-    cd $GMT_GLOBAL/bin/
+    cd $GMT_GLOBAL/ext/bin/
     sudo -E bash ./etherlab_install.sh enp4s0
 
 2. Edit ``/etc/ethercat.conf`` and set the following configuration options:
