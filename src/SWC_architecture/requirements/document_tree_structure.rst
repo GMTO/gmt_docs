@@ -44,7 +44,7 @@ practices for specifying, developing and integrating the software and control
 subsystems.
 
 At Level 4, the major GMT systems, (e.g., telescope, enclosure) are partitioned
-into subsystems (e.g., M1, ASM, GIR, LGSF) that need to be controlled by the
+into subsystems (e.g., M1, ASM, GIR, LGSS) that need to be controlled by the
 SWCS. There, the subsystem performance and functional requirements are defined,
 and performance budgets are parceled out.
 

@@ -6,7 +6,7 @@
 A simplified block diagram of the LTAO WFC is presented in :numref:`Figure %s
 <ltao_wfcs_block_diagram>`. There are strong similarities to the NGSAO WFC, with
 the LTWS taking the place of the NGWS. The LTAO Wavefront Controller has three
-additional outputs controlling the OIWFS DM, the LTWS focus stage, and the LGSF
+additional outputs controlling the OIWFS DM, the LTWS focus stage, and the LGSS
 steering mirrors.  At this level of detail, the additional NGS tip-tilt and
 focus control loops and the details of the pseudo open-loop tomographic control
 are hidden within the LTAO Wavefront Controller. The Phasing Controller in the
@@ -38,7 +38,7 @@ measurements made by the LTWS and OIWFS. These are:
 
   6. OIWFS dynamic calibration, compensated with the OIWFS DM
 
-  7. Laser tip-tilt, compensated with LGSF steering mirrors
+  7. Laser tip-tilt, compensated with LGSS steering mirrors
 
   8. Laser focus, used to optimize the axial position of the LTWS.
 
@@ -141,7 +141,7 @@ next section.
          downstream of the OIWFS DM to remove any residual low-order aberrations
          from that DM.
 
-      5. Laser tip-tilt is measured by the LTWS and used to update the LGSF fast
+      5. Laser tip-tilt is measured by the LTWS and used to update the LGSS fast
          steering mirror positions.
 
       6. Laser focus is derived from the tomographic reconstruction on-axis, and
