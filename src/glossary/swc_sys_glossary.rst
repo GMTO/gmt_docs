@@ -555,8 +555,8 @@ Combinations of two (digrams), three (trigrams) or four (tetragrams) letters use
       - Electronic Cabinet
     * - *lgsa*
       - Laser Guidestar Acquisition
-    * - *lgsf*
-      - Laser Guidestar Facility
+    * - *lgss*
+      - Laser Guidestar Subsystem
     * - *ltao*
       - Laser Tomography Adaptive Optics
     * - *lgws*
