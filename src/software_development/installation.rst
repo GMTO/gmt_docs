@@ -184,9 +184,7 @@ The local working directory typically resides underneath the /home/<username> di
 
 1. Download the latest SDK distribution:
 
-  .. code-block:: bash
-
-    wget http://52.52.46.32/srv/gmt/releases/sdk/linux/gmt-sdk.tar.gz
+    https://github.com/GMTO/gmt_sdk/releases/
 
 2. Extract the TAR file in the /opt directory, into a new folder for the latest release (substitute <releasever> with the actual release version):
 
@@ -201,7 +199,7 @@ The local working directory typically resides underneath the /home/<username> di
 
   .. code-block:: bash
 
-    sudo ln -sfn /opt/gmt_release_1.10.0 /opt/gmt
+    sudo ln -sfn /opt/gmt_release_<releasever> /opt/gmt
 
 4. Create a **Local Working Directory**
 
