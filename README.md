@@ -1,3 +1,22 @@
+> [!IMPORTANT]
+> **This repository has moved to GitLab and is archived on GitHub.**
+>
+> GitHub is now read-only: it takes no issues, pull requests or pushes, and it will not get further updates.
+> Development continues at **<https://gitlab.gmto.org/gmto/gmt_docs>**.
+>
+> To point an existing clone at GitLab:
+>
+> ```sh
+> git remote set-url origin https://gitlab.gmto.org/gmto/gmt_docs.git
+> git fetch origin
+> ```
+>
+> **Have a fork or unmerged branches on GitHub?** Pull requests can no longer be opened or merged here.
+> Bring your work over to GitLab and open a merge request there. <https://dev.gmto.org> explains how to
+> move a fork and update your remotes.
+>
+> **No access to GitLab yet?** See <https://dev.gmto.org> for how to get access.
+
 This repository contains the Software and Controls documentation as source files and generated content.
 
 The .rst files used to generate documentation are stored on the `master` branch. The generated HTML and PDF files are stored on the `gh-pages` branch and hosted at https://gmto.github.io/gmt_docs/.
